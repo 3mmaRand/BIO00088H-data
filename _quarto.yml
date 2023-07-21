@@ -1,19 +1,147 @@
 project:
   type: website
+  output-dir: _site
 
 website:
-  title: "BIO00088H-data"
+  title: "Data Analysis for Group Project"
+  page-footer:
+    left: '`r cffr::cff_to_bibtex("CITATION.cff")`'
+    right:
+      - icon: twitter
+        href: https://twitter.com/er_13
+        aria-label: Twitter
+      - icon: github
+        href: https://github.com/3mmaRand/BIO00088H-data
+        aria-label: BIO00088H-data GitHub
   navbar:
+    background: light
+    twitter-card: true
+    site-url: https://3mmarand.github.io/BIO00088H-data/
+    repo-url: https://github.com/3mmaRand/BIO00088H-data
+    issue-url: https://github.com/3mmaRand/BIO00088H-data/issues/new/choose
+    repo-actions: [edit, issue]
+    page-navigation: true
+    search: true
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+      - text: "Welcome!"
+        file: index.qmd
+      - text: "Core"
+        file:  core/core.qmd
+      - text: "Omics"
+        file:  omics/omics.qmd
+    tools:
+      - icon: twitter
+        href: https://twitter.com/er_13
+        text: Emma's Twitter
+      - icon: github
+        href: https://github.com/3mmaRand/BIO00088H-data
+        text: BIO00088H-data GitHub
+
+  sidebar:
+    - title: "Core"
+      style: "floating"
+      contents: 
+          - href: core/core.qmd
+          - text: ---
+          - text: ---
+          - section: "Week 1: xxx"
+            contents: 
+             - href: core/week-1/overview.qmd
+               text: About  
+             - href: core/week-1/study_before_workshop.qmd
+               text: Prepare! 
+             - href: core/week-1/workshop.qmd
+               text: Workshop
+             - href: core/week-1/study_after_workshop.qmd
+               text: Consolidate!  
+          - text: ---
+          - section: "Week 2: xxx"
+            contents: 
+             - href: core/week-2/overview.qmd
+               text: About  
+             - href: core/week-2/study_before_workshop.qmd
+               text: Prepare! 
+             - href: core/week-2/workshop.qmd
+               text: Workshop
+             - href: core/week-2/study_after_workshop.qmd
+               text: Consolidate!  
+          - text: ---
+          - section: "Week 6: Quarto"
+            contents: 
+             - href: core/week-6/overview.qmd
+               text: About  
+             - href: core/week-6/study_before_workshop.qmd
+               text: Prepare! 
+             - href: core/week-6/workshop.qmd
+               text: Workshop
+             - href: core/week-6/study_after_workshop.qmd
+               text: Consolidate!  
+    - title: "Omics"
+      style: "floating"
+      contents: 
+          - href: omics/omics.qmd
+          - text: ---
+          - text: ---
+          - section: "Week 3: xx"
+            contents: 
+             - href: omics/week-3/overview.qmd
+               text: About  
+             - href: omics/week-3/study_before_workshop.qmd
+               text: Prepare! 
+             - href: omics/week-3/workshop.qmd
+               text: Workshop
+             - href: omics/week-3/study_after_workshop.qmd
+               text: Consolidate!  
+          - text: ---
+          - section: "Week 4: xxx"
+            contents: 
+             - href: omics/week-4/overview.qmd
+               text: About  
+             - href: omics/week-4/study_before_workshop.qmd
+               text: Prepare! 
+             - href: omics/week-4/workshop.qmd
+               text: Workshop
+             - href: omics/week-4/study_after_workshop.qmd
+               text: Consolidate!  
+          - text: ---
+          - section: "Week 5: xxx"
+            contents: libray/week-5/overview.qmd
+               text: About  
+             - href: omics/week-5/study_before_workshop.qmd
+               text: Prepare! 
+             - href: omics/week-5/workshop.qmd
+               text: Workshop
+             - href: omics/week-5/study_after_workshop.qmd
+               text: Consolidate!  
+execute:
+  echo: true
+  warning: false
+  output: true
+  error: true
+  collapse: true
+
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
-    toc: true
+    link-external-newwindow: true
+    link-external-filter: '^(?:http:|https:)\/\/3mmarand\.github\.io\/BIO00088H-data'
+    theme:
+      light: [cosmo, custom.scss]
+    code-copy: true
+    code-link: true
+    code-overflow: wrap
+    code-line-numbers: false
+    grid:
+      sidebar-width: 250px
+      body-width: 900px
+      margin-width: 300px
+    
+    author-meta: Emma Rand
 
-editor: visual
+bibliography: references.bib
+
+
+editor: source
+
+
 

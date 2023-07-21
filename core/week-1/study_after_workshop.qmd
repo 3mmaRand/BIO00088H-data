@@ -1,0 +1,25 @@
+---
+title: "Independent Study to consolidate this week"
+subtitle: "Core 1"
+format:
+  html:
+    code-fold: true
+    code-summary: "Answer - don't look until you have tried!"
+---
+
+# Set up
+
+If you have just opened RStudio you will want to load the packages and import the data.
+
+```{r}
+#| code-fold: false
+library(tidyverse)
+library(readxl)
+```
+
+1.  💻 xx.
+
+```{r}
+
+ 
+```

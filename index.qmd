@@ -1,7 +1,38 @@
 ---
-title: "BIO00088H-data"
+title: "Data Analysis for Group Project"
+toc: true
+toc-location: right
 ---
 
-This is a Quarto website.
+# Overview
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+blah
+
+## Module Learning Objectives
+
+The BIO00088H Module Learning outcomes that relate this content are
+
+-   ..
+
+-   ..
+
+
+Each week has:
+
+-   An overview on the "About" page which gives the Learning Objectives, a topic summary and the instructions for the week. You should read this first.
+
+-   Some independent study on the "Prepare!" page to prepare you for the workshop. It is designed to take about 30-45 mins on average. You will most likely learn best if you can find people to study with.
+
+-   A two-hour workshop. Talking to other people in the workshop about the exercises and working together will really help you understand more. There will be plenty of help from me and my demonstrators.
+
+-   Some independent study on the "Consolidate!" page to give you more practice. The exercises are usually similar to those in the workshop but with less guidance. It is designed to take about 30-45 mins on average but may be quicker if you understood the workshop very well or slower if you need to revisit the workshop.
+
+
+## What is this site for?
+
+All material is on the VLE so why is this site useful? Well, perhaps more than any other material, you will want to refer back when applying your skills and this site collects everything together in a searchable way. The search icon is on the top right.
+
+Resources.
+
+R4 BABS
+

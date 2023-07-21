@@ -1,0 +1,19 @@
+---
+title: "Omics Data Analysis for Group Project"
+toc: true
+toc-location: right
+---
+
+# Content
+
+## Omics 1
+
+erwtERTERTG
+
+## Omics 2
+
+rgetgretger
+
+## Omics 3
+
+fgzzdfghdfhg

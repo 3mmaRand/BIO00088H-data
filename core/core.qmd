@@ -1,0 +1,19 @@
+---
+title: "Core Data Analysis for Group Project"
+toc: true
+toc-location: right
+---
+
+# Content
+
+## Core 1
+
+erwtERTERTG
+
+## Core 2
+
+rgetgretger
+
+## Core 3: Quarto
+
+fgzzdfghdfhg
