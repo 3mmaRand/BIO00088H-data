@@ -6,27 +6,69 @@ toc-location: right
 
 # Content
 
-## Core 1
+Overview
+You are either an integrated masters student doing 88H Group Project or a MSc Bioinformatics student doing 70M
 
-Note no R coding (too early for 70M)
+
+## Week 1 Core 1 Organising Reproducible Data Analyses
+
+Note no R coding (too early for MSc BIN 70M who share the core and omics teaching)
+
+Before
+-   Optional revision: What they forgot to teach you about computers: operating systems, file systems, file types, working directories and paths
+
+-   Why reproducibility (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown)
+
+Workshop
 
 -   Project organisation: folders, files
 -   Project oriented workflow
--   Readme
 -   Naming things
--   Keeping notes
--   Data management, google drive: https://www.york.ac.uk/it-services/services/drive/#tab-6
--   file formats
--   Introduction to data in general. Similarities and differences
+-   File formats
+-   Data management
+    -   google drive: https://www.york.ac.uk/it-services/services/drive/#tab-6
+    -   documenting
+    -   organisation within files
+-   Data files. Similarities and differences
     -   Sequences data
     -   Image data
     -   Structure data. 
+-   Keeping notes
+-   Readme
+-   Reference managers: Zotero
+
+After
+
+## Week 2 Core 2 NEEDS A TITLE
+
+Before
+Possibly:
+Code formatting and style, 😎 Cool code Tips, Code 'algorithmically.', Writing functions (R and python??) (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown)
 
 
-## Core 2
 
-rgetgretger
+Workshop
 
-## Core 3: Quarto
 
-fgzzdfghdfhg
+
+After
+
+## Week 6 Core 3 Reproducible Reporting
+
+Before
+ (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown and BIO00058M-Data-science-2020/slides/04_advanced_rmarkdown.html)
+Literate programming
+What is quarto
+markdown basics: text, code chunks, headings
+yaml
+automatic numbering of figures and tables
+cross references
+special characters
+citations
+
+
+Workshop
+
+practice doing the above with your project and data
+
+After

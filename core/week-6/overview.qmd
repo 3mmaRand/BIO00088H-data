@@ -1,6 +1,6 @@
 ---
 title: "Overview"
-subtitle: "Core 1: Organising Data Analyses"
+subtitle: "Core 3: Reproducible Reporting"
 ---
 
 xxxxx
@@ -16,7 +16,7 @@ xxxxx
 
 1.  [Prepare](study_before_workshop.qmd)
 
-    i.  📖 Read [What they forgot to teach you about computers](https://3mmarand.github.io/comp4biosci/what_they_forgot.html)
+    i.  📖 Read 
 
 2.  [Workshop](workshop.qmd)
 

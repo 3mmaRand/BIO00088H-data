@@ -1,6 +1,6 @@
 ---
 title: "Workshop"
-subtitle: "Organising Reproducible Data Analyses"
+subtitle: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 toc: true
 toc-location: right
 ---
@@ -31,21 +31,7 @@ In this workshop you will
 
 
 🎬 
--   Project organisation: folders, files
--   Project oriented workflow
--   Naming things
--   File formats
--   Data management
-    -   google drive: https://www.york.ac.uk/it-services/services/drive/#tab-6
-    -   documenting
-    -   organisation within files
--   Data files. Similarities and differences
-    -   Sequences data
-    -   Image data
-    -   Structure data. 
--   Keeping notes
--   Readme
--   Reference managers: Zotero
+
 
 
 You're finished!
