@@ -8,7 +8,20 @@ toc-location: right
 
 ## Core 1
 
-minor change
+Note no R coding (too early for 70M)
+
+-   Project organisation: folders, files
+-   Project oriented workflow
+-   Readme
+-   Naming things
+-   Keeping notes
+-   Data management, google drive: https://www.york.ac.uk/it-services/services/drive/#tab-6
+-   file formats
+-   Introduction to data in general. Similarities and differences
+    -   Sequences data
+    -   Image data
+    -   Structure data. 
+
 
 ## Core 2
 
