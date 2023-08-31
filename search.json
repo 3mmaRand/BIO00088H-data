@@ -1,0 +1,128 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Data Analysis for Group Project",
+    "section": "",
+    "text": "blah\n\n\nThe BIO00088H Module Learning outcomes that relate this content are\n\n..\n..\n\nEach week has:\n\nAn overview on the “About” page which gives the Learning Objectives, a topic summary and the instructions for the week. You should read this first.\nSome independent study on the “Prepare!” page to prepare you for the workshop. It is designed to take about 30-45 mins on average. You will most likely learn best if you can find people to study with.\nA two-hour workshop. Talking to other people in the workshop about the exercises and working together will really help you understand more. There will be plenty of help from me and my demonstrators.\nSome independent study on the “Consolidate!” page to give you more practice. The exercises are usually similar to those in the workshop but with less guidance. It is designed to take about 30-45 mins on average but may be quicker if you understood the workshop very well or slower if you need to revisit the workshop.\n\n\n\n\nAll material is on the VLE so why is this site useful? Well, perhaps more than any other material, you will want to refer back when applying your skills and this site collects everything together in a searchable way. The search icon is on the top right.\nResources.\nR4 BABS"
+  },
+  {
+    "objectID": "index.html#module-learning-objectives",
+    "href": "index.html#module-learning-objectives",
+    "title": "Data Analysis for Group Project",
+    "section": "",
+    "text": "The BIO00088H Module Learning outcomes that relate this content are\n\n..\n..\n\nEach week has:\n\nAn overview on the “About” page which gives the Learning Objectives, a topic summary and the instructions for the week. You should read this first.\nSome independent study on the “Prepare!” page to prepare you for the workshop. It is designed to take about 30-45 mins on average. You will most likely learn best if you can find people to study with.\nA two-hour workshop. Talking to other people in the workshop about the exercises and working together will really help you understand more. There will be plenty of help from me and my demonstrators.\nSome independent study on the “Consolidate!” page to give you more practice. The exercises are usually similar to those in the workshop but with less guidance. It is designed to take about 30-45 mins on average but may be quicker if you understood the workshop very well or slower if you need to revisit the workshop."
+  },
+  {
+    "objectID": "index.html#what-is-this-site-for",
+    "href": "index.html#what-is-this-site-for",
+    "title": "Data Analysis for Group Project",
+    "section": "",
+    "text": "All material is on the VLE so why is this site useful? Well, perhaps more than any other material, you will want to refer back when applying your skills and this site collects everything together in a searchable way. The search icon is on the top right.\nResources.\nR4 BABS"
+  },
+  {
+    "objectID": "core/week-1/overview.html",
+    "href": "core/week-1/overview.html",
+    "title": "Overview",
+    "section": "",
+    "text": "xxxxx\n\nLearning objectives\n\ndd\ndd.\ndd\nd\n\n\n\nInstructions\n\nPrepare\n\n📖 Read ddd\n\nWorkshop\n\n💻 dd.\n💻 ddd\n💻 ddd\n\nConsolidate\n\n💻 dd\n💻 dd"
+  },
+  {
+    "objectID": "core/week-1/study_after_workshop.html",
+    "href": "core/week-1/study_after_workshop.html",
+    "title": "Independent Study to consolidate this week",
+    "section": "",
+    "text": "Set up\nIf you have just opened RStudio you will want to load the packages and import the data.\n\nlibrary(tidyverse)\nlibrary(readxl)\n\n\n💻 xx."
+  },
+  {
+    "objectID": "core/week-1/workshop.html",
+    "href": "core/week-1/workshop.html",
+    "title": "Workshop",
+    "section": "",
+    "text": "In this workshop you will learn to summarise and plot datasets with more than one variable and how to write figures to files. You will also get more practice with working directories, importing data, formatting figures and the pipe.\n\n\n\nWorkshops are not a test. It is expected that you often don’t know how to start, make a lot of mistakes and need help. It is expected that you are familiar with independent study content before the workshop. However, you need not remember or understand every detail as the workshop should build and consolidate your understanding. Tips\n\ndon’t worry about making mistakes\ndon’t let what you can not do interfere with what you can do\ndiscussing code with your neighbours will help\nlook things up in the independent study material\nlook things up in your own code from earlier workshops\nthere are no stupid questions\n\n\n\n\n\n\n\nKey\n\n\n\nThese four symbols are used at the beginning of each instruction so you know where to carry out the instruction.\n Something you need to do on your computer. It may be opening programs or documents or locating a file.\n Something you should do in RStudio. It will often be typing a command or using the menus but might also be creating folders, locating or moving files.\n Something you should do in your browser on the internet. It may be searching for information, going to the VLE or downloading a file.\n A question for you to think about and answer. Record your answers in your script for future reference."
+  },
+  {
+    "objectID": "core/week-1/workshop.html#session-overview",
+    "href": "core/week-1/workshop.html#session-overview",
+    "title": "Workshop",
+    "section": "",
+    "text": "In this workshop you will learn to summarise and plot datasets with more than one variable and how to write figures to files. You will also get more practice with working directories, importing data, formatting figures and the pipe."
+  },
+  {
+    "objectID": "core/week-1/workshop.html#philosophy",
+    "href": "core/week-1/workshop.html#philosophy",
+    "title": "Workshop",
+    "section": "",
+    "text": "Workshops are not a test. It is expected that you often don’t know how to start, make a lot of mistakes and need help. It is expected that you are familiar with independent study content before the workshop. However, you need not remember or understand every detail as the workshop should build and consolidate your understanding. Tips\n\ndon’t worry about making mistakes\ndon’t let what you can not do interfere with what you can do\ndiscussing code with your neighbours will help\nlook things up in the independent study material\nlook things up in your own code from earlier workshops\nthere are no stupid questions\n\n\n\n\n\n\n\nKey\n\n\n\nThese four symbols are used at the beginning of each instruction so you know where to carry out the instruction.\n Something you need to do on your computer. It may be opening programs or documents or locating a file.\n Something you should do in RStudio. It will often be typing a command or using the menus but might also be creating folders, locating or moving files.\n Something you should do in your browser on the internet. It may be searching for information, going to the VLE or downloading a file.\n A question for you to think about and answer. Record your answers in your script for future reference."
+  },
+  {
+    "objectID": "core/week-1/study_before_workshop.html",
+    "href": "core/week-1/study_before_workshop.html",
+    "title": "Independent Study to prepare for workshop",
+    "section": "",
+    "text": "📖 Read xxxx"
+  },
+  {
+    "objectID": "core/core.html",
+    "href": "core/core.html",
+    "title": "Core Data Analysis for Group Project",
+    "section": "",
+    "text": "minor change\n\n\n\nrgetgretger\n\n\n\nfgzzdfghdfhg"
+  },
+  {
+    "objectID": "core/core.html#core-1",
+    "href": "core/core.html#core-1",
+    "title": "Core Data Analysis for Group Project",
+    "section": "",
+    "text": "minor change"
+  },
+  {
+    "objectID": "core/core.html#core-2",
+    "href": "core/core.html#core-2",
+    "title": "Core Data Analysis for Group Project",
+    "section": "",
+    "text": "rgetgretger"
+  },
+  {
+    "objectID": "core/core.html#core-3-quarto",
+    "href": "core/core.html#core-3-quarto",
+    "title": "Core Data Analysis for Group Project",
+    "section": "",
+    "text": "fgzzdfghdfhg"
+  },
+  {
+    "objectID": "omics/omics.html",
+    "href": "omics/omics.html",
+    "title": "Omics Data Analysis for Group Project",
+    "section": "",
+    "text": "erwtERTERTG\n\n\n\nrgetgretger\n\n\n\nfgzzdfghdfhg"
+  },
+  {
+    "objectID": "omics/omics.html#omics-1",
+    "href": "omics/omics.html#omics-1",
+    "title": "Omics Data Analysis for Group Project",
+    "section": "",
+    "text": "erwtERTERTG"
+  },
+  {
+    "objectID": "omics/omics.html#omics-2",
+    "href": "omics/omics.html#omics-2",
+    "title": "Omics Data Analysis for Group Project",
+    "section": "",
+    "text": "rgetgretger"
+  },
+  {
+    "objectID": "omics/omics.html#omics-3",
+    "href": "omics/omics.html#omics-3",
+    "title": "Omics Data Analysis for Group Project",
+    "section": "",
+    "text": "fgzzdfghdfhg"
+  }
+]
