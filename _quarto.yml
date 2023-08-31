@@ -105,7 +105,8 @@ website:
                text: Consolidate!  
           - text: ---
           - section: "Week 5: xxx"
-            contents: libray/week-5/overview.qmd
+            contents: 
+             - href: omics/week-5/overview.qmd
                text: About  
              - href: omics/week-5/study_before_workshop.qmd
                text: Prepare! 
