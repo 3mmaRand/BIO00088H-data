@@ -1,17 +1,19 @@
 ---
-title: "Data Analysis for the Group Research Project - BIO00088H"
+title: "Data Analysis for the Group Research Project"
 toc: true
 toc-location: right
 ---
 
 # Overview
 
+You are either an integrated masters student doing 88H Group Project or a MSc Bioinformatics student doing 70M
+
 Data Analysis for the Group Research Project (BIO00088H) compromises six workshops covering computational skills needed in your project. Three of these are core and taken by everyone and three are specific to your project type.
 
 The project types are:
 
 | Project                                 | Data Strand                     |
-|----------------------------------------|--------------------------------|
+|-----------------------------------------|---------------------------------|
 | Stem Cells, Jillian Barlow              | 'omics, Emma Rand               |
 | Developmental Biology, Betsy Pownal     | 'omics, Emma Rand               |
 | Microbial Ecology, Kelly Redeker        | 'omics, Emma Rand               |
@@ -21,15 +23,16 @@ The project types are:
 
 The data analysis workshops are:
 
-|--------|--------------------------|
-| Week 1 | Core 1                   |
-| Week 2 | Core 2                   |
-| Week 3 | omics/structure/images 1 |
-| Week 4 | omics/structure/images 2 |
-| Week 5 | omics/structure/images 3 |
-| Week 6 | Core 3                   |
+| Week | Data Strand              |
+|------|--------------------------|
+| 1    | Core 1                   |
+| 2    | Core 2                   |
+| 3    | omics/structure/images 1 |
+| 4    | omics/structure/images 2 |
+| 5    | omics/structure/images 3 |
+| 6    | Core 3                   |
 
-
+MSc Bioinformatics students do the Core workshops and the 'omics workshops as part of 70M
 
 ## Module Learning Outcome linked to this content
 

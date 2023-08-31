@@ -6,9 +6,6 @@ toc-location: right
 
 # Content
 
-Overview
-You are either an integrated masters student doing 88H Group Project or a MSc Bioinformatics student doing 70M
-
 
 ## Week 1 Core 1 Organising Reproducible Data Analyses
 
