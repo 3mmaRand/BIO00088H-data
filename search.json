@@ -32,7 +32,7 @@
     "href": "core/week-1/overview.html",
     "title": "Overview",
     "section": "",
-    "text": "xxxxx\n\nLearning objectives\n\ndd\ndd.\ndd\nd\n\n\n\nInstructions\n\nPrepare\n\n📖 Read ddd\n\nWorkshop\n\n💻 dd.\n💻 ddd\n💻 ddd\n\nConsolidate\n\n💻 dd\n💻 dd"
+    "text": "xxxxx\n\nLearning objectives\n\ndd\ndd.\ndd\nd\n\n\n\nInstructions\n\nPrepare\n\n📖 Read What they forgot to teach you about computers\n\nWorkshop\n\n💻 dd.\n💻 ddd\n💻 ddd\n\nConsolidate\n\n💻 dd\n💻 dd"
   },
   {
     "objectID": "core/week-1/study_after_workshop.html",
@@ -42,25 +42,88 @@
     "text": "Set up\nIf you have just opened RStudio you will want to load the packages and import the data.\n\nlibrary(tidyverse)\nlibrary(readxl)\n\n\n💻 xx."
   },
   {
+    "objectID": "core/week-2/overview.html",
+    "href": "core/week-2/overview.html",
+    "title": "Overview",
+    "section": "",
+    "text": "xxxxx\n\nLearning objectives\n\ndd\ndd.\ndd\nd\n\n\n\nInstructions\n\nPrepare\n\n📖 Read\n\nWorkshop\n\n💻 dd.\n💻 ddd\n💻 ddd\n\nConsolidate\n\n💻 dd\n💻 dd"
+  },
+  {
+    "objectID": "core/week-2/study_after_workshop.html",
+    "href": "core/week-2/study_after_workshop.html",
+    "title": "Independent Study to consolidate this week",
+    "section": "",
+    "text": "Set up\nIf you have just opened RStudio you will want to load the packages and import the data.\n\nlibrary(tidyverse)\nlibrary(readxl)\n\n\n💻 xx."
+  },
+  {
+    "objectID": "core/week-6/overview.html",
+    "href": "core/week-6/overview.html",
+    "title": "Overview",
+    "section": "",
+    "text": "xxxxx\n\nLearning objectives\n\ndd\ndd.\ndd\nd\n\n\n\nInstructions\n\nPrepare\n\n📖 Read\n\nWorkshop\n\n💻 dd.\n💻 ddd\n💻 ddd\n\nConsolidate\n\n💻 dd\n💻 dd"
+  },
+  {
+    "objectID": "core/week-6/study_after_workshop.html",
+    "href": "core/week-6/study_after_workshop.html",
+    "title": "Independent Study to consolidate this week",
+    "section": "",
+    "text": "Set up\nIf you have just opened RStudio you will want to load the packages and import the data.\n\nlibrary(tidyverse)\nlibrary(readxl)\n\n\n💻 xx."
+  },
+  {
+    "objectID": "core/week-6/workshop.html",
+    "href": "core/week-6/workshop.html",
+    "title": "Workshop",
+    "section": "",
+    "text": "In this workshop you will\n\n\n\n\n\n\nKey"
+  },
+  {
+    "objectID": "core/week-6/workshop.html#session-overview",
+    "href": "core/week-6/workshop.html#session-overview",
+    "title": "Workshop",
+    "section": "",
+    "text": "In this workshop you will\n\n\n\n\n\n\nKey"
+  },
+  {
+    "objectID": "core/week-6/study_before_workshop.html",
+    "href": "core/week-6/study_before_workshop.html",
+    "title": "Independent Study to prepare for workshop",
+    "section": "",
+    "text": "📖 Read xxxx"
+  },
+  {
+    "objectID": "core/week-2/workshop.html",
+    "href": "core/week-2/workshop.html",
+    "title": "Workshop",
+    "section": "",
+    "text": "In this workshop you will\n\n\n\n\n\n\nKey"
+  },
+  {
+    "objectID": "core/week-2/workshop.html#session-overview",
+    "href": "core/week-2/workshop.html#session-overview",
+    "title": "Workshop",
+    "section": "",
+    "text": "In this workshop you will\n\n\n\n\n\n\nKey"
+  },
+  {
+    "objectID": "core/week-2/study_before_workshop.html",
+    "href": "core/week-2/study_before_workshop.html",
+    "title": "Independent Study to prepare for workshop",
+    "section": "",
+    "text": "📖 Read xxxx"
+  },
+  {
     "objectID": "core/week-1/workshop.html",
     "href": "core/week-1/workshop.html",
     "title": "Workshop",
     "section": "",
-    "text": "In this workshop you will learn to summarise and plot datasets with more than one variable and how to write figures to files. You will also get more practice with working directories, importing data, formatting figures and the pipe.\n\n\n\nWorkshops are not a test. It is expected that you often don’t know how to start, make a lot of mistakes and need help. It is expected that you are familiar with independent study content before the workshop. However, you need not remember or understand every detail as the workshop should build and consolidate your understanding. Tips\n\ndon’t worry about making mistakes\ndon’t let what you can not do interfere with what you can do\ndiscussing code with your neighbours will help\nlook things up in the independent study material\nlook things up in your own code from earlier workshops\nthere are no stupid questions\n\n\n\n\n\n\n\nKey\n\n\n\nThese four symbols are used at the beginning of each instruction so you know where to carry out the instruction.\n Something you need to do on your computer. It may be opening programs or documents or locating a file.\n Something you should do in RStudio. It will often be typing a command or using the menus but might also be creating folders, locating or moving files.\n Something you should do in your browser on the internet. It may be searching for information, going to the VLE or downloading a file.\n A question for you to think about and answer. Record your answers in your script for future reference."
+    "text": "In this workshop you will\n\n\n\n\n\n\nKey"
   },
   {
     "objectID": "core/week-1/workshop.html#session-overview",
     "href": "core/week-1/workshop.html#session-overview",
     "title": "Workshop",
     "section": "",
-    "text": "In this workshop you will learn to summarise and plot datasets with more than one variable and how to write figures to files. You will also get more practice with working directories, importing data, formatting figures and the pipe."
-  },
-  {
-    "objectID": "core/week-1/workshop.html#philosophy",
-    "href": "core/week-1/workshop.html#philosophy",
-    "title": "Workshop",
-    "section": "",
-    "text": "Workshops are not a test. It is expected that you often don’t know how to start, make a lot of mistakes and need help. It is expected that you are familiar with independent study content before the workshop. However, you need not remember or understand every detail as the workshop should build and consolidate your understanding. Tips\n\ndon’t worry about making mistakes\ndon’t let what you can not do interfere with what you can do\ndiscussing code with your neighbours will help\nlook things up in the independent study material\nlook things up in your own code from earlier workshops\nthere are no stupid questions\n\n\n\n\n\n\n\nKey\n\n\n\nThese four symbols are used at the beginning of each instruction so you know where to carry out the instruction.\n Something you need to do on your computer. It may be opening programs or documents or locating a file.\n Something you should do in RStudio. It will often be typing a command or using the menus but might also be creating folders, locating or moving files.\n Something you should do in your browser on the internet. It may be searching for information, going to the VLE or downloading a file.\n A question for you to think about and answer. Record your answers in your script for future reference."
+    "text": "In this workshop you will\n\n\n\n\n\n\nKey"
   },
   {
     "objectID": "core/week-1/study_before_workshop.html",
@@ -74,28 +137,28 @@
     "href": "core/core.html",
     "title": "Core Data Analysis for Group Project",
     "section": "",
-    "text": "Note no R coding (too early for 70M)\n\nProject organisation: folders, files\nProject oriented workflow\nReadme\nNaming things\nKeeping notes\nData management, google drive: https://www.york.ac.uk/it-services/services/drive/#tab-6\nfile formats\nIntroduction to data in general. Similarities and differences\n\nSequences data\nImage data\nStructure data.\n\n\n\n\n\nrgetgretger\n\n\n\nfgzzdfghdfhg"
+    "text": "Overview You are either an integrated masters student doing 88H Group Project or a MSc Bioinformatics student doing 70M\n\n\nNote no R coding (too early for MSc BIN 70M who share the core and omics teaching)\nBefore - Optional revision: What they forgot to teach you about computers: operating systems, file systems, file types, working directories and paths\n\nWhy reproducibility (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown)\n\nWorkshop\n\nProject organisation: folders, files\nProject oriented workflow\nNaming things\nFile formats\nData management\n\ngoogle drive: https://www.york.ac.uk/it-services/services/drive/#tab-6\ndocumenting\norganisation within files\n\nData files. Similarities and differences\n\nSequences data\nImage data\nStructure data.\n\nKeeping notes\nReadme\nReference managers: Zotero\n\nAfter\n\n\n\nBefore Possibly: Code formatting and style, 😎 Cool code Tips, Code ‘algorithmically.’, Writing functions (R and python??) (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown)\nWorkshop\nAfter\n\n\n\nBefore (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown and BIO00058M-Data-science-2020/slides/04_advanced_rmarkdown.html) Literate programming What is quarto markdown basics: text, code chunks, headings yaml automatic numbering of figures and tables cross references special characters citations\nWorkshop\npractice doing the above with your project and data\nAfter"
   },
   {
-    "objectID": "core/core.html#core-1",
-    "href": "core/core.html#core-1",
+    "objectID": "core/core.html#week-1-core-1-organising-reproducible-data-analyses",
+    "href": "core/core.html#week-1-core-1-organising-reproducible-data-analyses",
     "title": "Core Data Analysis for Group Project",
     "section": "",
-    "text": "Note no R coding (too early for 70M)\n\nProject organisation: folders, files\nProject oriented workflow\nReadme\nNaming things\nKeeping notes\nData management, google drive: https://www.york.ac.uk/it-services/services/drive/#tab-6\nfile formats\nIntroduction to data in general. Similarities and differences\n\nSequences data\nImage data\nStructure data."
+    "text": "Note no R coding (too early for MSc BIN 70M who share the core and omics teaching)\nBefore - Optional revision: What they forgot to teach you about computers: operating systems, file systems, file types, working directories and paths\n\nWhy reproducibility (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown)\n\nWorkshop\n\nProject organisation: folders, files\nProject oriented workflow\nNaming things\nFile formats\nData management\n\ngoogle drive: https://www.york.ac.uk/it-services/services/drive/#tab-6\ndocumenting\norganisation within files\n\nData files. Similarities and differences\n\nSequences data\nImage data\nStructure data.\n\nKeeping notes\nReadme\nReference managers: Zotero\n\nAfter"
   },
   {
-    "objectID": "core/core.html#core-2",
-    "href": "core/core.html#core-2",
+    "objectID": "core/core.html#week-2-core-2-needs-a-title",
+    "href": "core/core.html#week-2-core-2-needs-a-title",
     "title": "Core Data Analysis for Group Project",
     "section": "",
-    "text": "rgetgretger"
+    "text": "Before Possibly: Code formatting and style, 😎 Cool code Tips, Code ‘algorithmically.’, Writing functions (R and python??) (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown)\nWorkshop\nAfter"
   },
   {
-    "objectID": "core/core.html#core-3-quarto",
-    "href": "core/core.html#core-3-quarto",
+    "objectID": "core/core.html#week-6-core-3-reproducible-reporting",
+    "href": "core/core.html#week-6-core-3-reproducible-reporting",
     "title": "Core Data Analysis for Group Project",
     "section": "",
-    "text": "fgzzdfghdfhg"
+    "text": "Before (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown and BIO00058M-Data-science-2020/slides/04_advanced_rmarkdown.html) Literate programming What is quarto markdown basics: text, code chunks, headings yaml automatic numbering of figures and tables cross references special characters citations\nWorkshop\npractice doing the above with your project and data\nAfter"
   },
   {
     "objectID": "omics/omics.html",

@@ -8,7 +8,7 @@
 
 <meta name="author" content="Emma Rand">
 
-<title>Data Analysis for Group Project - Overview</title>
+<title>Data Analysis for Group Project - Workshop</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,7 +21,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -64,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating nav-fixed fullcontent">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -106,7 +125,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../core/week-1/overview.html">Week 1: xxx</a></li><li class="breadcrumb-item"><a href="../../core/week-1/overview.html">About</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../core/week-6/overview.html">Week 6: Quarto</a></li><li class="breadcrumb-item"><a href="../../core/week-6/workshop.html">Workshop</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -137,7 +156,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../core/week-1/overview.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../core/week-1/overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
   </div>
 </li>
@@ -221,7 +240,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../core/week-6/workshop.html" class="sidebar-item-text sidebar-link">
+  <a href="../../core/week-6/workshop.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Workshop</span></a>
   </div>
 </li>
@@ -238,14 +257,31 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#session-overview" id="toc-session-overview" class="nav-link" data-scroll-target="#session-overview">Session overview</a></li>
+  </ul></li>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
+  <li><a href="#well-done" id="toc-well-done" class="nav-link" data-scroll-target="#well-done">🥳 Well Done! 🎉</a></li>
+  <li><a href="#independent-study-following-the-workshop" id="toc-independent-study-following-the-workshop" class="nav-link" data-scroll-target="#independent-study-following-the-workshop">Independent study following the workshop</a></li>
+  <li><a href="#the-code-file" id="toc-the-code-file" class="nav-link" data-scroll-target="#the-code-file">The Code file</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Overview</h1>
-<p class="subtitle lead">Core 1: Organising Data Analyses</p>
+<h1 class="title">Workshop</h1>
+<p class="subtitle lead">Reproducible Reporting</p>
 </div>
 
 
@@ -260,40 +296,68 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>xxxxx</p>
-<section id="learning-objectives" class="level3">
-<h3 class="anchored" data-anchor-id="learning-objectives">Learning objectives</h3>
-<ul>
-<li>dd</li>
-<li>dd.</li>
-<li>dd</li>
-<li>d</li>
-</ul>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<section id="session-overview" class="level2">
+<h2 class="anchored" data-anchor-id="session-overview">Session overview</h2>
+<p>In this workshop you will</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
 </section>
-<section id="instructions" class="level3">
-<h3 class="anchored" data-anchor-id="instructions">Instructions</h3>
-<ol type="1">
-<li><p><a href="../../core/week-1/study_before_workshop.html">Prepare</a></p>
-<ol type="i">
-<li>📖 Read <a href="https://3mmarand.github.io/comp4biosci/what_they_forgot.html">What they forgot to teach you about computers</a></li>
-</ol></li>
-<li><p><a href="../../core/week-1/workshop.html">Workshop</a></p>
-<ol type="i">
-<li><p>💻 dd.</p></li>
-<li><p>💻 ddd</p></li>
-<li><p>💻 ddd</p></li>
-</ol></li>
-<li><p><a href="../../core/week-1/study_after_workshop.html">Consolidate</a></p>
-<ol type="i">
-<li><p>💻 dd</p></li>
-<li><p>💻 dd</p></li>
-</ol></li>
-</ol>
+</section>
+<section id="getting-started" class="level1">
+<h1>Getting started</h1>
+</section>
+<section id="exercises" class="level1">
+<h1>Exercises</h1>
+<p>🎬</p>
+<p>You’re finished!</p>
+</section>
+<section id="well-done" class="level1">
+<h1>🥳 Well Done! 🎉</h1>
+</section>
+<section id="independent-study-following-the-workshop" class="level1">
+<h1>Independent study following the workshop</h1>
+<p><a href="../../core/week-6/study_after_workshop.html">Consolidate</a></p>
+</section>
+<section id="the-code-file" class="level1">
+<h1>The Code file</h1>
+<p>These contain all the code needed in the workshop even where it is not visible on the webpage.</p>
+<p>The <a href="../../core/week-6/workshop.html">workshop.qmd</a> file is the file I use to compile the practical. Qmd stands for Quarto markdown. It allows code and ordinary text to be interleaved to produce well-formatted reports including webpages. Right-click on the link and choose Save-As to download. You will be able to open the Qmd file in RStudio. Alternatively, <a href="https://github.com/3mmaRand/">View in Browser</a>. Coding and thinking answers are marked with <code>#---CODING ANSWER---</code> and <code>#---THINKING ANSWER---</code></p>
+<p>Pages made with R <span class="citation" data-cites="R-core">(<a href="#ref-R-core" role="doc-biblioref">R Core Team 2023</a>)</span>, Quarto <span class="citation" data-cites="allaire2022">(<a href="#ref-allaire2022" role="doc-biblioref">Allaire et al. 2022</a>)</span>, <code>knitr</code> <span class="citation" data-cites="knitr">(<a href="#ref-knitr" role="doc-biblioref">Xie 2022</a>)</span>, <code>kableExtra</code> <span class="citation" data-cites="kableExtra">(<a href="#ref-kableExtra" role="doc-biblioref">Zhu 2021</a>)</span></p>
+</section>
+<section id="references" class="level1">
+
+
 
 
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-allaire2022" class="csl-entry" role="listitem">
+Allaire, J. J., Charles Teague, Carlos Scheidegger, Yihui Xie, and Christophe Dervieux. 2022. <em>Quarto</em>. <a href="https://doi.org/10.5281/zenodo.5960048">https://doi.org/10.5281/zenodo.5960048</a>.
+</div>
+<div id="ref-R-core" class="csl-entry" role="listitem">
+R Core Team. 2023. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
+<div id="ref-knitr" class="csl-entry" role="listitem">
+Xie, Yihui. 2022. <span>“Knitr: A General-Purpose Package for Dynamic Report Generation in r.”</span> <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
+</div>
+<div id="ref-kableExtra" class="csl-entry" role="listitem">
+Zhu, Hao. 2021. <span>“kableExtra: Construct Complex Table with ’Kable’ and Pipe Syntax.”</span> <a href="https://CRAN.R-project.org/package=kableExtra">https://CRAN.R-project.org/package=kableExtra</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
