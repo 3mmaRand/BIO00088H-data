@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "omics/week-3/study_before_workshop.html#sequence-data",
+    "href": "omics/week-3/study_before_workshop.html#sequence-data",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Sequence Data",
+    "text": "Sequence Data\n\nreads\nquality control\nalign/pseudoalign\nquantify\nnormalise"
+  },
+  {
+    "objectID": "omics/week-3/study_before_workshop.html#aims",
+    "href": "omics/week-3/study_before_workshop.html#aims",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Aims",
+    "text": "Aims\n\nfind important genes\nwhat is ‘important’\n\nexpressed\ndifferentially expressed i.e., which genes are significantly higher in one group vs another"
+  },
+  {
+    "objectID": "omics/week-3/study_before_workshop.html#what-is-a-read",
+    "href": "omics/week-3/study_before_workshop.html#what-is-a-read",
+    "title": "Independent Study to prepare for workshop",
+    "section": "What is a read",
+    "text": "What is a read"
+  },
+  {
+    "objectID": "omics/week-3/study_before_workshop.html#stem-cells",
+    "href": "omics/week-3/study_before_workshop.html#stem-cells",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Stem cells",
+    "text": "Stem cells\n\nRaw data: GEO Series GSE81682\nIllumina HiSeq\nshort reads 150-300bp\nA single-cell resolution map of mouse hematopoietic stem and progenitor cell differentiation (Nestorowa et al. 2016)"
+  },
+  {
+    "objectID": "omics/week-3/study_before_workshop.html#differential-expression",
+    "href": "omics/week-3/study_before_workshop.html#differential-expression",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Differential expression",
+    "text": "Differential expression\n\nwhat is differentially expressed\nhow are DE genes related\nwhat are DE genes involved with"
+  },
+  {
+    "objectID": "omics/week-3/study_before_workshop.html#processing-so-far",
+    "href": "omics/week-3/study_before_workshop.html#processing-so-far",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Processing so far",
+    "text": "Processing so far"
+  },
+  {
+    "objectID": "omics/week-3/study_before_workshop.html#section-2",
+    "href": "omics/week-3/study_before_workshop.html#section-2",
+    "title": "Independent Study to prepare for workshop",
+    "section": "",
+    "text": "Nestorowa, Sonia, Fiona K. Hamey, Blanca Pijuan Sala, Evangelia Diamanti, Mairi Shepherd, Elisa Laurenti, Nicola K. Wilson, David G. Kent, and Berthold Göttgens. 2016. “A Single-Cell Resolution Map of Mouse Hematopoietic Stem and Progenitor Cell Differentiation.” Blood 128 (8): e20–31. https://doi.org/10.1182/blood-2016-05-716480."
+  }
+]

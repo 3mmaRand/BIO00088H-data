@@ -6,14 +6,65 @@ toc-location: right
 
 # Content
 
-## Omics 1
+## Omics 1: Hello data!
 
-erwtERTERTG
+before
+-   sequence data fundamentals
+-   where have the data come from
+-   processing so far
+-   why log2
+-   overarching aims
 
-## Omics 2
+workshop
+-   set up a project and create the organisation
+-   meta data
+-   open in understanding the data numbers of variables, organisation
+-   importing
+-   exploring, what kind of values are they, how many missing
+-   qc plots
+-   removing the useless, writing to files
 
-rgetgretger
+after
+-   document what you have done
+-   format your figures
 
-## Omics 3
 
-fgzzdfghdfhg
+## Omics 2: Statisitcal Analysis
+
+before
+-   which genes matter: expression, DE
+-   goal of DE
+-   how does DE work
+-   multiple testing: FDR
+-   say what comparisons we will do
+
+workshop
+-   open project import the data
+-   revise!
+-   prep for DE
+-   lists of genes
+-   writing to files
+
+after
+-   document what you have done
+-   repeat on another comparison
+
+## Omics 3: Visualising and Interpreting
+
+before
+-   recap what we have
+-   volcano plot described
+-   GO terms
+-   
+
+
+workshop
+-   open project import the data
+-   revise!
+-   volcano plot
+-   kable table? knitr::kable(df) |>  kableExtra::kable_styling()
+-   annotating with go terms
+
+after
+-   document what you have done
+-   repeat on another comparison

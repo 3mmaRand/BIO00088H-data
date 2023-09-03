@@ -30,9 +30,9 @@ Workshop
     -   Sequences data
     -   Image data
     -   Structure data. 
--   Keeping notes
+-   Keeping a lab book
 -   Readme
--   Reference managers: Zotero
+-   Reference managers: Zotero?
 
 After
 
