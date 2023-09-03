@@ -7,6 +7,20 @@
     "text": "About this site"
   },
   {
+    "objectID": "omics/week-3/overview.html",
+    "href": "omics/week-3/overview.html",
+    "title": "Overview",
+    "section": "",
+    "text": "xxxxx\n\nLearning objectives\n\ndd\ndd.\ndd\nd\n\n\n\nInstructions\n\nPrepare\nWorkshop\n\n💻 dd.\n💻 ddd\n💻 ddd\n\nConsolidate\n\n💻 dd\n💻 dd"
+  },
+  {
+    "objectID": "omics/week-3/study_after_workshop.html",
+    "href": "omics/week-3/study_after_workshop.html",
+    "title": "Independent Study to consolidate this week",
+    "section": "",
+    "text": "Set up\nIf you have just opened RStudio you will want to load the packages and import the data.\n\nlibrary(tidyverse)\nlibrary(readxl)\n\n\n💻 xx."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Data Analysis for the Group Research Project",
@@ -137,14 +151,14 @@
     "href": "core/core.html",
     "title": "Core Data Analysis for Group Project",
     "section": "",
-    "text": "Note no R coding (too early for MSc BIN 70M who share the core and omics teaching)\nBefore - Optional revision: What they forgot to teach you about computers: operating systems, file systems, file types, working directories and paths\n\nWhy reproducibility (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown)\n\nWorkshop\n\nProject organisation: folders, files\nProject oriented workflow\nNaming things\nFile formats\nData management\n\ngoogle drive: https://www.york.ac.uk/it-services/services/drive/#tab-6\ndocumenting\norganisation within files\n\nData files. Similarities and differences\n\nSequences data\nImage data\nStructure data.\n\nKeeping notes\nReadme\nReference managers: Zotero\n\nAfter\n\n\n\nBefore Possibly: Code formatting and style, 😎 Cool code Tips, Code ‘algorithmically.’, Writing functions (R and python??) (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown)\nWorkshop\nAfter\n\n\n\nBefore (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown and BIO00058M-Data-science-2020/slides/04_advanced_rmarkdown.html) Literate programming What is quarto markdown basics: text, code chunks, headings yaml automatic numbering of figures and tables cross references special characters citations\nWorkshop\npractice doing the above with your project and data\nAfter"
+    "text": "Note no R coding (too early for MSc BIN 70M who share the core and omics teaching)\nBefore - Optional revision: What they forgot to teach you about computers: operating systems, file systems, file types, working directories and paths\n\nWhy reproducibility (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown)\n\nWorkshop\n\nProject organisation: folders, files\nProject oriented workflow\nNaming things\nFile formats\nData management\n\ngoogle drive: https://www.york.ac.uk/it-services/services/drive/#tab-6\ndocumenting\norganisation within files\n\nData files. Similarities and differences\n\nSequences data\nImage data\nStructure data.\n\nKeeping a lab book\nReadme\nReference managers: Zotero?\n\nAfter\n\n\n\nBefore Possibly: Code formatting and style, 😎 Cool code Tips, Code ‘algorithmically.’, Writing functions (R and python??) (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown)\nWorkshop\nAfter\n\n\n\nBefore (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown and BIO00058M-Data-science-2020/slides/04_advanced_rmarkdown.html) Literate programming What is quarto markdown basics: text, code chunks, headings yaml automatic numbering of figures and tables cross references special characters citations\nWorkshop\npractice doing the above with your project and data\nAfter"
   },
   {
     "objectID": "core/core.html#week-1-core-1-organising-reproducible-data-analyses",
     "href": "core/core.html#week-1-core-1-organising-reproducible-data-analyses",
     "title": "Core Data Analysis for Group Project",
     "section": "",
-    "text": "Note no R coding (too early for MSc BIN 70M who share the core and omics teaching)\nBefore - Optional revision: What they forgot to teach you about computers: operating systems, file systems, file types, working directories and paths\n\nWhy reproducibility (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown)\n\nWorkshop\n\nProject organisation: folders, files\nProject oriented workflow\nNaming things\nFile formats\nData management\n\ngoogle drive: https://www.york.ac.uk/it-services/services/drive/#tab-6\ndocumenting\norganisation within files\n\nData files. Similarities and differences\n\nSequences data\nImage data\nStructure data.\n\nKeeping notes\nReadme\nReference managers: Zotero\n\nAfter"
+    "text": "Note no R coding (too early for MSc BIN 70M who share the core and omics teaching)\nBefore - Optional revision: What they forgot to teach you about computers: operating systems, file systems, file types, working directories and paths\n\nWhy reproducibility (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown)\n\nWorkshop\n\nProject organisation: folders, files\nProject oriented workflow\nNaming things\nFile formats\nData management\n\ngoogle drive: https://www.york.ac.uk/it-services/services/drive/#tab-6\ndocumenting\norganisation within files\n\nData files. Similarities and differences\n\nSequences data\nImage data\nStructure data.\n\nKeeping a lab book\nReadme\nReference managers: Zotero?\n\nAfter"
   },
   {
     "objectID": "core/core.html#week-2-core-2-needs-a-title",
@@ -161,31 +175,164 @@
     "text": "Before (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown and BIO00058M-Data-science-2020/slides/04_advanced_rmarkdown.html) Literate programming What is quarto markdown basics: text, code chunks, headings yaml automatic numbering of figures and tables cross references special characters citations\nWorkshop\npractice doing the above with your project and data\nAfter"
   },
   {
+    "objectID": "omics/week-3/workshop.html",
+    "href": "omics/week-3/workshop.html",
+    "title": "Workshop",
+    "section": "",
+    "text": "In this workshop you will\n\n\n\n\n\n\nKey"
+  },
+  {
+    "objectID": "omics/week-3/workshop.html#session-overview",
+    "href": "omics/week-3/workshop.html#session-overview",
+    "title": "Workshop",
+    "section": "",
+    "text": "In this workshop you will\n\n\n\n\n\n\nKey"
+  },
+  {
+    "objectID": "omics/week-3/workshop.html#set-up-a-project",
+    "href": "omics/week-3/workshop.html#set-up-a-project",
+    "title": "Workshop",
+    "section": "Set up a Project",
+    "text": "Set up a Project\n\nset up a project and create the organisation"
+  },
+  {
+    "objectID": "omics/week-3/workshop.html#examine-your-data",
+    "href": "omics/week-3/workshop.html#examine-your-data",
+    "title": "Workshop",
+    "section": "Examine your data",
+    "text": "Examine your data\n\nMeta data\nFrog development: meta_data.txt\n\n\n\n\n\nsample_id\nstage\ntreatment\nsibling_rep\n\n\n\n\nS14_C_5\nstage_14\ncontrol\nfive\n\n\nS14_C_6\nstage_14\ncontrol\nsix\n\n\nS14_C_A\nstage_14\ncontrol\nA\n\n\nS14_F_5\nstage_14\nFGF\nfive\n\n\nS14_F_6\nstage_14\nFGF\nsix\n\n\nS14_F_A\nstage_14\nFGF\nA\n\n\nS20_C_5\nstage_20\ncontrol\nfive\n\n\nS20_C_6\nstage_20\ncontrol\nsix\n\n\nS20_C_A\nstage_20\ncontrol\nA\n\n\nS20_F_5\nstage_20\nFGF\nfive\n\n\nS20_F_6\nstage_20\nFGF\nsix\n\n\nS20_F_A\nstage_20\nFGF\nA\n\n\nS30_C_5\nstage_30\ncontrol\nfive\n\n\nS30_C_6\nstage_30\ncontrol\nsix\n\n\nS30_C_A\nstage_30\ncontrol\nA\n\n\nS30_F_5\nstage_30\nFGF\nfive\n\n\nS30_F_6\nstage_30\nFGF\nsix\n\n\nS30_F_A\nstage_30\nFGF\nA\n\n\n\n\n\n\n\nData\n\nopen in understanding the data numbers of variables, organisation"
+  },
+  {
+    "objectID": "omics/week-3/workshop.html#import",
+    "href": "omics/week-3/workshop.html#import",
+    "title": "Workshop",
+    "section": "Import",
+    "text": "Import"
+  },
+  {
+    "objectID": "omics/week-3/workshop.html#explore",
+    "href": "omics/week-3/workshop.html#explore",
+    "title": "Workshop",
+    "section": "Explore",
+    "text": "Explore\n\nwhat kind of values are they, how many missing\nqc plots\nremoving the useless, writing to files\n\n🎬\nYou’re finished!"
+  },
+  {
+    "objectID": "omics/week-3/study_before_workshop.html#sequence-data",
+    "href": "omics/week-3/study_before_workshop.html#sequence-data",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Sequence Data",
+    "text": "Sequence Data\n\nreads\nquality control\nalign/pseudoalign\nquantify\nnormalise"
+  },
+  {
+    "objectID": "omics/week-3/study_before_workshop.html#aims",
+    "href": "omics/week-3/study_before_workshop.html#aims",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Aims",
+    "text": "Aims\n\nfind important genes\nwhat is ‘important’\n\nexpressed\ndifferentially expressed i.e., which genes are significantly higher in one group vs another"
+  },
+  {
+    "objectID": "omics/week-3/study_before_workshop.html#what-is-a-read",
+    "href": "omics/week-3/study_before_workshop.html#what-is-a-read",
+    "title": "Independent Study to prepare for workshop",
+    "section": "What is a read",
+    "text": "What is a read\n\nFASTQ format files\n\nsequences and information about each sequence’s read accuracy"
+  },
+  {
+    "objectID": "omics/week-3/study_before_workshop.html#differential-expression",
+    "href": "omics/week-3/study_before_workshop.html#differential-expression",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Differential expression",
+    "text": "Differential expression\n\nwhat is differentially expressed\nhow are DE genes related\nwhat are DE genes involved with"
+  },
+  {
+    "objectID": "omics/week-3/study_before_workshop.html#stem-cells-background",
+    "href": "omics/week-3/study_before_workshop.html#stem-cells-background",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Stem cells: background",
+    "text": "Stem cells: background\nCells were sorted using flow cytometry on the basis of cell surface markers. There are three cell types:\n\nlong-term haematopoetic stem cells (LT-HSCs) defined as : Lineage- ckit+ Sca1+ CD34- Flk2-\nhaematopoetic stem and progenitor cells (HSPCs) defined as : Lineage- Sca1+ ckit+\nprogenitor cells (Progs) defined as : Lineage- Sca1- ckit+\n\nEach cell is then sequenced to quantify all the transcripts in each cell. different transcripts (genes) were identified."
+  },
+  {
+    "objectID": "omics/week-3/study_before_workshop.html#stem-cells-background-1",
+    "href": "omics/week-3/study_before_workshop.html#stem-cells-background-1",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Stem cells: background",
+    "text": "Stem cells: background\n\nRaw data: GEO Series GSE81682\nIllumina HiSeq\nshort reads 150-300bp\nA single-cell resolution map of mouse hematopoietic stem and progenitor cell differentiation (Nestorowa et al. 2016)\n3,840 samples\nReads were aligned using G-SNAP and the mapped reads were assigned to Ensembl genes HTSeq\nGSE81682_HTSeq_counts.txt.gz (bottom of the page). And GSE81682_HTSeq_counts.txt.zip"
+  },
+  {
+    "objectID": "omics/week-3/study_before_workshop.html#stem-cells-processing-so-far",
+    "href": "omics/week-3/study_before_workshop.html#stem-cells-processing-so-far",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Stem cells: Processing so far",
+    "text": "Stem cells: Processing so far\n\nselection of cells\nselection of genes: subset of surfaceome\nlog2 normalised values"
+  },
+  {
+    "objectID": "omics/week-3/study_before_workshop.html#stem-cells-aims",
+    "href": "omics/week-3/study_before_workshop.html#stem-cells-aims",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Stem cells: Aims",
+    "text": "Stem cells: Aims\n\nFind interesting cell surface molecule genes that vary between cell types."
+  },
+  {
+    "objectID": "omics/week-3/study_before_workshop.html#frog-development-background",
+    "href": "omics/week-3/study_before_workshop.html#frog-development-background",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Frog development: background",
+    "text": "Frog development: background\n\n3 fertilisations = replicates\ntwo siblings from each fertilisation one control, on FGF treated\nsequenced at three time points: S14, S20, S30\n3 x 2 x 3 = 18 groups"
+  },
+  {
+    "objectID": "omics/week-3/study_before_workshop.html#frog-development-background-1",
+    "href": "omics/week-3/study_before_workshop.html#frog-development-background-1",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Frog development: background",
+    "text": "Frog development: background\n\nRaw data: GEO Series GSE81682\nIllumina HiSeq\nshort reads 150-300bp\nA single-cell resolution map of mouse hematopoietic stem and progenitor cell differentiation (Nestorowa et al. 2016)\n3,840 samples\nReads were aligned using G-SNAP and the mapped reads were assigned to Ensembl genes HTSeq\nGSE81682_HTSeq_counts.txt.gz (bottom of the page). And GSE81682_HTSeq_counts.txt.zip"
+  },
+  {
+    "objectID": "omics/week-3/study_before_workshop.html#frog-development-processing-so-far",
+    "href": "omics/week-3/study_before_workshop.html#frog-development-processing-so-far",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Frog development: Processing so far",
+    "text": "Frog development: Processing so far\n\nselection of cells\nselection of genes: subset of surfaceome\nlog2 normalised values"
+  },
+  {
+    "objectID": "omics/week-3/study_before_workshop.html#frog-development-aims",
+    "href": "omics/week-3/study_before_workshop.html#frog-development-aims",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Frog development: Aims",
+    "text": "Frog development: Aims\n\nFind interesting cell surface molecule genes that vary between cell types."
+  },
+  {
+    "objectID": "omics/week-3/study_before_workshop.html#deliverables",
+    "href": "omics/week-3/study_before_workshop.html#deliverables",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Deliverables",
+    "text": "Deliverables\n\nDescribe the data\n\nNumber of cells/samples/reps/treatments\nnumber of genes\ntype of expression values\nprior processing\nmissing values\noverview of expression\nclustering of genes/samples\n\nReport on differential expression between two groups\n\nnumber of DE at 1%, 5% and 10%.\ntable of expression, fold changes, signifcance at each sig.\nVolcano plot\n\nReport list of marker candidate gene IDs for a cell type of choice. Justify filters. Table with fold FC, p values, IDs, canonical gene names\nInterpret the biology by reporting on a few group of genes and the processes in which they are involved.\nReport on your chosen genes and explain why you think they are good candidates for follow up work\n\n\n\n\n\n\n\nNestorowa, Sonia, Fiona K. Hamey, Blanca Pijuan Sala, Evangelia Diamanti, Mairi Shepherd, Elisa Laurenti, Nicola K. Wilson, David G. Kent, and Berthold Göttgens. 2016. “A Single-Cell Resolution Map of Mouse Hematopoietic Stem and Progenitor Cell Differentiation.” Blood 128 (8): e20–31. https://doi.org/10.1182/blood-2016-05-716480."
+  },
+  {
     "objectID": "omics/omics.html",
     "href": "omics/omics.html",
     "title": "Omics Data Analysis for Group Project",
     "section": "",
-    "text": "erwtERTERTG\n\n\n\nrgetgretger\n\n\n\nfgzzdfghdfhg"
+    "text": "before - sequence data fundamentals - where have the data come from - processing so far - why log2 - overarching aims\nworkshop - set up a project and create the organisation - meta data - open in understanding the data numbers of variables, organisation - importing - exploring, what kind of values are they, how many missing - qc plots - removing the useless, writing to files\nafter - document what you have done - format your figures\n\n\n\nbefore - which genes matter: expression, DE - goal of DE - how does DE work - multiple testing: FDR - say what comparisons we will do\nworkshop - open project import the data - revise! - prep for DE - lists of genes - writing to files\nafter - document what you have done - repeat on another comparison\n\n\n\nbefore - recap what we have - volcano plot described - GO terms -\nworkshop - open project import the data - revise! - volcano plot - kable table? knitr::kable(df) |&gt; kableExtra::kable_styling() - annotating with go terms\nafter - document what you have done - repeat on another comparison"
   },
   {
-    "objectID": "omics/omics.html#omics-1",
-    "href": "omics/omics.html#omics-1",
+    "objectID": "omics/omics.html#omics-1-hello-data",
+    "href": "omics/omics.html#omics-1-hello-data",
     "title": "Omics Data Analysis for Group Project",
     "section": "",
-    "text": "erwtERTERTG"
+    "text": "before - sequence data fundamentals - where have the data come from - processing so far - why log2 - overarching aims\nworkshop - set up a project and create the organisation - meta data - open in understanding the data numbers of variables, organisation - importing - exploring, what kind of values are they, how many missing - qc plots - removing the useless, writing to files\nafter - document what you have done - format your figures"
   },
   {
-    "objectID": "omics/omics.html#omics-2",
-    "href": "omics/omics.html#omics-2",
+    "objectID": "omics/omics.html#omics-2-statisitcal-analysis",
+    "href": "omics/omics.html#omics-2-statisitcal-analysis",
     "title": "Omics Data Analysis for Group Project",
     "section": "",
-    "text": "rgetgretger"
+    "text": "before - which genes matter: expression, DE - goal of DE - how does DE work - multiple testing: FDR - say what comparisons we will do\nworkshop - open project import the data - revise! - prep for DE - lists of genes - writing to files\nafter - document what you have done - repeat on another comparison"
   },
   {
-    "objectID": "omics/omics.html#omics-3",
-    "href": "omics/omics.html#omics-3",
+    "objectID": "omics/omics.html#omics-3-visualising-and-interpreting",
+    "href": "omics/omics.html#omics-3-visualising-and-interpreting",
     "title": "Omics Data Analysis for Group Project",
     "section": "",
-    "text": "fgzzdfghdfhg"
+    "text": "before - recap what we have - volcano plot described - GO terms -\nworkshop - open project import the data - revise! - volcano plot - kable table? knitr::kable(df) |&gt; kableExtra::kable_styling() - annotating with go terms\nafter - document what you have done - repeat on another comparison"
   }
 ]
