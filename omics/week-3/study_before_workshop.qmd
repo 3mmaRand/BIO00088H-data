@@ -29,7 +29,6 @@ format: revealjs
 
 ## Differential expression
 
-
 -   what is differentially expressed
 -   how are DE genes related
 -   what are DE genes involved with
@@ -56,10 +55,6 @@ Each cell is then sequenced to quantify all the transcripts in each cell. differ
 -   3,840 samples
 -   Reads were aligned using G-SNAP and the mapped reads were assigned to Ensembl genes HTSeq
 -   GSE81682_HTSeq_counts.txt.gz (bottom of the page). And [GSE81682_HTSeq_counts.txt.zip](../data/jillian/GSE81682_HTSeq_counts.zip)
-
- 
-
-
 
 ##  Stem cells: Processing so far
 

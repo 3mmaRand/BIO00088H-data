@@ -82,7 +82,7 @@ website:
           - href: omics/omics.qmd
           - text: ---
           - text: ---
-          - section: "Week 3: xx"
+          - section: "Week 3: Hello data!"
             contents: 
              - href: omics/week-3/overview.qmd
                text: About  
@@ -93,7 +93,7 @@ website:
              - href: omics/week-3/study_after_workshop.qmd
                text: Consolidate!  
           - text: ---
-          - section: "Week 4: xxx"
+          - section: "Week 4: Statistical Analysis"
             contents: 
              - href: omics/week-4/overview.qmd
                text: About  
@@ -104,7 +104,7 @@ website:
              - href: omics/week-4/study_after_workshop.qmd
                text: Consolidate!  
           - text: ---
-          - section: "Week 5: xxx"
+          - section: "Week 5: Visualising and Interpreting"
             contents: 
              - href: omics/week-5/overview.qmd
                text: About  
