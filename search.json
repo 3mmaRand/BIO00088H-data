@@ -179,42 +179,42 @@
     "href": "omics/week-3/workshop.html",
     "title": "Workshop",
     "section": "",
-    "text": "In this workshop you will\n\n\n\n\n\n\nKey"
+    "text": "In this workshop you will\nSee later workshops."
   },
   {
     "objectID": "omics/week-3/workshop.html#session-overview",
     "href": "omics/week-3/workshop.html#session-overview",
     "title": "Workshop",
     "section": "",
-    "text": "In this workshop you will\n\n\n\n\n\n\nKey"
+    "text": "In this workshop you will\nSee later workshops."
   },
   {
     "objectID": "omics/week-3/workshop.html#set-up-a-project",
     "href": "omics/week-3/workshop.html#set-up-a-project",
     "title": "Workshop",
     "section": "Set up a Project",
-    "text": "Set up a Project\n\nset up a project and create the organisation"
+    "text": "Set up a Project\n\n🎬 Start RStudio from the Start menu\n🎬 Make an RStudio project. Be deliberate about where you create it so that it is a good place for you\n🎬 Use the Files pane to make a new folder for the data. I suggest data-raw\n🎬 Make a new script called workshop-1.R to carry out the rest of the work.\n🎬 Record what you do and what you find out. All of it!\n🎬 Load tidyverse\n\n\nlibrary(tidyverse)"
   },
   {
     "objectID": "omics/week-3/workshop.html#examine-your-data",
     "href": "omics/week-3/workshop.html#examine-your-data",
     "title": "Workshop",
     "section": "Examine your data",
-    "text": "Examine your data\n\nMeta data\nFrog development: meta_data.txt\n\n\n\n\n\nsample_id\nstage\ntreatment\nsibling_rep\n\n\n\n\nS14_C_5\nstage_14\ncontrol\nfive\n\n\nS14_C_6\nstage_14\ncontrol\nsix\n\n\nS14_C_A\nstage_14\ncontrol\nA\n\n\nS14_F_5\nstage_14\nFGF\nfive\n\n\nS14_F_6\nstage_14\nFGF\nsix\n\n\nS14_F_A\nstage_14\nFGF\nA\n\n\nS20_C_5\nstage_20\ncontrol\nfive\n\n\nS20_C_6\nstage_20\ncontrol\nsix\n\n\nS20_C_A\nstage_20\ncontrol\nA\n\n\nS20_F_5\nstage_20\nFGF\nfive\n\n\nS20_F_6\nstage_20\nFGF\nsix\n\n\nS20_F_A\nstage_20\nFGF\nA\n\n\nS30_C_5\nstage_30\ncontrol\nfive\n\n\nS30_C_6\nstage_30\ncontrol\nsix\n\n\nS30_C_A\nstage_30\ncontrol\nA\n\n\nS30_F_5\nstage_30\nFGF\nfive\n\n\nS30_F_6\nstage_30\nFGF\nsix\n\n\nS30_F_A\nstage_30\nFGF\nA\n\n\n\n\n\n\n\nData\n\nopen in understanding the data numbers of variables, organisation"
+    "text": "Examine your data\nThe workshops will examine the “least interesting”: - the difference between the control and the FGF treated sibling at S30 - the difference between HSPC and Prog cells\n🐸 Frog development data - xlaevis_counts_S14.csv - xlaevis_counts_S20.csv - xlaevis_counts_S30.csv - meta_data.txt\n🐭 Stem cell data - surfaceome_hspc.csv - surfaceome_prog.csv - surfaceome_lthsc.csv\n\n🎬 Save the files to data-raw\n🎬 Open the data files in Excel\n🎬 Describe what is in the rows and columns of each file.\n🎬 How many rows and columns are there in each file? Are these the same? In all cases or some cases? Why?\n🎬 Google an id. Where does your search take you? How much information is available?\n🎬 Did you record all that??"
   },
   {
     "objectID": "omics/week-3/workshop.html#import",
     "href": "omics/week-3/workshop.html#import",
     "title": "Workshop",
     "section": "Import",
-    "text": "Import"
+    "text": "Import\n\nopen in understanding the data numbers of variables, organisation\n🎬 Import xlaevis_counts_S30.csv, surfaceome_hspc.csv and surfaceome_prog.csv\n\n\n# 🐸 import the s30 data\ns30 &lt;- read_csv(\"data-raw/xlaevis_counts_S30.csv\")\n\n\n# 🐭 import the hspc data\nhspc &lt;- read_csv(\"data-raw/surfaceome_hspc.csv\")\n\n\n# 🐭 import the progs data\nprog &lt;- read_csv(\"data-raw/surfaceome_prog.csv\")\n\n\n🎬 Check these have the number of rows and column you were expecting and that column types and names are as expected."
   },
   {
     "objectID": "omics/week-3/workshop.html#explore",
     "href": "omics/week-3/workshop.html#explore",
     "title": "Workshop",
     "section": "Explore",
-    "text": "Explore\n\nwhat kind of values are they, how many missing\nqc plots\nremoving the useless, writing to files\n\n🎬\nYou’re finished!"
+    "text": "Explore\nThe\nDistributions\n\nwhat kind of values are they, how many missing\nqc plots\nremoving the useless, writing to files\n\n🐸 Frog development data - 🎬 Make a script file called cont-fgf-s30.R. This will a be commented analysis of the control vs FGF at S30 comparison. You will build on this each workshop and be able to use it as a template to examine other comparisons. Copy in the appropriate code and comments from workshop-1.R. Edit to improve your comments where your understanding has developed since you made them.\n🐭 Stem cell data - 🎬 Save the files to data-raw\n🎬\nYou’re finished!"
   },
   {
     "objectID": "omics/week-3/study_before_workshop.html#sequence-data",
