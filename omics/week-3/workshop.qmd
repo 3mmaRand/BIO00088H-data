@@ -1,18 +1,35 @@
 ---
 title: "Workshop"
 subtitle: "Omics 1: Hello data!"
+author: "Emma Rand"
 toc: true
 toc-location: right
+execute:
+  echo: true
+  include: true
+  error: true
+bibliography: ../../references.bib
 ---
 
 # Introduction
 
+## Omics workshops
+Throughout the three workshops we will examine one aspect of each data set as a model:
+
+-   the difference between the control and the FGF treated sibling at S30
+-   the difference between HSPC and Prog cells
+-   ???????
+
+See later workshops.
 
 ## Session overview
 
-In this workshop you will 
+In this workshop you will learn how to get an overview of your pmics data
 
-See later workshops.
+distrubution of te values
+anomalies
+quality control
+
 
 # Exercises
 
@@ -23,7 +40,7 @@ See later workshops.
 -   🎬 Use the Files pane to make a new folder for the data. I suggest `data-raw`
 -   🎬 Make a new script called `workshop-1.R` to carry out the rest of the work.
 -   🎬 Record what you do and what you find out. All of it!
--   🎬 Load `tidyverse`
+-   🎬 Load `tidyverse` [@tidyverse]
 
 
 ```{r}
@@ -31,36 +48,38 @@ library(tidyverse)
 ```
 
 
-## Examine your data
-
-The workshops will examine the "least interesting":
--   the difference between the control and the FGF treated sibling at S30
--   the difference between HSPC and Prog cells
+## Examine the data in a spreadsheet
 
 
-🐸 Frog development data
+🐸 Frog development data:
+
 -   [xlaevis_counts_S14.csv](data-raw/xlaevis_counts_S14.csv)
 -   [xlaevis_counts_S20.csv](data-raw/xlaevis_counts_S20.csv)
 -   [xlaevis_counts_S30.csv](data-raw/xlaevis_counts_S30.csv)
 -   [meta_data.txt](data-raw/meta_data.txt)
 
-🐭 Stem cell data
+🐭 Stem cell data:
+
 -   [surfaceome_hspc.csv](data-raw/surfaceome_hspc.csv)
 -   [surfaceome_prog.csv](data-raw/surfaceome_prog.csv)
 -   [surfaceome_lthsc.csv](data-raw/surfaceome_lthsc.csv)
 
 
--   🎬 Save the files to `data-raw` 
--   🎬 Open the data files in Excel
--   🎬 Describe what is in the rows and columns of each file. 
--   🎬 How many rows and columns are there in each file? Are these the same? In all cases or some cases? Why?
--   🎬 Google an id. Where does your search take you? How much information is available?
--   🎬 Did you record all that??
+🍂 xxxx data:
+
+
+
+🎬 Save the files to `data-raw` and open them in Excel
+🎬 Answer the following questions:
+    -   Describe how the sets of data are similar and how they are different.
+    -   What is in the rows and columns of each file?
+    -   How many rows and columns are there in each file? Are these the same? In all cases or some cases? Why?
+    -   Google an id. Where does your search take you? How much information is available?
+🎬 Did you record all that??
 
 ## Import
--   open in understanding the data numbers of variables, organisation
 
--   🎬 Import [xlaevis_counts_S30.csv](data-raw/xlaevis_counts_S30.csv), [surfaceome_hspc.csv](data-raw/surfaceome_hspc.csv) and  [surfaceome_prog.csv](data-raw/surfaceome_prog.csv)
+🎬 Import [xlaevis_counts_S30.csv](data-raw/xlaevis_counts_S30.csv), [surfaceome_hspc.csv](data-raw/surfaceome_hspc.csv) and  [surfaceome_prog.csv](data-raw/surfaceome_prog.csv)
 
 
 ```{r}
@@ -80,36 +99,346 @@ hspc <- read_csv("data-raw/surfaceome_hspc.csv")
 prog <- read_csv("data-raw/surfaceome_prog.csv")
 ```
 
--   🎬 Check these have the number of rows and column you were expecting and that column types and names are as expected.
+🎬 Check these have the number of rows and column you were expecting and that column types and names are as expected.
 
 
 ## Explore
 
-The 
+The first task is to get an overview. We want to know
+-   are there any missing values? If so, how many and how are they distributed?
+-   how may zeros are there and how are they distributed
+-   does it look as tough all the samples/cells were equally "successful"? Can we spot any problematic anomalies?
+-   what is the distribution of values? If our data collection has gone well we would hope to see approximately the same average expression in each sample or cell of the same type. We would also expect to see that the average expression of genes varies.
+-   are there genes which are zero in every cell/sample. We will want to to filter those out.
 
-Distributions
+
+We get this overview by looking at:
+
+-   The distribution of values across the whole dataset
+
+-   The distribution of values across the sample/cells (i.e., averaged across genes). This allows us to see variation between samples/cells:
+
+-   The distribution of values across the genes (i.e., averaged across samples/cells). This allows us to see variation between genes.
+
+
+### Distribution of values across the whole dataset
+
+#### 🐸 Frog
+
+xxxxxxxxxxx
+
+🎬 Get
+
+```{r}
+s30 |>
+  pivot_longer(cols = -xenbase_gene_id,
+               names_to = "sample",
+               values_to = "count") |>
+  ggplot(aes(x = count)) +
+  geom_histogram()
+```
+
+xxxxxxxxxxxxxxxxxx
+
+🎬 Get 
+```{r}
+s30 |>
+  pivot_longer(cols = -xenbase_gene_id,
+               names_to = "sample",
+               values_to = "count") |>
+  ggplot(aes(x = log10(count))) +
+  geom_histogram()
+```
+xxxxxxxxxxx
+
+#### 🐭 Mouse cells
+
+🎬 Get
+```{r}
+hspc |>
+  pivot_longer(cols = -ensembl_gene_id,
+               names_to = "cell",
+               values_to = "expr") |> 
+  ggplot(aes(x = expr)) +
+  geom_histogram()
+```
+
+The excess number of low counts indicates we might want to create a cut off for quality control. The removal of low counts is a common processing step in 'omic data.  We will revisit this after we have considered the distribution of counts across genes (averaged over the samples).
+
+
+###  Distribution of values across the sample/cells
+
+#### 🐸 Frog samples
+
+Summary statistics including the the number of NAs can be seen using the `summary()`. It is most helpful which you have up to about 30 columns. There is nothing special about the number 30, it is just that text summaries of a larger number of columns are difficult to grasp.
+
+
+🎬 Get a quick overview of the columns:
+
+```{r}
+# examine all the columns quickly
+# works well with smaller numbers of column
+summary(s30)
+```
+
+Notice that:
+-   the minimum count is 0 and the maximums are very high in all the columns
+-   the medians are quite a lot lower than the means so the data are skewed (hump to the left, tail to the right) - there must be quite a lot of zeros
+-   the columns are roughly similar and it doesn't look like there is an anomalous replicate 
+
+To find out how may zeros there are in a column we can make use of the fact that `TRUE` evaluates to 1 and `FALSE` evaluates to 0. This means `sum(S30_C_5 == 0)` gives the number of ones in the `S30_C_5` column
+
+🎬 Find the number of zeros in all six columns:
 
 ```{r}
 
+s30 |>
+  summarise(sum(S30_C_5 == 0),
+            sum(S30_C_6 == 0),
+            sum(S30_C_A == 0),
+            sum(S30_F_5 == 0),
+            sum(S30_F_6 == 0),
+            sum(S30_F_A == 0))
+```
+There is a better way of doing this that saves you having to repeat so much code - especially useful if you have a lot more than 6 columns. We can use `pivot_longer()` to put the data in tidy format and then use the `group_by()` and `summarise()` approach we have used extensively before.
+
+🎬 Find the number of zeros in all columns:
+
+```{r}
+s30 |>
+  pivot_longer(cols = -xenbase_gene_id,
+               names_to = "sample",
+               values_to = "count") |>
+  group_by(sample) |>
+  summarise(n_zero = sum(count == 0))
+```
+
+You could expand to get all the summary information
+
+🎬 Summarise all the samples:
+
+```{r}
+s30 |>
+  pivot_longer(cols = -xenbase_gene_id,
+               names_to = "sample",
+               values_to = "count") |>
+  group_by(sample) |>
+  summarise(min = min(count),
+            lowerq = quantile(count, 0.25),
+            mean = mean(count),
+            median = median(count),
+            upperq = quantile(count, 0.75),
+            max = max(count),
+            n_zero = sum(count == 0))
+```
+
+One advantage this has over using `summary()` is that the output is a dataframe. For results, this is useful, and makes it easier to:
+
+-   write to file
+-   use in `ggplot()`
+-   format in a quarto report
+
+🎬 Save the summary as a dataframe, `s30_summary`.
+
+```{r}
+#| echo: false
+s30_summary <- s30 |>
+  pivot_longer(cols = -xenbase_gene_id,
+               names_to = "sample",
+               values_to = "count") |>
+  group_by(sample) |>
+  summarise(min = min(count),
+            lowerq = quantile(count, 0.25),
+            mean = mean(count),
+            median = median(count),
+            upperq = quantile(count, 0.75),
+            max = max(count),
+            n_zero = sum(count == 0))
+```
+
+We can write to file using `write_csv()`
+
+🎬 Write `s30_summary` to a file called "s30_summary.csv":
+```{r}
+write_csv(s30_summary, file = "s30_summary.csv")
+```
+
+Plotting the distribution of values is perhaps the easiest way to understand the data. We could plot each column separately or we can pipe the tidy format of data into `ggplot()` and make use of `facet_wrap()`
+
+🎬 Write pivot the data and pipe into `ggplot`:
+```{r}
+s30 |>
+  pivot_longer(cols = -xenbase_gene_id,
+               names_to = "sample",
+               values_to = "count") |>
+  ggplot(aes(count)) +
+  geom_density() +
+  facet_wrap(. ~ sample, nrow = 3)
+
+```
+We have many values (`r length(s30$xenbase_gene_id)`) so are not limited to using `geom_histogram()`. `geom_density()` will give us a smooth distribution. 
+
+We have many low values and a few very high ones which makes it tricky to see the distributions. Logging the counts will make these clearer.
+
+🎬 Repeat the graph but taking the base 10 log of the counts:
+```{r}
+s30 |>
+  pivot_longer(cols = -xenbase_gene_id,
+               names_to = "sample",
+               values_to = "count") |>
+  ggplot(aes(log10(count))) +
+  geom_density() +
+  facet_wrap(. ~ sample, nrow = 3)
+```
+
+I've used base 10 only because it easy to convert to the original scale (1 is 10, 2 is 100, 3 is 1000 etc). The warning about rows being removed is expected - these are the counts of 0 since you can't log a value of 0. The key information to take from these plots is:
+
+-   the distributions are roughly similar in width, height, location and overall shape so it doesn't look as though we have any suspect samples
+-   the peak at zero suggests quite a few counts of 1.
+-   since we would expect the distribution of counts in each sample to be roughly log normal so that the small rise near the low end suggests that these lower counts might be anomalies.
+
+The excess number of low counts indicates we might want to create a cut off for quality control. The removal of low counts is a common processing step in 'omic data.  We will revisit this after we have considered the distribution of counts across genes (averaged over the samples).
+
+
+
+#### 🐭 Mouse cells
+
+We used the `summary()` function to get an overview of the columns in the frog data. Let's try that here.
+
+🎬 Get a quick overview of the columns:
+
+```{r}
+summary(hspc)
+```
+
+
+Hmmmm, not very useful. We are only seeing the minimums. This is because we have 701 cells - we only have 6 samples for the frogs. Le's at least get a summary for the first few columns
+
+🎬 Get a quick overview the first 20 columns:
+
+```{r}
+summary(hspc[1:20])
+```
+
+Notice that:
+-   the maximum value is much less high and has decimals. That logged (to base 2) normalised counts, not raw counts as they are in the frog data set.
+-   the minimum count is 0 
+-   at least some of the medians are zeros - there must be quite a lot of zeros
+-   the few columns we can see are roughly similar
+-   it would not be very practical to plot the distribution of values in cell cell using `facet_wrap()`. 
+
+In this data set, there is even more of an advantage of using the `pivot_longer()`, `group_by()` and `summarise()` approach. We will be to open the dataframe in the Viewer and make plots to examine whether the distributions are similar across cells.
+
+🎬 Summarise all the cells:
+
+```{r}
+hspc_summary <- hspc |>
+  pivot_longer(cols = -ensembl_gene_id,
+               names_to = "cell",
+               values_to = "expr") |>
+  group_by(cell) |>
+  summarise(min = min(expr),
+            lowerq = quantile(expr, 0.25),
+            mean = mean(expr),
+            median = median(expr),
+            sd = sd(expr),
+            upperq = quantile(expr, 0.75),
+            max = max(expr),
+            n_zero = sum(expr == 0))
+```
+
+Notice that I have used `cell` as the column name rather than `sample` and `expr` (expression) rather than `count`. I've also added the standard deviation.
+
+🎬 View the `hspc_summary` dataframe
+
+All cells have quite a few zeros and the lower quartile is 0 for al cells, i.e., every cell has many genes with zero expression. 
+
+To get a better understanding of the distribution of expressions in cells we can create a ggplot using the pointrange geom. Pointrange puts a dot at the mean and a line between a minimum and a maximum such as +/-s.d. Not unlike a boxplot but when you need the boxes too be very narrow!
+
+🎬 Create a pointrange plot.
+```{r}
+hspc_summary |> 
+  ggplot(aes(x = cell, y = mean)) +
+  geom_pointrange(aes(ymin = mean - sd, 
+                      ymax = mean + sd ),
+                  size = 0.1)
+```
+You will need to use the Zoom button to pop the plot window out so you can make it as wide as possible
+
+
+The things to notice are:
+
+-   the average expression in cells is similar for all cells. This is good to know - if some cells had much lower expression perhaps there is something wrong with them or their sequencing and they should be excluded.
+-   the distributions are roughly similar in width too
+
+
+The default order of `cell` is alphabetical. It can be easier to see these (non) effects if we order the lines by size
+
+🎬 Order a pointrange plot with `reorder(variable_to_order, order_by)`.
+```{r}
+hspc_summary |> 
+  ggplot(aes(x = reorder(cell, mean), y = mean)) +
+  geom_pointrange(aes(ymin = mean - sd, 
+                      ymax = mean + sd ),
+                  size = 0.1)
+```
+`reorder()` arranges `cell` in increasing size of `mean`
+
+
+It is more important to remove odd samples/cells when you have relatively few of them.
+
+🎬 Write `hspc_summary` to a file called "hspc_summary.csv":
+```{r}
+#| echo: false
+write_csv(hspc_summary, file = "hspc_summary.csv")
 ```
 
 
 
 
 
+###  Distribution of values across the genes
+
+#### 🐸 Frog genes
+
+
+
+
+#### 🐭 Mouse genes
+
+
+## Filtering for QC
+
+### 🐸 Frog filtering
+
+all samples are fine; some genes with low counts should be removed
+
+
+-   low counts overall
+-   low counts in "several" of the samples
+-   additional filtering on results of DE
+
+### 🐭 Mouse filtering
+
+
+## Look after future you
+
+### 🐸 Frogs and future you
+
+🎬 Make a script file called `cont-fgf-s30.R`. This will a be commented analysis of  the control vs FGF at S30 comparison. You will build on this each workshop and be able to use it as a template to examine other comparisons. Copy in the appropriate code and comments from `workshop-1.R`. Edit to improve your comments where your understanding has developed since you made them.
+
+### 🐭 Mice and future you
+
+🎬 Save the files to `data-raw` 
+
+
+
+
+NOTES - to be checked removed once drafted
+🎬 Make a note of the cut off value that seems appropriate. I'm going to use 10 (i.e., 1 on the graph). I think 3 (0.5 on the graph) would be a reasonable choice too. Don't attempt to be over precise.
 -   what kind of values are they, how many missing
 -   qc plots
 -   removing the useless, writing to files
-
-
-🐸 Frog development data
--   🎬 Make a script file called `cont-fgf-s30.R`. This will a be commented analysis of  the control vs FGF at S30 comparison. You will build on this each workshop and be able to use it as a template to examine other comparisons. Copy in the appropriate code and comments from `workshop-1.R`. Edit to improve your comments where your understanding has developed since you made them.
-
-🐭 Stem cell data
--   🎬 Save the files to `data-raw` 
-
-
-
 
 🎬 
 

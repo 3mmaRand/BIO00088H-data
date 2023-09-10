@@ -1,3 +1,6 @@
+ADD WEBSITE LINK TO ALL SLIDES /MATERAILS
+
+
 VLE iframe
 
 
@@ -9,6 +12,9 @@ VLE iframe
 
 <iframe src="https://3mmarand.github.io/BIO00088H-data/omics/week-5/study_after_workshop.html" title="Consolidation" allow="fullscreen"  width="800" height="400"></iframe>
 
+Place holders:
+
+🍂 xxxx data
 
 
 Week 3: Structure data science 1
@@ -18,3 +24,7 @@ Stem cell RNA (Jillian Barlow); Development RNA (Betsy Pownall), Ecology omics (
 xxx (Richard Maguire); Neuroscience (Sean Sweeney)
 
 Structure (Michael Plevin)
+
+🐸 Frog development data:
+
+🐭 Stem cell data:
