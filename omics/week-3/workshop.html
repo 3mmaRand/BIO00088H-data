@@ -437,10 +437,10 @@ div.csl-indent {
 </ul>
 <section id="distribution-of-values-across-the-whole-dataset" class="level3">
 <h3 class="anchored" data-anchor-id="distribution-of-values-across-the-whole-dataset">Distribution of values across the whole dataset</h3>
+<p>In both data sets, the values are spread over multiple columns so in order to plot the distribution as a whole, we will need to first use <code>pivot_longer()</code> to put the data in <a href="https://3mmarand.github.io/BIO00017C-Data-Analysis-in-R-2020/workshops/02TestingDataTypesReadingInData.html#Tidy_format">‘tidy’ format</a> <span class="citation" data-cites="Wickham2014-nl">(<a href="#ref-Wickham2014-nl" role="doc-biblioref">Wickham 2014</a>)</span> by stacking the columns. We <em>could</em> save a copy of the stacked data and then plot it, but here, I have just piped the stacked data straight into <code>ggplot()</code>.</p>
 <section id="frog" class="level4">
 <h4 class="anchored" data-anchor-id="frog">🐸 Frog</h4>
-<p>xxxxxxxxxxx</p>
-<p>🎬 Get</p>
+<p>🎬 Pivot the counts (stack the columns) so all the counts are in a single column (<code>count</code>) and pipe into <code>ggplot()</code> to create a histogram:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>s30 <span class="sc">|&gt;</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>xenbase_gene_id,</span>
@@ -452,8 +452,8 @@ div.csl-indent {
 <p><img src="workshop_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>xxxxxxxxxxxxxxxxxx</p>
-<p>🎬 Get</p>
+<p>This data is very skewed - there are so many low values that we can’t see the the tiny bars for the higher values. Logging the counts is a way to make the distribution more visible.</p>
+<p>🎬 Repeat the plot on log of the counts.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>s30 <span class="sc">|&gt;</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>xenbase_gene_id,</span>
@@ -465,11 +465,12 @@ div.csl-indent {
 <p><img src="workshop_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>xxxxxxxxxxx</p>
+<p>I’ve used base 10 only because it easy to convert to the original scale (1 is 10, 2 is 100, 3 is 1000 etc). The warning about rows being removed is expected - these are the counts of 0 since you can’t log a value of 0. The peak at zero suggests quite a few counts of 1. We would expect we would expect the distribution of counts to be roughly log normal because this is expression of all the genes and the genomes<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. That small peak near the low end suggests that these lower counts might be anomalies.</p>
+<p>The excess number of low counts indicates we might want to create a cut off for quality control. The removal of low counts is a common processing step in ’omic data. We will revisit this after we have considered the distribution of counts across samples and genes.</p>
 </section>
 <section id="mouse-cells" class="level4">
 <h4 class="anchored" data-anchor-id="mouse-cells">🐭 Mouse cells</h4>
-<p>🎬 Get</p>
+<p>🎬 Pivot the expression values (stack the columns) so all the counts are in a single column (<code>expr</code>) and pipe into <code>ggplot()</code> to create a histogram:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>hspc <span class="sc">|&gt;</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>ensembl_gene_id,</span>
@@ -481,7 +482,8 @@ div.csl-indent {
 <p><img src="workshop_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>The excess number of low counts indicates we might want to create a cut off for quality control. The removal of low counts is a common processing step in ’omic data. We will revisit this after we have considered the distribution of counts across genes (averaged over the samples).</p>
+<p>This is a very striking distribution. Is it what we are expecting? Again,the excess number of low counts is almost certainly anomalous. They will be inaccurate measure and we will want to exclude expression values below (about) 1. We will revisit this after we have considered the distribution of expression across cells and genes.</p>
+<p>What about the bimodal appearance of the the ‘real’ values? If we had the whole genome we would not expect to see such a pattern - we’d expect to see a roughly normal distribution<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. However, this is a subset of the genome and the nature of the subsetting has had an influence here. These are a subset of cell surface proteins that show a signifcant difference between at least two of twelve cell subtypes. That is, all of these genes are either high or low.</p>
 </section>
 </section>
 <section id="distribution-of-values-across-the-samplecells" class="level3">
@@ -620,7 +622,7 @@ div.csl-indent {
 <p><img src="workshop_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>I’ve used base 10 only because it easy to convert to the original scale (1 is 10, 2 is 100, 3 is 1000 etc). The warning about rows being removed is expected - these are the counts of 0 since you can’t log a value of 0. The key information to take from these plots is:</p>
+<p>The key information to take from these plots is:</p>
 <ul>
 <li>the distributions are roughly similar in width, height, location and overall shape so it doesn’t look as though we have any suspect samples</li>
 <li>the peak at zero suggests quite a few counts of 1.</li>
@@ -2027,12 +2029,16 @@ div.csl-indent {
 
 </section>
 
+
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-allaire2022" class="csl-entry" role="listitem">
 Allaire, J. J., Charles Teague, Carlos Scheidegger, Yihui Xie, and Christophe Dervieux. 2022. <em>Quarto</em>. <a href="https://doi.org/10.5281/zenodo.5960048">https://doi.org/10.5281/zenodo.5960048</a>.
 </div>
 <div id="ref-R-core" class="csl-entry" role="listitem">
 R Core Team. 2023. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
+<div id="ref-Wickham2014-nl" class="csl-entry" role="listitem">
+Wickham, Hadley. 2014. <span>“Tidy Data.”</span> <em>Journal of Statistical Software, Articles</em> 59 (10): 1–23. <a href="https://vita.had.co.nz/papers/tidy-data.pdf">https://vita.had.co.nz/papers/tidy-data.pdf</a>.
 </div>
 <div id="ref-tidyverse" class="csl-entry" role="listitem">
 Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the <span></span>Tidyverse<span></span>”</span> 4: 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
@@ -2043,7 +2049,13 @@ Xie, Yihui. 2022. <span>“Knitr: A General-Purpose Package for Dynamic Report G
 <div id="ref-kableExtra" class="csl-entry" role="listitem">
 Zhu, Hao. 2021. <span>“kableExtra: Construct Complex Table with ’Kable’ and Pipe Syntax.”</span> <a href="https://CRAN.R-project.org/package=kableExtra">https://CRAN.R-project.org/package=kableExtra</a>.
 </div>
-</div></section></div></main> <!-- /main -->
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>This a result of the <a href="https://en.wikipedia.org/wiki/Central_limit_theorem">Central limit theorem</a>,one consequence of which is that adding together lots of distributions - whatever distributions they are - will tend to a normal distribution.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>This a result of the <a href="https://en.wikipedia.org/wiki/Central_limit_theorem">Central limit theorem</a>,one consequence of which is that adding together lots of distributions - whatever distributions they are - will tend to a normal distribution.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
