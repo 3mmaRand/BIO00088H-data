@@ -18,7 +18,7 @@
     "href": "omics/week-3/study_after_workshop.html",
     "title": "Independent Study to consolidate this week",
     "section": "",
-    "text": "Set up\nIf you have just opened RStudio you will want to load the packages and import the data.\n\nlibrary(tidyverse)\nlibrary(readxl)\n\n\n💻 xx."
+    "text": "You need only do the section for your own project data\n🐸 Frogs\n🎬 Open your frogs-88H Project. Make a new script and, using cont-fgf-s30.R as a template, repeat the analysis on one of the other comparisons.\n🐭 Mice\n🎬 Open your mice-88H Project. Open your hspc-prog.R script and, using you code working with the hspc cells as a template, repeat the analysis on the prog cells.\n🍂 xxxx\n🎬 Open your xxxx-88H Project. Make a new script and, using xxxxxxx.R as a template, repeat the analysis on xxxxxxxx"
   },
   {
     "objectID": "index.html",
