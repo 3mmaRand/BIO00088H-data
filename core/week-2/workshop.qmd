@@ -1,8 +1,18 @@
 ---
 title: "Workshop"
 subtitle: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+author: "Emma Rand"
 toc: true
+toc-depth: 4
 toc-location: right
+execute:
+  echo: true
+  include: true
+  error: true
+bibliography: ../../references.bib
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
 ```{r}
