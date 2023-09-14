@@ -115,6 +115,7 @@ div.csl-indent {
 }</script>
 
 
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -297,33 +298,44 @@ div.csl-indent {
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
-  <ul class="collapse">
-  <li><a href="#omics-workshops" id="toc-omics-workshops" class="nav-link" data-scroll-target="#omics-workshops">Omics workshops</a></li>
+  <ul>
   <li><a href="#session-overview" id="toc-session-overview" class="nav-link" data-scroll-target="#session-overview">Session overview</a></li>
   </ul></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#set-up-a-project" id="toc-set-up-a-project" class="nav-link" data-scroll-target="#set-up-a-project">Set up a Project</a></li>
   <li><a href="#examine-the-data-in-a-spreadsheet" id="toc-examine-the-data-in-a-spreadsheet" class="nav-link" data-scroll-target="#examine-the-data-in-a-spreadsheet">Examine the data in a spreadsheet</a></li>
   <li><a href="#import" id="toc-import" class="nav-link" data-scroll-target="#import">Import</a></li>
   <li><a href="#explore" id="toc-explore" class="nav-link" data-scroll-target="#explore">Explore</a>
   <ul class="collapse">
-  <li><a href="#distribution-of-values-across-the-whole-dataset" id="toc-distribution-of-values-across-the-whole-dataset" class="nav-link" data-scroll-target="#distribution-of-values-across-the-whole-dataset">Distribution of values across the whole dataset</a></li>
-  <li><a href="#distribution-of-values-across-the-samplecells" id="toc-distribution-of-values-across-the-samplecells" class="nav-link" data-scroll-target="#distribution-of-values-across-the-samplecells">Distribution of values across the sample/cells</a></li>
-  <li><a href="#distribution-of-values-across-the-genes" id="toc-distribution-of-values-across-the-genes" class="nav-link" data-scroll-target="#distribution-of-values-across-the-genes">Distribution of values across the genes</a></li>
+  <li><a href="#distribution-of-values-across-the-whole-dataset" id="toc-distribution-of-values-across-the-whole-dataset" class="nav-link" data-scroll-target="#distribution-of-values-across-the-whole-dataset">Distribution of values across the whole dataset</a>
+  <ul class="collapse">
+  <li><a href="#frogs" id="toc-frogs" class="nav-link" data-scroll-target="#frogs">🐸 Frogs</a></li>
+  <li><a href="#mice" id="toc-mice" class="nav-link" data-scroll-target="#mice">🐭 Mice</a></li>
+  </ul></li>
+  <li><a href="#distribution-of-values-across-the-samplecells" id="toc-distribution-of-values-across-the-samplecells" class="nav-link" data-scroll-target="#distribution-of-values-across-the-samplecells">Distribution of values across the sample/cells</a>
+  <ul class="collapse">
+  <li><a href="#frog-samples" id="toc-frog-samples" class="nav-link" data-scroll-target="#frog-samples">🐸 Frog samples</a></li>
+  <li><a href="#mouse-cells" id="toc-mouse-cells" class="nav-link" data-scroll-target="#mouse-cells">🐭 Mouse cells</a></li>
+  </ul></li>
+  <li><a href="#distribution-of-values-across-the-genes" id="toc-distribution-of-values-across-the-genes" class="nav-link" data-scroll-target="#distribution-of-values-across-the-genes">Distribution of values across the genes</a>
+  <ul class="collapse">
+  <li><a href="#frog-genes" id="toc-frog-genes" class="nav-link" data-scroll-target="#frog-genes">🐸 Frog genes</a></li>
+  <li><a href="#mouse-genes" id="toc-mouse-genes" class="nav-link" data-scroll-target="#mouse-genes">🐭 Mouse genes</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#filtering-for-qc" id="toc-filtering-for-qc" class="nav-link" data-scroll-target="#filtering-for-qc">Filtering for QC</a>
   <ul class="collapse">
   <li><a href="#frog-filtering" id="toc-frog-filtering" class="nav-link" data-scroll-target="#frog-filtering">🐸 Frog filtering</a></li>
   <li><a href="#mouse-filtering" id="toc-mouse-filtering" class="nav-link" data-scroll-target="#mouse-filtering">🐭 Mouse filtering</a></li>
   </ul></li>
-  <li><a href="#look-after-future-you" id="toc-look-after-future-you" class="nav-link" data-scroll-target="#look-after-future-you">Look after future you</a>
+  <li><a href="#look-after-future-you" id="toc-look-after-future-you" class="nav-link" data-scroll-target="#look-after-future-you">🤗 Look after future you!</a>
   <ul class="collapse">
   <li><a href="#frogs-and-future-you" id="toc-frogs-and-future-you" class="nav-link" data-scroll-target="#frogs-and-future-you">🐸 Frogs and future you</a></li>
   <li><a href="#mice-and-future-you" id="toc-mice-and-future-you" class="nav-link" data-scroll-target="#mice-and-future-you">🐭 Mice and future you</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#well-done" id="toc-well-done" class="nav-link" data-scroll-target="#well-done">🥳 Well Done! 🎉</a></li>
+  <li><a href="#finished" id="toc-finished" class="nav-link" data-scroll-target="#finished">🥳 Finished</a></li>
   <li><a href="#independent-study-following-the-workshop" id="toc-independent-study-following-the-workshop" class="nav-link" data-scroll-target="#independent-study-following-the-workshop">Independent study following the workshop</a></li>
   <li><a href="#the-code-file" id="toc-the-code-file" class="nav-link" data-scroll-target="#the-code-file">The Code file</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
@@ -359,40 +371,29 @@ div.csl-indent {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<section id="omics-workshops" class="level2">
-<h2 class="anchored" data-anchor-id="omics-workshops">Omics workshops</h2>
-<p>Throughout the three workshops we will examine one aspect of each data set as a model:</p>
-<ul>
-<li>the difference between the control and the FGF treated sibling at S30</li>
-<li>the difference between HSPC and Prog cells</li>
-<li>???????</li>
-</ul>
-<p>See later workshops.</p>
-</section>
 <section id="session-overview" class="level2">
 <h2 class="anchored" data-anchor-id="session-overview">Session overview</h2>
-<p>In this workshop you will learn how to get an overview of your pmics data</p>
-<p>distrubution of te values anomalies quality control</p>
+<p>In this workshop you will learn what steps to take to get a good understanding of your ’omics data before you consider any statistical analysis. This is an often overlooked, but very valuable and informative, part of any data pipeline. It gives you the deep understanding of the data structures and values that you will need to code and trouble-shoot code, allows you to spot failed or problematic samples and informs your decisions on quality control.</p>
+<p>You should examine <strong>all three data sets</strong> because the comparisons will give you a stronger understanding of your own project data.</p>
 </section>
 </section>
 <section id="exercises" class="level1">
 <h1>Exercises</h1>
 <section id="set-up-a-project" class="level2">
 <h2 class="anchored" data-anchor-id="set-up-a-project">Set up a Project</h2>
-<ul>
-<li>🎬 Start RStudio from the Start menu</li>
-<li>🎬 Make an RStudio project. Be deliberate about where you create it so that it is a good place for you</li>
-<li>🎬 Use the Files pane to make a new folder for the data. I suggest <code>data-raw</code></li>
-<li>🎬 Make a new script called <code>workshop-1.R</code> to carry out the rest of the work.</li>
-<li>🎬 Record what you do and what you find out. All of it!</li>
-<li>🎬 Load <code>tidyverse</code> <span class="citation" data-cites="tidyverse">(<a href="#ref-tidyverse" role="doc-biblioref">Wickham et al. 2019</a>)</span></li>
-</ul>
+<p>🎬 Start RStudio from the Start menu</p>
+<p>🎬 Make an RStudio project. Be deliberate about where you create it so that it is a good place for you</p>
+<p>🎬 Use the Files pane to make new folders for the data. I suggest <code>data-raw</code> and <code>data-processed</code></p>
+<p>🎬 Make a new script called <code>workshop-1.R</code> to carry out the rest of the work.</p>
+<p>🎬 Record what you do and what you find out. All of it!</p>
+<p>🎬 Load <code>tidyverse</code> <span class="citation" data-cites="tidyverse">(<a href="#ref-tidyverse" role="doc-biblioref">Wickham et al. 2019</a>)</span> for importing, summarising, plotting and filtering.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="examine-the-data-in-a-spreadsheet" class="level2">
 <h2 class="anchored" data-anchor-id="examine-the-data-in-a-spreadsheet">Examine the data in a spreadsheet</h2>
+<p>These are the three datasets. Each set compromises several files.</p>
 <p>🐸 Frog development data:</p>
 <ul>
 <li><a href="data-raw/xlaevis_counts_S14.csv">xlaevis_counts_S14.csv</a></li>
@@ -407,11 +408,24 @@ div.csl-indent {
 <li><a href="data-raw/surfaceome_lthsc.csv">surfaceome_lthsc.csv</a></li>
 </ul>
 <p>🍂 xxxx data:</p>
-<p>🎬 Save the files to <code>data-raw</code> and open them in Excel 🎬 Answer the following questions: - Describe how the sets of data are similar and how they are different. - What is in the rows and columns of each file? - How many rows and columns are there in each file? Are these the same? In all cases or some cases? Why? - Google an id. Where does your search take you? How much information is available? 🎬 Did you record all that??</p>
+<ul>
+<li>xxx</li>
+<li>xxx</li>
+</ul>
+<p>🎬 Save the files to <code>data-raw</code> and open them in Excel</p>
+<p>🎬 Answer the following questions:</p>
+<ul>
+<li>Describe how the sets of data are similar and how they are different.</li>
+<li>What is in the rows and columns of each file?</li>
+<li>How many rows and columns are there in each file? Are these the same? In all cases or some cases? Why?</li>
+<li>Google an id. Where does your search take you? How much information is available?</li>
+</ul>
+<p>🎬 Did you record all that??</p>
 </section>
 <section id="import" class="level2">
 <h2 class="anchored" data-anchor-id="import">Import</h2>
-<p>🎬 Import <a href="data-raw/xlaevis_counts_S30.csv">xlaevis_counts_S30.csv</a>, <a href="data-raw/surfaceome_hspc.csv">surfaceome_hspc.csv</a> and <a href="data-raw/surfaceome_prog.csv">surfaceome_prog.csv</a></p>
+<p>Now let’s get the data into R and visualise it.</p>
+<p>🎬 Import <a href="data-raw/xlaevis_counts_S30.csv">xlaevis_counts_S30.csv</a>, <a href="data-raw/surfaceome_hspc.csv">surfaceome_hspc.csv</a> and xxxxxxxx</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 🐸 import the s30 data</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>s30 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data-raw/xlaevis_counts_S30.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -421,14 +435,21 @@ div.csl-indent {
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>hspc <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data-raw/surfaceome_hspc.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 🐭 import the progs data</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>prog <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data-raw/surfaceome_prog.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 🍂 xxxx import the xxxx data</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># prog &lt;- read_csv("")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Check these have the number of rows and column you were expecting and that column types and names are as expected.</p>
 </section>
 <section id="explore" class="level2">
 <h2 class="anchored" data-anchor-id="explore">Explore</h2>
-<p>The first task is to get an overview. We want to know - are there any missing values? If so, how many and how are they distributed? - how may zeros are there and how are they distributed - does it look as tough all the samples/cells were equally “successful”? Can we spot any problematic anomalies? - what is the distribution of values? If our data collection has gone well we would hope to see approximately the same average expression in each sample or cell of the same type. We would also expect to see that the average expression of genes varies. - are there genes which are zero in every cell/sample. We will want to to filter those out.</p>
+<p>The first task is to get an overview. We want to know</p>
+<ul>
+<li>are there any missing values? If so, how many and how are they distributed?</li>
+<li>how may zeros are there and how are they distributed</li>
+<li>does it look as tough all the samples/cells were equally “successful”? Can we spot any problematic anomalies?</li>
+<li>what is the distribution of values?</li>
+</ul>
+<p>If our data collection has gone well we would hope to see approximately the same average expression in each sample or cell of the same type. That is replicates should be similar. We would also expect to see that the average expression of genes varies. We might have genes which are zero in every cell/sample. We will want to to filter those out.</p>
 <p>We get this overview by looking at:</p>
 <ul>
 <li><p>The distribution of values across the whole dataset</p></li>
@@ -437,9 +458,9 @@ div.csl-indent {
 </ul>
 <section id="distribution-of-values-across-the-whole-dataset" class="level3">
 <h3 class="anchored" data-anchor-id="distribution-of-values-across-the-whole-dataset">Distribution of values across the whole dataset</h3>
-<p>In both data sets, the values are spread over multiple columns so in order to plot the distribution as a whole, we will need to first use <code>pivot_longer()</code> to put the data in <a href="https://3mmarand.github.io/BIO00017C-Data-Analysis-in-R-2020/workshops/02TestingDataTypesReadingInData.html#Tidy_format">‘tidy’ format</a> <span class="citation" data-cites="Wickham2014-nl">(<a href="#ref-Wickham2014-nl" role="doc-biblioref">Wickham 2014</a>)</span> by stacking the columns. We <em>could</em> save a copy of the stacked data and then plot it, but here, I have just piped the stacked data straight into <code>ggplot()</code>.</p>
-<section id="frog" class="level4">
-<h4 class="anchored" data-anchor-id="frog">🐸 Frog</h4>
+<p>In all data sets, the values are spread over multiple columns so in order to plot the distribution as a whole, we will need to first use <code>pivot_longer()</code> to put the data in <a href="https://3mmarand.github.io/BIO00017C-Data-Analysis-in-R-2020/workshops/02TestingDataTypesReadingInData.html#Tidy_format">‘tidy’ format</a> <span class="citation" data-cites="Wickham2014-nl">(<a href="#ref-Wickham2014-nl" role="doc-biblioref">Wickham 2014</a>)</span> by stacking the columns. We <em>could</em> save a copy of the stacked data and then plot it, but here, I have just piped the stacked data straight into <code>ggplot()</code>.</p>
+<section id="frogs" class="level4">
+<h4 class="anchored" data-anchor-id="frogs">🐸 Frogs</h4>
 <p>🎬 Pivot the counts (stack the columns) so all the counts are in a single column (<code>count</code>) and pipe into <code>ggplot()</code> to create a histogram:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>s30 <span class="sc">|&gt;</span></span>
@@ -465,11 +486,11 @@ div.csl-indent {
 <p><img src="workshop_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>I’ve used base 10 only because it easy to convert to the original scale (1 is 10, 2 is 100, 3 is 1000 etc). The warning about rows being removed is expected - these are the counts of 0 since you can’t log a value of 0. The peak at zero suggests quite a few counts of 1. We would expect we would expect the distribution of counts to be roughly log normal because this is expression of all the genes and the genomes<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. That small peak near the low end suggests that these lower counts might be anomalies.</p>
+<p>I’ve used base 10 only because it easy to convert to the original scale (1 is 10, 2 is 100, 3 is 1000 etc). The warning about rows being removed is expected - these are the counts of 0 since you can’t log a value of 0. The peak at zero suggests quite a few counts of 1. We would expect we would expect the distribution of counts to be roughly log normal because this is expression of <em>all</em> the genes in the genome<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. That small peak near the low end suggests that these lower counts might be anomalies.</p>
 <p>The excess number of low counts indicates we might want to create a cut off for quality control. The removal of low counts is a common processing step in ’omic data. We will revisit this after we have considered the distribution of counts across samples and genes.</p>
 </section>
-<section id="mouse-cells" class="level4">
-<h4 class="anchored" data-anchor-id="mouse-cells">🐭 Mouse cells</h4>
+<section id="mice" class="level4">
+<h4 class="anchored" data-anchor-id="mice">🐭 Mice</h4>
 <p>🎬 Pivot the expression values (stack the columns) so all the counts are in a single column (<code>expr</code>) and pipe into <code>ggplot()</code> to create a histogram:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>hspc <span class="sc">|&gt;</span></span>
@@ -482,8 +503,8 @@ div.csl-indent {
 <p><img src="workshop_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>This is a very striking distribution. Is it what we are expecting? Again,the excess number of low counts is almost certainly anomalous. They will be inaccurate measure and we will want to exclude expression values below (about) 1. We will revisit this after we have considered the distribution of expression across cells and genes.</p>
-<p>What about the bimodal appearance of the the ‘real’ values? If we had the whole genome we would not expect to see such a pattern - we’d expect to see a roughly normal distribution<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. However, this is a subset of the genome and the nature of the subsetting has had an influence here. These are a subset of cell surface proteins that show a signifcant difference between at least two of twelve cell subtypes. That is, all of these genes are either high or low.</p>
+<p>This is a very striking distribution. Is it what we are expecting? Again,the excess number of low values is almost certainly anomalous. They will be inaccurate measure and we will want to exclude expression values below (about) 1. We will revisit this after we have considered the distribution of expression across cells and genes.</p>
+<p>What about the bimodal appearance of the the ‘real’ values? If we had the whole genome we would not expect to see such a pattern - we’d expect to see a roughly normal distribution<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. However, this is a subset of the genome and the nature of the subsetting has had an influence here. These are a subset of cell surface proteins that show a significant difference between at least two of twelve cell subtypes. That is, all of these genes are either high or low.</p>
 </section>
 </section>
 <section id="distribution-of-values-across-the-samplecells" class="level3">
@@ -513,8 +534,8 @@ div.csl-indent {
  Max.   :117573.0   Max.   :130672.0   Max.   :61531.0  </code></pre>
 </div>
 </div>
-<p>Notice that: - the minimum count is 0 and the maximums are very high in all the columns - the medians are quite a lot lower than the means so the data are skewed (hump to the left, tail to the right) - there must be quite a lot of zeros - the columns are roughly similar and it doesn’t look like there is an anomalous replicate</p>
-<p>To find out how may zeros there are in a column we can make use of the fact that <code>TRUE</code> evaluates to 1 and <code>FALSE</code> evaluates to 0. This means <code>sum(S30_C_5 == 0)</code> gives the number of ones in the <code>S30_C_5</code> column</p>
+<p>Notice that: - the minimum count is 0 and the maximums are very high in all the columns - the medians are quite a lot lower than the means so the data are skewed (hump to the left, tail to the right) - there must be quite a lot of zeros - the columns are roughly similar and it doesn’t look like there is an anomalous replicate.</p>
+<p>To find out how may zeros there are in a column we can make use of the fact that <code>TRUE</code> evaluates to 1 and <code>FALSE</code> evaluates to 0. This means <code>sum(S30_C_5 == 0)</code> gives the number of 0 in the <code>S30_C_5</code> column</p>
 <p>🎬 Find the number of zeros in all six columns:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>s30 <span class="sc">|&gt;</span></span>
@@ -581,43 +602,47 @@ div.csl-indent {
 6 S30_F_A     0     16  260.     69    187  61531    963</code></pre>
 </div>
 </div>
+<p>The mean count ranges from 260 to 426.</p>
 <p>One advantage this has over using <code>summary()</code> is that the output is a dataframe. For results, this is useful, and makes it easier to:</p>
 <ul>
 <li>write to file</li>
 <li>use in <code>ggplot()</code></li>
-<li>format in a quarto report</li>
+<li>format in a Quarto report</li>
 </ul>
-<p>🎬 Save the summary as a dataframe, <code>s30_summary</code>.</p>
+<p>🎬 Save the summary as a dataframe, <code>s30_summary_samp</code>.</p>
 <p>We can write to file using <code>write_csv()</code></p>
-<p>🎬 Write <code>s30_summary</code> to a file called “s30_summary.csv”:</p>
+<p>🎬 Write <code>s30_summary_samp_by</code> to a file called “s30_summary_samp_by.csv”:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(s30_summary, <span class="at">file =</span> <span class="st">"s30_summary.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(s30_summary_samp_by, <span class="at">file =</span> <span class="st">"data-processed/s30_summary_samp_by.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 's30_summary_samp_by' not found</code></pre>
+</div>
 </div>
 <p>Plotting the distribution of values is perhaps the easiest way to understand the data. We could plot each column separately or we can pipe the tidy format of data into <code>ggplot()</code> and make use of <code>facet_wrap()</code></p>
-<p>🎬 Write pivot the data and pipe into <code>ggplot</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>s30 <span class="sc">|&gt;</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>xenbase_gene_id,</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"sample"</span>,</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(count)) <span class="sc">+</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(. <span class="sc">~</span> sample, <span class="at">nrow =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="workshop_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<p>We have many values (11893) so are not limited to using <code>geom_histogram()</code>. <code>geom_density()</code> will give us a smooth distribution.</p>
-<p>We have many low values and a few very high ones which makes it tricky to see the distributions. Logging the counts will make these clearer.</p>
-<p>🎬 Repeat the graph but taking the base 10 log of the counts:</p>
+<p>🎬 Pivot the data and pipe into <code>ggplot</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>s30 <span class="sc">|&gt;</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>xenbase_gene_id,</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"sample"</span>,</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">log10</span>(count))) <span class="sc">+</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(count)) <span class="sc">+</span></span>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(. <span class="sc">~</span> sample, <span class="at">nrow =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="workshop_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We have many values (11893) so we are not limited to using <code>geom_histogram()</code>. <code>geom_density()</code> gives us a smooth distribution.</p>
+<p>We have many low values and a few very high ones which makes it tricky to see the distributions. Logging the counts will make these clearer.</p>
+<p>🎬 Repeat the graph but taking the base 10 log of the counts:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>s30 <span class="sc">|&gt;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>xenbase_gene_id,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"sample"</span>,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">log10</span>(count))) <span class="sc">+</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(. <span class="sc">~</span> sample, <span class="at">nrow =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="workshop_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -626,16 +651,16 @@ div.csl-indent {
 <ul>
 <li>the distributions are roughly similar in width, height, location and overall shape so it doesn’t look as though we have any suspect samples</li>
 <li>the peak at zero suggests quite a few counts of 1.</li>
-<li>since we would expect the distribution of counts in each sample to be roughly log normal so that the small rise near the low end suggests that these lower counts might be anomalies.</li>
+<li>since we would expect the distribution of counts in each sample to be roughly log normal so that the small rise near the low end, even before the peak at zero, suggests that these lower counts might be anomalies.</li>
 </ul>
 <p>The excess number of low counts indicates we might want to create a cut off for quality control. The removal of low counts is a common processing step in ’omic data. We will revisit this after we have considered the distribution of counts across genes (averaged over the samples).</p>
 </section>
-<section id="mouse-cells-1" class="level4">
-<h4 class="anchored" data-anchor-id="mouse-cells-1">🐭 Mouse cells</h4>
+<section id="mouse-cells" class="level4">
+<h4 class="anchored" data-anchor-id="mouse-cells">🐭 Mouse cells</h4>
 <p>We used the <code>summary()</code> function to get an overview of the columns in the frog data. Let’s try that here.</p>
 <p>🎬 Get a quick overview of the columns:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(hspc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell outputscroll">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(hspc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> ensembl_gene_id       HSPC_001         HSPC_002         HSPC_003      
  Length:280         Min.   : 0.000   Min.   : 0.000   Min.   : 0.0000  
@@ -1871,10 +1896,10 @@ div.csl-indent {
  Max.   :11.602   Max.   :11.469  </code></pre>
 </div>
 </div>
-<p>Hmmmm, not very useful. We are only seeing the minimums. This is because we have 701 cells - we only have 6 samples for the frogs. Le’s at least get a summary for the first few columns</p>
+<p>Hmmmm, did you get all that? Nope, me neither! We have 701 cells but we only have 6 samples for the frogs. We will need a different approach to get an overview but I find it is still useful to look at the few columns</p>
 <p>🎬 Get a quick overview the first 20 columns:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(hspc[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell outputscroll">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(hspc[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> ensembl_gene_id       HSPC_001         HSPC_002         HSPC_003      
  Length:280         Min.   : 0.000   Min.   : 0.000   Min.   : 0.0000  
@@ -1913,35 +1938,42 @@ div.csl-indent {
  Max.   :10.709   Max.   :11.814   Max.   :12.113   Max.   :11.279  </code></pre>
 </div>
 </div>
-<p>Notice that: - the maximum value is much less high and has decimals. That logged (to base 2) normalised counts, not raw counts as they are in the frog data set. - the minimum count is 0 - at least some of the medians are zeros - there must be quite a lot of zeros - the few columns we can see are roughly similar - it would not be very practical to plot the distribution of values in cell cell using <code>facet_wrap()</code>.</p>
-<p>In this data set, there is even more of an advantage of using the <code>pivot_longer()</code>, <code>group_by()</code> and <code>summarise()</code> approach. We will be to open the dataframe in the Viewer and make plots to examine whether the distributions are similar across cells.</p>
+<p>Notice that:</p>
+<ul>
+<li>the maximum value is much less high than for the frogs and has decimals. That is because the mouse data are logged (to base 2) normalised counts, not raw counts as they are in the frog data set.</li>
+<li>a minimum value of 0 appears in all 20 columns - perhaps that is true across the whole dataset (or at least common)</li>
+<li>at least some of the medians are zeros so there must be quite a lot of zeros</li>
+<li>the few columns we can see are roughly similar</li>
+<li>it would not be very practical to plot the distributions of values in cell cell using <code>facet_wrap()</code>.</li>
+</ul>
+<p>In this data set, there is even more of an advantage of using the <code>pivot_longer()</code>, <code>group_by()</code> and <code>summarise()</code> approach. We will be able to open the dataframe in the Viewer and make plots to examine whether the distributions are similar across cells.</p>
 <p>🎬 Summarise all the cells:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>hspc_summary <span class="ot">&lt;-</span> hspc <span class="sc">|&gt;</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>ensembl_gene_id,</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"cell"</span>,</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"expr"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cell) <span class="sc">|&gt;</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">min =</span> <span class="fu">min</span>(expr),</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">lowerq =</span> <span class="fu">quantile</span>(expr, <span class="fl">0.25</span>),</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(expr),</span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">median =</span> <span class="fu">median</span>(expr),</span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(expr),</span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">upperq =</span> <span class="fu">quantile</span>(expr, <span class="fl">0.75</span>),</span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">max =</span> <span class="fu">max</span>(expr),</span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">n_zero =</span> <span class="fu">sum</span>(expr <span class="sc">==</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>hspc_summary_samp <span class="ot">&lt;-</span> hspc <span class="sc">|&gt;</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>ensembl_gene_id,</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"cell"</span>,</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"expr"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cell) <span class="sc">|&gt;</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">min =</span> <span class="fu">min</span>(expr),</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">lowerq =</span> <span class="fu">quantile</span>(expr, <span class="fl">0.25</span>),</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(expr),</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">median =</span> <span class="fu">median</span>(expr),</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(expr),</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">upperq =</span> <span class="fu">quantile</span>(expr, <span class="fl">0.75</span>),</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">max =</span> <span class="fu">max</span>(expr),</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">n_zero =</span> <span class="fu">sum</span>(expr <span class="sc">==</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Notice that I have used <code>cell</code> as the column name rather than <code>sample</code> and <code>expr</code> (expression) rather than <code>count</code>. I’ve also added the standard deviation.</p>
-<p>🎬 View the <code>hspc_summary</code> dataframe</p>
-<p>All cells have quite a few zeros and the lower quartile is 0 for al cells, i.e., every cell has many genes with zero expression.</p>
-<p>To get a better understanding of the distribution of expressions in cells we can create a ggplot using the pointrange geom. Pointrange puts a dot at the mean and a line between a minimum and a maximum such as +/-s.d. Not unlike a boxplot but when you need the boxes too be very narrow!</p>
+<p>🎬 View the <code>hspc_summary_samp</code> dataframe (click on it in the environment).</p>
+<p>All cells have quite a few zeros and the lower quartile is 0 for al cells, <em>i.e.</em>, every cell has many genes with zero expression.</p>
+<p>To get a better understanding of the distribution of expressions in cells we can create a ggplot using the pointrange geom. Pointrange puts a dot at the mean and a line between a minimum and a maximum such as +/- one s.d. Not unlike a boxplot, but when you need the boxes too be very narrow!</p>
 <p>🎬 Create a pointrange plot.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>hspc_summary <span class="sc">|&gt;</span> </span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cell, <span class="at">y =</span> mean)) <span class="sc">+</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean <span class="sc">-</span> sd, </span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">ymax =</span> mean <span class="sc">+</span> sd ),</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>hspc_summary_samp <span class="sc">|&gt;</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cell, <span class="at">y =</span> mean)) <span class="sc">+</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean <span class="sc">-</span> sd, </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">ymax =</span> mean <span class="sc">+</span> sd ),</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="workshop_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -1949,33 +1981,113 @@ div.csl-indent {
 <p>You will need to use the Zoom button to pop the plot window out so you can make it as wide as possible</p>
 <p>The things to notice are:</p>
 <ul>
-<li>the average expression in cells is similar for all cells. This is good to know - if some cells had much lower expression perhaps there is something wrong with them or their sequencing and they should be excluded.</li>
+<li>the average expression in cells is similar for all cells. This is good to know - if some cells had much lower expression perhaps there is something wrong with them, or their sequencing, and they should be excluded.</li>
 <li>the distributions are roughly similar in width too</li>
 </ul>
-<p>The default order of <code>cell</code> is alphabetical. It can be easier to see these (non) effects if we order the lines by size</p>
+<p>The default order of <code>cell</code> is alphabetical. It can be easier to see these (non-) effects if we order the lines by the size of the mean.</p>
 <p>🎬 Order a pointrange plot with <code>reorder(variable_to_order, order_by)</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>hspc_summary <span class="sc">|&gt;</span> </span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(cell, mean), <span class="at">y =</span> mean)) <span class="sc">+</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean <span class="sc">-</span> sd, </span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">ymax =</span> mean <span class="sc">+</span> sd ),</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>hspc_summary_samp <span class="sc">|&gt;</span> </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(cell, mean), <span class="at">y =</span> mean)) <span class="sc">+</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean <span class="sc">-</span> sd, </span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">ymax =</span> mean <span class="sc">+</span> sd ),</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="workshop_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p><code>reorder()</code> arranges <code>cell</code> in increasing size of <code>mean</code></p>
-<p>It is more important to remove odd samples/cells when you have relatively few of them.</p>
-<p>🎬 Write <code>hspc_summary</code> to a file called “hspc_summary.csv”:</p>
+<p>🎬 Write <code>hspc_summary_samp</code> to a file called “hspc_summary_samp.csv”:</p>
 </section>
 </section>
 <section id="distribution-of-values-across-the-genes" class="level3">
 <h3 class="anchored" data-anchor-id="distribution-of-values-across-the-genes">Distribution of values across the genes</h3>
 <section id="frog-genes" class="level4">
 <h4 class="anchored" data-anchor-id="frog-genes">🐸 Frog genes</h4>
+<p>There are lots of genes in this dataset therefore we will take the same approach as that we took for the distributions across mouse cells. We will pivot the data to tidy and then summarise the counts for each gene.</p>
+<p>🎬 Summarise the counts for each genes:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>s30_summary_gene <span class="ot">&lt;-</span> s30 <span class="sc">|&gt;</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>xenbase_gene_id,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"sample"</span>,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(xenbase_gene_id) <span class="sc">|&gt;</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">min =</span> <span class="fu">min</span>(count),</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">lowerq =</span> <span class="fu">quantile</span>(count, <span class="fl">0.25</span>),</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(count),</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(count),</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">median =</span> <span class="fu">median</span>(count),</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">upperq =</span> <span class="fu">quantile</span>(count, <span class="fl">0.75</span>),</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">max =</span> <span class="fu">max</span>(count),</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">total =</span> <span class="fu">sum</span>(count),</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">n_zero =</span> <span class="fu">sum</span>(count <span class="sc">==</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>I have calculated the values we used before with one addition: the sum of the counts (<code>total</code>).</p>
+<p>🎬 View the <code>s30_summary_gene</code> dataframe.</p>
+<p>Notice that we have:</p>
+<ul>
+<li>a lot of genes with counts of zero in every sample</li>
+<li>a lot of genes with zero counts in several of the samples</li>
+<li>some very very low counts.</li>
+</ul>
+<p>These should be filtered out because they are unreliable - or, at the least, uninformative. The goal of our downstream analysis will be to see if there is a signifcance difference in gene expression between the control and FGF-treated sibling. Since we have only three replicates in each group, having one or two unreliable, missing or zero values, makes such a determination impossible for a particular gene. We will use the total counts and the number of samples with non-zero values to filter our genes later.</p>
+<p>As we have a lot of genes, it is again helpful to plot the mean counts with pointrange to get an overview. We will plot the log of the counts - we saw earlier that logging made it easier to understand the distribution of counts over such a wide range. We will also order the genes from lowest to highest mean count.</p>
+<p>🎬 Plot the logged mean counts for each gene in order of size using <code>geom_pointrange()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>s30_summary_gene <span class="sc">|&gt;</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(xenbase_gene_id, mean), <span class="at">y =</span> <span class="fu">log10</span>(mean))) <span class="sc">+</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> <span class="fu">log10</span>(mean <span class="sc">-</span> sd), </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">ymax =</span> <span class="fu">log10</span>(mean <span class="sc">+</span> sd )),</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="workshop_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>(Remember, the warning is expected since we have zeros).</p>
+<p>You can see we also have quite a few genes with means less than 1 (log below zero). Note that the variability between genes (average counts between 0 and 102586) is far greater than between samples (average counts from 260 to 426) which is exactly what we would expect to see.</p>
+<p>🎬 Write <code>s30_summary_gene</code> to a file called “s30_summary_gene.csv”:</p>
 </section>
 <section id="mouse-genes" class="level4">
 <h4 class="anchored" data-anchor-id="mouse-genes">🐭 Mouse genes</h4>
+<p>There are fewer genes in this dataset, but still more than you can understand without the overview provided by a plot. We will again pivot the data to tidy and then summarise the expression for each gene.</p>
+<p>🎬 Summarise the expression for each genes:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>hspc_summary_gene <span class="ot">&lt;-</span> hspc <span class="sc">|&gt;</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>ensembl_gene_id,</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"cell"</span>,</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"expr"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ensembl_gene_id) <span class="sc">|&gt;</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">min =</span> <span class="fu">min</span>(expr),</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">lowerq =</span> <span class="fu">quantile</span>(expr, <span class="fl">0.25</span>),</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(expr),</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(expr),</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">median =</span> <span class="fu">median</span>(expr),</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">upperq =</span> <span class="fu">quantile</span>(expr, <span class="fl">0.75</span>),</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">max =</span> <span class="fu">max</span>(expr),</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">total =</span> <span class="fu">sum</span>(expr),</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">n_zero =</span> <span class="fu">sum</span>(expr <span class="sc">==</span> <span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>🎬 View the <code>hspc_summary_gene</code> dataframe. Remember these are normalised and logged (base 2) so we should not see very large values.</p>
+<p>Notice that we have:</p>
+<ul>
+<li>no genes with 0 in every cell</li>
+<li>very few genes (9) with no zeros at all</li>
+<li>quite a few genes with zero in many cells but this matters less than zeros in the frog samples because we had just 6 samples and we have 701 cells.</li>
+</ul>
+<p>As we have a lot of genes, it is again helpful to plot the mean expression with pointrange to get an overview. We do not need to log the values but ordering the genes will help.</p>
+<p>🎬 Plot the logged mean counts for each gene in order of size using <code>geom_pointrange()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>hspc_summary_gene <span class="sc">|&gt;</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(ensembl_gene_id, mean), <span class="at">y =</span> mean))<span class="sc">+</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean <span class="sc">-</span> sd, </span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">ymax =</span> mean <span class="sc">+</span> sd),</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size =</span> <span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="workshop_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Note again that the variability between genes (average expression between 0.02 and and 10.03) is far greater than between cells (average expression from1.46 to 3.18) which is expected.</p>
+<p>🎬 Write <code>s30_summary_gene</code> to a file called “s30_summary_gene.csv”:</p>
 </section>
 </section>
 </section>
@@ -1983,34 +2095,52 @@ div.csl-indent {
 <h2 class="anchored" data-anchor-id="filtering-for-qc">Filtering for QC</h2>
 <section id="frog-filtering" class="level3">
 <h3 class="anchored" data-anchor-id="frog-filtering">🐸 Frog filtering</h3>
-<p>all samples are fine; some genes with low counts should be removed</p>
-<ul>
-<li>low counts overall</li>
-<li>low counts in “several” of the samples</li>
-<li>additional filtering on results of DE</li>
-</ul>
+<p>Our samples look to be similarly well sequenced. There are no samples we should remove. However, some genes are not express or the expression values are so low in for a gene that they are uninformative. We will filter the <code>s30_summary_gene</code> dataframe to obtain a list of <code>xenbase_gene_id</code> we can use to filter <code>s30</code>.</p>
+<p>My suggestion is to include only the genes with counts in all 6 or 5 out of 6 samples and those with total counts above 20.</p>
+<p>🎬 Filter the summary by gene dataframe:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>s30_summary_gene_filtered <span class="ot">&lt;-</span> s30_summary_gene <span class="sc">|&gt;</span> </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(total <span class="sc">&gt;</span> <span class="dv">20</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_zero <span class="sc">&lt;</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>🎬 Write the filtered summary by gene to file:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(s30_summary_gene_filtered, </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">"data-processed/s30_summary_gene_filtered.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>🎬 Use the list of <code>xenbase_gene_id</code> in the filtered summary to filter the original dataset:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>s30_filtered <span class="ot">&lt;-</span> s30 <span class="sc">|&gt;</span> </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(xenbase_gene_id <span class="sc">%in%</span>  s30_summary_gene_filtered<span class="sc">$</span>xenbase_gene_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>🎬 Write the filtered original to file:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(s30_filtered, </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">"data-processed/s30_filtered.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="mouse-filtering" class="level3">
 <h3 class="anchored" data-anchor-id="mouse-filtering">🐭 Mouse filtering</h3>
+<p>I would take a different approach to filtering the single cell data. For the Frog samples we are examining the control and the FGF treated samples. This means have a low number of counts overall means the gene is not really expressed (detected) in any condition, and filtering out those genes is removing things that definitely are not interesting. For the mice, we have examined only one cell type but will be making comparisons between cells types. It may be that low expression of a gene in this cell type tells us something if that gene is highly expressed in another cell type. Instead, we will make statistical comparisons between the cell types and then filter based on overall expression, the difference in expression between cell types and whether that difference is significant.</p>
+<p>The number of “replicates” is also important. When you have only three in each group it is not possible to make statistical comparisons when several replicates are zero. This is less of an issue with single cell data.</p>
 </section>
 </section>
 <section id="look-after-future-you" class="level2">
-<h2 class="anchored" data-anchor-id="look-after-future-you">Look after future you</h2>
+<h2 class="anchored" data-anchor-id="look-after-future-you">🤗 Look after future you!</h2>
+<p><strong>You need only do the section for your own project data</strong></p>
 <section id="frogs-and-future-you" class="level3">
 <h3 class="anchored" data-anchor-id="frogs-and-future-you">🐸 Frogs and future you</h3>
-<p>🎬 Make a script file called <code>cont-fgf-s30.R</code>. This will a be commented analysis of the control vs FGF at S30 comparison. You will build on this each workshop and be able to use it as a template to examine other comparisons. Copy in the appropriate code and comments from <code>workshop-1.R</code>. Edit to improve your comments where your understanding has developed since you made them.</p>
+<p>🎬 Create a new Project, <code>frogs-88H</code>, populated with folders and your data. Make a script file called <code>cont-fgf-s30.R</code>. This will a be commented analysis of the control vs FGF at S30 comparison. You will build on this each workshop and be able to use it as a template to examine other comparisons. Copy in the appropriate code and comments from <code>workshop-1.R</code>. Edit to improve your comments where your understanding has developed since you made them. Make sure you can close down RStudio, reopen it and run your whole script again.</p>
 </section>
 <section id="mice-and-future-you" class="level3">
 <h3 class="anchored" data-anchor-id="mice-and-future-you">🐭 Mice and future you</h3>
-<p>🎬 Save the files to <code>data-raw</code></p>
-<p>NOTES - to be checked removed once drafted 🎬 Make a note of the cut off value that seems appropriate. I’m going to use 10 (i.e., 1 on the graph). I think 3 (0.5 on the graph) would be a reasonable choice too. Don’t attempt to be over precise. - what kind of values are they, how many missing - qc plots - removing the useless, writing to files</p>
-<p>🎬</p>
-<p>You’re finished!</p>
+<p>🎬 Create a new Project, <code>mice-88H</code>, populated with folders and your data. Make a script file called <code>hspc-prog.R</code>. This will a be commented analysis of the hspc cells vs the prog cells. At this point you will have only code for the hspc cells. You will build on this each workshop and be able to use it as a template to examine other comparisons. Copy in the appropriate code and comments from <code>workshop-1.R</code>. Edit to improve your comments where your understanding has developed since you made them. Make sure you can close down RStudio, reopen it and run your whole script again.</p>
 </section>
 </section>
 </section>
-<section id="well-done" class="level1">
-<h1>🥳 Well Done! 🎉</h1>
+<section id="finished" class="level1">
+<h1>🥳 Finished</h1>
+<p>Well Done!</p>
 </section>
 <section id="independent-study-following-the-workshop" class="level1">
 <h1>Independent study following the workshop</h1>
