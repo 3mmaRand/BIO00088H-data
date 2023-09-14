@@ -1,8 +1,27 @@
 ---
 title: "Independent Study to prepare for workshop"
 subtitle: "Omics 1: Hello data!"
+author: "Emma Rand"
 format: revealjs
+bibliography: ../../references.bib
+editor: 
+  markdown: 
+    wrap: 72
 ---
+
+
+
+## Omics workshops
+
+
+-   🐸 the difference between the control and the FGF treated sibling at
+    S30
+-   🐭 the difference between HSPC and Prog cells
+-   🍂 ???????
+
+See later workshops.
+
+
 
 ## Sequence Data
 

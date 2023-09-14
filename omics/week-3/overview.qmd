@@ -15,18 +15,24 @@ xxxxx
 ### Instructions
 
 1.  [Prepare](study_before_workshop.qmd)
+    
+    i.   📖 Read how the data were generated and how they have been processed so far.
 
 
 2.  [Workshop](workshop.qmd)
 
-    i.  💻 dd.
+    i.   💻 Set up a Project
 
-    ii. 💻 ddd
+    ii.  💻 Import data
 
-    iii. 💻 ddd
+    iii. 💻 Explore the distribution of values across samples/cells and across genes/species
+    
+    iv.  💻 Perform quality control
+    
+    v.   💻 Look after future you!
 
 3.  [Consolidate](study_after_workshop.qmd)
 
-    i.  💻 dd
+    i.  💻 Use the work you completed in the workshop as a template to apply to a new case.
 
-    ii. 💻 dd
+
