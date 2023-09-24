@@ -1,5 +1,5 @@
 ---
-title: "Workshop"
+title: "Workshop - 🚧 still in Construction"
 subtitle: "Organising Reproducible Data Analyses"
 author: "Emma Rand"
 toc: true
@@ -22,47 +22,65 @@ library(tidyverse)
 
 # Introduction
 
-
 ## Session overview
 
-In this workshop you will 
+In this workshop you will
 
 
-::: callout-note
-## Key
 
 
-:::
+# What is reproducibility?
 
-# Getting started
+-   **Reproducible: Same data + same analysis = identical results**. *"... obtaining consistent results using the same input
+data; computational steps, methods, and code; and conditions of
+analysis. This definition is synonymous with "computational
+reproducibility"* [@nationalacademiesofsciences2019]
+
+-   Replicable: Different data + same analysis = qualitatively similar
+    results. The work is not dependent on the specificities of the data.
+
+-   Robust: Same data + different analysis = qualitatively similar or
+    identical results. The work is not dependent on the specificities of
+    the analysis.
+
+-   Generalisable: Different data + different analysis = qualitatively
+    similar results and same conclusions. The findings can be
+    generalised
+
+[![The Turing Way\'s definitions of reproducible research
+[@community2022]
+](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
+
+# Why reproducibility?
+
+(BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown) -
 
 
-# Exercises
+# Project organisation
 
+## Project oriented workflow
 
-🎬 
--   Project organisation: folders, files
--   Project oriented workflow
--   Naming things
--   File formats
--   Data management
-    -   google drive: https://www.york.ac.uk/it-services/services/drive/#tab-6
-    -   documenting
-    -   organisation within files
--   Data files. Similarities and differences
-    -   Sequences data
-    -   Image data
-    -   Structure data. 
--   Keeping notes
--   Readme
--   Reference managers: Zotero
+-  Readme
+-  folders, files 
 
+## Naming things 
+
+ 
+
+## File formats
+
+Data files.
+-   Sequences data 
+-   Image data 
+-   Structure data
+
+Similarities and differences 
+
+## Tidy data reminder
 
 You're finished!
 
 # 🥳 Well Done! 🎉
-
-
 
 # Independent study following the workshop
 
@@ -70,10 +88,18 @@ You're finished!
 
 # The Code file
 
-These contain all the code needed in the workshop even where it is not visible on the webpage.
+These contain all the code needed in the workshop even where it is not
+visible on the webpage.
 
-The [workshop.qmd](workshop.qmd) file is the file I use to compile the practical. Qmd stands for Quarto markdown. It allows code and ordinary text to be interleaved to produce well-formatted reports including webpages. Right-click on the link and choose Save-As to download. You will be able to open the Qmd file in RStudio. Alternatively, [View in Browser](https://github.com/3mmaRand/). Coding and thinking answers are marked with `#---CODING ANSWER---` and `#---THINKING ANSWER---`
+The [workshop.qmd](workshop.qmd) file is the file I use to compile the
+practical. Qmd stands for Quarto markdown. It allows code and ordinary
+text to be interleaved to produce well-formatted reports including
+webpages. Right-click on the link and choose Save-As to download. You
+will be able to open the Qmd file in RStudio. Alternatively, [View in
+Browser](https://github.com/3mmaRand/). Coding and thinking answers are
+marked with `#---CODING ANSWER---` and `#---THINKING ANSWER---`
 
-Pages made with R [@R-core], Quarto [@allaire2022], `knitr` [@knitr], `kableExtra` [@kableExtra]
+Pages made with R [@R-core], Quarto [@allaire2022], `knitr` [@knitr],
+`kableExtra` [@kableExtra]
 
 # References

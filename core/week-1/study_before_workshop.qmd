@@ -1,6 +1,8 @@
 ---
 title: "Independent Study to prepare for workshop"
 subtitle: "Core 1"
+toc: true
+toc-location: right
 ---
 
-1.  📖 Read xxxx
+1.  📖 Read  [Understanding file systems](https://3mmarand.github.io/comp4biosci/file_systems.html). This is an approximately 15 - 20 minute read revising file types and filesystems. It covers concepts of working directories and paths. We learned these ideas in stage 1 and you may feel completely confident with them but many students will benefit from a refresher. For BIO00070M students, this is part of the work you will also be asked to complete for BIO00052M Data Analysis in R.

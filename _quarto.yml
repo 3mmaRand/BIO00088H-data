@@ -44,7 +44,7 @@ website:
           - href: core/core.qmd
           - text: ---
           - text: ---
-          - section: "Week 1: xxx"
+          - section: "Week 1: Organising analyses"
             contents: 
              - href: core/week-1/overview.qmd
                text: About  
@@ -55,7 +55,7 @@ website:
              - href: core/week-1/study_after_workshop.qmd
                text: Consolidate!  
           - text: ---
-          - section: "Week 2: xxx"
+          - section: "Week 2: Workflow tips"
             contents: 
              - href: core/week-2/overview.qmd
                text: About  
