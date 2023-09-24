@@ -6,9 +6,12 @@ toc-location: right
 
 # Overview
 
-You are either an integrated masters student doing 88H Group Project or a MSc Bioinformatics student doing 70M
+You are *either* 
 
-Data Analysis for the Group Research Project (BIO00088H) compromises six workshops covering computational skills needed in your project. Three of these are core and taken by everyone and three are specific to your project type.
+-  an integrated masters student doing BIO00088H Group Research Project *or* 
+-  an MSc Bioinformatics student doing BIO00070M Research, Professional and Team Skills
+
+For students doing BIO00088H, Data Analysis compromises six workshops covering computational skills needed in your project. Three of these are core and taken by everyone and three are specific to your project type. MSc Bioinformatics students do the Core workshops and the 'omics workshops as part of BIO00070M.
 
 The project types are:
 
@@ -32,7 +35,7 @@ The data analysis workshops are:
 | 5    | omics/structure/images 3 |
 | 6    | Core 3                   |
 
-MSc Bioinformatics students do the Core workshops and the 'omics workshops as part of 70M
+
 
 ## Module Learning Outcome linked to this content
 

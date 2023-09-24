@@ -41,22 +41,18 @@ In this workshop you will
 
 
 🎬 
+-   Why reproducibility (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown)
 -   Project organisation: folders, files
 -   Project oriented workflow
 -   Naming things
+-   Keeping a lab book
+-   Readme
 -   File formats
--   Data management
-    -   google drive: https://www.york.ac.uk/it-services/services/drive/#tab-6
-    -   documenting
-    -   organisation within files
 -   Data files. Similarities and differences
     -   Sequences data
     -   Image data
     -   Structure data. 
--   Keeping notes
--   Readme
--   Reference managers: Zotero
-
+-   Tidy data reminder
 
 You're finished!
 

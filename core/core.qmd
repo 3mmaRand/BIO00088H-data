@@ -1,71 +1,53 @@
 ---
-title: "Core Data Analysis for Group Project"
+title: "Core Data Analysis"
 toc: true
 toc-location: right
 ---
 
 # Content
+There are three workshops taken by everyone on BIO00088H and BIO00070M. These are in weeks 1, 2 and 6. The first two cover some useful workflow tips and how to organise your analyses effectively so they are reproducible but you will also have the chance to revise material from stage 1 and 2.
+
+Good organisation is important because you will want to be able to set work aside for holidays and assessment periods and then restart easily. You will also be assessed on the organisation, reproducibility and transparency of your work. 
+
+## Week 1 Core 1 Organising reproducible data analyses
+
+This week you will revise some essential concepts for scientific computing: file system organisation, file types, working directories and paths. The workshop will cover a rationale for working reproducibly, project oriented workflow, naming things and documenting your work. We will also examine some file types and concept of tidy data.
 
 
-## Week 1 Core 1 Organising Reproducible Data Analyses
+## Week 2 Core 2 Workflow tips
 
-Note no R coding (too early for MSc BIN 70M who share the core and omics teaching)
+<!-- Before  -->
+<!-- Apply to GitHub Global Campus as a student -->
 
-Before
--   Optional revision: What they forgot to teach you about computers: operating systems, file systems, file types, working directories and paths
-
--   Why reproducibility (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown)
-
-Workshop
-
--   Project organisation: folders, files
--   Project oriented workflow
--   Naming things
--   File formats
--   Data management
-    -   google drive: https://www.york.ac.uk/it-services/services/drive/#tab-6
-    -   documenting
-    -   organisation within files
--   Data files. Similarities and differences
-    -   Sequences data
-    -   Image data
-    -   Structure data. 
--   Keeping a lab book
--   Readme
--   Reference managers: Zotero?
-
-After
-
-## Week 2 Core 2 NEEDS A TITLE
-
-Before
-Possibly:
-Code formatting and style, 😎 Cool code Tips, Code 'algorithmically.', Writing functions (R and python??) (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown)
+<!-- -   Reference managers: Zotero -->
+<!-- -   github copilot -->
+<!-- -   chat gtp -->
+<!-- -   Data management -->
+<!--     -   google drive: https://www.york.ac.uk/it-services/services/drive/#tab-6 -->
 
 
+<!-- Workshop -->
 
-Workshop
+<!-- Code formatting and style, 😎 Cool code Tips, Code 'algorithmically.', Writing functions (R and python??) (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown) -->
 
 
-
-After
+<!-- After -->
 
 ## Week 6 Core 3 Reproducible Reporting
 
-Before
- (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown and BIO00058M-Data-science-2020/slides/04_advanced_rmarkdown.html)
-Literate programming
-What is quarto
-markdown basics: text, code chunks, headings
-yaml
-automatic numbering of figures and tables
-cross references
-special characters
-citations
+<!-- Before -->
+<!--  (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown and BIO00058M-Data-science-2020/slides/04_advanced_rmarkdown.html) -->
+<!-- Literate programming -->
+<!-- What is quarto -->
+<!-- markdown basics: text, code chunks, headings -->
+<!-- yaml -->
+<!-- automatic numbering of figures and tables -->
+<!-- cross references -->
+<!-- special characters -->
+<!-- citations -->
+
+<!-- Workshop -->
+
+<!-- practice doing the above with your project and data -->
 
 
-Workshop
-
-practice doing the above with your project and data
-
-After
