@@ -154,25 +154,53 @@
     "text": "In this workshop you will\n\n\n\n\n\n\nKey"
   },
   {
-    "objectID": "core/week-1/study_after_workshop.html",
-    "href": "core/week-1/study_after_workshop.html",
+    "objectID": "core/week-1/study_after_workshop.html#msc-bioinformatics-students-doing-bio00070m",
+    "href": "core/week-1/study_after_workshop.html#msc-bioinformatics-students-doing-bio00070m",
     "title": "Independent Study to consolidate this week",
-    "section": "",
-    "text": "Set up\nIf you have just opened RStudio you will want to load the packages and import the data.\n\nlibrary(tidyverse)\nlibrary(readxl)\n\n\n💻 xx."
+    "section": "MSc Bioinformatics students doing BIO00070M",
+    "text": "MSc Bioinformatics students doing BIO00070M"
   },
   {
     "objectID": "core/week-1/workshop.html",
     "href": "core/week-1/workshop.html",
-    "title": "Workshop",
+    "title": "Workshop - 🚧 still in Construction",
     "section": "",
-    "text": "In this workshop you will\n\n\n\n\n\n\nKey"
+    "text": "In this workshop you will"
   },
   {
     "objectID": "core/week-1/workshop.html#session-overview",
     "href": "core/week-1/workshop.html#session-overview",
-    "title": "Workshop",
+    "title": "Workshop - 🚧 still in Construction",
     "section": "",
-    "text": "In this workshop you will\n\n\n\n\n\n\nKey"
+    "text": "In this workshop you will"
+  },
+  {
+    "objectID": "core/week-1/workshop.html#project-oriented-workflow",
+    "href": "core/week-1/workshop.html#project-oriented-workflow",
+    "title": "Workshop - 🚧 still in Construction",
+    "section": "Project oriented workflow",
+    "text": "Project oriented workflow\n\nReadme\nfolders, files"
+  },
+  {
+    "objectID": "core/week-1/workshop.html#naming-things",
+    "href": "core/week-1/workshop.html#naming-things",
+    "title": "Workshop - 🚧 still in Construction",
+    "section": "Naming things",
+    "text": "Naming things"
+  },
+  {
+    "objectID": "core/week-1/workshop.html#file-formats",
+    "href": "core/week-1/workshop.html#file-formats",
+    "title": "Workshop - 🚧 still in Construction",
+    "section": "File formats",
+    "text": "File formats\nData files. - Sequences data - Image data - Structure data\nSimilarities and differences"
+  },
+  {
+    "objectID": "core/week-1/workshop.html#tidy-data-reminder",
+    "href": "core/week-1/workshop.html#tidy-data-reminder",
+    "title": "Workshop - 🚧 still in Construction",
+    "section": "Tidy data reminder",
+    "text": "Tidy data reminder\nYou’re finished!"
   },
   {
     "objectID": "core/week-2/study_after_workshop.html",
@@ -207,7 +235,7 @@
     "href": "index.html",
     "title": "Data Analysis for the Group Research Project",
     "section": "",
-    "text": "You are either an integrated masters student doing 88H Group Project or a MSc Bioinformatics student doing 70M\nData Analysis for the Group Research Project (BIO00088H) compromises six workshops covering computational skills needed in your project. Three of these are core and taken by everyone and three are specific to your project type.\nThe project types are:\n\n\n\n\n\n\n\nProject\nData Strand\n\n\n\n\nStem Cells, Jillian Barlow\n’omics, Emma Rand\n\n\nDevelopmental Biology, Betsy Pownal\n’omics, Emma Rand\n\n\nMicrobial Ecology, Kelly Redeker\n’omics, Emma Rand\n\n\nStructural Biochemistry, Michael Plevin\nmolecular-structure, Jon Agirre\n\n\nNeuroscience, Sean Sweeney\nimage-analysis, Richard Bingham\n\n\nxxxxxxxxxxxx, Richard Maguire\nimage-analysis, Richard Bingham\n\n\n\nThe data analysis workshops are:\n\n\n\nWeek\nData Strand\n\n\n\n\n1\nCore 1\n\n\n2\nCore 2\n\n\n3\nomics/structure/images 1\n\n\n4\nomics/structure/images 2\n\n\n5\nomics/structure/images 3\n\n\n6\nCore 3\n\n\n\nMSc Bioinformatics students do the Core workshops and the ’omics workshops as part of 70M\n\n\nStudents who successfully complete this module will be able to\n\nuse appropriate computational techniques to reproducibly process, analyse and visualise data and generate scientific reports based on project work.\n\n\n\n\nAll material is on the VLE so why is this site useful? This site collects everything together in a searchable way. The search icon is on the top right."
+    "text": "You are either\n\nan integrated masters student doing BIO00088H Group Research Project or\nan MSc Bioinformatics student doing BIO00070M Research, Professional and Team Skills\n\nFor students doing BIO00088H, Data Analysis compromises six workshops covering computational skills needed in your project. Three of these are core and taken by everyone and three are specific to your project type. MSc Bioinformatics students do the Core workshops and the ’omics workshops as part of BIO00070M.\nThe project types are:\n\n\n\n\n\n\n\nProject\nData Strand\n\n\n\n\nStem Cells, Jillian Barlow\n’omics, Emma Rand\n\n\nDevelopmental Biology, Betsy Pownal\n’omics, Emma Rand\n\n\nMicrobial Ecology, Kelly Redeker\n’omics, Emma Rand\n\n\nStructural Biochemistry, Michael Plevin\nmolecular-structure, Jon Agirre\n\n\nNeuroscience, Sean Sweeney\nimage-analysis, Richard Bingham\n\n\nxxxxxxxxxxxx, Richard Maguire\nimage-analysis, Richard Bingham\n\n\n\nThe data analysis workshops are:\n\n\n\nWeek\nData Strand\n\n\n\n\n1\nCore 1\n\n\n2\nCore 2\n\n\n3\nomics/structure/images 1\n\n\n4\nomics/structure/images 2\n\n\n5\nomics/structure/images 3\n\n\n6\nCore 3\n\n\n\n\n\nStudents who successfully complete this module will be able to\n\nuse appropriate computational techniques to reproducibly process, analyse and visualise data and generate scientific reports based on project work.\n\n\n\n\nAll material is on the VLE so why is this site useful? This site collects everything together in a searchable way. The search icon is on the top right."
   },
   {
     "objectID": "index.html#module-learning-outcome-linked-to-this-content",
@@ -226,30 +254,16 @@
   {
     "objectID": "core/core.html",
     "href": "core/core.html",
-    "title": "Core Data Analysis for Group Project",
+    "title": "Core Data Analysis",
     "section": "",
-    "text": "Note no R coding (too early for MSc BIN 70M who share the core and omics teaching)\nBefore - Optional revision: What they forgot to teach you about computers: operating systems, file systems, file types, working directories and paths\n\nWhy reproducibility (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown)\n\nWorkshop\n\nProject organisation: folders, files\nProject oriented workflow\nNaming things\nFile formats\nData management\n\ngoogle drive: https://www.york.ac.uk/it-services/services/drive/#tab-6\ndocumenting\norganisation within files\n\nData files. Similarities and differences\n\nSequences data\nImage data\nStructure data.\n\nKeeping a lab book\nReadme\nReference managers: Zotero?\n\nAfter\n\n\n\nBefore Possibly: Code formatting and style, 😎 Cool code Tips, Code ‘algorithmically.’, Writing functions (R and python??) (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown)\nWorkshop\nAfter\n\n\n\nBefore (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown and BIO00058M-Data-science-2020/slides/04_advanced_rmarkdown.html) Literate programming What is quarto markdown basics: text, code chunks, headings yaml automatic numbering of figures and tables cross references special characters citations\nWorkshop\npractice doing the above with your project and data\nAfter"
+    "text": "There are three workshops taken by everyone on BIO00088H and BIO00070M. These are in weeks 1, 2 and 6. The first two cover some useful workflow tips and how to organise your analyses effectively so they are reproducible but you will also have the chance to revise material from stage 1 and 2.\nGood organisation is important because you will want to be able to set work aside for holidays and assessment periods and then restart easily. You will also be assessed on the organisation, reproducibility and transparency of your work.\n\n\nThis week you will revise some essential concepts for scientific computing: file system organisation, file types, working directories and paths. The workshop will cover a rationale for working reproducibly, project oriented workflow, naming things and documenting your work. We will also examine some file types and the concept of tidy data."
   },
   {
     "objectID": "core/core.html#week-1-core-1-organising-reproducible-data-analyses",
     "href": "core/core.html#week-1-core-1-organising-reproducible-data-analyses",
-    "title": "Core Data Analysis for Group Project",
+    "title": "Core Data Analysis",
     "section": "",
-    "text": "Note no R coding (too early for MSc BIN 70M who share the core and omics teaching)\nBefore - Optional revision: What they forgot to teach you about computers: operating systems, file systems, file types, working directories and paths\n\nWhy reproducibility (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown)\n\nWorkshop\n\nProject organisation: folders, files\nProject oriented workflow\nNaming things\nFile formats\nData management\n\ngoogle drive: https://www.york.ac.uk/it-services/services/drive/#tab-6\ndocumenting\norganisation within files\n\nData files. Similarities and differences\n\nSequences data\nImage data\nStructure data.\n\nKeeping a lab book\nReadme\nReference managers: Zotero?\n\nAfter"
-  },
-  {
-    "objectID": "core/core.html#week-2-core-2-needs-a-title",
-    "href": "core/core.html#week-2-core-2-needs-a-title",
-    "title": "Core Data Analysis for Group Project",
-    "section": "",
-    "text": "Before Possibly: Code formatting and style, 😎 Cool code Tips, Code ‘algorithmically.’, Writing functions (R and python??) (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown)\nWorkshop\nAfter"
-  },
-  {
-    "objectID": "core/core.html#week-6-core-3-reproducible-reporting",
-    "href": "core/core.html#week-6-core-3-reproducible-reporting",
-    "title": "Core Data Analysis for Group Project",
-    "section": "",
-    "text": "Before (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown and BIO00058M-Data-science-2020/slides/04_advanced_rmarkdown.html) Literate programming What is quarto markdown basics: text, code chunks, headings yaml automatic numbering of figures and tables cross references special characters citations\nWorkshop\npractice doing the above with your project and data\nAfter"
+    "text": "This week you will revise some essential concepts for scientific computing: file system organisation, file types, working directories and paths. The workshop will cover a rationale for working reproducibly, project oriented workflow, naming things and documenting your work. We will also examine some file types and the concept of tidy data."
   },
   {
     "objectID": "core/week-2/study_before_workshop.html",
@@ -270,14 +284,14 @@
     "href": "core/week-1/study_before_workshop.html",
     "title": "Independent Study to prepare for workshop",
     "section": "",
-    "text": "📖 Read xxxx"
+    "text": "📖 Read Understanding file systems. This is an approximately 15 - 20 minute read revising file types and filesystems. It covers concepts of working directories and paths. We learned these ideas in stage 1 and you may feel completely confident with them but many students will benefit from a refresher. For BIO00070M students, this is part of the work you will also be asked to complete for BIO00052M Data Analysis in R."
   },
   {
     "objectID": "core/week-1/overview.html",
     "href": "core/week-1/overview.html",
     "title": "Overview",
     "section": "",
-    "text": "xxxxx\n\nLearning objectives\n\ndd\ndd.\ndd\nd\n\n\n\nInstructions\n\nPrepare\n\n📖 Read What they forgot to teach you about computers\n\nWorkshop\n\n💻 dd.\n💻 ddd\n💻 ddd\n\nConsolidate\n\n💻 dd\n💻 dd"
+    "text": "This week you will revise some essential concepts for scientific computing: file system organisation, file types, working directories and paths. The workshop will cover a rationale for working reproducibly, project oriented workflow, naming things and documenting your work. We will also examine some file types and the concept of tidy data.\n\nLearning objectives\nThe successful student will be able to:\n\nexplain the organisation of files and directories in a file systems including root, home and working directories\nexplain absolute and relative file paths\nexplain why working reproducibly is important\nknow how to use a project-oriented workflow to organise work\nbe able to give files human- and machine-readable names\noutline some common biological data file formats\n\n\n\nInstructions\n\nPrepare\n\n📖 Read Understanding file systems\n\nWorkshop\nConsolidate"
   },
   {
     "objectID": "core/week-6/study_before_workshop.html",

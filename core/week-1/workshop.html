@@ -8,7 +8,7 @@
 
 <meta name="author" content="Emma Rand">
 
-<title>Data Analysis for Group Project - Workshop</title>
+<title>Data Analysis for Group Project - Workshop - 🚧 still in Construction</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -126,7 +126,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../core/week-1/overview.html">Week 1: xxx</a></li><li class="breadcrumb-item"><a href="../../core/week-1/workshop.html">Workshop</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../core/week-1/overview.html">Week 1: Organising analyses</a></li><li class="breadcrumb-item"><a href="../../core/week-1/workshop.html">Workshop</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -141,7 +141,7 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../core/core.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Core Data Analysis for Group Project</span></a>
+ <span class="menu-text">Core Data Analysis</span></a>
   </div>
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -149,7 +149,7 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Week 1: xxx</span></a>
+ <span class="menu-text">Week 1: Organising analyses</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -185,7 +185,7 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Week 2: xxx</span></a>
+ <span class="menu-text">Week 2: Workflow tips</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -267,8 +267,15 @@ div.csl-indent {
   <ul>
   <li><a href="#session-overview" id="toc-session-overview" class="nav-link" data-scroll-target="#session-overview">Session overview</a></li>
   </ul></li>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
+  <li><a href="#what-is-reproducibility" id="toc-what-is-reproducibility" class="nav-link" data-scroll-target="#what-is-reproducibility">What is reproducibility?</a></li>
+  <li><a href="#why-reproducibility" id="toc-why-reproducibility" class="nav-link" data-scroll-target="#why-reproducibility">Why reproducibility?</a></li>
+  <li><a href="#project-organisation" id="toc-project-organisation" class="nav-link" data-scroll-target="#project-organisation">Project organisation</a>
+  <ul>
+  <li><a href="#project-oriented-workflow" id="toc-project-oriented-workflow" class="nav-link" data-scroll-target="#project-oriented-workflow">Project oriented workflow</a></li>
+  <li><a href="#naming-things" id="toc-naming-things" class="nav-link" data-scroll-target="#naming-things">Naming things</a></li>
+  <li><a href="#file-formats" id="toc-file-formats" class="nav-link" data-scroll-target="#file-formats">File formats</a></li>
+  <li><a href="#tidy-data-reminder" id="toc-tidy-data-reminder" class="nav-link" data-scroll-target="#tidy-data-reminder">Tidy data reminder</a></li>
+  </ul></li>
   <li><a href="#well-done" id="toc-well-done" class="nav-link" data-scroll-target="#well-done">🥳 Well Done! 🎉</a></li>
   <li><a href="#independent-study-following-the-workshop" id="toc-independent-study-following-the-workshop" class="nav-link" data-scroll-target="#independent-study-following-the-workshop">Independent study following the workshop</a></li>
   <li><a href="#the-code-file" id="toc-the-code-file" class="nav-link" data-scroll-target="#the-code-file">The Code file</a></li>
@@ -281,7 +288,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Workshop</h1>
+<h1 class="title">Workshop - 🚧 still in Construction</h1>
 <p class="subtitle lead">Organising Reproducible Data Analyses</p>
 </div>
 
@@ -308,28 +315,48 @@ div.csl-indent {
 <section id="session-overview" class="level2">
 <h2 class="anchored" data-anchor-id="session-overview">Session overview</h2>
 <p>In this workshop you will</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Key
-</div>
-</div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
 </section>
 </section>
-<section id="getting-started" class="level1">
-<h1>Getting started</h1>
+<section id="what-is-reproducibility" class="level1">
+<h1>What is reproducibility?</h1>
+<ul>
+<li><p><strong>Reproducible: Same data + same analysis = identical results</strong>. <em>“… obtaining consistent results using the same input data; computational steps, methods, and code; and conditions of analysis. This definition is synonymous with”computational reproducibility”</em> <span class="citation" data-cites="nationalacademiesofsciences2019">(<a href="#ref-nationalacademiesofsciences2019" role="doc-biblioref">National Academies of Sciences et al. 2019</a>)</span></p></li>
+<li><p>Replicable: Different data + same analysis = qualitatively similar results. The work is not dependent on the specificities of the data.</p></li>
+<li><p>Robust: Same data + different analysis = qualitatively similar or identical results. The work is not dependent on the specificities of the analysis.</p></li>
+<li><p>Generalisable: Different data + different analysis = qualitatively similar results and same conclusions. The findings can be generalised</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions"><img src="images/reproducible-matrix.jpg" class="img-fluid figure-img" alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"></a></p>
+<figcaption class="figure-caption">The Turing Way's definitions of reproducible research <span class="citation" data-cites="community2022">(<a href="#ref-community2022" role="doc-biblioref">Community 2022</a>)</span></figcaption>
+</figure>
+</div>
 </section>
-<section id="exercises" class="level1">
-<h1>Exercises</h1>
-<p>🎬 - Project organisation: folders, files - Project oriented workflow - Naming things - File formats - Data management - google drive: https://www.york.ac.uk/it-services/services/drive/#tab-6 - documenting - organisation within files - Data files. Similarities and differences - Sequences data - Image data - Structure data. - Keeping notes - Readme - Reference managers: Zotero</p>
+<section id="why-reproducibility" class="level1">
+<h1>Why reproducibility?</h1>
+<p>(BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown) -</p>
+</section>
+<section id="project-organisation" class="level1">
+<h1>Project organisation</h1>
+<section id="project-oriented-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="project-oriented-workflow">Project oriented workflow</h2>
+<ul>
+<li>Readme</li>
+<li>folders, files</li>
+</ul>
+</section>
+<section id="naming-things" class="level2">
+<h2 class="anchored" data-anchor-id="naming-things">Naming things</h2>
+</section>
+<section id="file-formats" class="level2">
+<h2 class="anchored" data-anchor-id="file-formats">File formats</h2>
+<p>Data files. - Sequences data - Image data - Structure data</p>
+<p>Similarities and differences</p>
+</section>
+<section id="tidy-data-reminder" class="level2">
+<h2 class="anchored" data-anchor-id="tidy-data-reminder">Tidy data reminder</h2>
 <p>You’re finished!</p>
+</section>
 </section>
 <section id="well-done" class="level1">
 <h1>🥳 Well Done! 🎉</h1>
@@ -354,6 +381,12 @@ Key
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-allaire2022" class="csl-entry" role="listitem">
 Allaire, J. J., Charles Teague, Carlos Scheidegger, Yihui Xie, and Christophe Dervieux. 2022. <em>Quarto</em>. <a href="https://doi.org/10.5281/zenodo.5960048">https://doi.org/10.5281/zenodo.5960048</a>.
+</div>
+<div id="ref-community2022" class="csl-entry" role="listitem">
+Community, The Turing Way. 2022. <em>The Turing Way: A Handbook for Reproducible, Ethical and Collaborative Research</em>. Zenodo. <a href="https://doi.org/10.5281/ZENODO.3233853">https://doi.org/10.5281/ZENODO.3233853</a>.
+</div>
+<div id="ref-nationalacademiesofsciences2019" class="csl-entry" role="listitem">
+National Academies of Sciences, Engineering, Medicine, Policy, Global Affairs, Engineering, Medicine Committee on Science, Public Policy, Board on Research Data, et al. 2019. <em>Understanding Reproducibility and Replicability</em>. National Academies Press (US). <a href="https://www.ncbi.nlm.nih.gov/books/NBK547546/">https://www.ncbi.nlm.nih.gov/books/NBK547546/</a>.
 </div>
 <div id="ref-R-core" class="csl-entry" role="listitem">
 R Core Team. 2023. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.

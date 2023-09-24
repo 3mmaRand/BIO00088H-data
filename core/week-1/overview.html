@@ -65,7 +65,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar floating nav-fixed fullcontent">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -107,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../core/week-1/overview.html">Week 1: xxx</a></li><li class="breadcrumb-item"><a href="../../core/week-1/overview.html">About</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../core/week-1/overview.html">Week 1: Organising analyses</a></li><li class="breadcrumb-item"><a href="../../core/week-1/overview.html">About</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -122,7 +122,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../core/core.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Core Data Analysis for Group Project</span></a>
+ <span class="menu-text">Core Data Analysis</span></a>
   </div>
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -130,7 +130,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Week 1: xxx</span></a>
+ <span class="menu-text">Week 1: Organising analyses</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -166,7 +166,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Week 2: xxx</span></a>
+ <span class="menu-text">Week 2: Workflow tips</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -239,7 +239,16 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning objectives</a></li>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link" data-scroll-target="#instructions">Instructions</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -261,14 +270,17 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>xxxxx</p>
+<p>This week you will revise some essential concepts for scientific computing: file system organisation, file types, working directories and paths. The workshop will cover a rationale for working reproducibly, project oriented workflow, naming things and documenting your work. We will also examine some file types and the concept of tidy data.</p>
 <section id="learning-objectives" class="level3">
 <h3 class="anchored" data-anchor-id="learning-objectives">Learning objectives</h3>
+<p>The successful student will be able to:</p>
 <ul>
-<li>dd</li>
-<li>dd.</li>
-<li>dd</li>
-<li>d</li>
+<li>explain the organisation of files and directories in a file systems including root, home and working directories</li>
+<li>explain absolute and relative file paths</li>
+<li>explain why working reproducibly is important</li>
+<li>know how to use a project-oriented workflow to organise work</li>
+<li>be able to give files human- and machine-readable names</li>
+<li>outline some common biological data file formats</li>
 </ul>
 </section>
 <section id="instructions" class="level3">
@@ -276,19 +288,10 @@ ul.task-list li input[type="checkbox"] {
 <ol type="1">
 <li><p><a href="../../core/week-1/study_before_workshop.html">Prepare</a></p>
 <ol type="i">
-<li>📖 Read <a href="https://3mmarand.github.io/comp4biosci/what_they_forgot.html">What they forgot to teach you about computers</a></li>
+<li>📖 Read Understanding file systems</li>
 </ol></li>
-<li><p><a href="../../core/week-1/workshop.html">Workshop</a></p>
-<ol type="i">
-<li><p>💻 dd.</p></li>
-<li><p>💻 ddd</p></li>
-<li><p>💻 ddd</p></li>
-</ol></li>
-<li><p><a href="../../core/week-1/study_after_workshop.html">Consolidate</a></p>
-<ol type="i">
-<li><p>💻 dd</p></li>
-<li><p>💻 dd</p></li>
-</ol></li>
+<li><p><a href="../../core/week-1/workshop.html">Workshop</a></p></li>
+<li><p><a href="../../core/week-1/study_after_workshop.html">Consolidate</a></p></li>
 </ol>
 
 
