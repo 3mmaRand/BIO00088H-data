@@ -11,7 +11,7 @@ Good organisation is important because you will want to be able to set work asid
 
 ## Week 1 Core 1 Organising reproducible data analyses
 
-This week you will revise some essential concepts for scientific computing: file system organisation, file types, working directories and paths. The workshop will cover a rationale for working reproducibly, project oriented workflow, naming things and documenting your work. We will also examine some file types and concept of tidy data.
+This week you will revise some essential concepts for scientific computing: file system organisation, file types, working directories and paths. The workshop will cover a rationale for working reproducibly, project oriented workflow, naming things and documenting your work. We will also examine some file types and the concept of tidy data.
 
 
 ## Week 2 Core 2 Workflow tips
