@@ -43,8 +43,8 @@ organise your work to make it reproducible. We will cover:
     similar results and same conclusions. The findings can be
     generalised
 
-[![The Turing Way\'s definitions of reproducible research
-[@community2022]](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
+[![The Turing Way\'s definitions of reproducible
+research](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
 
 ## Why does it matter?
 
@@ -180,18 +180,21 @@ Bullet points are good
     There are packages that give session information in R @sessioninfo
     and Python @ostblomjoel2019
 
-    ```{r}
+R: 
+
+    ```
     #| eval: false
     sessioninfo::session_info()
     ```
 
-    ```{python}
+Python:
+
+    ```
     #| eval: false
     import session_info
     session_info.show()
 
     ```
-
 -   Instructions run the code, build reports, and reproduce the figures
     etc
 
