@@ -19,7 +19,8 @@ editor:
 
 ## Session overview
 
-In this workshop we will discuss why reproducibility matters and how to organise your work to make it reproducible. We will cover:
+In this workshop we will discuss why reproducibility matters and how to
+organise your work to make it reproducible. We will cover:
 
 # Reproducibility
 
@@ -42,20 +43,20 @@ In this workshop we will discuss why reproducibility matters and how to organise
     similar results and same conclusions. The findings can be
     generalised
 
-[![The Turing Way's definitions of reproducible
-research](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
+[![The Turing Way\'s definitions of reproducible research
+[@community2022]](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
 
 ## Why does it matter?
 
-
-![futureself, CC-BY-NC, by Julen Colomb](images/future_you.png){fig-alt="Person working at a computer with an offstage person asking 'How is the analysis going?' The person at the computer replies 'Can't understand the date...and the data collector does not answer my emails or calls' Person offstage: 'That's terrible! So cruel! Who did collect the data? I will sack them!' Person at the computer: 'um...I did, 3 years ago.'"}
-
+![futureself, CC-BY-NC, by Julen
+Colomb](images/future_you.png){fig-alt="Person working at a computer with an offstage person asking 'How is the analysis going?' The person at the computer replies 'Can't understand the date...and the data collector does not answer my emails or calls' Person offstage: 'That's terrible! So cruel! Who did collect the data? I will sack them!' Person at the computer: 'um...I did, 3 years ago.'"
+width="400"}
 
 -   Five selfish reasons to work reproducibly. Alternatively, see the
     very entertaining [talk](https://youtu.be/yVT07Sukv9Q)
 
 -   Many high profile cases of work which did not reproduce e.g. Anil
-    Potti unravelled by Baggerly and Coombes @baggerly2009
+    Potti unravelled by @baggerly2009
 
 -   **Will** become standard in Science and publishing e.g OECD Global
     Science Forum Building digital workforce capacity and skills for
@@ -110,21 +111,27 @@ Example
 
 ## Naming things
 
-![](images/xkcd-comic-file-names.png)
-
-![documents, CC-BY-NC, https://xkcd.com/1459/](images/xkcd-comic-file-names.png){fig-alt="A comic figure is looking over the shoulder of another and is shocked by a list of files with names like 'Untitled 138 copy.docx' and 'Untitled 243.doc'. Caption: 'Protip: Never look in someone else's documents folder'"}
+![documents, CC-BY-NC,
+https://xkcd.com/1459/](images/xkcd-comic-file-names.png){fig-alt="A comic figure is looking over the shoulder of another and is shocked by a list of files with names like 'Untitled 138 copy.docx' and 'Untitled 243.doc'. Caption: 'Protip: Never look in someone else's documents folder'"}
 
 Guiding principle - names of files and directories should be systematic
 and readable by humans and machines. Have a convention!
 
-I suggest - no spaces in names 
+I suggest
+
+-   no spaces in names
+
 -   use snake_case or kebab-case rather than CamelCase or dot.case
+
 -   use all lower case except very occasionally where convention is
-otherwise, e.g., README, LICENSE 
--   ordering: use left-padded numbers
-e.g., 01, 02....99 or 001, 002....999 
--   dates [ISO
-8601](https://en.wikipedia.org/wiki/ISO_8601) format: 2020-10-16
+    otherwise, e.g., README, LICENSE
+
+-   ordering: use left-padded numbers e.g., 01, 02....99 or 001,
+    002....999
+
+-   dates [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+    2020-10-16
+
 -   write down your conventions
 
 ```         
@@ -193,8 +200,7 @@ Bullet points are good
 -   Any other information that needed to understand and recreate the
     work
 
-
-```
+```         
 -- liver_transcriptome/
    |__data
       |__raw/
@@ -224,7 +230,6 @@ Bullet points are good
       |__02_volcano_donor_1_vs_donor_3.eps
 ```
 
-
 ## Code comments
 
 -   Comments are notes in the code which are not executed. They are
@@ -234,33 +239,35 @@ Bullet points are good
 
 # Github co-pilot demo
 
-
 # Useful exercises
 
 -   Want github co-pilot?
 
-    🎬  Create a [GitHub account](https://github.com/)
+    🎬 Create a [GitHub account](https://github.com/)
 
-    🎬  Apply for [student benefits](https://education.github.com/discount_requests/application)
+    🎬 Apply for [student
+    benefits](https://education.github.com/discount_requests/application)
 
 -   Update R and RStudio
-    
-    🎬  [Update R]()
 
-    🎬  [Update RStudio](https://posit.co/download/rstudio-desktop/). You will need the prelease [Dessert Sunflower](https://dailies.rstudio.com/rstudio/desert-sunflower/) for github Copilot integration
+    🎬 [Update R]()
+
+    🎬 [Update RStudio](https://posit.co/download/rstudio-desktop/). You
+    will need the prelease [Dessert
+    Sunflower](https://dailies.rstudio.com/rstudio/desert-sunflower/)
+    for github Copilot integration
 
 -   Install package building tools
 
-    🎬  Install Rtools (windows) or Xcode (mac)    
+    🎬 Install Rtools (windows) or Xcode (mac)
 
--   Update packages:     
-    
-    🎬  devtools, tidyverse, BiocManager, readxl  
+-   Update packages:
 
--  Install Quarto
+    🎬 devtools, tidyverse, BiocManager, readxl
 
-    🎬  [Install Quarto](https://quarto.org)
+-   Install Quarto
 
+    🎬 [Install Quarto](https://quarto.org)
 
 You're finished!
 
@@ -269,7 +276,6 @@ You're finished!
 # Independent study following the workshop
 
 [Consolidate](study_after_workshop.qmd)
-
 
 Pages made with R [@R-core], Quarto [@allaire2022], `knitr` [@knitr],
 `kableExtra` [@kableExtra]
