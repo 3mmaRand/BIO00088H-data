@@ -237,12 +237,29 @@ Bullet points are good
 
 # Useful exercises
 
-## Want github co-pilot?
-🎬  Create a [GitHub account](https://github.com/)
+-   Want github co-pilot?
 
-🎬  Apply for [student benefits](https://education.github.com/discount_requests/application)
+    🎬  Create a [GitHub account](https://github.com/)
 
+    🎬  Apply for [student benefits](https://education.github.com/discount_requests/application)
 
+-   Update R and RStudio
+    
+    🎬  [Update R]()
+
+    🎬  [Update RStudio](https://posit.co/download/rstudio-desktop/). You will need the prelease [Dessert Sunflower](https://dailies.rstudio.com/rstudio/desert-sunflower/) for github Copilot integration
+
+-   Install package building tools
+
+    🎬  Install Rtools (windows) or Xcode (mac)    
+
+-   Update packages:     
+    
+    🎬  devtools, tidyverse, BiocManager, readxl  
+
+-  Install Quarto
+
+    🎬  [Install Quarto](https://quarto.org)
 
 
 You're finished!
