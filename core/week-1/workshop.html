@@ -8,7 +8,7 @@
 
 <meta name="author" content="Emma Rand">
 
-<title>Data Analysis for Group Project - Workshop - 🚧 still in Construction</title>
+<title>Data Analysis for Group Project - Workshop</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -267,18 +267,30 @@ div.csl-indent {
   <ul>
   <li><a href="#session-overview" id="toc-session-overview" class="nav-link" data-scroll-target="#session-overview">Session overview</a></li>
   </ul></li>
-  <li><a href="#what-is-reproducibility" id="toc-what-is-reproducibility" class="nav-link" data-scroll-target="#what-is-reproducibility">What is reproducibility?</a></li>
-  <li><a href="#why-reproducibility" id="toc-why-reproducibility" class="nav-link" data-scroll-target="#why-reproducibility">Why reproducibility?</a></li>
-  <li><a href="#project-organisation" id="toc-project-organisation" class="nav-link" data-scroll-target="#project-organisation">Project organisation</a>
+  <li><a href="#reproducibility" id="toc-reproducibility" class="nav-link" data-scroll-target="#reproducibility">Reproducibility</a>
   <ul>
-  <li><a href="#project-oriented-workflow" id="toc-project-oriented-workflow" class="nav-link" data-scroll-target="#project-oriented-workflow">Project oriented workflow</a></li>
-  <li><a href="#naming-things" id="toc-naming-things" class="nav-link" data-scroll-target="#naming-things">Naming things</a></li>
-  <li><a href="#file-formats" id="toc-file-formats" class="nav-link" data-scroll-target="#file-formats">File formats</a></li>
-  <li><a href="#tidy-data-reminder" id="toc-tidy-data-reminder" class="nav-link" data-scroll-target="#tidy-data-reminder">Tidy data reminder</a></li>
+  <li><a href="#what-is-reproducibility" id="toc-what-is-reproducibility" class="nav-link" data-scroll-target="#what-is-reproducibility">What is reproducibility?</a></li>
+  <li><a href="#why-does-it-matter" id="toc-why-does-it-matter" class="nav-link" data-scroll-target="#why-does-it-matter">Why does it matter?</a></li>
+  <li><a href="#how-to-achieve-reproducibility" id="toc-how-to-achieve-reproducibility" class="nav-link" data-scroll-target="#how-to-achieve-reproducibility">How to achieve reproducibility</a></li>
   </ul></li>
+  <li><a href="#scripting" id="toc-scripting" class="nav-link" data-scroll-target="#scripting">Scripting</a>
+  <ul>
+  <li><a href="#rationale-for-scripting" id="toc-rationale-for-scripting" class="nav-link" data-scroll-target="#rationale-for-scripting">Rationale for scripting?</a></li>
+  </ul></li>
+  <li><a href="#organisation" id="toc-organisation" class="nav-link" data-scroll-target="#organisation">Organisation</a>
+  <ul>
+  <li><a href="#project-oriented-workflow" id="toc-project-oriented-workflow" class="nav-link" data-scroll-target="#project-oriented-workflow">Project-oriented workflow</a></li>
+  <li><a href="#naming-things" id="toc-naming-things" class="nav-link" data-scroll-target="#naming-things">Naming things</a></li>
+  </ul></li>
+  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a>
+  <ul>
+  <li><a href="#readme-files" id="toc-readme-files" class="nav-link" data-scroll-target="#readme-files">Readme files</a></li>
+  <li><a href="#code-comments" id="toc-code-comments" class="nav-link" data-scroll-target="#code-comments">Code comments</a></li>
+  </ul></li>
+  <li><a href="#github-co-pilot-demo" id="toc-github-co-pilot-demo" class="nav-link" data-scroll-target="#github-co-pilot-demo">Github co-pilot demo</a></li>
+  <li><a href="#useful-exercises" id="toc-useful-exercises" class="nav-link" data-scroll-target="#useful-exercises">Useful exercises</a></li>
   <li><a href="#well-done" id="toc-well-done" class="nav-link" data-scroll-target="#well-done">🥳 Well Done! 🎉</a></li>
   <li><a href="#independent-study-following-the-workshop" id="toc-independent-study-following-the-workshop" class="nav-link" data-scroll-target="#independent-study-following-the-workshop">Independent study following the workshop</a></li>
-  <li><a href="#the-code-file" id="toc-the-code-file" class="nav-link" data-scroll-target="#the-code-file">The Code file</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
@@ -288,7 +300,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Workshop - 🚧 still in Construction</h1>
+<h1 class="title">Workshop</h1>
 <p class="subtitle lead">Organising Reproducible Data Analyses</p>
 </div>
 
@@ -314,11 +326,13 @@ div.csl-indent {
 <h1>Introduction</h1>
 <section id="session-overview" class="level2">
 <h2 class="anchored" data-anchor-id="session-overview">Session overview</h2>
-<p>In this workshop you will</p>
+<p>In this workshop we will discuss why reproducibility matters and how to organise your work to make it reproducible. We will cover:</p>
 </section>
 </section>
-<section id="what-is-reproducibility" class="level1">
-<h1>What is reproducibility?</h1>
+<section id="reproducibility" class="level1">
+<h1>Reproducibility</h1>
+<section id="what-is-reproducibility" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-reproducibility">What is reproducibility?</h2>
 <ul>
 <li><p><strong>Reproducible: Same data + same analysis = identical results</strong>. <em>“… obtaining consistent results using the same input data; computational steps, methods, and code; and conditions of analysis. This definition is synonymous with”computational reproducibility”</em> <span class="citation" data-cites="nationalacademiesofsciences2019">(<a href="#ref-nationalacademiesofsciences2019" role="doc-biblioref">National Academies of Sciences et al. 2019</a>)</span></p></li>
 <li><p>Replicable: Different data + same analysis = qualitatively similar results. The work is not dependent on the specificities of the data.</p></li>
@@ -328,35 +342,191 @@ div.csl-indent {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions"><img src="images/reproducible-matrix.jpg" class="img-fluid figure-img" alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"></a></p>
-<figcaption class="figure-caption">The Turing Way's definitions of reproducible research <span class="citation" data-cites="community2022">(<a href="#ref-community2022" role="doc-biblioref">Community 2022</a>)</span></figcaption>
+<figcaption class="figure-caption">The Turing Way's definitions of reproducible research</figcaption>
 </figure>
 </div>
 </section>
-<section id="why-reproducibility" class="level1">
-<h1>Why reproducibility?</h1>
-<p>(BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown) -</p>
-</section>
-<section id="project-organisation" class="level1">
-<h1>Project organisation</h1>
-<section id="project-oriented-workflow" class="level2">
-<h2 class="anchored" data-anchor-id="project-oriented-workflow">Project oriented workflow</h2>
+<section id="why-does-it-matter" class="level2">
+<h2 class="anchored" data-anchor-id="why-does-it-matter">Why does it matter?</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/future_you.png" class="img-fluid figure-img" alt="Person working at a computer with an offstage person asking 'How is the analysis going?' The person at the computer replies 'Can't understand the date...and the data collector does not answer my emails or calls' Person offstage: 'That's terrible! So cruel! Who did collect the data? I will sack them!' Person at the computer: 'um...I did, 3 years ago.'" width="400"></p>
+<figcaption class="figure-caption">futureself, CC-BY-NC, by Julen Colomb</figcaption>
+</figure>
+</div>
 <ul>
-<li>Readme</li>
-<li>folders, files</li>
+<li><p>Five selfish reasons to work reproducibly. Alternatively, see the very entertaining <a href="https://youtu.be/yVT07Sukv9Q">talk</a></p></li>
+<li><p>Many high profile cases of work which did not reproduce e.g.&nbsp;Anil Potti unravelled by <span class="citation" data-cites="baggerly2009">Baggerly and Coombes (<a href="#ref-baggerly2009" role="doc-biblioref">2009</a>)</span></p></li>
+<li><p><strong>Will</strong> become standard in Science and publishing e.g OECD Global Science Forum Building digital workforce capacity and skills for data-intensive science <span class="citation" data-cites="oecdglobalscienceforum2020">OECD Global Science Forum (<a href="#ref-oecdglobalscienceforum2020" role="doc-biblioref">2020</a>)</span></p></li>
 </ul>
+</section>
+<section id="how-to-achieve-reproducibility" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-achieve-reproducibility">How to achieve reproducibility</h2>
+<ul>
+<li><p>Scripting</p></li>
+<li><p>Organisation: Project-oriented workflows with file and folder structure, naming things</p></li>
+<li><p>Documentation: Readme files, code comments, metadata, version control</p></li>
+</ul>
+</section>
+</section>
+<section id="scripting" class="level1">
+<h1>Scripting</h1>
+<section id="rationale-for-scripting" class="level2">
+<h2 class="anchored" data-anchor-id="rationale-for-scripting">Rationale for scripting?</h2>
+<ul>
+<li><p>Science is the generation of ideas, designing work to test them and reporting the results.</p></li>
+<li><p>We ensure laboratory and field work is replicable, robust and generalisable by planning and recording in lab books and using standard protocols. Repeating results is still hard.</p></li>
+<li><p>Workflows for computational projects, and the data analysis and reporting of other work can, and should, be 100% reproducible!</p></li>
+<li><p>Scripting is the way to achieve this.</p></li>
+</ul>
+</section>
+</section>
+<section id="organisation" class="level1">
+<h1>Organisation</h1>
+<section id="project-oriented-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="project-oriented-workflow">Project-oriented workflow</h2>
+<ul>
+<li><p>use folders to organise your work</p></li>
+<li><p>you are aiming for structured, systematic and repeatable.</p></li>
+</ul>
+<p>Example</p>
+<pre><code>-- liver_transcriptome/
+   |__data
+      |__raw/
+      |__processed/
+   |__images/
+   |__R/
+   |__reports/
+   |__figures/</code></pre>
 </section>
 <section id="naming-things" class="level2">
 <h2 class="anchored" data-anchor-id="naming-things">Naming things</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/xkcd-comic-file-names.png" class="img-fluid figure-img" alt="A comic figure is looking over the shoulder of another and is shocked by a list of files with names like 'Untitled 138 copy.docx' and 'Untitled 243.doc'. Caption: 'Protip: Never look in someone else's documents folder'"></p>
+<figcaption class="figure-caption">documents, CC-BY-NC, https://xkcd.com/1459/</figcaption>
+</figure>
+</div>
+<p>Guiding principle - names of files and directories should be systematic and readable by humans and machines. Have a convention!</p>
+<p>I suggest</p>
+<ul>
+<li><p>no spaces in names</p></li>
+<li><p>use snake_case or kebab-case rather than CamelCase or dot.case</p></li>
+<li><p>use all lower case except very occasionally where convention is otherwise, e.g., README, LICENSE</p></li>
+<li><p>ordering: use left-padded numbers e.g., 01, 02….99 or 001, 002….999</p></li>
+<li><p>dates <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format: 2020-10-16</p></li>
+<li><p>write down your conventions</p></li>
+</ul>
+<pre><code>-- liver_transcriptome/
+   |__data
+      |__raw/
+         |__2022-03-21_donor_1.csv
+         |__2022-03-21_donor_2.csv
+         |__2022-03-21_donor_3.csv
+         |__2022-05-14_donor_1.csv
+         |__2022-05-14_donor_2.csv
+         |__2022-05-14_donor_3.csv
+      |__processed/
+   |__images/
+   |__code/
+      |__functions/
+         |__summarise.R
+         |__normalise.R
+         |__theme_volcano.R
+      |__01_data_processing.py
+      |__02_exploratory.R
+      |__03_modelling.R
+      |__04_figures.R
+   |__reports/
+      |__01_report.qmd
+      |__02_supplementary.qmd
+   |__figures/
+      |__01_volcano_donor_1_vs_donor_2.eps
+      |__02_volcano_donor_1_vs_donor_3.eps</code></pre>
 </section>
-<section id="file-formats" class="level2">
-<h2 class="anchored" data-anchor-id="file-formats">File formats</h2>
-<p>Data files. - Sequences data - Image data - Structure data</p>
-<p>Similarities and differences</p>
 </section>
-<section id="tidy-data-reminder" class="level2">
-<h2 class="anchored" data-anchor-id="tidy-data-reminder">Tidy data reminder</h2>
+<section id="documentation" class="level1">
+<h1>Documentation</h1>
+<section id="readme-files" class="level2">
+<h2 class="anchored" data-anchor-id="readme-files">Readme files</h2>
+<p>READMEs are a form of documentation which have been widely used for a long time. They contain all the information about the other files in a directory. They can be extensive but need not be. Concise is good. Bullet points are good</p>
+<ul>
+<li><p>Give a project description, brief</p></li>
+<li><p>Outline the folder structure</p></li>
+<li><p>Give software requirements: programs and versions used or required. There are packages that give session information in R <span class="citation" data-cites="sessioninfo">Wickham et al. (<a href="#ref-sessioninfo" role="doc-biblioref">2021</a>)</span> and Python <span class="citation" data-cites="ostblomjoel2019">Ostblom, Joel (<a href="#ref-ostblomjoel2019" role="doc-biblioref">2019</a>)</span></p></li>
+</ul>
+<p>R:</p>
+<pre><code>```
+#| eval: false
+sessioninfo::session_info()
+```</code></pre>
+<p>Python:</p>
+<pre><code>```
+#| eval: false
+import session_info
+session_info.show()
+
+```</code></pre>
+<ul>
+<li><p>Instructions run the code, build reports, and reproduce the figures etc</p></li>
+<li><p>Where to find the data, outputs</p></li>
+<li><p>Any other information that needed to understand and recreate the work</p></li>
+</ul>
+<pre><code>-- liver_transcriptome/
+   |__data
+      |__raw/
+         |__2022-03-21_donor_1.csv
+         |__2022-03-21_donor_2.csv
+         |__2022-03-21_donor_3.csv
+         |__2022-05-14_donor_1.csv
+         |__2022-05-14_donor_2.csv
+         |__2022-05-14_donor_3.csv
+      |__processed/
+   |__images/
+   |__code/
+      |__functions/
+         |__summarise.R
+         |__normalise.R
+         |__theme_volcano.R
+      |__01_data_processing.py
+      |__02_exploratory.R
+      |__03_modelling.R
+      |__04_figures.R
+   |__README.md
+   |__reports/
+      |__01_report.qmd
+      |__02_supplementary.qmd
+   |__figures/
+      |__01_volcano_donor_1_vs_donor_2.eps
+      |__02_volcano_donor_1_vs_donor_3.eps</code></pre>
+</section>
+<section id="code-comments" class="level2">
+<h2 class="anchored" data-anchor-id="code-comments">Code comments</h2>
+<ul>
+<li>Comments are notes in the code which are not executed. They are ignored by the computer but are read by humans. They are used to explain what the code is doing and why. They are also used to temporarily remove code from execution.</li>
+</ul>
+</section>
+</section>
+<section id="github-co-pilot-demo" class="level1">
+<h1>Github co-pilot demo</h1>
+</section>
+<section id="useful-exercises" class="level1">
+<h1>Useful exercises</h1>
+<ul>
+<li><p>Want github co-pilot?</p>
+<p>🎬 Create a <a href="https://github.com/">GitHub account</a></p>
+<p>🎬 Apply for <a href="https://education.github.com/discount_requests/application">student benefits</a></p></li>
+<li><p>Update R and RStudio</p>
+<p>🎬 <a href="">Update R</a></p>
+<p>🎬 <a href="https://posit.co/download/rstudio-desktop/">Update RStudio</a>. You will need the prelease <a href="https://dailies.rstudio.com/rstudio/desert-sunflower/">Dessert Sunflower</a> for github Copilot integration</p></li>
+<li><p>Install package building tools</p>
+<p>🎬 Install Rtools (windows) or Xcode (mac)</p></li>
+<li><p>Update packages:</p>
+<p>🎬 devtools, tidyverse, BiocManager, readxl</p></li>
+<li><p>Install Quarto</p>
+<p>🎬 <a href="https://quarto.org">Install Quarto</a></p></li>
+</ul>
 <p>You’re finished!</p>
-</section>
 </section>
 <section id="well-done" class="level1">
 <h1>🥳 Well Done! 🎉</h1>
@@ -364,11 +534,6 @@ div.csl-indent {
 <section id="independent-study-following-the-workshop" class="level1">
 <h1>Independent study following the workshop</h1>
 <p><a href="../../core/week-1/study_after_workshop.html">Consolidate</a></p>
-</section>
-<section id="the-code-file" class="level1">
-<h1>The Code file</h1>
-<p>These contain all the code needed in the workshop even where it is not visible on the webpage.</p>
-<p>The <a href="../../core/week-1/workshop.html">workshop.qmd</a> file is the file I use to compile the practical. Qmd stands for Quarto markdown. It allows code and ordinary text to be interleaved to produce well-formatted reports including webpages. Right-click on the link and choose Save-As to download. You will be able to open the Qmd file in RStudio. Alternatively, <a href="https://github.com/3mmaRand/">View in Browser</a>. Coding and thinking answers are marked with <code>#---CODING ANSWER---</code> and <code>#---THINKING ANSWER---</code></p>
 <p>Pages made with R <span class="citation" data-cites="R-core">(<a href="#ref-R-core" role="doc-biblioref">R Core Team 2023</a>)</span>, Quarto <span class="citation" data-cites="allaire2022">(<a href="#ref-allaire2022" role="doc-biblioref">Allaire et al. 2022</a>)</span>, <code>knitr</code> <span class="citation" data-cites="knitr">(<a href="#ref-knitr" role="doc-biblioref">Xie 2022</a>)</span>, <code>kableExtra</code> <span class="citation" data-cites="kableExtra">(<a href="#ref-kableExtra" role="doc-biblioref">Zhu 2021</a>)</span></p>
 </section>
 <section id="references" class="level1">
@@ -382,14 +547,23 @@ div.csl-indent {
 <div id="ref-allaire2022" class="csl-entry" role="listitem">
 Allaire, J. J., Charles Teague, Carlos Scheidegger, Yihui Xie, and Christophe Dervieux. 2022. <em>Quarto</em>. <a href="https://doi.org/10.5281/zenodo.5960048">https://doi.org/10.5281/zenodo.5960048</a>.
 </div>
-<div id="ref-community2022" class="csl-entry" role="listitem">
-Community, The Turing Way. 2022. <em>The Turing Way: A Handbook for Reproducible, Ethical and Collaborative Research</em>. Zenodo. <a href="https://doi.org/10.5281/ZENODO.3233853">https://doi.org/10.5281/ZENODO.3233853</a>.
+<div id="ref-baggerly2009" class="csl-entry" role="listitem">
+Baggerly, Keith A, and Kevin R Coombes. 2009. <span>“DERIVING CHEMOSENSITIVITY FROM CELL LINES: FORENSIC BIOINFORMATICS AND REPRODUCIBLE RESEARCH IN HIGH-THROUGHPUT BIOLOGY.”</span> <em>Ann. Appl. Stat.</em> 3 (4): 1309–34. <a href="https://doi.org/10.2307/27801549">https://doi.org/10.2307/27801549</a>.
 </div>
 <div id="ref-nationalacademiesofsciences2019" class="csl-entry" role="listitem">
 National Academies of Sciences, Engineering, Medicine, Policy, Global Affairs, Engineering, Medicine Committee on Science, Public Policy, Board on Research Data, et al. 2019. <em>Understanding Reproducibility and Replicability</em>. National Academies Press (US). <a href="https://www.ncbi.nlm.nih.gov/books/NBK547546/">https://www.ncbi.nlm.nih.gov/books/NBK547546/</a>.
 </div>
+<div id="ref-oecdglobalscienceforum2020" class="csl-entry" role="listitem">
+OECD Global Science Forum. 2020. <span>“Building Digital Workforce Capacity and Skills for Data-Intensive Science.”</span> <a href="http://www.oecd.org/officialdocuments/publicdisplaydocumentpdf/?cote=DSTI/STP/GSF(2020)6/FINAL&amp;docLanguage=En">http://www.oecd.org/officialdocuments/publicdisplaydocumentpdf/?cote=DSTI/STP/GSF(2020)6/FINAL&amp;docLanguage=En</a>.
+</div>
+<div id="ref-ostblomjoel2019" class="csl-entry" role="listitem">
+Ostblom, Joel. 2019. <em>Session<span>_</span>info</em>. <a href="https://gitlab.com/joelostblom/session_info">https://gitlab.com/joelostblom/session_info</a>.
+</div>
 <div id="ref-R-core" class="csl-entry" role="listitem">
 R Core Team. 2023. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
+<div id="ref-sessioninfo" class="csl-entry" role="listitem">
+Wickham, Hadley, Winston Chang, Robert Flight, Kirill Müller, and Jim Hester. 2021. <span>“Sessioninfo: R Session Information.”</span>
 </div>
 <div id="ref-knitr" class="csl-entry" role="listitem">
 Xie, Yihui. 2022. <span>“Knitr: A General-Purpose Package for Dynamic Report Generation in r.”</span> <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
