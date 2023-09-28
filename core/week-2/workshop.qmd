@@ -33,13 +33,26 @@ In this workshop you will
 Data files. 
 -   Sequences data 
 -   Image data 
--  Structure data
+-  Structure data PDB/mmCIF  www.pdb.org
 
 Similarities and differences
 
 🎬 
 
+what is markdown
 
+
+Google Colab
+
+snippets
+
+python
+
+differences between r and python
+
+rstudio terminal
+
+basic bash
 
 You're finished!
 
