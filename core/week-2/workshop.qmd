@@ -28,17 +28,14 @@ library(tidyverse)
 In this workshop you will 
 
 
-::: callout-note
-## Key
+## File formats
 
+Data files. 
+-   Sequences data 
+-   Image data 
+-  Structure data
 
-:::
-
-# Getting started
-
-
-# Exercises
-
+Similarities and differences
 
 🎬 
 
