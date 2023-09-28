@@ -7,11 +7,25 @@
     "text": "About this site"
   },
   {
+    "objectID": "core/week-1/study_after_workshop.html",
+    "href": "core/week-1/study_after_workshop.html",
+    "title": "Independent Study to consolidate this week",
+    "section": "",
+    "text": "These are suggestions"
+  },
+  {
+    "objectID": "core/week-1/study_after_workshop.html#bio00088h-group-research-project-students",
+    "href": "core/week-1/study_after_workshop.html#bio00088h-group-research-project-students",
+    "title": "Independent Study to consolidate this week",
+    "section": "BIO00088H Group Research Project students",
+    "text": "BIO00088H Group Research Project students\n\nRevise previous Data Analysis materials. You can find the version you took on the VLE site for 17C or 08C. However, my latest versions (in development) are here: Data Analysis in R. The Becoming a Bioscientist (BABS) modules replace the Laboratory and Professional Skills modules. BABS1 and BABS1 are stage one, and I’ve tried to improve them over 17C and 08C. The site is also searchable (icon top right)"
+  },
+  {
     "objectID": "core/week-1/study_after_workshop.html#msc-bioinformatics-students-doing-bio00070m",
     "href": "core/week-1/study_after_workshop.html#msc-bioinformatics-students-doing-bio00070m",
     "title": "Independent Study to consolidate this week",
     "section": "MSc Bioinformatics students doing BIO00070M",
-    "text": "MSc Bioinformatics students doing BIO00070M"
+    "text": "MSc Bioinformatics students doing BIO00070M\n\nMake sure you carry out the preparatory work for week 2 of 52M"
   },
   {
     "objectID": "core/week-1/workshop.html",
@@ -39,7 +53,7 @@
     "href": "core/week-1/workshop.html#why-does-it-matter",
     "title": "Workshop",
     "section": "Why does it matter?",
-    "text": "Why does it matter?\n\n\n\nfutureself, CC-BY-NC, by Julen Colomb\n\n\n\nFive selfish reasons to work reproducibly. Alternatively, see the very entertaining talk\nMany high profile cases of work which did not reproduce e.g. Anil Potti unravelled by Baggerly and Coombes (2009)\nWill become standard in Science and publishing e.g OECD Global Science Forum Building digital workforce capacity and skills for data-intensive science OECD Global Science Forum (2020)"
+    "text": "Why does it matter?\n\n\n\nfutureself, CC-BY-NC, by Julen Colomb\n\n\n\nFive selfish reasons to work reproducibly (Markowetz 2015). Alternatively, see the very entertaining talk\nMany high profile cases of work which did not reproduce e.g. Anil Potti unravelled by Baggerly and Coombes (2009)\nWill become standard in Science and publishing e.g OECD Global Science Forum Building digital workforce capacity and skills for data-intensive science (OECD Global Science Forum 2020)"
   },
   {
     "objectID": "core/week-1/workshop.html#how-to-achieve-reproducibility",
@@ -60,21 +74,21 @@
     "href": "core/week-1/workshop.html#project-oriented-workflow",
     "title": "Workshop",
     "section": "Project-oriented workflow",
-    "text": "Project-oriented workflow\n\nuse folders to organise your work\nyou are aiming for structured, systematic and repeatable.\n\nExample\n-- liver_transcriptome/\n   |__data\n      |__raw/\n      |__processed/\n   |__images/\n   |__R/\n   |__reports/\n   |__figures/"
+    "text": "Project-oriented workflow\n\nuse folders to organise your work\nyou are aiming for structured, systematic and repeatable.\ninputs and outputs should be clearly identifiable from structure and/or naming\n\nExamples\n-- liver_transcriptome/\n   |__data\n      |__raw/\n      |__processed/\n   |__images/\n   |__code/\n   |__reports/\n   |__figures/"
   },
   {
     "objectID": "core/week-1/workshop.html#naming-things",
     "href": "core/week-1/workshop.html#naming-things",
     "title": "Workshop",
     "section": "Naming things",
-    "text": "Naming things\n\n\n\ndocuments, CC-BY-NC, https://xkcd.com/1459/\n\n\nGuiding principle - names of files and directories should be systematic and readable by humans and machines. Have a convention!\nI suggest\n\nno spaces in names\nuse snake_case or kebab-case rather than CamelCase or dot.case\nuse all lower case except very occasionally where convention is otherwise, e.g., README, LICENSE\nordering: use left-padded numbers e.g., 01, 02….99 or 001, 002….999\ndates ISO 8601 format: 2020-10-16\nwrite down your conventions\n\n-- liver_transcriptome/\n   |__data\n      |__raw/\n         |__2022-03-21_donor_1.csv\n         |__2022-03-21_donor_2.csv\n         |__2022-03-21_donor_3.csv\n         |__2022-05-14_donor_1.csv\n         |__2022-05-14_donor_2.csv\n         |__2022-05-14_donor_3.csv\n      |__processed/\n   |__images/\n   |__code/\n      |__functions/\n         |__summarise.R\n         |__normalise.R\n         |__theme_volcano.R\n      |__01_data_processing.py\n      |__02_exploratory.R\n      |__03_modelling.R\n      |__04_figures.R\n   |__reports/\n      |__01_report.qmd\n      |__02_supplementary.qmd\n   |__figures/\n      |__01_volcano_donor_1_vs_donor_2.eps\n      |__02_volcano_donor_1_vs_donor_3.eps"
+    "text": "Naming things\n\n\n\ndocuments, CC-BY-NC, https://xkcd.com/1459/\n\n\nGuiding principle - Have a convention! Good file names are:\n\nmachine readable\nhuman readable\nplay nicely with sorting\n\nI suggest\n\nno spaces in names\nuse snake_case or kebab-case rather than CamelCase or dot.case\nuse all lower case except very occasionally where convention is otherwise, e.g., README, LICENSE\nordering: use left-padded numbers e.g., 01, 02….99 or 001, 002….999\ndates ISO 8601 format: 2020-10-16\nwrite down your conventions\n\n-- liver_transcriptome/\n   |__data\n      |__raw/\n         |__2022-03-21_donor_1.csv\n         |__2022-03-21_donor_2.csv\n         |__2022-03-21_donor_3.csv\n         |__2022-05-14_donor_1.csv\n         |__2022-05-14_donor_2.csv\n         |__2022-05-14_donor_3.csv\n      |__processed/\n   |__images/\n   |__code/\n      |__functions/\n         |__summarise.R\n         |__normalise.R\n         |__theme_volcano.R\n      |__01_data_processing.py\n      |__02_exploratory.R\n      |__03_modelling.R\n      |__04_figures.R\n   |__reports/\n      |__01_report.qmd\n      |__02_supplementary.qmd\n   |__figures/\n      |__01_volcano_donor_1_vs_donor_2.eps\n      |__02_volcano_donor_1_vs_donor_3.eps"
   },
   {
     "objectID": "core/week-1/workshop.html#readme-files",
     "href": "core/week-1/workshop.html#readme-files",
     "title": "Workshop",
     "section": "Readme files",
-    "text": "Readme files\nREADMEs are a form of documentation which have been widely used for a long time. They contain all the information about the other files in a directory. They can be extensive but need not be. Concise is good. Bullet points are good\n\nGive a project description, brief\nOutline the folder structure\nGive software requirements: programs and versions used or required. There are packages that give session information in R Wickham et al. (2021) and Python Ostblom, Joel (2019)\n\nR:\n```\n#| eval: false\nsessioninfo::session_info()\n```\nPython:\n```\n#| eval: false\nimport session_info\nsession_info.show()\n\n```\n\nInstructions run the code, build reports, and reproduce the figures etc\nWhere to find the data, outputs\nAny other information that needed to understand and recreate the work\n\n-- liver_transcriptome/\n   |__data\n      |__raw/\n         |__2022-03-21_donor_1.csv\n         |__2022-03-21_donor_2.csv\n         |__2022-03-21_donor_3.csv\n         |__2022-05-14_donor_1.csv\n         |__2022-05-14_donor_2.csv\n         |__2022-05-14_donor_3.csv\n      |__processed/\n   |__images/\n   |__code/\n      |__functions/\n         |__summarise.R\n         |__normalise.R\n         |__theme_volcano.R\n      |__01_data_processing.py\n      |__02_exploratory.R\n      |__03_modelling.R\n      |__04_figures.R\n   |__README.md\n   |__reports/\n      |__01_report.qmd\n      |__02_supplementary.qmd\n   |__figures/\n      |__01_volcano_donor_1_vs_donor_2.eps\n      |__02_volcano_donor_1_vs_donor_3.eps"
+    "text": "Readme files\nREADMEs are a form of documentation which have been widely used for a long time. They contain all the information about the other files in a directory. They can be extensive but need not be. Concise is good. Bullet points are good\n\nGive a project title and description, brief\nstart date, last updated date and contact information\nOutline the folder structure\nGive software requirements: programs and versions used or required. There are packages that give session information in R Wickham et al. (2021) and Python Ostblom, Joel (2019)\n\nR:\nsessioninfo::session_info()\nPython:\nimport session_info\nsession_info.show()\n\nInstructions run the code, build reports, and reproduce the figures etc\nWhere to find the data, outputs\nAny other information that needed to understand and recreate the work\nIdeally, a summary of changes with the date\n\n-- liver_transcriptome/\n   |__data\n      |__raw/\n         |__2022-03-21_donor_1.csv\n         |__2022-03-21_donor_2.csv\n         |__2022-03-21_donor_3.csv\n         |__2022-05-14_donor_1.csv\n         |__2022-05-14_donor_2.csv\n         |__2022-05-14_donor_3.csv\n      |__processed/\n   |__images/\n   |__code/\n      |__functions/\n         |__summarise.R\n         |__normalise.R\n         |__theme_volcano.R\n      |__01_data_processing.py\n      |__02_exploratory.R\n      |__03_modelling.R\n      |__04_figures.R\n   |__README.md\n   |__reports/\n      |__01_report.qmd\n      |__02_supplementary.qmd\n   |__figures/\n      |__01_volcano_donor_1_vs_donor_2.eps\n      |__02_volcano_donor_1_vs_donor_3.eps"
   },
   {
     "objectID": "core/week-1/workshop.html#code-comments",
@@ -95,7 +109,7 @@
     "href": "core/week-2/workshop.html",
     "title": "Workshop",
     "section": "",
-    "text": "In this workshop you will\n\nData files. - Sequences data - Image data - Structure data\nSimilarities and differences\n🎬\nYou’re finished!"
+    "text": "In this workshop you will\n\nData files. - Sequences data - Image data - Structure data PDB/mmCIF www.pdb.org\nSimilarities and differences\n🎬\nwhat is markdown\nGoogle Colab\nsnippets\npython\ndifferences between r and python\nrstudio terminal\nbasic bash\nYou’re finished!"
   },
   {
     "objectID": "core/week-2/workshop.html#session-overview",
@@ -109,7 +123,7 @@
     "href": "core/week-2/workshop.html#file-formats",
     "title": "Workshop",
     "section": "",
-    "text": "Data files. - Sequences data - Image data - Structure data\nSimilarities and differences\n🎬\nYou’re finished!"
+    "text": "Data files. - Sequences data - Image data - Structure data PDB/mmCIF www.pdb.org\nSimilarities and differences\n🎬\nwhat is markdown\nGoogle Colab\nsnippets\npython\ndifferences between r and python\nrstudio terminal\nbasic bash\nYou’re finished!"
   },
   {
     "objectID": "core/week-6/study_after_workshop.html",
