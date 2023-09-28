@@ -43,8 +43,8 @@ organise your work to make it reproducible. We will cover:
     similar results and same conclusions. The findings can be
     generalised
 
-[![The Turing Way\'s definitions of reproducible
-research](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
+[![The Turing Way\'s definitions of reproducible research
+](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
 
 ## Why does it matter?
 
@@ -52,15 +52,16 @@ research](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Colum
 Colomb](images/future_you.png){fig-alt="Person working at a computer with an offstage person asking 'How is the analysis going?' The person at the computer replies 'Can't understand the date...and the data collector does not answer my emails or calls' Person offstage: 'That's terrible! So cruel! Who did collect the data? I will sack them!' Person at the computer: 'um...I did, 3 years ago.'"
 width="400"}
 
--   Five selfish reasons to work reproducibly. Alternatively, see the
-    very entertaining [talk](https://youtu.be/yVT07Sukv9Q)
+-   Five selfish reasons to work reproducibly [@markowetz2015].
+    Alternatively, see the very entertaining
+    [talk](https://youtu.be/yVT07Sukv9Q)
 
 -   Many high profile cases of work which did not reproduce e.g. Anil
     Potti unravelled by @baggerly2009
 
 -   **Will** become standard in Science and publishing e.g OECD Global
     Science Forum Building digital workforce capacity and skills for
-    data-intensive science @oecdglobalscienceforum2020
+    data-intensive science [@oecdglobalscienceforum2020]
 
 ## How to achieve reproducibility
 
@@ -96,7 +97,10 @@ width="400"}
 
 -   you are aiming for structured, systematic and repeatable.
 
-Example
+-   inputs and outputs should be clearly identifiable from structure
+    and/or naming
+
+Examples
 
 ```         
 -- liver_transcriptome/
@@ -104,7 +108,7 @@ Example
       |__raw/
       |__processed/
    |__images/
-   |__R/
+   |__code/
    |__reports/
    |__figures/
 ```
@@ -114,8 +118,13 @@ Example
 ![documents, CC-BY-NC,
 https://xkcd.com/1459/](images/xkcd-comic-file-names.png){fig-alt="A comic figure is looking over the shoulder of another and is shocked by a list of files with names like 'Untitled 138 copy.docx' and 'Untitled 243.doc'. Caption: 'Protip: Never look in someone else's documents folder'"}
 
-Guiding principle - names of files and directories should be systematic
-and readable by humans and machines. Have a convention!
+Guiding principle - Have a convention! Good file names are:
+
+-   machine readable
+
+-   human readable
+
+-   play nicely with sorting
 
 I suggest
 
@@ -172,7 +181,9 @@ long time. They contain all the information about the other files in a
 directory. They can be extensive but need not be. Concise is good.
 Bullet points are good
 
--   Give a project description, brief
+-   Give a project title and description, brief
+
+-   start date, last updated date and contact information
 
 -   Outline the folder structure
 
@@ -180,21 +191,16 @@ Bullet points are good
     There are packages that give session information in R @sessioninfo
     and Python @ostblomjoel2019
 
-R: 
+R:
 
-    ```
-    #| eval: false
-    sessioninfo::session_info()
-    ```
+`sessioninfo::session_info()`
 
 Python:
 
-    ```
-    #| eval: false
-    import session_info
-    session_info.show()
+`import session_info`
 
-    ```
+`session_info.show()`
+
 -   Instructions run the code, build reports, and reproduce the figures
     etc
 
@@ -202,6 +208,8 @@ Python:
 
 -   Any other information that needed to understand and recreate the
     work
+
+-   Ideally, a summary of changes with the date
 
 ```         
 -- liver_transcriptome/
@@ -242,6 +250,8 @@ Python:
 
 # Github co-pilot demo
 
+# Quarto demo
+
 # Useful exercises
 
 -   Want github co-pilot?
@@ -262,7 +272,11 @@ Python:
 
 -   Install package building tools
 
-    🎬 Install Rtools (windows) or Xcode (mac)
+    🎬 Windows Install
+    [Rtools](https://cran.r-project.org/bin/windows/Rtools/rtools43/rtools.html)
+
+    🎬 Mac install [Xcode from Mac App
+    Store](https://apps.apple.com/ca/app/xcode/id497799835?mt=12)
 
 -   Update packages:
 
@@ -271,6 +285,12 @@ Python:
 -   Install Quarto
 
     🎬 [Install Quarto](https://quarto.org)
+
+-   Install Zotero
+
+    🎬 Install [Zotero](https://www.zotero.org/)
+
+    🎬 [Sign up for an account](https://www.zotero.org/user/register)
 
 You're finished!
 
