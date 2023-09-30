@@ -12,6 +12,8 @@ VLE iframe
 
 <iframe src="https://3mmarand.github.io/BIO00088H-data/omics/week-5/study_after_workshop.html" title="Consolidation" allow="fullscreen"  width="800" height="400"></iframe>
 
+<h1><a href="https://3mmarand.github.io/BIO00088H-data/core/week-1/study_before_workshop.html" target="_blank">Direct link</a></h1>
+
 Place holders:
 
 🍂 xxxx data
@@ -28,3 +30,4 @@ Structure (Michael Plevin)
 🐸 Frog development data:
 
 🐭 Stem cell data:
+

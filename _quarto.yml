@@ -2,10 +2,13 @@ project:
   type: website
   output-dir: _site
 
+date: last-modified
+date-format: D MMMM, YYYY
+
 website:
   title: "Data Analysis for Group Project"
   page-footer:
-    left: '`r cffr::cff_to_bibtex("CITATION.cff")`'
+    left: "Rand E (2023). Data Analysis for Group Project. <https://3mmarand.github.io/BIO00088H-data/>."
     right:
       - icon: twitter
         href: https://twitter.com/er_13

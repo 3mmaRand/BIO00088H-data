@@ -46,3 +46,12 @@ Students who successfully complete this module will be able to
 ## What is this site for?
 
 All material is on the VLE so why is this site useful? This site collects everything together in a searchable way. The search icon is on the top right.
+
+
+## Please cite as 
+
+```{r}
+#| echo: false
+cffr::cff_to_bibtex("CITATION.cff")
+```
+
