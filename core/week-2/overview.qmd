@@ -1,6 +1,6 @@
 ---
 title: "Overview"
-subtitle: "Core 2: xxxxxxxxxxxxxx"
+subtitle: "Core 2:  Workflow tips"
 ---
 
 xxxxx
