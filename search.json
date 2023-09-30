@@ -410,7 +410,7 @@
     "href": "index.html",
     "title": "Data Analysis for the Group Research Project",
     "section": "",
-    "text": "You are either\n\nan integrated masters student doing BIO00088H Group Research Project or\nan MSc Bioinformatics student doing BIO00070M Research, Professional and Team Skills\n\nFor students doing BIO00088H, Data Analysis compromises six workshops covering computational skills needed in your project. Three of these are core and taken by everyone and three are specific to your project type. MSc Bioinformatics students do the Core workshops and the ’omics workshops as part of BIO00070M.\nThe project types are:\n\n\n\n\n\n\n\nProject\nData Strand\n\n\n\n\nStem Cells, Jillian Barlow\n’omics, Emma Rand\n\n\nDevelopmental Biology, Betsy Pownal\n’omics, Emma Rand\n\n\nMicrobial Ecology, Kelly Redeker\n’omics, Emma Rand\n\n\nStructural Biochemistry, Michael Plevin\nmolecular-structure, Jon Agirre\n\n\nNeuroscience, Sean Sweeney\nimage-analysis, Richard Bingham\n\n\nxxxxxxxxxxxx, Richard Maguire\nimage-analysis, Richard Bingham\n\n\n\nThe data analysis workshops are:\n\n\n\nWeek\nData Strand\n\n\n\n\n1\nCore 1\n\n\n2\nCore 2\n\n\n3\nomics/structure/images 1\n\n\n4\nomics/structure/images 2\n\n\n5\nomics/structure/images 3\n\n\n6\nCore 3\n\n\n\n\n\nStudents who successfully complete this module will be able to\n\nuse appropriate computational techniques to reproducibly process, analyse and visualise data and generate scientific reports based on project work.\n\n\n\n\nAll material is on the VLE so why is this site useful? This site collects everything together in a searchable way. The search icon is on the top right."
+    "text": "You are either\n\nan integrated masters student doing BIO00088H Group Research Project or\n\nan MSc Bioinformatics student doing BIO00070M Research, Professional and Team Skills\n\nFor students doing BIO00088H, Data Analysis compromises six workshops covering computational skills needed in your project. Three of these are core and taken by everyone and three are specific to your project type. MSc Bioinformatics students do the Core workshops and the ’omics workshops as part of BIO00070M.\nThe project types are:\n\n\n\n\n\n\nProject\nData Strand\n\n\n\nStem Cells, Jillian Barlow\n’omics, Emma Rand\n\n\nDevelopmental Biology, Betsy Pownal\n’omics, Emma Rand\n\n\nMicrobial Ecology, Kelly Redeker\n’omics, Emma Rand\n\n\nStructural Biochemistry, Michael Plevin\nmolecular-structure, Jon Agirre\n\n\nNeuroscience, Sean Sweeney\nimage-analysis, Richard Bingham\n\n\nxxxxxxxxxxxx, Richard Maguire\nimage-analysis, Richard Bingham\n\n\n\nThe data analysis workshops are:\n\n\nWeek\nData Strand\n\n\n\n1\nCore 1\n\n\n2\nCore 2\n\n\n3\nomics/structure/images 1\n\n\n4\nomics/structure/images 2\n\n\n5\nomics/structure/images 3\n\n\n6\nCore 3\n\n\n\n\nStudents who successfully complete this module will be able to\n\nuse appropriate computational techniques to reproducibly process, analyse and visualise data and generate scientific reports based on project work.\n\nAll material is on the VLE so why is this site useful? This site collects everything together in a searchable way. The search icon is on the top right.\n\n\n\nRand E (2023). \"Data Analysis for Group Project.\"\n&lt;https://3mmarand.github.io/BIO00088H-data/&gt;."
   },
   {
     "objectID": "index.html#module-learning-outcome-linked-to-this-content",
@@ -425,5 +425,12 @@
     "title": "Data Analysis for the Group Research Project",
     "section": "",
     "text": "All material is on the VLE so why is this site useful? This site collects everything together in a searchable way. The search icon is on the top right."
+  },
+  {
+    "objectID": "index.html#please-cite-as",
+    "href": "index.html#please-cite-as",
+    "title": "Data Analysis for the Group Research Project",
+    "section": "",
+    "text": "Rand E (2023). \"Data Analysis for Group Project.\"\n&lt;https://3mmarand.github.io/BIO00088H-data/&gt;."
   }
 ]
