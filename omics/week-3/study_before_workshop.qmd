@@ -2,7 +2,13 @@
 title: "Independent Study to prepare for workshop"
 subtitle: "Omics 1: Hello data!"
 author: "Emma Rand"
-format: revealjs
+format: 
+  revealjs:
+    footer: "🔗 [About Omics 1: Hello data!](https://3mmarand.github.io/BIO00088H-data/omics/week-3/overview.html)"
+    slide-number: true
+    chalkboard: true
+    code-link: true
+    code-line-numbers: false
 bibliography: ../../references.bib
 editor: 
   markdown: 
