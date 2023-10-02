@@ -18,6 +18,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -248,7 +282,26 @@ div.csl-indent {
 <a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul>
 <li><a href="#session-overview" id="toc-session-overview" class="nav-link" data-scroll-target="#session-overview">Session overview</a></li>
-  <li><a href="#file-formats" id="toc-file-formats" class="nav-link" data-scroll-target="#file-formats">File formats</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#file-formats" id="toc-file-formats" class="nav-link" data-scroll-target="#file-formats">File formats</a>
+  <ul>
+<li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#the-command-line" id="toc-the-command-line" class="nav-link" data-scroll-target="#the-command-line">The command line</a>
+  <ul>
+<li><a href="#rstudio-terminal" id="toc-rstudio-terminal" class="nav-link" data-scroll-target="#rstudio-terminal">RStudio terminal</a></li>
+  </ul>
+</li>
+  <li><a href="#google-colab" id="toc-google-colab" class="nav-link" data-scroll-target="#google-colab">Google Colab</a></li>
+  <li>
+<a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">Python</a>
+  <ul>
+<li><a href="#differences-between-r-and-python" id="toc-differences-between-r-and-python" class="nav-link" data-scroll-target="#differences-between-r-and-python">Differences between R and python</a></li>
+  <li><a href="#quarto-note-books" id="toc-quarto-note-books" class="nav-link" data-scroll-target="#quarto-note-books">Quarto note books</a></li>
   </ul>
 </li>
   <li><a href="#well-done" id="toc-well-done" class="nav-link" data-scroll-target="#well-done">🥳 Well Done! 🎉</a></li>
@@ -260,7 +313,7 @@ div.csl-indent {
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">Workshop</h1>
-<p class="subtitle lead">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p>
+<p class="subtitle lead">File types, workflow tips and other tools</p>
 </div>
 
 
@@ -277,7 +330,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">30 September, 2023</p>
+      <p class="date">2 October, 2023</p>
     </div>
   </div>
   
@@ -288,17 +341,80 @@ div.csl-indent {
 </header><section id="introduction" class="level1"><h1>Introduction</h1>
 <section id="session-overview" class="level2"><h2 class="anchored" data-anchor-id="session-overview">Session overview</h2>
 <p>In this workshop you will</p>
-</section><section id="file-formats" class="level2"><h2 class="anchored" data-anchor-id="file-formats">File formats</h2>
-<p>Data files. - Sequences data - Image data - Structure data PDB/mmCIF www.pdb.org</p>
+</section></section><section id="file-formats" class="level1"><h1>File formats</h1>
+<p>Types of Data files. - Sequences data - Image data - Structure data PDB/mmCIF www.pdb.org</p>
 <p>Similarities and differences</p>
+<section id="getting-started" class="level2"><h2 class="anchored" data-anchor-id="getting-started">Getting started</h2>
+<p>Make a new RStudio project (use the workflow from in the independent study</p>
+<p>Tips</p>
+<p>multiple cursors</p>
+<p>open a file</p>
+<p>the command pallette,</p>
+<p>segmenting code</p>
+<p>to correct indentation CONTROL+i</p>
+<p>to reformat code CONTROL+SHIFT+A Not perfect but corrects spacing, indentation, multiple commands on lines and assignment with <code>=</code></p>
+<p>to comment and uncomment lines CONTROL+SHIFT+C</p>
+<p>show the margin Tools | Global Options | Code</p>
+<p>restart R</p>
+</section></section><section id="the-command-line" class="level1"><h1>The command line</h1>
+<p>The command line - or shell - is a text interface for your computer. It’s a program that takes in commands, which it passes on to the computer’s operating system to run.</p>
+<section id="rstudio-terminal" class="level2"><h2 class="anchored" data-anchor-id="rstudio-terminal">RStudio terminal</h2>
+<p>The RStudio terminal is a convenient interface to the shell without leaving RStudio. It is useful for running commands that are not available in R. For example, you can use it to run other programs like fasqc, git, ftp, ssh</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>chalkboard.json
+images
+overview.qmd
+study_after_workshop.qmd
+study_before_workshop.html
+study_before_workshop.ipynb
+study_before_workshop.qmd
+workshop.qmd
+workshop.rmarkdown</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>total 140
+-rw-r--r-- 1 runner docker 21116 Oct  2 16:27 chalkboard.json
+drwxr-xr-x 2 runner docker  4096 Oct  2 16:27 images
+-rw-r--r-- 1 runner docker  1096 Oct  2 16:27 overview.qmd
+-rw-r--r-- 1 runner docker   184 Oct  2 16:27 study_after_workshop.qmd
+-rw-r--r-- 1 runner docker 69876 Oct  2 16:34 study_before_workshop.html
+-rw-r--r-- 1 runner docker  4807 Oct  2 16:27 study_before_workshop.ipynb
+-rw-r--r-- 1 runner docker 13029 Oct  2 16:27 study_before_workshop.qmd
+-rw-r--r-- 1 runner docker  2396 Oct  2 16:27 workshop.qmd
+-rw-r--r-- 1 runner docker  2400 Oct  2 16:34 workshop.rmarkdown</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-F</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>chalkboard.json
+images/
+overview.qmd
+study_after_workshop.qmd
+study_before_workshop.html
+study_before_workshop.ipynb
+study_before_workshop.qmd
+workshop.qmd
+workshop.rmarkdown</code></pre>
+</div>
+</div>
+</section></section><section id="google-colab" class="level1"><h1>Google Colab</h1>
+</section><section id="python" class="level1"><h1>Python</h1>
+<section id="differences-between-r-and-python" class="level2"><h2 class="anchored" data-anchor-id="differences-between-r-and-python">Differences between R and python</h2>
+</section><section id="quarto-note-books" class="level2"><h2 class="anchored" data-anchor-id="quarto-note-books">Quarto note books</h2>
+<p>zotero</p>
 <p>🎬</p>
-<p>what is markdown</p>
-<p>Google Colab</p>
-<p>snippets</p>
-<p>python</p>
-<p>differences between r and python</p>
-<p>rstudio terminal</p>
-<p>basic bash</p>
 <p>You’re finished!</p>
 </section></section><section id="well-done" class="level1"><h1>🥳 Well Done! 🎉</h1>
 </section><section id="independent-study-following-the-workshop" class="level1"><h1>Independent study following the workshop</h1>
