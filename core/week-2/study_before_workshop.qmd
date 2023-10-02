@@ -1,6 +1,536 @@
 ---
 title: "Independent Study to prepare for workshop"
-subtitle: "Core 2"
+subtitle: "Core 2: File types, workflow tips and other tools"
+author: "Emma Rand"
+format: 
+  revealjs:
+    css: styles.css
+    footer: "🔗 [About Core 2: File types, workflow tips and other tools](https://3mmarand.github.io/BIO00088H-data/core/week-2/overview.html)"
+    slide-number: true
+    chalkboard: true
+    code-link: true
+    code-line-numbers: false
+bibliography: ../../references.bib
+editor: 
+  markdown: 
+    wrap: 72
+engine: knitr
 ---
 
-1.  📖 Read xxxx
+
+## Overview
+
+
+-   RStudio Projects revisited
+    -   using **`usethis`** package
+    -   Adding a README
+-   Formatting code
+-   Code algorithmically / algebraically.
+
+
+## Reproducibility is a continuum
+
+Some is better than none!
+
+-   Organise your project   
+-   Script **everything**.  
+-   Format code and follow a consistent style.  
+-   Code algorithmically 
+-   Modularise your code: organise into sections and scripts 
+-   Document your project - commenting, READMEs 
+-   Use literate programming e.g., R Markdown or Quarto
+
+. . .
+
+-   More advanced: Version control, continuous integration, environments, containers
+
+# RStudio Projects revisited
+
+## RStudio Projects
+
+::: incremental
+
+-   We used RStudio Projects in stage one but they are so useful, it is
+    worth covering them again in case you are not yet using them.
+    
+-   We will also cover the **`usethis`**workflow to create an RStudio
+    Project.
+
+-   RStudio Projects make it easy to manage working directories and
+    paths because they set the working directory to the RStudio Projects
+    directory automatically.
+:::
+
+## RStudio Projects
+
+::: columns
+::: {.column width="60%"}
+```{bash}
+#| eval: false
+#| code-line-numbers: "1"
+-- stem_cell_rna
+   |__stem_cell_rna.Rproj   
+   |__raw_ data/            
+      |__2019-03-21_donor_1.csv
+   |__README. md
+   |__R/
+      |__01_data_processing.R
+      |__02_exploratory.R
+      |__functions/
+         |__theme_volcano.R
+         |__normalise.R
+```
+:::
+
+::: {.column width="40%"}
+The project directory is the folder at the top [^1]
+:::
+:::
+
+[^1]: Thanks to [Mine
+    Çetinkaya-Rundel](https://mastodon.social/@minecr@fosstodon.org) who
+    helped me work out how to highlight a line
+    <https://gist.github.com/mine-cetinkaya-rundel/3af3415eab70a65be3791c3dcff6e2e3>.
+    Note to futureself: the `engine: knitr` matters.
+
+## RStudio Projects
+
+::: columns
+::: {.column width="60%"}
+```{bash}
+#| eval: false
+#| code-line-numbers: "2"
+-- stem_cell_rna
+   |__stem_cell_rna.Rproj   
+   |__raw_ data/            
+      |__2019-03-21_donor_1.csv
+   |__README. md
+   |__R/
+      |__01_data_processing.R
+      |__02_exploratory.R
+      |__functions/
+         |__theme_volcano.R
+         |__normalise.R
+```
+:::
+
+::: {.column width="40%"}
+the `.RProj` file is directly under the project folder. Its presence is what makes the folder an RStudio Project
+:::
+:::
+
+## RStudio Projects
+
+::: incremental
+-   When you open an RStudio Project, the working directory is set to
+    the Project directory (i.e., the location of the `.Rproj` file).
+
+-   When you use an RStudio Project you do not need to use `setwd()`
+
+-   When someone, including future you, opens the project on another
+    machine, all the paths just work.
+:::
+
+## RStudio Projects
+
+![Jenny Bryan](images/JennyBryan.jpg){fig-align="left" width="400"}
+
+In the words of [Jenny
+Bryan](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/):
+
+> "If the first line of your R script is
+> setwd("C:/Users/jenny/path/that/only/I/have") I will come into your
+> office and SET YOUR COMPUTER ON FIRE"
+
+## Creating an RStudio Project
+
+There are two ways to create an RStudio Project.
+
+1.  Using one of the two menus
+
+2.  Using the **`usethis`** package
+
+## Using a menu
+
+There are two menus:
+
+1.  Top left, File menu
+
+2.  Top Right, drop-down indicated by the `.RProj` icon
+
+They both do the same thing. 
+
+In both cases you choose: New Project \| New Directory \| New Project
+
+. . .
+
+Make sure you "Browse" to the folder you want to create the project.
+
+
+# Using the **`usethis`** package
+
+
+## Using the **`usethis`** package
+
+I occasionally use the menu but I mostly use the **`usethis`** package.
+
+. . .
+
+🎬 Go to RStudio and check your working directory:
+
+```{r}
+#| eval: false
+getwd()
+```
+
+`"C:/Users/er13/Desktop"`
+
+. . .
+
+❔ Is your working directory a good place to create a Project folder?
+
+## Using the **`usethis`** package
+
+If this is a good place to create a Project directory then...
+
+🎬 Create a project with:
+
+```{r}
+#| eval: false
+usethis::create_project("bananas")
+```
+
+## Using the **`usethis`** package
+
+Otherwise
+
+If you want the project directory elsewhere, you will need to give the
+relative path, e.g.
+
+```{r}
+#| eval: false
+usethis::create_project("../Documents/bananas")
+```
+
+## Using the **`usethis`** package
+
+The output will look like this and a new RStudio session will start.
+
+```         
+> usethis::create_project("bananas")
+√ Creating 'bananas/'
+√ Setting active project to 'C:/Users/er13/Desktop/bananas'
+√ Creating 'R/'
+√ Writing 'bananas.Rproj'
+√ Adding '.Rproj.user' to '.gitignore'
+√ Opening 'C:/Users/er13/Desktop/bananas/' in new RStudio session
+√ Setting active project to '<no active project>'
+```
+
+## Using the **`usethis`** package
+
+When you create a new RStudio Project with **`usethis`**:
+
+::: incremental
+
+-   A folder called `bananas/` is created
+-   RStudio starts a new session in `bananas/` i.e., your working
+    directory is now `bananas/`
+-   A folder called `R/` is created
+-   A file called `bananas.Rproj` is created
+-   A file called `.gitignore` is created
+-   A hidden directory called `.Rproj.user` is created
+
+:::
+
+## Using the **`usethis`** package
+
+::: incremental
+-   the `.Rproj` file is what makes the directory an RStudio Project
+
+-   the `Rproj.user` directory is where project-specific temporary files
+    are stored. You don't need to mess with it.
+
+-   the `.gitignore` is used for version controlled projects. If not using git, 
+    you can ignore it.
+:::
+
+## Opening and closing
+
+You can close an RStudio Project with ONE of:
+
+1.  File \| Close Project
+2.  Using the drop-down option on the far right of the tool bar where
+    you see the Project name
+
+. . .
+
+You can open an RStudio Project with ONE of:
+
+1.  File \| Open Project or File \| Recent Projects\
+2.  Using the drop-down option on the far right of the tool bar where
+    you see the Project name\
+3.  Double-clicking an .Rproj file from your file explorer/finder
+
+When you open project, a new R session starts.
+
+# Adding a README
+
+## Using the **`usethis`** package
+
+Once the RStudio project has been created, **`usethis`** helps you
+follow good practice.
+
+. . .
+
+🎬 We can add a README with:
+
+```{r}
+#| eval: false
+usethis::use_readme_md()
+```
+
+. . . 
+
+This creates a file called `README.md`, with a little default text, in
+the Project directory and opens it for editing.
+
+. . .
+
+`md` stands for markdown, it is a extremely widely used text formatting language which is readable as plain text. If you have ever used asterisks to make text bold or italic, you have used markdown.
+
+
+#  Code formatting and style
+
+
+##  Code formatting and style
+
+> "Good coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread."
+
+[The tidyverse style guide](https://style.tidyverse.org/) 
+
+##  Code formatting and style
+
+We have all written code which is hard to read! 
+
+We all improve over time.
+
+```{r}
+#| echo: false
+tweetrmd::include_tweet("https://twitter.com/hadleywickham/status/589068687669243905")
+```
+
+
+
+##  Code formatting and style
+
+Some keys points:
+
+-   be consistent, emulate experienced coders  
+-   use snake_case for variable names (not CamelCase, dot.case)  
+-   use `<-` not `=` for assignment  
+-   use spacing around most operators and after commas  
+-   use indentation  
+-   avoid long lines, break up code blocks with new lines  
+-   use `"` for quoting text (not `'`) unless the text contains double quotes  
+
+
+
+## 😩 Ugly code 😩
+
+
+
+```{r}
+#| eval: false
+data<-read_csv('../data-raw/Y101_Y102_Y201_Y202_Y101-5.csv',skip=2)
+library(janitor);sol<-clean_names(data)
+data=data|>filter(str_detect(description,"OS=Homo sapiens"))|>filter(x1pep=='x')
+data=data|>
+mutate(g=str_extract(description,
+"GN=[^\\s]+")|>str_replace("GN=",''))
+data<-data|>mutate(id=str_extract(accession,"1::[^;]+")|>str_replace("1::",""))
+```
+
+
+## 😩 Ugly code 😩
+
+-   no spacing or indentation
+-   inconsistent splitting of code blocks over lines
+-   inconsistent use of quote characters
+-   no comments
+-   variable names convey no meaning
+-   use of `=` for assignment and inconsistently
+-   multiple commands on a line
+-   library statement in the middle of the analysis
+
+
+
+## 😎 Cool code 😎
+
+
+```{r}
+#| eval: false
+
+# Packages ----------------------------------------------------------------
+library(tidyverse)
+library(janitor)
+
+# Import ------------------------------------------------------------------
+
+# define file name
+file <- "../data-raw/Y101_Y102_Y201_Y202_Y101-5.csv"
+
+# import: column headers and data are from row 3
+solu_protein <- read_csv(file, skip = 2) |>
+  janitor::clean_names()
+
+# Tidy data ----------------------------------------------------------------
+
+# filter out the bovine proteins and those proteins 
+# identified from fewer than 2 peptides
+solu_protein <- solu_protein |>
+  filter(str_detect(description, "OS=Homo sapiens")) |>
+  filter(x1pep == "x")
+
+# Extract the genename from description column to a column
+# of its own
+solu_protein <- solu_protein |>
+  mutate(genename =  str_extract(description,"GN=[^\\s]+") |>
+           str_replace("GN=", ""))
+
+# Extract the top protein identifier from accession column (first
+# Uniprot ID after "1::") to a column of its own
+solu_protein <- solu_protein |>
+  mutate(protid =  str_extract(accession, "1::[^;]+") |>
+           str_replace("1::", ""))
+```
+
+
+## 😎 Cool code 😎
+
+-   `library()` calls collected
+
+-   Uses code sections to make it easier to navigate
+
+-   Uses white space and proper indentation
+
+-   Commented
+
+-   Uses more informative name for the dataframe
+
+
+
+# Code 'algorithmically'
+
+
+##  Code 'algorithmically'
+
+::: incremental
+
+-   Write code which expresses the structure of the problem/solution.
+
+-   Avoid hard coding numbers if at all possible - declare variables instead
+
+-   Declare frequently used values as variables at the start e.g., colour schemes, figure saving settings
+
+:::
+
+## 😩 Hard coding numbers.
+
+::: incremental
+
+-   Suppose we want to calculate the sums of squares, $SS(x)$, for the number of eggs in five nests. 
+
+-   The formula is given by: $\sum (x_i- \bar{x})^2$  
+
+-   We could calculate the mean and copy it, and the individual numbers into the formula
+
+:::
+
+## 😩 Hard coding numbers.
+
+```{r}
+# mean number of eggs per nest
+sum(3, 5, 6, 7, 8) / 5
+
+# ss(x) of number of eggs
+(3 - 5.8)^2 + (5 - 5.8)^2 + (6 - 5.8)^2 + (7 - 5.8)^2 + (8 - 5.8)^2
+```
+
+
+I am coding the calculation of the mean rather using the `mean()` function only to explain what 'coding algorithmically' means using a simple example.
+
+
+## 😩 Hard coding numbers
+
+::: incremental
+
+-   if any of the sample numbers must be altered, all the code needs changing
+
+-   it is hard to tell that the output of the first line is a mean
+
+-   its hard to recognise that the numbers in the mean calculation correspond to those in the next calculation
+
+-   it is hard to tell that 5 is just the number of nests
+
+-   no way of know if numbers are the same by coincidence or they refer to the same thing
+
+:::
+
+## 😎 Better
+
+```{r}
+# eggs each nest
+eggs <- c(3, 5, 6, 7, 8)
+
+# mean eggs per nest
+mean_eggs <- sum(eggs) / length(eggs)
+
+# ss(x) of number of eggs
+sum((eggs - mean_eggs)^2)
+```
+
+## 😎 Better
+
+::: incremental
+
+-   the commenting is similar but it is easier to follow
+
+-   if any of the sample numbers must be altered, only that number needs changing
+
+-   assigning a value you will later use to a variable with a meaningful name allows us to understand the first and second calculations
+
+-   makes use of R's elementwise calculation which resembles the formula (i.e., is expressed as the general rule)
+
+:::
+
+## Summary
+
+::: incremental
+
+-  Use an RStudio project for any R work (you can also incorporate other languages)
+
+-  Write Cool code not Ugly code: space, consistency, indentation, comments, meaningful variable names
+
+-  Write code which expresses the structure of the problem/solution.
+
+-  Avoid hard coding numbers if at all possible - declare variables instead
+
+:::
+
+# Reading
+
+Recommended if you still need convincing to use RStudio Projects
+
+-   [Project-oriented workflow \| What They Forgot to Teach You About
+    R](https://rstats.wtf/projects) [@bryan]
+
+Completely optional suggestions for further reading
+
+-   Ten simple rules for reproducible computational research
+    [@sandve2013]
+-   Good enough practices in scientific computing [@wilson2017]
+-   Excuse Me, Do You Have a Moment to Talk About Version Control?
+    [@bryan2018]
+
+## References
