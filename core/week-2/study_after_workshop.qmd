@@ -7,19 +7,4 @@ format:
     code-summary: "Answer - don't look until you have tried!"
 ---
 
-# Set up
-
-If you have just opened RStudio you will want to load the packages and import the data.
-
-```{r}
-#| code-fold: false
-library(tidyverse)
-library(readxl)
-```
-
-1.  💻 xx.
-
-```{r}
-
- 
-```
+# bbbb
