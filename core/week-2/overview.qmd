@@ -1,33 +1,42 @@
 ---
 title: "Overview"
-subtitle: "Core 2:  Workflow tips"
+subtitle: "Core 2: File types, workflow tips and other tools"
 ---
 
-xxxxx
+This week
 
 ### Learning objectives
 
--   dd
--   dd.
--   dd
--   d
+The successful student will be able to:
+
+-   explain why RStudio are useful/essential and be able to use the **`usethis`** package 
+-   write cool 😎 code not 😩 ugly code
+-   explain the value of code which expresses the structure of the problem/solution.
+-   describe some common file types for biological data
+-   use some useful shortcuts to help write cool 😎 code
+-   know what the command line is and how to use it for simple tasks
+-   use Google colab to run code
+-   recognise some of the differences between R and Python
 
 ### Instructions
 
-1.  [Prepare](study_before_workshop.qmd)
+1.  [Prepare](study_before_workshop.qmd) 20 mins reading on RStudio Projects revisited, formatting code and coding algorithmically
 
-    i.  📖 Read 
 
 2.  [Workshop](workshop.qmd)
 
-    i.  💻 dd.
+    i.  💬 Types of biological data files
 
-    ii. 💻 ddd
+    ii. 🪄 Workflow tips and shortcuts
 
-    iii. 💻 ddd
+    iii. 💻 The command line
+    
+    iv.  💻 Google colab
+    
+    v.  💻 Python
 
 3.  [Consolidate](study_after_workshop.qmd)
 
-    i.  💻 dd
+    i.  💻 not sure yet :)
 
-    ii. 💻 dd
+

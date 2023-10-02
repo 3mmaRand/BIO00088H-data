@@ -1,6 +1,6 @@
 ---
 title: "Workshop"
-subtitle: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+subtitle: "File types, workflow tips and other tools"
 author: "Emma Rand"
 toc: true
 toc-depth: 4
@@ -13,52 +13,101 @@ bibliography: ../../references.bib
 editor: 
   markdown: 
     wrap: 72
+engine: knitr
 ---
-
-```{r}
-#| include: false
-library(tidyverse)
-```
 
 # Introduction
 
-
 ## Session overview
 
-In this workshop you will 
+In this workshop you will
 
 
-## File formats
 
-Data files. 
+# File formats
+
+
+Types of Data files. 
 -   Sequences data 
 -   Image data 
 -  Structure data PDB/mmCIF  www.pdb.org
 
 Similarities and differences
 
-🎬 
+## Getting started
 
-what is markdown
+Make a new RStudio project (use the workflow from in the independent
+study
+
+Tips
+
+multiple cursors
+
+open a file
+
+the command pallette, 
+
+segmenting code
+
+to correct indentation CONTROL+i
+
+to reformat code CONTROL+SHIFT+A Not perfect but corrects spacing, indentation, multiple commands on lines and assignment with `=`
 
 
-Google Colab
+to comment and uncomment lines CONTROL+SHIFT+C
 
-snippets
+show the margin Tools | Global Options | Code
 
-python
 
-differences between r and python
 
-rstudio terminal
 
-basic bash
+restart R
+
+# The command line
+
+The command line - or shell - is a text interface for your computer.
+It's a program that takes in commands, which it passes on to the
+computer's operating system to run.
+
+## RStudio terminal
+
+The RStudio terminal is a convenient interface to the shell without
+leaving RStudio. It is useful for running commands that are not
+available in R. For example, you can use it to run other programs like
+fasqc, git, ftp, ssh
+
+```{bash}
+pwd
+```
+
+```{bash}
+ls
+```
+
+```{bash}
+ls -l
+```
+
+```{bash}
+ls -F
+```
+
+# Google Colab
+
+# Python
+
+## Differences between R and python
+
+
+## Quarto note books
+
+zotero
+
+🎬
 
 You're finished!
 
 # 🥳 Well Done! 🎉
-
-
 
 # Independent study following the workshop
 
@@ -66,10 +115,18 @@ You're finished!
 
 # The Code file
 
-These contain all the code needed in the workshop even where it is not visible on the webpage.
+These contain all the code needed in the workshop even where it is not
+visible on the webpage.
 
-The [workshop.qmd](workshop.qmd) file is the file I use to compile the practical. Qmd stands for Quarto markdown. It allows code and ordinary text to be interleaved to produce well-formatted reports including webpages. Right-click on the link and choose Save-As to download. You will be able to open the Qmd file in RStudio. Alternatively, [View in Browser](https://github.com/3mmaRand/). Coding and thinking answers are marked with `#---CODING ANSWER---` and `#---THINKING ANSWER---`
+The [workshop.qmd](workshop.qmd) file is the file I use to compile the
+practical. Qmd stands for Quarto markdown. It allows code and ordinary
+text to be interleaved to produce well-formatted reports including
+webpages. Right-click on the link and choose Save-As to download. You
+will be able to open the Qmd file in RStudio. Alternatively, [View in
+Browser](https://github.com/3mmaRand/). Coding and thinking answers are
+marked with `#---CODING ANSWER---` and `#---THINKING ANSWER---`
 
-Pages made with R [@R-core], Quarto [@allaire2022], `knitr` [@knitr], `kableExtra` [@kableExtra]
+Pages made with R [@R-core], Quarto [@allaire2022], `knitr` [@knitr],
+`kableExtra` [@kableExtra]
 
 # References
