@@ -284,16 +284,18 @@ div.csl-indent {
 <li><a href="#session-overview" id="toc-session-overview" class="nav-link" data-scroll-target="#session-overview">Session overview</a></li>
   </ul>
 </li>
+  <li><a href="#file-types" id="toc-file-types" class="nav-link" data-scroll-target="#file-types">File types</a></li>
+  <li><a href="#workflow-tips" id="toc-workflow-tips" class="nav-link" data-scroll-target="#workflow-tips">Workflow tips</a></li>
   <li>
-<a href="#file-formats" id="toc-file-formats" class="nav-link" data-scroll-target="#file-formats">File formats</a>
+<a href="#other-tools" id="toc-other-tools" class="nav-link" data-scroll-target="#other-tools">Other tools</a>
   <ul>
-<li><a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started">Getting started</a></li>
+<li>
+<a href="#the-command-line" id="toc-the-command-line" class="nav-link" data-scroll-target="#the-command-line">The command line</a>
+  <ul class="collapse">
+<li><a href="#rstudio-terminal" id="toc-rstudio-terminal" class="nav-link" data-scroll-target="#rstudio-terminal">RStudio terminal</a></li>
+  <li><a href="#using-a-command-line" id="toc-using-a-command-line" class="nav-link" data-scroll-target="#using-a-command-line">Using a command line</a></li>
   </ul>
 </li>
-  <li>
-<a href="#the-command-line" id="toc-the-command-line" class="nav-link" data-scroll-target="#the-command-line">The command line</a>
-  <ul>
-<li><a href="#rstudio-terminal" id="toc-rstudio-terminal" class="nav-link" data-scroll-target="#rstudio-terminal">RStudio terminal</a></li>
   </ul>
 </li>
   <li><a href="#google-colab" id="toc-google-colab" class="nav-link" data-scroll-target="#google-colab">Google Colab</a></li>
@@ -330,7 +332,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2 October, 2023</p>
+      <p class="date">3 October, 2023</p>
     </div>
   </div>
   
@@ -341,33 +343,41 @@ div.csl-indent {
 </header><section id="introduction" class="level1"><h1>Introduction</h1>
 <section id="session-overview" class="level2"><h2 class="anchored" data-anchor-id="session-overview">Session overview</h2>
 <p>In this workshop you will</p>
-</section></section><section id="file-formats" class="level1"><h1>File formats</h1>
+</section></section><section id="file-types" class="level1"><h1>File types</h1>
 <p>Types of Data files. - Sequences data - Image data - Structure data PDB/mmCIF www.pdb.org</p>
 <p>Similarities and differences</p>
-<section id="getting-started" class="level2"><h2 class="anchored" data-anchor-id="getting-started">Getting started</h2>
-<p>Make a new RStudio project (use the workflow from in the independent study</p>
-<p>Tips</p>
-<p>multiple cursors</p>
-<p>open a file</p>
-<p>the command pallette,</p>
-<p>segmenting code</p>
-<p>to correct indentation CONTROL+i</p>
-<p>to reformat code CONTROL+SHIFT+A Not perfect but corrects spacing, indentation, multiple commands on lines and assignment with <code>=</code></p>
-<p>to comment and uncomment lines CONTROL+SHIFT+C</p>
-<p>show the margin Tools | Global Options | Code</p>
+</section><section id="workflow-tips" class="level1"><h1>Workflow tips</h1>
+<p>🎬 Make a new RStudio project (use the workflow from in the independent study</p>
+<ul>
+<li><p>multiple cursors</p></li>
+<li><p>open a file</p></li>
+<li><p>the command palette,</p></li>
+<li><p>segmenting code</p></li>
+<li><p>to correct indentation CONTROL+i</p></li>
+<li><p>to reformat code CONTROL+SHIFT+A Not perfect but corrects spacing, indentation, multiple commands on lines and assignment with <code>=</code></p></li>
+<li><p>to comment and uncomment lines CONTROL+SHIFT+C</p></li>
+<li><p>Tools | Global options | Code | Display | Show margin</p></li>
+<li><p>Tools | Global options | Code | Diagnostic | Provide R style diagnostics</p></li>
+<li><p><a href="https://colorado.posit.co/rsc/rstudio-copilot/#/TitleSlide">GitHub Copilot in RStudio, it’s finally here!</a></p></li>
+</ul>
 <p>restart R</p>
-</section></section><section id="the-command-line" class="level1"><h1>The command line</h1>
+</section><section id="other-tools" class="level1"><h1>Other tools</h1>
+<section id="the-command-line" class="level2"><h2 class="anchored" data-anchor-id="the-command-line">The command line</h2>
 <p>The command line - or shell - is a text interface for your computer. It’s a program that takes in commands, which it passes on to the computer’s operating system to run.</p>
-<section id="rstudio-terminal" class="level2"><h2 class="anchored" data-anchor-id="rstudio-terminal">RStudio terminal</h2>
+<ul>
+<li><p>Windows PowerShell is a command-line in windows. It uses bash-like commands unlike the Command Prompt which uses dos commands (a sort of windows only language). You can open is by going to Start | Windows PowerShell or by searching for it in the search bar.</p></li>
+<li><p>Terminal is the command line in Mac OS X. You can open it by going to Applications | Utilities | Terminal or by searching for it in the Spotlight search bar.</p></li>
+<li><p>git bash. I used the bash shell that comes with <a href="https://git-scm.com/">Git</a></p></li>
+</ul>
+<section id="rstudio-terminal" class="level3"><h3 class="anchored" data-anchor-id="rstudio-terminal">RStudio terminal</h3>
 <p>The RStudio terminal is a convenient interface to the shell without leaving RStudio. It is useful for running commands that are not available in R. For example, you can use it to run other programs like fasqc, git, ftp, ssh</p>
+</section><section id="using-a-command-line" class="level3"><h3 class="anchored" data-anchor-id="using-a-command-line">Using a command line</h3>
+<p>We are going to learn some commands navigating your folders from the command line</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>chalkboard.json
 images
@@ -381,22 +391,22 @@ workshop.rmarkdown</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>total 140
--rw-r--r-- 1 runner docker 21116 Oct  2 16:46 chalkboard.json
-drwxr-xr-x 2 runner docker  4096 Oct  2 16:46 images
--rw-r--r-- 1 runner docker  1597 Oct  2 16:46 overview.qmd
--rw-r--r-- 1 runner docker   184 Oct  2 16:46 study_after_workshop.qmd
--rw-r--r-- 1 runner docker 69876 Oct  2 16:53 study_before_workshop.html
--rw-r--r-- 1 runner docker  4807 Oct  2 16:46 study_before_workshop.ipynb
--rw-r--r-- 1 runner docker 13029 Oct  2 16:46 study_before_workshop.qmd
--rw-r--r-- 1 runner docker  2396 Oct  2 16:46 workshop.qmd
--rw-r--r-- 1 runner docker  2400 Oct  2 16:53 workshop.rmarkdown</code></pre>
+-rw-r--r-- 1 runner docker 21116 Oct  3 17:08 chalkboard.json
+drwxr-xr-x 2 runner docker  4096 Oct  3 17:08 images
+-rw-r--r-- 1 runner docker  1597 Oct  3 17:08 overview.qmd
+-rw-r--r-- 1 runner docker   184 Oct  3 17:08 study_after_workshop.qmd
+-rw-r--r-- 1 runner docker 69876 Oct  3 17:15 study_before_workshop.html
+-rw-r--r-- 1 runner docker  4807 Oct  3 17:08 study_before_workshop.ipynb
+-rw-r--r-- 1 runner docker 13029 Oct  3 17:08 study_before_workshop.qmd
+-rw-r--r-- 1 runner docker  3257 Oct  3 17:08 workshop.qmd
+-rw-r--r-- 1 runner docker  3259 Oct  3 17:15 workshop.rmarkdown</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-F</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-F</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>chalkboard.json
 images/
@@ -409,7 +419,7 @@ workshop.qmd
 workshop.rmarkdown</code></pre>
 </div>
 </div>
-</section></section><section id="google-colab" class="level1"><h1>Google Colab</h1>
+</section></section></section><section id="google-colab" class="level1"><h1>Google Colab</h1>
 </section><section id="python" class="level1"><h1>Python</h1>
 <section id="differences-between-r-and-python" class="level2"><h2 class="anchored" data-anchor-id="differences-between-r-and-python">Differences between R and python</h2>
 </section><section id="quarto-note-books" class="level2"><h2 class="anchored" data-anchor-id="quarto-note-books">Quarto note books</h2>

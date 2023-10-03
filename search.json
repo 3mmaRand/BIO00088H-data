@@ -119,18 +119,11 @@
     "text": "In this workshop you will"
   },
   {
-    "objectID": "core/week-2/workshop.html#getting-started",
-    "href": "core/week-2/workshop.html#getting-started",
+    "objectID": "core/week-2/workshop.html#the-command-line",
+    "href": "core/week-2/workshop.html#the-command-line",
     "title": "Workshop",
-    "section": "Getting started",
-    "text": "Getting started\nMake a new RStudio project (use the workflow from in the independent study\nTips\nmultiple cursors\nopen a file\nthe command pallette,\nsegmenting code\nto correct indentation CONTROL+i\nto reformat code CONTROL+SHIFT+A Not perfect but corrects spacing, indentation, multiple commands on lines and assignment with =\nto comment and uncomment lines CONTROL+SHIFT+C\nshow the margin Tools | Global Options | Code\nrestart R"
-  },
-  {
-    "objectID": "core/week-2/workshop.html#rstudio-terminal",
-    "href": "core/week-2/workshop.html#rstudio-terminal",
-    "title": "Workshop",
-    "section": "RStudio terminal",
-    "text": "RStudio terminal\nThe RStudio terminal is a convenient interface to the shell without leaving RStudio. It is useful for running commands that are not available in R. For example, you can use it to run other programs like fasqc, git, ftp, ssh\n\npwd\n\n/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2\n\n\n\nls\n\nchalkboard.json\nimages\noverview.qmd\nstudy_after_workshop.qmd\nstudy_before_workshop.html\nstudy_before_workshop.ipynb\nstudy_before_workshop.qmd\nworkshop.qmd\nworkshop.rmarkdown\n\n\n\nls -l\n\ntotal 140\n-rw-r--r-- 1 runner docker 21116 Oct  2 16:46 chalkboard.json\ndrwxr-xr-x 2 runner docker  4096 Oct  2 16:46 images\n-rw-r--r-- 1 runner docker  1597 Oct  2 16:46 overview.qmd\n-rw-r--r-- 1 runner docker   184 Oct  2 16:46 study_after_workshop.qmd\n-rw-r--r-- 1 runner docker 69876 Oct  2 16:53 study_before_workshop.html\n-rw-r--r-- 1 runner docker  4807 Oct  2 16:46 study_before_workshop.ipynb\n-rw-r--r-- 1 runner docker 13029 Oct  2 16:46 study_before_workshop.qmd\n-rw-r--r-- 1 runner docker  2396 Oct  2 16:46 workshop.qmd\n-rw-r--r-- 1 runner docker  2400 Oct  2 16:53 workshop.rmarkdown\n\n\n\nls -F\n\nchalkboard.json\nimages/\noverview.qmd\nstudy_after_workshop.qmd\nstudy_before_workshop.html\nstudy_before_workshop.ipynb\nstudy_before_workshop.qmd\nworkshop.qmd\nworkshop.rmarkdown"
+    "section": "The command line",
+    "text": "The command line\nThe command line - or shell - is a text interface for your computer. It’s a program that takes in commands, which it passes on to the computer’s operating system to run.\n\nWindows PowerShell is a command-line in windows. It uses bash-like commands unlike the Command Prompt which uses dos commands (a sort of windows only language). You can open is by going to Start | Windows PowerShell or by searching for it in the search bar.\nTerminal is the command line in Mac OS X. You can open it by going to Applications | Utilities | Terminal or by searching for it in the Spotlight search bar.\ngit bash. I used the bash shell that comes with Git\n\nRStudio terminal\nThe RStudio terminal is a convenient interface to the shell without leaving RStudio. It is useful for running commands that are not available in R. For example, you can use it to run other programs like fasqc, git, ftp, ssh\nUsing a command line\nWe are going to learn some commands navigating your folders from the command line\n\n\n\n\nls\n\nchalkboard.json\nimages\noverview.qmd\nstudy_after_workshop.qmd\nstudy_before_workshop.html\nstudy_before_workshop.ipynb\nstudy_before_workshop.qmd\nworkshop.qmd\nworkshop.rmarkdown\n\n\n\nls -l\n\ntotal 140\n-rw-r--r-- 1 runner docker 21116 Oct  3 17:08 chalkboard.json\ndrwxr-xr-x 2 runner docker  4096 Oct  3 17:08 images\n-rw-r--r-- 1 runner docker  1597 Oct  3 17:08 overview.qmd\n-rw-r--r-- 1 runner docker   184 Oct  3 17:08 study_after_workshop.qmd\n-rw-r--r-- 1 runner docker 69876 Oct  3 17:15 study_before_workshop.html\n-rw-r--r-- 1 runner docker  4807 Oct  3 17:08 study_before_workshop.ipynb\n-rw-r--r-- 1 runner docker 13029 Oct  3 17:08 study_before_workshop.qmd\n-rw-r--r-- 1 runner docker  3257 Oct  3 17:08 workshop.qmd\n-rw-r--r-- 1 runner docker  3259 Oct  3 17:15 workshop.rmarkdown\n\n\n\nls -F\n\nchalkboard.json\nimages/\noverview.qmd\nstudy_after_workshop.qmd\nstudy_before_workshop.html\nstudy_before_workshop.ipynb\nstudy_before_workshop.qmd\nworkshop.qmd\nworkshop.rmarkdown"
   },
   {
     "objectID": "core/week-2/workshop.html#differences-between-r-and-python",
