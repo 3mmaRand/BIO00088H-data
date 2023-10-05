@@ -284,26 +284,34 @@ div.csl-indent {
 <li><a href="#session-overview" id="toc-session-overview" class="nav-link" data-scroll-target="#session-overview">Session overview</a></li>
   </ul>
 </li>
-  <li><a href="#file-types" id="toc-file-types" class="nav-link" data-scroll-target="#file-types">File types</a></li>
+  <li>
+<a href="#file-types" id="toc-file-types" class="nav-link" data-scroll-target="#file-types">File types</a>
+  <ul>
+<li><a href="#omics" id="toc-omics" class="nav-link" data-scroll-target="#omics">Omics</a></li>
+  <li><a href="#images" id="toc-images" class="nav-link" data-scroll-target="#images">Images</a></li>
+  <li><a href="#structure" id="toc-structure" class="nav-link" data-scroll-target="#structure">Structure</a></li>
+  </ul>
+</li>
   <li><a href="#workflow-tips" id="toc-workflow-tips" class="nav-link" data-scroll-target="#workflow-tips">Workflow tips</a></li>
   <li>
 <a href="#other-tools" id="toc-other-tools" class="nav-link" data-scroll-target="#other-tools">Other tools</a>
   <ul>
-<li>
-<a href="#the-command-line" id="toc-the-command-line" class="nav-link" data-scroll-target="#the-command-line">The command line</a>
+<li><a href="#the-command-line" id="toc-the-command-line" class="nav-link" data-scroll-target="#the-command-line">The command line</a></li>
+  <li>
+<a href="#rstudio-terminal" id="toc-rstudio-terminal" class="nav-link" data-scroll-target="#rstudio-terminal">RStudio terminal</a>
   <ul class="collapse">
-<li><a href="#rstudio-terminal" id="toc-rstudio-terminal" class="nav-link" data-scroll-target="#rstudio-terminal">RStudio terminal</a></li>
-  <li><a href="#using-a-command-line" id="toc-using-a-command-line" class="nav-link" data-scroll-target="#using-a-command-line">Using a command line</a></li>
+<li><a href="#navigating-your-file-system" id="toc-navigating-your-file-system" class="nav-link" data-scroll-target="#navigating-your-file-system">Navigating your file system</a></li>
+  <li><a href="#make-a-directory" id="toc-make-a-directory" class="nav-link" data-scroll-target="#make-a-directory">Make a directory</a></li>
   </ul>
 </li>
   </ul>
 </li>
-  <li><a href="#google-colab" id="toc-google-colab" class="nav-link" data-scroll-target="#google-colab">Google Colab</a></li>
+  <li><a href="#quarto-notebooks" id="toc-quarto-notebooks" class="nav-link" data-scroll-target="#quarto-notebooks">Quarto notebooks</a></li>
+  <li><a href="#google-colaboratory" id="toc-google-colaboratory" class="nav-link" data-scroll-target="#google-colaboratory">Google Colaboratory</a></li>
   <li>
 <a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">Python</a>
   <ul>
 <li><a href="#differences-between-r-and-python" id="toc-differences-between-r-and-python" class="nav-link" data-scroll-target="#differences-between-r-and-python">Differences between R and python</a></li>
-  <li><a href="#quarto-note-books" id="toc-quarto-note-books" class="nav-link" data-scroll-target="#quarto-note-books">Quarto note books</a></li>
   </ul>
 </li>
   <li><a href="#well-done" id="toc-well-done" class="nav-link" data-scroll-target="#well-done">🥳 Well Done! 🎉</a></li>
@@ -332,7 +340,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">3 October, 2023</p>
+      <p class="date">5 October, 2023</p>
     </div>
   </div>
   
@@ -344,42 +352,84 @@ div.csl-indent {
 <section id="session-overview" class="level2"><h2 class="anchored" data-anchor-id="session-overview">Session overview</h2>
 <p>In this workshop you will</p>
 </section></section><section id="file-types" class="level1"><h1>File types</h1>
-<p>Types of Data files. - Sequences data - Image data - Structure data PDB/mmCIF www.pdb.org</p>
-<p>Similarities and differences</p>
-</section><section id="workflow-tips" class="level1"><h1>Workflow tips</h1>
-<p>🎬 Make a new RStudio project (use the workflow from in the independent study</p>
+<section id="omics" class="level2"><h2 class="anchored" data-anchor-id="omics">Omics</h2>
+<ul>
+<li><p>gene/transcript/protein/metabolite expression</p></li>
+<li><p><a href="data/xlaevis_counts_S30.csv">transcriptomics 1</a></p></li>
+<li><p><a href="data/tf_lthsc.csv">transcriptomics 2</a></p></li>
+<li><p><a href="data/Y101_Y102_Y201_Y202_Y101-5.csv">proteomics</a></p></li>
+</ul></section><section id="images" class="level2"><h2 class="anchored" data-anchor-id="images">Images</h2>
+<p><a href="data/control_merged.tif">control_merged.tif</a></p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/ijtiff/">ijtiff</a></span><span class="op">)</span></span>
+<span><span class="va">img</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://docs.ropensci.org/ijtiff/reference/read_tif.html">read_tif</a></span><span class="op">(</span><span class="st">"data/control_merged.tif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">img</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3] [,4] [,5] [,6]
+[1,]    0    0    0    0    0    0
+[2,]    0    0    0    0    0    0
+[3,]    0    0    0    0    0    0
+[4,]    0    0    0    0    0    0
+[5,]    0    0    0    0    0    0
+[6,]    0    0    0    0    0    0
+── TIFF tags ───────────────────────────────────────────────────────────────────</code></pre>
+</div>
+</div>
+<ul>
+<li><p>an image at least one and usually more matrices of numbers representing the intensity of light at each pixel in the image</p></li>
+<li><p>the number of matrices depends on the number of ‘channels’ in the image</p></li>
+<li><p>a channel is a colour in the image</p></li>
+<li><p>a frame is a single image in a series of images</p></li>
+<li><p>we might normally call this a multi-dimensional array: x and y coordinates of the pixels are 2 dimensions, the channel is the third dimension and time is the forth dimension</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://docs.ropensci.org/ijtiff/reference/display.html">display</a></span><span class="op">(</span><span class="va">img</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="workshop_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section><section id="structure" class="level2"><h2 class="anchored" data-anchor-id="structure">Structure</h2>
+<p><a href="data/1cq2.pdb">1cq2.pdb</a></p>
+</section></section><section id="workflow-tips" class="level1"><h1>Workflow tips</h1>
+<p>🎬 Start by making a new RStudio project (use the workflow from in the independent study). Add some files</p>
 <ul>
 <li><p>multiple cursors</p></li>
-<li><p>open a file</p></li>
-<li><p>the command palette,</p></li>
-<li><p>segmenting code</p></li>
+<li><p>open a file/function or find a variable CONTROL+.</p></li>
+<li><p>the command palette CONTROL+SHIFT+P</p></li>
+<li><p>segmenting code CONTROL+SHIFT+R</p></li>
 <li><p>to correct indentation CONTROL+i</p></li>
 <li><p>to reformat code CONTROL+SHIFT+A Not perfect but corrects spacing, indentation, multiple commands on lines and assignment with <code>=</code></p></li>
 <li><p>to comment and uncomment lines CONTROL+SHIFT+C</p></li>
 <li><p>Tools | Global options | Code | Display | Show margin</p></li>
 <li><p>Tools | Global options | Code | Diagnostic | Provide R style diagnostics</p></li>
 <li><p><a href="https://colorado.posit.co/rsc/rstudio-copilot/#/TitleSlide">GitHub Copilot in RStudio, it’s finally here!</a></p></li>
-</ul>
-<p>restart R</p>
-</section><section id="other-tools" class="level1"><h1>Other tools</h1>
+</ul></section><section id="other-tools" class="level1"><h1>Other tools</h1>
 <section id="the-command-line" class="level2"><h2 class="anchored" data-anchor-id="the-command-line">The command line</h2>
 <p>The command line - or shell - is a text interface for your computer. It’s a program that takes in commands, which it passes on to the computer’s operating system to run.</p>
 <ul>
 <li><p>Windows PowerShell is a command-line in windows. It uses bash-like commands unlike the Command Prompt which uses dos commands (a sort of windows only language). You can open is by going to Start | Windows PowerShell or by searching for it in the search bar.</p></li>
 <li><p>Terminal is the command line in Mac OS X. You can open it by going to Applications | Utilities | Terminal or by searching for it in the Spotlight search bar.</p></li>
 <li><p>git bash. I used the bash shell that comes with <a href="https://git-scm.com/">Git</a></p></li>
-</ul>
-<section id="rstudio-terminal" class="level3"><h3 class="anchored" data-anchor-id="rstudio-terminal">RStudio terminal</h3>
+</ul></section><section id="rstudio-terminal" class="level2"><h2 class="anchored" data-anchor-id="rstudio-terminal">RStudio terminal</h2>
 <p>The RStudio terminal is a convenient interface to the shell without leaving RStudio. It is useful for running commands that are not available in R. For example, you can use it to run other programs like fasqc, git, ftp, ssh</p>
-</section><section id="using-a-command-line" class="level3"><h3 class="anchored" data-anchor-id="using-a-command-line">Using a command line</h3>
-<p>We are going to learn some commands navigating your folders from the command line</p>
+<section id="navigating-your-file-system" class="level3"><h3 class="anchored" data-anchor-id="navigating-your-file-system">Navigating your file system</h3>
+<p>Several commands are frequently used to create, inspect, rename, and delete files and directories.</p>
+<pre><code>$</code></pre>
+<p>The dollar sign is the prompt (like <code>&gt;</code> on the R console), which shows us that the shell is waiting for input.</p>
+<p>You can find out where you are using the <code>pwd</code> command, which stands for “print working directory”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>chalkboard.json
+<pre><code>/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2</code></pre>
+</div>
+</div>
+<p>You can find out what you can see with <code>ls</code> which stands for “list”.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>data
 images
 overview.qmd
 study_after_workshop.qmd
@@ -387,44 +437,137 @@ study_before_workshop.html
 study_before_workshop.ipynb
 study_before_workshop.qmd
 workshop.qmd
-workshop.rmarkdown</code></pre>
+workshop.rmarkdown
+workshop_files</code></pre>
 </div>
 </div>
+<p>You might have noticed that unlike R, the commands do not have brackets after them. Instead, options (or switches) are given after the command. For example, we can modify the <code>ls</code> command to give us more information with the <code>-l</code> option, which stands for “long”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>total 140
--rw-r--r-- 1 runner docker 21116 Oct  3 17:08 chalkboard.json
-drwxr-xr-x 2 runner docker  4096 Oct  3 17:08 images
--rw-r--r-- 1 runner docker  1597 Oct  3 17:08 overview.qmd
--rw-r--r-- 1 runner docker   184 Oct  3 17:08 study_after_workshop.qmd
--rw-r--r-- 1 runner docker 69876 Oct  3 17:15 study_before_workshop.html
--rw-r--r-- 1 runner docker  4807 Oct  3 17:08 study_before_workshop.ipynb
--rw-r--r-- 1 runner docker 13029 Oct  3 17:08 study_before_workshop.qmd
--rw-r--r-- 1 runner docker  3257 Oct  3 17:08 workshop.qmd
--rw-r--r-- 1 runner docker  3259 Oct  3 17:15 workshop.rmarkdown</code></pre>
+drwxr-xr-x 2 runner docker  4096 Oct  5 18:24 data
+drwxr-xr-x 2 runner docker  4096 Oct  5 18:24 images
+-rw-r--r-- 1 runner docker  1597 Oct  5 18:24 overview.qmd
+-rw-r--r-- 1 runner docker   184 Oct  5 18:24 study_after_workshop.qmd
+-rw-r--r-- 1 runner docker 69876 Oct  5 18:28 study_before_workshop.html
+-rw-r--r-- 1 runner docker  4807 Oct  5 18:24 study_before_workshop.ipynb
+-rw-r--r-- 1 runner docker 13029 Oct  5 18:24 study_before_workshop.qmd
+-rw-r--r-- 1 runner docker  9153 Oct  5 18:24 workshop.qmd
+-rw-r--r-- 1 runner docker  9172 Oct  5 18:28 workshop.rmarkdown
+drwxr-xr-x 3 runner docker  4096 Oct  5 18:28 workshop_files</code></pre>
 </div>
 </div>
+<p>You can use more than one option at once. The <code>-h</code> option stands for “human readable” and makes the file sizes easier to understand for humans:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-F</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-hl</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>chalkboard.json
-images/
-overview.qmd
-study_after_workshop.qmd
-study_before_workshop.html
-study_before_workshop.ipynb
-study_before_workshop.qmd
-workshop.qmd
-workshop.rmarkdown</code></pre>
+<pre><code>total 140K
+drwxr-xr-x 2 runner docker 4.0K Oct  5 18:24 data
+drwxr-xr-x 2 runner docker 4.0K Oct  5 18:24 images
+-rw-r--r-- 1 runner docker 1.6K Oct  5 18:24 overview.qmd
+-rw-r--r-- 1 runner docker  184 Oct  5 18:24 study_after_workshop.qmd
+-rw-r--r-- 1 runner docker  69K Oct  5 18:28 study_before_workshop.html
+-rw-r--r-- 1 runner docker 4.7K Oct  5 18:24 study_before_workshop.ipynb
+-rw-r--r-- 1 runner docker  13K Oct  5 18:24 study_before_workshop.qmd
+-rw-r--r-- 1 runner docker 9.0K Oct  5 18:24 workshop.qmd
+-rw-r--r-- 1 runner docker 9.0K Oct  5 18:28 workshop.rmarkdown
+drwxr-xr-x 3 runner docker 4.0K Oct  5 18:28 workshop_files</code></pre>
 </div>
 </div>
-</section></section></section><section id="google-colab" class="level1"><h1>Google Colab</h1>
+<p>The <code>-a</code> option stands for “all” and shows us all the files, including hidden files.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-alh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>total 148K
+drwxr-xr-x 5 runner docker 4.0K Oct  5 18:28 .
+drwxr-xr-x 5 runner docker 4.0K Oct  5 18:27 ..
+drwxr-xr-x 2 runner docker 4.0K Oct  5 18:24 data
+drwxr-xr-x 2 runner docker 4.0K Oct  5 18:24 images
+-rw-r--r-- 1 runner docker 1.6K Oct  5 18:24 overview.qmd
+-rw-r--r-- 1 runner docker  184 Oct  5 18:24 study_after_workshop.qmd
+-rw-r--r-- 1 runner docker  69K Oct  5 18:28 study_before_workshop.html
+-rw-r--r-- 1 runner docker 4.7K Oct  5 18:24 study_before_workshop.ipynb
+-rw-r--r-- 1 runner docker  13K Oct  5 18:24 study_before_workshop.qmd
+-rw-r--r-- 1 runner docker 9.0K Oct  5 18:24 workshop.qmd
+-rw-r--r-- 1 runner docker 9.0K Oct  5 18:28 workshop.rmarkdown
+drwxr-xr-x 3 runner docker 4.0K Oct  5 18:28 workshop_files</code></pre>
+</div>
+</div>
+<p>You can move about with the <code>cd</code> command, which stands for “change directory”. You can use it to move into a directory by specifying the path to the directory:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> data</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> data</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2/data
+/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2
+/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2/data</code></pre>
+</div>
+</div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> 1cq2.pdb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>HEADER    OXYGEN STORAGE/TRANSPORT                04-AUG-99   1CQ2              
+TITLE     NEUTRON STRUCTURE OF FULLY DEUTERATED SPERM WHALE MYOGLOBIN AT 2.0    
+TITLE    2 ANGSTROM                                                             
+COMPND    MOL_ID: 1;                                                            
+COMPND   2 MOLECULE: MYOGLOBIN;                                                 
+COMPND   3 CHAIN: A;                                                            
+COMPND   4 ENGINEERED: YES;                                                     
+COMPND   5 OTHER_DETAILS: PROTEIN IS FULLY DEUTERATED                           
+SOURCE    MOL_ID: 1;                                                            
+SOURCE   2 ORGANISM_SCIENTIFIC: PHYSETER CATODON;      </code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-20</span> data/1cq2.pdb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre><code>HEADER    OXYGEN STORAGE/TRANSPORT                04-AUG-99   1CQ2              
+TITLE     NEUTRON STRUCTURE OF FULLY DEUTERATED SPERM WHALE MYOGLOBIN AT 2.0    
+TITLE    2 ANGSTROM                                                             
+COMPND    MOL_ID: 1;                                                            
+COMPND   2 MOLECULE: MYOGLOBIN;                                                 
+COMPND   3 CHAIN: A;                                                            
+COMPND   4 ENGINEERED: YES;                                                     
+COMPND   5 OTHER_DETAILS: PROTEIN IS FULLY DEUTERATED                           
+SOURCE    MOL_ID: 1;                                                            
+SOURCE   2 ORGANISM_SCIENTIFIC: PHYSETER CATODON;                               
+SOURCE   3 ORGANISM_COMMON: SPERM WHALE;                                        
+SOURCE   4 ORGANISM_TAXID: 9755;                                                
+SOURCE   5 EXPRESSION_SYSTEM: ESCHERICHIA COLI;                                 
+SOURCE   6 EXPRESSION_SYSTEM_TAXID: 562;                                        
+SOURCE   7 EXPRESSION_SYSTEM_VECTOR_TYPE: PLASMID;                              
+SOURCE   8 EXPRESSION_SYSTEM_PLASMID: PET15A                                    
+KEYWDS    HELICAL, GLOBULAR, ALL-HYDROGEN CONTAINING STRUCTURE, OXYGEN STORAGE- 
+KEYWDS   2 TRANSPORT COMPLEX                                                    
+EXPDTA    NEUTRON DIFFRACTION                                                   
+AUTHOR    F.SHU,V.RAMAKRISHNAN,B.P.SCHOENBORN   </code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> 1cq2.pdb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>less</code> is a program that displays the contents of a file, one page at a time. It is useful for viewing large files because it does not load the whole file into memory before displaying it. Instead, it reads and displays a few lines at a time. You can navigate forward through the file with the spacebar, and backwards with the b key. Press q to quit.</p>
+<p>A wildcard is a character that can be used as a substitute for any of a class of characters in a search, The most common wildcard characters are the asterisk (*) and the question mark (?).</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="pp">*</span>.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>cp</code> stands for “copy”. You can copy a file from one directory to another by giving <code>cp</code> the path to the file you want to copy and the path to the destination directory.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> 1cq2.pdb copy_of_1cq2.pdb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> 1cq2.pdb ../copy_of_1cq2.pdb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> 1cq2.pdb ../bob.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To delete a file use the <code>rm</code> command, which stands for “remove”.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> ../bob.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>but be careful because the file will be gone forever. There is no “are you sure?” or undo.</p>
+<p>To move a file from one directory to another, use the <code>mv</code> command. <code>mv</code> works like <code>cp</code> except that it also deletes the original file.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> ../copy_of_1cq2.pdb .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section><section id="make-a-directory" class="level3"><h3 class="anchored" data-anchor-id="make-a-directory">Make a directory</h3>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> mynewdir</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section></section><section id="quarto-notebooks" class="level1"><h1>Quarto notebooks</h1>
+<p>Demo</p>
+<ul>
+<li>Text and executable cells</li>
+<li>Formatting</li>
+<li>Markdown</li>
+<li>More in Week 6</li>
+</ul></section><section id="google-colaboratory" class="level1"><h1>Google Colaboratory</h1>
+<p><a href="https://colab.research.google.com/">Google Colab</a> allows you to write and execute python code in your browser.</p>
+<p>Demo</p>
 </section><section id="python" class="level1"><h1>Python</h1>
 <section id="differences-between-r-and-python" class="level2"><h2 class="anchored" data-anchor-id="differences-between-r-and-python">Differences between R and python</h2>
-</section><section id="quarto-note-books" class="level2"><h2 class="anchored" data-anchor-id="quarto-note-books">Quarto note books</h2>
-<p>zotero</p>
-<p>🎬</p>
+<p>Demo</p>
 <p>You’re finished!</p>
 </section></section><section id="well-done" class="level1"><h1>🥳 Well Done! 🎉</h1>
 </section><section id="independent-study-following-the-workshop" class="level1"><h1>Independent study following the workshop</h1>
