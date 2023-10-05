@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
-
+<meta name="generator" content="quarto-1.4.395">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Emma Rand">
-
 <title>Data Analysis for Group Project - Independent Study to prepare for workshop</title>
 <style>
 code{white-space: pre-wrap;}
@@ -21,8 +18,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
-
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
@@ -39,14 +89,19 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
   "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -59,19 +114,13 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-
-<link rel="stylesheet" href="../../styles.css">
+}</script><script src="../../site_libs/twitter-widget-0.0.1/widgets.js"></script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><link rel="stylesheet" href="../../styles.css">
 </head>
-
-<body class="nav-sidebar floating nav-fixed fullcontent">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Data Analysis for Group Project</span>
     </a>
@@ -82,44 +131,38 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
- <span class="menu-text">Welcome!</span></a>
+<li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Welcome!</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../core/core.html" rel="" target="" aria-current="page">
- <span class="menu-text">Core</span></a>
+    <a class="nav-link active" href="../../core/core.html" aria-current="page"> 
+<span class="menu-text">Core</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../omics/omics.html" rel="" target="">
- <span class="menu-text">Omics</span></a>
+    <a class="nav-link" href="../../omics/omics.html"> 
+<span class="menu-text">Omics</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
-    <a href="https://twitter.com/er_13" rel="" title="Emma's Twitter" class="quarto-navigation-tool px-1" aria-label="Emma's Twitter"><i class="bi bi-twitter"></i></a>
-    <a href="https://github.com/3mmaRand/BIO00088H-data" rel="" title="BIO00088H-data GitHub" class="quarto-navigation-tool px-1" aria-label="BIO00088H-data GitHub"><i class="bi bi-github"></i></a>
+</div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+    <a href="https://twitter.com/er_13" title="Emma's Twitter" class="quarto-navigation-tool px-1" aria-label="Emma's Twitter"><i class="bi bi-twitter"></i></a>
+    <a href="https://github.com/3mmaRand/BIO00088H-data" title="BIO00088H-data GitHub" class="quarto-navigation-tool px-1" aria-label="BIO00088H-data GitHub"><i class="bi bi-github"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../core/week-2/overview.html">Week 2: Workflow tips</a></li><li class="breadcrumb-item"><a href="../../core/week-2/study_before_workshop.html">Prepare!</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../core/week-2/overview.html">Week 2: Workflow tips</a></li><li class="breadcrumb-item"><a href="../../core/week-2/study_before_workshop.html">Prepare!</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-    <div class="sidebar-menu-container"> 
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../core/core.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Core Data Analysis</span></a>
@@ -135,8 +178,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../core/week-1/overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
@@ -161,7 +204,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -171,8 +214,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../core/week-2/overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
@@ -197,7 +240,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -207,8 +250,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../core/week-6/overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
@@ -233,31 +276,35 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="study_before_workshop.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../core/week-2/overview.html">Week 2: Workflow tips</a></li><li class="breadcrumb-item"><a href="../../core/week-2/study_before_workshop.html">Prepare!</a></li></ol></nav><div class="quarto-title">
 <h1 class="title">Independent Study to prepare for workshop</h1>
-<p class="subtitle lead">Core 2</p>
+<p class="subtitle lead">Core 2: File types, workflow tips and other tools</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Emma Rand </p>
+          </div>
+  </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">31 August, 2023</p>
+      <p class="date">3 October, 2023</p>
     </div>
   </div>
   
@@ -265,16 +312,437 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
-</header>
 
+</header><section id="overview" class="level2"><h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<ul>
+<li>RStudio Projects revisited
+<ul>
+<li>using <strong><code>usethis</code></strong> package</li>
+<li>Adding a README</li>
+</ul>
+</li>
+<li>Formatting code</li>
+<li>Code algorithmically / algebraically.</li>
+</ul></section><section id="reproducibility-is-a-continuum" class="level2"><h2 class="anchored" data-anchor-id="reproducibility-is-a-continuum">Reproducibility is a continuum</h2>
+<p>Some is better than none!</p>
+<ul>
+<li>Organise your project<br>
+</li>
+<li>Script <strong>everything</strong>.<br>
+</li>
+<li>Format code and follow a consistent style.<br>
+</li>
+<li>Code algorithmically</li>
+<li>Modularise your code: organise into sections and scripts</li>
+<li>Document your project - commenting, READMEs</li>
+<li>Use literate programming e.g., R Markdown or Quarto</li>
+</ul>
+<p>. . .</p>
+<ul>
+<li>More advanced: Version control, continuous integration, environments, containers</li>
+</ul></section><section id="rstudio-projects-revisited" class="level1"><h1>RStudio Projects revisited</h1>
+<section id="rstudio-projects" class="level2"><h2 class="anchored" data-anchor-id="rstudio-projects">RStudio Projects</h2>
+<div class="incremental">
+<ul class="incremental">
+<li><p>We used RStudio Projects in stage one but they are so useful, it is worth covering them again in case you are not yet using them.</p></li>
+<li><p>We will also cover the <strong><code>usethis</code></strong>workflow to create an RStudio Project.</p></li>
+<li><p>RStudio Projects make it easy to manage working directories and paths because they set the working directory to the RStudio Projects directory automatically.</p></li>
+</ul>
+</div>
+</section><section id="rstudio-projects-1" class="level2"><h2 class="anchored" data-anchor-id="rstudio-projects-1">RStudio Projects</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="ex">--</span> stem_cell_rna</span>
+<span id="cb1-2"><a href="#cb1-2"></a>   <span class="kw">|</span><span class="ex">__stem_cell_rna.Rproj</span>   </span>
+<span id="cb1-3"><a href="#cb1-3"></a>   <span class="kw">|</span><span class="ex">__raw_</span> data/            </span>
+<span id="cb1-4"><a href="#cb1-4"></a>      <span class="kw">|</span><span class="ex">__2019-03-21_donor_1.csv</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>   <span class="kw">|</span><span class="ex">__README.</span> md</span>
+<span id="cb1-6"><a href="#cb1-6"></a>   <span class="kw">|</span><span class="ex">__R/</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a>      <span class="kw">|</span><span class="ex">__01_data_processing.R</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>      <span class="kw">|</span><span class="ex">__02_exploratory.R</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a>      <span class="kw">|</span><span class="ex">__functions/</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a>         <span class="kw">|</span><span class="ex">__theme_volcano.R</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>         <span class="kw">|</span><span class="ex">__normalise.R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:40%;">
+<p>The project directory is the folder at the top <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</div>
+</div>
+</section><section id="rstudio-projects-2" class="level2"><h2 class="anchored" data-anchor-id="rstudio-projects-2">RStudio Projects</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="ex">--</span> stem_cell_rna</span>
+<span id="cb2-2"><a href="#cb2-2"></a>   <span class="kw">|</span><span class="ex">__stem_cell_rna.Rproj</span>   </span>
+<span id="cb2-3"><a href="#cb2-3"></a>   <span class="kw">|</span><span class="ex">__raw_</span> data/            </span>
+<span id="cb2-4"><a href="#cb2-4"></a>      <span class="kw">|</span><span class="ex">__2019-03-21_donor_1.csv</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>   <span class="kw">|</span><span class="ex">__README.</span> md</span>
+<span id="cb2-6"><a href="#cb2-6"></a>   <span class="kw">|</span><span class="ex">__R/</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>      <span class="kw">|</span><span class="ex">__01_data_processing.R</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>      <span class="kw">|</span><span class="ex">__02_exploratory.R</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>      <span class="kw">|</span><span class="ex">__functions/</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>         <span class="kw">|</span><span class="ex">__theme_volcano.R</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>         <span class="kw">|</span><span class="ex">__normalise.R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div><div class="column" style="width:40%;">
+<p>the <code>.RProj</code> file is directly under the project folder. Its presence is what makes the folder an RStudio Project</p>
+</div>
+</div>
+</section><section id="rstudio-projects-3" class="level2"><h2 class="anchored" data-anchor-id="rstudio-projects-3">RStudio Projects</h2>
+<div class="incremental">
+<ul class="incremental">
+<li><p>When you open an RStudio Project, the working directory is set to the Project directory (i.e., the location of the <code>.Rproj</code> file).</p></li>
+<li><p>When you use an RStudio Project you do not need to use <code><a href="https://rdrr.io/r/base/getwd.html">setwd()</a></code></p></li>
+<li><p>When someone, including future you, opens the project on another machine, all the paths just work.</p></li>
+</ul>
+</div>
+</section><section id="rstudio-projects-4" class="level2"><h2 class="anchored" data-anchor-id="rstudio-projects-4">RStudio Projects</h2>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure"><p><img src="images/JennyBryan.jpg" class="img-fluid figure-img" width="400"></p>
+<figcaption>Jenny Bryan</figcaption></figure>
+</div>
+<p>In the words of <a href="https://www.tidyverse.org/blog/2017/12/workflow-vs-script/">Jenny Bryan</a>:</p>
+<blockquote class="blockquote">
+<p>“If the first line of your R script is setwd(”C:/Users/jenny/path/that/only/I/have”) I will come into your office and SET YOUR COMPUTER ON FIRE”</p>
+</blockquote>
+</section><section id="creating-an-rstudio-project" class="level2"><h2 class="anchored" data-anchor-id="creating-an-rstudio-project">Creating an RStudio Project</h2>
+<p>There are two ways to create an RStudio Project.</p>
 <ol type="1">
-<li>📖 Read xxxx</li>
+<li><p>Using one of the two menus</p></li>
+<li><p>Using the <strong><code>usethis</code></strong> package</p></li>
+</ol></section><section id="using-a-menu" class="level2"><h2 class="anchored" data-anchor-id="using-a-menu">Using a menu</h2>
+<p>There are two menus:</p>
+<ol type="1">
+<li><p>Top left, File menu</p></li>
+<li><p>Top Right, drop-down indicated by the <code>.RProj</code> icon</p></li>
 </ol>
+<p>They both do the same thing.</p>
+<p>In both cases you choose: New Project | New Directory | New Project</p>
+<p>. . .</p>
+<p>Make sure you “Browse” to the folder you want to create the project.</p>
+</section></section><section id="using-the-usethis-package" class="level1"><h1>Using the <strong><code>usethis</code></strong> package</h1>
+<section id="using-the-usethis-package-1" class="level2"><h2 class="anchored" data-anchor-id="using-the-usethis-package-1">Using the <strong><code>usethis</code></strong> package</h2>
+<p>I occasionally use the menu but I mostly use the <strong><code>usethis</code></strong> package.</p>
+<p>. . .</p>
+<p>🎬 Go to RStudio and check your working directory:</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>"C:/Users/er13/Desktop"</code></p>
+<p>. . .</p>
+<p>❔ Is your working directory a good place to create a Project folder?</p>
+</section><section id="using-the-usethis-package-2" class="level2"><h2 class="anchored" data-anchor-id="using-the-usethis-package-2">Using the <strong><code>usethis</code></strong> package</h2>
+<p>If this is a good place to create a Project directory then…</p>
+<p>🎬 Create a project with:</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/create_package.html">create_project</a></span><span class="op">(</span><span class="st">"bananas"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="using-the-usethis-package-3" class="level2"><h2 class="anchored" data-anchor-id="using-the-usethis-package-3">Using the <strong><code>usethis</code></strong> package</h2>
+<p>Otherwise</p>
+<p>If you want the project directory elsewhere, you will need to give the relative path, e.g.</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/create_package.html">create_project</a></span><span class="op">(</span><span class="st">"../Documents/bananas"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="using-the-usethis-package-4" class="level2"><h2 class="anchored" data-anchor-id="using-the-usethis-package-4">Using the <strong><code>usethis</code></strong> package</h2>
+<p>The output will look like this and a new RStudio session will start.</p>
+<pre><code>&gt; usethis::create_project("bananas")
+√ Creating 'bananas/'
+√ Setting active project to 'C:/Users/er13/Desktop/bananas'
+√ Creating 'R/'
+√ Writing 'bananas.Rproj'
+√ Adding '.Rproj.user' to '.gitignore'
+√ Opening 'C:/Users/er13/Desktop/bananas/' in new RStudio session
+√ Setting active project to '&lt;no active project&gt;'</code></pre>
+</section><section id="using-the-usethis-package-5" class="level2"><h2 class="anchored" data-anchor-id="using-the-usethis-package-5">Using the <strong><code>usethis</code></strong> package</h2>
+<p>When you create a new RStudio Project with <strong><code>usethis</code></strong>:</p>
+<div class="incremental">
+<ul class="incremental">
+<li>A folder called <code>bananas/</code> is created</li>
+<li>RStudio starts a new session in <code>bananas/</code> i.e., your working directory is now <code>bananas/</code>
+</li>
+<li>A folder called <code>R/</code> is created</li>
+<li>A file called <code>bananas.Rproj</code> is created</li>
+<li>A file called <code>.gitignore</code> is created</li>
+<li>A hidden directory called <code>.Rproj.user</code> is created</li>
+</ul>
+</div>
+</section><section id="using-the-usethis-package-6" class="level2"><h2 class="anchored" data-anchor-id="using-the-usethis-package-6">Using the <strong><code>usethis</code></strong> package</h2>
+<div class="incremental">
+<ul class="incremental">
+<li><p>the <code>.Rproj</code> file is what makes the directory an RStudio Project</p></li>
+<li><p>the <code>Rproj.user</code> directory is where project-specific temporary files are stored. You don’t need to mess with it.</p></li>
+<li><p>the <code>.gitignore</code> is used for version controlled projects. If not using git, you can ignore it.</p></li>
+</ul>
+</div>
+</section><section id="opening-and-closing" class="level2"><h2 class="anchored" data-anchor-id="opening-and-closing">Opening and closing</h2>
+<p>You can close an RStudio Project with ONE of:</p>
+<ol type="1">
+<li>File | Close Project</li>
+<li>Using the drop-down option on the far right of the tool bar where you see the Project name</li>
+</ol>
+<p>. . .</p>
+<p>You can open an RStudio Project with ONE of:</p>
+<ol type="1">
+<li>File | Open Project or File | Recent Projects<br>
+</li>
+<li>Using the drop-down option on the far right of the tool bar where you see the Project name<br>
+</li>
+<li>Double-clicking an .Rproj file from your file explorer/finder</li>
+</ol>
+<p>When you open project, a new R session starts.</p>
+</section></section><section id="adding-a-readme" class="level1"><h1>Adding a README</h1>
+<section id="using-the-usethis-package-7" class="level2"><h2 class="anchored" data-anchor-id="using-the-usethis-package-7">Using the <strong><code>usethis</code></strong> package</h2>
+<p>Once the RStudio project has been created, <strong><code>usethis</code></strong> helps you follow good practice.</p>
+<p>. . .</p>
+<p>🎬 We can add a README with:</p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_readme_rmd.html">use_readme_md</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>. . .</p>
+<p>This creates a file called <code>README.md</code>, with a little default text, in the Project directory and opens it for editing.</p>
+<p>. . .</p>
+<p><code>md</code> stands for markdown, it is a extremely widely used text formatting language which is readable as plain text. If you have ever used asterisks to make text bold or italic, you have used markdown.</p>
+</section></section><section id="code-formatting-and-style" class="level1"><h1>Code formatting and style</h1>
+<section id="code-formatting-and-style-1" class="level2"><h2 class="anchored" data-anchor-id="code-formatting-and-style-1">Code formatting and style</h2>
+<blockquote class="blockquote">
+<p>“Good coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread.”</p>
+</blockquote>
+<p><a href="https://style.tidyverse.org/">The tidyverse style guide</a></p>
+</section><section id="code-formatting-and-style-2" class="level2"><h2 class="anchored" data-anchor-id="code-formatting-and-style-2">Code formatting and style</h2>
+<p>We have all written code which is hard to read!</p>
+<p>We all improve over time.</p>
+<div class="cell">
+<div class="cell-output-display">
+<blockquote class="twitter-tweet blockquote" data-width="550" data-lang="en" data-dnt="true" data-theme="light">
+<p lang="en" dir="ltr">The only way to write good code is to write tons of shitty code first. Feeling shame about bad code stops you from getting to good code</p>— Hadley Wickham (@hadleywickham) <a href="https://twitter.com/hadleywickham/status/589068687669243905?ref_src=twsrc%5Etfw">April 17, 2015</a>
+</blockquote>
+
+</div>
+</div>
+</section><section id="code-formatting-and-style-3" class="level2"><h2 class="anchored" data-anchor-id="code-formatting-and-style-3">Code formatting and style</h2>
+<p>Some keys points:</p>
+<ul>
+<li>be consistent, emulate experienced coders<br>
+</li>
+<li>use snake_case for variable names (not CamelCase, dot.case)<br>
+</li>
+<li>use <code>&lt;-</code> not <code>=</code> for assignment<br>
+</li>
+<li>use spacing around most operators and after commas<br>
+</li>
+<li>use indentation<br>
+</li>
+<li>avoid long lines, break up code blocks with new lines<br>
+</li>
+<li>use <code>"</code> for quoting text (not <code>'</code>) unless the text contains double quotes</li>
+</ul></section><section id="ugly-code" class="level2"><h2 class="anchored" data-anchor-id="ugly-code">😩 Ugly code 😩</h2>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data</span><span class="op">&lt;-</span><span class="fu">read_csv</span><span class="op">(</span><span class="st">'../data-raw/Y101_Y102_Y201_Y202_Y101-5.csv'</span>,skip<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sfirke/janitor">janitor</a></span><span class="op">)</span>;<span class="va">sol</span><span class="op">&lt;-</span><span class="fu"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
+<span><span class="va">data</span><span class="op">=</span><span class="va">data</span><span class="op">|&gt;</span><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="fu">str_detect</span><span class="op">(</span><span class="va">description</span>,<span class="st">"OS=Homo sapiens"</span><span class="op">)</span><span class="op">)</span><span class="op">|&gt;</span><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">x1pep</span><span class="op">==</span><span class="st">'x'</span><span class="op">)</span></span>
+<span><span class="va">data</span><span class="op">=</span><span class="va">data</span><span class="op">|&gt;</span></span>
+<span><span class="fu">mutate</span><span class="op">(</span>g<span class="op">=</span><span class="fu">str_extract</span><span class="op">(</span><span class="va">description</span>,</span>
+<span><span class="st">"GN=[^\\s]+"</span><span class="op">)</span><span class="op">|&gt;</span><span class="fu">str_replace</span><span class="op">(</span><span class="st">"GN="</span>,<span class="st">''</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">data</span><span class="op">&lt;-</span><span class="va">data</span><span class="op">|&gt;</span><span class="fu">mutate</span><span class="op">(</span>id<span class="op">=</span><span class="fu">str_extract</span><span class="op">(</span><span class="va">accession</span>,<span class="st">"1::[^;]+"</span><span class="op">)</span><span class="op">|&gt;</span><span class="fu">str_replace</span><span class="op">(</span><span class="st">"1::"</span>,<span class="st">""</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="ugly-code-1" class="level2"><h2 class="anchored" data-anchor-id="ugly-code-1">😩 Ugly code 😩</h2>
+<ul>
+<li>no spacing or indentation</li>
+<li>inconsistent splitting of code blocks over lines</li>
+<li>inconsistent use of quote characters</li>
+<li>no comments</li>
+<li>variable names convey no meaning</li>
+<li>use of <code>=</code> for assignment and inconsistently</li>
+<li>multiple commands on a line</li>
+<li>library statement in the middle of the analysis</li>
+</ul></section><section id="cool-code" class="level2"><h2 class="anchored" data-anchor-id="cool-code">😎 Cool code 😎</h2>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Packages ----------------------------------------------------------------</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sfirke/janitor">janitor</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Import ------------------------------------------------------------------</span></span>
+<span></span>
+<span><span class="co"># define file name</span></span>
+<span><span class="va">file</span> <span class="op">&lt;-</span> <span class="st">"../data-raw/Y101_Y102_Y201_Y202_Y101-5.csv"</span></span>
+<span></span>
+<span><span class="co"># import: column headers and data are from row 3</span></span>
+<span><span class="va">solu_protein</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="va">file</span>, skip <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Tidy data ----------------------------------------------------------------</span></span>
+<span></span>
+<span><span class="co"># filter out the bovine proteins and those proteins </span></span>
+<span><span class="co"># identified from fewer than 2 peptides</span></span>
+<span><span class="va">solu_protein</span> <span class="op">&lt;-</span> <span class="va">solu_protein</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span><span class="op">(</span><span class="va">description</span>, <span class="st">"OS=Homo sapiens"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">x1pep</span> <span class="op">==</span> <span class="st">"x"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Extract the genename from description column to a column</span></span>
+<span><span class="co"># of its own</span></span>
+<span><span class="va">solu_protein</span> <span class="op">&lt;-</span> <span class="va">solu_protein</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>genename <span class="op">=</span>  <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span><span class="op">(</span><span class="va">description</span>,<span class="st">"GN=[^\\s]+"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>           <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace</a></span><span class="op">(</span><span class="st">"GN="</span>, <span class="st">""</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Extract the top protein identifier from accession column (first</span></span>
+<span><span class="co"># Uniprot ID after "1::") to a column of its own</span></span>
+<span><span class="va">solu_protein</span> <span class="op">&lt;-</span> <span class="va">solu_protein</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>protid <span class="op">=</span>  <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span><span class="op">(</span><span class="va">accession</span>, <span class="st">"1::[^;]+"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>           <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace</a></span><span class="op">(</span><span class="st">"1::"</span>, <span class="st">""</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="cool-code-1" class="level2"><h2 class="anchored" data-anchor-id="cool-code-1">😎 Cool code 😎</h2>
+<ul>
+<li><p><code><a href="https://rdrr.io/r/base/library.html">library()</a></code> calls collected</p></li>
+<li><p>Uses code sections to make it easier to navigate</p></li>
+<li><p>Uses white space and proper indentation</p></li>
+<li><p>Commented</p></li>
+<li><p>Uses more informative name for the dataframe</p></li>
+</ul></section></section><section id="code-algorithmically" class="level1"><h1>Code ‘algorithmically’</h1>
+<section id="code-algorithmically-1" class="level2"><h2 class="anchored" data-anchor-id="code-algorithmically-1">Code ‘algorithmically’</h2>
+<div class="incremental">
+<ul class="incremental">
+<li><p>Write code which expresses the structure of the problem/solution.</p></li>
+<li><p>Avoid hard coding numbers if at all possible - declare variables instead</p></li>
+<li><p>Declare frequently used values as variables at the start e.g., colour schemes, figure saving settings</p></li>
+</ul>
+</div>
+</section><section id="hard-coding-numbers." class="level2"><h2 class="anchored" data-anchor-id="hard-coding-numbers.">😩 Hard coding numbers.</h2>
+<div class="incremental">
+<ul class="incremental">
+<li><p>Suppose we want to calculate the sums of squares, <span class="math inline">\(SS(x)\)</span>, for the number of eggs in five nests.</p></li>
+<li><p>The formula is given by: <span class="math inline">\(\sum (x_i- \bar{x})^2\)</span></p></li>
+<li><p>We could calculate the mean and copy it, and the individual numbers into the formula</p></li>
+</ul>
+</div>
+</section><section id="hard-coding-numbers.-1" class="level2"><h2 class="anchored" data-anchor-id="hard-coding-numbers.-1">😩 Hard coding numbers.</h2>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># mean number of eggs per nest</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">7</span>, <span class="fl">8</span><span class="op">)</span> <span class="op">/</span> <span class="fl">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.8</code></pre>
+</div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ss(x) of number of eggs</span></span>
+<span><span class="op">(</span><span class="fl">3</span> <span class="op">-</span> <span class="fl">5.8</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="op">(</span><span class="fl">5</span> <span class="op">-</span> <span class="fl">5.8</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="op">(</span><span class="fl">6</span> <span class="op">-</span> <span class="fl">5.8</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="op">(</span><span class="fl">7</span> <span class="op">-</span> <span class="fl">5.8</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="op">(</span><span class="fl">8</span> <span class="op">-</span> <span class="fl">5.8</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 14.8</code></pre>
+</div>
+</div>
+<p>I am coding the calculation of the mean rather using the <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> function only to explain what ‘coding algorithmically’ means using a simple example.</p>
+</section><section id="hard-coding-numbers" class="level2"><h2 class="anchored" data-anchor-id="hard-coding-numbers">😩 Hard coding numbers</h2>
+<div class="incremental">
+<ul class="incremental">
+<li><p>if any of the sample numbers must be altered, all the code needs changing</p></li>
+<li><p>it is hard to tell that the output of the first line is a mean</p></li>
+<li><p>its hard to recognise that the numbers in the mean calculation correspond to those in the next calculation</p></li>
+<li><p>it is hard to tell that 5 is just the number of nests</p></li>
+<li><p>no way of know if numbers are the same by coincidence or they refer to the same thing</p></li>
+</ul>
+</div>
+</section><section id="better" class="level2"><h2 class="anchored" data-anchor-id="better">😎 Better</h2>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># eggs each nest</span></span>
+<span><span class="va">eggs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">7</span>, <span class="fl">8</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># mean eggs per nest</span></span>
+<span><span class="va">mean_eggs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">eggs</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">eggs</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># ss(x) of number of eggs</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">(</span><span class="va">eggs</span> <span class="op">-</span> <span class="va">mean_eggs</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 14.8</code></pre>
+</div>
+</div>
+</section><section id="better-1" class="level2"><h2 class="anchored" data-anchor-id="better-1">😎 Better</h2>
+<div class="incremental">
+<ul class="incremental">
+<li><p>the commenting is similar but it is easier to follow</p></li>
+<li><p>if any of the sample numbers must be altered, only that number needs changing</p></li>
+<li><p>assigning a value you will later use to a variable with a meaningful name allows us to understand the first and second calculations</p></li>
+<li><p>makes use of R’s elementwise calculation which resembles the formula (i.e., is expressed as the general rule)</p></li>
+</ul>
+</div>
+</section><section id="summary" class="level2"><h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<div class="incremental">
+<ul class="incremental">
+<li><p>Use an RStudio project for any R work (you can also incorporate other languages)</p></li>
+<li><p>Write Cool code not Ugly code: space, consistency, indentation, comments, meaningful variable names</p></li>
+<li><p>Write code which expresses the structure of the problem/solution.</p></li>
+<li><p>Avoid hard coding numbers if at all possible - declare variables instead</p></li>
+</ul>
+</div>
+</section></section><section id="reading" class="level1"><h1>Reading</h1>
+<p>Recommended if you still need convincing to use RStudio Projects</p>
+<ul>
+<li>
+<a href="https://rstats.wtf/projects">Project-oriented workflow | What They Forgot to Teach You About R</a> <span class="citation" data-cites="bryan">(<a href="#ref-bryan" role="doc-biblioref">Bryan et al., n.d.</a>)</span>
+</li>
+</ul>
+<p>Completely optional suggestions for further reading</p>
+<ul>
+<li>Ten simple rules for reproducible computational research <span class="citation" data-cites="sandve2013">(<a href="#ref-sandve2013" role="doc-biblioref">Sandve et al. 2013</a>)</span>
+</li>
+<li>Good enough practices in scientific computing <span class="citation" data-cites="wilson2017">(<a href="#ref-wilson2017" role="doc-biblioref">Wilson et al. 2017</a>)</span>
+</li>
+<li>Excuse Me, Do You Have a Moment to Talk About Version Control? <span class="citation" data-cites="bryan2018">(<a href="#ref-bryan2018" role="doc-biblioref">Bryan 2018</a>)</span>
+</li>
+</ul>
+<section id="references" class="level2">
 
 
 
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-bryan2018" class="csl-entry" role="listitem">
+Bryan, Jennifer. 2018. <span>“Excuse Me, Do You Have a Moment to Talk about Version Control?”</span> <em>Am. Stat.</em> 72 (1): 20–27. <a href="https://doi.org/10.1080/00031305.2017.1399928">https://doi.org/10.1080/00031305.2017.1399928</a>.
+</div>
+<div id="ref-bryan" class="csl-entry" role="listitem">
+Bryan, Jennifer, Jim Hester, Shannon Pileggi, and E. David Aja. n.d. <em>What They Forgot to Teach You about r</em>. <a href="https://rstats.wtf/">https://rstats.wtf/</a>.
+</div>
+<div id="ref-sandve2013" class="csl-entry" role="listitem">
+Sandve, Geir Kjetil, Anton Nekrutenko, James Taylor, and Eivind Hovig. 2013. <span>“Ten Simple Rules for Reproducible Computational Research.”</span> <em>PLoS Comput. Biol.</em> 9 (10): e1003285. <a href="https://doi.org/10.1371/journal.pcbi.1003285">https://doi.org/10.1371/journal.pcbi.1003285</a>.
+</div>
+<div id="ref-wilson2017" class="csl-entry" role="listitem">
+Wilson, Greg, Jennifer Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt, and Tracy K Teal. 2017. <span>“Good Enough Practices in Scientific Computing.”</span> <em>PLoS Comput. Biol.</em> 13 (6): e1005510. <a href="https://doi.org/10.1371/journal.pcbi.1005510">https://doi.org/10.1371/journal.pcbi.1005510</a>.
+</div>
+</div></section><aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<ol>
+<li id="fn1"><p>Thanks to <a href="https://mastodon.social/@minecr@fosstodon.org">Mine Çetinkaya-Rundel</a> who helped me work out how to highlight a line <a href="https://gist.github.com/mine-cetinkaya-rundel/3af3415eab70a65be3791c3dcff6e2e3" class="uri">https://gist.github.com/mine-cetinkaya-rundel/3af3415eab70a65be3791c3dcff6e2e3</a>. Note to futureself: the <code>engine: knitr</code> matters.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></aside></div></main><!-- /main --><script>
+  // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+  // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+  // slide changes (different for each slide format).
+  (function () {
+    // dispatch for htmlwidgets
+    function fireSlideEnter() {
+      const event = window.document.createEvent("Event");
+      event.initEvent("slideenter", true, true);
+      window.document.dispatchEvent(event);
+    }
+
+    function fireSlideChanged(previousSlide, currentSlide) {
+      fireSlideEnter();
+
+      // dispatch for shiny
+      if (window.jQuery) {
+        if (previousSlide) {
+          window.jQuery(previousSlide).trigger("hidden");
+        }
+        if (currentSlide) {
+          window.jQuery(currentSlide).trigger("shown");
+        }
+      }
+    }
+
+    // hookup for slidy
+    if (window.w3c_slidy) {
+      window.w3c_slidy.add_observer(function (slide_num) {
+        // slide_num starts at position 1
+        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+      });
+    }
+
+  })();
+</script><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -353,10 +821,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -366,8 +833,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -380,6 +856,128 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        typesetMath(container);
+        return container.innerHTML
+      } else {
+        typesetMath(note);
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      typesetMath(note);
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -423,6 +1021,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -448,6 +1047,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -506,12 +1131,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("^(?:http:|https:)\/\/3mmarand\.github\.io\/BIO00088H-data");
     var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href);
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -522,15 +1148,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">Rand E (2023). Data Analysis for Group Project. <a href="https://3mmarand.github.io/BIO00088H-data/" class="uri">https://3mmarand.github.io/BIO00088H-data/</a>.</div>   
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Rand E (2023). Data Analysis for Group Project. <a href="https://3mmarand.github.io/BIO00088H-data/" class="uri">https://3mmarand.github.io/BIO00088H-data/</a>.</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
-    <li class="nav-item compact">
+<li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/er_13">
       <i class="bi bi-twitter" role="img" aria-label="Twitter">
 </i> 
@@ -543,10 +1170,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </a>
   </li>  
 </ul>
-    </div>
+</div>
   </div>
 </footer>
-
 
 
 </body></html>

@@ -22,51 +22,78 @@ engine: knitr
 
 In this workshop you will
 
-
-
 # File types
 
+## Omics
+- gene/transcript/protein/metabolite expression
 
-Types of Data files. 
--   Sequences data 
--   Image data 
--  Structure data PDB/mmCIF  www.pdb.org
+-   [transcriptomics 1](data/xlaevis_counts_S30.csv)
+-   [transcriptomics 2](data/tf_lthsc.csv)
+-   [proteomics](data/Y101_Y102_Y201_Y202_Y101-5.csv)
 
-Similarities and differences
+## Images
+
+[control_merged.tif](data/control_merged.tif)
+
+```{r}
+library(ijtiff)
+img <- read_tif("data/control_merged.tif")
+```
+```{r}
+img
+```
+
+- an image at least one and usually more matrices of numbers representing the
+  intensity of light at each pixel in the image
+  
+- the number of matrices depends on the number of 'channels' in the image
+
+- a channel is a colour in the image
+
+- a frame is a single image in a series of images
+
+- we might normally call this a multi-dimensional array: x and y coordinates of the pixels are 2 dimensions, the channel is the third dimension and time is the forth dimension
+
+```{r}
+display(img)
+```
+
+
+
+## Structure
+
+[1cq2.pdb](data/1cq2.pdb)
+
 
 # Workflow tips
 
-🎬 Make a new RStudio project (use the workflow from in the independent
-study
+🎬 Start by making a new RStudio project (use the workflow from in the independent
+study). Add some files
 
 
 -   multiple cursors
 
--   open a file
+-   open a file/function or find a variable CONTROL+.
 
--   the command palette, 
+-   the command palette CONTROL+SHIFT+P
 
--   segmenting code
+-   segmenting code CONTROL+SHIFT+R
 
 -   to correct indentation CONTROL+i
 
--   to reformat code CONTROL+SHIFT+A Not perfect but corrects spacing, indentation, multiple commands on lines and assignment with `=`
+-   to reformat code CONTROL+SHIFT+A Not perfect but corrects spacing,
+    indentation, multiple commands on lines and assignment with `=`
 
 -   to comment and uncomment lines CONTROL+SHIFT+C
 
--   Tools | Global options | Code | Display | Show margin
+-   Tools \| Global options \| Code \| Display \| Show margin
 
--   Tools | Global options | Code | Diagnostic | Provide R style diagnostics
+-   Tools \| Global options \| Code \| Diagnostic \| Provide R style
+    diagnostics
 
--   [GitHub Copilot in RStudio, it’s finally here!](https://colorado.posit.co/rsc/rstudio-copilot/#/TitleSlide)
+-   [GitHub Copilot in RStudio, it's finally
+    here!](https://colorado.posit.co/rsc/rstudio-copilot/#/TitleSlide)
 
-
-
-
-
-
-
-restart R
 
 # Other tools
 
@@ -76,55 +103,196 @@ The command line - or shell - is a text interface for your computer.
 It's a program that takes in commands, which it passes on to the
 computer's operating system to run.
 
+-   Windows PowerShell is a command-line in windows. It uses bash-like
+    commands unlike the Command Prompt which uses dos commands (a sort
+    of windows only language). You can open is by going to Start \|
+    Windows PowerShell or by searching for it in the search bar.
 
--   Windows PowerShell is a command-line in windows. It uses bash-like commands unlike the Command Prompt which uses dos commands (a sort of windows only language). You can open is by going to Start | Windows PowerShell or by searching for it in the search bar.
+-   Terminal is the command line in Mac OS X. You can open it by going
+    to Applications \| Utilities \| Terminal or by searching for it in
+    the Spotlight search bar.
 
-- Terminal is the command line in Mac OS X. You can open it by going to Applications | Utilities | Terminal or by searching for it in the Spotlight search bar.
+-   git bash. I used the bash shell that comes with
+    [Git](https://git-scm.com/)
 
--   git bash. I used the bash shell that comes with [Git](https://git-scm.com/)
-
-### RStudio terminal
+## RStudio terminal
 
 The RStudio terminal is a convenient interface to the shell without
 leaving RStudio. It is useful for running commands that are not
 available in R. For example, you can use it to run other programs like
 fasqc, git, ftp, ssh
 
-### Using a command line
+### Navigating your file system
 
-We are going to learn some commands navigating your folders from the command line
-
-
-```{bash}
+Several commands are frequently used to create, inspect, rename, and delete files and directories.
 
 ```
+$
+```
+
+The dollar sign is the prompt (like `>` on the R console), which shows us that the shell is waiting for input.
+
+You can find out where you are using the `pwd` command, which stands for "print working directory". 
+
+```{bash}
+pwd
+```
+
+You can find out what you can see with `ls` which stands for "list".
 
 
 ```{bash}
 ls
+
 ```
 
+You might have noticed that unlike R, the commands do not have brackets after them. Instead, options (or switches) are given after the command. For example, we can modify the `ls` command to give us more information with the `-l` option, which stands for "long".
 
 ```{bash}
 ls -l
 ```
+You can use more than one option at once. The `-h` option stands for "human readable" and makes the file sizes easier to understand for humans:
+
 
 ```{bash}
-ls -F
+ls -hl
 ```
 
-# Google Colab
+The `-a` option stands for "all" and shows us all the files, including hidden files.
+
+```{bash}
+ls -alh
+```
+
+
+
+You can move about with the `cd` command, which stands for "change directory". You can use it to move into a directory by specifying the path to the directory:
+
+```{bash}
+cd data
+pwd
+cd ..
+pwd
+cd data
+pwd
+```
+
+
+
+```bash
+head 1cq2.pdb
+```
+
+```
+HEADER    OXYGEN STORAGE/TRANSPORT                04-AUG-99   1CQ2              
+TITLE     NEUTRON STRUCTURE OF FULLY DEUTERATED SPERM WHALE MYOGLOBIN AT 2.0    
+TITLE    2 ANGSTROM                                                             
+COMPND    MOL_ID: 1;                                                            
+COMPND   2 MOLECULE: MYOGLOBIN;                                                 
+COMPND   3 CHAIN: A;                                                            
+COMPND   4 ENGINEERED: YES;                                                     
+COMPND   5 OTHER_DETAILS: PROTEIN IS FULLY DEUTERATED                           
+SOURCE    MOL_ID: 1;                                                            
+SOURCE   2 ORGANISM_SCIENTIFIC: PHYSETER CATODON;      
+```
+
+
+
+```bash
+head -20 data/1cq2.pdb
+```
+
+```
+HEADER    OXYGEN STORAGE/TRANSPORT                04-AUG-99   1CQ2              
+TITLE     NEUTRON STRUCTURE OF FULLY DEUTERATED SPERM WHALE MYOGLOBIN AT 2.0    
+TITLE    2 ANGSTROM                                                             
+COMPND    MOL_ID: 1;                                                            
+COMPND   2 MOLECULE: MYOGLOBIN;                                                 
+COMPND   3 CHAIN: A;                                                            
+COMPND   4 ENGINEERED: YES;                                                     
+COMPND   5 OTHER_DETAILS: PROTEIN IS FULLY DEUTERATED                           
+SOURCE    MOL_ID: 1;                                                            
+SOURCE   2 ORGANISM_SCIENTIFIC: PHYSETER CATODON;                               
+SOURCE   3 ORGANISM_COMMON: SPERM WHALE;                                        
+SOURCE   4 ORGANISM_TAXID: 9755;                                                
+SOURCE   5 EXPRESSION_SYSTEM: ESCHERICHIA COLI;                                 
+SOURCE   6 EXPRESSION_SYSTEM_TAXID: 562;                                        
+SOURCE   7 EXPRESSION_SYSTEM_VECTOR_TYPE: PLASMID;                              
+SOURCE   8 EXPRESSION_SYSTEM_PLASMID: PET15A                                    
+KEYWDS    HELICAL, GLOBULAR, ALL-HYDROGEN CONTAINING STRUCTURE, OXYGEN STORAGE- 
+KEYWDS   2 TRANSPORT COMPLEX                                                    
+EXPDTA    NEUTRON DIFFRACTION                                                   
+AUTHOR    F.SHU,V.RAMAKRISHNAN,B.P.SCHOENBORN   
+```
+
+
+```bash
+less 1cq2.pdb
+```
+
+`less` is a program that displays the contents of a file, one page at a time. It is useful for viewing large files because it does not load the whole file into memory before displaying it. Instead, it reads and displays a few lines at a time. You can navigate forward through the file with the spacebar, and backwards with the b key. Press q to quit.
+
+A wildcard is a character that can be used as a substitute for any of a class of characters in a search, The most common wildcard characters are the asterisk (\*) and the question mark (?).
+
+```bash
+ls *.csv
+```
+
+`cp` stands for "copy". You can copy a file from one directory to another by giving `cp` the path to the file you want to copy and the path to the destination directory. 
+
+```bash
+cp 1cq2.pdb copy_of_1cq2.pdb
+```
+
+```bash
+cp 1cq2.pdb ../copy_of_1cq2.pdb
+```
+
+```bash
+cp 1cq2.pdb ../bob.txt
+```
+
+To delete a file use the `rm` command, which stands for "remove". 
+
+```bash
+rm ../bob.txt
+```
+but be careful because the file will be gone forever. There is no "are you sure?" or undo.
+
+
+To move a file from one directory to another, use the `mv` command. `mv` works like `cp` except that it also deletes the original file. 
+
+```bash
+mv ../copy_of_1cq2.pdb .
+```
+
+### Make a directory
+
+```bash
+mkdir mynewdir
+```
+
+# Quarto notebooks
+
+Demo
+
+-   Text and executable cells
+-   Formatting
+-   Markdown
+-   More in Week 6
+
+# Google Colaboratory
+
+[Google Colab](https://colab.research.google.com/) allows you to write and execute python code in your browser. 
+
+Demo
 
 # Python
 
 ## Differences between R and python
 
+Demo
 
-## Quarto note books
-
-zotero
-
-🎬
 
 You're finished!
 

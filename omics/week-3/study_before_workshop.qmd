@@ -49,7 +49,7 @@ See later workshops.
 -   FASTQ format files
     -   sequences and information about each sequence's read accuracy
 
-![](images/fasta_file_format_l2.png)
+![](images/fastaq_file_format.png)
 
 
 ## Differential expression
