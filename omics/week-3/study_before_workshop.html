@@ -361,21 +361,11 @@ Emma Rand
 </section>
 <section id="omics-workshops" class="slide level2">
 <h2>Omics workshops</h2>
+<p>What the data are and something about what has been done to the raw data to get get.</p>
 <ul>
 <li>🐸 the difference between the control and the FGF treated sibling at S30</li>
 <li>🐭 the difference between HSPC and Prog cells</li>
 <li>🍂 ???????</li>
-</ul>
-<p>See later workshops.</p>
-</section>
-<section id="sequence-data" class="slide level2">
-<h2>Sequence Data</h2>
-<ul>
-<li>reads</li>
-<li>quality control</li>
-<li>align/pseudoalign</li>
-<li>quantify</li>
-<li>normalise</li>
 </ul>
 </section>
 <section id="aims" class="slide level2">
@@ -389,6 +379,18 @@ Emma Rand
 </ul></li>
 </ul>
 </section>
+<section id="sequence-data" class="slide level2">
+<h2>Sequence Data</h2>
+<ul>
+<li><p>The raw data are “reads” from a sequencing machine. Reads are short sequences of DNA or RNA.</p></li>
+<li><p>The reads are aligned to a reference genome or transcriptome. The reads are then counted to quantify the expression of each gene. The counts are normalised to allow comparison between samples.</p></li>
+<li><p>reads</p></li>
+<li><p>quality control</p></li>
+<li><p>align/pseudoalign</p></li>
+<li><p>quantify</p></li>
+<li><p>normalise</p></li>
+</ul>
+</section>
 <section id="what-is-a-read" class="slide level2">
 <h2>What is a read</h2>
 <ul>
@@ -397,8 +399,7 @@ Emma Rand
 <li>sequences and information about each sequence’s read accuracy</li>
 </ul></li>
 </ul>
-
-<img data-src="images/fastaq_file_format.png" class="r-stretch"></section>
+</section>
 <section id="differential-expression" class="slide level2">
 <h2>Differential expression</h2>
 <ul>
@@ -411,9 +412,9 @@ Emma Rand
 <h2>Stem cells: background</h2>
 <p>Cells were sorted using flow cytometry on the basis of cell surface markers. There are three cell types:</p>
 <ul>
-<li><p>long-term haematopoetic stem cells (LT-HSCs) defined as : Lineage<sup>-</sup> ckit<sup>+</sup> Sca1<sup>+</sup> CD34<sup>-</sup> Flk2<sup>-</sup></p></li>
-<li><p>haematopoetic stem and progenitor cells (HSPCs) defined as : Lineage<sup>-</sup> Sca1<sup>+</sup> ckit<sup>+</sup></p></li>
-<li><p>progenitor cells (Progs) defined as : Lineage<sup>-</sup> Sca1<sup>-</sup> ckit<sup>+</sup></p></li>
+<li><p>long-term haematopoetic stem cells (LT-HSCs)</p></li>
+<li><p>haematopoetic stem and progenitor cells (HSPCs)</p></li>
+<li><p>progenitor cells (Progs)</p></li>
 </ul>
 <p>Each cell is then sequenced to quantify all the transcripts in each cell. different transcripts (genes) were identified.</p>
 </section>
@@ -423,7 +424,7 @@ Emma Rand
 <li>Raw data: <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE81682">GEO Series GSE81682</a></li>
 <li>Illumina HiSeq</li>
 <li>short reads 150-300bp</li>
-<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5305050/">A single-cell resolution map of mouse hematopoietic stem and progenitor cell differentiation</a> <span class="citation" data-cites="nestorowa2016">(<a href="#/deliverables" role="doc-biblioref" onclick="">Nestorowa et al. 2016</a>)</span></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5305050/">A single-cell resolution map of mouse hematopoietic stem and progenitor cell differentiation</a> <span class="citation" data-cites="nestorowa2016">(<a href="#/revise-pivot-longer-1" role="doc-biblioref" onclick="">Nestorowa et al. 2016</a>)</span></li>
 <li>3,840 samples</li>
 <li>Reads were aligned using G-SNAP and the mapped reads were assigned to Ensembl genes HTSeq</li>
 <li>GSE81682_HTSeq_counts.txt.gz (bottom of the page). And <a href="../data/jillian/GSE81682_HTSeq_counts.zip">GSE81682_HTSeq_counts.txt.zip</a></li>
@@ -459,7 +460,7 @@ Emma Rand
 <li>Raw data: <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE81682">GEO Series GSE81682</a></li>
 <li>Illumina HiSeq</li>
 <li>short reads 150-300bp</li>
-<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5305050/">A single-cell resolution map of mouse hematopoietic stem and progenitor cell differentiation</a> <span class="citation" data-cites="nestorowa2016">(<a href="#/deliverables" role="doc-biblioref" onclick="">Nestorowa et al. 2016</a>)</span></li>
+<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5305050/">A single-cell resolution map of mouse hematopoietic stem and progenitor cell differentiation</a> <span class="citation" data-cites="nestorowa2016">(<a href="#/revise-pivot-longer-1" role="doc-biblioref" onclick="">Nestorowa et al. 2016</a>)</span></li>
 <li>3,840 samples</li>
 <li>Reads were aligned using G-SNAP and the mapped reads were assigned to Ensembl genes HTSeq</li>
 <li>GSE81682_HTSeq_counts.txt.gz (bottom of the page). And <a href="../data/jillian/GSE81682_HTSeq_counts.zip">GSE81682_HTSeq_counts.txt.zip</a></li>
@@ -482,7 +483,7 @@ Emma Rand
 <section id="section" class="slide level2">
 <h2></h2>
 </section>
-<section id="deliverables" class="slide level2 smaller scrollable">
+<section id="deliverables" class="slide level2">
 <h2>Deliverables</h2>
 <ol type="1">
 <li><p>Describe the data</p>
@@ -505,6 +506,12 @@ Emma Rand
 <li><p>Interpret the biology by reporting on a few group of genes and the processes in which they are involved.</p></li>
 <li><p>Report on your chosen genes and explain why you think they are good candidates for follow up work</p></li>
 </ol>
+</section>
+<section id="revise-pivot-longer" class="slide level2">
+<h2>revise pivot longer</h2>
+</section>
+<section id="revise-pivot-longer-1" class="slide level2 smaller scrollable">
+<h2>revise pivot longer</h2>
 
 <div class="footer footer-default">
 <p>🔗 <a href="https://3mmarand.github.io/BIO00088H-data/omics/week-3/overview.html">About Omics 1: Hello data!</a></p>

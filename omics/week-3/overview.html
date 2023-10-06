@@ -65,7 +65,7 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar floating nav-fixed fullcontent">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -239,7 +239,16 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning objectives</a></li>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link" data-scroll-target="#instructions">Instructions</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -267,14 +276,16 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>xxxxx</p>
+<p>This week you will meet your data. The independent study will concisely cover how these data were generated and how they have been processed before being given to you. There will also be an overview of the analysis we will carry out over three workshops. In the workshop, you will learn what steps to take to get a good understanding of ’omics data before you consider any statistical analysis. This is an often overlooked, but very valuable and informative, part of any data pipeline. It gives you the deep understanding of the data structures and values that you will need to code and trouble-shoot code, allows you to spot failed or problematic samples and informs your decisions on quality control.</p>
 <section id="learning-objectives" class="level3">
 <h3 class="anchored" data-anchor-id="learning-objectives">Learning objectives</h3>
+<p>The successful student will be able to:</p>
 <ul>
-<li>dd</li>
-<li>dd.</li>
-<li>dd</li>
-<li>d</li>
+<li>explore ’omics data to find the number of rows and columns and know how these correspond to samples and variables</li>
+<li>explore the distribution of expression measures across whole data sets, across variables and across samples by summarising and plotting</li>
+<li>explain what distributions are expected and interpret the distributions they have</li>
+<li>explain on what basis we might filter out variables or samples</li>
+<li>import, explore and filter ’omics data reproducibly so they can understand and reuse their code in the future</li>
 </ul>
 </section>
 <section id="instructions" class="level3">
@@ -282,7 +293,7 @@ ul.task-list li input[type="checkbox"] {
 <ol type="1">
 <li><p><a href="../../omics/week-3/study_before_workshop.html">Prepare</a></p>
 <ol type="i">
-<li>📖 Read how the data were generated and how they have been processed so far.</li>
+<li>📖 Read how the data were generated and how they have been processed so far, insstall</li>
 </ol></li>
 <li><p><a href="../../omics/week-3/workshop.html">Workshop</a></p>
 <ol type="i">

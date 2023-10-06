@@ -328,6 +328,7 @@ div.csl-indent {
   <ul class="collapse">
 <li><a href="#frogs-and-future-you" id="toc-frogs-and-future-you" class="nav-link" data-scroll-target="#frogs-and-future-you">🐸 Frogs and future you</a></li>
   <li><a href="#mice-and-future-you" id="toc-mice-and-future-you" class="nav-link" data-scroll-target="#mice-and-future-you">🐭 Mice and future you</a></li>
+  <li><a href="#xxxx-and-future-you" id="toc-xxxx-and-future-you" class="nav-link" data-scroll-target="#xxxx-and-future-you">🍂 xxxx and future you</a></li>
   </ul>
 </li>
   </ul>
@@ -591,7 +592,8 @@ div.csl-indent {
 <p>We can write to file using <code><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv()</a></code></p>
 <p>🎬 Write <code>s30_summary_samp</code> to a file called “s30_summary_samp.csv”:</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">s30_summary_samp</span>, file <span class="op">=</span> <span class="st">"data-processed/s30_summary_samp.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">s30_summary_samp</span>, </span>
+<span>          file <span class="op">=</span> <span class="st">"data-processed/s30_summary_samp.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Plotting the distribution of values is perhaps the easiest way to understand the data. We could plot each column separately or we can pipe the tidy format of data into <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> and make use of <code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap()</a></code></p>
 <p>🎬 Pivot the data and pipe into <code>ggplot</code>:</p>
@@ -1938,7 +1940,7 @@ div.csl-indent {
 </div>
 <p>Notice that I have used <code>cell</code> as the column name rather than <code>sample</code> and <code>expr</code> (expression) rather than <code>count</code>. I’ve also added the standard deviation.</p>
 <p>🎬 View the <code>hspc_summary_samp</code> dataframe (click on it in the environment).</p>
-<p>All cells have quite a few zeros and the lower quartile is 0 for al cells, <em>i.e.</em>, every cell has many genes with zero expression.</p>
+<p>All cells have quite a few zeros and the lower quartile is 0 for all cells, <em>i.e.</em>, every cell has many genes with zero expression.</p>
 <p>To get a better understanding of the distribution of expressions in cells we can create a ggplot using the pointrange geom. Pointrange puts a dot at the mean and a line between a minimum and a maximum such as +/- one s.d. Not unlike a boxplot, but when you need the boxes too be very narrow!</p>
 <p>🎬 Create a pointrange plot.</p>
 <div class="cell">
@@ -2045,7 +2047,7 @@ div.csl-indent {
 <p>🎬 Plot the logged mean counts for each gene in order of size using <code><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_pointrange()</a></code>:</p>
 <div class="cell">
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_summary_gene</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span><span class="op">(</span><span class="va">ensembl_gene_id</span>, <span class="va">mean</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">mean</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span><span class="op">(</span><span class="va">ensembl_gene_id</span>, <span class="va">mean</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">mean</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_pointrange</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">mean</span> <span class="op">-</span> <span class="va">sd</span>, </span>
 <span>                      ymax <span class="op">=</span> <span class="va">mean</span> <span class="op">+</span> <span class="va">sd</span><span class="op">)</span>,</span>
 <span>                  size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2058,12 +2060,12 @@ div.csl-indent {
 </section></section></section><section id="filtering-for-qc" class="level2"><h2 class="anchored" data-anchor-id="filtering-for-qc">Filtering for QC</h2>
 <section id="frog-filtering" class="level3"><h3 class="anchored" data-anchor-id="frog-filtering">🐸 Frog filtering</h3>
 <p>Our samples look to be similarly well sequenced. There are no samples we should remove. However, some genes are not express or the expression values are so low in for a gene that they are uninformative. We will filter the <code>s30_summary_gene</code> dataframe to obtain a list of <code>xenbase_gene_id</code> we can use to filter <code>s30</code>.</p>
-<p>My suggestion is to include only the genes with counts in all 6 or 5 out of 6 samples and those with total counts above 20.</p>
+<p>My suggestion is to include only the genes with counts in at least 3 samples<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> and those with total counts above 20.</p>
 <p>🎬 Filter the summary by gene dataframe:</p>
 <div class="cell">
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_summary_gene_filtered</span> <span class="op">&lt;-</span> <span class="va">s30_summary_gene</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">total</span> <span class="op">&gt;</span> <span class="fl">20</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">n_zero</span> <span class="op">&lt;</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">n_zero</span> <span class="op">&lt;</span> <span class="fl">4</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Write the filtered summary by gene to file:</p>
 <div class="cell">
@@ -2081,7 +2083,7 @@ div.csl-indent {
 <span>          file <span class="op">=</span> <span class="st">"data-processed/s30_filtered.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="mouse-filtering" class="level3"><h3 class="anchored" data-anchor-id="mouse-filtering">🐭 Mouse filtering</h3>
-<p>I would take a different approach to filtering the single cell data. For the Frog samples we are examining the control and the FGF treated samples. This means have a low number of counts overall means the gene is not really expressed (detected) in any condition, and filtering out those genes is removing things that definitely are not interesting. For the mice, we have examined only one cell type but will be making comparisons between cells types. It may be that low expression of a gene in this cell type tells us something if that gene is highly expressed in another cell type. Instead, we will make statistical comparisons between the cell types and then filter based on overall expression, the difference in expression between cell types and whether that difference is significant.</p>
+<p>We will take a different approach to filtering the single cell data. For the Frog samples we are examining the control and the FGF treated samples. This means have a low number of counts overall means the gene is not really expressed (detected) in any condition, and filtering out those genes is removing things that definitely are not interesting. For the mice, we have examined only one cell type but will be making comparisons between cells types. It may be that low expression of a gene in this cell type tells us something if that gene is highly expressed in another cell type. Instead, we will make statistical comparisons between the cell types and then filter based on overall expression, the difference in expression between cell types and whether that difference is significant.</p>
 <p>The number of “replicates” is also important. When you have only three in each group it is not possible to make statistical comparisons when several replicates are zero. This is less of an issue with single cell data.</p>
 </section></section><section id="look-after-future-you" class="level2"><h2 class="anchored" data-anchor-id="look-after-future-you">🤗 Look after future you!</h2>
 <p><strong>You need only do the section for your own project data</strong></p>
@@ -2089,6 +2091,8 @@ div.csl-indent {
 <p>🎬 Create a new Project, <code>frogs-88H</code>, populated with folders and your data. Make a script file called <code>cont-fgf-s30.R</code>. This will a be commented analysis of the control vs FGF at S30 comparison. You will build on this each workshop and be able to use it as a template to examine other comparisons. Copy in the appropriate code and comments from <code>workshop-1.R</code>. Edit to improve your comments where your understanding has developed since you made them. Make sure you can close down RStudio, reopen it and run your whole script again.</p>
 </section><section id="mice-and-future-you" class="level3"><h3 class="anchored" data-anchor-id="mice-and-future-you">🐭 Mice and future you</h3>
 <p>🎬 Create a new Project, <code>mice-88H</code>, populated with folders and your data. Make a script file called <code>hspc-prog.R</code>. This will a be commented analysis of the hspc cells vs the prog cells. At this point you will have only code for the hspc cells. You will build on this each workshop and be able to use it as a template to examine other comparisons. Copy in the appropriate code and comments from <code>workshop-1.R</code>. Edit to improve your comments where your understanding has developed since you made them. Make sure you can close down RStudio, reopen it and run your whole script again.</p>
+</section><section id="xxxx-and-future-you" class="level3"><h3 class="anchored" data-anchor-id="xxxx-and-future-you">🍂 xxxx and future you</h3>
+<p>🎬 Create a new Project, <code>xxxx-88H</code>, populated with folders and your data. Make a script file called <code>xxxx.R</code>. This will a be commented analysis of t xxxxxxxxxxxx.</p>
 </section></section></section><section id="finished" class="level1"><h1>🥳 Finished</h1>
 <p>Well Done!</p>
 </section><section id="independent-study-following-the-workshop" class="level1"><h1>Independent study following the workshop</h1>
@@ -2124,6 +2128,7 @@ Zhu, Hao. 2021. <span>“kableExtra: Construct Complex Table with ’Kable’ an
 <ol>
 <li id="fn1"><p>This a result of the <a href="https://en.wikipedia.org/wiki/Central_limit_theorem">Central limit theorem</a>,one consequence of which is that adding together lots of distributions - whatever distributions they are - will tend to a normal distribution.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>This a result of the <a href="https://en.wikipedia.org/wiki/Central_limit_theorem">Central limit theorem</a>,one consequence of which is that adding together lots of distributions - whatever distributions they are - will tend to a normal distribution.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>I chose three because that would keep [0, 0, 0] [#,#,#]. This is difference we cannot test statistically, but which would matter biologically.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
