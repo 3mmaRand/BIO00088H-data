@@ -29,26 +29,7 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for citations */
-    div.csl-bib-body { }
-    div.csl-entry {
-      clear: both;
-    }
-    .hanging-indent div.csl-entry {
-      margin-left:2em;
-      text-indent:-2em;
-    }
-    div.csl-left-margin {
-      min-width:2em;
-      float:left;
-    }
-    div.csl-right-inline {
-      margin-left:2em;
-      padding-left:1em;
-    }
-    div.csl-indent {
-      margin-left: 2em;
-    }  </style>
+  </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -359,169 +340,205 @@ Emma Rand
 
   <p class="date">6 October, 2023</p>
 </section>
-<section id="omics-workshops" class="slide level2">
-<h2>Omics workshops</h2>
-<p>What the data are and something about what has been done to the raw data to get get.</p>
+<section id="nb-still-in-construction" class="slide level2">
+<h2>🚧 NB still in construction 🚧</h2>
+</section>
+<section id="overview" class="slide level2">
+<h2>Overview</h2>
+<div>
 <ul>
-<li>🐸 the difference between the control and the FGF treated sibling at S30</li>
-<li>🐭 the difference between HSPC and Prog cells</li>
-<li>🍂 ???????</li>
+<li class="fragment"><p>Concise summary of the experimental design and aims</p></li>
+<li class="fragment"><p>What the raw data consist of</p></li>
+<li class="fragment"><p>What has been done to the data so far</p></li>
+<li class="fragment"><p>What steps we will take in the workshop</p></li>
+</ul>
+</div>
+</section>
+<section id="the-data" class="slide level2">
+<h2>The Data</h2>
+<p>There are three datasets</p>
+<ul>
+<li><p>🐸 transcriptomic data (bulk RNA-seq) from frog embryos.</p></li>
+<li><p>🐭 transcriptomic data (single cell RNA-seq) from stemcells</p></li>
+<li><p>🍂 ??????? Metabolomic / Metagenomic data from anaerobic digesters</p></li>
 </ul>
 </section>
-<section id="aims" class="slide level2">
-<h2>Aims</h2>
-<ul>
-<li>find important genes</li>
-<li>what is ‘important’
-<ul>
-<li>expressed</li>
-<li>differentially expressed i.e., which genes are significantly higher in one group vs another</li>
-</ul></li>
-</ul>
-</section>
-<section id="sequence-data" class="slide level2">
-<h2>Sequence Data</h2>
-<ul>
-<li><p>The raw data are “reads” from a sequencing machine. Reads are short sequences of DNA or RNA.</p></li>
-<li><p>The reads are aligned to a reference genome or transcriptome. The reads are then counted to quantify the expression of each gene. The counts are normalised to allow comparison between samples.</p></li>
-<li><p>reads</p></li>
-<li><p>quality control</p></li>
-<li><p>align/pseudoalign</p></li>
-<li><p>quantify</p></li>
-<li><p>normalise</p></li>
-</ul>
-</section>
-<section id="what-is-a-read" class="slide level2">
-<h2>What is a read</h2>
-<ul>
-<li>FASTQ format files
-<ul>
-<li>sequences and information about each sequence’s read accuracy</li>
-</ul></li>
-</ul>
-</section>
-<section id="differential-expression" class="slide level2">
-<h2>Differential expression</h2>
-<ul>
-<li>what is differentially expressed</li>
-<li>how are DE genes related</li>
-<li>what are DE genes involved with</li>
-</ul>
-</section>
-<section id="stem-cells-background" class="slide level2">
-<h2>Stem cells: background</h2>
-<p>Cells were sorted using flow cytometry on the basis of cell surface markers. There are three cell types:</p>
-<ul>
-<li><p>long-term haematopoetic stem cells (LT-HSCs)</p></li>
-<li><p>haematopoetic stem and progenitor cells (HSPCs)</p></li>
-<li><p>progenitor cells (Progs)</p></li>
-</ul>
-<p>Each cell is then sequenced to quantify all the transcripts in each cell. different transcripts (genes) were identified.</p>
-</section>
-<section id="stem-cells-background-1" class="slide level2">
-<h2>Stem cells: background</h2>
-<ul>
-<li>Raw data: <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE81682">GEO Series GSE81682</a></li>
-<li>Illumina HiSeq</li>
-<li>short reads 150-300bp</li>
-<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5305050/">A single-cell resolution map of mouse hematopoietic stem and progenitor cell differentiation</a> <span class="citation" data-cites="nestorowa2016">(<a href="#/revise-pivot-longer-1" role="doc-biblioref" onclick="">Nestorowa et al. 2016</a>)</span></li>
-<li>3,840 samples</li>
-<li>Reads were aligned using G-SNAP and the mapped reads were assigned to Ensembl genes HTSeq</li>
-<li>GSE81682_HTSeq_counts.txt.gz (bottom of the page). And <a href="../data/jillian/GSE81682_HTSeq_counts.zip">GSE81682_HTSeq_counts.txt.zip</a></li>
-</ul>
-</section>
-<section id="stem-cells-processing-so-far" class="slide level2">
-<h2>Stem cells: Processing so far</h2>
-<ul>
-<li>selection of cells</li>
-<li>selection of genes: subset of surfaceome</li>
-<li>log2 normalised values</li>
-</ul>
-</section>
-<section id="stem-cells-aims" class="slide level2">
-<h2>Stem cells: Aims</h2>
-<ul>
-<li>Find interesting <strong>cell surface molecule genes</strong> that vary between cell types.</li>
-</ul>
-</section>
-<section id="frog-development-background" class="slide level2">
-<h2>Frog development: background</h2>
-<ul>
-<li>3 fertilisations = replicates</li>
-<li>two siblings from each fertilisation one control, on FGF treated</li>
-<li>sequenced at three time points: S14, S20, S30</li>
-<li>3 x 2 x 3 = 18 groups</li>
-</ul>
+<section>
+<section id="experimental-design" class="title-slide slide level1 center">
+<h1>Experimental design</h1>
 
-<img data-src="images/88H-exp-design-betsy.png" class="r-stretch"></section>
-<section id="frog-development-background-1" class="slide level2">
-<h2>Frog development: background</h2>
+</section>
+<section id="experimental-design-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">🐸 Experimental design</h2>
+
+<img data-src="images/88H-exp-design-betsy.png" width="700" class="r-stretch quarto-figure-center"><p class="caption">Schematic of frog development experiment</p></section>
+<section id="experimental-design-2" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">🐸 Experimental design</h2>
+
+<img data-src="images/88H-exp-design-betsy.png" width="200" class="r-stretch quarto-figure-left"><p class="caption">Schematic of frog development experiment</p><div>
 <ul>
-<li>Raw data: <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE81682">GEO Series GSE81682</a></li>
-<li>Illumina HiSeq</li>
-<li>short reads 150-300bp</li>
-<li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5305050/">A single-cell resolution map of mouse hematopoietic stem and progenitor cell differentiation</a> <span class="citation" data-cites="nestorowa2016">(<a href="#/revise-pivot-longer-1" role="doc-biblioref" onclick="">Nestorowa et al. 2016</a>)</span></li>
-<li>3,840 samples</li>
-<li>Reads were aligned using G-SNAP and the mapped reads were assigned to Ensembl genes HTSeq</li>
-<li>GSE81682_HTSeq_counts.txt.gz (bottom of the page). And <a href="../data/jillian/GSE81682_HTSeq_counts.zip">GSE81682_HTSeq_counts.txt.zip</a></li>
+<li class="fragment"><p>3 fertilisations</p></li>
+<li class="fragment"><p>two siblings from each fertilisation one control, on FGF treated</p></li>
+<li class="fragment"><p>sequenced at three time points</p></li>
+<li class="fragment"><p>3 x 2 x 3 = 18 groups</p></li>
 </ul>
+</div>
 </section>
-<section id="frog-development-processing-so-far" class="slide level2">
-<h2>Frog development: Processing so far</h2>
+<section id="experimental-design-3" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">🐸 Experimental design</h2>
+
+<img data-src="images/88H-exp-design-betsy.png" width="200" class="r-stretch quarto-figure-left"><p class="caption">Schematic of frog development experiment</p><div>
 <ul>
-<li>selection of cells</li>
-<li>selection of genes: subset of surfaceome</li>
-<li>log2 normalised values</li>
+<li class="fragment"><p>3 fertilisations. <span style="color:#009900">These are the replicates, <code>.5</code>, <code>.6</code>, <code>A</code></span></p></li>
+<li class="fragment"><p>two siblings from each fertilisation one control, one FGF treated. <span style="color:#009900">The treatments are paired</span></p></li>
+<li class="fragment"><p>sequenced at three time points. <span style="color:#009900">S14, S20, S30</span></p></li>
+<li class="fragment"><p>3 x 2 x 3 = 18 groups</p></li>
 </ul>
+</div>
 </section>
-<section id="frog-development-aims" class="slide level2">
-<h2>Frog development: Aims</h2>
+<section id="aim" class="slide level2">
+<h2>🐸 Aim</h2>
+<div>
 <ul>
-<li>Find interesting <strong>cell surface molecule genes</strong> that vary between cell types.</li>
+<li class="fragment"><p>find genes important in frog development</p></li>
+<li class="fragment"><p>Important means genes that are differentially expressed between the control and the FGF treated sibling</p></li>
+<li class="fragment"><p>Differentially expressed means the expression on one group is signifcantly higher than the other</p></li>
 </ul>
+</div>
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
-</section>
-<section id="deliverables" class="slide level2">
-<h2>Deliverables</h2>
-<ol type="1">
-<li><p>Describe the data</p>
+<section id="guided-analysis" class="slide level2">
+<h2>🐸 Guided analysis</h2>
+<div>
 <ul>
-<li>Number of cells/samples/reps/treatments</li>
-<li>number of genes</li>
-<li>type of expression values</li>
-<li>prior processing</li>
-<li>missing values</li>
-<li>overview of expression</li>
-<li>clustering of genes/samples</li>
-</ul></li>
-<li><p>Report on differential expression between two groups</p>
+<li class="fragment"><p>The workshops will take you through comparing the control and FGF treated sibling at S30</p></li>
+<li class="fragment"><p>This is the “least interesting” comparison</p></li>
+<li class="fragment"><p>You will be guided to carefully document your work so you can apply the same methods to other comparisons</p></li>
+</ul>
+</div>
+</section>
+<section id="experimental-design-4" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">🐭 Experimental design</h2>
+
+<img data-src="images/88H-exp-design-jillian.png" width="700" class="r-stretch quarto-figure-center"><p class="caption">Schematic of stem cell experiment</p></section>
+<section id="experimental-design-5" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">🐭 Experimental design</h2>
+
+<img data-src="images/88H-exp-design-jillian.png" width="200" class="r-stretch quarto-figure-left"><p class="caption">Schematic of stem cell experiment</p><div>
 <ul>
-<li>number of DE at 1%, 5% and 10%.</li>
-<li>table of expression, fold changes, signifcance at each sig.</li>
-<li>Volcano plot</li>
-</ul></li>
-<li><p>Report list of marker candidate gene IDs for a cell type of choice. Justify filters. Table with fold FC, p values, IDs, canonical gene names</p></li>
-<li><p>Interpret the biology by reporting on a few group of genes and the processes in which they are involved.</p></li>
-<li><p>Report on your chosen genes and explain why you think they are good candidates for follow up work</p></li>
-</ol>
+<li class="fragment"><p>Cells were sorted using flow cytometry on the basis of cell surface markers</p></li>
+<li class="fragment"><p>There are three cell types: LT-HSCs, HSPCs, Progs</p></li>
+<li class="fragment"><p>Many cells of each cell type were sequenced</p></li>
+<li class="fragment"></li>
+</ul>
+</div>
 </section>
-<section id="revise-pivot-longer" class="slide level2">
-<h2>revise pivot longer</h2>
+<section id="experimental-design-6" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">🐭 Experimental design</h2>
+
+<img data-src="images/88H-exp-design-jillian.png" width="200" class="r-stretch quarto-figure-left"><p class="caption">Schematic of stem cell experiment</p><div>
+<ul>
+<li class="fragment"><p>There are three cell types: LT-HSCs, HSPCs, Progs <span style="color:#009900">These are the “treaments”</span></p></li>
+<li class="fragment"><p>Many cells of each cell type were sequenced: <span style="color:#009900">These are the replicates</span></p></li>
+<li class="fragment"><p><span style="color:#009900">155 LT-HSCs, 701 HSPCs, 798 Progs</span></p></li>
+</ul>
+</div>
 </section>
-<section id="revise-pivot-longer-1" class="slide level2 smaller scrollable">
-<h2>revise pivot longer</h2>
+<section id="aim-1" class="slide level2">
+<h2>🐭 Aim</h2>
+<div>
+<ul>
+<li class="fragment"><p>find genes for cell surface proteins that are important in stem cell identity</p></li>
+<li class="fragment"><p>Important means genes that are differentially expressed between at least two cell types</p></li>
+<li class="fragment"><p>Differentially expressed means the expression on one group is significantly higher than the other</p></li>
+</ul>
+</div>
+</section>
+<section id="guided-analysis-1" class="slide level2">
+<h2>🐭 Guided analysis</h2>
+<div>
+<ul>
+<li class="fragment"><p>The workshops will take you through comparing the HSPC and Prog cells</p></li>
+<li class="fragment"><p>This is the “least interesting” comparison</p></li>
+<li class="fragment"><p>You will be guided to carefully document your work so you can apply the same methods to other comparisons</p></li>
+</ul>
+</div>
+<!-- ## Stem cells: Processing so far -->
+<!-- -   selection of cells -->
+<!-- -   selection of genes: subset of surfaceome -->
+<!-- -   log2 normalised values -->
+<!-- ## Stem cells: Aims -->
+<!-- -   Find interesting **cell surface molecule genes** that vary between -->
+<!--     cell types. -->
+<!-- the difference between HSPC and Prog cells the difference between the -->
+<!-- control and the FGF treated sibling at S30 \## Sequence Data -->
+<!-- -   The raw data are "reads" from a sequencing machine. Reads are short -->
+<!--     sequences of DNA or RNA. -->
+<!-- -   The reads are aligned to a reference genome or transcriptome. The -->
+<!--     reads are then counted to quantify the expression of each gene. The -->
+<!--     counts are normalised to allow comparison between samples. -->
+<!-- -   reads -->
+<!-- -   quality control -->
+<!-- -   align/pseudoalign -->
+<!-- -   quantify -->
+<!-- -   normalise -->
+<!-- ## What is a read -->
+<!-- -   FASTQ format files -->
+<!--     -   sequences and information about each sequence's read accuracy -->
+<!-- ## Differential expression -->
+<!-- -   what is differentially expressed -->
+<!-- -   how are DE genes related -->
+<!-- -   what are DE genes involved with -->
+<!-- ## Stem cells: background -->
+<!-- -   Raw data: [GEO Series -->
+<!--     GSE81682](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE81682) -->
+<!-- -   Illumina HiSeq -->
+<!-- -   short reads 150-300bp -->
+<!-- -   [A single-cell resolution map of mouse hematopoietic stem and -->
+<!--     progenitor cell -->
+<!--     differentiation](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5305050/) -->
+<!--     [@nestorowa2016] -->
+<!-- -   3,840 samples -->
+<!-- -   Reads were aligned using G-SNAP and the mapped reads were assigned -->
+<!--     to Ensembl genes HTSeq -->
+<!-- -   GSE81682_HTSeq_counts.txt.gz (bottom of the page). And -->
+<!--     [GSE81682_HTSeq_counts.txt.zip](../data/jillian/GSE81682_HTSeq_counts.zip) -->
+<!-- ## Frog development: Processing so far -->
+<!-- -   selection of cells -->
+<!-- -   selection of genes: subset of surfaceome -->
+<!-- -   log2 normalised values -->
+<!-- ## Frog development: Aims -->
+<!-- -   Find interesting **cell surface molecule genes** that vary between -->
+<!--     cell types. -->
+<!-- ##  -->
+<!-- ## Deliverables -->
+<!-- 1.  Describe the data -->
+<!--     -   Number of cells/samples/reps/treatments -->
+<!--     -   number of genes -->
+<!--     -   type of expression values -->
+<!--     -   prior processing -->
+<!--     -   missing values -->
+<!--     -   overview of expression -->
+<!--     -   clustering of genes/samples -->
+<!-- 2.  Report on differential expression between two groups -->
+<!--     -   number of DE at 1%, 5% and 10%. -->
+
+<!--     -   table of expression, fold changes, signifcance at each sig. -->
+<!--     -   Volcano plot -->
+<!-- 3.  Report list of marker candidate gene IDs for a cell type of choice. -->
+
+<!--     Justify filters. Table with fold FC, p values, IDs, canonical gene -->
+<!--     names -->
+<!-- 4.  Interpret the biology by reporting on a few group of genes and the -->
+<!--     processes in which they are involved. -->
+<!-- 5.  Report on your chosen genes and explain why you think they are good -->
+<!--     candidates for follow up work -->
+<!-- ## revise pivot longer -->
+<!-- ## revise pivot longer -->
 
 <div class="footer footer-default">
 <p>🔗 <a href="https://3mmarand.github.io/BIO00088H-data/omics/week-3/overview.html">About Omics 1: Hello data!</a></p>
 </div>
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-nestorowa2016" class="csl-entry" role="listitem">
-Nestorowa, Sonia, Fiona K. Hamey, Blanca Pijuan Sala, Evangelia Diamanti, Mairi Shepherd, Elisa Laurenti, Nicola K. Wilson, David G. Kent, and Berthold Göttgens. 2016. <span>“A Single-Cell Resolution Map of Mouse Hematopoietic Stem and Progenitor Cell Differentiation.”</span> <em>Blood</em> 128 (8): e20–31. <a href="https://doi.org/10.1182/blood-2016-05-716480">https://doi.org/10.1182/blood-2016-05-716480</a>.
-</div>
-</div>
-</section>
+</section></section>
     </div>
   </div>
 

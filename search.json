@@ -322,116 +322,95 @@
     "text": "This week you will meet your data. The independent study will concisely cover how these data were generated and how they have been processed before being given to you. There will also be an overview of the analysis we will carry out over three workshops. In the workshop, you will learn what steps to take to get a good understanding of ’omics data before you consider any statistical analysis. This is an often overlooked, but very valuable and informative, part of any data pipeline. It gives you the deep understanding of the data structures and values that you will need to code and trouble-shoot code, allows you to spot failed or problematic samples and informs your decisions on quality control.\n\nLearning objectives\nThe successful student will be able to:\n\nexplore ’omics data to find the number of rows and columns and know how these correspond to samples and variables\nexplore the distribution of expression measures across whole data sets, across variables and across samples by summarising and plotting\nexplain what distributions are expected and interpret the distributions they have\nexplain on what basis we might filter out variables or samples\nimport, explore and filter ’omics data reproducibly so they can understand and reuse their code in the future\n\n\n\nInstructions\n\nPrepare\n\n📖 Read how the data were generated and how they have been processed so far, insstall\n\nWorkshop\n\n💻 Set up a Project\n💻 Import data\n💻 Explore the distribution of values across samples/cells and across genes/species\n💻 Perform quality control\n💻 Look after future you!\n\nConsolidate\n\n💻 Use the work you completed in the workshop as a template to apply to a new case."
   },
   {
-    "objectID": "omics/week-3/study_before_workshop.html#omics-workshops",
-    "href": "omics/week-3/study_before_workshop.html#omics-workshops",
+    "objectID": "omics/week-3/study_before_workshop.html#nb-still-in-construction",
+    "href": "omics/week-3/study_before_workshop.html#nb-still-in-construction",
     "title": "Independent Study to prepare for workshop",
-    "section": "Omics workshops",
-    "text": "Omics workshops\nWhat the data are and something about what has been done to the raw data to get get.\n\n🐸 the difference between the control and the FGF treated sibling at S30\n🐭 the difference between HSPC and Prog cells\n🍂 ???????"
+    "section": "🚧 NB still in construction 🚧",
+    "text": "🚧 NB still in construction 🚧"
   },
   {
-    "objectID": "omics/week-3/study_before_workshop.html#aims",
-    "href": "omics/week-3/study_before_workshop.html#aims",
+    "objectID": "omics/week-3/study_before_workshop.html#overview",
+    "href": "omics/week-3/study_before_workshop.html#overview",
     "title": "Independent Study to prepare for workshop",
-    "section": "Aims",
-    "text": "Aims\n\nfind important genes\nwhat is ‘important’\n\nexpressed\ndifferentially expressed i.e., which genes are significantly higher in one group vs another"
+    "section": "Overview",
+    "text": "Overview\n\n\nConcise summary of the experimental design and aims\nWhat the raw data consist of\nWhat has been done to the data so far\nWhat steps we will take in the workshop"
   },
   {
-    "objectID": "omics/week-3/study_before_workshop.html#sequence-data",
-    "href": "omics/week-3/study_before_workshop.html#sequence-data",
+    "objectID": "omics/week-3/study_before_workshop.html#the-data",
+    "href": "omics/week-3/study_before_workshop.html#the-data",
     "title": "Independent Study to prepare for workshop",
-    "section": "Sequence Data",
-    "text": "Sequence Data\n\nThe raw data are “reads” from a sequencing machine. Reads are short sequences of DNA or RNA.\nThe reads are aligned to a reference genome or transcriptome. The reads are then counted to quantify the expression of each gene. The counts are normalised to allow comparison between samples.\nreads\nquality control\nalign/pseudoalign\nquantify\nnormalise"
+    "section": "The Data",
+    "text": "The Data\nThere are three datasets\n\n🐸 transcriptomic data (bulk RNA-seq) from frog embryos.\n🐭 transcriptomic data (single cell RNA-seq) from stemcells\n🍂 ??????? Metabolomic / Metagenomic data from anaerobic digesters"
   },
   {
-    "objectID": "omics/week-3/study_before_workshop.html#what-is-a-read",
-    "href": "omics/week-3/study_before_workshop.html#what-is-a-read",
+    "objectID": "omics/week-3/study_before_workshop.html#experimental-design-1",
+    "href": "omics/week-3/study_before_workshop.html#experimental-design-1",
     "title": "Independent Study to prepare for workshop",
-    "section": "What is a read",
-    "text": "What is a read\n\nFASTQ format files\n\nsequences and information about each sequence’s read accuracy"
+    "section": "🐸 Experimental design",
+    "text": "🐸 Experimental design\n\nSchematic of frog development experiment"
   },
   {
-    "objectID": "omics/week-3/study_before_workshop.html#differential-expression",
-    "href": "omics/week-3/study_before_workshop.html#differential-expression",
+    "objectID": "omics/week-3/study_before_workshop.html#experimental-design-2",
+    "href": "omics/week-3/study_before_workshop.html#experimental-design-2",
     "title": "Independent Study to prepare for workshop",
-    "section": "Differential expression",
-    "text": "Differential expression\n\nwhat is differentially expressed\nhow are DE genes related\nwhat are DE genes involved with"
+    "section": "🐸 Experimental design",
+    "text": "🐸 Experimental design\n\nSchematic of frog development experiment\n\n3 fertilisations\ntwo siblings from each fertilisation one control, on FGF treated\nsequenced at three time points\n3 x 2 x 3 = 18 groups"
   },
   {
-    "objectID": "omics/week-3/study_before_workshop.html#stem-cells-background",
-    "href": "omics/week-3/study_before_workshop.html#stem-cells-background",
+    "objectID": "omics/week-3/study_before_workshop.html#experimental-design-3",
+    "href": "omics/week-3/study_before_workshop.html#experimental-design-3",
     "title": "Independent Study to prepare for workshop",
-    "section": "Stem cells: background",
-    "text": "Stem cells: background\nCells were sorted using flow cytometry on the basis of cell surface markers. There are three cell types:\n\nlong-term haematopoetic stem cells (LT-HSCs)\nhaematopoetic stem and progenitor cells (HSPCs)\nprogenitor cells (Progs)\n\nEach cell is then sequenced to quantify all the transcripts in each cell. different transcripts (genes) were identified."
+    "section": "🐸 Experimental design",
+    "text": "🐸 Experimental design\n\nSchematic of frog development experiment\n\n3 fertilisations. These are the replicates, .5, .6, A\ntwo siblings from each fertilisation one control, one FGF treated. The treatments are paired\nsequenced at three time points. S14, S20, S30\n3 x 2 x 3 = 18 groups"
   },
   {
-    "objectID": "omics/week-3/study_before_workshop.html#stem-cells-background-1",
-    "href": "omics/week-3/study_before_workshop.html#stem-cells-background-1",
+    "objectID": "omics/week-3/study_before_workshop.html#aim",
+    "href": "omics/week-3/study_before_workshop.html#aim",
     "title": "Independent Study to prepare for workshop",
-    "section": "Stem cells: background",
-    "text": "Stem cells: background\n\nRaw data: GEO Series GSE81682\nIllumina HiSeq\nshort reads 150-300bp\nA single-cell resolution map of mouse hematopoietic stem and progenitor cell differentiation (Nestorowa et al. 2016)\n3,840 samples\nReads were aligned using G-SNAP and the mapped reads were assigned to Ensembl genes HTSeq\nGSE81682_HTSeq_counts.txt.gz (bottom of the page). And GSE81682_HTSeq_counts.txt.zip"
+    "section": "🐸 Aim",
+    "text": "🐸 Aim\n\n\nfind genes important in frog development\nImportant means genes that are differentially expressed between the control and the FGF treated sibling\nDifferentially expressed means the expression on one group is signifcantly higher than the other"
   },
   {
-    "objectID": "omics/week-3/study_before_workshop.html#stem-cells-processing-so-far",
-    "href": "omics/week-3/study_before_workshop.html#stem-cells-processing-so-far",
+    "objectID": "omics/week-3/study_before_workshop.html#guided-analysis",
+    "href": "omics/week-3/study_before_workshop.html#guided-analysis",
     "title": "Independent Study to prepare for workshop",
-    "section": "Stem cells: Processing so far",
-    "text": "Stem cells: Processing so far\n\nselection of cells\nselection of genes: subset of surfaceome\nlog2 normalised values"
+    "section": "🐸 Guided analysis",
+    "text": "🐸 Guided analysis\n\n\nThe workshops will take you through comparing the control and FGF treated sibling at S30\nThis is the “least interesting” comparison\nYou will be guided to carefully document your work so you can apply the same methods to other comparisons"
   },
   {
-    "objectID": "omics/week-3/study_before_workshop.html#stem-cells-aims",
-    "href": "omics/week-3/study_before_workshop.html#stem-cells-aims",
+    "objectID": "omics/week-3/study_before_workshop.html#experimental-design-4",
+    "href": "omics/week-3/study_before_workshop.html#experimental-design-4",
     "title": "Independent Study to prepare for workshop",
-    "section": "Stem cells: Aims",
-    "text": "Stem cells: Aims\n\nFind interesting cell surface molecule genes that vary between cell types."
+    "section": "🐭 Experimental design",
+    "text": "🐭 Experimental design\n\nSchematic of stem cell experiment"
   },
   {
-    "objectID": "omics/week-3/study_before_workshop.html#frog-development-background",
-    "href": "omics/week-3/study_before_workshop.html#frog-development-background",
+    "objectID": "omics/week-3/study_before_workshop.html#experimental-design-5",
+    "href": "omics/week-3/study_before_workshop.html#experimental-design-5",
     "title": "Independent Study to prepare for workshop",
-    "section": "Frog development: background",
-    "text": "Frog development: background\n\n3 fertilisations = replicates\ntwo siblings from each fertilisation one control, on FGF treated\nsequenced at three time points: S14, S20, S30\n3 x 2 x 3 = 18 groups"
+    "section": "🐭 Experimental design",
+    "text": "🐭 Experimental design\n\nSchematic of stem cell experiment\n\nCells were sorted using flow cytometry on the basis of cell surface markers\nThere are three cell types: LT-HSCs, HSPCs, Progs\nMany cells of each cell type were sequenced"
   },
   {
-    "objectID": "omics/week-3/study_before_workshop.html#frog-development-background-1",
-    "href": "omics/week-3/study_before_workshop.html#frog-development-background-1",
+    "objectID": "omics/week-3/study_before_workshop.html#experimental-design-6",
+    "href": "omics/week-3/study_before_workshop.html#experimental-design-6",
     "title": "Independent Study to prepare for workshop",
-    "section": "Frog development: background",
-    "text": "Frog development: background\n\nRaw data: GEO Series GSE81682\nIllumina HiSeq\nshort reads 150-300bp\nA single-cell resolution map of mouse hematopoietic stem and progenitor cell differentiation (Nestorowa et al. 2016)\n3,840 samples\nReads were aligned using G-SNAP and the mapped reads were assigned to Ensembl genes HTSeq\nGSE81682_HTSeq_counts.txt.gz (bottom of the page). And GSE81682_HTSeq_counts.txt.zip"
+    "section": "🐭 Experimental design",
+    "text": "🐭 Experimental design\n\nSchematic of stem cell experiment\n\nThere are three cell types: LT-HSCs, HSPCs, Progs These are the “treaments”\nMany cells of each cell type were sequenced: These are the replicates\n155 LT-HSCs, 701 HSPCs, 798 Progs"
   },
   {
-    "objectID": "omics/week-3/study_before_workshop.html#frog-development-processing-so-far",
-    "href": "omics/week-3/study_before_workshop.html#frog-development-processing-so-far",
+    "objectID": "omics/week-3/study_before_workshop.html#aim-1",
+    "href": "omics/week-3/study_before_workshop.html#aim-1",
     "title": "Independent Study to prepare for workshop",
-    "section": "Frog development: Processing so far",
-    "text": "Frog development: Processing so far\n\nselection of cells\nselection of genes: subset of surfaceome\nlog2 normalised values"
+    "section": "🐭 Aim",
+    "text": "🐭 Aim\n\n\nfind genes for cell surface proteins that are important in stem cell identity\nImportant means genes that are differentially expressed between at least two cell types\nDifferentially expressed means the expression on one group is significantly higher than the other"
   },
   {
-    "objectID": "omics/week-3/study_before_workshop.html#frog-development-aims",
-    "href": "omics/week-3/study_before_workshop.html#frog-development-aims",
+    "objectID": "omics/week-3/study_before_workshop.html#guided-analysis-1",
+    "href": "omics/week-3/study_before_workshop.html#guided-analysis-1",
     "title": "Independent Study to prepare for workshop",
-    "section": "Frog development: Aims",
-    "text": "Frog development: Aims\n\nFind interesting cell surface molecule genes that vary between cell types."
-  },
-  {
-    "objectID": "omics/week-3/study_before_workshop.html#deliverables",
-    "href": "omics/week-3/study_before_workshop.html#deliverables",
-    "title": "Independent Study to prepare for workshop",
-    "section": "Deliverables",
-    "text": "Deliverables\n\nDescribe the data\n\nNumber of cells/samples/reps/treatments\nnumber of genes\ntype of expression values\nprior processing\nmissing values\noverview of expression\nclustering of genes/samples\n\nReport on differential expression between two groups\n\nnumber of DE at 1%, 5% and 10%.\ntable of expression, fold changes, signifcance at each sig.\nVolcano plot\n\nReport list of marker candidate gene IDs for a cell type of choice. Justify filters. Table with fold FC, p values, IDs, canonical gene names\nInterpret the biology by reporting on a few group of genes and the processes in which they are involved.\nReport on your chosen genes and explain why you think they are good candidates for follow up work"
-  },
-  {
-    "objectID": "omics/week-3/study_before_workshop.html#revise-pivot-longer",
-    "href": "omics/week-3/study_before_workshop.html#revise-pivot-longer",
-    "title": "Independent Study to prepare for workshop",
-    "section": "revise pivot longer",
-    "text": "revise pivot longer"
-  },
-  {
-    "objectID": "omics/week-3/study_before_workshop.html#revise-pivot-longer-1",
-    "href": "omics/week-3/study_before_workshop.html#revise-pivot-longer-1",
-    "title": "Independent Study to prepare for workshop",
-    "section": "revise pivot longer",
-    "text": "revise pivot longer\n\n\n🔗 About Omics 1: Hello data!\n\n\n\nNestorowa, Sonia, Fiona K. Hamey, Blanca Pijuan Sala, Evangelia Diamanti, Mairi Shepherd, Elisa Laurenti, Nicola K. Wilson, David G. Kent, and Berthold Göttgens. 2016. “A Single-Cell Resolution Map of Mouse Hematopoietic Stem and Progenitor Cell Differentiation.” Blood 128 (8): e20–31. https://doi.org/10.1182/blood-2016-05-716480."
+    "section": "🐭 Guided analysis",
+    "text": "🐭 Guided analysis\n\n\nThe workshops will take you through comparing the HSPC and Prog cells\nThis is the “least interesting” comparison\nYou will be guided to carefully document your work so you can apply the same methods to other comparisons\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n🔗 About Omics 1: Hello data!"
   },
   {
     "objectID": "omics/week-3/workshop.html",
@@ -592,7 +571,7 @@
     "href": "core/week-2/workshop.html#rstudio-terminal",
     "title": "Workshop",
     "section": "RStudio terminal",
-    "text": "RStudio terminal\nThe RStudio terminal is a convenient interface to the shell without leaving RStudio. It is useful for running commands that are not available in R. For example, you can use it to run other programs like fasqc, git, ftp, ssh\nNavigating your file system\nSeveral commands are frequently used to create, inspect, rename, and delete files and directories.\n$\nThe dollar sign is the prompt (like &gt; on the R console), which shows us that the shell is waiting for input.\nYou can find out where you are using the pwd command, which stands for “print working directory”.\n\npwd\n\n/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2\n\n\nYou can find out what you can see with ls which stands for “list”.\n\nls\n\ndata\nimages\noverview.qmd\nstudy_after_workshop.qmd\nstudy_before_workshop.html\nstudy_before_workshop.ipynb\nstudy_before_workshop.qmd\nworkshop.qmd\nworkshop.rmarkdown\n\n\nYou might have noticed that unlike R, the commands do not have brackets after them. Instead, options (or switches) are given after the command. For example, we can modify the ls command to give us more information with the -l option, which stands for “long”.\n\nls -l\n\ntotal 136\ndrwxr-xr-x 2 runner docker  4096 Oct  6 13:48 data\ndrwxr-xr-x 2 runner docker  4096 Oct  6 13:48 images\n-rw-r--r-- 1 runner docker  1597 Oct  6 13:48 overview.qmd\n-rw-r--r-- 1 runner docker   184 Oct  6 13:48 study_after_workshop.qmd\n-rw-r--r-- 1 runner docker 69876 Oct  6 13:50 study_before_workshop.html\n-rw-r--r-- 1 runner docker  4807 Oct  6 13:48 study_before_workshop.ipynb\n-rw-r--r-- 1 runner docker 13029 Oct  6 13:48 study_before_workshop.qmd\n-rw-r--r-- 1 runner docker  8550 Oct  6 13:48 workshop.qmd\n-rw-r--r-- 1 runner docker  8564 Oct  6 13:50 workshop.rmarkdown\n\n\nYou can use more than one option at once. The -h option stands for “human readable” and makes the file sizes easier to understand for humans:\n\nls -hl\n\ntotal 136K\ndrwxr-xr-x 2 runner docker 4.0K Oct  6 13:48 data\ndrwxr-xr-x 2 runner docker 4.0K Oct  6 13:48 images\n-rw-r--r-- 1 runner docker 1.6K Oct  6 13:48 overview.qmd\n-rw-r--r-- 1 runner docker  184 Oct  6 13:48 study_after_workshop.qmd\n-rw-r--r-- 1 runner docker  69K Oct  6 13:50 study_before_workshop.html\n-rw-r--r-- 1 runner docker 4.7K Oct  6 13:48 study_before_workshop.ipynb\n-rw-r--r-- 1 runner docker  13K Oct  6 13:48 study_before_workshop.qmd\n-rw-r--r-- 1 runner docker 8.4K Oct  6 13:48 workshop.qmd\n-rw-r--r-- 1 runner docker 8.4K Oct  6 13:50 workshop.rmarkdown\n\n\nThe -a option stands for “all” and shows us all the files, including hidden files.\n\nls -alh\n\ntotal 144K\ndrwxr-xr-x 4 runner docker 4.0K Oct  6 13:50 .\ndrwxr-xr-x 5 runner docker 4.0K Oct  6 13:50 ..\ndrwxr-xr-x 2 runner docker 4.0K Oct  6 13:48 data\ndrwxr-xr-x 2 runner docker 4.0K Oct  6 13:48 images\n-rw-r--r-- 1 runner docker 1.6K Oct  6 13:48 overview.qmd\n-rw-r--r-- 1 runner docker  184 Oct  6 13:48 study_after_workshop.qmd\n-rw-r--r-- 1 runner docker  69K Oct  6 13:50 study_before_workshop.html\n-rw-r--r-- 1 runner docker 4.7K Oct  6 13:48 study_before_workshop.ipynb\n-rw-r--r-- 1 runner docker  13K Oct  6 13:48 study_before_workshop.qmd\n-rw-r--r-- 1 runner docker 8.4K Oct  6 13:48 workshop.qmd\n-rw-r--r-- 1 runner docker 8.4K Oct  6 13:50 workshop.rmarkdown\n\n\nYou can move about with the cd command, which stands for “change directory”. You can use it to move into a directory by specifying the path to the directory:\n\ncd data\npwd\ncd ..\npwd\ncd data\npwd\n\n/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2/data\n/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2\n/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2/data\n\n\nhead 1cq2.pdb\nHEADER    OXYGEN STORAGE/TRANSPORT                04-AUG-99   1CQ2              \nTITLE     NEUTRON STRUCTURE OF FULLY DEUTERATED SPERM WHALE MYOGLOBIN AT 2.0    \nTITLE    2 ANGSTROM                                                             \nCOMPND    MOL_ID: 1;                                                            \nCOMPND   2 MOLECULE: MYOGLOBIN;                                                 \nCOMPND   3 CHAIN: A;                                                            \nCOMPND   4 ENGINEERED: YES;                                                     \nCOMPND   5 OTHER_DETAILS: PROTEIN IS FULLY DEUTERATED                           \nSOURCE    MOL_ID: 1;                                                            \nSOURCE   2 ORGANISM_SCIENTIFIC: PHYSETER CATODON;      \nhead -20 data/1cq2.pdb\nHEADER    OXYGEN STORAGE/TRANSPORT                04-AUG-99   1CQ2              \nTITLE     NEUTRON STRUCTURE OF FULLY DEUTERATED SPERM WHALE MYOGLOBIN AT 2.0    \nTITLE    2 ANGSTROM                                                             \nCOMPND    MOL_ID: 1;                                                            \nCOMPND   2 MOLECULE: MYOGLOBIN;                                                 \nCOMPND   3 CHAIN: A;                                                            \nCOMPND   4 ENGINEERED: YES;                                                     \nCOMPND   5 OTHER_DETAILS: PROTEIN IS FULLY DEUTERATED                           \nSOURCE    MOL_ID: 1;                                                            \nSOURCE   2 ORGANISM_SCIENTIFIC: PHYSETER CATODON;                               \nSOURCE   3 ORGANISM_COMMON: SPERM WHALE;                                        \nSOURCE   4 ORGANISM_TAXID: 9755;                                                \nSOURCE   5 EXPRESSION_SYSTEM: ESCHERICHIA COLI;                                 \nSOURCE   6 EXPRESSION_SYSTEM_TAXID: 562;                                        \nSOURCE   7 EXPRESSION_SYSTEM_VECTOR_TYPE: PLASMID;                              \nSOURCE   8 EXPRESSION_SYSTEM_PLASMID: PET15A                                    \nKEYWDS    HELICAL, GLOBULAR, ALL-HYDROGEN CONTAINING STRUCTURE, OXYGEN STORAGE- \nKEYWDS   2 TRANSPORT COMPLEX                                                    \nEXPDTA    NEUTRON DIFFRACTION                                                   \nAUTHOR    F.SHU,V.RAMAKRISHNAN,B.P.SCHOENBORN   \nless 1cq2.pdb\nless is a program that displays the contents of a file, one page at a time. It is useful for viewing large files because it does not load the whole file into memory before displaying it. Instead, it reads and displays a few lines at a time. You can navigate forward through the file with the spacebar, and backwards with the b key. Press q to quit.\nA wildcard is a character that can be used as a substitute for any of a class of characters in a search, The most common wildcard characters are the asterisk (*) and the question mark (?).\nls *.csv\ncp stands for “copy”. You can copy a file from one directory to another by giving cp the path to the file you want to copy and the path to the destination directory.\ncp 1cq2.pdb copy_of_1cq2.pdb\ncp 1cq2.pdb ../copy_of_1cq2.pdb\ncp 1cq2.pdb ../bob.txt\nTo delete a file use the rm command, which stands for “remove”.\nrm ../bob.txt\nbut be careful because the file will be gone forever. There is no “are you sure?” or undo.\nTo move a file from one directory to another, use the mv command. mv works like cp except that it also deletes the original file.\nmv ../copy_of_1cq2.pdb .\nMake a directory\nmkdir mynewdir"
+    "text": "RStudio terminal\nThe RStudio terminal is a convenient interface to the shell without leaving RStudio. It is useful for running commands that are not available in R. For example, you can use it to run other programs like fasqc, git, ftp, ssh\nNavigating your file system\nSeveral commands are frequently used to create, inspect, rename, and delete files and directories.\n$\nThe dollar sign is the prompt (like &gt; on the R console), which shows us that the shell is waiting for input.\nYou can find out where you are using the pwd command, which stands for “print working directory”.\n\npwd\n\n/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2\n\n\nYou can find out what you can see with ls which stands for “list”.\n\nls\n\ndata\nimages\noverview.qmd\nstudy_after_workshop.qmd\nstudy_before_workshop.html\nstudy_before_workshop.ipynb\nstudy_before_workshop.qmd\nworkshop.qmd\nworkshop.rmarkdown\n\n\nYou might have noticed that unlike R, the commands do not have brackets after them. Instead, options (or switches) are given after the command. For example, we can modify the ls command to give us more information with the -l option, which stands for “long”.\n\nls -l\n\ntotal 136\ndrwxr-xr-x 2 runner docker  4096 Oct  6 15:56 data\ndrwxr-xr-x 2 runner docker  4096 Oct  6 15:56 images\n-rw-r--r-- 1 runner docker  1597 Oct  6 15:56 overview.qmd\n-rw-r--r-- 1 runner docker   184 Oct  6 15:56 study_after_workshop.qmd\n-rw-r--r-- 1 runner docker 69876 Oct  6 15:59 study_before_workshop.html\n-rw-r--r-- 1 runner docker  4807 Oct  6 15:56 study_before_workshop.ipynb\n-rw-r--r-- 1 runner docker 13029 Oct  6 15:56 study_before_workshop.qmd\n-rw-r--r-- 1 runner docker  8550 Oct  6 15:56 workshop.qmd\n-rw-r--r-- 1 runner docker  8564 Oct  6 15:59 workshop.rmarkdown\n\n\nYou can use more than one option at once. The -h option stands for “human readable” and makes the file sizes easier to understand for humans:\n\nls -hl\n\ntotal 136K\ndrwxr-xr-x 2 runner docker 4.0K Oct  6 15:56 data\ndrwxr-xr-x 2 runner docker 4.0K Oct  6 15:56 images\n-rw-r--r-- 1 runner docker 1.6K Oct  6 15:56 overview.qmd\n-rw-r--r-- 1 runner docker  184 Oct  6 15:56 study_after_workshop.qmd\n-rw-r--r-- 1 runner docker  69K Oct  6 15:59 study_before_workshop.html\n-rw-r--r-- 1 runner docker 4.7K Oct  6 15:56 study_before_workshop.ipynb\n-rw-r--r-- 1 runner docker  13K Oct  6 15:56 study_before_workshop.qmd\n-rw-r--r-- 1 runner docker 8.4K Oct  6 15:56 workshop.qmd\n-rw-r--r-- 1 runner docker 8.4K Oct  6 15:59 workshop.rmarkdown\n\n\nThe -a option stands for “all” and shows us all the files, including hidden files.\n\nls -alh\n\ntotal 144K\ndrwxr-xr-x 4 runner docker 4.0K Oct  6 15:59 .\ndrwxr-xr-x 5 runner docker 4.0K Oct  6 15:58 ..\ndrwxr-xr-x 2 runner docker 4.0K Oct  6 15:56 data\ndrwxr-xr-x 2 runner docker 4.0K Oct  6 15:56 images\n-rw-r--r-- 1 runner docker 1.6K Oct  6 15:56 overview.qmd\n-rw-r--r-- 1 runner docker  184 Oct  6 15:56 study_after_workshop.qmd\n-rw-r--r-- 1 runner docker  69K Oct  6 15:59 study_before_workshop.html\n-rw-r--r-- 1 runner docker 4.7K Oct  6 15:56 study_before_workshop.ipynb\n-rw-r--r-- 1 runner docker  13K Oct  6 15:56 study_before_workshop.qmd\n-rw-r--r-- 1 runner docker 8.4K Oct  6 15:56 workshop.qmd\n-rw-r--r-- 1 runner docker 8.4K Oct  6 15:59 workshop.rmarkdown\n\n\nYou can move about with the cd command, which stands for “change directory”. You can use it to move into a directory by specifying the path to the directory:\n\ncd data\npwd\ncd ..\npwd\ncd data\npwd\n\n/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2/data\n/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2\n/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2/data\n\n\nhead 1cq2.pdb\nHEADER    OXYGEN STORAGE/TRANSPORT                04-AUG-99   1CQ2              \nTITLE     NEUTRON STRUCTURE OF FULLY DEUTERATED SPERM WHALE MYOGLOBIN AT 2.0    \nTITLE    2 ANGSTROM                                                             \nCOMPND    MOL_ID: 1;                                                            \nCOMPND   2 MOLECULE: MYOGLOBIN;                                                 \nCOMPND   3 CHAIN: A;                                                            \nCOMPND   4 ENGINEERED: YES;                                                     \nCOMPND   5 OTHER_DETAILS: PROTEIN IS FULLY DEUTERATED                           \nSOURCE    MOL_ID: 1;                                                            \nSOURCE   2 ORGANISM_SCIENTIFIC: PHYSETER CATODON;      \nhead -20 data/1cq2.pdb\nHEADER    OXYGEN STORAGE/TRANSPORT                04-AUG-99   1CQ2              \nTITLE     NEUTRON STRUCTURE OF FULLY DEUTERATED SPERM WHALE MYOGLOBIN AT 2.0    \nTITLE    2 ANGSTROM                                                             \nCOMPND    MOL_ID: 1;                                                            \nCOMPND   2 MOLECULE: MYOGLOBIN;                                                 \nCOMPND   3 CHAIN: A;                                                            \nCOMPND   4 ENGINEERED: YES;                                                     \nCOMPND   5 OTHER_DETAILS: PROTEIN IS FULLY DEUTERATED                           \nSOURCE    MOL_ID: 1;                                                            \nSOURCE   2 ORGANISM_SCIENTIFIC: PHYSETER CATODON;                               \nSOURCE   3 ORGANISM_COMMON: SPERM WHALE;                                        \nSOURCE   4 ORGANISM_TAXID: 9755;                                                \nSOURCE   5 EXPRESSION_SYSTEM: ESCHERICHIA COLI;                                 \nSOURCE   6 EXPRESSION_SYSTEM_TAXID: 562;                                        \nSOURCE   7 EXPRESSION_SYSTEM_VECTOR_TYPE: PLASMID;                              \nSOURCE   8 EXPRESSION_SYSTEM_PLASMID: PET15A                                    \nKEYWDS    HELICAL, GLOBULAR, ALL-HYDROGEN CONTAINING STRUCTURE, OXYGEN STORAGE- \nKEYWDS   2 TRANSPORT COMPLEX                                                    \nEXPDTA    NEUTRON DIFFRACTION                                                   \nAUTHOR    F.SHU,V.RAMAKRISHNAN,B.P.SCHOENBORN   \nless 1cq2.pdb\nless is a program that displays the contents of a file, one page at a time. It is useful for viewing large files because it does not load the whole file into memory before displaying it. Instead, it reads and displays a few lines at a time. You can navigate forward through the file with the spacebar, and backwards with the b key. Press q to quit.\nA wildcard is a character that can be used as a substitute for any of a class of characters in a search, The most common wildcard characters are the asterisk (*) and the question mark (?).\nls *.csv\ncp stands for “copy”. You can copy a file from one directory to another by giving cp the path to the file you want to copy and the path to the destination directory.\ncp 1cq2.pdb copy_of_1cq2.pdb\ncp 1cq2.pdb ../copy_of_1cq2.pdb\ncp 1cq2.pdb ../bob.txt\nTo delete a file use the rm command, which stands for “remove”.\nrm ../bob.txt\nbut be careful because the file will be gone forever. There is no “are you sure?” or undo.\nTo move a file from one directory to another, use the mv command. mv works like cp except that it also deletes the original file.\nmv ../copy_of_1cq2.pdb .\nMake a directory\nmkdir mynewdir"
   },
   {
     "objectID": "core/week-2/workshop.html#differences-between-r-and-python",
