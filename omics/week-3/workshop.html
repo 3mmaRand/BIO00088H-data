@@ -358,7 +358,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">5 October, 2023</p>
+      <p class="date">6 October, 2023</p>
     </div>
   </div>
   
@@ -456,7 +456,7 @@ div.csl-indent {
 <p><img src="workshop_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>This data is very skewed - there are so many low values that we can’t see the the tiny bars for the higher values. Logging the counts is a way to make the distribution more visible.</p>
+<p>This data is very skewed - there are so many low values that we can’t see the tiny bars for the higher values. Logging the counts is a way to make the distribution more visible.</p>
 <p>🎬 Repeat the plot on log of the counts.</p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30</span> <span class="op">|&gt;</span></span>
@@ -589,17 +589,14 @@ div.csl-indent {
 </ul>
 <p>🎬 Save the summary as a dataframe, <code>s30_summary_samp</code>.</p>
 <p>We can write to file using <code><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv()</a></code></p>
-<p>🎬 Write <code>s30_summary_samp_by</code> to a file called “s30_summary_samp_by.csv”:</p>
+<p>🎬 Write <code>s30_summary_samp</code> to a file called “s30_summary_samp.csv”:</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">s30_summary_samp_by</span>, file <span class="op">=</span> <span class="st">"data-processed/s30_summary_samp_by.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 's30_summary_samp_by' not found</code></pre>
-</div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">s30_summary_samp</span>, file <span class="op">=</span> <span class="st">"data-processed/s30_summary_samp.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Plotting the distribution of values is perhaps the easiest way to understand the data. We could plot each column separately or we can pipe the tidy format of data into <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> and make use of <code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap()</a></code></p>
 <p>🎬 Pivot the data and pipe into <code>ggplot</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="op">-</span><span class="va">xenbase_gene_id</span>,</span>
 <span>               names_to <span class="op">=</span> <span class="st">"sample"</span>,</span>
 <span>               values_to <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -614,7 +611,7 @@ div.csl-indent {
 <p>We have many low values and a few very high ones which makes it tricky to see the distributions. Logging the counts will make these clearer.</p>
 <p>🎬 Repeat the graph but taking the base 10 log of the counts:</p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="op">-</span><span class="va">xenbase_gene_id</span>,</span>
 <span>               names_to <span class="op">=</span> <span class="st">"sample"</span>,</span>
 <span>               values_to <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -636,7 +633,7 @@ div.csl-indent {
 <p>We used the <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> function to get an overview of the columns in the frog data. Let’s try that here.</p>
 <p>🎬 Get a quick overview of the columns:</p>
 <div class="cell outputscroll">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">hspc</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">hspc</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> ensembl_gene_id       HSPC_001         HSPC_002         HSPC_003      
  Length:280         Min.   : 0.000   Min.   : 0.000   Min.   : 0.0000  
@@ -1875,7 +1872,7 @@ div.csl-indent {
 <p>Hmmmm, did you get all that? Nope, me neither! We have 701 cells but we only have 6 samples for the frogs. We will need a different approach to get an overview but I find it is still useful to look at the few columns</p>
 <p>🎬 Get a quick overview the first 20 columns:</p>
 <div class="cell outputscroll">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">hspc</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span><span class="op">]</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">hspc</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span><span class="op">]</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> ensembl_gene_id       HSPC_001         HSPC_002         HSPC_003      
  Length:280         Min.   : 0.000   Min.   : 0.000   Min.   : 0.0000  
@@ -1925,7 +1922,7 @@ div.csl-indent {
 <p>In this data set, there is even more of an advantage of using the <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> approach. We will be able to open the dataframe in the Viewer and make plots to examine whether the distributions are similar across cells.</p>
 <p>🎬 Summarise all the cells:</p>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_summary_samp</span> <span class="op">&lt;-</span> <span class="va">hspc</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_summary_samp</span> <span class="op">&lt;-</span> <span class="va">hspc</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="op">-</span><span class="va">ensembl_gene_id</span>,</span>
 <span>               names_to <span class="op">=</span> <span class="st">"cell"</span>,</span>
 <span>               values_to <span class="op">=</span> <span class="st">"expr"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -1945,7 +1942,7 @@ div.csl-indent {
 <p>To get a better understanding of the distribution of expressions in cells we can create a ggplot using the pointrange geom. Pointrange puts a dot at the mean and a line between a minimum and a maximum such as +/- one s.d. Not unlike a boxplot, but when you need the boxes too be very narrow!</p>
 <p>🎬 Create a pointrange plot.</p>
 <div class="cell">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_summary_samp</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_summary_samp</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">cell</span>, y <span class="op">=</span> <span class="va">mean</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_pointrange</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">mean</span> <span class="op">-</span> <span class="va">sd</span>, </span>
 <span>                      ymax <span class="op">=</span> <span class="va">mean</span> <span class="op">+</span> <span class="va">sd</span> <span class="op">)</span>,</span>
@@ -1963,7 +1960,7 @@ div.csl-indent {
 <p>The default order of <code>cell</code> is alphabetical. It can be easier to see these (non-) effects if we order the lines by the size of the mean.</p>
 <p>🎬 Order a pointrange plot with <code>reorder(variable_to_order, order_by)</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_summary_samp</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_summary_samp</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span><span class="op">(</span><span class="va">cell</span>, <span class="va">mean</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">mean</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_pointrange</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">mean</span> <span class="op">-</span> <span class="va">sd</span>, </span>
 <span>                      ymax <span class="op">=</span> <span class="va">mean</span> <span class="op">+</span> <span class="va">sd</span> <span class="op">)</span>,</span>
@@ -1979,7 +1976,7 @@ div.csl-indent {
 <p>There are lots of genes in this dataset therefore we will take the same approach as that we took for the distributions across mouse cells. We will pivot the data to tidy and then summarise the counts for each gene.</p>
 <p>🎬 Summarise the counts for each genes:</p>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_summary_gene</span> <span class="op">&lt;-</span> <span class="va">s30</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_summary_gene</span> <span class="op">&lt;-</span> <span class="va">s30</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="op">-</span><span class="va">xenbase_gene_id</span>,</span>
 <span>               names_to <span class="op">=</span> <span class="st">"sample"</span>,</span>
 <span>               values_to <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -2006,7 +2003,7 @@ div.csl-indent {
 <p>As we have a lot of genes, it is again helpful to plot the mean counts with pointrange to get an overview. We will plot the log of the counts - we saw earlier that logging made it easier to understand the distribution of counts over such a wide range. We will also order the genes from lowest to highest mean count.</p>
 <p>🎬 Plot the logged mean counts for each gene in order of size using <code><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_pointrange()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_summary_gene</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_summary_gene</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span><span class="op">(</span><span class="va">xenbase_gene_id</span>, <span class="va">mean</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">mean</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_pointrange</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>ymin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">mean</span> <span class="op">-</span> <span class="va">sd</span><span class="op">)</span>, </span>
 <span>                      ymax <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">mean</span> <span class="op">+</span> <span class="va">sd</span> <span class="op">)</span><span class="op">)</span>,</span>
@@ -2022,7 +2019,7 @@ div.csl-indent {
 <p>There are fewer genes in this dataset, but still more than you can understand without the overview provided by a plot. We will again pivot the data to tidy and then summarise the expression for each gene.</p>
 <p>🎬 Summarise the expression for each genes:</p>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_summary_gene</span> <span class="op">&lt;-</span> <span class="va">hspc</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_summary_gene</span> <span class="op">&lt;-</span> <span class="va">hspc</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="op">-</span><span class="va">ensembl_gene_id</span>,</span>
 <span>               names_to <span class="op">=</span> <span class="st">"cell"</span>,</span>
 <span>               values_to <span class="op">=</span> <span class="st">"expr"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -2047,7 +2044,7 @@ div.csl-indent {
 <p>As we have a lot of genes, it is again helpful to plot the mean expression with pointrange to get an overview. We do not need to log the values but ordering the genes will help.</p>
 <p>🎬 Plot the logged mean counts for each gene in order of size using <code><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_pointrange()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_summary_gene</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_summary_gene</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span><span class="op">(</span><span class="va">ensembl_gene_id</span>, <span class="va">mean</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">mean</span><span class="op">)</span><span class="op">)</span><span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_pointrange</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>ymin <span class="op">=</span> <span class="va">mean</span> <span class="op">-</span> <span class="va">sd</span>, </span>
 <span>                      ymax <span class="op">=</span> <span class="va">mean</span> <span class="op">+</span> <span class="va">sd</span><span class="op">)</span>,</span>
@@ -2064,23 +2061,23 @@ div.csl-indent {
 <p>My suggestion is to include only the genes with counts in all 6 or 5 out of 6 samples and those with total counts above 20.</p>
 <p>🎬 Filter the summary by gene dataframe:</p>
 <div class="cell">
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_summary_gene_filtered</span> <span class="op">&lt;-</span> <span class="va">s30_summary_gene</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_summary_gene_filtered</span> <span class="op">&lt;-</span> <span class="va">s30_summary_gene</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">total</span> <span class="op">&gt;</span> <span class="fl">20</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">n_zero</span> <span class="op">&lt;</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Write the filtered summary by gene to file:</p>
 <div class="cell">
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">s30_summary_gene_filtered</span>, </span>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">s30_summary_gene_filtered</span>, </span>
 <span>          file <span class="op">=</span> <span class="st">"data-processed/s30_summary_gene_filtered.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Use the list of <code>xenbase_gene_id</code> in the filtered summary to filter the original dataset:</p>
 <div class="cell">
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_filtered</span> <span class="op">&lt;-</span> <span class="va">s30</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_filtered</span> <span class="op">&lt;-</span> <span class="va">s30</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">xenbase_gene_id</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span>  <span class="va">s30_summary_gene_filtered</span><span class="op">$</span><span class="va">xenbase_gene_id</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Write the filtered original to file:</p>
 <div class="cell">
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">s30_filtered</span>, </span>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">s30_filtered</span>, </span>
 <span>          file <span class="op">=</span> <span class="st">"data-processed/s30_filtered.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="mouse-filtering" class="level3"><h3 class="anchored" data-anchor-id="mouse-filtering">🐭 Mouse filtering</h3>
