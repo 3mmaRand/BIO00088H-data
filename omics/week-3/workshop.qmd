@@ -168,7 +168,7 @@ s30 |>
 ```
 
 This data is very skewed - there are so many low values that we can't
-see the the tiny bars for the higher values. Logging the counts is a way
+see the tiny bars for the higher values. Logging the counts is a way
 to make the distribution more visible.
 
 🎬 Repeat the plot on log of the counts.
@@ -328,11 +328,11 @@ s30_summary_samp <- s30 |>
 
 We can write to file using `write_csv()`
 
-🎬 Write `s30_summary_samp_by` to a file called
-"s30_summary_samp_by.csv":
+🎬 Write `s30_summary_samp` to a file called
+"s30_summary_samp.csv":
 
 ```{r}
-write_csv(s30_summary_samp_by, file = "data-processed/s30_summary_samp_by.csv")
+write_csv(s30_summary_samp, file = "data-processed/s30_summary_samp.csv")
 ```
 
 Plotting the distribution of values is perhaps the easiest way to
