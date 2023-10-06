@@ -16,153 +16,277 @@ editor:
 ---
 
 
-
-## Omics workshops
-
-What the data are and something about what has been done to the raw data to get get.
+## 🚧  NB still in construction 🚧
 
 
 
--   🐸 the difference between the control and the FGF treated sibling at
-    S30
--   🐭 the difference between HSPC and Prog cells
--   🍂 ???????
-
-## Aims
-
--   find important genes
--   what is 'important'
-    -   expressed
-    -   differentially expressed i.e., which genes are significantly higher in one group vs another
+## Overview
 
 
 
+::: incremental
 
-## Sequence Data
+-   Concise summary of the experimental design and aims
 
--   The raw data are "reads" from a sequencing machine. Reads are short sequences of DNA or RNA. 
+-   What the raw data consist of
 
+-   What has been done to the data so far
 
--   The reads are aligned to a reference genome or transcriptome. The reads are then counted to quantify the expression of each gene. The counts are normalised to allow comparison between samples.
--   reads
--   quality control
--   align/pseudoalign
--   quantify
--   normalise
+-   What steps we will take in the workshop
 
+:::
 
-## What is a read
+## The Data
 
--   FASTQ format files
-    -   sequences and information about each sequence's read accuracy
+There are three datasets
 
+-   🐸 transcriptomic data (bulk RNA-seq) from frog embryos. 
 
+-   🐭 transcriptomic data (single cell RNA-seq) from stemcells
 
-## Differential expression
-
--   what is differentially expressed
--   how are DE genes related
--   what are DE genes involved with
-
-## Stem cells: background
-
-Cells were sorted using flow cytometry on the basis of cell surface markers. There are three cell types:
-
--   long-term haematopoetic stem cells (LT-HSCs) 
-
--   haematopoetic stem and progenitor cells (HSPCs) 
-
--   progenitor cells (Progs) 
-
-Each cell is then sequenced to quantify all the transcripts in each cell. different transcripts (genes) were identified.
+-   🍂 ??????? Metabolomic / Metagenomic data from anaerobic digesters
 
 
-## Stem cells: background
 
--   Raw data: [GEO Series GSE81682](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE81682)
--   Illumina HiSeq
--   short reads 150-300bp
--   [A single-cell resolution map of mouse hematopoietic stem and progenitor cell differentiation](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5305050/) [@nestorowa2016]
--   3,840 samples
--   Reads were aligned using G-SNAP and the mapped reads were assigned to Ensembl genes HTSeq
--   GSE81682_HTSeq_counts.txt.gz (bottom of the page). And [GSE81682_HTSeq_counts.txt.zip](../data/jillian/GSE81682_HTSeq_counts.zip)
-
-##  Stem cells: Processing so far
-
--   selection of cells
--   selection of genes: subset of surfaceome
--   log2 normalised values
-
-## Stem cells: Aims
-
--   Find interesting **cell surface molecule genes** that vary between cell types.
+# Experimental design
 
 
-## Frog development: background
+## 🐸 Experimental design {auto-animate="true"}
 
--   3 fertilisations = replicates
+![Schematic of frog development
+experiment](images/88H-exp-design-betsy.png){fig-align="center"
+width="700"}
+
+## 🐸 Experimental design {auto-animate="true"}
+
+![Schematic of frog development
+experiment](images/88H-exp-design-betsy.png){fig-align="left"
+width="200"}
+
+::: incremental
+-   3 fertilisations
+
 -   two siblings from each fertilisation one control, on FGF treated
--   sequenced at three time points: S14, S20, S30
+
+-   sequenced at three time points
+
 -   3 x 2 x 3 = 18 groups
+:::
 
-![](images/88H-exp-design-betsy.png)
+## 🐸 Experimental design {auto-animate="true"}
 
+![Schematic of frog development
+experiment](images/88H-exp-design-betsy.png){fig-align="left"
+width="200"}
 
+::: incremental
+-   3 fertilisations. [These are the replicates, `.5`, `.6`,
+    `A`]{style="color:#009900"}
 
-## Frog development: background
+-   two siblings from each fertilisation one control, one FGF treated.
+    [The treatments are paired]{style="color:#009900"}
 
--   Raw data: [GEO Series GSE81682](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE81682)
--   Illumina HiSeq
--   short reads 150-300bp
--   [A single-cell resolution map of mouse hematopoietic stem and progenitor cell differentiation](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5305050/) [@nestorowa2016]
--   3,840 samples
--   Reads were aligned using G-SNAP and the mapped reads were assigned to Ensembl genes HTSeq
--   GSE81682_HTSeq_counts.txt.gz (bottom of the page). And [GSE81682_HTSeq_counts.txt.zip](../data/jillian/GSE81682_HTSeq_counts.zip)
+-   sequenced at three time points. [S14, S20,
+    S30]{style="color:#009900"}
 
- 
+-   3 x 2 x 3 = 18 groups
+:::
 
+## 🐸 Aim
 
+::: incremental
 
-##  Frog development: Processing so far
+-   find genes important in frog development
 
--   selection of cells
--   selection of genes: subset of surfaceome
--   log2 normalised values
+-   Important means genes that are differentially expressed between the control and the FGF treated sibling
 
-## Frog development: Aims
+-   Differentially expressed means the expression on one group is signifcantly higher than the other
 
--   Find interesting **cell surface molecule genes** that vary between cell types.
-
-
-
-
-
-
-## 
-
-## Deliverables
+:::
 
 
-1.  Describe the data
-    -    Number of cells/samples/reps/treatments
-    -    number of genes
-    -    type of expression values
-    -    prior processing
-    -    missing values
-    -    overview of expression 
-    -    clustering of genes/samples
+## 🐸 Guided analysis
 
-2.  Report on differential expression between two groups
-    -   number of DE at 1%, 5% and 10%. 
-    -   table of expression, fold changes, signifcance at each sig. 
-    -   Volcano plot 
+::: incremental
 
-3.  Report list of marker candidate gene IDs for a cell type of choice. Justify filters. Table with fold FC, p values, IDs, canonical gene names
+-   The workshops will take you through comparing the control and FGF treated sibling at S30
 
-4.  Interpret the biology by reporting on a few group of genes and the processes in which they are involved.
+-   This is the "least interesting" comparison
 
-5.  Report on your chosen genes and explain why you think they are good candidates for follow up work
+-   You will be guided to carefully document your work so you can apply the same methods to other comparisons
+
+:::
 
 
-## revise pivot longer
-## revise pivot longer
+
+
+## 🐭 Experimental design {auto-animate="true"}
+
+![Schematic of stem cell experiment](images/88H-exp-design-jillian.png){fig-align="center"
+width="700"}
+
+## 🐭 Experimental design {auto-animate="true"}
+
+![Schematic of stem cell experiment](images/88H-exp-design-jillian.png){fig-align="left"
+width="200"}
+
+::: incremental
+-   Cells were sorted using flow cytometry on the basis of cell surface
+markers
+
+-   There are three cell types: LT-HSCs, HSPCs, Progs 
+
+-   Many cells of each cell type were sequenced
+
+-   
+:::
+
+## 🐭 Experimental design {auto-animate="true"}
+
+![Schematic of stem cell experiment](images/88H-exp-design-jillian.png){fig-align="left"
+width="200"}
+
+::: incremental
+
+-   There are three cell types: LT-HSCs, HSPCs, Progs [These are the "treaments"]{style="color:#009900"}
+
+
+-   Many cells of each cell type were sequenced: [These are the replicates]{style="color:#009900"}
+
+-   [155 LT-HSCs, 701 HSPCs, 798 Progs]{style="color:#009900"}
+
+:::
+
+## 🐭 Aim
+
+::: incremental
+
+-   find genes for cell surface proteins that are important in stem cell identity
+
+-   Important means genes that are differentially expressed between at least two cell types
+
+-   Differentially expressed means the expression on one group is significantly higher than the other
+
+:::
+
+
+## 🐭 Guided analysis
+
+::: incremental
+
+-   The workshops will take you through comparing the HSPC and Prog cells
+
+-   This is the "least interesting" comparison
+
+-   You will be guided to carefully document your work so you can apply the same methods to other comparisons
+
+:::
+
+
+<!-- ## Stem cells: Processing so far -->
+
+<!-- -   selection of cells -->
+<!-- -   selection of genes: subset of surfaceome -->
+<!-- -   log2 normalised values -->
+
+<!-- ## Stem cells: Aims -->
+
+<!-- -   Find interesting **cell surface molecule genes** that vary between -->
+<!--     cell types. -->
+
+
+<!-- the difference between HSPC and Prog cells the difference between the -->
+<!-- control and the FGF treated sibling at S30 \## Sequence Data -->
+
+<!-- -   The raw data are "reads" from a sequencing machine. Reads are short -->
+<!--     sequences of DNA or RNA. -->
+
+<!-- -   The reads are aligned to a reference genome or transcriptome. The -->
+<!--     reads are then counted to quantify the expression of each gene. The -->
+<!--     counts are normalised to allow comparison between samples. -->
+
+<!-- -   reads -->
+
+<!-- -   quality control -->
+
+<!-- -   align/pseudoalign -->
+
+<!-- -   quantify -->
+
+<!-- -   normalise -->
+
+<!-- ## What is a read -->
+
+<!-- -   FASTQ format files -->
+<!--     -   sequences and information about each sequence's read accuracy -->
+
+<!-- ## Differential expression -->
+
+<!-- -   what is differentially expressed -->
+<!-- -   how are DE genes related -->
+<!-- -   what are DE genes involved with -->
+
+<!-- ## Stem cells: background -->
+
+
+
+
+
+<!-- -   Raw data: [GEO Series -->
+<!--     GSE81682](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE81682) -->
+<!-- -   Illumina HiSeq -->
+<!-- -   short reads 150-300bp -->
+<!-- -   [A single-cell resolution map of mouse hematopoietic stem and -->
+<!--     progenitor cell -->
+<!--     differentiation](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5305050/) -->
+<!--     [@nestorowa2016] -->
+<!-- -   3,840 samples -->
+<!-- -   Reads were aligned using G-SNAP and the mapped reads were assigned -->
+<!--     to Ensembl genes HTSeq -->
+<!-- -   GSE81682_HTSeq_counts.txt.gz (bottom of the page). And -->
+<!--     [GSE81682_HTSeq_counts.txt.zip](../data/jillian/GSE81682_HTSeq_counts.zip) -->
+
+<!-- ## Frog development: Processing so far -->
+
+<!-- -   selection of cells -->
+<!-- -   selection of genes: subset of surfaceome -->
+<!-- -   log2 normalised values -->
+
+<!-- ## Frog development: Aims -->
+
+<!-- -   Find interesting **cell surface molecule genes** that vary between -->
+<!--     cell types. -->
+
+<!-- ##  -->
+
+<!-- ## Deliverables -->
+
+<!-- 1.  Describe the data -->
+
+<!--     -   Number of cells/samples/reps/treatments -->
+<!--     -   number of genes -->
+<!--     -   type of expression values -->
+<!--     -   prior processing -->
+<!--     -   missing values -->
+<!--     -   overview of expression -->
+<!--     -   clustering of genes/samples -->
+
+<!-- 2.  Report on differential expression between two groups -->
+
+<!--     -   number of DE at 1%, 5% and 10%. -->
+<!--     -   table of expression, fold changes, signifcance at each sig. -->
+<!--     -   Volcano plot -->
+
+<!-- 3.  Report list of marker candidate gene IDs for a cell type of choice. -->
+<!--     Justify filters. Table with fold FC, p values, IDs, canonical gene -->
+<!--     names -->
+
+<!-- 4.  Interpret the biology by reporting on a few group of genes and the -->
+<!--     processes in which they are involved. -->
+
+<!-- 5.  Report on your chosen genes and explain why you think they are good -->
+<!--     candidates for follow up work -->
+
+<!-- ## revise pivot longer -->
+
+<!-- ## revise pivot longer -->
