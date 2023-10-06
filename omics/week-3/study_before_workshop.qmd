@@ -19,23 +19,14 @@ editor:
 
 ## Omics workshops
 
+What the data are and something about what has been done to the raw data to get get.
+
+
 
 -   🐸 the difference between the control and the FGF treated sibling at
     S30
 -   🐭 the difference between HSPC and Prog cells
 -   🍂 ???????
-
-See later workshops.
-
-
-
-## Sequence Data
-
--   reads
--   quality control
--   align/pseudoalign
--   quantify
--   normalise
 
 ## Aims
 
@@ -44,12 +35,27 @@ See later workshops.
     -   expressed
     -   differentially expressed i.e., which genes are significantly higher in one group vs another
 
+
+
+
+## Sequence Data
+
+-   The raw data are "reads" from a sequencing machine. Reads are short sequences of DNA or RNA. 
+
+
+-   The reads are aligned to a reference genome or transcriptome. The reads are then counted to quantify the expression of each gene. The counts are normalised to allow comparison between samples.
+-   reads
+-   quality control
+-   align/pseudoalign
+-   quantify
+-   normalise
+
+
 ## What is a read
 
 -   FASTQ format files
     -   sequences and information about each sequence's read accuracy
 
-![](images/fastaq_file_format.png)
 
 
 ## Differential expression
@@ -62,11 +68,11 @@ See later workshops.
 
 Cells were sorted using flow cytometry on the basis of cell surface markers. There are three cell types:
 
--   long-term haematopoetic stem cells (LT-HSCs) defined as : Lineage^-^ ckit^+^ Sca1^+^ CD34^-^ Flk2^-^
+-   long-term haematopoetic stem cells (LT-HSCs) 
 
--   haematopoetic stem and progenitor cells (HSPCs) defined as : Lineage^-^ Sca1^+^ ckit^+^
+-   haematopoetic stem and progenitor cells (HSPCs) 
 
--   progenitor cells (Progs) defined as : Lineage^-^ Sca1^-^ ckit^+^
+-   progenitor cells (Progs) 
 
 Each cell is then sequenced to quantify all the transcripts in each cell. different transcripts (genes) were identified.
 
@@ -156,3 +162,7 @@ Each cell is then sequenced to quantify all the transcripts in each cell. differ
 4.  Interpret the biology by reporting on a few group of genes and the processes in which they are involved.
 
 5.  Report on your chosen genes and explain why you think they are good candidates for follow up work
+
+
+## revise pivot longer
+## revise pivot longer

@@ -1,6 +1,8 @@
 ---
 title: "Independent Study to consolidate this week"
 subtitle: "Core 1"
+toc: true
+toc-location: right
 format:
   html:
     code-fold: true

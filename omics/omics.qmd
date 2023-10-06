@@ -8,30 +8,15 @@ toc-location: right
 
 ## Omics 1: Hello data!
 
-before
--   sequence data fundamentals
--   where have the data come from
--   processing so far
--   why log2
--   overarching aims
+This week you will meet your data. The independent study will concisely cover how these data were generated and how they have been processed before being given to you. There will also be an overview of the analysis we will carry out over three workshops.
+In the workshop, you will learn what steps to take to get a good understanding of ’omics data before you consider any statistical analysis. This is an often overlooked, but very valuable and informative, part of any data pipeline. It gives you the deep understanding of the data structures and values that you will need to code and trouble-shoot code, allows you to spot failed or problematic samples and informs your decisions on quality control.
 
-workshop
--   set up a project and create the organisation
--   meta data
--   open in understanding the data numbers of variables, organisation
--   importing
--   exploring, what kind of values are they, how many missing
--   qc plots
--   removing the useless, writing to files
-
-after
--   document what you have done
--   format your figures
 
 
 ## Omics 2: Statisitcal Analysis
 
 before
+
 -   which genes matter: expression, DE
 -   goal of DE
 -   how does DE work
@@ -46,12 +31,14 @@ workshop
 -   writing to files
 
 after
+
 -   document what you have done
 -   repeat on another comparison
 
 ## Omics 3: Visualising and Interpreting
 
 before
+
 -   recap what we have
 -   volcano plot described
 -   GO terms
@@ -59,6 +46,7 @@ before
 
 
 workshop
+
 -   open project import the data
 -   revise!
 -   volcano plot
@@ -66,5 +54,6 @@ workshop
 -   annotating with go terms
 
 after
+
 -   document what you have done
 -   repeat on another comparison

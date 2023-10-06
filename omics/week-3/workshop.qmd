@@ -168,8 +168,8 @@ s30 |>
 ```
 
 This data is very skewed - there are so many low values that we can't
-see the tiny bars for the higher values. Logging the counts is a way
-to make the distribution more visible.
+see the tiny bars for the higher values. Logging the counts is a way to
+make the distribution more visible.
 
 🎬 Repeat the plot on log of the counts.
 
@@ -189,6 +189,12 @@ is expected - these are the counts of 0 since you can't log a value of
 would expect the distribution of counts to be roughly log normal because
 this is expression of *all* the genes in the genome[^1]. That small peak
 near the low end suggests that these lower counts might be anomalies.
+
+[^1]: This a result of the [Central limit
+    theorem](https://en.wikipedia.org/wiki/Central_limit_theorem),one
+    consequence of which is that adding together lots of distributions -
+    whatever distributions they are - will tend to a normal
+    distribution.
 
 The excess number of low counts indicates we might want to create a cut
 off for quality control. The removal of low counts is a common
@@ -223,6 +229,12 @@ the genome and the nature of the subsetting has had an influence here.
 These are a subset of cell surface proteins that show a significant
 difference between at least two of twelve cell subtypes. That is, all of
 these genes are either high or low.
+
+[^2]: This a result of the [Central limit
+    theorem](https://en.wikipedia.org/wiki/Central_limit_theorem),one
+    consequence of which is that adding together lots of distributions -
+    whatever distributions they are - will tend to a normal
+    distribution.
 
 ### Distribution of values across the sample/cells
 
@@ -328,11 +340,11 @@ s30_summary_samp <- s30 |>
 
 We can write to file using `write_csv()`
 
-🎬 Write `s30_summary_samp` to a file called
-"s30_summary_samp.csv":
+🎬 Write `s30_summary_samp` to a file called "s30_summary_samp.csv":
 
 ```{r}
-write_csv(s30_summary_samp, file = "data-processed/s30_summary_samp.csv")
+write_csv(s30_summary_samp, 
+          file = "data-processed/s30_summary_samp.csv")
 ```
 
 Plotting the distribution of values is perhaps the easiest way to
@@ -454,7 +466,7 @@ standard deviation.
 🎬 View the `hspc_summary_samp` dataframe (click on it in the
 environment).
 
-All cells have quite a few zeros and the lower quartile is 0 for al
+All cells have quite a few zeros and the lower quartile is 0 for all
 cells, *i.e.*, every cell has many genes with zero expression.
 
 To get a better understanding of the distribution of expressions in
@@ -503,7 +515,8 @@ hspc_summary_samp |>
 
 ```{r}
 #| echo: false
-write_csv(hspc_summary_samp, file = "data-processed/hspc_summary_samp.csv")
+write_csv(hspc_summary_samp, 
+          file = "data-processed/hspc_summary_samp.csv")
 ```
 
 ### Distribution of values across the genes
@@ -581,7 +594,8 @@ counts from 260 to 426) which is exactly what we would expect to see.
 
 ```{r}
 #| echo: false
-write_csv(s30_summary_gene, file = "data-processed/s30_summary_gene.csv")
+write_csv(s30_summary_gene, 
+          file = "data-processed/s30_summary_gene.csv")
 ```
 
 #### 🐭 Mouse genes
@@ -629,7 +643,7 @@ values but ordering the genes will help.
 
 ```{r}
 hspc_summary_gene |> 
-  ggplot(aes(x = reorder(ensembl_gene_id, mean), y = mean))+
+  ggplot(aes(x = reorder(ensembl_gene_id, mean), y = mean)) +
   geom_pointrange(aes(ymin = mean - sd, 
                       ymax = mean + sd),
                   size = 0.1)
@@ -643,7 +657,8 @@ expression from1.46 to 3.18) which is expected.
 
 ```{r}
 #| echo: false
-write_csv(hspc_summary_gene, file = "data-processed/hspc_summary_gene.csv")
+write_csv(hspc_summary_gene, 
+          file = "data-processed/hspc_summary_gene.csv")
 ```
 
 ## Filtering for QC
@@ -656,15 +671,19 @@ values are so low in for a gene that they are uninformative. We will
 filter the `s30_summary_gene` dataframe to obtain a list of
 `xenbase_gene_id` we can use to filter `s30`.
 
-My suggestion is to include only the genes with counts in all 6 or 5 out
-of 6 samples and those with total counts above 20.
+My suggestion is to include only the genes with counts in at least 3
+samples[^3] and those with total counts above 20.
+
+[^3]: I chose three because that would keep \[0, 0, 0\] \[#,#,#\]. This
+    is difference we cannot test statistically, but which would matter
+    biologically.
 
 🎬 Filter the summary by gene dataframe:
 
 ```{r}
 s30_summary_gene_filtered <- s30_summary_gene |> 
   filter(total > 20) |> 
-  filter(n_zero < 2)
+  filter(n_zero < 4)
 ```
 
 🎬 Write the filtered summary by gene to file:
@@ -691,7 +710,7 @@ write_csv(s30_filtered,
 
 ### 🐭 Mouse filtering
 
-I would take a different approach to filtering the single cell data. For
+We will take a different approach to filtering the single cell data. For
 the Frog samples we are examining the control and the FGF treated
 samples. This means have a low number of counts overall means the gene
 is not really expressed (detected) in any condition, and filtering out
@@ -736,6 +755,12 @@ improve your comments where your understanding has developed since you
 made them. Make sure you can close down RStudio, reopen it and run your
 whole script again.
 
+### 🍂 xxxx and future you
+
+🎬 Create a new Project, `xxxx-88H`, populated with folders and your
+data. Make a script file called `xxxx.R`. This will a be commented
+analysis of t xxxxxxxxxxxx.
+
 # 🥳 Finished
 
 Well Done!
@@ -761,15 +786,3 @@ Pages made with R [@R-core], Quarto [@allaire2022], `knitr` [@knitr],
 `kableExtra` [@kableExtra]
 
 # References
-
-[^1]: This a result of the [Central limit
-    theorem](https://en.wikipedia.org/wiki/Central_limit_theorem),one
-    consequence of which is that adding together lots of distributions -
-    whatever distributions they are - will tend to a normal
-    distribution.
-
-[^2]: This a result of the [Central limit
-    theorem](https://en.wikipedia.org/wiki/Central_limit_theorem),one
-    consequence of which is that adding together lots of distributions -
-    whatever distributions they are - will tend to a normal
-    distribution.
