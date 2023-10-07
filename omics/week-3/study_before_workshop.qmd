@@ -85,11 +85,11 @@ width="200"}
 ::: incremental
 -   find genes important in frog development
 
--   Important means genes that are differentially expressed between the
-    control and the FGF treated sibling
+-   Important means the genes that are differentially expressed between
+    the control-treated and the FGF-treated siblings
 
--   Differentially expressed means the expression on one group is
-    significantly higher than the other
+-   Differentially expressed means the expression in one group is
+    significantly higher than in the other
 :::
 
 ## 🐸 Guided analysis
@@ -135,7 +135,7 @@ width="200"}
 -   There are three cell types: LT-HSCs, HSPCs, Progs [These are the
     "treaments"]{style="color:#009900"}
 
--   Many cells of each cell type were sequenced: [These are the
+-   Many cells of each type were sequenced: [These are the
     replicates]{style="color:#009900"}
 
 -   [155 LT-HSCs, 701 HSPCs, 798 Progs]{style="color:#009900"}
@@ -150,8 +150,8 @@ width="200"}
 -   Important means genes that are differentially expressed between at
     least two cell types
 
--   Differentially expressed means the expression on one group is
-    significantly higher than the other
+-   Differentially expressed means the expression in one group is
+    significantly higher than in the other
 :::
 
 ## 🐭 Guided analysis
@@ -182,7 +182,13 @@ width="200"}
         but are harder to align
     -   Long-read technologies e.g. Nanopore have lower base accuracy
         but are easier to align
+:::
 
+# The raw data
+
+## Raw Sequence data
+
+::: incremental
 -   Sequencing technology is constantly improving
 
 -   Optional: You can read more about Sequencing technologies in
