@@ -29,7 +29,26 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -328,7 +347,7 @@
 
 <section id="title-slide" class="quarto-title-block center">
   <h1 class="title">Independent Study to prepare for workshop</h1>
-  <p class="subtitle">Omics 1: Hello data!</p>
+  <p class="subtitle">Omics 1: 👋 Hello data!</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -338,10 +357,7 @@ Emma Rand
 </div>
 </div>
 
-  <p class="date">6 October, 2023</p>
-</section>
-<section id="nb-still-in-construction" class="slide level2">
-<h2>🚧 NB still in construction 🚧</h2>
+  <p class="date">7 October, 2023</p>
 </section>
 <section id="overview" class="slide level2">
 <h2>Overview</h2>
@@ -402,7 +418,7 @@ Emma Rand
 <ul>
 <li class="fragment"><p>find genes important in frog development</p></li>
 <li class="fragment"><p>Important means genes that are differentially expressed between the control and the FGF treated sibling</p></li>
-<li class="fragment"><p>Differentially expressed means the expression on one group is signifcantly higher than the other</p></li>
+<li class="fragment"><p>Differentially expressed means the expression on one group is significantly higher than the other</p></li>
 </ul>
 </div>
 </section>
@@ -428,7 +444,6 @@ Emma Rand
 <li class="fragment"><p>Cells were sorted using flow cytometry on the basis of cell surface markers</p></li>
 <li class="fragment"><p>There are three cell types: LT-HSCs, HSPCs, Progs</p></li>
 <li class="fragment"><p>Many cells of each cell type were sequenced</p></li>
-<li class="fragment"></li>
 </ul>
 </div>
 </section>
@@ -462,81 +477,101 @@ Emma Rand
 <li class="fragment"><p>You will be guided to carefully document your work so you can apply the same methods to other comparisons</p></li>
 </ul>
 </div>
-<!-- ## Stem cells: Processing so far -->
-<!-- -   selection of cells -->
-<!-- -   selection of genes: subset of surfaceome -->
-<!-- -   log2 normalised values -->
-<!-- ## Stem cells: Aims -->
-<!-- -   Find interesting **cell surface molecule genes** that vary between -->
-<!--     cell types. -->
-<!-- the difference between HSPC and Prog cells the difference between the -->
-<!-- control and the FGF treated sibling at S30 \## Sequence Data -->
-<!-- -   The raw data are "reads" from a sequencing machine. Reads are short -->
-<!--     sequences of DNA or RNA. -->
-<!-- -   The reads are aligned to a reference genome or transcriptome. The -->
-<!--     reads are then counted to quantify the expression of each gene. The -->
-<!--     counts are normalised to allow comparison between samples. -->
-<!-- -   reads -->
-<!-- -   quality control -->
-<!-- -   align/pseudoalign -->
-<!-- -   quantify -->
-<!-- -   normalise -->
-<!-- ## What is a read -->
-<!-- -   FASTQ format files -->
-<!--     -   sequences and information about each sequence's read accuracy -->
-<!-- ## Differential expression -->
-<!-- -   what is differentially expressed -->
-<!-- -   how are DE genes related -->
-<!-- -   what are DE genes involved with -->
-<!-- ## Stem cells: background -->
-<!-- -   Raw data: [GEO Series -->
-<!--     GSE81682](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE81682) -->
-<!-- -   Illumina HiSeq -->
-<!-- -   short reads 150-300bp -->
-<!-- -   [A single-cell resolution map of mouse hematopoietic stem and -->
-<!--     progenitor cell -->
-<!--     differentiation](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5305050/) -->
-<!--     [@nestorowa2016] -->
-<!-- -   3,840 samples -->
-<!-- -   Reads were aligned using G-SNAP and the mapped reads were assigned -->
-<!--     to Ensembl genes HTSeq -->
-<!-- -   GSE81682_HTSeq_counts.txt.gz (bottom of the page). And -->
-<!--     [GSE81682_HTSeq_counts.txt.zip](../data/jillian/GSE81682_HTSeq_counts.zip) -->
-<!-- ## Frog development: Processing so far -->
-<!-- -   selection of cells -->
-<!-- -   selection of genes: subset of surfaceome -->
-<!-- -   log2 normalised values -->
-<!-- ## Frog development: Aims -->
-<!-- -   Find interesting **cell surface molecule genes** that vary between -->
-<!--     cell types. -->
-<!-- ##  -->
-<!-- ## Deliverables -->
-<!-- 1.  Describe the data -->
-<!--     -   Number of cells/samples/reps/treatments -->
-<!--     -   number of genes -->
-<!--     -   type of expression values -->
-<!--     -   prior processing -->
-<!--     -   missing values -->
-<!--     -   overview of expression -->
-<!--     -   clustering of genes/samples -->
-<!-- 2.  Report on differential expression between two groups -->
-<!--     -   number of DE at 1%, 5% and 10%. -->
+</section></section>
+<section>
+<section id="the-raw-data" class="title-slide slide level1 center">
+<h1>The raw data</h1>
 
-<!--     -   table of expression, fold changes, signifcance at each sig. -->
-<!--     -   Volcano plot -->
-<!-- 3.  Report list of marker candidate gene IDs for a cell type of choice. -->
+</section>
+<section id="raw-sequence-data" class="slide level2">
+<h2>Raw Sequence data</h2>
+<div>
+<ul>
+<li class="fragment"><p>The raw data are “reads” from a sequencing machine.</p></li>
+<li class="fragment"><p>A read is sequence of DNA or RNA shorter than the whole genome or transcriptome</p></li>
+<li class="fragment"><p>The length of the reads depends on the type of sequencing machine</p>
+<ul>
+<li class="fragment">Short-read technologies e.g.&nbsp;Illumina have higher base accuracy but are harder to align</li>
+<li class="fragment">Long-read technologies e.g.&nbsp;Nanopore have lower base accuracy but are easier to align</li>
+</ul></li>
+<li class="fragment"><p>Sequencing technology is constantly improving</p></li>
+<li class="fragment"><p>Optional: You can read more about Sequencing technologies in <a href="https://cloud-span.github.io/experimental_design00-overview/">Statistically useful experimental design</a> <span class="citation" data-cites="rand_statistically_2022">(<a href="#/workshops-1" role="doc-biblioref" onclick="">Rand and Forrester 2022</a>)</span></p></li>
+</ul>
+</div>
+</section>
+<section id="raw-sequence-data-1" class="slide level2">
+<h2>Raw Sequence data</h2>
+<div>
+<ul>
+<li class="fragment"><p>The RNA-seq data are from an Illumina machine 150-300bp; Metagenomic data are often Nanopore 10,000 - 30000bp</p></li>
+<li class="fragment"><p>Reads are in FASTQ files</p></li>
+<li class="fragment"><p>FASTQ files contain the sequence of each read and a quality score for each base</p></li>
+</ul>
+</div>
+</section></section>
+<section>
+<section id="what-has-been-done-to-the-data-so-far" class="title-slide slide level1 center">
+<h1>What has been done to the data so far</h1>
 
-<!--     Justify filters. Table with fold FC, p values, IDs, canonical gene -->
-<!--     names -->
-<!-- 4.  Interpret the biology by reporting on a few group of genes and the -->
-<!--     processes in which they are involved. -->
-<!-- 5.  Report on your chosen genes and explain why you think they are good -->
-<!--     candidates for follow up work -->
-<!-- ## revise pivot longer -->
-<!-- ## revise pivot longer -->
+</section>
+<section id="general-steps" class="slide level2">
+<h2>General steps</h2>
+<div>
+<ul>
+<li class="fragment"><p>Reads are filtered and trimmed on the basis of the quality score</p></li>
+<li class="fragment"><p>They are then aligned/pseudo-aligned to a reference genome/transcriptome or, in metagenomics, assembled de novo.</p></li>
+<li class="fragment"><p>Reads are then counted to quantify the expression or number of genomes in metagenomics</p></li>
+<li class="fragment"><p>Counts are normalised to account for differences in sequencing depth and gene/transcript/genome length before statistical analysis</p></li>
+</ul>
+</div>
+</section>
+<section id="data" class="slide level2">
+<h2>🐸 Data</h2>
+<ul>
+<li><p>Unpublished (so far!)</p></li>
+<li><p>Expression for the whole transcriptome <a href="https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp"><em>X. laevis</em> v10.1 genome assembly</a></p></li>
+<li><p>Values are raw counts</p></li>
+<li><p>The statistical analysis method we will use <code>DESeq2</code> <span class="citation" data-cites="DESeq2">(<a href="#/workshops-1" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span> requires raw counts and performs the normalisation itself</p></li>
+</ul>
+</section>
+<section id="data-1" class="slide level2">
+<h2>🐭 Data</h2>
+<ul>
+<li><p>Published in <span class="citation" data-cites="nestorowa2016">Nestorowa et al. (<a href="#/workshops-1" role="doc-biblioref" onclick="">2016</a>)</span></p></li>
+<li><p>Expression for a subset of genes, the surfaceome</p></li>
+<li><p>Values are log2 normalised values</p></li>
+<li><p>The statistical analysis method we will use <code>scran</code> <span class="citation" data-cites="scran">(<a href="#/workshops-1" role="doc-biblioref" onclick="">Lun, McCarthy, and Marioni 2016</a>)</span> requires normalised values</p></li>
+</ul>
+</section></section>
+<section>
+<section id="workshops" class="title-slide slide level1 center">
+<h1>Workshops</h1>
+
+</section>
+<section id="workshops-1" class="slide level2 smaller scrollable">
+<h2>Workshops</h2>
+<ul>
+<li><p>Omics 1: Hello data Getting to know the data. Checking the distributions of values overall, across samples and across genes to check things are as we expect and detect genes/samples that need to be removed</p></li>
+<li><p>Omics 2: Statistical Analysis Identifying which genes are differentially expressed between treatments. This is the main analysis step. We will use different methods for bulk and single cell data.</p></li>
+<li><p>Omics 3: Visualising and Interpreting Production of volcano plots and heatmaps to visualise the results of the statistical analysis. We will also look at how to interpret the results and how to find out more about the genes of interest.</p></li>
+</ul>
 
 <div class="footer footer-default">
 <p>🔗 <a href="https://3mmarand.github.io/BIO00088H-data/omics/week-3/overview.html">About Omics 1: Hello data!</a></p>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-DESeq2" class="csl-entry" role="listitem">
+Love, Michael I., Wolfgang Huber, and Simon Anders. 2014. <span>“Moderated Estimation of Fold Change and Dispersion for RNA-Seq Data with DESeq2”</span> 15: 550. <a href="https://doi.org/10.1186/s13059-014-0550-8">https://doi.org/10.1186/s13059-014-0550-8</a>.
+</div>
+<div id="ref-scran" class="csl-entry" role="listitem">
+Lun, Aaron T. L., Davis J. McCarthy, and John C. Marioni. 2016. <span>“A Step-by-Step Workflow for Low-Level Analysis of Single-Cell RNA-Seq Data with Bioconductor”</span> 5: 2122. <a href="https://doi.org/10.12688/f1000research.9501.2">https://doi.org/10.12688/f1000research.9501.2</a>.
+</div>
+<div id="ref-nestorowa2016" class="csl-entry" role="listitem">
+Nestorowa, Sonia, Fiona K. Hamey, Blanca Pijuan Sala, Evangelia Diamanti, Mairi Shepherd, Elisa Laurenti, Nicola K. Wilson, David G. Kent, and Berthold Göttgens. 2016. <span>“A Single-Cell Resolution Map of Mouse Hematopoietic Stem and Progenitor Cell Differentiation.”</span> <em>Blood</em> 128 (8): e20–31. <a href="https://doi.org/10.1182/blood-2016-05-716480">https://doi.org/10.1182/blood-2016-05-716480</a>.
+</div>
+<div id="ref-rand_statistically_2022" class="csl-entry" role="listitem">
+Rand, Emma, and Sarah Forrester. 2022. <span>“Statistically Useful Experimental Design.”</span> <a href="https://cloud-span.github.io/experimental_design00-overview/">https://cloud-span.github.io/experimental_design00-overview/</a>.
+</div>
 </div>
 </section></section>
     </div>
