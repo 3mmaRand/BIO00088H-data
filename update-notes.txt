@@ -41,21 +41,17 @@ fs::dir_create("data-raw")
 fs::dir_create("data-processed")
 
 
+for workshop 2 they willneed
+
+biocmanager
+
+scran BiocManager::install("scran")
+
+DESeq2 BiocManager::install("DESeq2")
+
+
 for workshop 2, make sure you examine which frog genes are 0 in all of one sample but present in all of the other
 
 which genes matters: first do venn diagram, present absent
 then to differential expressions
 
--   Raw data: [GEO Series
-    GSE81682](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE81682)
--   Illumina HiSeq
--   short reads 150-300bp
--   [A single-cell resolution map of mouse hematopoietic stem and
-    progenitor cell
-    differentiation](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5305050/)
-    [@nestorowa2016]
--   3,840 samples
--   Reads were aligned using G-SNAP and the mapped reads were assigned
-    to Ensembl genes HTSeq
--   GSE81682_HTSeq_counts.txt.gz (bottom of the page). And
-    [GSE81682_HTSeq_counts.txt.zip](../data/jillian/GSE81682_HTSeq_counts.zip)
