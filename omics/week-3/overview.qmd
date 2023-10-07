@@ -1,6 +1,6 @@
 ---
 title: "Overview"
-subtitle: "Omics 1: Hello data!"
+subtitle: "Omics 1: 👋 Hello data!"
 toc: true
 toc-location: right
 ---
@@ -8,6 +8,7 @@ toc-location: right
 This week you will meet your data. The independent study will concisely cover how these data were generated and how they have been processed before being given to you. There will also be an overview of the analysis we will carry out over three workshops.
 In the workshop, you will learn what steps to take to get a good understanding of ’omics data before you consider any statistical analysis. This is an often overlooked, but very valuable and informative, part of any data pipeline. It gives you the deep understanding of the data structures and values that you will need to code and trouble-shoot code, allows you to spot failed or problematic samples and informs your decisions on quality control.
 
+We suggest you sit together with your group in the workshop.
 
 ### Learning objectives
 
@@ -23,7 +24,7 @@ The successful student will be able to:
 
 1.  [Prepare](study_before_workshop.qmd)
     
-    i.   📖 Read how the data were generated and how they have been processed so far, insstall 
+    i.   📖 Read how the data were generated and how they have been processed so far, install 
 
 
 2.  [Workshop](workshop.qmd)
