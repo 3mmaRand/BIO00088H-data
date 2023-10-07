@@ -915,7 +915,11 @@
     "href": "omics/week-3/study_before_workshop.html#the-data",
     "title": "Independent Study to prepare for workshop",
     "section": "The Data",
-    "text": "The Data\nThere are three datasets\n\n🐸 transcriptomic data (bulk RNA-seq) from frog embryos.\n🐭 transcriptomic data (single cell RNA-seq) from stemcells\n🍂 ??????? Metabolomic / Metagenomic data from anaerobic digesters"
+    "text": "The Data\nThere are three datasets\n\n🐸 transcriptomic data (bulk RNA-seq) from frog embryos.\n🐭 transcriptomic data (single cell RNA-seq) from stemcells\n🍂 ??????? Metabolomic / Metagenomic data from anaerobic digesters",
+    "crumbs": [
+      "Week 3: Hello data!",
+      "Prepare!"
+    ]
   },
   {
     "objectID": "omics/week-3/study_before_workshop.html#experimental-design",
@@ -929,14 +933,22 @@
     "href": "omics/week-3/study_before_workshop.html#experimental-design-1",
     "title": "Independent Study to prepare for workshop",
     "section": "🐸 Experimental design",
-    "text": "🐸 Experimental design\n\nSchematic of frog development experiment"
+    "text": "🐸 Experimental design\n\nSchematic of frog development experiment",
+    "crumbs": [
+      "Week 3: Hello data!",
+      "Prepare!"
+    ]
   },
   {
     "objectID": "omics/week-3/study_before_workshop.html#experimental-design-2",
     "href": "omics/week-3/study_before_workshop.html#experimental-design-2",
     "title": "Independent Study to prepare for workshop",
     "section": "🐸 Experimental design",
-    "text": "🐸 Experimental design\n\nSchematic of frog development experiment\n\n3 fertilisations\ntwo siblings from each fertilisation one control, on FGF treated\nsequenced at three time points\n3 x 2 x 3 = 18 groups"
+    "text": "🐸 Experimental design\n\nSchematic of frog development experiment\n\n3 fertilisations\ntwo siblings from each fertilisation one control, on FGF treated\nsequenced at three time points\n3 x 2 x 3 = 18 groups",
+    "crumbs": [
+      "Week 3: Hello data!",
+      "Prepare!"
+    ]
   },
   {
     "objectID": "omics/week-3/study_before_workshop.html#section",
@@ -971,62 +983,164 @@
     "href": "omics/week-3/study_before_workshop.html#overview",
     "title": "Independent Study to prepare for workshop",
     "section": "Overview",
-    "text": "Overview\n\n\nConcise summary of the experimental design and aims\nWhat the raw data consist of\nWhat has been done to the data so far\nWhat steps we will take in the workshop"
+    "text": "Overview\n\n\nConcise summary of the experimental design and aims\nWhat the raw data consist of\nWhat has been done to the data so far\nWhat steps we will take in the workshop",
+    "crumbs": [
+      "Week 3: Hello data!",
+      "Prepare!"
+    ]
   },
   {
     "objectID": "omics/week-3/study_before_workshop.html#experimental-design-3",
     "href": "omics/week-3/study_before_workshop.html#experimental-design-3",
     "title": "Independent Study to prepare for workshop",
     "section": "🐸 Experimental design",
-    "text": "🐸 Experimental design\n\nSchematic of frog development experiment\n\n3 fertilisations. These are the replicates, .5, .6, A\ntwo siblings from each fertilisation one control, one FGF treated. The treatments are paired\nsequenced at three time points. S14, S20, S30\n3 x 2 x 3 = 18 groups"
+    "text": "🐸 Experimental design\n\nSchematic of frog development experiment\n\n3 fertilisations. These are the replicates, .5, .6, A\ntwo siblings from each fertilisation one control, one FGF treated. The treatments are paired\nsequenced at three time points. S14, S20, S30\n3 x 2 x 3 = 18 groups",
+    "crumbs": [
+      "Week 3: Hello data!",
+      "Prepare!"
+    ]
   },
   {
     "objectID": "omics/week-3/study_before_workshop.html#aim",
     "href": "omics/week-3/study_before_workshop.html#aim",
     "title": "Independent Study to prepare for workshop",
     "section": "🐸 Aim",
-    "text": "🐸 Aim\n\n\nfind genes important in frog development\nImportant means genes that are differentially expressed between the control and the FGF treated sibling\nDifferentially expressed means the expression on one group is signifcantly higher than the other"
+    "text": "🐸 Aim\n\n\nfind genes important in frog development\nImportant means genes that are differentially expressed between the control and the FGF treated sibling\nDifferentially expressed means the expression on one group is significantly higher than the other",
+    "crumbs": [
+      "Week 3: Hello data!",
+      "Prepare!"
+    ]
   },
   {
     "objectID": "omics/week-3/study_before_workshop.html#guided-analysis",
     "href": "omics/week-3/study_before_workshop.html#guided-analysis",
     "title": "Independent Study to prepare for workshop",
     "section": "🐸 Guided analysis",
-    "text": "🐸 Guided analysis\n\n\nThe workshops will take you through comparing the control and FGF treated sibling at S30\nThis is the “least interesting” comparison\nYou will be guided to carefully document your work so you can apply the same methods to other comparisons"
+    "text": "🐸 Guided analysis\n\n\nThe workshops will take you through comparing the control and FGF treated sibling at S30\nThis is the “least interesting” comparison\nYou will be guided to carefully document your work so you can apply the same methods to other comparisons",
+    "crumbs": [
+      "Week 3: Hello data!",
+      "Prepare!"
+    ]
   },
   {
     "objectID": "omics/week-3/study_before_workshop.html#experimental-design-4",
     "href": "omics/week-3/study_before_workshop.html#experimental-design-4",
     "title": "Independent Study to prepare for workshop",
     "section": "🐭 Experimental design",
-    "text": "🐭 Experimental design\n\nSchematic of stem cell experiment"
+    "text": "🐭 Experimental design\n\nSchematic of stem cell experiment",
+    "crumbs": [
+      "Week 3: Hello data!",
+      "Prepare!"
+    ]
   },
   {
     "objectID": "omics/week-3/study_before_workshop.html#experimental-design-5",
     "href": "omics/week-3/study_before_workshop.html#experimental-design-5",
     "title": "Independent Study to prepare for workshop",
     "section": "🐭 Experimental design",
-    "text": "🐭 Experimental design\n\nSchematic of stem cell experiment\n\nCells were sorted using flow cytometry on the basis of cell surface markers\nThere are three cell types: LT-HSCs, HSPCs, Progs\nMany cells of each cell type were sequenced"
+    "text": "🐭 Experimental design\n\nSchematic of stem cell experiment\n\nCells were sorted using flow cytometry on the basis of cell surface markers\nThere are three cell types: LT-HSCs, HSPCs, Progs\nMany cells of each cell type were sequenced",
+    "crumbs": [
+      "Week 3: Hello data!",
+      "Prepare!"
+    ]
   },
   {
     "objectID": "omics/week-3/study_before_workshop.html#experimental-design-6",
     "href": "omics/week-3/study_before_workshop.html#experimental-design-6",
     "title": "Independent Study to prepare for workshop",
     "section": "🐭 Experimental design",
-    "text": "🐭 Experimental design\n\nSchematic of stem cell experiment\n\nThere are three cell types: LT-HSCs, HSPCs, Progs These are the “treaments”\nMany cells of each cell type were sequenced: These are the replicates\n155 LT-HSCs, 701 HSPCs, 798 Progs"
+    "text": "🐭 Experimental design\n\nSchematic of stem cell experiment\n\nThere are three cell types: LT-HSCs, HSPCs, Progs These are the “treaments”\nMany cells of each cell type were sequenced: These are the replicates\n155 LT-HSCs, 701 HSPCs, 798 Progs",
+    "crumbs": [
+      "Week 3: Hello data!",
+      "Prepare!"
+    ]
   },
   {
     "objectID": "omics/week-3/study_before_workshop.html#aim-1",
     "href": "omics/week-3/study_before_workshop.html#aim-1",
     "title": "Independent Study to prepare for workshop",
     "section": "🐭 Aim",
-    "text": "🐭 Aim\n\n\nfind genes for cell surface proteins that are important in stem cell identity\nImportant means genes that are differentially expressed between at least two cell types\nDifferentially expressed means the expression on one group is significantly higher than the other"
+    "text": "🐭 Aim\n\n\nfind genes for cell surface proteins that are important in stem cell identity\nImportant means genes that are differentially expressed between at least two cell types\nDifferentially expressed means the expression on one group is significantly higher than the other",
+    "crumbs": [
+      "Week 3: Hello data!",
+      "Prepare!"
+    ]
   },
   {
     "objectID": "omics/week-3/study_before_workshop.html#guided-analysis-1",
     "href": "omics/week-3/study_before_workshop.html#guided-analysis-1",
     "title": "Independent Study to prepare for workshop",
     "section": "🐭 Guided analysis",
-    "text": "🐭 Guided analysis\n\n\nThe workshops will take you through comparing the HSPC and Prog cells\nThis is the “least interesting” comparison\nYou will be guided to carefully document your work so you can apply the same methods to other comparisons\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n🔗 About Omics 1: Hello data!"
+    "text": "🐭 Guided analysis\n\n\nThe workshops will take you through comparing the HSPC and Prog cells\nThis is the “least interesting” comparison\nYou will be guided to carefully document your work so you can apply the same methods to other comparisons",
+    "crumbs": [
+      "Week 3: Hello data!",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-3/study_before_workshop.html#raw-sequence-data",
+    "href": "omics/week-3/study_before_workshop.html#raw-sequence-data",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Raw Sequence data",
+    "text": "Raw Sequence data\n\n\nThe raw data are “reads” from a sequencing machine.\nA read is sequence of DNA or RNA shorter than the whole genome or transcriptome\nThe length of the reads depends on the type of sequencing machine\n\nShort-read technologies e.g. Illumina have higher base accuracy but are harder to align\nLong-read technologies e.g. Nanopore have lower base accuracy but are easier to align\n\nSequencing technology is constantly improving\nOptional: You can read more about Sequencing technologies in Statistically useful experimental design (Rand and Forrester 2022)",
+    "crumbs": [
+      "Week 3: Hello data!",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-3/study_before_workshop.html#raw-sequence-data-1",
+    "href": "omics/week-3/study_before_workshop.html#raw-sequence-data-1",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Raw Sequence data",
+    "text": "Raw Sequence data\n\n\nThe RNA-seq data are from an Illumina machine 150-300bp; Metagenomic data are often Nanopore 10,000 - 30000bp\nReads are in FASTQ files\nFASTQ files contain the sequence of each read and a quality score for each base",
+    "crumbs": [
+      "Week 3: Hello data!",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-3/study_before_workshop.html#general-steps",
+    "href": "omics/week-3/study_before_workshop.html#general-steps",
+    "title": "Independent Study to prepare for workshop",
+    "section": "General steps",
+    "text": "General steps\n\n\nReads are filtered and trimmed on the basis of the quality score\nThey are then aligned/pseudo-aligned to a reference genome/transcriptome or, in metagenomics, assembled de novo.\nReads are then counted to quantify the expression or number of genomes in metagenomics\nCounts are normalised to account for differences in sequencing depth and gene/transcript/genome length before statistical analysis",
+    "crumbs": [
+      "Week 3: Hello data!",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-3/study_before_workshop.html#data",
+    "href": "omics/week-3/study_before_workshop.html#data",
+    "title": "Independent Study to prepare for workshop",
+    "section": "🐸 Data",
+    "text": "🐸 Data\n\nUnpublished (so far!)\nExpression for the whole transcriptome X. laevis v10.1 genome assembly\nValues are raw counts\nThe statistical analysis method we will use DESeq2 (Love, Huber, and Anders 2014) requires raw counts and performs the normalisation itself",
+    "crumbs": [
+      "Week 3: Hello data!",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-3/study_before_workshop.html#data-1",
+    "href": "omics/week-3/study_before_workshop.html#data-1",
+    "title": "Independent Study to prepare for workshop",
+    "section": "🐭 Data",
+    "text": "🐭 Data\n\nPublished in Nestorowa et al. (2016)\nExpression for a subset of genes, the surfaceome\nValues are log2 normalised values\nThe statistical analysis method we will use scran (Lun, McCarthy, and Marioni 2016) requires normalised values",
+    "crumbs": [
+      "Week 3: Hello data!",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-3/study_before_workshop.html#workshops-1",
+    "href": "omics/week-3/study_before_workshop.html#workshops-1",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Workshops",
+    "text": "Workshops\n\nOmics 1: Hello data Getting to know the data. Checking the distributions of values overall, across samples and across genes to check things are as we expect and detect genes/samples that need to be removed\nOmics 2: Statistical Analysis Identifying which genes are differentially expressed between treatments. This is the main analysis step. We will use different methods for bulk and single cell data.\nOmics 3: Visualising and Interpreting Production of volcano plots and heatmaps to visualise the results of the statistical analysis. We will also look at how to interpret the results and how to find out more about the genes of interest.\n\nReferences\n\n\n🔗 About Omics 1: Hello data!\n\n\n\nLove, Michael I., Wolfgang Huber, and Simon Anders. 2014. “Moderated Estimation of Fold Change and Dispersion for RNA-Seq Data with DESeq2” 15: 550. https://doi.org/10.1186/s13059-014-0550-8.\n\n\nLun, Aaron T. L., Davis J. McCarthy, and John C. Marioni. 2016. “A Step-by-Step Workflow for Low-Level Analysis of Single-Cell RNA-Seq Data with Bioconductor” 5: 2122. https://doi.org/10.12688/f1000research.9501.2.\n\n\nNestorowa, Sonia, Fiona K. Hamey, Blanca Pijuan Sala, Evangelia Diamanti, Mairi Shepherd, Elisa Laurenti, Nicola K. Wilson, David G. Kent, and Berthold Göttgens. 2016. “A Single-Cell Resolution Map of Mouse Hematopoietic Stem and Progenitor Cell Differentiation.” Blood 128 (8): e20–31. https://doi.org/10.1182/blood-2016-05-716480.\n\n\nRand, Emma, and Sarah Forrester. 2022. “Statistically Useful Experimental Design.” https://cloud-span.github.io/experimental_design00-overview/.",
+    "crumbs": [
+      "Week 3: Hello data!",
+      "Prepare!"
+    ]
   }
 ]

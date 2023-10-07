@@ -261,3 +261,5 @@ width="200"}
     and heatmaps to visualise the results of the statistical analysis.
     We will also look at how to interpret the results and how to find
     out more about the genes of interest.
+
+## References
