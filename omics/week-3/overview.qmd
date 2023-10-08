@@ -24,7 +24,7 @@ The successful student will be able to:
 
 1.  [Prepare](study_before_workshop.qmd)
     
-    i.   📖 Read how the data were generated and how they have been processed so far, install 
+    i.   📖 Read how the data were generated and how they have been processed so far 
 
 
 2.  [Workshop](workshop.qmd)
@@ -35,9 +35,7 @@ The successful student will be able to:
 
     iii. 💻 Explore the distribution of values across samples/cells and across genes/species
     
-    iv.  💻 Perform quality control
-    
-    v.   💻 Look after future you!
+    iv.  💻 Look after future you!
 
 3.  [Consolidate](study_after_workshop.qmd)
 
