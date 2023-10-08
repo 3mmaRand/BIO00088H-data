@@ -18,7 +18,8 @@ editor:
 ## Overview
 
 ::: incremental
--   xx
+
+-   Check where you are.
 
 -   xx
 
@@ -27,7 +28,38 @@ editor:
 -  xx
 :::
 
-## xxx
+# Where should you be?
 
+## 🐸 Frogs
+
+After the Omics 1 Workshop, Look after future you and the Independent Study to consolidate, you should have:
+
+-   An RStudio Project called `frogs-88H` which contains
+
+    -   Raw data (S14, S20 and S30)
+    -   Processed data (s20_filtered.csv, s20_summary_gene.csv, s20_summary_gene_filtered.csv, s20_summary_samp.csv, s30_filtered.csv, s30_summary_gene.csv, s30_summary_gene_filtered.csv, s30_summary_samp.csv)
+    -   Two scripts called cont-fgf-s30.R and cont-fgf-s20.R
+
+These should be organised into folders. Code should well commented and easy to read.
+
+Note: you may have done S14 instead of S20.
+
+
+## 🐭 Mice
+
+After the Omics 1 Workshop, Look after future you and the Independent Study to consolidate, you should have:
+
+-   An RStudio Project called `mice-88H` which contains
+
+    -   Raw data (hspc, prog, lthsc)
+    -   Processed data (hspc_summary_gene.csv, hspc_summary_samp.csv, prog_summary_gene.csv, prog_summary_samp.csv)
+    -   One script called hspc-prog.R
+
+These should be organised into folders. Code should well commented and easy to read.
+
+## 🍂 xxxx
+
+
+Either of the other examples.
 
 ## References
