@@ -24,7 +24,9 @@ You need only do the section for your own project data
 
 🍂 xxxx
 
-🎬 Open your `xxxx-88H` Project. Make a new script and, using `xxxxxxx.R` as a template, repeat the analysis on xxxxxxxx
+Follow one of the other examples. 
+
+<!-- 🎬 Open your `xxxx-88H` Project. Make a new script and, using `xxxxxxx.R` as a template, repeat the analysis on xxxxxxxx -->
 
 
 
