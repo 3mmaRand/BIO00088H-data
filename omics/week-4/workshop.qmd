@@ -345,15 +345,17 @@ Notes that `treatment` is the name of the column in the metadata dataframe and `
 
 ```{r}
 results_fgf <- results(dds,
-                       contrast = contrast_fgf,
-                       alpha = 0.1)
-
-results_fgf2 <- results(dds,
-                       contrast = contrast_fgf,
-                       alpha = 0.01)
+                       contrast = contrast_fgf)
 ```
 
 This will give us the log2 fold change and p-value for the contrast
+
+🎬 Save the results to a file:
+```{r}
+data.frame(results_fgf,
+           xenbase_gene_id = row.names(results_fgf)) |> View()
+  write_csv(file = "results/S30_results.csv")
+```
 
 
 # 🐭 Analysis
