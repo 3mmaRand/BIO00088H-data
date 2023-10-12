@@ -21,11 +21,16 @@ editor:
 
 -   Check where you are.
 
--   xx
+-   Basis of comparisons
+    -   normalisation
+    -   statistical model
+    -   Multiple correction
 
--   xx
-
--  xx
+-   Methods vary
+    -   DESeq2
+    -   edgeR
+    -   limma
+    -   scran
 :::
 
 # Where should you be?
@@ -61,5 +66,69 @@ These should be organised into folders. Code should well commented and easy to r
 
 
 Either of the other examples.
+
+##
+
+further explore with PCA
+
+what is pca
+
+
+## DESeq2
+
+the Negative Binomial is a good approximation for data where the
+mean < variance i.e., more clumped
+
+Goal of DE is to identify and correct for sources of variation that are not
+due to treatments
+
+explain normalisation # https://hbctraining.github.io/DGE_workshop_salmon_online/lessons/02_DGE_count_normalization.html
+#  this is a good account of normalisation methods
+
+To normalize for sequencing depth and RNA composition,
+
+DESeq2 uses the median of ratios method. This happens automatically
+when we do the DE. models the normalization inside the Generalized Linear Model
+
+data must be raw counts
+
+## DESeq2
+
+DESeq2 needs 
+-   a metadata file which contain information about the samples and the treatments
+-   a matrix of the counts
+-   a design formula which describes the model to be fitted. it must use the columns in the metadat file.
+
+
+
+##
+
+```{r}
+#| echo: false
+library(tidyverse)
+## Import metadata that maps the sample names to treatments
+meta <- read_table("meta/frog_meta_data.txt")
+knitr::kable(meta)
+
+```
+
+
+## DESeq2
+
+
+differential expression results
+
+log2 foldhcange - explain why log2
+a tests statistic,  
+
+baseMean, log2FoldChange, lfcSE, stat, pvalue and padj, and also includes metadata columns of variable information. The lfcSE gives the standard error of the log2FoldChange. For the Wald test, stat is the Wald statistic:
+
+
+a p-value and a padj
+
+explain the adjusted p value.
+
+
+
 
 ## References

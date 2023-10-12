@@ -21,18 +21,342 @@ editor:
 
 In this workshop you will lxxxx
 
-# 🐸 Frog development
+# Set up
 
-🎬 Open your `frogs-88H` Project and the `cont-fgf-s30.R` script.
+Either:
+
+🎬 Open 🐸 `frogs-88H` Project and the `cont-fgf-s30.R` script.
+
+Or
+
+🎬 Open 🐭 `mice-88H` Project and the `hspc-prog.R` script.
+
+🎬 Make a new folder `results` in the project directory. This is where
+we will save our results.
+
+```{r}
+#| eval: false
+fs::dir_create("results")
+```
+
+🎬 Load **`tidyverse`** You most likely have this code at the top of
+`cont-fgf-s30.R` or `hspc-prog.R` already.
+
+```{r}
+library(tidyverse)
+```
+
+```         
+── Attaching core tidyverse packages ─────────────────────────────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.3     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.3     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ───────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package to force all conflicts to become errors
+```
+
+Have you ever stopped to think about this message? It is telling us that
+there are functions in the `dplyr` package that have the same name as
+functions in the `stats` package and that R will use the `dplyr`
+version. As this is what you want, this has always been fine. It still
+is fine in this case. However, as you start to load more packages, you
+will want to know if you are using a function from a package that has
+the same name as a function in another loaded package. This is where the
+**`conflicted`** package comes in. **`Conflicted`** will warn you when
+you are using a function that has the same name as a function in another
+package. You can then choose which function to use.
+
+🎬 Load the **`conflicted`** package.
+
+```{r}
+library(conflicted)
+```
+
+Perfer to use dplyr's version of filter
+
+```{r}
+conflict_prefer("filter", "dplyr")
+```
+
+# 🐸 Analysis
+
+We will carry out several steps
+
+1.  Import the data
+2.  Find the genes that are expressed in only one treatment (the control
+    or the FGF-treated) 
+3.  Create a DESeqDataSet object. This is a special object that is used
+    by the **`DESeq2`** package
+4.  Prepare the normalised counts from the DESeqDataSet object. 
+5.  Do differential expression analysis on the genes. This needs to be
+    done on the raw counts. 
+
+
+The creation of the DESeqDataSet object, the preparation of the normalised counts and the differential expression analysis are all done with the **`DESeq2`** package
+
+
+## Import
+
+We need to import the S30 data that were filtered to remove genes with 4, 5
+or 6 zeros and those where the total counts was less than 20.
+
+🎬 Import the data from the `data-processed` folder.
+
+```{r}
+s30_filtered <- read_csv("data-processed/s30_filtered.csv")
+```
+
+## Genes expressed in one treatment
+
+The genes expressed in only one treatment group are those with zeros in
+all three replicates in one group and non-zero values in all three
+replicates in the other group. For example, those shown here:
+
+```{r}
+#| echo: false
+# sort the data by the values in the control column
+s30_filtered |>  
+  arrange(S30_C_A) |> 
+  head(3)
+
+```
+
+We will use `filter()` to find these genes.
+
+🎬 Find the genes that are expressed only in the FGF-treated group:
+
+```{r}
+s30_fgf_only <- s30_filtered |> 
+  filter(S30_C_5 == 0, 
+         S30_C_6 == 0, 
+         S30_C_A == 0, 
+         S30_F_5 > 0, 
+         S30_F_6 > 0, 
+         S30_F_A > 0)
+```
+
+❓ How many genes are expressed only in the FGF-treated group?
 
 
 
-# 🐭 Mouse Stem cells
+🎬 Now you find any genes that are expressed only in the control group.
 
-🎬 Open your `mice-88H` Project and the `hspc-prog.R` script.
+```{r}
+#| echo: false
+#---CODING ANSWER---
+s30_con_only <- s30_filtered |> 
+  filter(S30_C_5 > 0, 
+         S30_C_6 > 0, 
+         S30_C_A > 0, 
+         S30_F_5 == 0, 
+         S30_F_6 == 0, 
+         S30_F_A == 0)
+
+```
+
+❓ Do the results  make sense to you in light of what you know about the biology?
+
+<!-- there are no genes expressed in the control group but not in the FGF-treated group -->
+
+<!-- Since FGF is a growth factor, it is likely to induce the expression of genes. Therefore,  -->
+
+<!-- it is not surprising to me that there are no genes expressed in the control group but  -->
+
+<!-- not in the FGF-treated group. However, I'm not an expert in developmental biology.  -->
+
+<!-- Domain expertise is important when analysing data so discuss your results with Betsy  -->
+
+<!-- and your group. -->
+
+🎬 Write to file (saved in `results`) all the genes that are expressed
+one group only.
+
+```{r}
+#| echo: false
+#---CODING ANSWER---
+write_csv(s30_fgf_only, "results/s30_fgf_only.csv")
+```
 
 
 
+## Create DESeqDataSet object
+
+🎬 Load the DESeq2 package
+
+```{r}
+#| echo: false
+#---CODING ANSWER---
+library(DESeq2)
+```
+
+A DEseqDataSet object is a custom data type that is used by the DESeq2. Custom data types are common in the Bioconductor packages. They are used to store data in a way that is useful for the analysis. These data types typically have data, transformed data, metadata and experimental designs within them.
+
+To create a DESeqDataSet object, we need to provide three things:
+
+1.   The raw counts - these are what we imported into `s30_filtered`
+2.   The meta data which gives information about the samples and which treatment groups they belong to
+3.   A design matrix which captures the design of the statistical model. 
+
+The counts must in a matrix rather than a dataframe. Unlike a dataframe, a matrix has columns of all the same type. That is, it will contain only the counts. The gene ids are given as row names rather than a column. The `matrix()` function will create a matrix from a dataframe of columns of the same type and the `select()` function can be used to remove the gene ids column.
+
+🎬 Create a matrix of the counts:
+```{r}
+s30_count_mat <- s30_filtered |>
+  select(-xenbase_gene_id) |>
+  as.matrix()
+```
+
+
+🎬 Add the gene ids as row names to the matrix:
+```{r}
+# add the row names to the matrix
+rownames(s30_count_mat) <- s30_filtered$xenbase_gene_id
+
+```
+
+You might want to view the matrix.
+
+The metadata are in a file,  [frog_meta_data.txt](meta_data/frog_meta_data.txt). This is a tab-delimited file. The first column is the sample name and the second column is the treatment group. 
+
+🎬 Make a folder called `meta` and save the file to it.
+
+🎬 Read the metadata into a dataframe:
+
+```{r}
+meta <- read_table("meta/frog_meta_data.txt")
+```
+
+🎬 Examine the resulting dataframe
+
+We need to add the sample names as row names to the metadata dataframe. This is because the DESeqDataSet object will use the row names to match the samples in the metadata to the samples in the counts matrix.
+
+🎬 Add the sample names as row names to the metadata dataframe:
+
+```{r}
+row.names(meta) <- meta$sample_id
+```
+(you will get a warning message but you can ignore it)
+
+We are dealing only with the S30 data so we need to remove the samples that are not in the S30 data.
+
+🎬 Filter the metadata to keep only the S30 information:
+
+```{r}
+meta_S30 <- meta |>
+  dplyr::filter(stage == "stage_30")
+```
+
+
+```{r}
+#| echo: false
+meta_S30
+```
+
+We can now create the DESeqDataSet object. The design formula describes the statistical model You should notice that it is the same sort of formula we used in `t.test()`, `lm()`,` glm()` etc. The `~` indicates that the left hand side is the response variable (in this case counts) and the right hand side are the explanatory variables. We are interested in the difference between the treatments but we include `sibling_rep` to account for the fact that the data are paired. 
+The names of the columns in the count matrix have to match the names in the metadata dataframe and the names of the explanatory variables in the design formula have to match the names of columns in the metadata.
+
+🎬 Create the DESeqDataSet object:
+
+```{r}
+dds <- DESeqDataSetFromMatrix(countData = s30_count_mat,
+                              colData = meta_S30,
+                              design = ~ treatment + sibling_rep)
+```
+
+
+
+The warning "Warning: some variables in design formula are characters, converting to factors" just means that the variable type of treatment and sibling_rep in the metadata dataframe are char. This is not a as `DESeqDataSetFromMatrix()` has made them into the factors it needs.
+
+🎬 Examine the DESeqDataSet object.
+
+The counts are in `dds@assays@data@listData[["counts"]]` and the metadata are in `dds@colData` but the easiest way to  see tham is to use the `counts()` and `colData()` functions from the **`DESeq2`** package.
+
+🎬 View the counts:
+```{r}
+counts(dds) |> View()
+```
+You should be able to see that this is the same as in `s30_count_mat`. 
+
+
+```{r}
+colData(dds)
+
+```
+
+
+
+## Prepare the normalised counts
+
+The normalised counts are the counts that have been transformed to account for the library size (ie., the total number of reads in a sample) and the gene length. We have to first estimate the normalisation factors and store them in the DESeqDataSet object and then we can get the normalised counts.
+ 
+🎬 Estimate the factors for normalisation and store them in the DESeqDataSet object:
+
+```{r}
+dds <- estimateSizeFactors(dds)
+```
+
+🎬 Look at the factors (just for information)
+```{r}
+sizeFactors(dds)
+```
+To get the normalised counts we again used the counts() function but this time we use the `normalized=TRUE` argument.` 
+
+🎬 Save the normalised to a matrix:
+```{r}
+normalised_counts <- counts(dds, normalized = TRUE)
+```
+
+We will write the normalised counts to a file so that we can use them in the future. 
+
+🎬 Make a dataframe of the normalised counts, add a column for the gene ids and write to file: 
+
+```{r}
+data.frame(normalised_counts,
+           xenbase_gene_id = row.names(normalised_counts)) |>
+  write_csv(file = "results/S30_normalised_counts.csv")
+```
+
+
+## Differential expression analysis
+
+We used the `DESeq()` function to do the differential expression analysis. This function fits the statistical model to the data and then uses the model to calculate the significance of the difference between the treatments. It again stored the results in the DESseqDataSet object. Note that the differential expression needs the raw (unnormalised counts) as it does its own normalisation as part of the process.
+
+🎬 Run the differential expression analysis:
+```{r}
+dds <- DESeq(dds)
+```
+The function will take only a few moments to run on this data but can take longer for bigger datasets. 
+
+We need to define the contrasts we want to test. We want to test the difference between the treatments so we will define the contrast as `FGF` and `control`.
+
+🎬 Define the contrast:
+```{r}
+contrast_fgf <- c("treatment", "FGF", "control")
+```
+
+Notes that `treatment` is the name of the column in the metadata dataframe and `FGF` and `control` are the names of the levels in the `treatment` column. By putting them in the order `FGF` , `control` we are saying the fold change will be FGF / control. If we had put them in the order `control`, `FGF` we would have got the fold change as control / FGF. This means positive log fold changes indicate FGF > control and negative log fold changes indicates control > FGF.
+
+
+🎬 Extract the results from the DESseqDataSet object:
+
+```{r}
+results_fgf <- results(dds,
+                       contrast = contrast_fgf,
+                       alpha = 0.1)
+
+results_fgf2 <- results(dds,
+                       contrast = contrast_fgf,
+                       alpha = 0.01)
+```
+
+This will give us the log2 fold change and p-value for the contrast
+
+
+# 🐭 Analysis
 
 ## 🤗 Look after future you!
 
