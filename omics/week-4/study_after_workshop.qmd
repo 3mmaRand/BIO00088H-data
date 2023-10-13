@@ -14,14 +14,14 @@ You need only do the section for your own project data
 
 🐸 Frogs
 
-🎬 Open your `frogs-88H` Project. xxx
+🎬 Open your `frogs-88H` Project and script you began in the Consolidation study last week. This is likely to be `cont-fgf-s20.R` or `cont-fgf-s14.R`. Use the differential expression analysis you did in the workshop (in `cont-fgf-s30.R`) as a template to continue your script. 
 
 🐭 Mice
 
-🎬 Open your `mice-88H` Project. xxx
+🎬 Open your `mice-88H` Project. Make a new script and, using `hspc-prog.R` as a template, repeat the analysis on a different comparisons. 
 
 🍂 xxxx
 
-🎬 Open your `xxxx-88H` Project. xxx
+🎬 Follow one of the other examples
 
 
