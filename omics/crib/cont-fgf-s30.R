@@ -323,6 +323,46 @@ data.frame(normalised_counts,
 # perform differential expression analysis that use the negative binomial model.
 
 
+# DE WITH DESeq2 ----------------------------------------------------------
+
+# run the actual differential expression analysis,
+# we use a single call to the function DESeq().
+# Run analysis
+dds <- DESeq(dds)
+
+# check dispersion estimates, checks the assumption of the DESeq2 model
+plotDispEsts(dds)
+# look fine
+
+
+## Define contrasts for FGF overexpression
+contrast_fgf <- c("treatment", "FGF", "control")
+results_fgf <- results(dds,
+                       contrast = contrast_fgf,
+                       alpha = 0.01)
+results_fgf |>
+  data.frame() |> head()
+
+
+data.frame(results_fgf,
+           xenbase_gene_id = row.names(results_fgf)) |>
+  write_csv(file = "results/S30_results.csv")
+
+
+
+
+
+
+
+
+
+
+
+
+# OMICS 3 VISUALISE AND INTERPRET and chek the assumptions?? -----------------------------------------
+
+
+
 # PCA AND CLUSTERING -----------------------
 
 # we do this on the log2 transformed normalised counts or the regularized the
@@ -386,31 +426,18 @@ pca_labelled |> ggplot(aes(x = PC1, y = PC2,
 #          annotation = meta_S30[3:4])
 
 
-# DE WITH DESeq2 ----------------------------------------------------------
 
-# run the actual differential expression analysis,
-# we use a single call to the function DESeq().
-# Run analysis
-dds <- DESeq(dds)
-
-# check dispersion estimates, checks the assumption of the DESeq2 model
-plotDispEsts(dds)
-# look fine
+## Principle Components Analysis (PCA) 
+  
+# explore data further - at the sample and gene level check reps cluster 
+# together do on the normalised counts
 
 
-## Define contrasts for FGF overexpression
-contrast_fgf <- c("treatment", "FGF", "control")
-results_fgf <- results(dds,
-                       contrast = contrast_fgf,
-                       alpha = 0.01)
-results_fgf |>
-  data.frame() |> head()
+# venn diagram for frogs, use original dataset
 
+# look up information about the genes
 
-data.frame(results_fgf,
-           xenbase_gene_id = row.names(results_fgf)) |>
-  write_csv(file = "results/S30_results.csv")
-
+# volcano plots
 
 # MAYBE WEEK 3
 # plotMA(results_fgf)
@@ -425,25 +452,3 @@ data.frame(results_fgf,
 # #                                   type = "apeglm")
 # # 
 # # plotMA(results_fgf_shrunken)
-
-
-
-
-
-
-
-
-
-# OMICS 3 VISUALISE AND INTERPRET and chek the assumptions?? -----------------------------------------
-
-## Principle Components Analysis (PCA) 
-  
-# explore data further - at the sample and gene level check reps cluster 
-# together do on the normalised counts
-
-
-# venn diagram for frogs, use original dataset
-
-# look up information about the genes
-
-# volcano plots

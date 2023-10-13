@@ -67,7 +67,13 @@ These should be organised into folders. Code should well commented and easy to r
 
 Either of the other examples.
 
-##
+what we have done: explore
+what we will do this week DE
+
+what we will do next week
+further explore with dimension reduction and clustering
+plot results with volcanoplots
+look up the gene information
 
 further explore with PCA
 

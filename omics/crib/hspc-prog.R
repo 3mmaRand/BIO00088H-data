@@ -1,8 +1,9 @@
-# OMICS 1 HELLO DATA ------------------------------------------------------
-
-# Load tidyverse 
+# Load pckages ------------------------------------------------------------ 
 library(tidyverse)
+library(scran)
+library(conflicted)
 
+# OMICS 1 HELLO DATA ------------------------------------------------------
 
 # HSPC --------------------------------------------------------------------
 
@@ -250,7 +251,142 @@ write_csv(prog_summary_gene,
 
 # OMICS 2 STATISTICAL ANALYSIS --------------------------------------------
 
+# We will carry out several steps
+# 
+# 1.  the data should be imported already
+# 2.  Combine the two datasets ready for analysis
+# 3.  Filter the data to remove genes that are not expressed in any cell
+# 4.  Find the genes that are expressed in only one cell type 
+# (the prog or the hspc) 
+# 5.  Do differential expression analysis on the genes using the **`scran`** package. 
+# This needs to be done on the logged normalised counts.
+
+# 2. Combine the two datasets ready for analysis ---------------------------
+
+# We need to combine the two datasets of 701 and 798 cells into one dataset 
+# of 1499 cells, i.e., 1499 columns. The number of rows is the number of genes,
+# 280. Before combining, we must make sure genes in the same order in 
+# both dataframes or we would be comparing the expression of one gene 
+# in one cell type to the expression of a different gene in the other cell type!
+  
+# Check the gene ids are in the same order in both dataframes:
+identical(prog$ensembl_gene_id, hspc$ensembl_gene_id)
+# the names are the same and in the same order
+
+# **`scran`** can use a matrix or a dataframe of counts but theses must be 
+# log normalised counts. If using a dataframe, the columns must only 
+# contain the expression values (not the gene ids).
+
+# Combine the two dataframes (minus the gene ids) into one dataframe 
+# called `prog_hspc`:
+prog_hspc <- bind_cols(prog[-1], hspc[-1])
+
+# Now add the gene ids as the row names:
+row.names(prog_hspc) <- prog$ensembl_gene_id
+
+# Filter to remove unexpressed genes --------------------------------------
+# In this dataset, we will not see and genes that are not expressed in any of the 
+# cells because we are using a specific subset of the transcriptome that was 
+# deliberately selected. However, we will go through how to do this because
+# it is an important step in most analyses. 
+# 
+# For the 🐸 frog data you should remember that we were able to filter 
+# out our unexpressed genes in [Omics 1](../week-3/workshop.html) because 
+# we were examining both groups to be compared. In that workshop, 
+# we discussed that we could not filter out unexpressed genes in 
+# the 🐭 mouse data because we only had one cell types at that time. 
+# During the Consolidate Independent Study you examined the hspc cells. 
+
+# Where the sum of all the values in the rows is zero, all the entries must be 
+# zero. We can use this to find the filter the genes that are not expressed 
+# in any of the cells. To do row wise aggregates such as the sum across rows 
+# we can use the `rowwise()` function. `c_across()` allows us to use the 
+# colon notation `Prog_001:HSPC_852` in `sum()` rather than having to list all 
+# the column names: `sum(Prog_001, Prog_002, Prog_002, Prog_004,.....)` 
+
+# Find the genes that are 0 in every column of the prog_hspc dataframe:
+
+prog_hspc |> 
+  rowwise() |> 
+  filter(sum(c_across(Prog_001:HSPC_852)) == 0)
+# There are no genes that are completely unexpressed in this set of 280 genes
+
+# We might also examine the genes which are least expressed.
+# Find ten least expressed genes:
+rowSums(prog_hspc) |> sort() |> head(10)
+
+
+# When you consider that there are 1499 cells, a values of 30 are low even  
+# considering these are already logged and normalised (ie., the range of  
+# values is less that it would be for raw counts) 
+  
+# Find the genes that are expressed in only one cell type -----------------
+# To find the genes that are expressed in only one cell type, 
+# we can use the same approach as above but only sum the columns for one cell type. 
+# 
+# Find the genes that are 0 in every column for the Prog cells:
+  
+prog_hspc |> 
+  rowwise() |> 
+  filter(sum(c_across(HSPC_001:HSPC_852)) == 0)
+
+# Note that if we knew there were some rows that were all zero across both 
+# cell types, we would need to add 
+# |> filter(sum(c_across(Prog_001:Prog_852)) != 0)
+
+# Genes that are 0 in every column for the HSPC cells:
+prog_hspc |> 
+  rowwise() |> 
+  filter(sum(c_across(HSPC_001:HSPC_852)) == 0)
+# there are no genes that are expressed in only one cell type 
+  
+# Differential expression analysis ----------------------------------------
+
+# Like **`DESeq2`**, **`scran`** uses a statistical model to calculate the 
+# significance of the difference between the treatments and needs metadata 
+# to define the treatments.
+
+# The meta data needed for the frog data was information about which columns 
+# were in which treatment group and which sibling group and we had that 
+# information in a file. Similarly, here we need information on which columns 
+# are from which cell type. Instead of having this is a file, we will create 
+# a vector that indicates which column belongs to which cell type.
+
+# Create a vector that indicates which column belongs to which cell type:
+
+cell_type <- rep(c("prog","hspc"), 
+                 times = c(length(prog) - 1,
+                           length(hspc) - 1))
+# The number of times each cell type is repeated is the number of columns 
+# in that cell type minus 1. This is because we have removed the column with 
+# the gene ids. Do check that the length of the `cell_type` vector is the 
+# same as the number of columns in the `prog_hspc` dataframe.
+
+# Run the differential expression analysis:
+res_prog_hspc <- findMarkers(prog_hspc, 
+                             cell_type)
+
+
+# The dataframe `res_prog_hspc$prog` is log prog - log hspc (i.e.,Prog/HSPC). 
+# This means 
+# -   Positive fold change: prog is higher than hspc
+# -   Negative fold change: hspc is higher than prog
+# 
+# The dataframe `res_prog_hspc$hspc` is log hspc - log prog (i.e., HSPC/Prog). 
+# This means 
+# -   Positive fold change: hspc is higher than prog
+# -   Negative fold change: prog is higher than hspc
+
+
+# Write the results to file:
+data.frame(res_prog_hspc$prog, 
+           ensembl_gene_id = row.names(res_prog_hspc$prog)) |> 
+  write_csv("results/prog_hspc_results.csv")
+
+
+
 
 
 
 # OMICS 3 VISUALISE AND INTERPRET -----------------------------------------
+
