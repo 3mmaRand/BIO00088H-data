@@ -339,7 +339,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">8 October, 2023</p>
+      <p class="date">13 October, 2023</p>
     </div>
   </div>
   
@@ -360,7 +360,7 @@ div.csl-indent {
 </ul></section><section id="images" class="level2"><h2 class="anchored" data-anchor-id="images">Images</h2>
 <p><a href="data/control_merged.tif">control_merged.tif</a></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/ijtiff/">ijtiff</a></span><span class="op">)</span></span>
-<span><span class="va">img</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://docs.ropensci.org/ijtiff/reference/read_tif.html">read_tif</a></span><span class="op">(</span><span class="st">"data/control_merged.tif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">img</span> <span class="op">&lt;-</span> <span class="fu">read_tif</span><span class="op">(</span><span class="st">"data/control_merged.tif"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">img</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><p>an image at least one and usually more matrices of numbers representing the intensity of light at each pixel in the image</p></li>
@@ -369,7 +369,7 @@ div.csl-indent {
 <li><p>a frame is a single image in a series of images</p></li>
 <li><p>we might normally call this a multi-dimensional array: x and y coordinates of the pixels are 2 dimensions, the channel is the third dimension and time is the forth dimension</p></li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://docs.ropensci.org/ijtiff/reference/display.html">display</a></span><span class="op">(</span><span class="va">img</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">display</span><span class="op">(</span><span class="va">img</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section><section id="structure" class="level2"><h2 class="anchored" data-anchor-id="structure">Structure</h2>
 <p><a href="data/1cq2.pdb">1cq2.pdb</a></p>
 </section></section><section id="workflow-tips" class="level1"><h1>Workflow tips</h1>
@@ -425,15 +425,15 @@ workshop.rmarkdown</code></pre>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>total 136
-drwxr-xr-x 2 runner docker  4096 Oct  8 10:06 data
-drwxr-xr-x 2 runner docker  4096 Oct  8 10:06 images
--rw-r--r-- 1 runner docker  1597 Oct  8 10:06 overview.qmd
--rw-r--r-- 1 runner docker   184 Oct  8 10:06 study_after_workshop.qmd
--rw-r--r-- 1 runner docker 69876 Oct  8 10:09 study_before_workshop.html
--rw-r--r-- 1 runner docker  4807 Oct  8 10:06 study_before_workshop.ipynb
--rw-r--r-- 1 runner docker 13029 Oct  8 10:06 study_before_workshop.qmd
--rw-r--r-- 1 runner docker  8550 Oct  8 10:06 workshop.qmd
--rw-r--r-- 1 runner docker  8564 Oct  8 10:09 workshop.rmarkdown</code></pre>
+drwxr-xr-x 2 runner docker  4096 Oct 13 10:44 data
+drwxr-xr-x 2 runner docker  4096 Oct 13 10:44 images
+-rw-r--r-- 1 runner docker  1597 Oct 13 10:44 overview.qmd
+-rw-r--r-- 1 runner docker   184 Oct 13 10:44 study_after_workshop.qmd
+-rw-r--r-- 1 runner docker 69877 Oct 13 10:58 study_before_workshop.html
+-rw-r--r-- 1 runner docker  4807 Oct 13 10:44 study_before_workshop.ipynb
+-rw-r--r-- 1 runner docker 13029 Oct 13 10:44 study_before_workshop.qmd
+-rw-r--r-- 1 runner docker  8550 Oct 13 10:44 workshop.qmd
+-rw-r--r-- 1 runner docker  8564 Oct 13 10:58 workshop.rmarkdown</code></pre>
 </div>
 </div>
 <p>You can use more than one option at once. The <code>-h</code> option stands for “human readable” and makes the file sizes easier to understand for humans:</p>
@@ -441,15 +441,15 @@ drwxr-xr-x 2 runner docker  4096 Oct  8 10:06 images
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-hl</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>total 136K
-drwxr-xr-x 2 runner docker 4.0K Oct  8 10:06 data
-drwxr-xr-x 2 runner docker 4.0K Oct  8 10:06 images
--rw-r--r-- 1 runner docker 1.6K Oct  8 10:06 overview.qmd
--rw-r--r-- 1 runner docker  184 Oct  8 10:06 study_after_workshop.qmd
--rw-r--r-- 1 runner docker  69K Oct  8 10:09 study_before_workshop.html
--rw-r--r-- 1 runner docker 4.7K Oct  8 10:06 study_before_workshop.ipynb
--rw-r--r-- 1 runner docker  13K Oct  8 10:06 study_before_workshop.qmd
--rw-r--r-- 1 runner docker 8.4K Oct  8 10:06 workshop.qmd
--rw-r--r-- 1 runner docker 8.4K Oct  8 10:09 workshop.rmarkdown</code></pre>
+drwxr-xr-x 2 runner docker 4.0K Oct 13 10:44 data
+drwxr-xr-x 2 runner docker 4.0K Oct 13 10:44 images
+-rw-r--r-- 1 runner docker 1.6K Oct 13 10:44 overview.qmd
+-rw-r--r-- 1 runner docker  184 Oct 13 10:44 study_after_workshop.qmd
+-rw-r--r-- 1 runner docker  69K Oct 13 10:58 study_before_workshop.html
+-rw-r--r-- 1 runner docker 4.7K Oct 13 10:44 study_before_workshop.ipynb
+-rw-r--r-- 1 runner docker  13K Oct 13 10:44 study_before_workshop.qmd
+-rw-r--r-- 1 runner docker 8.4K Oct 13 10:44 workshop.qmd
+-rw-r--r-- 1 runner docker 8.4K Oct 13 10:58 workshop.rmarkdown</code></pre>
 </div>
 </div>
 <p>The <code>-a</code> option stands for “all” and shows us all the files, including hidden files.</p>
@@ -457,17 +457,17 @@ drwxr-xr-x 2 runner docker 4.0K Oct  8 10:06 images
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-alh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>total 144K
-drwxr-xr-x 4 runner docker 4.0K Oct  8 10:09 .
-drwxr-xr-x 5 runner docker 4.0K Oct  8 10:09 ..
-drwxr-xr-x 2 runner docker 4.0K Oct  8 10:06 data
-drwxr-xr-x 2 runner docker 4.0K Oct  8 10:06 images
--rw-r--r-- 1 runner docker 1.6K Oct  8 10:06 overview.qmd
--rw-r--r-- 1 runner docker  184 Oct  8 10:06 study_after_workshop.qmd
--rw-r--r-- 1 runner docker  69K Oct  8 10:09 study_before_workshop.html
--rw-r--r-- 1 runner docker 4.7K Oct  8 10:06 study_before_workshop.ipynb
--rw-r--r-- 1 runner docker  13K Oct  8 10:06 study_before_workshop.qmd
--rw-r--r-- 1 runner docker 8.4K Oct  8 10:06 workshop.qmd
--rw-r--r-- 1 runner docker 8.4K Oct  8 10:09 workshop.rmarkdown</code></pre>
+drwxr-xr-x 4 runner docker 4.0K Oct 13 10:58 .
+drwxr-xr-x 5 runner docker 4.0K Oct 13 10:58 ..
+drwxr-xr-x 2 runner docker 4.0K Oct 13 10:44 data
+drwxr-xr-x 2 runner docker 4.0K Oct 13 10:44 images
+-rw-r--r-- 1 runner docker 1.6K Oct 13 10:44 overview.qmd
+-rw-r--r-- 1 runner docker  184 Oct 13 10:44 study_after_workshop.qmd
+-rw-r--r-- 1 runner docker  69K Oct 13 10:58 study_before_workshop.html
+-rw-r--r-- 1 runner docker 4.7K Oct 13 10:44 study_before_workshop.ipynb
+-rw-r--r-- 1 runner docker  13K Oct 13 10:44 study_before_workshop.qmd
+-rw-r--r-- 1 runner docker 8.4K Oct 13 10:44 workshop.qmd
+-rw-r--r-- 1 runner docker 8.4K Oct 13 10:58 workshop.rmarkdown</code></pre>
 </div>
 </div>
 <p>You can move about with the <code>cd</code> command, which stands for “change directory”. You can use it to move into a directory by specifying the path to the directory:</p>

@@ -7,17 +7,17 @@
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
-
-  <meta name="author" content="Emma Rand">
-  <title>Data Analysis for Group Project - Independent Study to prepare for workshop</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
-  <style>
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+<meta name="author" content="Emma Rand">
+<title>Data Analysis for Group Project - Independent Study to prepare for workshop</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+<style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -29,34 +29,15 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for citations */
-    div.csl-bib-body { }
-    div.csl-entry {
-      clear: both;
-    }
-    .hanging-indent div.csl-entry {
-      margin-left:2em;
-      text-indent:-2em;
-    }
-    div.csl-left-margin {
-      min-width:2em;
-      float:left;
-    }
-    div.csl-right-inline {
-      margin-left:2em;
-      padding-left:1em;
-    }
-    div.csl-indent {
-      margin-left: 2em;
-    }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
-  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
+  </style>
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
+<link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+<style type="text/css">
 
   .callout {
     margin-top: 1em;
@@ -253,7 +234,7 @@
   }
 
   </style>
-  <style type="text/css">
+<style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
       overflow: auto;
@@ -345,9 +326,8 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Independent Study to prepare for workshop</h1>
-  <p class="subtitle">Omics 1: 👋 Hello data!</p>
+<section id="title-slide" class="quarto-title-block center"><h1 class="title">Independent Study to prepare for workshop</h1>
+  <p class="subtitle">Omics 2: Statistical Analysis</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -357,259 +337,213 @@ Emma Rand
 </div>
 </div>
 
-  <p class="date">8 October, 2023</p>
-</section>
-<section id="overview" class="slide level2">
-<h2>Overview</h2>
+  <p class="date">13 October, 2023</p>
+</section><section id="overview" class="slide level2"><h2>Overview</h2>
 <div>
 <ul>
-<li class="fragment"><p>Concise summary of the experimental design and aims</p></li>
-<li class="fragment"><p>What the raw data consist of</p></li>
-<li class="fragment"><p>What has been done to the data so far</p></li>
-<li class="fragment"><p>What steps we will take in the workshop</p></li>
+<li class="fragment"><p>Check where you are.</p></li>
+<li class="fragment">
+<p>Basis of comparisons</p>
+<ul>
+<li class="fragment">normalisation</li>
+<li class="fragment">statistical model</li>
+<li class="fragment">Multiple correction</li>
+</ul>
+</li>
+<li class="fragment">
+<p>Methods vary</p>
+<ul>
+<li class="fragment">DESeq2</li>
+<li class="fragment">edgeR</li>
+<li class="fragment">limma</li>
+<li class="fragment">scran</li>
+</ul>
+</li>
 </ul>
 </div>
-</section>
-<section id="the-data" class="slide level2">
-<h2>The Data</h2>
-<p>There are three datasets</p>
-<ul>
-<li><p>🐸 transcriptomic data (bulk RNA-seq) from frog embryos.</p></li>
-<li><p>🐭 transcriptomic data (single cell RNA-seq) from stemcells</p></li>
-<li><p>🍂 ??????? Metabolomic / Metagenomic data from anaerobic digesters</p></li>
-</ul>
-</section>
-<section>
-<section id="experimental-design" class="title-slide slide level1 center">
-<h1>Experimental design</h1>
+</section><section><section id="where-should-you-be" class="title-slide slide level1 center"><h1>Where should you be?</h1>
 
-</section>
-<section id="experimental-design-1" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">🐸 Experimental design</h2>
-
-<img data-src="images/88H-exp-design-betsy.png" width="700" class="r-stretch quarto-figure-center"><p class="caption">Schematic of frog development experiment</p></section>
-<section id="experimental-design-2" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">🐸 Experimental design</h2>
-
-<img data-src="images/88H-exp-design-betsy.png" width="200" class="r-stretch quarto-figure-left"><p class="caption">Schematic of frog development experiment</p><div>
+</section><section id="frogs" class="slide level2"><h2>🐸 Frogs</h2>
+<p>After the Omics 1 Workshop, Look after future you and the Independent Study to consolidate, you should have:</p>
 <ul>
-<li class="fragment"><p>3 fertilisations</p></li>
-<li class="fragment"><p>two siblings from each fertilisation one control, on FGF treated</p></li>
-<li class="fragment"><p>sequenced at three time points</p></li>
-<li class="fragment"><p>3 x 2 x 3 = 18 groups</p></li>
+<li>
+<p>An RStudio Project called <code>frogs-88H</code> which contains</p>
+<ul>
+<li>Raw data (S14, S20 and S30)</li>
+<li>Processed data (s20_filtered.csv, s20_summary_gene.csv, s20_summary_gene_filtered.csv, s20_summary_samp.csv, s30_filtered.csv, s30_summary_gene.csv, s30_summary_gene_filtered.csv, s30_summary_samp.csv)</li>
+<li>Two scripts called cont-fgf-s30.R and cont-fgf-s20.R</li>
 </ul>
+</li>
+</ul>
+<p>These should be organised into folders. Code should well commented and easy to read.</p>
+<p>Note: you may have done S14 instead of S20.</p>
+</section><section id="mice" class="slide level2"><h2>🐭 Mice</h2>
+<p>After the Omics 1 Workshop, Look after future you and the Independent Study to consolidate, you should have:</p>
+<ul>
+<li>
+<p>An RStudio Project called <code>mice-88H</code> which contains</p>
+<ul>
+<li>Raw data (hspc, prog, lthsc)</li>
+<li>Processed data (hspc_summary_gene.csv, hspc_summary_samp.csv, prog_summary_gene.csv, prog_summary_samp.csv)</li>
+<li>One script called hspc-prog.R</li>
+</ul>
+</li>
+</ul>
+<p>These should be organised into folders. Code should well commented and easy to read.</p>
+</section><section id="xxxx" class="slide level2"><h2>🍂 xxxx</h2>
+<p>Either of the other examples.</p>
+<p>what we have done: explore what we will do this week DE</p>
+<p>what we will do next week further explore with dimension reduction and clustering plot results with volcanoplots look up the gene information</p>
+<p>further explore with PCA</p>
+<p>what is pca</p>
+</section><section id="deseq2" class="slide level2"><h2>DESeq2</h2>
+<p>the Negative Binomial is a good approximation for data where the mean &lt; variance i.e., more clumped</p>
+<p>Goal of DE is to identify and correct for sources of variation that are not due to treatments</p>
+<p>explain normalisation # https://hbctraining.github.io/DGE_workshop_salmon_online/lessons/02_DGE_count_normalization.html # this is a good account of normalisation methods</p>
+<p>To normalize for sequencing depth and RNA composition,</p>
+<p>DESeq2 uses the median of ratios method. This happens automatically when we do the DE. models the normalization inside the Generalized Linear Model</p>
+<p>data must be raw counts</p>
+</section><section id="deseq2-1" class="slide level2"><h2>DESeq2</h2>
+<p>DESeq2 needs - a metadata file which contain information about the samples and the treatments - a matrix of the counts - a design formula which describes the model to be fitted. it must use the columns in the metadat file.</p>
+</section><section id="section" class="slide level2"><h2></h2>
+<div class="cell">
+<div class="cell-output-display">
+<table>
+<thead><tr class="header">
+<th style="text-align: left;">sample_id</th>
+<th style="text-align: left;">stage</th>
+<th style="text-align: left;">treatment</th>
+<th style="text-align: left;">sibling_rep</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">S14_C_5</td>
+<td style="text-align: left;">stage_14</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: left;">five</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">S14_C_6</td>
+<td style="text-align: left;">stage_14</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: left;">six</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">S14_C_A</td>
+<td style="text-align: left;">stage_14</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: left;">A</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">S14_F_5</td>
+<td style="text-align: left;">stage_14</td>
+<td style="text-align: left;">FGF</td>
+<td style="text-align: left;">five</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">S14_F_6</td>
+<td style="text-align: left;">stage_14</td>
+<td style="text-align: left;">FGF</td>
+<td style="text-align: left;">six</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">S14_F_A</td>
+<td style="text-align: left;">stage_14</td>
+<td style="text-align: left;">FGF</td>
+<td style="text-align: left;">A</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">S20_C_5</td>
+<td style="text-align: left;">stage_20</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: left;">five</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">S20_C_6</td>
+<td style="text-align: left;">stage_20</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: left;">six</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">S20_C_A</td>
+<td style="text-align: left;">stage_20</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: left;">A</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">S20_F_5</td>
+<td style="text-align: left;">stage_20</td>
+<td style="text-align: left;">FGF</td>
+<td style="text-align: left;">five</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">S20_F_6</td>
+<td style="text-align: left;">stage_20</td>
+<td style="text-align: left;">FGF</td>
+<td style="text-align: left;">six</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">S20_F_A</td>
+<td style="text-align: left;">stage_20</td>
+<td style="text-align: left;">FGF</td>
+<td style="text-align: left;">A</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">S30_C_5</td>
+<td style="text-align: left;">stage_30</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: left;">five</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">S30_C_6</td>
+<td style="text-align: left;">stage_30</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: left;">six</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">S30_C_A</td>
+<td style="text-align: left;">stage_30</td>
+<td style="text-align: left;">control</td>
+<td style="text-align: left;">A</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">S30_F_5</td>
+<td style="text-align: left;">stage_30</td>
+<td style="text-align: left;">FGF</td>
+<td style="text-align: left;">five</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">S30_F_6</td>
+<td style="text-align: left;">stage_30</td>
+<td style="text-align: left;">FGF</td>
+<td style="text-align: left;">six</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">S30_F_A</td>
+<td style="text-align: left;">stage_30</td>
+<td style="text-align: left;">FGF</td>
+<td style="text-align: left;">A</td>
+</tr>
+</tbody>
+</table>
 </div>
-</section>
-<section id="experimental-design-3" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">🐸 Experimental design</h2>
-
-<img data-src="images/88H-exp-design-betsy.png" width="200" class="r-stretch quarto-figure-left"><p class="caption">Schematic of frog development experiment</p><div>
-<ul>
-<li class="fragment"><p>3 fertilisations. <span style="color:#009900">These are the replicates, <code>.5</code>, <code>.6</code>, <code>A</code></span></p></li>
-<li class="fragment"><p>two siblings from each fertilisation one control, one FGF treated. <span style="color:#009900">The treatments are paired</span></p></li>
-<li class="fragment"><p>sequenced at three time points. <span style="color:#009900">S14, S20, S30</span></p></li>
-<li class="fragment"><p>3 x 2 x 3 = 18 groups</p></li>
-</ul>
 </div>
-</section>
-<section id="aim" class="slide level2">
-<h2>🐸 Aim</h2>
-<div>
-<ul>
-<li class="fragment"><p>find genes important in frog development</p></li>
-<li class="fragment"><p>Important means the genes that are differentially expressed between the control-treated and the FGF-treated siblings</p></li>
-<li class="fragment"><p>Differentially expressed means the expression in one group is significantly higher than in the other</p></li>
-</ul>
-</div>
-</section>
-<section id="guided-analysis" class="slide level2">
-<h2>🐸 Guided analysis</h2>
-<div>
-<ul>
-<li class="fragment"><p>The workshops will take you through comparing the control and FGF treated sibling at S30</p></li>
-<li class="fragment"><p>This is the “least interesting” comparison</p></li>
-<li class="fragment"><p>You will be guided to carefully document your work so you can apply the same methods to other comparisons</p></li>
-</ul>
-</div>
-</section>
-<section id="experimental-design-4" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">🐭 Experimental design</h2>
-
-<img data-src="images/88H-exp-design-jillian.png" width="700" class="r-stretch quarto-figure-center"><p class="caption">Schematic of stem cell experiment</p></section>
-<section id="experimental-design-5" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">🐭 Experimental design</h2>
-
-<img data-src="images/88H-exp-design-jillian.png" width="200" class="r-stretch quarto-figure-left"><p class="caption">Schematic of stem cell experiment</p><div>
-<ul>
-<li class="fragment"><p>Cells were sorted using flow cytometry on the basis of cell surface markers</p></li>
-<li class="fragment"><p>There are three cell types: LT-HSCs, HSPCs, Progs</p></li>
-<li class="fragment"><p>Many cells of each cell type were sequenced</p></li>
-</ul>
-</div>
-</section>
-<section id="experimental-design-6" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">🐭 Experimental design</h2>
-
-<img data-src="images/88H-exp-design-jillian.png" width="200" class="r-stretch quarto-figure-left"><p class="caption">Schematic of stem cell experiment</p><div>
-<ul>
-<li class="fragment"><p>There are three cell types: LT-HSCs, HSPCs, Progs <span style="color:#009900">These are the “treaments”</span></p></li>
-<li class="fragment"><p>Many cells of each type were sequenced: <span style="color:#009900">These are the replicates</span></p></li>
-<li class="fragment"><p><span style="color:#009900">155 LT-HSCs, 701 HSPCs, 798 Progs</span></p></li>
-</ul>
-</div>
-</section>
-<section id="aim-1" class="slide level2">
-<h2>🐭 Aim</h2>
-<div>
-<ul>
-<li class="fragment"><p>find genes for cell surface proteins that are important in stem cell identity</p></li>
-<li class="fragment"><p>Important means genes that are differentially expressed between at least two cell types</p></li>
-<li class="fragment"><p>Differentially expressed means the expression in one group is significantly higher than in the other</p></li>
-</ul>
-</div>
-</section>
-<section id="guided-analysis-1" class="slide level2">
-<h2>🐭 Guided analysis</h2>
-<div>
-<ul>
-<li class="fragment"><p>The workshops will take you through comparing the HSPC and Prog cells</p></li>
-<li class="fragment"><p>This is the “least interesting” comparison</p></li>
-<li class="fragment"><p>You will be guided to carefully document your work so you can apply the same methods to other comparisons</p></li>
-</ul>
-</div>
-</section></section>
-<section>
-<section id="the-raw-data" class="title-slide slide level1 center">
-<h1>The raw data</h1>
-
-</section>
-<section id="raw-sequence-data" class="slide level2">
-<h2>Raw Sequence data</h2>
-<div>
-<ul>
-<li class="fragment"><p>The raw data are “reads” from a sequencing machine.</p></li>
-<li class="fragment"><p>A read is sequence of DNA or RNA shorter than the whole genome or transcriptome</p></li>
-<li class="fragment"><p>The length of the reads depends on the type of sequencing machine</p>
-<ul>
-<li class="fragment">Short-read technologies e.g.&nbsp;Illumina have higher base accuracy but are harder to align</li>
-<li class="fragment">Long-read technologies e.g.&nbsp;Nanopore have lower base accuracy but are easier to align</li>
-</ul></li>
-</ul>
-</div>
-</section></section>
-<section>
-<section id="the-raw-data-1" class="title-slide slide level1 center">
-<h1>The raw data</h1>
-
-</section>
-<section id="raw-sequence-data-1" class="slide level2">
-<h2>Raw Sequence data</h2>
-<div>
-<ul>
-<li class="fragment"><p>Sequencing technology is constantly improving</p></li>
-<li class="fragment"><p>Optional: You can read more about Sequencing technologies in <a href="https://cloud-span.github.io/experimental_design00-overview/">Statistically useful experimental design</a> <span class="citation" data-cites="rand_statistically_2022">(<a href="#/references" role="doc-biblioref" onclick="">Rand and Forrester 2022</a>)</span></p></li>
-</ul>
-</div>
-</section>
-<section id="raw-sequence-data-2" class="slide level2">
-<h2>Raw Sequence data</h2>
-<div>
-<ul>
-<li class="fragment"><p>The RNA-seq data are from an Illumina machine 150-300bp; Metagenomic data are often Nanopore 10,000 - 30000bp</p></li>
-<li class="fragment"><p>Reads are in FASTQ files</p></li>
-<li class="fragment"><p>FASTQ files contain the sequence of each read and a quality score for each base</p></li>
-</ul>
-</div>
-</section></section>
-<section>
-<section id="what-has-been-done-to-the-data-so-far" class="title-slide slide level1 center">
-<h1>What has been done to the data so far</h1>
-
-</section>
-<section id="general-steps" class="slide level2">
-<h2>General steps</h2>
-<div>
-<ul>
-<li class="fragment"><p>Reads are filtered and trimmed on the basis of the quality score</p></li>
-<li class="fragment"><p>They are then aligned/pseudo-aligned to a reference genome/transcriptome or, in metagenomics, assembled de novo.</p></li>
-<li class="fragment"><p>Reads are then counted to quantify the expression or number of genomes in metagenomics</p></li>
-<li class="fragment"><p>Counts are normalised to account for differences in sequencing depth and gene/transcript/genome length before statistical analysis</p></li>
-</ul>
-</div>
-</section>
-<section id="data" class="slide level2">
-<h2>🐸 Data</h2>
-<ul>
-<li><p>Unpublished (so far!)</p></li>
-<li><p>Expression for the whole transcriptome <a href="https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp"><em>X. laevis</em> v10.1 genome assembly</a></p></li>
-<li><p>Values are raw counts</p></li>
-<li><p>The statistical analysis method we will use <code>DESeq2</code> <span class="citation" data-cites="DESeq2">(<a href="#/references" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span> requires raw counts and performs the normalisation itself</p></li>
-</ul>
-</section>
-<section id="data-1" class="slide level2">
-<h2>🐭 Data</h2>
-<ul>
-<li><p>Published in <span class="citation" data-cites="nestorowa2016">Nestorowa et al. (<a href="#/references" role="doc-biblioref" onclick="">2016</a>)</span></p></li>
-<li><p>Expression for a subset of genes, the surfaceome</p></li>
-<li><p>Values are log2 normalised values</p></li>
-<li><p>The statistical analysis method we will use <code>scran</code> <span class="citation" data-cites="scran">(<a href="#/references" role="doc-biblioref" onclick="">Lun, McCarthy, and Marioni 2016</a>)</span> requires normalised values</p></li>
-</ul>
-</section></section>
-<section>
-<section id="workshops" class="title-slide slide level1 center">
-<h1>Workshops</h1>
-
-</section>
-<section id="workshops-1" class="slide level2">
-<h2>Workshops</h2>
-<ul>
-<li><p>Omics 1: Hello data Getting to know the data. Checking the distributions of values overall, across samples and across genes to check things are as we expect and detect genes/samples that need to be removed</p></li>
-<li><p>Omics 2: Statistical Analysis Identifying which genes are differentially expressed between treatments. This is the main analysis step. We will use different methods for bulk and single cell data.</p></li>
-<li><p>Omics 3: Visualising and Interpreting Production of volcano plots and heatmaps to visualise the results of the statistical analysis. We will also look at how to interpret the results and how to find out more about the genes of interest.</p></li>
-</ul>
-</section>
-<section id="references" class="slide level2 smaller scrollable">
-<h2>References</h2>
+</section><section id="deseq2-2" class="slide level2"><h2>DESeq2</h2>
+<p>differential expression results</p>
+<p>log2 foldhcange - explain why log2 a tests statistic,</p>
+<p>baseMean, log2FoldChange, lfcSE, stat, pvalue and padj, and also includes metadata columns of variable information. The lfcSE gives the standard error of the log2FoldChange. For the Wald test, stat is the Wald statistic:</p>
+<p>a p-value and a padj</p>
+<p>explain the adjusted p value.</p>
+</section><section id="references" class="slide level2"><h2>References</h2>
 
 <div class="footer footer-default">
-<p>🔗 <a href="https://3mmarand.github.io/BIO00088H-data/omics/week-3/overview.html">About Omics 1: Hello data!</a></p>
-</div>
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-DESeq2" class="csl-entry" role="listitem">
-Love, Michael I., Wolfgang Huber, and Simon Anders. 2014. <span>“Moderated Estimation of Fold Change and Dispersion for RNA-Seq Data with DESeq2”</span> 15: 550. <a href="https://doi.org/10.1186/s13059-014-0550-8">https://doi.org/10.1186/s13059-014-0550-8</a>.
-</div>
-<div id="ref-scran" class="csl-entry" role="listitem">
-Lun, Aaron T. L., Davis J. McCarthy, and John C. Marioni. 2016. <span>“A Step-by-Step Workflow for Low-Level Analysis of Single-Cell RNA-Seq Data with Bioconductor”</span> 5: 2122. <a href="https://doi.org/10.12688/f1000research.9501.2">https://doi.org/10.12688/f1000research.9501.2</a>.
-</div>
-<div id="ref-nestorowa2016" class="csl-entry" role="listitem">
-Nestorowa, Sonia, Fiona K. Hamey, Blanca Pijuan Sala, Evangelia Diamanti, Mairi Shepherd, Elisa Laurenti, Nicola K. Wilson, David G. Kent, and Berthold Göttgens. 2016. <span>“A Single-Cell Resolution Map of Mouse Hematopoietic Stem and Progenitor Cell Differentiation.”</span> <em>Blood</em> 128 (8): e20–31. <a href="https://doi.org/10.1182/blood-2016-05-716480">https://doi.org/10.1182/blood-2016-05-716480</a>.
-</div>
-<div id="ref-rand_statistically_2022" class="csl-entry" role="listitem">
-Rand, Emma, and Sarah Forrester. 2022. <span>“Statistically Useful Experimental Design.”</span> <a href="https://cloud-span.github.io/experimental_design00-overview/">https://cloud-span.github.io/experimental_design00-overview/</a>.
-</div>
+<p>🔗 <a href="https://3mmarand.github.io/BIO00088H-data/omics/week-4/overview.html">About Omics 2: Statistical Analysis</a></p>
 </div>
 </section></section>
-    </div>
+</div>
   </div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
-  <!-- reveal.js plugins -->
-  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
-  
-
-  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
-
-  <script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script><script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../../site_libs/revealjs/plugin/search/search.js"></script><script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -801,8 +735,42 @@ Rand, Emma, and Sarah Forrester. 2022. <span>“Statistically Useful Experimenta
           RevealZoom
         ]
       });
-    </script>
-    <script id="quarto-html-after-body" type="application/javascript">
+    </script><script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script><script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
         const mode = bsSheetEl.getAttribute("data-mode");
@@ -948,6 +916,6 @@ Rand, Emma, and Sarah Forrester. 2022. <span>“Statistically Useful Experimenta
       }
     });
     </script>
-    
+
 
 </body></html>
