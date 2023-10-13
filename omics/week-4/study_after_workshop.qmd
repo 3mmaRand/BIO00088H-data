@@ -1,6 +1,6 @@
 ---
 title: "Independent Study to consolidate this week"
-subtitle: Omics 2: Statistical Analysis"
+subtitle: "Omics 2: Statistical Analysis"
 toc: true
 toc-location: right
 format:
