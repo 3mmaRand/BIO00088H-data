@@ -673,48 +673,189 @@ ENSMUSG00000023132 ENSMUSG00000026285
 </section><section id="differential-expression-analysis-1" class="level2"><h2 class="anchored" data-anchor-id="differential-expression-analysis-1">Differential expression analysis</h2>
 <p>Like <strong><code>DESeq2</code></strong>, <strong><code>scran</code></strong> uses a statistical model to calculate the significance of the difference between the treatments and needs metadata to define the treatments.</p>
 <p>🎬 Load the <strong><code>scran</code></strong> package:</p>
-<div class="cell">
-<div class="cell-output cell-output-error">
-<pre><code>Error in library(package, pos = pos, lib.loc = lib.loc, character.only = TRUE, : there is no package called 'scran'</code></pre>
-</div>
-</div>
 <p>The meta data needed for the frog data was information about which columns were in which treatment group and which sibling group and we had that information in a file. Similarly, here we need information on which columns are from which cell type. Instead of having this is a file, we will create a vector that indicates which column belongs to which cell type.</p>
 <p>🎬 Create a vector that indicates which column belongs to which cell type:</p>
 <div class="cell">
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cell_type</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"prog"</span>,<span class="st">"hspc"</span><span class="op">)</span>, </span>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cell_type</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"prog"</span>,<span class="st">"hspc"</span><span class="op">)</span>, </span>
 <span>                 times <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">prog</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span>,</span>
 <span>                           <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">hspc</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The number of times each cell type is repeated is the number of columns in that cell type minus 1. This is because we have removed the column with the gene ids. Do check that the length of the <code>cell_type</code> vector is the same as the number of columns in the <code>prog_hspc</code> dataframe.</p>
 <p>🎬 Run the differential expression analysis:</p>
 <div class="cell">
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">res_prog_hspc</span> <span class="op">&lt;-</span> <span class="fu">findMarkers</span><span class="op">(</span><span class="va">prog_hspc</span>, </span>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">res_prog_hspc</span> <span class="op">&lt;-</span> <span class="fu">findMarkers</span><span class="op">(</span><span class="va">prog_hspc</span>, </span>
 <span>                             <span class="va">cell_type</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in findMarkers(prog_hspc, cell_type): could not find function "findMarkers"</code></pre>
-</div>
 </div>
 <p><code>findMarkers()</code> is the function that runs the differential expression analysis. The first argument is the dataframe containing the data. The second argument is the vector indicating which columns are in which cell type. It gives us two dataframes of the results - rather unnecessarily. One is the results with fold changes that are Prog/HSPC and the other is the results with fold changes that are HSPC/Prog. These have the same magnitude, just a different sign</p>
 <p>The dataframe <code>res_prog_hspc$prog</code> is log prog - log hspc (i.e.,Prog/HSPC). This means - Positive fold change: prog is higher than hspc - Negative fold change: hspc is higher than prog</p>
 <p>The dataframe <code>res_prog_hspc$hspc</code> is log hspc - log prog (i.e., HSPC/Prog). . This means - Positive fold change: hspc is higher than prog - Negative fold change: prog is higher than hspc</p>
 <div class="cell">
-<div class="cell-output cell-output-error">
-<pre><code>Error in h(simpleError(msg, call)): error in evaluating the argument 'x' in selecting a method for function 'head': object 'res_prog_hspc' not found</code></pre>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>The res_prog_hspc$prog dataframe</caption>
+<colgroup>
+<col style="width: 24%">
+<col style="width: 5%">
+<col style="width: 10%">
+<col style="width: 5%">
+<col style="width: 17%">
+<col style="width: 13%">
+<col style="width: 24%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Top</th>
+<th style="text-align: right;">p.value</th>
+<th style="text-align: right;">FDR</th>
+<th style="text-align: right;">summary.logFC</th>
+<th style="text-align: right;">logFC.hspc</th>
+<th style="text-align: left;">ensembl_gene_id</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ENSMUSG00000028639</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.596910</td>
+<td style="text-align: right;">1.596910</td>
+<td style="text-align: left;">ENSMUSG00000028639</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ENSMUSG00000024053</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3.035165</td>
+<td style="text-align: right;">3.035165</td>
+<td style="text-align: left;">ENSMUSG00000024053</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ENSMUSG00000041329</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3.261056</td>
+<td style="text-align: right;">3.261056</td>
+<td style="text-align: left;">ENSMUSG00000041329</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ENSMUSG00000030336</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-2.146491</td>
+<td style="text-align: right;">-2.146491</td>
+<td style="text-align: left;">ENSMUSG00000030336</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ENSMUSG00000016494</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-3.056730</td>
+<td style="text-align: right;">-3.056730</td>
+<td style="text-align: left;">ENSMUSG00000016494</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ENSMUSG00000002808</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3.000810</td>
+<td style="text-align: right;">3.000810</td>
+<td style="text-align: left;">ENSMUSG00000002808</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="cell">
-<div class="cell-output cell-output-error">
-<pre><code>Error in h(simpleError(msg, call)): error in evaluating the argument 'x' in selecting a method for function 'head': object 'res_prog_hspc' not found</code></pre>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small">
+<caption>The res_prog_hspc$hspc dataframe. Notice the sign of the fold change is the other way</caption>
+<colgroup>
+<col style="width: 24%">
+<col style="width: 5%">
+<col style="width: 10%">
+<col style="width: 5%">
+<col style="width: 17%">
+<col style="width: 13%">
+<col style="width: 24%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">Top</th>
+<th style="text-align: right;">p.value</th>
+<th style="text-align: right;">FDR</th>
+<th style="text-align: right;">summary.logFC</th>
+<th style="text-align: right;">logFC.prog</th>
+<th style="text-align: left;">ensembl_gene_id</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ENSMUSG00000028639</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-1.596910</td>
+<td style="text-align: right;">-1.596910</td>
+<td style="text-align: left;">ENSMUSG00000028639</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ENSMUSG00000024053</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-3.035165</td>
+<td style="text-align: right;">-3.035165</td>
+<td style="text-align: left;">ENSMUSG00000024053</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ENSMUSG00000041329</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-3.261056</td>
+<td style="text-align: right;">-3.261056</td>
+<td style="text-align: left;">ENSMUSG00000041329</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ENSMUSG00000030336</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2.146491</td>
+<td style="text-align: right;">2.146491</td>
+<td style="text-align: left;">ENSMUSG00000030336</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ENSMUSG00000016494</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3.056730</td>
+<td style="text-align: right;">3.056730</td>
+<td style="text-align: left;">ENSMUSG00000016494</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ENSMUSG00000002808</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">-3.000810</td>
+<td style="text-align: right;">-3.000810</td>
+<td style="text-align: left;">ENSMUSG00000002808</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <p>🎬 Write the results to file:</p>
 <div class="cell">
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">res_prog_hspc</span><span class="op">$</span><span class="va">prog</span>, </span>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">res_prog_hspc</span><span class="op">$</span><span class="va">prog</span>, </span>
 <span>           ensembl_gene_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">res_prog_hspc</span><span class="op">$</span><span class="va">prog</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="st">"results/prog_hspc_results.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 'res_prog_hspc' not found</code></pre>
-</div>
 </div>
 </section></section><section id="look-after-future-you" class="level1"><h1>🤗 Look after future you!</h1>
 <p>🎬 tidy up, collect together library statements, make sure don’t have repeat code (e.g import) edit and rationalise you comments</p>
