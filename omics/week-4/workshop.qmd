@@ -189,11 +189,12 @@ write_csv(s30_fgf_only, "results/s30_fgf_only.csv")
 ```{r}
 #| echo: false
 #---CODING ANSWER---
+conflicts_prefer(GenomicRanges::setdiff)
 library(DESeq2)
 ```
 ```{r}
 #| echo: false
-conflicts_prefer(GenomicRanges::setdiff)
+
 ```
 
 
