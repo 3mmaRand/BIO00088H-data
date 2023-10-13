@@ -191,6 +191,11 @@ write_csv(s30_fgf_only, "results/s30_fgf_only.csv")
 #---CODING ANSWER---
 library(DESeq2)
 ```
+```{r}
+#| echo: false
+conflicts_prefer(GenomicRanges::setdiff)
+```
+
 
 A DEseqDataSet object is a custom data type that is used by the DESeq2. Custom data types are common in the Bioconductor packages. They are used to store data in a way that is useful for the analysis. These data types typically have data, transformed data, metadata and experimental designs within them.
 
@@ -456,7 +461,7 @@ prog_hspc |>
 
 Note that if we knew there were some rows that were all zero across both cerll types, we would need to add `|> filter(sum(c_across(Prog_001:Prog_852)) != 0)`
 
-🎬 Npw you find the genes that are 0 in every column for the HSPC cells:
+🎬 Now you find the genes that are 0 in every column for the HSPC cells:
 
 ```{r}
 #| echo: false
