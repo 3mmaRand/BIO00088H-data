@@ -1,6 +1,6 @@
 ---
 title: "Independent Study to consolidate this week"
-subtitle: "Core 1"
+subtitle: "Omics 2: Statistical Analysis"
 toc: true
 toc-location: right
 format:
@@ -14,17 +14,14 @@ You need only do the section for your own project data
 
 🐸 Frogs
 
-🎬 Open your `frogs-88H` Project. Make a new script and, using `cont-fgf-s30.R` as a template, repeat the analysis on one of the other comparisons.
-
+🎬 Open your `frogs-88H` Project. xxx
 
 🐭 Mice
 
-🎬 Open your `mice-88H` Project. Open your `hspc-prog.R` script and, using you code working with the hspc cells as a template, repeat the analysis on the prog cells.
-
+🎬 Open your `mice-88H` Project. xxx
 
 🍂 xxxx
 
-🎬 Open your `xxxx-88H` Project. Make a new script and, using `xxxxxxx.R` as a template, repeat the analysis on xxxxxxxx
-
+🎬 Open your `xxxx-88H` Project. xxx
 
 

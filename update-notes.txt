@@ -41,6 +41,17 @@ fs::dir_create("data-raw")
 fs::dir_create("data-processed")
 
 
+week 3
+
+ <!-- MAY BE FOR NEXT WEEK -->
+<!-- ## Principle Components Analysis (PCA) -->
+
+<!-- explore data further - at the sample and gene level check reps cluster -->
+<!-- together -->
+Further explore the data with Principle Components Analysis (PCA) on the normalised counts. 
+6.  
+
+
 for workshop 2 they willneed
 
 biocmanager

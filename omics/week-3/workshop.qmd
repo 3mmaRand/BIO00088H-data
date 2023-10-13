@@ -757,9 +757,11 @@ whole script again.
 
 ### 🍂 xxxx and future you
 
-🎬 Create a new Project, `xxxx-88H`, populated with folders and your
-data. Make a script file called `xxxx.R`. This will a be commented
-analysis of t xxxxxxxxxxxx.
+**Do one of the other two examples.**
+
+<!-- 🎬 Create a new Project, `xxxx-88H`, populated with folders and your -->
+<!-- data. Make a script file called `xxxx.R`. This will a be commented -->
+<!-- analysis of t xxxxxxxxxxxx. -->
 
 # 🥳 Finished
 

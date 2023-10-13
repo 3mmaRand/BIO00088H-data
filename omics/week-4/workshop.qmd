@@ -1,6 +1,6 @@
 ---
 title: "Workshop"
-subtitle: "Omics 1: Hello data!"
+subtitle: "Omics 2: Statistical Analysis"
 author: "Emma Rand"
 toc: true
 toc-depth: 4
@@ -19,747 +19,541 @@ editor:
 
 ## Session overview
 
-In this workshop you will learn what steps to take to get a good
-understanding of your 'omics data before you consider any statistical
-analysis. This is an often overlooked, but very valuable and
-informative, part of any data pipeline. It gives you the deep
-understanding of the data structures and values that you will need to
-code and trouble-shoot code, allows you to spot failed or problematic
-samples and informs your decisions on quality control.
+In this workshop you will lxxxx
 
-You should examine **all three data sets** because the comparisons will
-give you a stronger understanding of your own project data.
+# Set up
 
-# Exercises
+Either:
 
-## Set up a Project
+🎬 Open 🐸 `frogs-88H` Project and the `cont-fgf-s30.R` script.
 
-🎬 Start RStudio from the Start menu
+Or
 
-🎬 Make an RStudio project. Be deliberate about where you create it so
-that it is a good place for you
+🎬 Open 🐭 `mice-88H` Project and the `hspc-prog.R` script.
 
-🎬 Use the Files pane to make new folders for the data. I suggest
-`data-raw` and `data-processed`
+🎬 Make a new folder `results` in the project directory. This is where
+we will save our results.
 
-🎬 Make a new script called `workshop-1.R` to carry out the rest of the
-work.
+```{r}
+#| eval: false
+fs::dir_create("results")
+```
 
-🎬 Record what you do and what you find out. All of it!
-
-🎬 Load `tidyverse` [@tidyverse] for importing, summarising, plotting
-and filtering.
+🎬 Load **`tidyverse`** You most likely have this code at the top of
+`cont-fgf-s30.R` or `hspc-prog.R` already.
 
 ```{r}
 library(tidyverse)
 ```
 
-## Examine the data in a spreadsheet
+```         
+── Attaching core tidyverse packages ─────────────────────────────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.3     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.3     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ───────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package to force all conflicts to become errors
+```
 
-These are the three datasets. Each set compromises several files.
+Have you ever stopped to think about this message? It is telling us that
+there are functions in the `dplyr` package that have the same name as
+functions in the `stats` package and that R will use the `dplyr`
+version. As this is what you want, this has always been fine. It still
+is fine in this case. However, as you start to load more packages, you
+will want to know if you are using a function from a package that has
+the same name as a function in another loaded package. This is where the
+**`conflicted`** package comes in. **`Conflicted`** will warn you when
+you are using a function that has the same name as a function in another
+package. You can then choose which function to use.
 
-🐸 Frog development data:
+🎬 Load the **`conflicted`** package.
 
--   [xlaevis_counts_S14.csv](data-raw/xlaevis_counts_S14.csv)
--   [xlaevis_counts_S20.csv](data-raw/xlaevis_counts_S20.csv)
--   [xlaevis_counts_S30.csv](data-raw/xlaevis_counts_S30.csv)
--   [meta_data.txt](data-raw/meta_data.txt)
+```{r}
+library(conflicted)
+```
 
-🐭 Stem cell data:
+Perfer to use dplyr's version of filter
 
--   [surfaceome_hspc.csv](data-raw/surfaceome_hspc.csv)
--   [surfaceome_prog.csv](data-raw/surfaceome_prog.csv)
--   [surfaceome_lthsc.csv](data-raw/surfaceome_lthsc.csv)
+```{r}
+conflict_prefer("filter", "dplyr")
+```
 
-🍂 xxxx data:
+# 🐸 Analysis
 
--   xxx
--   xxx
+We will carry out several steps
 
-🎬 Save the files to `data-raw` and open them in Excel
+1.  Import the data
+2.  Find the genes that are expressed in only one treatment (the control
+    or the FGF-treated) 
+3.  Create a DESeqDataSet object. This is a special object that is used
+    by the **`DESeq2`** package
+4.  Prepare the normalised counts from the DESeqDataSet object. 
+5.  Do differential expression analysis on the genes. This needs to be
+    done on the raw counts. 
 
-🎬 Answer the following questions:
 
--   Describe how the sets of data are similar and how they are
-    different.
--   What is in the rows and columns of each file?
--   How many rows and columns are there in each file? Are these the
-    same? In all cases or some cases? Why?
--   Google an id. Where does your search take you? How much information
-    is available?
+The creation of the DESeqDataSet object, the preparation of the normalised counts and the differential expression analysis are all done with the **`DESeq2`** package
 
-🎬 Did you record all that??
 
 ## Import
 
-Now let's get the data into R and visualise it.
+We need to import the S30 data that were filtered to remove genes with 4, 5
+or 6 zeros and those where the total counts was less than 20.
 
-🎬 Import [xlaevis_counts_S30.csv](data-raw/xlaevis_counts_S30.csv),
-[surfaceome_hspc.csv](data-raw/surfaceome_hspc.csv) and xxxxxxxx
+🎬 Import the data from the `data-processed` folder.
 
 ```{r}
-# 🐸 import the s30 data
-s30 <- read_csv("data-raw/xlaevis_counts_S30.csv")
+#| echo: false
+#---CODING ANSWER---
+s30_filtered <- read_csv("data-processed/s30_filtered.csv")
 ```
 
+## Genes expressed in one treatment
+
+The genes expressed in only one treatment group are those with zeros in
+all three replicates in one group and non-zero values in all three
+replicates in the other group. For example, those shown here:
+
 ```{r}
-# 🐭 import the hspc data
+#| echo: false
+# sort the data by the values in the control column
+s30_filtered |>  
+  arrange(S30_C_A) |> 
+  head(3)
+
+```
+
+We will use `filter()` to find these genes.
+
+🎬 Find the genes that are expressed only in the FGF-treated group:
+
+```{r}
+s30_fgf_only <- s30_filtered |> 
+  filter(S30_C_5 == 0, 
+         S30_C_6 == 0, 
+         S30_C_A == 0, 
+         S30_F_5 > 0, 
+         S30_F_6 > 0, 
+         S30_F_A > 0)
+```
+
+❓ How many genes are expressed only in the FGF-treated group?
+
+<!-- #---THINKING ANSWER--- -->
+<!-- There are 26 genes expressed only in the FGF-treated group. -->
+
+🎬 Now you find any genes that are expressed only in the control group.
+
+```{r}
+#| echo: false
+#---CODING ANSWER---
+s30_con_only <- s30_filtered |> 
+  filter(S30_C_5 > 0, 
+         S30_C_6 > 0, 
+         S30_C_A > 0, 
+         S30_F_5 == 0, 
+         S30_F_6 == 0, 
+         S30_F_A == 0)
+
+```
+
+❓ Do the results  make sense to you in light of what you know about the biology?
+
+<!-- #---THINKING ANSWER--- -->
+<!-- there are no genes expressed in the control group but not in the FGF-treated group -->
+<!-- Since FGF is a growth factor, it is likely to induce the expression of genes. Therefore,  -->
+<!-- it is not surprising to me that there are no genes expressed in the control group but  -->
+<!-- not in the FGF-treated group. However, I'm not an expert in developmental biology.  -->
+<!-- Domain expertise is important when analysing data so discuss your results with Betsy  -->
+<!-- and your group. -->
+
+🎬 Write to file (saved in `results`) all the genes that are expressed
+one group only.
+
+```{r}
+#| echo: false
+#---CODING ANSWER---
+write_csv(s30_fgf_only, "results/s30_fgf_only.csv")
+```
+
+
+
+## Create DESeqDataSet object
+
+🎬 Load the DESeq2 package
+
+```{r}
+#| echo: false
+#---CODING ANSWER---
+conflicts_prefer(GenomicRanges::setdiff)
+library(DESeq2)
+```
+```{r}
+#| echo: false
+
+```
+
+
+A DEseqDataSet object is a custom data type that is used by the DESeq2. Custom data types are common in the Bioconductor packages. They are used to store data in a way that is useful for the analysis. These data types typically have data, transformed data, metadata and experimental designs within them.
+
+To create a DESeqDataSet object, we need to provide three things:
+
+1.   The raw counts - these are what we imported into `s30_filtered`
+2.   The meta data which gives information about the samples and which treatment groups they belong to
+3.   A design matrix which captures the design of the statistical model. 
+
+The counts must in a matrix rather than a dataframe. Unlike a dataframe, a matrix has columns of all the same type. That is, it will contain only the counts. The gene ids are given as row names rather than a column. The `matrix()` function will create a matrix from a dataframe of columns of the same type and the `select()` function can be used to remove the gene ids column.
+
+🎬 Create a matrix of the counts:
+```{r}
+s30_count_mat <- s30_filtered |>
+  select(-xenbase_gene_id) |>
+  as.matrix()
+```
+
+
+🎬 Add the gene ids as row names to the matrix:
+```{r}
+# add the row names to the matrix
+rownames(s30_count_mat) <- s30_filtered$xenbase_gene_id
+
+```
+
+You might want to view the matrix.
+
+The metadata are in a file,  [frog_meta_data.txt](meta_data/frog_meta_data.txt). This is a tab-delimited file. The first column is the sample name and the second column is the treatment group. 
+
+🎬 Make a folder called `meta` and save the file to it.
+
+🎬 Read the metadata into a dataframe:
+
+```{r}
+meta <- read_table("meta/frog_meta_data.txt")
+```
+
+🎬 Examine the resulting dataframe
+
+We need to add the sample names as row names to the metadata dataframe. This is because the DESeqDataSet object will use the row names to match the samples in the metadata to the samples in the counts matrix.
+
+🎬 Add the sample names as row names to the metadata dataframe:
+
+```{r}
+row.names(meta) <- meta$sample_id
+```
+(you will get a warning message but you can ignore it)
+
+We are dealing only with the S30 data so we need to remove the samples that are not in the S30 data.
+
+🎬 Filter the metadata to keep only the S30 information:
+
+```{r}
+meta_S30 <- meta |>
+  dplyr::filter(stage == "stage_30")
+```
+
+
+```{r}
+#| echo: false
+meta_S30
+```
+
+We can now create the DESeqDataSet object. The design formula describes the statistical model You should notice that it is the same sort of formula we used in `t.test()`, `lm()`,` glm()` etc. The `~` indicates that the left hand side is the response variable (in this case counts) and the right hand side are the explanatory variables. We are interested in the difference between the treatments but we include `sibling_rep` to account for the fact that the data are paired. 
+The names of the columns in the count matrix have to match the names in the metadata dataframe and the names of the explanatory variables in the design formula have to match the names of columns in the metadata.
+
+🎬 Create the DESeqDataSet object:
+
+```{r}
+dds <- DESeqDataSetFromMatrix(countData = s30_count_mat,
+                              colData = meta_S30,
+                              design = ~ treatment + sibling_rep)
+```
+
+
+
+The warning "Warning: some variables in design formula are characters, converting to factors" just means that the variable type of treatment and sibling_rep in the metadata dataframe are char. This is not a as `DESeqDataSetFromMatrix()` has made them into the factors it needs.
+
+🎬 Examine the DESeqDataSet object.
+
+The counts are in `dds@assays@data@listData[["counts"]]` and the metadata are in `dds@colData` but the easiest way to  see tham is to use the `counts()` and `colData()` functions from the **`DESeq2`** package.
+
+🎬 View the counts:
+```{r}
+counts(dds) |> View()
+```
+You should be able to see that this is the same as in `s30_count_mat`. 
+
+
+```{r}
+colData(dds)
+
+```
+
+
+
+## Prepare the normalised counts
+
+The normalised counts are the counts that have been transformed to account for the library size (ie., the total number of reads in a sample) and the gene length. We have to first estimate the normalisation factors and store them in the DESeqDataSet object and then we can get the normalised counts.
+ 
+🎬 Estimate the factors for normalisation and store them in the DESeqDataSet object:
+
+```{r}
+dds <- estimateSizeFactors(dds)
+```
+
+🎬 Look at the factors (just for information)
+```{r}
+sizeFactors(dds)
+```
+To get the normalised counts we again used the counts() function but this time we use the `normalized=TRUE` argument.` 
+
+🎬 Save the normalised to a matrix:
+```{r}
+normalised_counts <- counts(dds, normalized = TRUE)
+```
+
+We will write the normalised counts to a file so that we can use them in the future. 
+
+🎬 Make a dataframe of the normalised counts, add a column for the gene ids and write to file: 
+
+```{r}
+data.frame(normalised_counts,
+           xenbase_gene_id = row.names(normalised_counts)) |>
+  write_csv(file = "results/S30_normalised_counts.csv")
+```
+
+
+## Differential expression analysis
+
+We used the `DESeq()` function to do the differential expression analysis. This function fits the statistical model to the data and then uses the model to calculate the significance of the difference between the treatments. It again stored the results in the DESseqDataSet object. Note that the differential expression needs the raw (unnormalised counts) as it does its own normalisation as part of the process.
+
+🎬 Run the differential expression analysis:
+```{r}
+dds <- DESeq(dds)
+```
+The function will take only a few moments to run on this data but can take longer for bigger datasets. 
+
+We need to define the contrasts we want to test. We want to test the difference between the treatments so we will define the contrast as `FGF` and `control`.
+
+🎬 Define the contrast:
+```{r}
+contrast_fgf <- c("treatment", "FGF", "control")
+```
+
+Notes that `treatment` is the name of the column in the metadata dataframe and `FGF` and `control` are the names of the levels in the `treatment` column. By putting them in the order `FGF` , `control` we are saying the fold change will be FGF / control. If we had put them in the order `control`, `FGF` we would have got the fold change as control / FGF. This means positive log fold changes indicate FGF > control and negative log fold changes indicates control > FGF.
+
+
+🎬 Extract the results from the DESseqDataSet object:
+
+```{r}
+results_fgf <- results(dds,
+                       contrast = contrast_fgf)
+```
+
+This will give us the log2 fold change and p-value for the contrast
+
+🎬 Save the results to a file:
+```{r}
+data.frame(results_fgf,
+           xenbase_gene_id = row.names(results_fgf)) |> 
+  write_csv(file = "results/S30_results.csv")
+```
+
+
+# 🐭 Analysis
+
+
+We will carry out several steps
+
+1.  Import the prog and hspc data
+2.  Combine the two datasets ready for analysis
+3.  Filter the data to remove genes that are not expressed in any cell
+4.  Find the genes that are expressed in only one cell type (the prog
+    or the hspc) 
+5.  Do differential expression analysis on the genes using the **`scran`** package. This needs to be done on the logged normalised counts.
+
+## Import 
+
+🎬 Import surfaceome_hspc.csv and surfaceome_prog.csv into dataframes called hspc and prog respectively. 
+
+ 
+```{r}
+#| echo: false
+#---CODING ANSWER---
 hspc <- read_csv("data-raw/surfaceome_hspc.csv")
+prog <- read_csv("data-raw/surfaceome_prog.csv")
 ```
+
+
+## Combine the two datasets
+
+We need to combine the two datasets of 701 and 798 cells into one dataset of 1499 cells, i.e., 1499 columns. The number of rows is the number of genes, 280. Before combining, we must make sure genes in the same order in both dataframes or we would be comparing the expression of one gene in one cell type to the expression of a different gene in the other cell type!
+
+🎬 Check the gene ids are in the same order in both dataframes:
+```{r}
+identical(prog$ensembl_gene_id, hspc$ensembl_gene_id)
+```
+**`scran`** can use a matrix or a dataframe of counts but theses must be log normalised counts. If using a dataframe, the columns must only contain the expression values (not the gene ids).
+
+🎬 Combine the two dataframes (minus the gene ids) into one dataframe called `prog_hspc`:
+```{r}
+prog_hspc <- bind_cols(prog[-1], hspc[-1])
+
+```
+
+🎬 Now add the gene ids as the row names:
+```{r}
+row.names(prog_hspc) <- prog$ensembl_gene_id
+```
+
+
+## Filter to remove unexpressed genes 
+
+In this dataset, we will not see and genes that are not expressed in any of the cells because we are using a specific subset of the transcriptome that was deliberately selected. However, we will go through how to do this because it is an important step in most analyses. 
+
+For the 🐸 frog data you should remember that we were able to filter out our unexpressed genes in [Omics 1](../week-3/workshop.html) because we were examining both groups to be compared. In that workshop, [we discussed](../week-3/workshop.html#frog-filtering) that we could not filter out unexpressed genes in the 🐭 mouse data because we only had one cell types at that time. During the [Consolidate Independent Study](../week-3/study_after_workshop.html) you examined the hspc cells. 
+
+Where the sum of all the values in the rows is zero, all the entries must be zero. We can use this to find the filter the genes that are not expressed in any of the cells. To do row wise aggregates such as the sum across rows we can use the `rowwise()` function. `c_across()` allows us to use the colon notation `Prog_001:HSPC_852` in `sum()` rather than having to list all the column names: `sum(Prog_001, Prog_002, Prog_002, Prog_004,.....)` 
+
+🎬 Find the genes that are 0 in every column of the prog_hspc dataframe:
+```{r}
+prog_hspc |> 
+  rowwise() |> 
+  filter(sum(c_across(Prog_001:HSPC_852)) == 0)
+
+```
+
+
+❓ What do you conclude?
+
+<!-- #---THINKING ANSWER--- -->
+<!-- The are no genes that are completely unexpressed in this set of 280 genes -->
+
+We might also examine the genes which are least expressed.
+
+🎬 Find ten least expressed genes:
+```{r}
+rowSums(prog_hspc) |> sort() |> head(10)
+```
+
+❓ What do you conclude?
+
+<!-- #---THINKING ANSWER--- -->
+
+<!-- When you consider that there are 1499 cells, a values of 30 are low even  -->
+<!-- considering these are already logged and normalised (ie., the range of  -->
+<!-- values is less that it would be for raw counts) -->
+
+## Find the genes that are expressed in only one cell type
+
+To find the genes that are expressed in only one cell type, we can use the same approach as above but only sum the columns for one cell type. 
+
+🎬 Find the genes that are 0 in every column for the Prog cells:
 
 ```{r}
-# 🍂 xxxx import the xxxx data
-# prog <- read_csv("")
+prog_hspc |> 
+  rowwise() |> 
+  filter(sum(c_across(HSPC_001:HSPC_852)) == 0)
+
 ```
 
-🎬 Check these have the number of rows and column you were expecting and
-that column types and names are as expected.
+Note that if we knew there were some rows that were all zero across both cerll types, we would need to add `|> filter(sum(c_across(Prog_001:Prog_852)) != 0)`
 
-## Explore
-
-The first task is to get an overview. We want to know
-
--   are there any missing values? If so, how many and how are they
-    distributed?
--   how may zeros are there and how are they distributed
--   does it look as tough all the samples/cells were equally
-    "successful"? Can we spot any problematic anomalies?
--   what is the distribution of values?
-
-If our data collection has gone well we would hope to see approximately
-the same average expression in each sample or cell of the same type.
-That is replicates should be similar. We would also expect to see that
-the average expression of genes varies. We might have genes which are
-zero in every cell/sample. We will want to to filter those out.
-
-We get this overview by looking at:
-
--   The distribution of values across the whole dataset
-
--   The distribution of values across the sample/cells (i.e., averaged
-    across genes). This allows us to see variation between
-    samples/cells:
-
--   The distribution of values across the genes (i.e., averaged across
-    samples/cells). This allows us to see variation between genes.
-
-### Distribution of values across the whole dataset
-
-In all data sets, the values are spread over multiple columns so in
-order to plot the distribution as a whole, we will need to first use
-`pivot_longer()` to put the data in ['tidy'
-format](https://3mmarand.github.io/BIO00017C-Data-Analysis-in-R-2020/workshops/02TestingDataTypesReadingInData.html#Tidy_format)
-[@Wickham2014-nl] by stacking the columns. We *could* save a copy of the
-stacked data and then plot it, but here, I have just piped the stacked
-data straight into `ggplot()`.
-
-#### 🐸 Frogs
-
-🎬 Pivot the counts (stack the columns) so all the counts are in a
-single column (`count`) and pipe into `ggplot()` to create a histogram:
-
-```{r}
-s30 |>
-  pivot_longer(cols = -xenbase_gene_id,
-               names_to = "sample",
-               values_to = "count") |>
-  ggplot(aes(x = count)) +
-  geom_histogram()
-```
-
-This data is very skewed - there are so many low values that we can't
-see the tiny bars for the higher values. Logging the counts is a way to
-make the distribution more visible.
-
-🎬 Repeat the plot on log of the counts.
-
-```{r}
-s30 |>
-  pivot_longer(cols = -xenbase_gene_id,
-               names_to = "sample",
-               values_to = "count") |>
-  ggplot(aes(x = log10(count))) +
-  geom_histogram()
-```
-
-I've used base 10 only because it easy to convert to the original scale
-(1 is 10, 2 is 100, 3 is 1000 etc). The warning about rows being removed
-is expected - these are the counts of 0 since you can't log a value of
-0. The peak at zero suggests quite a few counts of 1. We would expect we
-would expect the distribution of counts to be roughly log normal because
-this is expression of *all* the genes in the genome[^1]. That small peak
-near the low end suggests that these lower counts might be anomalies.
-
-[^1]: This a result of the [Central limit
-    theorem](https://en.wikipedia.org/wiki/Central_limit_theorem),one
-    consequence of which is that adding together lots of distributions -
-    whatever distributions they are - will tend to a normal
-    distribution.
-
-The excess number of low counts indicates we might want to create a cut
-off for quality control. The removal of low counts is a common
-processing step in 'omic data. We will revisit this after we have
-considered the distribution of counts across samples and genes.
-
-#### 🐭 Mice
-
-🎬 Pivot the expression values (stack the columns) so all the counts are
-in a single column (`expr`) and pipe into `ggplot()` to create a
-histogram:
-
-```{r}
-hspc |>
-  pivot_longer(cols = -ensembl_gene_id,
-               names_to = "cell",
-               values_to = "expr") |> 
-  ggplot(aes(x = expr)) +
-  geom_histogram()
-```
-
-This is a very striking distribution. Is it what we are expecting?
-Again,the excess number of low values is almost certainly anomalous.
-They will be inaccurate measure and we will want to exclude expression
-values below (about) 1. We will revisit this after we have considered
-the distribution of expression across cells and genes.
-
-What about the bimodal appearance of the the 'real' values? If we had
-the whole genome we would not expect to see such a pattern - we'd expect
-to see a roughly normal distribution[^2]. However, this is a subset of
-the genome and the nature of the subsetting has had an influence here.
-These are a subset of cell surface proteins that show a significant
-difference between at least two of twelve cell subtypes. That is, all of
-these genes are either high or low.
-
-[^2]: This a result of the [Central limit
-    theorem](https://en.wikipedia.org/wiki/Central_limit_theorem),one
-    consequence of which is that adding together lots of distributions -
-    whatever distributions they are - will tend to a normal
-    distribution.
-
-### Distribution of values across the sample/cells
-
-#### 🐸 Frog samples
-
-Summary statistics including the the number of NAs can be seen using the
-`summary()`. It is most helpful which you have up to about 30 columns.
-There is nothing special about the number 30, it is just that text
-summaries of a larger number of columns are difficult to grasp.
-
-🎬 Get a quick overview of the columns:
-
-```{r}
-# examine all the columns quickly
-# works well with smaller numbers of column
-summary(s30)
-```
-
-Notice that: - the minimum count is 0 and the maximums are very high in
-all the columns - the medians are quite a lot lower than the means so
-the data are skewed (hump to the left, tail to the right) - there must
-be quite a lot of zeros - the columns are roughly similar and it doesn't
-look like there is an anomalous replicate.
-
-To find out how may zeros there are in a column we can make use of the
-fact that `TRUE` evaluates to 1 and `FALSE` evaluates to 0. This means
-`sum(S30_C_5 == 0)` gives the number of 0 in the `S30_C_5` column
-
-🎬 Find the number of zeros in all six columns:
-
-```{r}
-
-s30 |>
-  summarise(sum(S30_C_5 == 0),
-            sum(S30_C_6 == 0),
-            sum(S30_C_A == 0),
-            sum(S30_F_5 == 0),
-            sum(S30_F_6 == 0),
-            sum(S30_F_A == 0))
-```
-
-There is a better way of doing this that saves you having to repeat so
-much code - especially useful if you have a lot more than 6 columns. We
-can use `pivot_longer()` to put the data in tidy format and then use the
-`group_by()` and `summarise()` approach we have used extensively before.
-
-🎬 Find the number of zeros in all columns:
-
-```{r}
-s30 |>
-  pivot_longer(cols = -xenbase_gene_id,
-               names_to = "sample",
-               values_to = "count") |>
-  group_by(sample) |>
-  summarise(n_zero = sum(count == 0))
-```
-
-You could expand to get all the summary information
-
-🎬 Summarise all the samples:
-
-```{r}
-s30 |>
-  pivot_longer(cols = -xenbase_gene_id,
-               names_to = "sample",
-               values_to = "count") |>
-  group_by(sample) |>
-  summarise(min = min(count),
-            lowerq = quantile(count, 0.25),
-            mean = mean(count),
-            median = median(count),
-            upperq = quantile(count, 0.75),
-            max = max(count),
-            n_zero = sum(count == 0))
-```
-
-The mean count ranges from 260 to 426.
-
-One advantage this has over using `summary()` is that the output is a
-dataframe. For results, this is useful, and makes it easier to:
-
--   write to file
--   use in `ggplot()`
--   format in a Quarto report
-
-🎬 Save the summary as a dataframe, `s30_summary_samp`.
+🎬 Now you find the genes that are 0 in every column for the HSPC cells:
 
 ```{r}
 #| echo: false
-s30_summary_samp <- s30 |>
-  pivot_longer(cols = -xenbase_gene_id,
-               names_to = "sample",
-               values_to = "count") |>
-  group_by(sample) |>
-  summarise(min = min(count),
-            lowerq = quantile(count, 0.25),
-            mean = mean(count),
-            median = median(count),
-            upperq = quantile(count, 0.75),
-            max = max(count),
-            n_zero = sum(count == 0))
+#---CODING ANSWER---
+prog_hspc |> 
+  rowwise() |> 
+  filter(sum(c_across(HSPC_001:HSPC_852)) == 0)
+
 ```
 
-We can write to file using `write_csv()`
+❓ What do you conclude?
 
-🎬 Write `s30_summary_samp` to a file called "s30_summary_samp.csv":
+<!-- #---THINKING ANSWER--- -->
+
+<!-- there are no genes that are expressed in only one cell type -->
+
+## Differential expression analysis
+
+Like **`DESeq2`**, **`scran`** uses a statistical model to calculate the significance of the difference between the treatments and needs metadata to define the treatments.
+
+🎬 Load the **`scran`** package:
+```{r}
+#| echo: false
+library(scran)
+```
+
+The meta data needed for the frog data was information about which columns were in which treatment group and which sibling group and we had that information in a file. Similarly, here we need information on which columns are from which cell type. Instead of having this is a file, we will create a vector that indicates which column belongs to which cell type.
+
+🎬 Create a vector that indicates which column belongs to which cell type:
 
 ```{r}
-write_csv(s30_summary_samp, 
-          file = "data-processed/s30_summary_samp.csv")
+cell_type <- rep(c("prog","hspc"), 
+                 times = c(length(prog) - 1,
+                           length(hspc) - 1))
 ```
 
-Plotting the distribution of values is perhaps the easiest way to
-understand the data. We could plot each column separately or we can pipe
-the tidy format of data into `ggplot()` and make use of `facet_wrap()`
+The number of times each cell type is repeated is the number of columns in that cell type minus 1. This is because we have removed the column with the gene ids. Do check that the length of the `cell_type` vector is the same as the number of columns in the `prog_hspc` dataframe.
 
-🎬 Pivot the data and pipe into `ggplot`:
+🎬 Run the differential expression analysis:
 
 ```{r}
-s30 |>
-  pivot_longer(cols = -xenbase_gene_id,
-               names_to = "sample",
-               values_to = "count") |>
-  ggplot(aes(count)) +
-  geom_density() +
-  facet_wrap(. ~ sample, nrow = 3)
-
+res_prog_hspc <- findMarkers(prog_hspc, 
+                             cell_type)
 ```
 
-We have many values (`r length(s30$xenbase_gene_id)`) so we are not
-limited to using `geom_histogram()`. `geom_density()` gives us a smooth
-distribution.
+`findMarkers()` is the function that runs the differential expression analysis. The first argument is the dataframe containing the data. The second argument is the vector indicating which columns are in which cell type. It gives us two dataframes of the results - rather unnecessarily. One is the results with fold changes that are Prog/HSPC and the other is the results with fold changes that are HSPC/Prog. These have the same magnitude, just a different sign
 
-We have many low values and a few very high ones which makes it tricky
-to see the distributions. Logging the counts will make these clearer.
+The dataframe `res_prog_hspc$prog` is log prog - log hspc (i.e.,Prog/HSPC). This means 
+-   Positive fold change: prog is higher than hspc
+-   Negative fold change: hspc is higher than prog
 
-🎬 Repeat the graph but taking the base 10 log of the counts:
+The dataframe `res_prog_hspc$hspc` is log hspc - log prog (i.e., HSPC/Prog). . This means 
+-   Positive fold change: hspc is higher than prog
+-   Negative fold change: prog is higher than hspc
 
-```{r}
-s30 |>
-  pivot_longer(cols = -xenbase_gene_id,
-               names_to = "sample",
-               values_to = "count") |>
-  ggplot(aes(log10(count))) +
-  geom_density() +
-  facet_wrap(. ~ sample, nrow = 3)
-```
-
-The key information to take from these plots is:
-
--   the distributions are roughly similar in width, height, location and
-    overall shape so it doesn't look as though we have any suspect
-    samples
--   the peak at zero suggests quite a few counts of 1.
--   since we would expect the distribution of counts in each sample to
-    be roughly log normal so that the small rise near the low end, even
-    before the peak at zero, suggests that these lower counts might be
-    anomalies.
-
-The excess number of low counts indicates we might want to create a cut
-off for quality control. The removal of low counts is a common
-processing step in 'omic data. We will revisit this after we have
-considered the distribution of counts across genes (averaged over the
-samples).
-
-#### 🐭 Mouse cells
-
-We used the `summary()` function to get an overview of the columns in
-the frog data. Let's try that here.
-
-🎬 Get a quick overview of the columns:
-
-```{r}
-#| class: outputscroll
-summary(hspc)
-```
-
-Hmmmm, did you get all that? Nope, me neither! We have 701 cells but we
-only have 6 samples for the frogs. We will need a different approach to
-get an overview but I find it is still useful to look at the few columns
-
-🎬 Get a quick overview the first 20 columns:
-
-```{r}
-#| class: outputscroll
-summary(hspc[1:20])
-```
-
-Notice that:
-
--   the maximum value is much less high than for the frogs and has
-    decimals. That is because the mouse data are logged (to base 2)
-    normalised counts, not raw counts as they are in the frog data set.
--   a minimum value of 0 appears in all 20 columns - perhaps that is
-    true across the whole dataset (or at least common)
--   at least some of the medians are zeros so there must be quite a lot
-    of zeros
--   the few columns we can see are roughly similar
--   it would not be very practical to plot the distributions of values
-    in cell cell using `facet_wrap()`.
-
-In this data set, there is even more of an advantage of using the
-`pivot_longer()`, `group_by()` and `summarise()` approach. We will be
-able to open the dataframe in the Viewer and make plots to examine
-whether the distributions are similar across cells.
-
-🎬 Summarise all the cells:
-
-```{r}
-hspc_summary_samp <- hspc |>
-  pivot_longer(cols = -ensembl_gene_id,
-               names_to = "cell",
-               values_to = "expr") |>
-  group_by(cell) |>
-  summarise(min = min(expr),
-            lowerq = quantile(expr, 0.25),
-            mean = mean(expr),
-            median = median(expr),
-            sd = sd(expr),
-            upperq = quantile(expr, 0.75),
-            max = max(expr),
-            n_zero = sum(expr == 0))
-```
-
-Notice that I have used `cell` as the column name rather than `sample`
-and `expr` (expression) rather than `count`. I've also added the
-standard deviation.
-
-🎬 View the `hspc_summary_samp` dataframe (click on it in the
-environment).
-
-All cells have quite a few zeros and the lower quartile is 0 for all
-cells, *i.e.*, every cell has many genes with zero expression.
-
-To get a better understanding of the distribution of expressions in
-cells we can create a ggplot using the pointrange geom. Pointrange puts
-a dot at the mean and a line between a minimum and a maximum such as +/-
-one s.d. Not unlike a boxplot, but when you need the boxes too be very
-narrow!
-
-🎬 Create a pointrange plot.
-
-```{r}
-hspc_summary_samp |> 
-  ggplot(aes(x = cell, y = mean)) +
-  geom_pointrange(aes(ymin = mean - sd, 
-                      ymax = mean + sd ),
-                  size = 0.1)
-```
-
-You will need to use the Zoom button to pop the plot window out so you
-can make it as wide as possible
-
-The things to notice are:
-
--   the average expression in cells is similar for all cells. This is
-    good to know - if some cells had much lower expression perhaps there
-    is something wrong with them, or their sequencing, and they should
-    be excluded.
--   the distributions are roughly similar in width too
-
-The default order of `cell` is alphabetical. It can be easier to see
-these (non-) effects if we order the lines by the size of the mean.
-
-🎬 Order a pointrange plot with `reorder(variable_to_order, order_by)`.
-
-```{r}
-hspc_summary_samp |> 
-  ggplot(aes(x = reorder(cell, mean), y = mean)) +
-  geom_pointrange(aes(ymin = mean - sd, 
-                      ymax = mean + sd ),
-                  size = 0.1)
-```
-
-`reorder()` arranges `cell` in increasing size of `mean`
-
-🎬 Write `hspc_summary_samp` to a file called "hspc_summary_samp.csv":
 
 ```{r}
 #| echo: false
-write_csv(hspc_summary_samp, 
-          file = "data-processed/hspc_summary_samp.csv")
+data.frame(res_prog_hspc$prog, 
+           ensembl_gene_id = row.names(res_prog_hspc$prog)) |>
+  head() |> 
+  knitr::kable(cap = "The res_prog_hspc$prog dataframe")
 ```
 
-### Distribution of values across the genes
-
-#### 🐸 Frog genes
-
-There are lots of genes in this dataset therefore we will take the same
-approach as that we took for the distributions across mouse cells. We
-will pivot the data to tidy and then summarise the counts for each gene.
-
-🎬 Summarise the counts for each genes:
-
-```{r}
-s30_summary_gene <- s30 |>
-  pivot_longer(cols = -xenbase_gene_id,
-               names_to = "sample",
-               values_to = "count") |>
-  group_by(xenbase_gene_id) |>
-  summarise(min = min(count),
-            lowerq = quantile(count, 0.25),
-            sd = sd(count),
-            mean = mean(count),
-            median = median(count),
-            upperq = quantile(count, 0.75),
-            max = max(count),
-            total = sum(count),
-            n_zero = sum(count == 0))
-```
-
-I have calculated the values we used before with one addition: the sum
-of the counts (`total`).
-
-🎬 View the `s30_summary_gene` dataframe.
-
-Notice that we have:
-
--   a lot of genes with counts of zero in every sample
--   a lot of genes with zero counts in several of the samples
--   some very very low counts.
-
-These should be filtered out because they are unreliable - or, at the
-least, uninformative. The goal of our downstream analysis will be to see
-if there is a signifcance difference in gene expression between the
-control and FGF-treated sibling. Since we have only three replicates in
-each group, having one or two unreliable, missing or zero values, makes
-such a determination impossible for a particular gene. We will use the
-total counts and the number of samples with non-zero values to filter
-our genes later.
-
-As we have a lot of genes, it is again helpful to plot the mean counts
-with pointrange to get an overview. We will plot the log of the counts -
-we saw earlier that logging made it easier to understand the
-distribution of counts over such a wide range. We will also order the
-genes from lowest to highest mean count.
-
-🎬 Plot the logged mean counts for each gene in order of size using
-`geom_pointrange()`:
-
-```{r}
-s30_summary_gene |> 
-  ggplot(aes(x = reorder(xenbase_gene_id, mean), y = log10(mean))) +
-  geom_pointrange(aes(ymin = log10(mean - sd), 
-                      ymax = log10(mean + sd )),
-                  size = 0.1)
-```
-
-(Remember, the warning is expected since we have zeros).
-
-You can see we also have quite a few genes with means less than 1 (log
-below zero). Note that the variability between genes (average counts
-between 0 and 102586) is far greater than between samples (average
-counts from 260 to 426) which is exactly what we would expect to see.
-
-🎬 Write `s30_summary_gene` to a file called "s30_summary_gene.csv":
 
 ```{r}
 #| echo: false
-write_csv(s30_summary_gene, 
-          file = "data-processed/s30_summary_gene.csv")
+data.frame(res_prog_hspc$hspc, 
+           ensembl_gene_id = row.names(res_prog_hspc$hspc)) |>
+  head() |> 
+  knitr::kable(cap = "The res_prog_hspc$hspc dataframe. Notice the sign of the fold change is the other way")
 ```
 
-#### 🐭 Mouse genes
-
-There are fewer genes in this dataset, but still more than you can
-understand without the overview provided by a plot. We will again pivot
-the data to tidy and then summarise the expression for each gene.
-
-🎬 Summarise the expression for each genes:
+🎬 Write the results to file:
 
 ```{r}
-hspc_summary_gene <- hspc |>
-  pivot_longer(cols = -ensembl_gene_id,
-               names_to = "cell",
-               values_to = "expr") |>
-  group_by(ensembl_gene_id) |>
-  summarise(min = min(expr),
-            lowerq = quantile(expr, 0.25),
-            sd = sd(expr),
-            mean = mean(expr),
-            median = median(expr),
-            upperq = quantile(expr, 0.75),
-            max = max(expr),
-            total = sum(expr),
-            n_zero = sum(expr == 0))
+data.frame(res_prog_hspc$prog, 
+           ensembl_gene_id = row.names(res_prog_hspc$prog)) |> 
+  write_csv("results/prog_hspc_results.csv")
 ```
 
-🎬 View the `hspc_summary_gene` dataframe. Remember these are normalised
-and logged (base 2) so we should not see very large values.
 
-Notice that we have:
 
--   no genes with 0 in every cell
--   very few genes (9) with no zeros at all
--   quite a few genes with zero in many cells but this matters less than
-    zeros in the frog samples because we had just 6 samples and we have
-    701 cells.
+# 🤗 Look after future you!
 
-As we have a lot of genes, it is again helpful to plot the mean
-expression with pointrange to get an overview. We do not need to log the
-values but ordering the genes will help.
 
-🎬 Plot the logged mean counts for each gene in order of size using
-`geom_pointrange()`:
+🎬 tidy up, collect together library statements, 
+make sure don't have repeat code (e.g import)
+edit and rationalise you comments
 
-```{r}
-hspc_summary_gene |> 
-  ggplot(aes(x = reorder(ensembl_gene_id, mean), y = mean)) +
-  geom_pointrange(aes(ymin = mean - sd, 
-                      ymax = mean + sd),
-                  size = 0.1)
-```
 
-Note again that the variability between genes (average expression
-between 0.02 and and 10.03) is far greater than between cells (average
-expression from1.46 to 3.18) which is expected.
-
-🎬 Write `s30_summary_gene` to a file called "s30_summary_gene.csv":
-
-```{r}
-#| echo: false
-write_csv(hspc_summary_gene, 
-          file = "data-processed/hspc_summary_gene.csv")
-```
-
-## Filtering for QC
-
-### 🐸 Frog filtering
-
-Our samples look to be similarly well sequenced. There are no samples we
-should remove. However, some genes are not express or the expression
-values are so low in for a gene that they are uninformative. We will
-filter the `s30_summary_gene` dataframe to obtain a list of
-`xenbase_gene_id` we can use to filter `s30`.
-
-My suggestion is to include only the genes with counts in at least 3
-samples[^3] and those with total counts above 20.
-
-[^3]: I chose three because that would keep \[0, 0, 0\] \[#,#,#\]. This
-    is difference we cannot test statistically, but which would matter
-    biologically.
-
-🎬 Filter the summary by gene dataframe:
-
-```{r}
-s30_summary_gene_filtered <- s30_summary_gene |> 
-  filter(total > 20) |> 
-  filter(n_zero < 4)
-```
-
-🎬 Write the filtered summary by gene to file:
-
-```{r}
-write_csv(s30_summary_gene_filtered, 
-          file = "data-processed/s30_summary_gene_filtered.csv")
-```
-
-🎬 Use the list of `xenbase_gene_id` in the filtered summary to filter
-the original dataset:
-
-```{r}
-s30_filtered <- s30 |> 
-  filter(xenbase_gene_id %in%  s30_summary_gene_filtered$xenbase_gene_id)
-```
-
-🎬 Write the filtered original to file:
-
-```{r}
-write_csv(s30_filtered, 
-          file = "data-processed/s30_filtered.csv")
-```
-
-### 🐭 Mouse filtering
-
-We will take a different approach to filtering the single cell data. For
-the Frog samples we are examining the control and the FGF treated
-samples. This means have a low number of counts overall means the gene
-is not really expressed (detected) in any condition, and filtering out
-those genes is removing things that definitely are not interesting. For
-the mice, we have examined only one cell type but will be making
-comparisons between cells types. It may be that low expression of a gene
-in this cell type tells us something if that gene is highly expressed in
-another cell type. Instead, we will make statistical comparisons between
-the cell types and then filter based on overall expression, the
-difference in expression between cell types and whether that difference
-is significant.
-
-The number of "replicates" is also important. When you have only three
-in each group it is not possible to make statistical comparisons when
-several replicates are zero. This is less of an issue with single cell
-data.
-
-## 🤗 Look after future you!
-
-**You need only do the section for your own project data**
-
-### 🐸 Frogs and future you
-
-🎬 Create a new Project, `frogs-88H`, populated with folders and your
-data. Make a script file called `cont-fgf-s30.R`. This will a be
-commented analysis of the control vs FGF at S30 comparison. You will
-build on this each workshop and be able to use it as a template to
-examine other comparisons. Copy in the appropriate code and comments
-from `workshop-1.R`. Edit to improve your comments where your
-understanding has developed since you made them. Make sure you can close
-down RStudio, reopen it and run your whole script again.
-
-### 🐭 Mice and future you
-
-🎬 Create a new Project, `mice-88H`, populated with folders and your
-data. Make a script file called `hspc-prog.R`. This will a be commented
-analysis of the hspc cells vs the prog cells. At this point you will
-have only code for the hspc cells. You will build on this each workshop
-and be able to use it as a template to examine other comparisons. Copy
-in the appropriate code and comments from `workshop-1.R`. Edit to
-improve your comments where your understanding has developed since you
-made them. Make sure you can close down RStudio, reopen it and run your
-whole script again.
-
-### 🍂 xxxx and future you
-
-🎬 Create a new Project, `xxxx-88H`, populated with folders and your
-data. Make a script file called `xxxx.R`. This will a be commented
-analysis of t xxxxxxxxxxxx.
 
 # 🥳 Finished
 
