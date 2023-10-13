@@ -5,8 +5,8 @@ toc: true
 toc-location: right
 ---
 
-This week you will .... The independent study will ...
-In the workshop, you will learn ...
+This week we cover differential expression analysis on raw counts or log normalised values. The independent study will allow you to check you have what you should have following the [Omics 1: Hello Data workshop](../week-3/workshop.html) and [Consolidation study](../week-3/study_after_workshop.html). It will also summarise the concepts and methods we will use in the workshop. 
+In the workshop, you will learn how to perform differential expression analysis on raw counts using **`DESeq2`** or on logged normalised expression values using **`scran`** or both.
 
 We suggest you sit together with your group in the workshop.
 
@@ -14,30 +14,31 @@ We suggest you sit together with your group in the workshop.
 
 The successful student will be able to:
 
--   xxx
--   xxx
--   xxx
--   xxx
+-   verify they have the required RStudio Project set up and the data and code files from the previous Workshop and Consolidation study
+-   explain the goal of differential expression analysis and the importance of normalisation
+-   explain why and how the nature of the input values determines the analysis package used
+-   describe the metadata needed to carry out differential expression analysis and the statistical models used by **`DESeq2`** and **`scran`**
+-   find genes that are unexpressed or expressed in a a single cell type or treatment group
+-   perform differential expression analysis on raw counts using **`DESeq2`** or on logged normalised expression values using **`scran`** or both.
+-   explain the output of differential expression: log fold change, p-value, adjusted p-value, 
 
 
 ### Instructions
 
 1.  [Prepare](study_before_workshop.qmd)
     
-    i.   📖 Read xxx 
+    i.   📖 Read what you should have so far and about concepts in differential expression analysis. 
 
 
 2.  [Workshop](workshop.qmd)
 
-    i.   💻 xx
+    i.   💻 Find unexpressed genes and those expressed in a single cell type or treatment group.
 
-    ii.  💻 xx
+    ii.  💻 Set up the metadata for differential expression analysis.
 
-    iii. 💻 xx
+    iii. 💻 Perform differential expression analysis on raw counts using **`DESeq2`** or on logged normalised expression values using **`scran`** or both.
     
-    iv.  💻 xx
-    
-    v.   💻 Look after future you!
+    iv.  Look after future you!
 
 3.  [Consolidate](study_after_workshop.qmd)
 
