@@ -20,7 +20,7 @@ editor:
 In these slides we will:
 
 ::: incremental
--   Check where you are,
+-   Check where you are
 
 -   learn some concepts in differential expression
 
@@ -28,6 +28,8 @@ In these slides we will:
     -   Multiple correction
     -   normalisation
     -   statistical model
+
+-   Find out what packages to install before the workshop
 :::
 
 # Where should you be?
@@ -286,6 +288,28 @@ Like familiar tests:
 
 -   The statistical analysis method we will use **`scran`** [@scran]
     requires normalised values
+
+
+## Packages to install before the workshop
+
+**`BiocManager`** from CRAN in the the normal way:
+
+```{r}
+#| eval: false
+install.packages("BiocManager")
+```
+
+**`DESeq2`** from Bioconductor using BiocManager:
+```{r}
+#| eval: false
+BiocManager::install("DESeq2")
+```
+
+**`scran`** from Bioconductor using BiocManager:
+```{r}
+#| eval: false
+BiocManager::install("scran")
+```
 
 # Workshops
 
