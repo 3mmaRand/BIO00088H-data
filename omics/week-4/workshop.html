@@ -332,7 +332,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">13 October, 2023</p>
+      <p class="date">15 October, 2023</p>
     </div>
   </div>
   
@@ -342,17 +342,18 @@ div.csl-indent {
 
 </header><section id="introduction" class="level1"><h1>Introduction</h1>
 <section id="session-overview" class="level2"><h2 class="anchored" data-anchor-id="session-overview">Session overview</h2>
-<p>In this workshop you will lxxxx</p>
+<p>In the workshop, you will learn how to perform differential expression analysis on raw counts using <strong><code>DESeq2</code></strong> <span class="citation" data-cites="DESeq2">(<a href="#ref-DESeq2" role="doc-biblioref">Love, Huber, and Anders 2014</a>)</span> or on logged normalised expression values using <strong><code>scran</code></strong> <span class="citation" data-cites="scran">(<a href="#ref-scran" role="doc-biblioref">Lun, McCarthy, and Marioni 2016</a>)</span> or both.</p>
 </section></section><section id="set-up" class="level1"><h1>Set up</h1>
 <p>Either:</p>
 <p>🎬 Open 🐸 <code>frogs-88H</code> Project and the <code>cont-fgf-s30.R</code> script.</p>
 <p>Or</p>
 <p>🎬 Open 🐭 <code>mice-88H</code> Project and the <code>hspc-prog.R</code> script.</p>
-<p>🎬 Make a new folder <code>results</code> in the project directory. This is where we will save our results.</p>
+<p>🎬 Make a new folder <code>results</code> in the project directory. You can use the New Folder button in the Files pane but here I have used the <strong><code>fs</code></strong> <span class="citation" data-cites="fs">(<a href="#ref-fs" role="doc-biblioref">Hester, Wickham, and Csárdi 2023</a>)</span> package</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/create.html">dir_create</a></span><span class="op">(</span><span class="st">"results"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>🎬 Load <strong><code>tidyverse</code></strong> You most likely have this code at the top of <code>cont-fgf-s30.R</code> or <code>hspc-prog.R</code> already.</p>
+<p>This is where we will save our results.</p>
+<p>🎬 Load <strong><code>tidyverse</code></strong> <span class="citation" data-cites="tidyverse">(<a href="#ref-tidyverse" role="doc-biblioref">Wickham et al. 2019</a>)</span> You most likely have this code at the top of <code>cont-fgf-s30.R</code> or <code>hspc-prog.R</code> already.</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -366,12 +367,13 @@ div.csl-indent {
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package to force all conflicts to become errors</code></pre>
-<p>Have you ever stopped to think about this message? It is telling us that there are functions in the <code>dplyr</code> package that have the same name as functions in the <code>stats</code> package and that R will use the <code>dplyr</code> version. As this is what you want, this has always been fine. It still is fine in this case. However, as you start to load more packages, you will want to know if you are using a function from a package that has the same name as a function in another loaded package. This is where the <strong><code>conflicted</code></strong> package comes in. <strong><code>Conflicted</code></strong> will warn you when you are using a function that has the same name as a function in another package. You can then choose which function to use.</p>
-<p>🎬 Load the <strong><code>conflicted</code></strong> package.</p>
+<p>Have you ever stopped to think about this message? It is telling us that there are functions in the <code>dplyr</code> package that have the same name as functions in the <code>stats</code> package and that R will use the <code>dplyr</code> version. As this is what you want, this has always been fine. It still is fine in this case. However, as you start to load more packages, you will want to know if you are using a function from a package that has the same name as a function in another loaded package. This is where the <strong><code>conflicted</code></strong> <span class="citation" data-cites="conflicted">(<a href="#ref-conflicted" role="doc-biblioref">Wickham 2023</a>)</span> package comes in. <strong><code>Conflicted</code></strong> will warn you when you are using a function that has the same name as a function in another package. You can then choose which function to use.</p>
+<p>🎬 Load the <strong><code>conflicted</code></strong> package:</p>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://conflicted.r-lib.org/">conflicted</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Perfer to use dplyr’s version of filter</p>
+<p>Instead of getting a warning every time you are using a function that has a function with the same name in another package, we can declare a preference for one function over another. This is useful for the functions you use a lot or ones where you are certain you always want to use a particular function.</p>
+<p>🎬 Use the <strong><code>dplyr</code></strong> version of <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> by default:</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://conflicted.r-lib.org/reference/conflict_prefer.html">conflict_prefer</a></span><span class="op">(</span><span class="st">"filter"</span>, <span class="st">"dplyr"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -425,8 +427,8 @@ div.csl-indent {
 <!-- and your group. -->
 <p>🎬 Write to file (saved in <code>results</code>) all the genes that are expressed one group only.</p>
 </section><section id="create-deseqdataset-object" class="level2"><h2 class="anchored" data-anchor-id="create-deseqdataset-object">Create DESeqDataSet object</h2>
-<p>🎬 Load the DESeq2 package</p>
-<p>A DEseqDataSet object is a custom data type that is used by the DESeq2. Custom data types are common in the Bioconductor packages. They are used to store data in a way that is useful for the analysis. These data types typically have data, transformed data, metadata and experimental designs within them.</p>
+<p>🎬 Load the DESeq2 package:</p>
+<p>A DEseqDataSet object is a custom data type that is used by <strong><code>DESeq2</code></strong>. Custom data types are common in the Bioconductor<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> packages. They are used to store data in a way that is useful for the analysis. These data types typically have data, transformed data, metadata and experimental designs within them.</p>
 <p>To create a DESeqDataSet object, we need to provide three things:</p>
 <ol type="1">
 <li>The raw counts - these are what we imported into <code>s30_filtered</code>
@@ -453,7 +455,7 @@ div.csl-indent {
 <div class="cell">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_table.html">read_table</a></span><span class="op">(</span><span class="st">"meta/frog_meta_data.txt"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>🎬 Examine the resulting dataframe</p>
+<p>🎬 Examine the resulting dataframe.</p>
 <p>We need to add the sample names as row names to the metadata dataframe. This is because the DESeqDataSet object will use the row names to match the samples in the metadata to the samples in the counts matrix.</p>
 <p>🎬 Add the sample names as row names to the metadata dataframe:</p>
 <div class="cell">
@@ -488,7 +490,7 @@ div.csl-indent {
 </div>
 <p>The warning “Warning: some variables in design formula are characters, converting to factors” just means that the variable type of treatment and sibling_rep in the metadata dataframe are char. This is not a as <code>DESeqDataSetFromMatrix()</code> has made them into the factors it needs.</p>
 <p>🎬 Examine the DESeqDataSet object.</p>
-<p>The counts are in <code>dds@assays@data@listData[["counts"]]</code> and the metadata are in <code>dds@colData</code> but the easiest way to see tham is to use the <code>counts()</code> and <code>colData()</code> functions from the <strong><code>DESeq2</code></strong> package.</p>
+<p>The counts are in <code>dds@assays@data@listData[["counts"]]</code> and the metadata are in <code>dds@colData</code> but the easiest way to see them is to use the <code>counts()</code> and <code>colData()</code> functions from the <strong><code>DESeq2</code></strong> package.</p>
 <p>🎬 View the counts:</p>
 <div class="cell">
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">counts</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -512,12 +514,12 @@ S30_F_A     S30_F_A    stage_30   FGF            A   </code></pre>
 </div>
 </div>
 </section><section id="prepare-the-normalised-counts" class="level2"><h2 class="anchored" data-anchor-id="prepare-the-normalised-counts">Prepare the normalised counts</h2>
-<p>The normalised counts are the counts that have been transformed to account for the library size (ie., the total number of reads in a sample) and the gene length. We have to first estimate the normalisation factors and store them in the DESeqDataSet object and then we can get the normalised counts.</p>
+<p>The normalised counts are the counts that have been transformed to account for the library size (i.e., the total number of reads in a sample) and the gene length. We have to first estimate the normalisation factors and store them in the DESeqDataSet object and then we can get the normalised counts.</p>
 <p>🎬 Estimate the factors for normalisation and store them in the DESeqDataSet object:</p>
 <div class="cell">
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu">estimateSizeFactors</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>🎬 Look at the factors (just for information)</p>
+<p>🎬 Look at the factors (just for information):</p>
 <div class="cell">
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">sizeFactors</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -525,7 +527,7 @@ S30_F_A     S30_F_A    stage_30   FGF            A   </code></pre>
 0.8812200 0.9454600 1.2989886 1.0881870 1.0518961 0.8322894 </code></pre>
 </div>
 </div>
-<p>To get the normalised counts we again used the counts() function but this time we use the <code>normalized=TRUE</code> argument.`</p>
+<p>To get the normalised counts we again used the <code>counts()</code> function but this time we use the <code>normalized=TRUE</code> argument.</p>
 <p>🎬 Save the normalised to a matrix:</p>
 <div class="cell">
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">normalised_counts</span> <span class="op">&lt;-</span> <span class="fu">counts</span><span class="op">(</span><span class="va">dds</span>, normalized <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -549,13 +551,17 @@ S30_F_A     S30_F_A    stage_30   FGF            A   </code></pre>
 <div class="cell">
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">contrast_fgf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"treatment"</span>, <span class="st">"FGF"</span>, <span class="st">"control"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Notes that <code>treatment</code> is the name of the column in the metadata dataframe and <code>FGF</code> and <code>control</code> are the names of the levels in the <code>treatment</code> column. By putting them in the order <code>FGF</code> , <code>control</code> we are saying the fold change will be FGF / control. If we had put them in the order <code>control</code>, <code>FGF</code> we would have got the fold change as control / FGF. This means positive log fold changes indicate FGF &gt; control and negative log fold changes indicates control &gt; FGF.</p>
+<p>Note that <code>treatment</code> is the name of the column in the metadata dataframe and <code>FGF</code> and <code>control</code> are the names of the levels in the <code>treatment</code> column. By putting them in the order <code>FGF</code> , <code>control</code> we are saying the fold change will be FGF / control. If we had put them in the order <code>control</code>, <code>FGF</code> we would have got the fold change as control / FGF. This means:</p>
+<ul>
+<li>positive log fold changes indicate FGF &gt; control and</li>
+<li>negative log fold changes indicates control &gt; FGF.</li>
+</ul>
 <p>🎬 Extract the results from the DESseqDataSet object:</p>
 <div class="cell">
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results_fgf</span> <span class="op">&lt;-</span> <span class="fu">results</span><span class="op">(</span><span class="va">dds</span>,</span>
 <span>                       contrast <span class="op">=</span> <span class="va">contrast_fgf</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This will give us the log2 fold change and p-value for the contrast</p>
+<p>This will give us the log2 fold change and p-value for the contrast.</p>
 <p>🎬 Save the results to a file:</p>
 <div class="cell">
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">results_fgf</span>,</span>
@@ -572,7 +578,7 @@ S30_F_A     S30_F_A    stage_30   FGF            A   </code></pre>
 <li>Do differential expression analysis on the genes using the <strong><code>scran</code></strong> package. This needs to be done on the logged normalised counts.</li>
 </ol>
 <section id="import-1" class="level2"><h2 class="anchored" data-anchor-id="import-1">Import</h2>
-<p>🎬 Import surfaceome_hspc.csv and surfaceome_prog.csv into dataframes called hspc and prog respectively.</p>
+<p>🎬 Import surfaceome_hspc.csv and surfaceome_prog.csv into dataframes called <code>hspc</code> and <code>prog</code> respectively.</p>
 </section><section id="combine-the-two-datasets" class="level2"><h2 class="anchored" data-anchor-id="combine-the-two-datasets">Combine the two datasets</h2>
 <p>We need to combine the two datasets of 701 and 798 cells into one dataset of 1499 cells, i.e., 1499 columns. The number of rows is the number of genes, 280. Before combining, we must make sure genes in the same order in both dataframes or we would be comparing the expression of one gene in one cell type to the expression of a different gene in the other cell type!</p>
 <p>🎬 Check the gene ids are in the same order in both dataframes:</p>
@@ -858,8 +864,15 @@ ENSMUSG00000023132 ENSMUSG00000026285
 <span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="st">"results/prog_hspc_results.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section><section id="look-after-future-you" class="level1"><h1>🤗 Look after future you!</h1>
-<p>🎬 tidy up, collect together library statements, make sure don’t have repeat code (e.g import) edit and rationalise you comments</p>
-</section><section id="finished" class="level1"><h1>🥳 Finished</h1>
+<p>🎬 Go through you script (<code>cont-fgf-s30.R</code> or <code>hspc-prog.R</code>) and tidy up. You might need to :</p>
+<ul>
+<li>collect together library statements at the top of the script</li>
+<li>remove code that you needed to start today but which wouldn’t be needed running the script from the top (e.g., importing)</li>
+<li>edit your comments for clarity</li>
+<li>rename variables for consistency or clarity</li>
+<li>remove house keeping or exploratory code</li>
+<li>restyle code, add code section headers etc</li>
+</ul></section><section id="finished" class="level1"><h1>🥳 Finished</h1>
 <p>Well Done!</p>
 </section><section id="independent-study-following-the-workshop" class="level1"><h1>Independent study following the workshop</h1>
 <p><a href="../../omics/week-4/study_after_workshop.html">Consolidate</a></p>
@@ -875,8 +888,23 @@ ENSMUSG00000023132 ENSMUSG00000026285
 <div id="ref-allaire2022" class="csl-entry" role="listitem">
 Allaire, J. J., Charles Teague, Carlos Scheidegger, Yihui Xie, and Christophe Dervieux. 2022. <em>Quarto</em>. <a href="https://doi.org/10.5281/zenodo.5960048">https://doi.org/10.5281/zenodo.5960048</a>.
 </div>
+<div id="ref-fs" class="csl-entry" role="listitem">
+Hester, Jim, Hadley Wickham, and Gábor Csárdi. 2023. <span>“Fs: Cross-Platform File System Operations Based on ’Libuv’.”</span>
+</div>
+<div id="ref-DESeq2" class="csl-entry" role="listitem">
+Love, Michael I., Wolfgang Huber, and Simon Anders. 2014. <span>“Moderated Estimation of Fold Change and Dispersion for RNA-Seq Data with DESeq2”</span> 15: 550. <a href="https://doi.org/10.1186/s13059-014-0550-8">https://doi.org/10.1186/s13059-014-0550-8</a>.
+</div>
+<div id="ref-scran" class="csl-entry" role="listitem">
+Lun, Aaron T. L., Davis J. McCarthy, and John C. Marioni. 2016. <span>“A Step-by-Step Workflow for Low-Level Analysis of Single-Cell RNA-Seq Data with Bioconductor”</span> 5: 2122. <a href="https://doi.org/10.12688/f1000research.9501.2">https://doi.org/10.12688/f1000research.9501.2</a>.
+</div>
 <div id="ref-R-core" class="csl-entry" role="listitem">
 R Core Team. 2023. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
+<div id="ref-conflicted" class="csl-entry" role="listitem">
+Wickham, Hadley. 2023. <span>“Conflicted: An Alternative Conflict Resolution Strategy.”</span>
+</div>
+<div id="ref-tidyverse" class="csl-entry" role="listitem">
+Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the <span></span>Tidyverse<span></span>”</span> 4: 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
 </div>
 <div id="ref-knitr" class="csl-entry" role="listitem">
 Xie, Yihui. 2022. <span>“Knitr: A General-Purpose Package for Dynamic Report Generation in r.”</span> <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
@@ -884,7 +912,10 @@ Xie, Yihui. 2022. <span>“Knitr: A General-Purpose Package for Dynamic Report G
 <div id="ref-kableExtra" class="csl-entry" role="listitem">
 Zhu, Hao. 2021. <span>“kableExtra: Construct Complex Table with ’Kable’ and Pipe Syntax.”</span> <a href="https://CRAN.R-project.org/package=kableExtra">https://CRAN.R-project.org/package=kableExtra</a>.
 </div>
-</div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<ol>
+<li id="fn1"><p><a href="https://www.bioconductor.org/">Bioconductor</a> is a project that develops and supports R packages for bioinformatics.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
