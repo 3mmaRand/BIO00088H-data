@@ -7,17 +7,17 @@
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.395">
-
-  <meta name="author" content="Emma Rand">
-  <title>Data Analysis for Group Project - Independent Study to prepare for workshop</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
-  <style>
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.395">
+<meta name="author" content="Emma Rand">
+<title>Data Analysis for Group Project - Independent Study to prepare for workshop</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+<style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -29,6 +29,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     /* CSS for citations */
     div.csl-bib-body { }
     div.csl-entry {
@@ -50,14 +115,14 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
-  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
+<link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+<style type="text/css">
 
   .callout {
     margin-top: 1em;
@@ -255,7 +320,7 @@
   }
 
   </style>
-  <style type="text/css">
+<style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
       overflow: auto;
@@ -347,8 +412,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Independent Study to prepare for workshop</h1>
+<section id="title-slide" class="quarto-title-block center"><h1 class="title">Independent Study to prepare for workshop</h1>
   <p class="subtitle">Omics 2: Statistical Analysis</p>
 
 <div class="quarto-title-authors">
@@ -360,30 +424,26 @@ Emma Rand
 </div>
 
   <p class="date">15 October, 2023</p>
-</section>
-<section id="overview" class="slide level2">
-<h2>Overview</h2>
+</section><section id="overview" class="slide level2"><h2>Overview</h2>
 <p>In these slides we will:</p>
 <div>
 <ul>
-<li class="fragment"><p>Check where you are,</p></li>
-<li class="fragment"><p>learn some concepts in differential expression</p>
+<li class="fragment"><p>Check where you are</p></li>
+<li class="fragment">
+<p>learn some concepts in differential expression</p>
 <ul>
 <li class="fragment">log2 fold changes</li>
 <li class="fragment">Multiple correction</li>
 <li class="fragment">normalisation</li>
 <li class="fragment">statistical model</li>
-</ul></li>
+</ul>
+</li>
+<li class="fragment"><p>Find out what packages to install before the workshop</p></li>
 </ul>
 </div>
-</section>
-<section>
-<section id="where-should-you-be" class="title-slide slide level1 center">
-<h1>Where should you be?</h1>
+</section><section><section id="where-should-you-be" class="title-slide slide level1 center"><h1>Where should you be?</h1>
 
-</section>
-<section id="what-we-did-in-omics-1-hello-data" class="slide level2">
-<h2>What we did in Omics 1: 👋 Hello data!</h2>
+</section><section id="what-we-did-in-omics-1-hello-data" class="slide level2"><h2>What we did in Omics 1: 👋 Hello data!</h2>
 <div>
 <div style="font-size: 90%;">
 <ul>
@@ -393,66 +453,54 @@ Emma Rand
 <li class="fragment">of values across the whole dataset</li>
 <li class="fragment">of values across the samples/cells (i.e., averaged across genes) to see variation between samples/cells</li>
 <li class="fragment">of values across the genes (i.e., averaged across samples/cells) to see variation between genes</li>
-</ul></li>
+</ul>
+</li>
 <li class="fragment">Saved files of filtered or summarised data.</li>
 </ul>
 </div>
 </div>
-</section>
-<section id="where-should-you-be-1" class="slide level2">
-<h2>Where should you be?</h2>
+</section><section id="where-should-you-be-1" class="slide level2"><h2>Where should you be?</h2>
 <p>After the <a href="../week-3/workshop.html">Omics 1: 👋 Hello data! Workshop</a> including:</p>
 <ul>
 <li><p><a href="../week-3/workshop.html#look-after-future-you">🤗 Look after future you!</a> and</p></li>
 <li><p>the <a href="../week-3/study_after_workshop.html">Independent Study to consolidate</a>, you should have:</p></li>
-</ul>
-</section>
-<section id="frogs" class="slide level2">
-<h2>🐸 Frogs</h2>
+</ul></section><section id="frogs" class="slide level2"><h2>🐸 Frogs</h2>
 <div style="font-size: 90%;">
 <ul>
 <li>An RStudio Project called <code>frogs-88H</code> which contains:
 <ul>
 <li>Raw data (S14, S20 and S30)</li>
 <li>Processed data (<code>s30_filtered.csv</code>, <code>s30_summary_gene.csv</code>, <code>s30_summary_gene_filtered.csv</code>, <code>s30_summary_samp.csv</code> and equivalents for S14 <em>OR</em> S20)</li>
-<li>Two scripts called <code>cont-fgf-s30.R</code> and <code>cont-fgf-s20.R</code> <em>OR</em> <code>cont-fgf-s14.R</code></li>
-</ul></li>
+<li>Two scripts called <code>cont-fgf-s30.R</code> and <code>cont-fgf-s20.R</code> <em>OR</em> <code>cont-fgf-s14.R</code>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 <p>Files should be organised into folders. Code should well commented and easy to read.</p>
-</section>
-<section id="mice" class="slide level2">
-<h2>🐭 Mice</h2>
+</section><section id="mice" class="slide level2"><h2>🐭 Mice</h2>
 <ul>
 <li>An RStudio Project called <code>mice-88H</code> which contains
 <ul>
 <li>Raw data (hspc, prog, lthsc)</li>
 <li>Processed data (<code>hspc_summary_gene.csv</code>, <code>hspc_summary_samp.csv</code>, <code>prog_summary_gene.csv</code>, <code>prog_summary_samp.csv</code>)</li>
-</ul></li>
-<li>One script called <code>hspc-prog.R</code></li>
+</ul>
+</li>
+<li>One script called <code>hspc-prog.R</code>
+</li>
 </ul>
 <p>Files should be organised into folders. Code should well commented and easy to read.</p>
-</section>
-<section id="section" class="slide level2">
-<h2>🍂</h2>
+</section><section id="section" class="slide level2"><h2>🍂</h2>
 <p>Either of the other examples.</p>
-</section>
-<section id="if-you-do-not-have-those" class="slide level2">
-<h2>If you do not have those</h2>
+</section><section id="if-you-do-not-have-those" class="slide level2"><h2>If you do not have those</h2>
 <p>Go through:</p>
 <ul>
 <li><p><a href="../week-3/workshop.html">Omics 1: 👋 Hello data! Workshop</a> including:</p></li>
 <li><p><a href="../week-3/workshop.html#look-after-future-you">🤗 Look after future you!</a> and</p></li>
 <li><p>the <a href="../week-3/study_after_workshop.html">Independent Study to consolidate</a></p></li>
-</ul>
-</section></section>
-<section>
-<section id="differential-expression" class="title-slide slide level1 center">
-<h1>Differential expression</h1>
+</ul></section></section><section><section id="differential-expression" class="title-slide slide level1 center"><h1>Differential expression</h1>
 
-</section>
-<section id="differential-expression-1" class="slide level2">
-<h2>Differential expression</h2>
+</section><section id="differential-expression-1" class="slide level2"><h2>Differential expression</h2>
 <div>
 <ul>
 <li class="fragment"><p>The goal of differential expression is to test whether there is a significant difference in gene expression between groups.</p></li>
@@ -460,9 +508,7 @@ Emma Rand
 <li class="fragment"><p>R is the leading language for differential expression analysis</p></li>
 </ul>
 </div>
-</section>
-<section id="differential-expression-2" class="slide level2">
-<h2>Differential expression</h2>
+</section><section id="differential-expression-2" class="slide level2"><h2>Differential expression</h2>
 <div>
 <ul>
 <li class="fragment"><p>the statistical concepts are very similar to those you have already encountered in stages 1 and 2</p></li>
@@ -471,9 +517,7 @@ Emma Rand
 <li class="fragment"><p>data need normalisation before comparison</p></li>
 </ul>
 </div>
-</section>
-<section id="statistical-concepts" class="slide level2">
-<h2>Statistical concepts</h2>
+</section><section id="statistical-concepts" class="slide level2"><h2>Statistical concepts</h2>
 <p>Like familiar tests:</p>
 <div>
 <ul>
@@ -483,9 +527,7 @@ Emma Rand
 <li class="fragment"><p>you also get an adjusted <em>p</em>-value which is the ‘correction’ for multiple testing</p></li>
 </ul>
 </div>
-</section>
-<section id="the-difference-between-groups" class="slide level2">
-<h2>The difference between groups</h2>
+</section><section id="the-difference-between-groups" class="slide level2"><h2>The difference between groups</h2>
 <div>
 <ul>
 <li class="fragment"><p>The difference between groups is given as the log<sub>2</sub> fold change in expression between groups</p></li>
@@ -494,9 +536,7 @@ Emma Rand
 <li class="fragment"><p>we use log<sub>2</sub> fold changes because they are symmetrical around 0</p></li>
 </ul>
 </div>
-</section>
-<section id="log2-fold-change" class="slide level2">
-<h2>log<sub>2</sub> fold change</h2>
+</section><section id="log2-fold-change" class="slide level2"><h2>log<sub>2</sub> fold change</h2>
 <div>
 <ul>
 <li class="fragment"><p>log<sub>2</sub> means log to the base 2</p></li>
@@ -506,9 +546,7 @@ Emma Rand
 <li class="fragment"><p>However, if we take the log<sub>2</sub> of A/B we get -0.678 and the log<sub>2</sub> of B/A is 0.678.</p></li>
 </ul>
 </div>
-</section>
-<section id="adjusted-p-value" class="slide level2">
-<h2>Adjusted <em>p</em>-value</h2>
+</section><section id="adjusted-p-value" class="slide level2"><h2>Adjusted <em>p</em>-value</h2>
 <div>
 <ul>
 <li class="fragment"><p>The <em>p</em>-value has to be adjusted because of the number of tested being done</p></li>
@@ -518,9 +556,7 @@ Emma Rand
 <li class="fragment"><p>The FDR is the proportion of false positives among the genes called significant</p></li>
 </ul>
 </div>
-</section>
-<section id="normalisation" class="slide level2">
-<h2>Normalisation</h2>
+</section><section id="normalisation" class="slide level2"><h2>Normalisation</h2>
 <div>
 <ul>
 <li class="fragment"><p>Normalisation adjusts raw counts to account for factors that prevent direct comparisons</p></li>
@@ -529,9 +565,7 @@ Emma Rand
 <li class="fragment"><p>Normalisation is a big topic. See <span class="citation" data-cites="düren2022">Düren, Lederer, and Qin (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>; <span class="citation" data-cites="bullard2010">Bullard et al. (<a href="#/references" role="doc-biblioref" onclick="">2010</a>)</span>; <span class="citation" data-cites="lytal2020">Lytal, Ran, and An (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span>; <span class="citation" data-cites="abrams2019">Abrams et al. (<a href="#/references" role="doc-biblioref" onclick="">2019</a>)</span>; <span class="citation" data-cites="vallejos2017">Vallejos et al. (<a href="#/references" role="doc-biblioref" onclick="">2017</a>)</span>; <span class="citation" data-cites="evans2017">Evans, Hardin, and Stoebel (<a href="#/references" role="doc-biblioref" onclick="">2017</a>)</span></p></li>
 </ul>
 </div>
-</section>
-<section id="type-of-test-the-function" class="slide level2">
-<h2>Type of test (the function)</h2>
+</section><section id="type-of-test-the-function" class="slide level2"><h2>Type of test (the function)</h2>
 <div>
 <ul>
 <li class="fragment"><p>A large number of computational methods have been developed for differential expression analysis</p></li>
@@ -539,33 +573,30 @@ Emma Rand
 <li class="fragment"><p>Some of the most well-known methods are provided by: <strong><code>DESeq2</code></strong> <span class="citation" data-cites="DESeq2">(<a href="#/references" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span>, <strong><code>edgeR</code></strong> <span class="citation" data-cites="robinson2010 mccarthy2012 chen2016">(<a href="#/references" role="doc-biblioref" onclick="">Robinson, McCarthy, and Smyth 2010</a>; <a href="#/references" role="doc-biblioref" onclick="">McCarthy, Chen, and Smyth 2012</a>; <a href="#/references" role="doc-biblioref" onclick="">Chen, Lun, and Smyth 2016</a>)</span>, <strong><code>limma</code></strong> <span class="citation" data-cites="ritchie2015">(<a href="#/references" role="doc-biblioref" onclick="">Ritchie et al. 2015</a>)</span> and <strong><code>scran</code></strong> <span class="citation" data-cites="scran">(<a href="#/references" role="doc-biblioref" onclick="">Lun, McCarthy, and Marioni 2016</a>)</span></p></li>
 </ul>
 </div>
-</section>
-<section id="type-of-test-the-function-1" class="slide level2">
-<h2>Type of test (the function)</h2>
+</section><section id="type-of-test-the-function-1" class="slide level2"><h2>Type of test (the function)</h2>
 <div>
 <ul>
-<li class="fragment"><strong><code>DESeq2</code></strong> and <strong><code>edgeR</code></strong>
+<li class="fragment">
+<strong><code>DESeq2</code></strong> and <strong><code>edgeR</code></strong>
 <ul>
 <li class="fragment">both require raw counts as input</li>
 <li class="fragment">both assume that most genes are not DE</li>
 <li class="fragment">both use a negative binomial distribution<sup>1</sup> to model the data</li>
 <li class="fragment">use slightly different normalisation methods: <strong><code>DESeq2</code></strong> uses the median of ratios method; <strong><code>edgeR</code></strong> uses the trimmed mean of M values (TMM) method</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>A discrete distribution for counts, similar to the Poisson distribution</p></li></ol></aside></section>
-<section id="type-of-test-the-function-2" class="slide level2">
-<h2>Type of test (the function)</h2>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>A discrete distribution for counts, similar to the Poisson distribution</p></li></ol></aside></section><section id="type-of-test-the-function-2" class="slide level2"><h2>Type of test (the function)</h2>
 <ul>
-<li><strong><code>scran</code></strong>
+<li>
+<strong><code>scran</code></strong>
 <ul>
 <li>works on normalized log-expression values</li>
 <li>performs Welch t-tests</li>
-</ul></li>
 </ul>
-</section>
-<section id="meta-data" class="slide level2">
-<h2>Meta data</h2>
+</li>
+</ul></section><section id="meta-data" class="slide level2"><h2>Meta data</h2>
 <div>
 <ul>
 <li class="fragment"><p>DE methods require two types of data: the expression data and the meta data</p></li>
@@ -574,38 +605,37 @@ Emma Rand
 <li class="fragment"><p>It is usually stored in a separate file</p></li>
 </ul>
 </div>
-</section>
-<section id="data" class="slide level2">
-<h2>🐸 Data</h2>
+</section><section id="data" class="slide level2"><h2>🐸 Data</h2>
 <ul>
 <li><p>Expression for the whole transcriptome <a href="https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp"><em>X. laevis</em> v10.1 genome assembly</a></p></li>
 <li><p>Values are raw counts</p></li>
 <li><p>The statistical analysis method we will use <strong><code>DESeq2</code></strong> <span class="citation" data-cites="DESeq2">(<a href="#/references" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span> requires raw counts and performs the normalisation itself</p></li>
-</ul>
-</section>
-<section id="data-1" class="slide level2">
-<h2>🐭 Data</h2>
+</ul></section><section id="data-1" class="slide level2"><h2>🐭 Data</h2>
 <ul>
 <li><p>Expression for a subset of genes, the surfaceome</p></li>
 <li><p>Values are log2 normalised values</p></li>
 <li><p>The statistical analysis method we will use <strong><code>scran</code></strong> <span class="citation" data-cites="scran">(<a href="#/references" role="doc-biblioref" onclick="">Lun, McCarthy, and Marioni 2016</a>)</span> requires normalised values</p></li>
-</ul>
-</section></section>
-<section>
-<section id="workshops" class="title-slide slide level1 center">
-<h1>Workshops</h1>
+</ul></section><section id="packages-to-install-before-the-workshop" class="slide level2"><h2>Packages to install before the workshop</h2>
+<p><strong><code>BiocManager</code></strong> from CRAN in the the normal way:</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong><code>DESeq2</code></strong> from Bioconductor using BiocManager:</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html">install</a></span><span class="op">(</span><span class="st">"DESeq2"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong><code>scran</code></strong> from Bioconductor using BiocManager:</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html">install</a></span><span class="op">(</span><span class="st">"scran"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section><section><section id="workshops" class="title-slide slide level1 center"><h1>Workshops</h1>
 
-</section>
-<section id="workshops-1" class="slide level2">
-<h2>Workshops</h2>
+</section><section id="workshops-1" class="slide level2"><h2>Workshops</h2>
 <ul>
 <li><p>Omics 1: Hello data Getting to know the data. Checking the distributions of values</p></li>
 <li><p>Omics 2: Statistical Analysis Identifying which genes are differentially expressed between treatments.</p></li>
 <li><p>Omics 3: Visualising and Interpreting. PCA, Volcano plots and heatmaps to visualise results. Interpreting the results and finding out more about genes of interest.</p></li>
-</ul>
-</section>
-<section id="references" class="slide level2 smaller scrollable">
-<h2>References</h2>
+</ul></section><section id="references" class="slide level2 smaller scrollable"><h2>References</h2>
 
 <div class="footer footer-default">
 <p>🔗 <a href="https://3mmarand.github.io/BIO00088H-data/omics/week-4/overview.html">About Omics 2: Statistical Analysis</a></p>
@@ -652,28 +682,10 @@ Vallejos, Catalina A., Davide Risso, Antonio Scialdone, Sandrine Dudoit, and Joh
 </div>
 </div>
 </section></section>
-
-    </div>
+</div>
   </div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
-  <!-- reveal.js plugins -->
-  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
-  
-
-  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
-
-  <script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script><script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../../site_libs/revealjs/plugin/search/search.js"></script><script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -864,8 +876,42 @@ Vallejos, Catalina A., Davide Risso, Antonio Scialdone, Sandrine Dudoit, and Joh
           RevealZoom
         ]
       });
-    </script>
-    <script id="quarto-html-after-body" type="application/javascript">
+    </script><script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script><script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
         const mode = bsSheetEl.getAttribute("data-mode");
@@ -1019,6 +1065,6 @@ Vallejos, Catalina A., Davide Risso, Antonio Scialdone, Sandrine Dudoit, and Joh
       }
     });
     </script>
-    
+
 
 </body></html>

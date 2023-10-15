@@ -1148,7 +1148,7 @@
     "href": "omics/week-4/study_before_workshop.html#overview",
     "title": "Independent Study to prepare for workshop",
     "section": "Overview",
-    "text": "Overview\nIn these slides we will:\n\n\nCheck where you are,\nlearn some concepts in differential expression\n\nlog2 fold changes\nMultiple correction\nnormalisation\nstatistical model",
+    "text": "Overview\nIn these slides we will:\n\n\nCheck where you are\n\nlearn some concepts in differential expression\n\nlog2 fold changes\nMultiple correction\nnormalisation\nstatistical model\n\n\nFind out what packages to install before the workshop",
     "crumbs": [
       "Week 4: Statistical Analysis",
       "Prepare!"
@@ -1159,7 +1159,7 @@
     "href": "omics/week-4/study_before_workshop.html#what-we-did-in-omics-1-hello-data",
     "title": "Independent Study to prepare for workshop",
     "section": "What we did in Omics 1: 👋 Hello data!",
-    "text": "What we did in Omics 1: 👋 Hello data!\n\n\n\nDiscovered how many rows and columns we had in our datasets and what these were.\nExamined the distribution\n\nof values across the whole dataset\nof values across the samples/cells (i.e., averaged across genes) to see variation between samples/cells\nof values across the genes (i.e., averaged across samples/cells) to see variation between genes\n\nSaved files of filtered or summarised data.",
+    "text": "What we did in Omics 1: 👋 Hello data!\n\n\n\nDiscovered how many rows and columns we had in our datasets and what these were.\nExamined the distribution\n\nof values across the whole dataset\nof values across the samples/cells (i.e., averaged across genes) to see variation between samples/cells\nof values across the genes (i.e., averaged across samples/cells) to see variation between genes\n\n\nSaved files of filtered or summarised data.",
     "crumbs": [
       "Week 4: Statistical Analysis",
       "Prepare!"
@@ -1181,7 +1181,7 @@
     "href": "omics/week-4/study_before_workshop.html#frogs",
     "title": "Independent Study to prepare for workshop",
     "section": "🐸 Frogs",
-    "text": "🐸 Frogs\n\n\nAn RStudio Project called frogs-88H which contains:\n\nRaw data (S14, S20 and S30)\nProcessed data (s30_filtered.csv, s30_summary_gene.csv, s30_summary_gene_filtered.csv, s30_summary_samp.csv and equivalents for S14 OR S20)\nTwo scripts called cont-fgf-s30.R and cont-fgf-s20.R OR cont-fgf-s14.R\n\n\n\nFiles should be organised into folders. Code should well commented and easy to read.",
+    "text": "🐸 Frogs\n\n\nAn RStudio Project called frogs-88H which contains:\n\nRaw data (S14, S20 and S30)\nProcessed data (s30_filtered.csv, s30_summary_gene.csv, s30_summary_gene_filtered.csv, s30_summary_samp.csv and equivalents for S14 OR S20)\nTwo scripts called cont-fgf-s30.R and cont-fgf-s20.R OR cont-fgf-s14.R\n\n\n\n\n\nFiles should be organised into folders. Code should well commented and easy to read.",
     "crumbs": [
       "Week 4: Statistical Analysis",
       "Prepare!"
@@ -1192,7 +1192,7 @@
     "href": "omics/week-4/study_before_workshop.html#mice",
     "title": "Independent Study to prepare for workshop",
     "section": "🐭 Mice",
-    "text": "🐭 Mice\n\nAn RStudio Project called mice-88H which contains\n\nRaw data (hspc, prog, lthsc)\nProcessed data (hspc_summary_gene.csv, hspc_summary_samp.csv, prog_summary_gene.csv, prog_summary_samp.csv)\n\nOne script called hspc-prog.R\n\nFiles should be organised into folders. Code should well commented and easy to read.",
+    "text": "🐭 Mice\n\nAn RStudio Project called mice-88H which contains\n\nRaw data (hspc, prog, lthsc)\nProcessed data (hspc_summary_gene.csv, hspc_summary_samp.csv, prog_summary_gene.csv, prog_summary_samp.csv)\n\n\nOne script called hspc-prog.R\n\n\nFiles should be organised into folders. Code should well commented and easy to read.",
     "crumbs": [
       "Week 4: Statistical Analysis",
       "Prepare!"
@@ -1302,7 +1302,7 @@
     "href": "omics/week-4/study_before_workshop.html#type-of-test-the-function-1",
     "title": "Independent Study to prepare for workshop",
     "section": "Type of test (the function)",
-    "text": "Type of test (the function)\n\n\nDESeq2 and edgeR\n\nboth require raw counts as input\nboth assume that most genes are not DE\nboth use a negative binomial distribution1 to model the data\nuse slightly different normalisation methods: DESeq2 uses the median of ratios method; edgeR uses the trimmed mean of M values (TMM) method\n\n\n\nA discrete distribution for counts, similar to the Poisson distribution",
+    "text": "Type of test (the function)\n\n\n\nDESeq2 and edgeR\n\nboth require raw counts as input\nboth assume that most genes are not DE\nboth use a negative binomial distribution1 to model the data\nuse slightly different normalisation methods: DESeq2 uses the median of ratios method; edgeR uses the trimmed mean of M values (TMM) method\n\n\n\n\nA discrete distribution for counts, similar to the Poisson distribution",
     "crumbs": [
       "Week 4: Statistical Analysis",
       "Prepare!"
@@ -1401,7 +1401,18 @@
     "href": "omics/week-4/study_before_workshop.html#type-of-test-the-function-2",
     "title": "Independent Study to prepare for workshop",
     "section": "Type of test (the function)",
-    "text": "Type of test (the function)\n\nscran\n\nworks on normalized log-expression values\nperforms Welch t-tests",
+    "text": "Type of test (the function)\n\n\nscran\n\nworks on normalized log-expression values\nperforms Welch t-tests",
+    "crumbs": [
+      "Week 4: Statistical Analysis",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-4/study_before_workshop.html#packages-to-install-before-the-workshop",
+    "href": "omics/week-4/study_before_workshop.html#packages-to-install-before-the-workshop",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Packages to install before the workshop",
+    "text": "Packages to install before the workshop\nBiocManager from CRAN in the the normal way:\n\ninstall.packages(\"BiocManager\")\n\nDESeq2 from Bioconductor using BiocManager:\n\nBiocManager::install(\"DESeq2\")\n\nscran from Bioconductor using BiocManager:\n\nBiocManager::install(\"scran\")",
     "crumbs": [
       "Week 4: Statistical Analysis",
       "Prepare!"
