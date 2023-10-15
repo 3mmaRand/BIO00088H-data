@@ -1142,5 +1142,269 @@
       "Week 3: Hello data!",
       "Prepare!"
     ]
+  },
+  {
+    "objectID": "omics/week-4/study_before_workshop.html#overview",
+    "href": "omics/week-4/study_before_workshop.html#overview",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Overview",
+    "text": "Overview\nIn these slides we will:\n\n\nCheck where you are,\nlearn some concepts in differential expression\n\nlog2 fold changes\nMultiple correction\nnormalisation\nstatistical model",
+    "crumbs": [
+      "Week 4: Statistical Analysis",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-4/study_before_workshop.html#what-we-did-in-omics-1-hello-data",
+    "href": "omics/week-4/study_before_workshop.html#what-we-did-in-omics-1-hello-data",
+    "title": "Independent Study to prepare for workshop",
+    "section": "What we did in Omics 1: 👋 Hello data!",
+    "text": "What we did in Omics 1: 👋 Hello data!\n\n\n\nDiscovered how many rows and columns we had in our datasets and what these were.\nExamined the distribution\n\nof values across the whole dataset\nof values across the samples/cells (i.e., averaged across genes) to see variation between samples/cells\nof values across the genes (i.e., averaged across samples/cells) to see variation between genes\n\nSaved files of filtered or summarised data.",
+    "crumbs": [
+      "Week 4: Statistical Analysis",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-4/study_before_workshop.html#where-should-you-be-1",
+    "href": "omics/week-4/study_before_workshop.html#where-should-you-be-1",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Where should you be?",
+    "text": "Where should you be?\nAfter the Omics 1: 👋 Hello data! Workshop including:\n\n🤗 Look after future you! and\nthe Independent Study to consolidate, you should have:",
+    "crumbs": [
+      "Week 4: Statistical Analysis",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-4/study_before_workshop.html#frogs",
+    "href": "omics/week-4/study_before_workshop.html#frogs",
+    "title": "Independent Study to prepare for workshop",
+    "section": "🐸 Frogs",
+    "text": "🐸 Frogs\n\n\nAn RStudio Project called frogs-88H which contains:\n\nRaw data (S14, S20 and S30)\nProcessed data (s30_filtered.csv, s30_summary_gene.csv, s30_summary_gene_filtered.csv, s30_summary_samp.csv and equivalents for S14 OR S20)\nTwo scripts called cont-fgf-s30.R and cont-fgf-s20.R OR cont-fgf-s14.R\n\n\n\nFiles should be organised into folders. Code should well commented and easy to read.",
+    "crumbs": [
+      "Week 4: Statistical Analysis",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-4/study_before_workshop.html#mice",
+    "href": "omics/week-4/study_before_workshop.html#mice",
+    "title": "Independent Study to prepare for workshop",
+    "section": "🐭 Mice",
+    "text": "🐭 Mice\n\nAn RStudio Project called mice-88H which contains\n\nRaw data (hspc, prog, lthsc)\nProcessed data (hspc_summary_gene.csv, hspc_summary_samp.csv, prog_summary_gene.csv, prog_summary_samp.csv)\n\nOne script called hspc-prog.R\n\nFiles should be organised into folders. Code should well commented and easy to read.",
+    "crumbs": [
+      "Week 4: Statistical Analysis",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-4/study_before_workshop.html#section",
+    "href": "omics/week-4/study_before_workshop.html#section",
+    "title": "Independent Study to prepare for workshop",
+    "section": "🍂",
+    "text": "🍂\nEither of the other examples.",
+    "crumbs": [
+      "Week 4: Statistical Analysis",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-4/study_before_workshop.html#differential-expression-1",
+    "href": "omics/week-4/study_before_workshop.html#differential-expression-1",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Differential expression",
+    "text": "Differential expression\n\n\nThe goal of differential expression is to test whether there is a significant difference in gene expression between groups.\nA large number of computational methods have been developed for differential expression analysis\nR is the leading language for differential expression analysis",
+    "crumbs": [
+      "Week 4: Statistical Analysis",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-4/study_before_workshop.html#differential-expression-2",
+    "href": "omics/week-4/study_before_workshop.html#differential-expression-2",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Differential expression",
+    "text": "Differential expression\n\n\nthe statistical concepts are very similar to those you have already encountered in stages 1 and 2\nyou are essentially doing paired- or independent-samples tests\nbut you are doing a lot of them! One for every gene\ndata need normalisation before comparison",
+    "crumbs": [
+      "Week 4: Statistical Analysis",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-4/study_before_workshop.html#statistical-concepts",
+    "href": "omics/week-4/study_before_workshop.html#statistical-concepts",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Statistical concepts",
+    "text": "Statistical concepts\nLike familiar tests:\n\n\nthe type of test (the function) you use depends on the type of data you have and the type of assumptions you want to make\nthe tests work by comparing the variation between groups to the variation within groups.\nyou will get: the difference between groups, a test statistic, and a p-value\nyou also get an adjusted p-value which is the ‘correction’ for multiple testing",
+    "crumbs": [
+      "Week 4: Statistical Analysis",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-4/study_before_workshop.html#estimate-of-the-difference-between-groups",
+    "href": "omics/week-4/study_before_workshop.html#estimate-of-the-difference-between-groups",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Estimate of the difference between groups",
+    "text": "Estimate of the difference between groups\n\n\nThe difference between groups is given as the log2 fold change in expression between groups\nA fold change, is the expression in one group divided by the expression in the other group\nwe use fold changes because the absolute expression values may not be accurate and relative changes are what matters\nwe use log2 fold changes because they are symmetrical around 0",
+    "crumbs": [
+      "Week 4: Statistical Analysis",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-4/study_before_workshop.html#log-fold-change",
+    "href": "omics/week-4/study_before_workshop.html#log-fold-change",
+    "title": "Independent Study to prepare for workshop",
+    "section": "log fold change",
+    "text": "log fold change\n\n\nlog2 means log to the base 2\nSuppose the expression in group A is 5 and the expression in group B is 8\nA/B = 5/8 = 0.625 and B/A = 8/5 = 1.6\nIf B is greater than A the range of A/B is 0 to 1 but the range of B/A is 1 to infinity\nHowever, if we take the log2 of A/B we get -0.678 and the log2 of B/A is 0.678.",
+    "crumbs": [
+      "Week 4: Statistical Analysis",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-4/study_before_workshop.html#adjusted-p-value",
+    "href": "omics/week-4/study_before_workshop.html#adjusted-p-value",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Adjusted p-value",
+    "text": "Adjusted p-value\n\n\nThe p-value has to be adjusted because of the number of tested being done\nIn stage 1, we used Tukey’s HSD to adjust for multiple testing following an ANOVA\nHere the Benjamini-Hochberg procedure (Benjamini and Hochberg 1995) is used to adjust for multiple testing\nBH controls the False Discovery Rate (FDR)\nThe FDR is the proportion of false positives among the genes called significant",
+    "crumbs": [
+      "Week 4: Statistical Analysis",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-4/study_before_workshop.html#normalisation",
+    "href": "omics/week-4/study_before_workshop.html#normalisation",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Normalisation",
+    "text": "Normalisation\n\n\nNormalisation adjusts raw counts to account for factors that prevent direct comparisons\nNormalisation usually influences the experimental design as well as the analysis\nThe 🐭 mouse data have been normalised to simplify the analysis for you; the 🐸 frog data have not but the DE method will do this for you.\nNormalisation is a big topic. See Düren, Lederer, and Qin (2022); Bullard et al. (2010); Lytal, Ran, and An (2020); Abrams et al. (2019); Vallejos et al. (2017); Evans, Hardin, and Stoebel (2017)",
+    "crumbs": [
+      "Week 4: Statistical Analysis",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-4/study_before_workshop.html#type-of-test-the-function",
+    "href": "omics/week-4/study_before_workshop.html#type-of-test-the-function",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Type of test (the function)",
+    "text": "Type of test (the function)\n\n\nA large number of computational methods have been developed for differential expression analysis\nMethods vary in the types of normalisation they do, the statistical model they use, and the assumptions they make\nSome of the most well-known methods are provided by: DESeq2 (Love, Huber, and Anders 2014), edgeR (Robinson, McCarthy, and Smyth 2010; McCarthy, Chen, and Smyth 2012; Chen, Lun, and Smyth 2016), limma (Ritchie et al. 2015) and scran (Lun, McCarthy, and Marioni 2016)",
+    "crumbs": [
+      "Week 4: Statistical Analysis",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-4/study_before_workshop.html#type-of-test-the-function-1",
+    "href": "omics/week-4/study_before_workshop.html#type-of-test-the-function-1",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Type of test (the function)",
+    "text": "Type of test (the function)\n\n\nDESeq2 and edgeR\n\nboth require raw counts as input\nboth assume that most genes are not DE\nboth use a negative binomial distribution1 to model the data\nuse slightly different normalisation methods: DESeq2 uses the median of ratios method; edgeR uses the trimmed mean of M values (TMM) method\n\n\n\nA discrete distribution for counts, similar to the Poisson distribution",
+    "crumbs": [
+      "Week 4: Statistical Analysis",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-4/study_before_workshop.html#meta-data",
+    "href": "omics/week-4/study_before_workshop.html#meta-data",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Meta data",
+    "text": "Meta data\n\n\nDE methods require two types of data: the expression data and the meta data\nThe meta data is the information about the samples\nIt says which samples (columns) are in which group (s)\nIt is usually stored in a separate file",
+    "crumbs": [
+      "Week 4: Statistical Analysis",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-4/study_before_workshop.html#data",
+    "href": "omics/week-4/study_before_workshop.html#data",
+    "title": "Independent Study to prepare for workshop",
+    "section": "🐸 Data",
+    "text": "🐸 Data\n\nExpression for the whole transcriptome X. laevis v10.1 genome assembly\nValues are raw counts\nThe statistical analysis method we will use DESeq2 (Love, Huber, and Anders 2014) requires raw counts and performs the normalisation itself",
+    "crumbs": [
+      "Week 4: Statistical Analysis",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-4/study_before_workshop.html#data-1",
+    "href": "omics/week-4/study_before_workshop.html#data-1",
+    "title": "Independent Study to prepare for workshop",
+    "section": "🐭 Data",
+    "text": "🐭 Data\n\nExpression for a subset of genes, the surfaceome\nValues are log2 normalised values\nThe statistical analysis method we will use scran (Lun, McCarthy, and Marioni 2016) requires normalised values",
+    "crumbs": [
+      "Week 4: Statistical Analysis",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-4/study_before_workshop.html#workshops-1",
+    "href": "omics/week-4/study_before_workshop.html#workshops-1",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Workshops",
+    "text": "Workshops\n\nOmics 1: Hello data Getting to know the data. Checking the distributions of values\nOmics 2: Statistical Analysis Identifying which genes are differentially expressed between treatments.\nOmics 3: Visualising and Interpreting. PCA, Volcano plots and heatmaps to visualise results. Interpreting the results and finding out more about genes of interest.",
+    "crumbs": [
+      "Week 4: Statistical Analysis",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-4/study_before_workshop.html#references",
+    "href": "omics/week-4/study_before_workshop.html#references",
+    "title": "Independent Study to prepare for workshop",
+    "section": "References",
+    "text": "References\n\n\n🔗 About Omics 2: Statistical Analysis\n\n\n\nAbrams, Zachary B., Travis S. Johnson, Kun Huang, Philip R. O. Payne, and Kevin Coombes. 2019. “A Protocol to Evaluate RNA Sequencing Normalization Methods.” BMC Bioinformatics 20 (24): 679. https://doi.org/10.1186/s12859-019-3247-x.\n\n\nBenjamini, Yoav, and Yosef Hochberg. 1995. “Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing.” J. R. Stat. Soc. Series B Stat. Methodol. 57 (1): 289–300. http://www.jstor.org/stable/2346101.\n\n\nBullard, James H., Elizabeth Purdom, Kasper D. Hansen, and Sandrine Dudoit. 2010. “Evaluation of Statistical Methods for Normalization and Differential Expression in mRNA-Seq Experiments.” BMC Bioinformatics 11 (1): 94. https://doi.org/10.1186/1471-2105-11-94.\n\n\nChen, Yunshun, Aaron T. L. Lun, and Gordon K. Smyth. 2016. “From Reads to Genes to Pathways: Differential Expression Analysis of RNA-Seq Experiments Using Rsubread and the edgeR Quasi-Likelihood Pipeline.” https://doi.org/10.12688/f1000research.8987.2.\n\n\nDüren, Yannick, Johannes Lederer, and Li-Xuan Qin. 2022. “Depth Normalization of Small RNA Sequencing: Using Data and Biology to Select a Suitable Method.” Nucleic Acids Research 50 (10): e56. https://doi.org/10.1093/nar/gkac064.\n\n\nEvans, Ciaran, Johanna Hardin, and Daniel M Stoebel. 2017. “Selecting Between-Sample RNA-Seq Normalization Methods from the Perspective of Their Assumptions.” Briefings in Bioinformatics 19 (5): 776–92. https://doi.org/10.1093/bib/bbx008.\n\n\nLove, Michael I., Wolfgang Huber, and Simon Anders. 2014. “Moderated Estimation of Fold Change and Dispersion for RNA-Seq Data with DESeq2” 15: 550. https://doi.org/10.1186/s13059-014-0550-8.\n\n\nLun, Aaron T. L., Davis J. McCarthy, and John C. Marioni. 2016. “A Step-by-Step Workflow for Low-Level Analysis of Single-Cell RNA-Seq Data with Bioconductor” 5: 2122. https://doi.org/10.12688/f1000research.9501.2.\n\n\nLytal, Nicholas, Di Ran, and Lingling An. 2020. “Normalization Methods on Single-Cell RNA-Seq Data: An Empirical Survey.” Frontiers in Genetics 11. https://www.frontiersin.org/articles/10.3389/fgene.2020.00041.\n\n\nMcCarthy, Davis J., Yunshun Chen, and Gordon K. Smyth. 2012. “Differential Expression Analysis of Multifactor RNA-Seq Experiments with Respect to Biological Variation.” Nucleic Acids Research 40 (10): 4288–97. https://doi.org/10.1093/nar/gks042.\n\n\nRitchie, Matthew E., Belinda Phipson, Di Wu, Yifang Hu, Charity W. Law, Wei Shi, and Gordon K. Smyth. 2015. “Limma Powers Differential Expression Analyses for RNA-Sequencing and Microarray Studies.” Nucleic Acids Research 43 (7): e47. https://doi.org/10.1093/nar/gkv007.\n\n\nRobinson, Mark D., Davis J. McCarthy, and Gordon K. Smyth. 2010. “edgeR: A Bioconductor Package for Differential Expression Analysis of Digital Gene Expression Data.” Bioinformatics 26 (1): 139–40. https://doi.org/10.1093/bioinformatics/btp616.\n\n\nVallejos, Catalina A., Davide Risso, Antonio Scialdone, Sandrine Dudoit, and John C. Marioni. 2017. “Normalizing Single-Cell RNA Sequencing Data: Challenges and Opportunities.” Nature Methods 14 (6): 565–71. https://doi.org/10.1038/nmeth.4292.",
+    "crumbs": [
+      "Week 4: Statistical Analysis",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-4/study_before_workshop.html#if-you-do-not-have-those",
+    "href": "omics/week-4/study_before_workshop.html#if-you-do-not-have-those",
+    "title": "Independent Study to prepare for workshop",
+    "section": "If you do not have those",
+    "text": "If you do not have those\nGo through:\n\nOmics 1: 👋 Hello data! Workshop including:\n🤗 Look after future you! and\nthe Independent Study to consolidate",
+    "crumbs": [
+      "Week 4: Statistical Analysis",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-4/study_before_workshop.html#the-difference-between-groups",
+    "href": "omics/week-4/study_before_workshop.html#the-difference-between-groups",
+    "title": "Independent Study to prepare for workshop",
+    "section": "The difference between groups",
+    "text": "The difference between groups\n\n\nThe difference between groups is given as the log2 fold change in expression between groups\nA fold change is the expression in one group divided by the expression in the other group\nwe use fold changes because the absolute expression values may not be accurate and relative changes are what matters\nwe use log2 fold changes because they are symmetrical around 0",
+    "crumbs": [
+      "Week 4: Statistical Analysis",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-4/study_before_workshop.html#log2-fold-change",
+    "href": "omics/week-4/study_before_workshop.html#log2-fold-change",
+    "title": "Independent Study to prepare for workshop",
+    "section": "log2 fold change",
+    "text": "log2 fold change\n\n\nlog2 means log to the base 2\nSuppose the expression in group A is 5 and the expression in group B is 8\nA/B = 5/8 = 0.625 and B/A = 8/5 = 1.6\nIf B is greater than A the range of A/B is 0 to 1 but the range of B/A is 1 to infinity\nHowever, if we take the log2 of A/B we get -0.678 and the log2 of B/A is 0.678.",
+    "crumbs": [
+      "Week 4: Statistical Analysis",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "omics/week-4/study_before_workshop.html#type-of-test-the-function-2",
+    "href": "omics/week-4/study_before_workshop.html#type-of-test-the-function-2",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Type of test (the function)",
+    "text": "Type of test (the function)\n\nscran\n\nworks on normalized log-expression values\nperforms Welch t-tests",
+    "crumbs": [
+      "Week 4: Statistical Analysis",
+      "Prepare!"
+    ]
   }
 ]

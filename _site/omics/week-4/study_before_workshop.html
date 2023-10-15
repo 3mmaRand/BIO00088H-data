@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.4.395">
+
+  <meta name="author" content="Emma Rand">
+  <title>Data Analysis for Group Project - Independent Study to prepare for workshop</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+
+  .callout {
+    margin-top: 1em;
+    margin-bottom: 1em;  
+    border-radius: .25rem;
+  }
+
+  .callout.callout-style-simple { 
+    padding: 0em 0.5em;
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+    display: flex;
+  }
+
+  .callout.callout-style-default {
+    border-left: solid #acacac .3rem;
+    border-right: solid 1px silver;
+    border-top: solid 1px silver;
+    border-bottom: solid 1px silver;
+  }
+
+  .callout .callout-body-container {
+    flex-grow: 1;
+  }
+
+  .callout.callout-style-simple .callout-body {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-style-default .callout-body {
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  .callout.callout-titled.callout-style-simple .callout-body {
+    margin-top: 0.2em;
+  }
+
+  .callout:not(.callout-titled) .callout-body {
+      display: flex;
+  }
+
+  .callout:not(.no-icon).callout-titled.callout-style-simple .callout-content {
+    padding-left: 1.6em;
+  }
+
+  .callout.callout-titled .callout-header {
+    padding-top: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  .callout.callout-titled .callout-title  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+    
+  .callout.callout-titled.callout-style-simple .callout-content  p {
+    margin-top: 0;
+  }
+
+  .callout.callout-titled.callout-style-default .callout-content  p {
+    margin-top: 0.7em;
+  }
+
+  .callout.callout-style-simple div.callout-title {
+    border-bottom: none;
+    font-size: .9rem;
+    font-weight: 600;
+    opacity: 75%;
+  }
+
+  .callout.callout-style-default  div.callout-title {
+    border-bottom: none;
+    font-weight: 600;
+    opacity: 85%;
+    font-size: 0.9rem;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-default div.callout-content {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
+  .callout.callout-style-simple .callout-icon::before {
+    height: 1rem;
+    width: 1rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 1rem 1rem;
+  }
+
+  .callout.callout-style-default .callout-icon::before {
+    height: 0.9rem;
+    width: 0.9rem;
+    display: inline-block;
+    content: "";
+    background-repeat: no-repeat;
+    background-size: 0.9rem 0.9rem;
+  }
+
+  .callout-title {
+    display: flex
+  }
+    
+  .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  .callout.no-icon::before {
+    display: none !important;
+  }
+
+  .callout.callout-titled .callout-body > .callout-content > :last-child {
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
+  }
+
+  .callout.callout-titled .callout-icon::before {
+    margin-top: .5rem;
+    padding-right: .5rem;
+  }
+
+  .callout:not(.callout-titled) .callout-icon::before {
+    margin-top: 1rem;
+    padding-right: .5rem;
+  }
+
+  /* Callout Types */
+
+  div.callout-note {
+    border-left-color: #4582ec !important;
+  }
+
+  div.callout-note .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEU0lEQVRYCcVXTWhcVRQ+586kSUMMxkyaElstCto2SIhitS5Ek8xUKV2poatCcVHtUlFQk8mbaaziwpWgglJwVaquitBOfhQXFlqlzSJpFSpIYyXNjBNiTCck7x2/8/LeNDOZxDuEkgOXe++553zfefee+/OYLOXFk3+1LLrRdiO81yNqZ6K9cG0P3MeFaMIQjXssE8Z1JzLO9ls20MBZX7oG8w9GxB0goaPrW5aNMp1yOZIa7Wv6o2ykpLtmAPs/vrG14Z+6d4jpbSKuhdcSyq9wGMPXjonwmESXrriLzFGOdDBLB8Y6MNYBu0dRokSygMA/mrun8MGFN3behm6VVAwg4WR3i6FvYK1T7MHo9BK7ydH+1uurECoouk5MPRyVSBrBHMYwVobG2aOXM07sWrn5qgB60rc6mcwIDJtQrnrEr44kmy+UO9r0u9O5/YbkS9juQckLed3DyW2XV/qWBBB3ptvI8EUY3I9p/67OW+g967TNr3Sotn3IuVlfMLVnsBwH4fsnebJvyGm5GeIUA3jljERmrv49SizPYuq+z7c2H/jlGC+Ghhupn/hcapqmcudB9jwJ/3jvnvu6vu5lVzF1fXyZuZZ7U8nRmVzytvT+H3kilYvH09mLWrQdwFSsFEsxFVs5fK7A0g8gMZjbif4ACpKbjv7gNGaD8bUrlk8x+KRflttr22JEMRUbTUwwDQScyzPgedQHZT0xnx7ujw2jfVfExwYHwOsDTjLdJ2ebmeQIlJ7neo41s/DrsL3kl+W2lWvAga0tR3zueGr6GL78M3ifH0rGXrBC2aAR8uYcIA5gwV8zIE8onoh8u0Fca/ciF7j1uOzEnqcIm59sEXoGc0+z6+H45V1CvAvHcD7THztu669cnp+L0okAeIc6zjbM/24LgGM1gZk7jnRu1aQWoU9sfUOuhrmtaPIO3YY1KLLWZaEO5TKUbMY5zx8W9UJ6elpLwKXbsaZ4EFl7B4bMtDv0iRipKoDQT2sNQI9b1utXFdYisi+wzZ/ri/1m7QfDgEuvgUUEIJPq3DhX/5DWNqIXDOweC2wvIR90Oq3lDpdMIgD2r0dXvGdsEW5H6x6HLRJYU7C69VefO1x8Gde1ZFSJLfWS1jbCnhtOPxmpfv2LXOA2Xk2tvnwKKPFuZ/oRmwBwqRQDcKNeVQkYcOjtWVBuM/JuYw5b6isojIkYxyYAFn5K7ZBF10fea52y8QltAg6jnMqNHFBmGkQ1j+U43HMi2xMar1Nv0zGsf1s8nUsmUtPOOrbFIR8bHFDMB5zL13Gmr/kGlCkUzedTzzmzsaJXhYawnA3UmARpiYj5ooJZiUoxFRtK3X6pgNPv+IZVPcnwbOl6f+aBaO1CNvPW9n9LmCp01nuSaTRF2YxHqZ8DYQT6WsXT+RD6eUztwYLZ8rM+rcPxamv1VQzFUkzFXvkiVrySGQgJNvXHJAxiU3/NwiC03rSf05VBaPtu/Z7/B8Yn/w7eguloAAAAAElFTkSuQmCC');
+  }
+
+  div.callout-note.callout-style-default .callout-title {
+    background-color: #dae6fb
+  }
+
+  div.callout-important {
+    border-left-color: #d9534f !important;
+  }
+
+  div.callout-important .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEKklEQVRYCcVXTWhcVRS+575MJym48A+hSRFr00ySRQhURRfd2HYjk2SSTokuBCkU2o0LoSKKraKIBTcuFCoidGFD08nkBzdREbpQ1EDNIv8qSGMFUboImMSZd4/f9zJv8ibJMC8xJQfO3HPPPef7zrvvvnvviIkpC9nsw0UttFunbUhpFzFtarSd6WJkStVMw5xyVqYTvkwfzuf/5FgtkVoB0729j1rjXwThS7Vio+Mo6DNnvLfahoZ+i/o32lULuJ3NNiz7q6+pyAUkJaFF6JwaM2lUJlV0MlnQn5aTRbEu0SEqHUa0A4AdiGuB1kFXRfVyg5d87+Dg4DL6m2TLAub60ilj7A1Ec4odSAc8X95sHh7+ZRPCFo6Fnp7HfU/fBng/hi10CjCnWnJjsxvDNxWw0NfV6Rv5GgP3I3jGWXumdTD/3cbEOP2ZbOZp69yniG3FQ9z1jD7bnBu9Fc2tKGC2q+uAJOQHBDRiZX1x36o7fWBs7J9ownbtO+n0/qWkvW7UPIfc37WgT6ZGR++EOJyeQDSb9UB+DZ1G6DdLDzyS+b/kBCYGsYgJbSQHuThGKRcw5xdeQf8YdNHsc6ePXrlSYMBuSIAFTGAtQo+VuALo4BX83N190NWZWbynBjhOHsmNfFWLeL6v+ynsA58zDvvAC8j5PkbOcXCMg2PZFk3q8MjI7WAG/Dp9AwP7jdGBOOQkAvlFUB+irtm16I1Zw9YBcpGTGXYmk3kQIC/Cds55l+iMI3jqhjAuaoe+am2Jw5GT3Nbz3CkE12NavmzN5+erJW7046n/CH1RO/RVa8lBLozXk9uqykkGAyRXLWlLv5jyp4RFsG5vGVzpDLnIjTWgnRy2Rr+tDKvRc7Y8AyZq10jj8DqXdnIRNtFZb+t/ZRtXcDiVnzpqx8mPcDWxgARUqx0W1QB9MeUZiNrV4qP+Ehc+BpNgATsTX8ozYKL2NtFYAHc84fG7ndxUPr+AR/iQSns7uSUufAymwDOb2+NjK27lEFocm/EE2WpyIy/Hi66MWuMKJn8RvxIcj87IM5Vh9663ziW36kR0HNenXuxmfaD8JC7tfKbrhFr7LiZCrMjrzTeGx+PmkosrkNzW94ObzwocJ7A1HokLolY+AvkTiD/q1H0cN48c5EL8Crkttsa/AXQVDmutfyku0E7jShx49XqV3MFK8IryDhYVbj7Sj2P2eBxwcXoe8T8idsKKPRcnZw1b+slFTubwUwhktrfnAt7J++jwQtLZcm3sr9LQrjRzz6cfMv9aLvgmnAGvpoaGLxM4mAEaLV7iAzQ3oU0IvD5x9ix3yF2RAAuYAOO2f7PEFWCXZ4C9Pb2UsgDeVnFSpbFK7/IWu7TPTvBqzbGdCHOJQSxiEjt6IyZmxQyEJHv6xyQsYk//moVFsN2zP6fRImjfq7/n/wFDguUQFNEwugAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-important.callout-style-default .callout-title {
+    background-color: #f7dddc
+  }
+
+  div.callout-warning {
+    border-left-color: #f0ad4e !important;
+  }
+
+  div.callout-warning .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAETklEQVRYCeVWW2gcVRg+58yaTUnizqbipZeX4uWhBEniBaoUX1Ioze52t7sRq6APio9V9MEaoWlVsFasRq0gltaAPuxms8lu0gcviE/FFOstVbSIxgcv6SU7EZqmdc7v9+9mJtNks51NTUH84ed889/PP+cmxP+d5FIbMJmNbpREu4WUkiTtCicKny0l1pIKmBzovF2S+hIJHX8iEu3hZJ5lNZGqyRrGSIQpq15AzF28jgpeY6yk6GVdrfFqdrD6Iw+QlB8g0YS2g7dyQmXM/IDhBhT0UCiRf59lfqmmDvzRt6kByV/m4JjtzuaujMUM2c5Z2d6JdKrRb3K2q6mA+oYVz8JnDdKPmmNthzkAk/lN63sYPgevrguc72aZX/L9C6x09GYyxBgCX4NlvyGUHOKELlm5rXeR1kchuChJt4SSwyddZRXgvwMGvYo4QSlk3/zkHD8UHxwVJA6zjZZqP8v8kK8OWLnIZtLyCAJagYC4rTGW/9Pqj92N/c+LUaAj27movwbi19tk/whRCIE7Q9vyI6yvRpftAKVTdUjOW40X3h5OXsKCdmFcx0xlLJoSuQngnrJe7Kcjm4OMq9FlC7CMmScQANuNvjfP3PjGXDBaUQmbp296S5L4DrpbrHN1T87ZVEZVCzg1FF0Ft+dKrlLukI+/c9ENo+TvlTDbYFvuKPtQ9+l052rXrgKoWkDAFnvh0wTOmYn8R5f4k/jN/fZiCM1tQx9jQQ4ANhqG4hiL0qIFTGViG9DKB7GYzgubnpofgYRwO+DFjh0Zin2m4b/97EDkXkc+f6xYAPX0KK2I/7fUQuwzuwo/L3AkcjugPNixC8cHf0FyPjWlItmLxWw4Ou9YsQCr5fijMGoD/zpdRy95HRysyXA74MWOnscpO4j2y3HAVisw85hX5+AFBRSHt4ShfLFkIMXTqyKFc46xdzQM6XbAi702a7sy04J0+feReMFKp5q9esYLCqAZYw/k14E/xcLLsFElaornTuJB0svMuJINy8xkIYuL+xPAlWRceH6+HX7THJ0djLUom46zREu7tTkxwmf/FdOZ/sh6Q8qvEAiHpm4PJ4a/doJe0gH1t+aHRgCzOvBvJedEK5OFE5jpm4AGP2a8Dxe3gGJ/pAutug9Gp6he92CsSsWBaEcxGx0FHytmIpuqGkOpldqNYQK8cSoXvd+xLxXADw0kf6UkJNFtdo5MOgaLjiQOQHcn+A6h5NuL2s0qsC2LOM75PcF3yr5STuBSAcGG+meA14K/CI21HcS4LBT6tv0QAh8Dr5l93AhZzG5ZJ4VxAqdZUEl9z7WJ4aN+svMvwHHL21UKTd1mqvChH7/Za5xzXBBKrUcB0TQ+Ulgkfbi/H/YT5EptrGzsEK7tR1B7ln9BBwckYfMiuSqklSznIuoIIOM42MQO+QnduCoFCI0bpkzjCjddHPN/F+2Yu+sd9bKNpVwHhbS3LluK/0zgfwD0xYI5dXuzlQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-warning.callout-style-default .callout-title {
+    background-color: #fcefdc
+  }
+
+  div.callout-tip {
+    border-left-color: #02b875 !important;
+  }
+
+  div.callout-tip .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAADr0lEQVRYCe1XTWgTQRj9ZjZV8a9SPIkKgj8I1bMHsUWrqYLVg4Ue6v9BwZOxSYsIerFao7UiUryIqJcqgtpimhbBXoSCVxUFe9CTiogUrUp2Pt+3aUI2u5vdNh4dmMzOzHvvezuz8xNFM0mjnbXaNu1MvFWRXkXEyE6aYOYJpdW4IXuA4r0fo8qqSMDBU0v1HJUgVieAXxzCsdE/YJTdFcVIZQNMyhruOMJKXYFoLfIfIvVIMWdsrd+Rpd86ZmyzzjJmLStqRn0v8lzkb4rVIXvnpScOJuAn2ACC65FkPzEdEy4TPWRLJ2h7z4cArXzzaOdKlbOvKKX25Wl00jSnrwVxAg3o4dRxhO13RBSdNvH0xSARv3adTXbBdTf64IWO2vH0LT+cv4GR1DJt+DUItaQogeBX/chhbTBxEiZ6gftlDNXTrvT7co4ub5A6gp9HIcHvzTa46OS5fBeP87Qm0fQkr4FsYgVQ7Qg+ZayaDg9jhg1GkWj8RG6lkeSacrrHgDaxdoBiZPg+NXV/KifMuB6//JmYH4CntVEHy/keA6x4h4CU5oFy8GzrBS18cLJMXcljAKB6INjWsRcuZBWVaS3GDrqB7rdapVIeA+isQ57Eev9eCqzqOa81CY05VLd6SamW2wA2H3SiTbnbSxmzfp7WtKZkqy4mdyAlGx7ennghYf8voqp9cLSgKdqNfa6RdRsAAkPwRuJZNbpByn+RrJi1RXTwdi8RQF6ymDwGMAtZ6TVE+4uoKh+MYkcLsT0Hk8eAienbiGdjJHZTpmNjlbFJNKDVAp2fJlYju6IreQxQ08UJDNYdoLSl6AadO+fFuCQqVMB1NJwPm69T04Wv5WhfcWyfXQB+wXRs1pt+nCknRa0LVzSA/2B+a9+zQJadb7IyyV24YAxKp2Jqs3emZTuNnKxsah+uabKbMk7CbTgJx/zIgQYErIeTKRQ9yD9wxVof5YolPHqaWo7TD6tJlh7jQnK5z2n3+fGdggIOx2kaa2YI9QWarc5Ce1ipNWMKeSG4DysFF52KBmTNMmn5HqCFkwy34rDg05gDwgH3bBi+sgFhN/e8QvRn8kbamCOhgrZ9GJhFDgfcMHzFb6BAtjKpFhzTjwv1KCVuxHvCbsSiEz4CANnj84cwHdFXAbAOJ4LTSAawGWFn5tDhLMYz6nWeU2wJfIhmIJBefcd/A5FWQWGgrWzyORZ3Q6HuV+Jf0Bj+BTX69fm1zWgK7By1YTXchFDORywnfQ7GpzOo6S+qECrsx2ifVQAAAABJRU5ErkJggg==');
+  }
+
+  div.callout-tip.callout-style-default .callout-title {
+    background-color: #ccf1e3
+  }
+
+  div.callout-caution {
+    border-left-color: #fd7e14 !important;
+  }
+
+  div.callout-caution .callout-icon::before {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAACV0lEQVRYCdVWzWoUQRCuqp2ICBLJXgITZL1EfQDBW/bkzUMUD7klD+ATSHBEfAIfQO+iXsWDxJsHL96EHAwhgzlkg8nBg25XWb0zIb0zs9muYYWkoKeru+vn664fBqElyZNuyh167NXJ8Ut8McjbmEraKHkd7uAnAFku+VWdb3reSmRV8PKSLfZ0Gjn3a6Xlcq9YGb6tADjn+lUfTXtVmaZ1KwBIvFI11rRXlWlatwIAAv2asaa9mlB9wwygiDX26qaw1yYPzFXg2N1GgG0FMF8Oj+VIx7E/03lHx8UhvYyNZLN7BwSPgekXXLribw7w5/c8EF+DBK5idvDVYtEEwMeYefjjLAdEyQ3M9nfOkgnPTEkYU+sxMq0BxNR6jExrAI31H1rzvLEfRIdgcv1XEdj6QTQAS2wtstEALLG1yEZ3QhH6oDX7ExBSFEkFINXH98NTrme5IOaaA7kIfiu2L8A3qhH9zRbukdCqdsA98TdElyeMe5BI8Rs2xHRIsoTSSVFfCFCWGPn9XHb4cdobRIWABNf0add9jakDjQJpJ1bTXOJXnnRXHRf+dNL1ZV1MBRCXhMbaHqGI1JkKIL7+i8uffuP6wVQAzO7+qVEbF6NbS0LJureYcWXUUhH66nLR5rYmva+2tjRFtojkM2aD76HEGAD3tPtKM309FJg5j/K682ywcWJ3PASCcycH/22u+Bh7Aa0ehM2Fu4z0SAE81HF9RkB21c5bEn4Dzw+/qNOyXr3DCTQDMBOdhi4nAgiFDGCinIa2owCEChUwD8qzd03PG+qdW/4fDzjUMcE1ZpIAAAAASUVORK5CYII=');
+  }
+
+  div.callout-caution.callout-style-default .callout-title {
+    background-color: #ffe5d0
+  }
+
+  </style>
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Independent Study to prepare for workshop</h1>
+  <p class="subtitle">Omics 2: Statistical Analysis</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Emma Rand 
+</div>
+</div>
+</div>
+
+  <p class="date">15 October, 2023</p>
+</section>
+<section id="overview" class="slide level2">
+<h2>Overview</h2>
+<p>In these slides we will:</p>
+<div>
+<ul>
+<li class="fragment"><p>Check where you are,</p></li>
+<li class="fragment"><p>learn some concepts in differential expression</p>
+<ul>
+<li class="fragment">log2 fold changes</li>
+<li class="fragment">Multiple correction</li>
+<li class="fragment">normalisation</li>
+<li class="fragment">statistical model</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section>
+<section id="where-should-you-be" class="title-slide slide level1 center">
+<h1>Where should you be?</h1>
+
+</section>
+<section id="what-we-did-in-omics-1-hello-data" class="slide level2">
+<h2>What we did in Omics 1: 👋 Hello data!</h2>
+<div>
+<div style="font-size: 90%;">
+<ul>
+<li class="fragment">Discovered how many rows and columns we had in our datasets and what these were.</li>
+<li class="fragment">Examined the distribution
+<ul>
+<li class="fragment">of values across the whole dataset</li>
+<li class="fragment">of values across the samples/cells (i.e., averaged across genes) to see variation between samples/cells</li>
+<li class="fragment">of values across the genes (i.e., averaged across samples/cells) to see variation between genes</li>
+</ul></li>
+<li class="fragment">Saved files of filtered or summarised data.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="where-should-you-be-1" class="slide level2">
+<h2>Where should you be?</h2>
+<p>After the <a href="../week-3/workshop.html">Omics 1: 👋 Hello data! Workshop</a> including:</p>
+<ul>
+<li><p><a href="../week-3/workshop.html#look-after-future-you">🤗 Look after future you!</a> and</p></li>
+<li><p>the <a href="../week-3/study_after_workshop.html">Independent Study to consolidate</a>, you should have:</p></li>
+</ul>
+</section>
+<section id="frogs" class="slide level2">
+<h2>🐸 Frogs</h2>
+<div style="font-size: 90%;">
+<ul>
+<li>An RStudio Project called <code>frogs-88H</code> which contains:
+<ul>
+<li>Raw data (S14, S20 and S30)</li>
+<li>Processed data (<code>s30_filtered.csv</code>, <code>s30_summary_gene.csv</code>, <code>s30_summary_gene_filtered.csv</code>, <code>s30_summary_samp.csv</code> and equivalents for S14 <em>OR</em> S20)</li>
+<li>Two scripts called <code>cont-fgf-s30.R</code> and <code>cont-fgf-s20.R</code> <em>OR</em> <code>cont-fgf-s14.R</code></li>
+</ul></li>
+</ul>
+</div>
+<p>Files should be organised into folders. Code should well commented and easy to read.</p>
+</section>
+<section id="mice" class="slide level2">
+<h2>🐭 Mice</h2>
+<ul>
+<li>An RStudio Project called <code>mice-88H</code> which contains
+<ul>
+<li>Raw data (hspc, prog, lthsc)</li>
+<li>Processed data (<code>hspc_summary_gene.csv</code>, <code>hspc_summary_samp.csv</code>, <code>prog_summary_gene.csv</code>, <code>prog_summary_samp.csv</code>)</li>
+</ul></li>
+<li>One script called <code>hspc-prog.R</code></li>
+</ul>
+<p>Files should be organised into folders. Code should well commented and easy to read.</p>
+</section>
+<section id="section" class="slide level2">
+<h2>🍂</h2>
+<p>Either of the other examples.</p>
+</section>
+<section id="if-you-do-not-have-those" class="slide level2">
+<h2>If you do not have those</h2>
+<p>Go through:</p>
+<ul>
+<li><p><a href="../week-3/workshop.html">Omics 1: 👋 Hello data! Workshop</a> including:</p></li>
+<li><p><a href="../week-3/workshop.html#look-after-future-you">🤗 Look after future you!</a> and</p></li>
+<li><p>the <a href="../week-3/study_after_workshop.html">Independent Study to consolidate</a></p></li>
+</ul>
+</section></section>
+<section>
+<section id="differential-expression" class="title-slide slide level1 center">
+<h1>Differential expression</h1>
+
+</section>
+<section id="differential-expression-1" class="slide level2">
+<h2>Differential expression</h2>
+<div>
+<ul>
+<li class="fragment"><p>The goal of differential expression is to test whether there is a significant difference in gene expression between groups.</p></li>
+<li class="fragment"><p>A large number of computational methods have been developed for differential expression analysis</p></li>
+<li class="fragment"><p>R is the leading language for differential expression analysis</p></li>
+</ul>
+</div>
+</section>
+<section id="differential-expression-2" class="slide level2">
+<h2>Differential expression</h2>
+<div>
+<ul>
+<li class="fragment"><p>the statistical concepts are very similar to those you have already encountered in stages 1 and 2</p></li>
+<li class="fragment"><p>you are essentially doing paired- or independent-samples tests</p></li>
+<li class="fragment"><p>but you are doing a lot of them! One for every gene</p></li>
+<li class="fragment"><p>data need normalisation before comparison</p></li>
+</ul>
+</div>
+</section>
+<section id="statistical-concepts" class="slide level2">
+<h2>Statistical concepts</h2>
+<p>Like familiar tests:</p>
+<div>
+<ul>
+<li class="fragment"><p>the type of test (the function) you use depends on the type of data you have and the type of assumptions you want to make</p></li>
+<li class="fragment"><p>the tests work by comparing the variation between groups to the variation within groups.</p></li>
+<li class="fragment"><p>you will get: the difference between groups, a test statistic, and a <em>p</em>-value</p></li>
+<li class="fragment"><p>you also get an adjusted <em>p</em>-value which is the ‘correction’ for multiple testing</p></li>
+</ul>
+</div>
+</section>
+<section id="the-difference-between-groups" class="slide level2">
+<h2>The difference between groups</h2>
+<div>
+<ul>
+<li class="fragment"><p>The difference between groups is given as the log<sub>2</sub> fold change in expression between groups</p></li>
+<li class="fragment"><p>A fold change is the expression in one group divided by the expression in the other group</p></li>
+<li class="fragment"><p>we use fold changes because the absolute expression values may not be accurate and relative changes are what matters</p></li>
+<li class="fragment"><p>we use log<sub>2</sub> fold changes because they are symmetrical around 0</p></li>
+</ul>
+</div>
+</section>
+<section id="log2-fold-change" class="slide level2">
+<h2>log<sub>2</sub> fold change</h2>
+<div>
+<ul>
+<li class="fragment"><p>log<sub>2</sub> means log to the base 2</p></li>
+<li class="fragment"><p>Suppose the expression in group A is 5 and the expression in group B is 8</p></li>
+<li class="fragment"><p>A/B = 5/8 = 0.625 and B/A = 8/5 = 1.6</p></li>
+<li class="fragment"><p>If B is greater than A the range of A/B is 0 to 1 but the range of B/A is 1 to infinity</p></li>
+<li class="fragment"><p>However, if we take the log<sub>2</sub> of A/B we get -0.678 and the log<sub>2</sub> of B/A is 0.678.</p></li>
+</ul>
+</div>
+</section>
+<section id="adjusted-p-value" class="slide level2">
+<h2>Adjusted <em>p</em>-value</h2>
+<div>
+<ul>
+<li class="fragment"><p>The <em>p</em>-value has to be adjusted because of the number of tested being done</p></li>
+<li class="fragment"><p>In stage 1, we used Tukey’s HSD to adjust for multiple testing following an ANOVA</p></li>
+<li class="fragment"><p>Here the Benjamini-Hochberg procedure <span class="citation" data-cites="benjamini1995">(<a href="#/references" role="doc-biblioref" onclick="">Benjamini and Hochberg 1995</a>)</span> is used to adjust for multiple testing</p></li>
+<li class="fragment"><p>BH controls the <a href="https://en.wikipedia.org/wiki/False_discovery_rate">False Discovery Rate</a> (FDR)</p></li>
+<li class="fragment"><p>The FDR is the proportion of false positives among the genes called significant</p></li>
+</ul>
+</div>
+</section>
+<section id="normalisation" class="slide level2">
+<h2>Normalisation</h2>
+<div>
+<ul>
+<li class="fragment"><p>Normalisation adjusts raw counts to account for factors that prevent direct comparisons</p></li>
+<li class="fragment"><p>Normalisation usually influences the experimental design as well as the analysis</p></li>
+<li class="fragment"><p>The 🐭 mouse data have been normalised to simplify the analysis for you; the 🐸 frog data have not but the DE method will do this for you.</p></li>
+<li class="fragment"><p>Normalisation is a big topic. See <span class="citation" data-cites="düren2022">Düren, Lederer, and Qin (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>; <span class="citation" data-cites="bullard2010">Bullard et al. (<a href="#/references" role="doc-biblioref" onclick="">2010</a>)</span>; <span class="citation" data-cites="lytal2020">Lytal, Ran, and An (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span>; <span class="citation" data-cites="abrams2019">Abrams et al. (<a href="#/references" role="doc-biblioref" onclick="">2019</a>)</span>; <span class="citation" data-cites="vallejos2017">Vallejos et al. (<a href="#/references" role="doc-biblioref" onclick="">2017</a>)</span>; <span class="citation" data-cites="evans2017">Evans, Hardin, and Stoebel (<a href="#/references" role="doc-biblioref" onclick="">2017</a>)</span></p></li>
+</ul>
+</div>
+</section>
+<section id="type-of-test-the-function" class="slide level2">
+<h2>Type of test (the function)</h2>
+<div>
+<ul>
+<li class="fragment"><p>A large number of computational methods have been developed for differential expression analysis</p></li>
+<li class="fragment"><p>Methods vary in the types of normalisation they do, the statistical model they use, and the assumptions they make</p></li>
+<li class="fragment"><p>Some of the most well-known methods are provided by: <strong><code>DESeq2</code></strong> <span class="citation" data-cites="DESeq2">(<a href="#/references" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span>, <strong><code>edgeR</code></strong> <span class="citation" data-cites="robinson2010 mccarthy2012 chen2016">(<a href="#/references" role="doc-biblioref" onclick="">Robinson, McCarthy, and Smyth 2010</a>; <a href="#/references" role="doc-biblioref" onclick="">McCarthy, Chen, and Smyth 2012</a>; <a href="#/references" role="doc-biblioref" onclick="">Chen, Lun, and Smyth 2016</a>)</span>, <strong><code>limma</code></strong> <span class="citation" data-cites="ritchie2015">(<a href="#/references" role="doc-biblioref" onclick="">Ritchie et al. 2015</a>)</span> and <strong><code>scran</code></strong> <span class="citation" data-cites="scran">(<a href="#/references" role="doc-biblioref" onclick="">Lun, McCarthy, and Marioni 2016</a>)</span></p></li>
+</ul>
+</div>
+</section>
+<section id="type-of-test-the-function-1" class="slide level2">
+<h2>Type of test (the function)</h2>
+<div>
+<ul>
+<li class="fragment"><strong><code>DESeq2</code></strong> and <strong><code>edgeR</code></strong>
+<ul>
+<li class="fragment">both require raw counts as input</li>
+<li class="fragment">both assume that most genes are not DE</li>
+<li class="fragment">both use a negative binomial distribution<sup>1</sup> to model the data</li>
+<li class="fragment">use slightly different normalisation methods: <strong><code>DESeq2</code></strong> uses the median of ratios method; <strong><code>edgeR</code></strong> uses the trimmed mean of M values (TMM) method</li>
+</ul></li>
+</ul>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>A discrete distribution for counts, similar to the Poisson distribution</p></li></ol></aside></section>
+<section id="type-of-test-the-function-2" class="slide level2">
+<h2>Type of test (the function)</h2>
+<ul>
+<li><strong><code>scran</code></strong>
+<ul>
+<li>works on normalized log-expression values</li>
+<li>performs Welch t-tests</li>
+</ul></li>
+</ul>
+</section>
+<section id="meta-data" class="slide level2">
+<h2>Meta data</h2>
+<div>
+<ul>
+<li class="fragment"><p>DE methods require two types of data: the expression data and the meta data</p></li>
+<li class="fragment"><p>The meta data is the information about the samples</p></li>
+<li class="fragment"><p>It says which samples (columns) are in which group (s)</p></li>
+<li class="fragment"><p>It is usually stored in a separate file</p></li>
+</ul>
+</div>
+</section>
+<section id="data" class="slide level2">
+<h2>🐸 Data</h2>
+<ul>
+<li><p>Expression for the whole transcriptome <a href="https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp"><em>X. laevis</em> v10.1 genome assembly</a></p></li>
+<li><p>Values are raw counts</p></li>
+<li><p>The statistical analysis method we will use <strong><code>DESeq2</code></strong> <span class="citation" data-cites="DESeq2">(<a href="#/references" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span> requires raw counts and performs the normalisation itself</p></li>
+</ul>
+</section>
+<section id="data-1" class="slide level2">
+<h2>🐭 Data</h2>
+<ul>
+<li><p>Expression for a subset of genes, the surfaceome</p></li>
+<li><p>Values are log2 normalised values</p></li>
+<li><p>The statistical analysis method we will use <strong><code>scran</code></strong> <span class="citation" data-cites="scran">(<a href="#/references" role="doc-biblioref" onclick="">Lun, McCarthy, and Marioni 2016</a>)</span> requires normalised values</p></li>
+</ul>
+</section></section>
+<section>
+<section id="workshops" class="title-slide slide level1 center">
+<h1>Workshops</h1>
+
+</section>
+<section id="workshops-1" class="slide level2">
+<h2>Workshops</h2>
+<ul>
+<li><p>Omics 1: Hello data Getting to know the data. Checking the distributions of values</p></li>
+<li><p>Omics 2: Statistical Analysis Identifying which genes are differentially expressed between treatments.</p></li>
+<li><p>Omics 3: Visualising and Interpreting. PCA, Volcano plots and heatmaps to visualise results. Interpreting the results and finding out more about genes of interest.</p></li>
+</ul>
+</section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
+
+<div class="footer footer-default">
+<p>🔗 <a href="https://3mmarand.github.io/BIO00088H-data/omics/week-4/overview.html">About Omics 2: Statistical Analysis</a></p>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-abrams2019" class="csl-entry" role="listitem">
+Abrams, Zachary B., Travis S. Johnson, Kun Huang, Philip R. O. Payne, and Kevin Coombes. 2019. <span>“A Protocol to Evaluate RNA Sequencing Normalization Methods.”</span> <em>BMC Bioinformatics</em> 20 (24): 679. <a href="https://doi.org/10.1186/s12859-019-3247-x">https://doi.org/10.1186/s12859-019-3247-x</a>.
+</div>
+<div id="ref-benjamini1995" class="csl-entry" role="listitem">
+Benjamini, Yoav, and Yosef Hochberg. 1995. <span>“Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing.”</span> <em>J. R. Stat. Soc. Series B Stat. Methodol.</em> 57 (1): 289–300. <a href="http://www.jstor.org/stable/2346101">http://www.jstor.org/stable/2346101</a>.
+</div>
+<div id="ref-bullard2010" class="csl-entry" role="listitem">
+Bullard, James H., Elizabeth Purdom, Kasper D. Hansen, and Sandrine Dudoit. 2010. <span>“Evaluation of Statistical Methods for Normalization and Differential Expression in mRNA-Seq Experiments.”</span> <em>BMC Bioinformatics</em> 11 (1): 94. <a href="https://doi.org/10.1186/1471-2105-11-94">https://doi.org/10.1186/1471-2105-11-94</a>.
+</div>
+<div id="ref-chen2016" class="csl-entry" role="listitem">
+Chen, Yunshun, Aaron T. L. Lun, and Gordon K. Smyth. 2016. <span>“From Reads to Genes to Pathways: Differential Expression Analysis of RNA-Seq Experiments Using Rsubread and the edgeR Quasi-Likelihood Pipeline.”</span> <a href="https://doi.org/10.12688/f1000research.8987.2">https://doi.org/10.12688/f1000research.8987.2</a>.
+</div>
+<div id="ref-düren2022" class="csl-entry" role="listitem">
+Düren, Yannick, Johannes Lederer, and Li-Xuan Qin. 2022. <span>“Depth Normalization of Small RNA Sequencing: Using Data and Biology to Select a Suitable Method.”</span> <em>Nucleic Acids Research</em> 50 (10): e56. <a href="https://doi.org/10.1093/nar/gkac064">https://doi.org/10.1093/nar/gkac064</a>.
+</div>
+<div id="ref-evans2017" class="csl-entry" role="listitem">
+Evans, Ciaran, Johanna Hardin, and Daniel M Stoebel. 2017. <span>“Selecting Between-Sample RNA-Seq Normalization Methods from the Perspective of Their Assumptions.”</span> <em>Briefings in Bioinformatics</em> 19 (5): 776–92. <a href="https://doi.org/10.1093/bib/bbx008">https://doi.org/10.1093/bib/bbx008</a>.
+</div>
+<div id="ref-DESeq2" class="csl-entry" role="listitem">
+Love, Michael I., Wolfgang Huber, and Simon Anders. 2014. <span>“Moderated Estimation of Fold Change and Dispersion for RNA-Seq Data with DESeq2”</span> 15: 550. <a href="https://doi.org/10.1186/s13059-014-0550-8">https://doi.org/10.1186/s13059-014-0550-8</a>.
+</div>
+<div id="ref-scran" class="csl-entry" role="listitem">
+Lun, Aaron T. L., Davis J. McCarthy, and John C. Marioni. 2016. <span>“A Step-by-Step Workflow for Low-Level Analysis of Single-Cell RNA-Seq Data with Bioconductor”</span> 5: 2122. <a href="https://doi.org/10.12688/f1000research.9501.2">https://doi.org/10.12688/f1000research.9501.2</a>.
+</div>
+<div id="ref-lytal2020" class="csl-entry" role="listitem">
+Lytal, Nicholas, Di Ran, and Lingling An. 2020. <span>“Normalization Methods on Single-Cell RNA-Seq Data: An Empirical Survey.”</span> <em>Frontiers in Genetics</em> 11. <a href="https://www.frontiersin.org/articles/10.3389/fgene.2020.00041">https://www.frontiersin.org/articles/10.3389/fgene.2020.00041</a>.
+</div>
+<div id="ref-mccarthy2012" class="csl-entry" role="listitem">
+McCarthy, Davis J., Yunshun Chen, and Gordon K. Smyth. 2012. <span>“Differential Expression Analysis of Multifactor RNA-Seq Experiments with Respect to Biological Variation.”</span> <em>Nucleic Acids Research</em> 40 (10): 4288–97. <a href="https://doi.org/10.1093/nar/gks042">https://doi.org/10.1093/nar/gks042</a>.
+</div>
+<div id="ref-ritchie2015" class="csl-entry" role="listitem">
+Ritchie, Matthew E., Belinda Phipson, Di Wu, Yifang Hu, Charity W. Law, Wei Shi, and Gordon K. Smyth. 2015. <span>“Limma Powers Differential Expression Analyses for RNA-Sequencing and Microarray Studies.”</span> <em>Nucleic Acids Research</em> 43 (7): e47. <a href="https://doi.org/10.1093/nar/gkv007">https://doi.org/10.1093/nar/gkv007</a>.
+</div>
+<div id="ref-robinson2010" class="csl-entry" role="listitem">
+Robinson, Mark D., Davis J. McCarthy, and Gordon K. Smyth. 2010. <span>“edgeR: A Bioconductor Package for Differential Expression Analysis of Digital Gene Expression Data.”</span> <em>Bioinformatics</em> 26 (1): 139–40. <a href="https://doi.org/10.1093/bioinformatics/btp616">https://doi.org/10.1093/bioinformatics/btp616</a>.
+</div>
+<div id="ref-vallejos2017" class="csl-entry" role="listitem">
+Vallejos, Catalina A., Davide Risso, Antonio Scialdone, Sandrine Dudoit, and John C. Marioni. 2017. <span>“Normalizing Single-Cell RNA Sequencing Data: Challenges and Opportunities.”</span> <em>Nature Methods</em> 14 (6): 565–71. <a href="https://doi.org/10.1038/nmeth.4292">https://doi.org/10.1038/nmeth.4292</a>.
+</div>
+</div>
+</section></section>
+
+    </div>
+  </div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      });
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          return note.innerHTML;
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

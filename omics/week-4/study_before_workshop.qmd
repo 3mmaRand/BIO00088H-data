@@ -17,124 +17,288 @@ editor:
 
 ## Overview
 
+In these slides we will:
+
 ::: incremental
+-   Check where you are,
 
--   Check where you are.
+-   learn some concepts in differential expression
 
--   Basis of comparisons
+    -   log2 fold changes
+    -   Multiple correction
     -   normalisation
     -   statistical model
-    -   Multiple correction
-
--   Methods vary
-    -   DESeq2
-    -   edgeR
-    -   limma
-    -   scran
 :::
 
 # Where should you be?
 
+## What we did in Omics 1: 👋 Hello data!
+
+::: incremental
+::: {style="font-size: 90%;"}
+-   Discovered how many rows and columns we had in our datasets and what
+    these were.
+-   Examined the distribution
+    -   of values across the whole dataset
+    -   of values across the samples/cells (i.e., averaged across genes)
+        to see variation between samples/cells
+    -   of values across the genes (i.e., averaged across samples/cells)
+        to see variation between genes
+-   Saved files of filtered or summarised data.
+:::
+:::
+
+## Where should you be?
+
+After the [Omics 1: 👋 Hello data! Workshop](../week-3/workshop.html)
+including:
+
+-   [🤗 Look after future
+    you!](../week-3/workshop.html#look-after-future-you) and
+
+-   the [Independent Study to
+    consolidate](../week-3/study_after_workshop.html), you should have:
+
 ## 🐸 Frogs
 
-After the Omics 1 Workshop, Look after future you and the Independent Study to consolidate, you should have:
-
--   An RStudio Project called `frogs-88H` which contains
-
+::: {style="font-size: 90%;"}
+-   An RStudio Project called `frogs-88H` which contains:
     -   Raw data (S14, S20 and S30)
-    -   Processed data (s20_filtered.csv, s20_summary_gene.csv, s20_summary_gene_filtered.csv, s20_summary_samp.csv, s30_filtered.csv, s30_summary_gene.csv, s30_summary_gene_filtered.csv, s30_summary_samp.csv)
-    -   Two scripts called cont-fgf-s30.R and cont-fgf-s20.R
+    -   Processed data (`s30_filtered.csv`, `s30_summary_gene.csv`,
+        `s30_summary_gene_filtered.csv`, `s30_summary_samp.csv` and
+        equivalents for S14 *OR* S20)
+    -   Two scripts called `cont-fgf-s30.R` and `cont-fgf-s20.R` *OR*
+        `cont-fgf-s14.R`
+:::
 
-These should be organised into folders. Code should well commented and easy to read.
-
-Note: you may have done S14 instead of S20.
-
+Files should be organised into folders. Code should well commented and
+easy to read.
 
 ## 🐭 Mice
 
-After the Omics 1 Workshop, Look after future you and the Independent Study to consolidate, you should have:
-
 -   An RStudio Project called `mice-88H` which contains
-
     -   Raw data (hspc, prog, lthsc)
-    -   Processed data (hspc_summary_gene.csv, hspc_summary_samp.csv, prog_summary_gene.csv, prog_summary_samp.csv)
-    -   One script called hspc-prog.R
+    -   Processed data (`hspc_summary_gene.csv`,
+        `hspc_summary_samp.csv`, `prog_summary_gene.csv`,
+        `prog_summary_samp.csv`)
+-   One script called `hspc-prog.R`
 
-These should be organised into folders. Code should well commented and easy to read.
+Files should be organised into folders. Code should well commented and
+easy to read.
 
-## 🍂 xxxx
-
+## 🍂
 
 Either of the other examples.
 
-what we have done: explore
-what we will do this week DE
+## If you do not have those
 
-what we will do next week
-further explore with dimension reduction and clustering
-plot results with volcanoplots
-look up the gene information
+Go through:
 
-further explore with PCA
+-   [Omics 1: 👋 Hello data! Workshop](../week-3/workshop.html)
+    including:
 
-what is pca
+-   [🤗 Look after future
+    you!](../week-3/workshop.html#look-after-future-you) and
+
+-   the [Independent Study to
+    consolidate](../week-3/study_after_workshop.html)
+
+# Differential expression
+
+## Differential expression
+
+::: incremental
+-   The goal of differential expression is to test whether there is a
+    significant difference in gene expression between groups.
+
+-   A large number of computational methods have been developed for
+    differential expression analysis
+
+-   R is the leading language for differential expression analysis
+:::
+
+## Differential expression
+
+::: incremental
+-   the statistical concepts are very similar to those you have already
+    encountered in stages 1 and 2
+
+-   you are essentially doing paired- or independent-samples tests
+
+-   but you are doing a lot of them! One for every gene
+
+-   data need normalisation before comparison
+:::
+
+## Statistical concepts
+
+Like familiar tests:
+
+::: incremental
+-   the type of test (the function) you use depends on the type of data
+    you have and the type of assumptions you want to make
+
+-   the tests work by comparing the variation between groups to the
+    variation within groups.
+
+-   you will get: the difference between groups, a test statistic, and a
+    *p*-value
+
+-   you also get an adjusted *p*-value which is the 'correction' for
+    multiple testing
+:::
+
+## The difference between groups
+
+::: incremental
+-   The difference between groups is given as the log~2~ fold change in
+    expression between groups
+
+-   A fold change is the expression in one group divided by the
+    expression in the other group
+
+-   we use fold changes because the absolute expression values may not
+    be accurate and relative changes are what matters
+
+-   we use log~2~ fold changes because they are symmetrical around 0
+:::
+
+## log~2~ fold change
+
+::: incremental
+-   log~2~ means log to the base 2
+
+-   Suppose the expression in group A is 5 and the expression in group B
+    is 8
+
+-   A/B = 5/8 = 0.625 and B/A = 8/5 = 1.6
+
+-   If B is greater than A the range of A/B is 0 to 1 but the range of
+    B/A is 1 to infinity
+
+-   However, if we take the log~2~ of A/B we get -0.678 and the log~2~
+    of B/A is 0.678.
+:::
+
+## Adjusted *p*-value
+
+::: incremental
+-   The *p*-value has to be adjusted because of the number of tested
+    being done
+
+-   In stage 1, we used Tukey's HSD to adjust for multiple testing
+    following an ANOVA
+
+-   Here the Benjamini-Hochberg procedure [@benjamini1995] is used to
+    adjust for multiple testing
+
+-   BH controls the [False Discovery
+    Rate](https://en.wikipedia.org/wiki/False_discovery_rate) (FDR)
+
+-   The FDR is the proportion of false positives among the genes called
+    significant
+:::
+
+## Normalisation
+
+::: incremental
+-   Normalisation adjusts raw counts to account for factors that prevent
+    direct comparisons
+
+-   Normalisation usually influences the experimental design as well as
+    the analysis
+
+-   The 🐭 mouse data have been normalised to simplify the analysis for
+    you; the 🐸 frog data have not but the DE method will do this for
+    you.
+
+-   Normalisation is a big topic. See @düren2022; @bullard2010;
+    @lytal2020; @abrams2019; @vallejos2017; @evans2017
+:::
+
+## Type of test (the function)
+
+::: incremental
+-   A large number of computational methods have been developed for
+    differential expression analysis
+
+-   Methods vary in the types of normalisation they do, the statistical
+    model they use, and the assumptions they make
+
+-   Some of the most well-known methods are provided by: **`DESeq2`**
+    [@DESeq2], **`edgeR`** [@robinson2010; @mccarthy2012; @chen2016],
+    **`limma`** [@ritchie2015] and **`scran`** [@scran]
+:::
+
+## Type of test (the function)
+
+::: incremental
+
+-   **`DESeq2`** and **`edgeR`**
+    -   both require raw counts as input
+    -   both assume that most genes are not DE
+    -   both use a negative binomial distribution[^1] to model the data
+    -   use slightly different normalisation methods: **`DESeq2`** uses
+        the median of ratios method; **`edgeR`** uses the trimmed mean
+        of M values (TMM) method
+:::
+
+[^1]: A discrete distribution for counts, similar to the Poisson
+    distribution
 
 
-## DESeq2
+## Type of test (the function)
 
-the Negative Binomial is a good approximation for data where the
-mean < variance i.e., more clumped
-
-Goal of DE is to identify and correct for sources of variation that are not
-due to treatments
-
-explain normalisation # https://hbctraining.github.io/DGE_workshop_salmon_online/lessons/02_DGE_count_normalization.html
-#  this is a good account of normalisation methods
-
-To normalize for sequencing depth and RNA composition,
-
-DESeq2 uses the median of ratios method. This happens automatically
-when we do the DE. models the normalization inside the Generalized Linear Model
-
-data must be raw counts
-
-## DESeq2
-
-DESeq2 needs 
--   a metadata file which contain information about the samples and the treatments
--   a matrix of the counts
--   a design formula which describes the model to be fitted. it must use the columns in the metadat file.
+-   **`scran`** 
+    -   works on normalized log-expression values 
+    -   performs Welch t-tests
 
 
 
-##
+## Meta data
 
-```{r}
-#| echo: false
-library(tidyverse)
-## Import metadata that maps the sample names to treatments
-meta <- read_table("meta/frog_meta_data.txt")
-knitr::kable(meta)
+::: incremental
+-   DE methods require two types of data: the expression data and the
+    meta data
 
-```
+-   The meta data is the information about the samples
 
+-   It says which samples (columns) are in which group (s)
 
-## DESeq2
+-   It is usually stored in a separate file
+:::
 
+## 🐸 Data
 
-differential expression results
+-   Expression for the whole transcriptome [*X. laevis* v10.1 genome
+    assembly](https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp)
 
-log2 foldhcange - explain why log2
-a tests statistic,  
+-   Values are raw counts
 
-baseMean, log2FoldChange, lfcSE, stat, pvalue and padj, and also includes metadata columns of variable information. The lfcSE gives the standard error of the log2FoldChange. For the Wald test, stat is the Wald statistic:
+-   The statistical analysis method we will use **`DESeq2`** [@DESeq2]
+    requires raw counts and performs the normalisation itself
 
+## 🐭 Data
 
-a p-value and a padj
+-   Expression for a subset of genes, the surfaceome
 
-explain the adjusted p value.
+-   Values are log2 normalised values
 
+-   The statistical analysis method we will use **`scran`** [@scran]
+    requires normalised values
 
+# Workshops
 
+## Workshops
+
+-   Omics 1: Hello data Getting to know the data. Checking the
+    distributions of values
+
+-   Omics 2: Statistical Analysis Identifying which genes are
+    differentially expressed between treatments.
+
+-   Omics 3: Visualising and Interpreting. PCA, Volcano plots and
+    heatmaps to visualise results. Interpreting the results and finding
+    out more about genes of interest.
 
 ## References
