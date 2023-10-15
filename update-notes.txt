@@ -19,18 +19,9 @@ Place holders:
 🍂 xxxx data
 
 
-Week 3: Structure data science 1
-
-Stem cell RNA (Jillian Barlow); Development RNA (Betsy Pownall), Ecology omics (Kelly Redeker)
-
-xxx (Richard Maguire); Neuroscience (Sean Sweeney)
-
-Structure (Michael Plevin)
-
 🐸 Frog development data:
 
 🐭 Stem cell data:
-
 
 
 omics hello data
@@ -60,8 +51,6 @@ scran BiocManager::install("scran")
 
 DESeq2 BiocManager::install("DESeq2")
 
-
-for workshop 2, make sure you examine which frog genes are 0 in all of one sample but present in all of the other
 
 which genes matters: first do venn diagram, present absent
 then to differential expressions

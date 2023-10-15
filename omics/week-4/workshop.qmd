@@ -19,7 +19,9 @@ editor:
 
 ## Session overview
 
-In this workshop you will lxxxx
+In the workshop, you will learn how to perform differential expression
+analysis on raw counts using **`DESeq2`** [@DESeq2] or on logged
+normalised expression values using **`scran`** [@scran] or both.
 
 # Set up
 
@@ -31,16 +33,19 @@ Or
 
 🎬 Open 🐭 `mice-88H` Project and the `hspc-prog.R` script.
 
-🎬 Make a new folder `results` in the project directory. This is where
-we will save our results.
+🎬 Make a new folder `results` in the project directory. You can use the
+New Folder button in the Files pane but here I have used the **`fs`**
+[@fs] package
 
 ```{r}
 #| eval: false
 fs::dir_create("results")
 ```
 
-🎬 Load **`tidyverse`** You most likely have this code at the top of
-`cont-fgf-s30.R` or `hspc-prog.R` already.
+This is where we will save our results.
+
+🎬 Load **`tidyverse`** [@tidyverse] You most likely have this code at
+the top of `cont-fgf-s30.R` or `hspc-prog.R` already.
 
 ```{r}
 library(tidyverse)
@@ -66,17 +71,23 @@ version. As this is what you want, this has always been fine. It still
 is fine in this case. However, as you start to load more packages, you
 will want to know if you are using a function from a package that has
 the same name as a function in another loaded package. This is where the
-**`conflicted`** package comes in. **`Conflicted`** will warn you when
-you are using a function that has the same name as a function in another
-package. You can then choose which function to use.
+**`conflicted`** [@conflicted] package comes in. **`Conflicted`** will
+warn you when you are using a function that has the same name as a
+function in another package. You can then choose which function to use.
 
-🎬 Load the **`conflicted`** package.
+🎬 Load the **`conflicted`** package:
 
 ```{r}
 library(conflicted)
 ```
 
-Perfer to use dplyr's version of filter
+Instead of getting a warning every time you are using a function that
+has a function with the same name in another package, we can declare a
+preference for one function over another. This is useful for the
+functions you use a lot or ones where you are certain you always want to
+use a particular function.
+
+🎬 Use the **`dplyr`** version of `filter()` by default:
 
 ```{r}
 conflict_prefer("filter", "dplyr")
@@ -88,21 +99,21 @@ We will carry out several steps
 
 1.  Import the data
 2.  Find the genes that are expressed in only one treatment (the control
-    or the FGF-treated) 
+    or the FGF-treated)
 3.  Create a DESeqDataSet object. This is a special object that is used
     by the **`DESeq2`** package
-4.  Prepare the normalised counts from the DESeqDataSet object. 
+4.  Prepare the normalised counts from the DESeqDataSet object.
 5.  Do differential expression analysis on the genes. This needs to be
-    done on the raw counts. 
+    done on the raw counts.
 
-
-The creation of the DESeqDataSet object, the preparation of the normalised counts and the differential expression analysis are all done with the **`DESeq2`** package
-
+The creation of the DESeqDataSet object, the preparation of the
+normalised counts and the differential expression analysis are all done
+with the **`DESeq2`** package
 
 ## Import
 
-We need to import the S30 data that were filtered to remove genes with 4, 5
-or 6 zeros and those where the total counts was less than 20.
+We need to import the S30 data that were filtered to remove genes with
+4, 5 or 6 zeros and those where the total counts was less than 20.
 
 🎬 Import the data from the `data-processed` folder.
 
@@ -144,6 +155,7 @@ s30_fgf_only <- s30_filtered |>
 ❓ How many genes are expressed only in the FGF-treated group?
 
 <!-- #---THINKING ANSWER--- -->
+
 <!-- There are 26 genes expressed only in the FGF-treated group. -->
 
 🎬 Now you find any genes that are expressed only in the control group.
@@ -161,14 +173,21 @@ s30_con_only <- s30_filtered |>
 
 ```
 
-❓ Do the results  make sense to you in light of what you know about the biology?
+❓ Do the results make sense to you in light of what you know about the
+biology?
 
 <!-- #---THINKING ANSWER--- -->
+
 <!-- there are no genes expressed in the control group but not in the FGF-treated group -->
+
 <!-- Since FGF is a growth factor, it is likely to induce the expression of genes. Therefore,  -->
+
 <!-- it is not surprising to me that there are no genes expressed in the control group but  -->
+
 <!-- not in the FGF-treated group. However, I'm not an expert in developmental biology.  -->
+
 <!-- Domain expertise is important when analysing data so discuss your results with Betsy  -->
+
 <!-- and your group. -->
 
 🎬 Write to file (saved in `results`) all the genes that are expressed
@@ -180,11 +199,9 @@ one group only.
 write_csv(s30_fgf_only, "results/s30_fgf_only.csv")
 ```
 
-
-
 ## Create DESeqDataSet object
 
-🎬 Load the DESeq2 package
+🎬 Load the DESeq2 package:
 
 ```{r}
 #| echo: false
@@ -192,31 +209,40 @@ write_csv(s30_fgf_only, "results/s30_fgf_only.csv")
 conflicts_prefer(GenomicRanges::setdiff)
 library(DESeq2)
 ```
-```{r}
-#| echo: false
 
-```
+A DEseqDataSet object is a custom data type that is used by
+**`DESeq2`**. Custom data types are common in the Bioconductor[^1]
+packages. They are used to store data in a way that is useful for the
+analysis. These data types typically have data, transformed data,
+metadata and experimental designs within them.
 
-
-A DEseqDataSet object is a custom data type that is used by the DESeq2. Custom data types are common in the Bioconductor packages. They are used to store data in a way that is useful for the analysis. These data types typically have data, transformed data, metadata and experimental designs within them.
+[^1]: [Bioconductor](https://www.bioconductor.org/) is a project that
+    develops and supports R packages for bioinformatics.
 
 To create a DESeqDataSet object, we need to provide three things:
 
-1.   The raw counts - these are what we imported into `s30_filtered`
-2.   The meta data which gives information about the samples and which treatment groups they belong to
-3.   A design matrix which captures the design of the statistical model. 
+1.  The raw counts - these are what we imported into `s30_filtered`
+2.  The meta data which gives information about the samples and which
+    treatment groups they belong to
+3.  A design matrix which captures the design of the statistical model.
 
-The counts must in a matrix rather than a dataframe. Unlike a dataframe, a matrix has columns of all the same type. That is, it will contain only the counts. The gene ids are given as row names rather than a column. The `matrix()` function will create a matrix from a dataframe of columns of the same type and the `select()` function can be used to remove the gene ids column.
+The counts must in a matrix rather than a dataframe. Unlike a dataframe,
+a matrix has columns of all the same type. That is, it will contain only
+the counts. The gene ids are given as row names rather than a column.
+The `matrix()` function will create a matrix from a dataframe of columns
+of the same type and the `select()` function can be used to remove the
+gene ids column.
 
 🎬 Create a matrix of the counts:
+
 ```{r}
 s30_count_mat <- s30_filtered |>
   select(-xenbase_gene_id) |>
   as.matrix()
 ```
 
-
 🎬 Add the gene ids as row names to the matrix:
+
 ```{r}
 # add the row names to the matrix
 rownames(s30_count_mat) <- s30_filtered$xenbase_gene_id
@@ -225,7 +251,10 @@ rownames(s30_count_mat) <- s30_filtered$xenbase_gene_id
 
 You might want to view the matrix.
 
-The metadata are in a file,  [frog_meta_data.txt](meta_data/frog_meta_data.txt). This is a tab-delimited file. The first column is the sample name and the second column is the treatment group. 
+The metadata are in a file,
+[frog_meta_data.txt](meta_data/frog_meta_data.txt). This is a
+tab-delimited file. The first column is the sample name and the second
+column is the treatment group.
 
 🎬 Make a folder called `meta` and save the file to it.
 
@@ -235,18 +264,22 @@ The metadata are in a file,  [frog_meta_data.txt](meta_data/frog_meta_data.txt).
 meta <- read_table("meta/frog_meta_data.txt")
 ```
 
-🎬 Examine the resulting dataframe
+🎬 Examine the resulting dataframe.
 
-We need to add the sample names as row names to the metadata dataframe. This is because the DESeqDataSet object will use the row names to match the samples in the metadata to the samples in the counts matrix.
+We need to add the sample names as row names to the metadata dataframe.
+This is because the DESeqDataSet object will use the row names to match
+the samples in the metadata to the samples in the counts matrix.
 
 🎬 Add the sample names as row names to the metadata dataframe:
 
 ```{r}
 row.names(meta) <- meta$sample_id
 ```
+
 (you will get a warning message but you can ignore it)
 
-We are dealing only with the S30 data so we need to remove the samples that are not in the S30 data.
+We are dealing only with the S30 data so we need to remove the samples
+that are not in the S30 data.
 
 🎬 Filter the metadata to keep only the S30 information:
 
@@ -255,14 +288,21 @@ meta_S30 <- meta |>
   dplyr::filter(stage == "stage_30")
 ```
 
-
 ```{r}
 #| echo: false
 meta_S30
 ```
 
-We can now create the DESeqDataSet object. The design formula describes the statistical model You should notice that it is the same sort of formula we used in `t.test()`, `lm()`,` glm()` etc. The `~` indicates that the left hand side is the response variable (in this case counts) and the right hand side are the explanatory variables. We are interested in the difference between the treatments but we include `sibling_rep` to account for the fact that the data are paired. 
-The names of the columns in the count matrix have to match the names in the metadata dataframe and the names of the explanatory variables in the design formula have to match the names of columns in the metadata.
+We can now create the DESeqDataSet object. The design formula describes
+the statistical model You should notice that it is the same sort of
+formula we used in `t.test()`, `lm()`,`glm()` etc. The `~` indicates
+that the left hand side is the response variable (in this case counts)
+and the right hand side are the explanatory variables. We are interested
+in the difference between the treatments but we include `sibling_rep` to
+account for the fact that the data are paired. The names of the columns
+in the count matrix have to match the names in the metadata dataframe
+and the names of the explanatory variables in the design formula have to
+match the names of columns in the metadata.
 
 🎬 Create the DESeqDataSet object:
 
@@ -272,52 +312,65 @@ dds <- DESeqDataSetFromMatrix(countData = s30_count_mat,
                               design = ~ treatment + sibling_rep)
 ```
 
-
-
-The warning "Warning: some variables in design formula are characters, converting to factors" just means that the variable type of treatment and sibling_rep in the metadata dataframe are char. This is not a as `DESeqDataSetFromMatrix()` has made them into the factors it needs.
+The warning "Warning: some variables in design formula are characters,
+converting to factors" just means that the variable type of treatment
+and sibling_rep in the metadata dataframe are char. This is not a as
+`DESeqDataSetFromMatrix()` has made them into the factors it needs.
 
 🎬 Examine the DESeqDataSet object.
 
-The counts are in `dds@assays@data@listData[["counts"]]` and the metadata are in `dds@colData` but the easiest way to  see tham is to use the `counts()` and `colData()` functions from the **`DESeq2`** package.
+The counts are in `dds@assays@data@listData[["counts"]]` and the
+metadata are in `dds@colData` but the easiest way to see them is to use
+the `counts()` and `colData()` functions from the **`DESeq2`** package.
 
 🎬 View the counts:
+
 ```{r}
 counts(dds) |> View()
 ```
-You should be able to see that this is the same as in `s30_count_mat`. 
 
+You should be able to see that this is the same as in `s30_count_mat`.
 
 ```{r}
 colData(dds)
 
 ```
 
-
-
 ## Prepare the normalised counts
 
-The normalised counts are the counts that have been transformed to account for the library size (ie., the total number of reads in a sample) and the gene length. We have to first estimate the normalisation factors and store them in the DESeqDataSet object and then we can get the normalised counts.
- 
-🎬 Estimate the factors for normalisation and store them in the DESeqDataSet object:
+The normalised counts are the counts that have been transformed to
+account for the library size (i.e., the total number of reads in a
+sample) and the gene length. We have to first estimate the normalisation
+factors and store them in the DESeqDataSet object and then we can get
+the normalised counts.
+
+🎬 Estimate the factors for normalisation and store them in the
+DESeqDataSet object:
 
 ```{r}
 dds <- estimateSizeFactors(dds)
 ```
 
-🎬 Look at the factors (just for information)
+🎬 Look at the factors (just for information):
+
 ```{r}
 sizeFactors(dds)
 ```
-To get the normalised counts we again used the counts() function but this time we use the `normalized=TRUE` argument.` 
+
+To get the normalised counts we again used the `counts()` function but
+this time we use the `normalized=TRUE` argument.
 
 🎬 Save the normalised to a matrix:
+
 ```{r}
 normalised_counts <- counts(dds, normalized = TRUE)
 ```
 
-We will write the normalised counts to a file so that we can use them in the future. 
+We will write the normalised counts to a file so that we can use them in
+the future.
 
-🎬 Make a dataframe of the normalised counts, add a column for the gene ids and write to file: 
+🎬 Make a dataframe of the normalised counts, add a column for the gene
+ids and write to file:
 
 ```{r}
 data.frame(normalised_counts,
@@ -325,26 +378,43 @@ data.frame(normalised_counts,
   write_csv(file = "results/S30_normalised_counts.csv")
 ```
 
-
 ## Differential expression analysis
 
-We used the `DESeq()` function to do the differential expression analysis. This function fits the statistical model to the data and then uses the model to calculate the significance of the difference between the treatments. It again stored the results in the DESseqDataSet object. Note that the differential expression needs the raw (unnormalised counts) as it does its own normalisation as part of the process.
+We used the `DESeq()` function to do the differential expression
+analysis. This function fits the statistical model to the data and then
+uses the model to calculate the significance of the difference between
+the treatments. It again stored the results in the DESseqDataSet object.
+Note that the differential expression needs the raw (unnormalised
+counts) as it does its own normalisation as part of the process.
 
 🎬 Run the differential expression analysis:
+
 ```{r}
 dds <- DESeq(dds)
 ```
-The function will take only a few moments to run on this data but can take longer for bigger datasets. 
 
-We need to define the contrasts we want to test. We want to test the difference between the treatments so we will define the contrast as `FGF` and `control`.
+The function will take only a few moments to run on this data but can
+take longer for bigger datasets.
+
+We need to define the contrasts we want to test. We want to test the
+difference between the treatments so we will define the contrast as
+`FGF` and `control`.
 
 🎬 Define the contrast:
+
 ```{r}
 contrast_fgf <- c("treatment", "FGF", "control")
 ```
 
-Notes that `treatment` is the name of the column in the metadata dataframe and `FGF` and `control` are the names of the levels in the `treatment` column. By putting them in the order `FGF` , `control` we are saying the fold change will be FGF / control. If we had put them in the order `control`, `FGF` we would have got the fold change as control / FGF. This means positive log fold changes indicate FGF > control and negative log fold changes indicates control > FGF.
+Note that `treatment` is the name of the column in the metadata
+dataframe and `FGF` and `control` are the names of the levels in the
+`treatment` column. By putting them in the order `FGF` , `control` we
+are saying the fold change will be FGF / control. If we had put them in
+the order `control`, `FGF` we would have got the fold change as control
+/ FGF. This means:
 
+-   positive log fold changes indicate FGF \> control and
+-   negative log fold changes indicates control \> FGF.
 
 🎬 Extract the results from the DESseqDataSet object:
 
@@ -353,33 +423,34 @@ results_fgf <- results(dds,
                        contrast = contrast_fgf)
 ```
 
-This will give us the log2 fold change and p-value for the contrast
+This will give us the log2 fold change and p-value for the contrast.
 
 🎬 Save the results to a file:
+
 ```{r}
 data.frame(results_fgf,
            xenbase_gene_id = row.names(results_fgf)) |> 
   write_csv(file = "results/S30_results.csv")
 ```
 
-
 # 🐭 Analysis
-
 
 We will carry out several steps
 
 1.  Import the prog and hspc data
 2.  Combine the two datasets ready for analysis
 3.  Filter the data to remove genes that are not expressed in any cell
-4.  Find the genes that are expressed in only one cell type (the prog
-    or the hspc) 
-5.  Do differential expression analysis on the genes using the **`scran`** package. This needs to be done on the logged normalised counts.
+4.  Find the genes that are expressed in only one cell type (the prog or
+    the hspc)
+5.  Do differential expression analysis on the genes using the
+    **`scran`** package. This needs to be done on the logged normalised
+    counts.
 
-## Import 
+## Import
 
-🎬 Import surfaceome_hspc.csv and surfaceome_prog.csv into dataframes called hspc and prog respectively. 
+🎬 Import surfaceome_hspc.csv and surfaceome_prog.csv into dataframes
+called `hspc` and `prog` respectively.
 
- 
 ```{r}
 #| echo: false
 #---CODING ANSWER---
@@ -387,38 +458,64 @@ hspc <- read_csv("data-raw/surfaceome_hspc.csv")
 prog <- read_csv("data-raw/surfaceome_prog.csv")
 ```
 
-
 ## Combine the two datasets
 
-We need to combine the two datasets of 701 and 798 cells into one dataset of 1499 cells, i.e., 1499 columns. The number of rows is the number of genes, 280. Before combining, we must make sure genes in the same order in both dataframes or we would be comparing the expression of one gene in one cell type to the expression of a different gene in the other cell type!
+We need to combine the two datasets of 701 and 798 cells into one
+dataset of 1499 cells, i.e., 1499 columns. The number of rows is the
+number of genes, 280. Before combining, we must make sure genes in the
+same order in both dataframes or we would be comparing the expression of
+one gene in one cell type to the expression of a different gene in the
+other cell type!
 
 🎬 Check the gene ids are in the same order in both dataframes:
+
 ```{r}
 identical(prog$ensembl_gene_id, hspc$ensembl_gene_id)
 ```
-**`scran`** can use a matrix or a dataframe of counts but theses must be log normalised counts. If using a dataframe, the columns must only contain the expression values (not the gene ids).
 
-🎬 Combine the two dataframes (minus the gene ids) into one dataframe called `prog_hspc`:
+**`scran`** can use a matrix or a dataframe of counts but theses must be
+log normalised counts. If using a dataframe, the columns must only
+contain the expression values (not the gene ids).
+
+🎬 Combine the two dataframes (minus the gene ids) into one dataframe
+called `prog_hspc`:
+
 ```{r}
 prog_hspc <- bind_cols(prog[-1], hspc[-1])
 
 ```
 
 🎬 Now add the gene ids as the row names:
+
 ```{r}
 row.names(prog_hspc) <- prog$ensembl_gene_id
 ```
 
+## Filter to remove unexpressed genes
 
-## Filter to remove unexpressed genes 
+In this dataset, we will not see and genes that are not expressed in any
+of the cells because we are using a specific subset of the transcriptome
+that was deliberately selected. However, we will go through how to do
+this because it is an important step in most analyses.
 
-In this dataset, we will not see and genes that are not expressed in any of the cells because we are using a specific subset of the transcriptome that was deliberately selected. However, we will go through how to do this because it is an important step in most analyses. 
+For the 🐸 frog data you should remember that we were able to filter out
+our unexpressed genes in [Omics 1](../week-3/workshop.html) because we
+were examining both groups to be compared. In that workshop, [we
+discussed](../week-3/workshop.html#frog-filtering) that we could not
+filter out unexpressed genes in the 🐭 mouse data because we only had
+one cell types at that time. During the [Consolidate Independent
+Study](../week-3/study_after_workshop.html) you examined the hspc cells.
 
-For the 🐸 frog data you should remember that we were able to filter out our unexpressed genes in [Omics 1](../week-3/workshop.html) because we were examining both groups to be compared. In that workshop, [we discussed](../week-3/workshop.html#frog-filtering) that we could not filter out unexpressed genes in the 🐭 mouse data because we only had one cell types at that time. During the [Consolidate Independent Study](../week-3/study_after_workshop.html) you examined the hspc cells. 
-
-Where the sum of all the values in the rows is zero, all the entries must be zero. We can use this to find the filter the genes that are not expressed in any of the cells. To do row wise aggregates such as the sum across rows we can use the `rowwise()` function. `c_across()` allows us to use the colon notation `Prog_001:HSPC_852` in `sum()` rather than having to list all the column names: `sum(Prog_001, Prog_002, Prog_002, Prog_004,.....)` 
+Where the sum of all the values in the rows is zero, all the entries
+must be zero. We can use this to find the filter the genes that are not
+expressed in any of the cells. To do row wise aggregates such as the sum
+across rows we can use the `rowwise()` function. `c_across()` allows us
+to use the colon notation `Prog_001:HSPC_852` in `sum()` rather than
+having to list all the column names:
+`sum(Prog_001, Prog_002, Prog_002, Prog_004,.....)`
 
 🎬 Find the genes that are 0 in every column of the prog_hspc dataframe:
+
 ```{r}
 prog_hspc |> 
   rowwise() |> 
@@ -426,15 +523,16 @@ prog_hspc |>
 
 ```
 
-
 ❓ What do you conclude?
 
 <!-- #---THINKING ANSWER--- -->
+
 <!-- The are no genes that are completely unexpressed in this set of 280 genes -->
 
 We might also examine the genes which are least expressed.
 
 🎬 Find ten least expressed genes:
+
 ```{r}
 rowSums(prog_hspc) |> sort() |> head(10)
 ```
@@ -444,12 +542,15 @@ rowSums(prog_hspc) |> sort() |> head(10)
 <!-- #---THINKING ANSWER--- -->
 
 <!-- When you consider that there are 1499 cells, a values of 30 are low even  -->
+
 <!-- considering these are already logged and normalised (ie., the range of  -->
+
 <!-- values is less that it would be for raw counts) -->
 
 ## Find the genes that are expressed in only one cell type
 
-To find the genes that are expressed in only one cell type, we can use the same approach as above but only sum the columns for one cell type. 
+To find the genes that are expressed in only one cell type, we can use
+the same approach as above but only sum the columns for one cell type.
 
 🎬 Find the genes that are 0 in every column for the Prog cells:
 
@@ -460,7 +561,9 @@ prog_hspc |>
 
 ```
 
-Note that if we knew there were some rows that were all zero across both cerll types, we would need to add `|> filter(sum(c_across(Prog_001:Prog_852)) != 0)`
+Note that if we knew there were some rows that were all zero across both
+cerll types, we would need to add
+`|> filter(sum(c_across(Prog_001:Prog_852)) != 0)`
 
 🎬 Now you find the genes that are 0 in every column for the HSPC cells:
 
@@ -481,17 +584,26 @@ prog_hspc |>
 
 ## Differential expression analysis
 
-Like **`DESeq2`**, **`scran`** uses a statistical model to calculate the significance of the difference between the treatments and needs metadata to define the treatments.
+Like **`DESeq2`**, **`scran`** uses a statistical model to calculate the
+significance of the difference between the treatments and needs metadata
+to define the treatments.
 
 🎬 Load the **`scran`** package:
+
 ```{r}
 #| echo: false
 library(scran)
 ```
 
-The meta data needed for the frog data was information about which columns were in which treatment group and which sibling group and we had that information in a file. Similarly, here we need information on which columns are from which cell type. Instead of having this is a file, we will create a vector that indicates which column belongs to which cell type.
+The meta data needed for the frog data was information about which
+columns were in which treatment group and which sibling group and we had
+that information in a file. Similarly, here we need information on which
+columns are from which cell type. Instead of having this is a file, we
+will create a vector that indicates which column belongs to which cell
+type.
 
-🎬 Create a vector that indicates which column belongs to which cell type:
+🎬 Create a vector that indicates which column belongs to which cell
+type:
 
 ```{r}
 cell_type <- rep(c("prog","hspc"), 
@@ -499,7 +611,10 @@ cell_type <- rep(c("prog","hspc"),
                            length(hspc) - 1))
 ```
 
-The number of times each cell type is repeated is the number of columns in that cell type minus 1. This is because we have removed the column with the gene ids. Do check that the length of the `cell_type` vector is the same as the number of columns in the `prog_hspc` dataframe.
+The number of times each cell type is repeated is the number of columns
+in that cell type minus 1. This is because we have removed the column
+with the gene ids. Do check that the length of the `cell_type` vector is
+the same as the number of columns in the `prog_hspc` dataframe.
 
 🎬 Run the differential expression analysis:
 
@@ -508,16 +623,21 @@ res_prog_hspc <- findMarkers(prog_hspc,
                              cell_type)
 ```
 
-`findMarkers()` is the function that runs the differential expression analysis. The first argument is the dataframe containing the data. The second argument is the vector indicating which columns are in which cell type. It gives us two dataframes of the results - rather unnecessarily. One is the results with fold changes that are Prog/HSPC and the other is the results with fold changes that are HSPC/Prog. These have the same magnitude, just a different sign
+`findMarkers()` is the function that runs the differential expression
+analysis. The first argument is the dataframe containing the data. The
+second argument is the vector indicating which columns are in which cell
+type. It gives us two dataframes of the results - rather unnecessarily.
+One is the results with fold changes that are Prog/HSPC and the other is
+the results with fold changes that are HSPC/Prog. These have the same
+magnitude, just a different sign
 
-The dataframe `res_prog_hspc$prog` is log prog - log hspc (i.e.,Prog/HSPC). This means 
--   Positive fold change: prog is higher than hspc
--   Negative fold change: hspc is higher than prog
+The dataframe `res_prog_hspc$prog` is log prog - log hspc
+(i.e.,Prog/HSPC). This means - Positive fold change: prog is higher than
+hspc - Negative fold change: hspc is higher than prog
 
-The dataframe `res_prog_hspc$hspc` is log hspc - log prog (i.e., HSPC/Prog). . This means 
--   Positive fold change: hspc is higher than prog
--   Negative fold change: prog is higher than hspc
-
+The dataframe `res_prog_hspc$hspc` is log hspc - log prog (i.e.,
+HSPC/Prog). . This means - Positive fold change: hspc is higher than
+prog - Negative fold change: prog is higher than hspc
 
 ```{r}
 #| echo: false
@@ -526,7 +646,6 @@ data.frame(res_prog_hspc$prog,
   head() |> 
   knitr::kable(cap = "The res_prog_hspc$prog dataframe")
 ```
-
 
 ```{r}
 #| echo: false
@@ -544,16 +663,18 @@ data.frame(res_prog_hspc$prog,
   write_csv("results/prog_hspc_results.csv")
 ```
 
-
-
 # 🤗 Look after future you!
 
+🎬 Go through you script (`cont-fgf-s30.R` or `hspc-prog.R`) and tidy
+up. You might need to :
 
-🎬 tidy up, collect together library statements, 
-make sure don't have repeat code (e.g import)
-edit and rationalise you comments
-
-
+-   collect together library statements at the top of the script
+-   remove code that you needed to start today but which wouldn't be
+    needed running the script from the top (e.g., importing)
+-   edit your comments for clarity
+-   rename variables for consistency or clarity
+-   remove house keeping or exploratory code
+-   restyle code, add code section headers etc
 
 # 🥳 Finished
 
