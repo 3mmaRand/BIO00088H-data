@@ -12,7 +12,11 @@ VLE iframe
 
 <iframe src="https://3mmarand.github.io/BIO00088H-data/omics/week-5/study_after_workshop.html" title="Consolidation" allow="fullscreen"  width="800" height="400"></iframe>
 
-<h1><a href="https://3mmarand.github.io/BIO00088H-data/core/week-1/study_before_workshop.html" target="_blank">Direct link</a></h1>
+<h1 style="color:MediumSeaGreen;">Workshop material  <a href="" target="_blank">Direct link</a></h1>
+
+Independent Study to do before the workshop
+Workshop material
+Independent Study to do after the workshop
 
 Place holders:
 
