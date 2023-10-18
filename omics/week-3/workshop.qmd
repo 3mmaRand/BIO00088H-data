@@ -63,7 +63,7 @@ These are the three datasets. Each set compromises several files.
 -   [xlaevis_counts_S14.csv](data-raw/xlaevis_counts_S14.csv)
 -   [xlaevis_counts_S20.csv](data-raw/xlaevis_counts_S20.csv)
 -   [xlaevis_counts_S30.csv](data-raw/xlaevis_counts_S30.csv)
--   [meta_data.txt](data-raw/meta_data.txt)
+
 
 🐭 Stem cell data:
 
