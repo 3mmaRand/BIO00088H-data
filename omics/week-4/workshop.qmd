@@ -252,7 +252,7 @@ rownames(s30_count_mat) <- s30_filtered$xenbase_gene_id
 You might want to view the matrix.
 
 The metadata are in a file,
-[frog_meta_data.txt](meta_data/frog_meta_data.txt). This is a
+[frog_meta_data.txt](meta/frog_meta_data.txt). This is a
 tab-delimited file. The first column is the sample name and the second
 column is the treatment group.
 
