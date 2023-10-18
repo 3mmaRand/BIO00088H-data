@@ -1,0 +1,44 @@
+---
+title: "Overview"
+subtitle: "Omics 3: Visualising and Interpreting"
+toc: true
+toc-location: right
+---
+
+This week we cover how to visualise and interpret the results of your differential expression analysis. The independent study will allow you to check you have what you should have following the [Omics 2: Statistical Analysis workshop](../week-4/workshop.html) and [Consolidation study](../week-4/study_after_workshop.html). It will also summarise the the methods and plots we will go through in the workshop. In the workshop, we will learn how to conduct a Principle Component Analysis (PCA) and plot the results as well as how to create a nicely formatted Volcano plot and heatmap. We will also consider three factors that help us choose an interesting/important gene: the absolute expression, the fold change and the adjusted p-value. 
+
+We suggest you sit together with your group in the workshop.
+
+### Learning objectives
+
+The successful student will be able to:
+
+-   verify they have the required RStudio Project set up and the data and code files from the previous Workshop and Consolidation study
+-   explain 
+-   
+-   
+-   
+-   
+-   ,
+
+### Instructions
+
+1.  [Prepare](study_before_workshop.qmd)
+
+    i.  📖 Read what you should have so far and about concepts in PCA, volcano plots and heatmaps.
+
+2.  [Workshop](workshop.qmd)
+
+    i.  💻 ....
+
+    ii. 💻 ...
+
+    iii. 💻 ....
+
+    iv. Look after future you!
+
+3.  [Consolidate](study_after_workshop.qmd)
+
+    i.  💻 Use the work you completed in the workshop as a template to apply to a new case.
+
+### References

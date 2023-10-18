@@ -1,0 +1,143 @@
+---
+title: "Independent Study to prepare for workshop"
+subtitle: "Omics 3: Visualising and Interpreting"
+author: "Emma Rand"
+format: 
+  revealjs:
+    footer: "🔗 [About Omics 3: Visualising and Interpreting](https://3mmarand.github.io/BIO00088H-data/omics/week-5/overview.html)"
+    slide-number: true
+    chalkboard: true
+    code-link: true
+    code-line-numbers: false
+bibliography: ../../references.bib
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+## Overview
+
+In these slides we will:
+
+::: incremental
+-   Check where you are
+
+-   learn some concepts 
+
+    -   
+
+-   Find out what packages to install before the workshop
+:::
+
+# Where should you be?
+
+## What we did in Omics 2: Statistical Analysis
+
+::: incremental
+::: {style="font-size: 90%;"}
+-   
+-   
+-   Saved files .
+:::
+:::
+
+## Where should you be?
+
+After the [Omics 2: 👋 Statistical Analysis Workshop](../week-4/workshop.html)
+including:
+
+-   [🤗 Look after future
+    you!](../week-4/workshop.html#look-after-future-you) and
+
+-   the [Independent Study to
+    consolidate](../week-4/study_after_workshop.html), you should have:
+
+## 🐸 Frogs
+
+::: {style="font-size: 90%;"}
+-   An RStudio Project called `frogs-88H` which contains:
+    -   Raw data (S14, S20 and S30)
+    -   Processed data (`s30_filtered.csv`, `s30_summary_gene.csv`,
+        `s30_summary_gene_filtered.csv`, `s30_summary_samp.csv` and
+        equivalents for S14 *OR* S20)
+    -   Two scripts called `cont-fgf-s30.R` and `cont-fgf-s20.R` *OR*
+        `cont-fgf-s14.R`
+:::
+
+Files should be organised into folders. Code should well commented and
+easy to read.
+
+## 🐭 Mice
+
+-   An RStudio Project called `mice-88H` which contains
+    -   Raw data (hspc, prog, lthsc)
+    -   Processed data (`hspc_summary_gene.csv`,
+        `hspc_summary_samp.csv`, `prog_summary_gene.csv`,
+        `prog_summary_samp.csv`)
+-   One script called `hspc-prog.R`
+
+Files should be organised into folders. Code should well commented and
+easy to read.
+
+## 🍂
+
+Either of the other examples.
+
+## If you do not have those
+
+Go through:
+
+-   [Omics 2: Statistical Analysis](../week-4/workshop.html)
+    including:
+
+-   [🤗 Look after future
+    you!](../week-4/workshop.html#look-after-future-you) and
+
+-   the [Independent Study to
+    consolidate](../week-4/study_after_workshop.html)
+
+# xx
+
+## xx
+
+::: incremental
+-   T
+:::
+
+
+
+-   The 🐭 mouse data have been normalised to simplify the analysis for
+    you; the 🐸 frog data have not but the DE method will do this for
+    you.
+
+-
+## Packages to install before the workshop
+
+**``** from CRAN in the the normal way:
+
+```{r}
+#| eval: false
+install.packages("")
+```
+
+**`DESeq2`** from Bioconductor using BiocManager:
+```{r}
+#| eval: false
+BiocManager::install("DESeq2")
+```
+
+
+
+# Workshops
+
+## Workshops
+
+-   Omics 1: Hello data Getting to know the data. Checking the
+    distributions of values
+
+-   Omics 2: Statistical Analysis Identifying which genes are
+    differentially expressed between treatments.
+
+-   Omics 3: Visualising and Interpreting. PCA, Volcano plots and heatmaps to visualise results. Interpreting the results and finding out more about genes of interest.
+
+## References

@@ -1,0 +1,195 @@
+---
+title: "Workshop"
+subtitle: "Omics 3: Visualising and Interpreting"
+author: "Emma Rand"
+toc: true
+toc-depth: 4
+toc-location: right
+execute:
+  echo: true
+  include: true
+  error: true
+bibliography: ../../references.bib
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+# Introduction
+
+## Session overview
+
+In the workshop, you will 
+
+# Set up
+
+Either:
+
+🎬 Open 🐸 `frogs-88H` Project and the `cont-fgf-s30.R` script.
+
+Or
+
+🎬 Open 🐭 `mice-88H` Project and the `hspc-prog.R` script.
+
+
+🎬 Load **`tidyverse`** [@tidyverse] and **`conflicted`**. You most likely have this code at
+the top of `cont-fgf-s30.R` or `hspc-prog.R` already.
+
+```{r}
+library(tidyverse)
+library(conflicted)
+```
+
+```         
+── Attaching core tidyverse packages ─────────────────────────────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.3     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.3     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ───────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package to force all conflicts to become errors
+```
+
+
+
+🎬 Use the **`dplyr`** version of `filter()` by default:
+
+```{r}
+conflict_prefer("filter", "dplyr")
+```
+
+# 🐸 Analysis
+
+We will carry out several steps
+
+1.  Import the data
+2.  
+
+
+
+## Import
+
+We need to import t
+
+🎬 Import the data from the `results` folder.
+
+```{r}
+#| echo: false
+#---CODING ANSWER---
+ <- read_csv("")
+```
+
+
+
+❓ H
+
+<!-- #---THINKING ANSWER--- -->
+
+<!-- There are 26 genes expressed only in the FGF-treated group. -->
+
+🎬 Now you find any genes that are expressed only in the control group.
+
+
+
+
+The normalised counts are the counts that have been transformed to
+account for the library size (i.e., the total number of reads in a
+sample) and the gene length. We have to first estimate the normalisation
+factors and store them in the DESeqDataSet object and then we can get
+the normalised counts.
+
+
+
+🎬 Make a dataframe of the normalised counts, add a column for the gene
+ids and write to file:
+
+```{r}
+data.frame(normalised_counts,
+           xenbase_gene_id = row.names(normalised_counts)) |>
+  write_csv(file = "results/S30_normalised_counts.csv")
+```
+
+🎬 Save the results to a file:
+
+```{r}
+data.frame(results_fgf,
+           xenbase_gene_id = row.names(results_fgf)) |> 
+  write_csv(file = "results/S30_results.csv")
+```
+
+# 🐭 Analysis
+
+We will carry out several steps
+
+1.  Import the 
+
+## Import
+
+🎬 Import 
+
+```{r}
+#| echo: false
+#---CODING ANSWER---
+ <- read_csv("v")
+
+```
+
+
+The dataframe `res_prog_hspc$prog` is log prog - log hspc
+(i.e.,Prog/HSPC). This means - Positive fold change: prog is higher than
+hspc - Negative fold change: hspc is higher than prog
+
+The dataframe `res_prog_hspc$hspc` is log hspc - log prog (i.e.,
+HSPC/Prog). . This means - Positive fold change: hspc is higher than
+prog - Negative fold change: prog is higher than hspc
+
+
+🎬 Write the results to file:
+
+```{r}
+data.frame(res_prog_hspc$prog, 
+           ensembl_gene_id = row.names(res_prog_hspc$prog)) |> 
+  write_csv("results/prog_hspc_results.csv")
+```
+
+# 🤗 Look after future you!
+
+🎬 Go through your script (`cont-fgf-s30.R` or `hspc-prog.R`) and tidy
+up. You might need to :
+
+-   collect together library statements at the top of the script
+-   remove code that you needed to start today but which wouldn't be
+    needed running the script from the top (e.g., importing)
+-   edit your comments for clarity
+-   rename variables for consistency or clarity
+-   remove house keeping or exploratory code
+-   restyle code, add code section headers etc
+
+# 🥳 Finished
+
+Well Done!
+
+# Independent study following the workshop
+
+[Consolidate](study_after_workshop.qmd)
+
+# The Code file
+
+These contain all the code needed in the workshop even where it is not
+visible on the webpage.
+
+The [workshop.qmd](workshop.qmd) file is the file I use to compile the
+practical. Qmd stands for Quarto markdown. It allows code and ordinary
+text to be interleaved to produce well-formatted reports including
+webpages. Right-click on the link and choose Save-As to download. You
+will be able to open the Qmd file in RStudio. Alternatively, [View in
+Browser](https://github.com/3mmaRand/BIO00088H-data/blob/main/omics/week-4/workshop.qmd). Coding and thinking answers are
+marked with `#---CODING ANSWER---` and `#---THINKING ANSWER---`
+
+Pages made with R [@R-core], Quarto [@allaire2022], `knitr` [@knitr],
+`kableExtra` [@kableExtra]
+
+# References
