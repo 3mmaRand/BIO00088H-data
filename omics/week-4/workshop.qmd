@@ -523,6 +523,8 @@ prog_hspc |>
 
 ```
 
+Notice that we have summed across all the columns.
+
 ❓ What do you conclude?
 
 <!-- #---THINKING ANSWER--- -->
@@ -552,7 +554,7 @@ rowSums(prog_hspc) |> sort() |> head(10)
 To find the genes that are expressed in only one cell type, we can use
 the same approach as above but only sum the columns for one cell type.
 
-🎬 Find the genes that are 0 in every column for the Prog cells:
+🎬 Find the genes that are 0 in every column for the HSPC cells:
 
 ```{r}
 prog_hspc |> 
@@ -561,18 +563,21 @@ prog_hspc |>
 
 ```
 
+We have summed across the HSPC cells only. 
 Note that if we knew there were some rows that were all zero across both
-cerll types, we would need to add
+cell types, we would need to add
 `|> filter(sum(c_across(Prog_001:Prog_852)) != 0)`
 
-🎬 Now you find the genes that are 0 in every column for the HSPC cells:
+meaning zero in all the HSPC but not zero in all the Prog
+
+🎬 Now you find the genes that are 0 in every column for the Prog cells:
 
 ```{r}
 #| echo: false
 #---CODING ANSWER---
 prog_hspc |> 
   rowwise() |> 
-  filter(sum(c_across(HSPC_001:HSPC_852)) == 0)
+  filter(sum(c_across(Prog_001:Prog_852)) == 0)
 
 ```
 
@@ -694,7 +699,7 @@ practical. Qmd stands for Quarto markdown. It allows code and ordinary
 text to be interleaved to produce well-formatted reports including
 webpages. Right-click on the link and choose Save-As to download. You
 will be able to open the Qmd file in RStudio. Alternatively, [View in
-Browser](https://github.com/3mmaRand/). Coding and thinking answers are
+Browser](https://github.com/3mmaRand/BIO00088H-data/blob/main/omics/week-4/workshop.qmd). Coding and thinking answers are
 marked with `#---CODING ANSWER---` and `#---THINKING ANSWER---`
 
 Pages made with R [@R-core], Quarto [@allaire2022], `knitr` [@knitr],
