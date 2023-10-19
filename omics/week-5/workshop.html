@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.450">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Emma Rand">
-
 <title>Data Analysis for Group Project - Workshop</title>
 <style>
 code{white-space: pre-wrap;}
@@ -20,6 +17,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -42,7 +73,6 @@ div.csl-indent {
   margin-left: 2em;
 }</style>
 
-
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
@@ -58,8 +88,7 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -78,18 +107,12 @@ div.csl-indent {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-
-<link rel="stylesheet" href="../../styles.css">
+}</script><link rel="stylesheet" href="../../styles.css">
 </head>
-
 <body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Data Analysis for Group Project</span>
@@ -101,47 +124,41 @@ div.csl-indent {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Welcome!</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../core/core.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="../../core/core.html" rel="" target="">
  <span class="menu-text">Core</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../omics/omics.html" rel="" target="">
+    <a class="nav-link active" href="../../omics/omics.html" rel="" target="" aria-current="page">
  <span class="menu-text">Omics</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
+<div class="quarto-navbar-tools ms-auto">
     <a href="https://twitter.com/er_13" rel="" title="Emma's Twitter" class="quarto-navigation-tool px-1" aria-label="Emma's Twitter"><i class="bi bi-twitter"></i></a>
     <a href="https://github.com/3mmaRand/BIO00088H-data" rel="" title="BIO00088H-data GitHub" class="quarto-navigation-tool px-1" aria-label="BIO00088H-data GitHub"><i class="bi bi-github"></i></a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../core/week-1/overview.html">Week 1: Organising analyses</a></li><li class="breadcrumb-item"><a href="../../core/week-1/workshop.html">Workshop</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../omics/week-5/overview.html">Week 5: Visualising and Interpreting</a></li><li class="breadcrumb-item"><a href="../../omics/week-5/workshop.html">Workshop</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-    <div class="sidebar-menu-container"> 
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../core/core.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Core Data Analysis</span></a>
+  <a href="../../omics/omics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Omics Data Analysis for Group Project</span></a>
   </div>
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
@@ -149,160 +166,148 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">Week 1: Organising analyses</span></a>
+ <span class="menu-text">Week 3: Hello data!</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../core/week-1/overview.html" class="sidebar-item-text sidebar-link">
+  <a href="../../omics/week-3/overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../core/week-1/study_before_workshop.html" class="sidebar-item-text sidebar-link">
+  <a href="../../omics/week-3/study_before_workshop.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prepare!</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../core/week-1/workshop.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../omics/week-3/workshop.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workshop</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../core/week-1/study_after_workshop.html" class="sidebar-item-text sidebar-link">
+  <a href="../../omics/week-3/study_after_workshop.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Consolidate!</span></a>
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Week 2: Workflow tips</span></a>
+ <span class="menu-text">Week 4: Statistical Analysis</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../core/week-2/overview.html" class="sidebar-item-text sidebar-link">
+  <a href="../../omics/week-4/overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../core/week-2/study_before_workshop.html" class="sidebar-item-text sidebar-link">
+  <a href="../../omics/week-4/study_before_workshop.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prepare!</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../core/week-2/workshop.html" class="sidebar-item-text sidebar-link">
+  <a href="../../omics/week-4/workshop.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workshop</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../core/week-2/study_after_workshop.html" class="sidebar-item-text sidebar-link">
+  <a href="../../omics/week-4/study_after_workshop.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Consolidate!</span></a>
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">Week 6: Quarto</span></a>
+ <span class="menu-text">Week 5: Visualising and Interpreting</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../core/week-6/overview.html" class="sidebar-item-text sidebar-link">
+  <a href="../../omics/week-5/overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../core/week-6/study_before_workshop.html" class="sidebar-item-text sidebar-link">
+  <a href="../../omics/week-5/study_before_workshop.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prepare!</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../core/week-6/workshop.html" class="sidebar-item-text sidebar-link">
+  <a href="../../omics/week-5/workshop.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Workshop</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../core/week-6/study_after_workshop.html" class="sidebar-item-text sidebar-link">
+  <a href="../../omics/week-5/study_after_workshop.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Consolidate!</span></a>
   </div>
 </li>
       </ul>
-  </li>
+</li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+<li>
+<a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul>
-  <li><a href="#session-overview" id="toc-session-overview" class="nav-link" data-scroll-target="#session-overview">Session overview</a></li>
-  </ul></li>
-  <li><a href="#reproducibility" id="toc-reproducibility" class="nav-link" data-scroll-target="#reproducibility">Reproducibility</a>
-  <ul>
-  <li><a href="#what-is-reproducibility" id="toc-what-is-reproducibility" class="nav-link" data-scroll-target="#what-is-reproducibility">What is reproducibility?</a></li>
-  <li><a href="#why-does-it-matter" id="toc-why-does-it-matter" class="nav-link" data-scroll-target="#why-does-it-matter">Why does it matter?</a></li>
-  <li><a href="#how-to-achieve-reproducibility" id="toc-how-to-achieve-reproducibility" class="nav-link" data-scroll-target="#how-to-achieve-reproducibility">How to achieve reproducibility</a></li>
-  </ul></li>
-  <li><a href="#scripting" id="toc-scripting" class="nav-link" data-scroll-target="#scripting">Scripting</a>
-  <ul>
-  <li><a href="#rationale-for-scripting" id="toc-rationale-for-scripting" class="nav-link" data-scroll-target="#rationale-for-scripting">Rationale for scripting?</a></li>
-  </ul></li>
-  <li><a href="#organisation" id="toc-organisation" class="nav-link" data-scroll-target="#organisation">Organisation</a>
-  <ul>
-  <li><a href="#project-oriented-workflow" id="toc-project-oriented-workflow" class="nav-link" data-scroll-target="#project-oriented-workflow">Project-oriented workflow</a></li>
-  <li><a href="#naming-things" id="toc-naming-things" class="nav-link" data-scroll-target="#naming-things">Naming things</a></li>
-  </ul></li>
-  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a>
-  <ul>
-  <li><a href="#readme-files" id="toc-readme-files" class="nav-link" data-scroll-target="#readme-files">Readme files</a></li>
-  <li><a href="#code-comments" id="toc-code-comments" class="nav-link" data-scroll-target="#code-comments">Code comments</a></li>
-  </ul></li>
-  <li><a href="#github-co-pilot-demo" id="toc-github-co-pilot-demo" class="nav-link" data-scroll-target="#github-co-pilot-demo">Github co-pilot demo</a></li>
-  <li><a href="#quarto-demo" id="toc-quarto-demo" class="nav-link" data-scroll-target="#quarto-demo">Quarto demo</a></li>
-  <li><a href="#useful-exercises" id="toc-useful-exercises" class="nav-link" data-scroll-target="#useful-exercises">Useful exercises</a></li>
-  <li><a href="#well-done" id="toc-well-done" class="nav-link" data-scroll-target="#well-done">🥳 Well Done! 🎉</a></li>
-  <li><a href="#independent-study-following-the-workshop" id="toc-independent-study-following-the-workshop" class="nav-link" data-scroll-target="#independent-study-following-the-workshop">Independent study following the workshop</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+<li><a href="#session-overview" id="toc-session-overview" class="nav-link" data-scroll-target="#session-overview">Session overview</a></li>
   </ul>
-</nav>
+</li>
+  <li><a href="#set-up" id="toc-set-up" class="nav-link" data-scroll-target="#set-up">Set up</a></li>
+  <li>
+<a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">🐸 Analysis</a>
+  <ul>
+<li><a href="#import" id="toc-import" class="nav-link" data-scroll-target="#import">Import</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#analysis-1" id="toc-analysis-1" class="nav-link" data-scroll-target="#analysis-1">🐭 Analysis</a>
+  <ul>
+<li><a href="#import-1" id="toc-import-1" class="nav-link" data-scroll-target="#import-1">Import</a></li>
+  </ul>
+</li>
+  <li><a href="#look-after-future-you" id="toc-look-after-future-you" class="nav-link" data-scroll-target="#look-after-future-you">🤗 Look after future you!</a></li>
+  <li><a href="#finished" id="toc-finished" class="nav-link" data-scroll-target="#finished">🥳 Finished</a></li>
+  <li><a href="#independent-study-following-the-workshop" id="toc-independent-study-following-the-workshop" class="nav-link" data-scroll-target="#independent-study-following-the-workshop">Independent study following the workshop</a></li>
+  <li><a href="#the-code-file" id="toc-the-code-file" class="nav-link" data-scroll-target="#the-code-file">The Code file</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">Workshop</h1>
-<p class="subtitle lead">Organising Reproducible Data Analyses</p>
+<p class="subtitle lead">Omics 3: Visualising and Interpreting</p>
 </div>
 
 
@@ -327,261 +332,129 @@ div.csl-indent {
   </div>
   
 
-</header>
-
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
-<section id="session-overview" class="level2">
-<h2 class="anchored" data-anchor-id="session-overview">Session overview</h2>
-<p>In this workshop we will discuss why reproducibility matters and how to organise your work to make it reproducible. We will cover:</p>
-</section>
-</section>
-<section id="reproducibility" class="level1">
-<h1>Reproducibility</h1>
-<section id="what-is-reproducibility" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-reproducibility">What is reproducibility?</h2>
-<ul>
-<li><p><strong>Reproducible: Same data + same analysis = identical results</strong>. <em>“… obtaining consistent results using the same input data; computational steps, methods, and code; and conditions of analysis. This definition is synonymous with”computational reproducibility”</em> <span class="citation" data-cites="nationalacademiesofsciences2019">(<a href="#ref-nationalacademiesofsciences2019" role="doc-biblioref">National Academies of Sciences et al. 2019</a>)</span></p></li>
-<li><p>Replicable: Different data + same analysis = qualitatively similar results. The work is not dependent on the specificities of the data.</p></li>
-<li><p>Robust: Same data + different analysis = qualitatively similar or identical results. The work is not dependent on the specificities of the analysis.</p></li>
-<li><p>Generalisable: Different data + different analysis = qualitatively similar results and same conclusions. The findings can be generalised</p></li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions"><img src="images/reproducible-matrix.jpg" class="img-fluid figure-img" alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"></a></p>
-<figcaption class="figure-caption">The Turing Way's definitions of reproducible research</figcaption>
-</figure>
+</header><section id="introduction" class="level1"><h1>Introduction</h1>
+<section id="session-overview" class="level2"><h2 class="anchored" data-anchor-id="session-overview">Session overview</h2>
+<p>In the workshop, you will</p>
+</section></section><section id="set-up" class="level1"><h1>Set up</h1>
+<p>Either:</p>
+<p>🎬 Open 🐸 <code>frogs-88H</code> Project and the <code>cont-fgf-s30.R</code> script.</p>
+<p>Or</p>
+<p>🎬 Open 🐭 <code>mice-88H</code> Project and the <code>hspc-prog.R</code> script.</p>
+<p>🎬 Load <strong><code>tidyverse</code></strong> <span class="citation" data-cites="tidyverse">(<a href="#ref-tidyverse" role="doc-biblioref">Wickham et al. 2019</a>)</span> and <strong><code>conflicted</code></strong>. You most likely have this code at the top of <code>cont-fgf-s30.R</code> or <code>hspc-prog.R</code> already.</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://conflicted.r-lib.org/">conflicted</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="why-does-it-matter" class="level2">
-<h2 class="anchored" data-anchor-id="why-does-it-matter">Why does it matter?</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/future_you.png" class="img-fluid figure-img" alt="Person working at a computer with an offstage person asking 'How is the analysis going?' The person at the computer replies 'Can't understand the date...and the data collector does not answer my emails or calls' Person offstage: 'That's terrible! So cruel! Who did collect the data? I will sack them!' Person at the computer: 'um...I did, 3 years ago.'" width="400"></p>
-<figcaption class="figure-caption">futureself, CC-BY-NC, by Julen Colomb</figcaption>
-</figure>
+<pre><code>── Attaching core tidyverse packages ─────────────────────────────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.3     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.3     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ───────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package to force all conflicts to become errors</code></pre>
+<p>🎬 Use the <strong><code>dplyr</code></strong> version of <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> by default:</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://conflicted.r-lib.org/reference/conflict_prefer.html">conflict_prefer</a></span><span class="op">(</span><span class="st">"filter"</span>, <span class="st">"dplyr"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ul>
-<li><p>Five selfish reasons to work reproducibly <span class="citation" data-cites="markowetz2015">(<a href="#ref-markowetz2015" role="doc-biblioref">Markowetz 2015</a>)</span>. Alternatively, see the very entertaining <a href="https://youtu.be/yVT07Sukv9Q">talk</a></p></li>
-<li><p>Many high profile cases of work which did not reproduce e.g.&nbsp;Anil Potti unravelled by <span class="citation" data-cites="baggerly2009">Baggerly and Coombes (<a href="#ref-baggerly2009" role="doc-biblioref">2009</a>)</span></p></li>
-<li><p><strong>Will</strong> become standard in Science and publishing e.g OECD Global Science Forum Building digital workforce capacity and skills for data-intensive science <span class="citation" data-cites="oecdglobalscienceforum2020">(<a href="#ref-oecdglobalscienceforum2020" role="doc-biblioref">OECD Global Science Forum 2020</a>)</span></p></li>
-</ul>
-</section>
-<section id="how-to-achieve-reproducibility" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-achieve-reproducibility">How to achieve reproducibility</h2>
-<ul>
-<li><p>Scripting</p></li>
-<li><p>Organisation: Project-oriented workflows with file and folder structure, naming things</p></li>
-<li><p>Documentation: Readme files, code comments, metadata, version control</p></li>
-</ul>
-</section>
-</section>
-<section id="scripting" class="level1">
-<h1>Scripting</h1>
-<section id="rationale-for-scripting" class="level2">
-<h2 class="anchored" data-anchor-id="rationale-for-scripting">Rationale for scripting?</h2>
-<ul>
-<li><p>Science is the generation of ideas, designing work to test them and reporting the results.</p></li>
-<li><p>We ensure laboratory and field work is replicable, robust and generalisable by planning and recording in lab books and using standard protocols. Repeating results is still hard.</p></li>
-<li><p>Workflows for computational projects, and the data analysis and reporting of other work can, and should, be 100% reproducible!</p></li>
-<li><p>Scripting is the way to achieve this.</p></li>
-</ul>
-</section>
-</section>
-<section id="organisation" class="level1">
-<h1>Organisation</h1>
-<section id="project-oriented-workflow" class="level2">
-<h2 class="anchored" data-anchor-id="project-oriented-workflow">Project-oriented workflow</h2>
-<ul>
-<li><p>use folders to organise your work</p></li>
-<li><p>you are aiming for structured, systematic and repeatable.</p></li>
-<li><p>inputs and outputs should be clearly identifiable from structure and/or naming</p></li>
-</ul>
-<p>Examples</p>
-<pre><code>-- liver_transcriptome/
-   |__data
-      |__raw/
-      |__processed/
-   |__images/
-   |__code/
-   |__reports/
-   |__figures/</code></pre>
-</section>
-<section id="naming-things" class="level2">
-<h2 class="anchored" data-anchor-id="naming-things">Naming things</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/xkcd-comic-file-names.png" class="img-fluid figure-img" alt="A comic figure is looking over the shoulder of another and is shocked by a list of files with names like 'Untitled 138 copy.docx' and 'Untitled 243.doc'. Caption: 'Protip: Never look in someone else's documents folder'"></p>
-<figcaption class="figure-caption">documents, CC-BY-NC, https://xkcd.com/1459/</figcaption>
-</figure>
+</section><section id="analysis" class="level1"><h1>🐸 Analysis</h1>
+<p>We will carry out several steps</p>
+<ol type="1">
+<li>Import the data</li>
+<li>
+</li></ol>
+<section id="import" class="level2"><h2 class="anchored" data-anchor-id="import">Import</h2>
+<p>We need to import t</p>
+<p>🎬 Import the data from the <code>results</code> folder.</p>
+<div class="cell">
+<div class="cell-output cell-output-error">
+<pre><code>Error: &lt;text&gt;:2:2: unexpected assignment
+1: #---CODING ANSWER---
+2:  &lt;-
+    ^</code></pre>
 </div>
-<p>Guiding principle - Have a convention! Good file names are:</p>
+</div>
+<p>❓ H</p>
+<!-- #---THINKING ANSWER--- -->
+<!-- There are 26 genes expressed only in the FGF-treated group. -->
+<p>🎬 Now you find any genes that are expressed only in the control group.</p>
+<p>The normalised counts are the counts that have been transformed to account for the library size (i.e., the total number of reads in a sample) and the gene length. We have to first estimate the normalisation factors and store them in the DESeqDataSet object and then we can get the normalised counts.</p>
+<p>🎬 Make a dataframe of the normalised counts, add a column for the gene ids and write to file:</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">normalised_counts</span>,</span>
+<span>           xenbase_gene_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">normalised_counts</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"results/S30_normalised_counts.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'normalised_counts' not found</code></pre>
+</div>
+</div>
+<p>🎬 Save the results to a file:</p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">results_fgf</span>,</span>
+<span>           xenbase_gene_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">results_fgf</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"results/S30_results.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'results_fgf' not found</code></pre>
+</div>
+</div>
+</section></section><section id="analysis-1" class="level1"><h1>🐭 Analysis</h1>
+<p>We will carry out several steps</p>
+<ol type="1">
+<li>Import the</li>
+</ol>
+<section id="import-1" class="level2"><h2 class="anchored" data-anchor-id="import-1">Import</h2>
+<p>🎬 Import</p>
+<div class="cell">
+<div class="cell-output cell-output-error">
+<pre><code>Error: &lt;text&gt;:2:2: unexpected assignment
+1: #---CODING ANSWER---
+2:  &lt;-
+    ^</code></pre>
+</div>
+</div>
+<p>The dataframe <code>res_prog_hspc$prog</code> is log prog - log hspc (i.e.,Prog/HSPC). This means - Positive fold change: prog is higher than hspc - Negative fold change: hspc is higher than prog</p>
+<p>The dataframe <code>res_prog_hspc$hspc</code> is log hspc - log prog (i.e., HSPC/Prog). . This means - Positive fold change: hspc is higher than prog - Negative fold change: prog is higher than hspc</p>
+<p>🎬 Write the results to file:</p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">res_prog_hspc</span><span class="op">$</span><span class="va">prog</span>, </span>
+<span>           ensembl_gene_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">res_prog_hspc</span><span class="op">$</span><span class="va">prog</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="st">"results/prog_hspc_results.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'res_prog_hspc' not found</code></pre>
+</div>
+</div>
+</section></section><section id="look-after-future-you" class="level1"><h1>🤗 Look after future you!</h1>
+<p>🎬 Go through your script (<code>cont-fgf-s30.R</code> or <code>hspc-prog.R</code>) and tidy up. You might need to :</p>
 <ul>
-<li><p>machine readable</p></li>
-<li><p>human readable</p></li>
-<li><p>play nicely with sorting</p></li>
-</ul>
-<p>I suggest</p>
-<ul>
-<li><p>no spaces in names</p></li>
-<li><p>use snake_case or kebab-case rather than CamelCase or dot.case</p></li>
-<li><p>use all lower case except very occasionally where convention is otherwise, e.g., README, LICENSE</p></li>
-<li><p>ordering: use left-padded numbers e.g., 01, 02….99 or 001, 002….999</p></li>
-<li><p>dates <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format: 2020-10-16</p></li>
-<li><p>write down your conventions</p></li>
-</ul>
-<pre><code>-- liver_transcriptome/
-   |__data
-      |__raw/
-         |__2022-03-21_donor_1.csv
-         |__2022-03-21_donor_2.csv
-         |__2022-03-21_donor_3.csv
-         |__2022-05-14_donor_1.csv
-         |__2022-05-14_donor_2.csv
-         |__2022-05-14_donor_3.csv
-      |__processed/
-   |__images/
-   |__code/
-      |__functions/
-         |__summarise.R
-         |__normalise.R
-         |__theme_volcano.R
-      |__01_data_processing.py
-      |__02_exploratory.R
-      |__03_modelling.R
-      |__04_figures.R
-   |__reports/
-      |__01_report.qmd
-      |__02_supplementary.qmd
-   |__figures/
-      |__01_volcano_donor_1_vs_donor_2.eps
-      |__02_volcano_donor_1_vs_donor_3.eps</code></pre>
-</section>
-</section>
-<section id="documentation" class="level1">
-<h1>Documentation</h1>
-<section id="readme-files" class="level2">
-<h2 class="anchored" data-anchor-id="readme-files">Readme files</h2>
-<p>READMEs are a form of documentation which have been widely used for a long time. They contain all the information about the other files in a directory. They can be extensive but need not be. Concise is good. Bullet points are good</p>
-<ul>
-<li><p>Give a project title and description, brief</p></li>
-<li><p>start date, last updated date and contact information</p></li>
-<li><p>Outline the folder structure</p></li>
-<li><p>Give software requirements: programs and versions used or required. There are packages that give session information in R <span class="citation" data-cites="sessioninfo">Wickham et al. (<a href="#ref-sessioninfo" role="doc-biblioref">2021</a>)</span> and Python <span class="citation" data-cites="ostblomjoel2019">Ostblom, Joel (<a href="#ref-ostblomjoel2019" role="doc-biblioref">2019</a>)</span></p></li>
-</ul>
-<p>R:</p>
-<p><code>sessioninfo::session_info()</code></p>
-<p>Python:</p>
-<p><code>import session_info</code></p>
-<p><code>session_info.show()</code></p>
-<ul>
-<li><p>Instructions run the code, build reports, and reproduce the figures etc</p></li>
-<li><p>Where to find the data, outputs</p></li>
-<li><p>Any other information that needed to understand and recreate the work</p></li>
-<li><p>Ideally, a summary of changes with the date</p></li>
-</ul>
-<pre><code>-- liver_transcriptome/
-   |__data
-      |__raw/
-         |__2022-03-21_donor_1.csv
-         |__2022-03-21_donor_2.csv
-         |__2022-03-21_donor_3.csv
-         |__2022-05-14_donor_1.csv
-         |__2022-05-14_donor_2.csv
-         |__2022-05-14_donor_3.csv
-      |__processed/
-   |__images/
-   |__code/
-      |__functions/
-         |__summarise.R
-         |__normalise.R
-         |__theme_volcano.R
-      |__01_data_processing.py
-      |__02_exploratory.R
-      |__03_modelling.R
-      |__04_figures.R
-   |__README.md
-   |__reports/
-      |__01_report.qmd
-      |__02_supplementary.qmd
-   |__figures/
-      |__01_volcano_donor_1_vs_donor_2.eps
-      |__02_volcano_donor_1_vs_donor_3.eps</code></pre>
-</section>
-<section id="code-comments" class="level2">
-<h2 class="anchored" data-anchor-id="code-comments">Code comments</h2>
-<ul>
-<li>Comments are notes in the code which are not executed. They are ignored by the computer but are read by humans. They are used to explain what the code is doing and why. They are also used to temporarily remove code from execution.</li>
-</ul>
-</section>
-</section>
-<section id="github-co-pilot-demo" class="level1">
-<h1>Github co-pilot demo</h1>
-</section>
-<section id="quarto-demo" class="level1">
-<h1>Quarto demo</h1>
-</section>
-<section id="useful-exercises" class="level1">
-<h1>Useful exercises</h1>
-<ul>
-<li><p>Want github co-pilot?</p>
-<p>🎬 Create a <a href="https://github.com/">GitHub account</a></p>
-<p>🎬 Apply for <a href="https://education.github.com/discount_requests/application">student benefits</a></p></li>
-<li><p>Update R and RStudio</p>
-<p>🎬 <a href="">Update R</a></p>
-<p>🎬 <a href="https://posit.co/download/rstudio-desktop/">Update RStudio</a>. You will need the prelease <a href="https://dailies.rstudio.com/rstudio/desert-sunflower/">Dessert Sunflower</a> for github Copilot integration</p></li>
-<li><p>Install package building tools</p>
-<p>🎬 Windows Install <a href="https://cran.r-project.org/bin/windows/Rtools/rtools43/rtools.html">Rtools</a></p>
-<p>🎬 Mac install <a href="https://apps.apple.com/ca/app/xcode/id497799835?mt=12">Xcode from Mac App Store</a></p></li>
-<li><p>Update packages:</p>
-<p>🎬 devtools, tidyverse, BiocManager, readxl</p></li>
-<li><p>Install Quarto</p>
-<p>🎬 <a href="https://quarto.org">Install Quarto</a></p></li>
-<li><p>Install Zotero</p>
-<p>🎬 Install <a href="https://www.zotero.org/">Zotero</a></p>
-<p>🎬 <a href="https://www.zotero.org/user/register">Sign up for an account</a></p></li>
-</ul>
-<p>You’re finished!</p>
-</section>
-<section id="well-done" class="level1">
-<h1>🥳 Well Done! 🎉</h1>
-</section>
-<section id="independent-study-following-the-workshop" class="level1">
-<h1>Independent study following the workshop</h1>
-<p><a href="../../core/week-1/study_after_workshop.html">Consolidate</a></p>
+<li>collect together library statements at the top of the script</li>
+<li>remove code that you needed to start today but which wouldn’t be needed running the script from the top (e.g., importing)</li>
+<li>edit your comments for clarity</li>
+<li>rename variables for consistency or clarity</li>
+<li>remove house keeping or exploratory code</li>
+<li>restyle code, add code section headers etc</li>
+</ul></section><section id="finished" class="level1"><h1>🥳 Finished</h1>
+<p>Well Done!</p>
+</section><section id="independent-study-following-the-workshop" class="level1"><h1>Independent study following the workshop</h1>
+<p><a href="../../omics/week-5/study_after_workshop.html">Consolidate</a></p>
+</section><section id="the-code-file" class="level1"><h1>The Code file</h1>
+<p>These contain all the code needed in the workshop even where it is not visible on the webpage.</p>
+<p>The <a href="../../omics/week-5/workshop.html">workshop.qmd</a> file is the file I use to compile the practical. Qmd stands for Quarto markdown. It allows code and ordinary text to be interleaved to produce well-formatted reports including webpages. Right-click on the link and choose Save-As to download. You will be able to open the Qmd file in RStudio. Alternatively, <a href="https://github.com/3mmaRand/BIO00088H-data/blob/main/omics/week-4/workshop.qmd">View in Browser</a>. Coding and thinking answers are marked with <code>#---CODING ANSWER---</code> and <code>#---THINKING ANSWER---</code></p>
 <p>Pages made with R <span class="citation" data-cites="R-core">(<a href="#ref-R-core" role="doc-biblioref">R Core Team 2023</a>)</span>, Quarto <span class="citation" data-cites="allaire2022">(<a href="#ref-allaire2022" role="doc-biblioref">Allaire et al. 2022</a>)</span>, <code>knitr</code> <span class="citation" data-cites="knitr">(<a href="#ref-knitr" role="doc-biblioref">Xie 2022</a>)</span>, <code>kableExtra</code> <span class="citation" data-cites="kableExtra">(<a href="#ref-kableExtra" role="doc-biblioref">Zhu 2021</a>)</span></p>
-</section>
-<section id="references" class="level1">
+</section><section id="references" class="level1">
 
 
 
-
-</section>
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+</section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-allaire2022" class="csl-entry" role="listitem">
 Allaire, J. J., Charles Teague, Carlos Scheidegger, Yihui Xie, and Christophe Dervieux. 2022. <em>Quarto</em>. <a href="https://doi.org/10.5281/zenodo.5960048">https://doi.org/10.5281/zenodo.5960048</a>.
-</div>
-<div id="ref-baggerly2009" class="csl-entry" role="listitem">
-Baggerly, Keith A, and Kevin R Coombes. 2009. <span>“DERIVING CHEMOSENSITIVITY FROM CELL LINES: FORENSIC BIOINFORMATICS AND REPRODUCIBLE RESEARCH IN HIGH-THROUGHPUT BIOLOGY.”</span> <em>Ann. Appl. Stat.</em> 3 (4): 1309–34. <a href="https://doi.org/10.2307/27801549">https://doi.org/10.2307/27801549</a>.
-</div>
-<div id="ref-markowetz2015" class="csl-entry" role="listitem">
-Markowetz, Florian. 2015. <span>“Five Selfish Reasons to Work Reproducibly.”</span> <em>Genome Biol.</em> 16 (December): 274. <a href="https://doi.org/10.1186/s13059-015-0850-7">https://doi.org/10.1186/s13059-015-0850-7</a>.
-</div>
-<div id="ref-nationalacademiesofsciences2019" class="csl-entry" role="listitem">
-National Academies of Sciences, Engineering, Medicine, Policy, Global Affairs, Engineering, Medicine Committee on Science, Public Policy, Board on Research Data, et al. 2019. <em>Understanding Reproducibility and Replicability</em>. National Academies Press (US). <a href="https://www.ncbi.nlm.nih.gov/books/NBK547546/">https://www.ncbi.nlm.nih.gov/books/NBK547546/</a>.
-</div>
-<div id="ref-oecdglobalscienceforum2020" class="csl-entry" role="listitem">
-OECD Global Science Forum. 2020. <span>“Building Digital Workforce Capacity and Skills for Data-Intensive Science.”</span> <a href="http://www.oecd.org/officialdocuments/publicdisplaydocumentpdf/?cote=DSTI/STP/GSF(2020)6/FINAL&amp;docLanguage=En">http://www.oecd.org/officialdocuments/publicdisplaydocumentpdf/?cote=DSTI/STP/GSF(2020)6/FINAL&amp;docLanguage=En</a>.
-</div>
-<div id="ref-ostblomjoel2019" class="csl-entry" role="listitem">
-Ostblom, Joel. 2019. <em>Session<span>_</span>info</em>. <a href="https://gitlab.com/joelostblom/session_info">https://gitlab.com/joelostblom/session_info</a>.
 </div>
 <div id="ref-R-core" class="csl-entry" role="listitem">
 R Core Team. 2023. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
 </div>
-<div id="ref-sessioninfo" class="csl-entry" role="listitem">
-Wickham, Hadley, Winston Chang, Robert Flight, Kirill Müller, and Jim Hester. 2021. <span>“Sessioninfo: R Session Information.”</span>
+<div id="ref-tidyverse" class="csl-entry" role="listitem">
+Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the <span></span>Tidyverse<span></span>”</span> 4: 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
 </div>
 <div id="ref-knitr" class="csl-entry" role="listitem">
 Xie, Yihui. 2022. <span>“Knitr: A General-Purpose Package for Dynamic Report Generation in r.”</span> <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
@@ -589,8 +462,7 @@ Xie, Yihui. 2022. <span>“Knitr: A General-Purpose Package for Dynamic Report G
 <div id="ref-kableExtra" class="csl-entry" role="listitem">
 Zhu, Hao. 2021. <span>“kableExtra: Construct Complex Table with ’Kable’ and Pipe Syntax.”</span> <a href="https://CRAN.R-project.org/package=kableExtra">https://CRAN.R-project.org/package=kableExtra</a>.
 </div>
-</div></section></div></main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</div></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -838,15 +710,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">Rand E (2023). Data Analysis for Group Project. <a href="https://3mmarand.github.io/BIO00088H-data/" class="uri">https://3mmarand.github.io/BIO00088H-data/</a>.</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
-    <li class="nav-item compact">
+<li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/er_13">
       <i class="bi bi-twitter" role="img" aria-label="Twitter">
 </i> 
@@ -859,10 +730,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </a>
   </li>  
 </ul>
-    </div>
+</div>
   </div>
 </footer>
-
 
 
 </body></html>

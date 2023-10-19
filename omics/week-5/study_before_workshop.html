@@ -94,26 +94,7 @@
     code span.va { color: #111111; } /* Variable */
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
-    /* CSS for citations */
-    div.csl-bib-body { }
-    div.csl-entry {
-      clear: both;
-    }
-    .hanging-indent div.csl-entry {
-      margin-left:2em;
-      text-indent:-2em;
-    }
-    div.csl-left-margin {
-      min-width:2em;
-      float:left;
-    }
-    div.csl-right-inline {
-      margin-left:2em;
-      padding-left:1em;
-    }
-    div.csl-indent {
-      margin-left: 2em;
-    }  </style>
+  </style>
 <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
 <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
 <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -411,7 +392,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center"><h1 class="title">Independent Study to prepare for workshop</h1>
-  <p class="subtitle">Omics 2: Statistical Analysis</p>
+  <p class="subtitle">Omics 3: Visualising and Interpreting</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -428,40 +409,31 @@ Emma Rand
 <ul>
 <li class="fragment"><p>Check where you are</p></li>
 <li class="fragment">
-<p>learn some concepts in differential expression</p>
+<p>learn some concepts</p>
 <ul>
-<li class="fragment">log2 fold changes</li>
-<li class="fragment">Multiple correction</li>
-<li class="fragment">normalisation</li>
-<li class="fragment">statistical model</li>
-</ul>
+<li class="fragment">
+</li></ul>
 </li>
 <li class="fragment"><p>Find out what packages to install before the workshop</p></li>
 </ul>
 </div>
 </section><section><section id="where-should-you-be" class="title-slide slide level1 center"><h1>Where should you be?</h1>
 
-</section><section id="what-we-did-in-omics-1-hello-data" class="slide level2"><h2>What we did in Omics 1: 👋 Hello data!</h2>
+</section><section id="what-we-did-in-omics-2-statistical-analysis" class="slide level2"><h2>What we did in Omics 2: Statistical Analysis</h2>
 <div>
 <div style="font-size: 90%;">
 <ul>
-<li class="fragment">Discovered how many rows and columns we had in our datasets and what these were.</li>
-<li class="fragment">Examined the distribution
-<ul>
-<li class="fragment">of values across the whole dataset</li>
-<li class="fragment">of values across the samples/cells (i.e., averaged across genes) to see variation between samples/cells</li>
-<li class="fragment">of values across the genes (i.e., averaged across samples/cells) to see variation between genes</li>
-</ul>
-</li>
-<li class="fragment">Saved files of filtered or summarised data.</li>
+<li class="fragment">
+</li><li class="fragment">
+</li><li class="fragment">Saved files .</li>
 </ul>
 </div>
 </div>
 </section><section id="where-should-you-be-1" class="slide level2"><h2>Where should you be?</h2>
-<p>After the <a href="../week-3/workshop.html">Omics 1: 👋 Hello data! Workshop</a> including:</p>
+<p>After the <a href="../week-4/workshop.html">Omics 2: 👋 Statistical Analysis Workshop</a> including:</p>
 <ul>
-<li><p><a href="../week-3/workshop.html#look-after-future-you">🤗 Look after future you!</a> and</p></li>
-<li><p>the <a href="../week-3/study_after_workshop.html">Independent Study to consolidate</a>, you should have:</p></li>
+<li><p><a href="../week-4/workshop.html#look-after-future-you">🤗 Look after future you!</a> and</p></li>
+<li><p>the <a href="../week-4/study_after_workshop.html">Independent Study to consolidate</a>, you should have:</p></li>
 </ul></section><section id="frogs" class="slide level2"><h2>🐸 Frogs</h2>
 <div style="font-size: 90%;">
 <ul>
@@ -493,138 +465,28 @@ Emma Rand
 </section><section id="if-you-do-not-have-those" class="slide level2"><h2>If you do not have those</h2>
 <p>Go through:</p>
 <ul>
-<li><p><a href="../week-3/workshop.html">Omics 1: 👋 Hello data! Workshop</a> including:</p></li>
-<li><p><a href="../week-3/workshop.html#look-after-future-you">🤗 Look after future you!</a> and</p></li>
-<li><p>the <a href="../week-3/study_after_workshop.html">Independent Study to consolidate</a></p></li>
-</ul></section></section><section><section id="differential-expression" class="title-slide slide level1 center"><h1>Differential expression</h1>
+<li><p><a href="../week-4/workshop.html">Omics 2: Statistical Analysis</a> including:</p></li>
+<li><p><a href="../week-4/workshop.html#look-after-future-you">🤗 Look after future you!</a> and</p></li>
+<li><p>the <a href="../week-4/study_after_workshop.html">Independent Study to consolidate</a></p></li>
+</ul></section></section><section><section id="xx" class="title-slide slide level1 center"><h1>xx</h1>
 
-</section><section id="differential-expression-1" class="slide level2"><h2>Differential expression</h2>
+</section><section id="xx-1" class="slide level2"><h2>xx</h2>
 <div>
 <ul>
-<li class="fragment"><p>The goal of differential expression is to test whether there is a significant difference in gene expression between groups.</p></li>
-<li class="fragment"><p>A large number of computational methods have been developed for differential expression analysis</p></li>
-<li class="fragment"><p>R is the leading language for differential expression analysis</p></li>
+<li class="fragment">T</li>
 </ul>
 </div>
-</section><section id="differential-expression-2" class="slide level2"><h2>Differential expression</h2>
-<div>
 <ul>
-<li class="fragment"><p>the statistical concepts are very similar to those you have already encountered in stages 1 and 2</p></li>
-<li class="fragment"><p>you are essentially doing paired- or independent-samples tests</p></li>
-<li class="fragment"><p>but you are doing a lot of them! One for every gene</p></li>
-<li class="fragment"><p>data need normalisation before comparison</p></li>
+<li><p>The 🐭 mouse data have been normalised to simplify the analysis for you; the 🐸 frog data have not but the DE method will do this for you.</p></li>
+<li><h2 id="packages-to-install-before-the-workshop">Packages to install before the workshop</h2></li>
 </ul>
-</div>
-</section><section id="statistical-concepts" class="slide level2"><h2>Statistical concepts</h2>
-<p>Like familiar tests:</p>
-<div>
-<ul>
-<li class="fragment"><p>the type of test (the function) you use depends on the type of data you have and the type of assumptions you want to make</p></li>
-<li class="fragment"><p>the tests work by comparing the variation between groups to the variation within groups.</p></li>
-<li class="fragment"><p>you will get: the difference between groups, a test statistic, and a <em>p</em>-value</p></li>
-<li class="fragment"><p>you also get an adjusted <em>p</em>-value which is the ‘correction’ for multiple testing</p></li>
-</ul>
-</div>
-</section><section id="the-difference-between-groups" class="slide level2"><h2>The difference between groups</h2>
-<div>
-<ul>
-<li class="fragment"><p>The difference between groups is given as the log<sub>2</sub> fold change in expression between groups</p></li>
-<li class="fragment"><p>A fold change is the expression in one group divided by the expression in the other group</p></li>
-<li class="fragment"><p>we use fold changes because the absolute expression values may not be accurate and relative changes are what matters</p></li>
-<li class="fragment"><p>we use log<sub>2</sub> fold changes because they are symmetrical around 0</p></li>
-</ul>
-</div>
-</section><section id="log2-fold-change" class="slide level2"><h2>log<sub>2</sub> fold change</h2>
-<div>
-<ul>
-<li class="fragment"><p>log<sub>2</sub> means log to the base 2</p></li>
-<li class="fragment"><p>Suppose the expression in group A is 5 and the expression in group B is 8</p></li>
-<li class="fragment"><p>A/B = 5/8 = 0.625 and B/A = 8/5 = 1.6</p></li>
-<li class="fragment"><p>If B is greater than A the range of A/B is 0 to 1 but the range of B/A is 1 to infinity</p></li>
-<li class="fragment"><p>However, if we take the log<sub>2</sub> of A/B we get -0.678 and the log<sub>2</sub> of B/A is 0.678.</p></li>
-</ul>
-</div>
-</section><section id="adjusted-p-value" class="slide level2"><h2>Adjusted <em>p</em>-value</h2>
-<div>
-<ul>
-<li class="fragment"><p>The <em>p</em>-value has to be adjusted because of the number of tested being done</p></li>
-<li class="fragment"><p>In stage 1, we used Tukey’s HSD to adjust for multiple testing following an ANOVA</p></li>
-<li class="fragment"><p>Here the Benjamini-Hochberg procedure <span class="citation" data-cites="benjamini1995">(<a href="#/references" role="doc-biblioref" onclick="">Benjamini and Hochberg 1995</a>)</span> is used to adjust for multiple testing</p></li>
-<li class="fragment"><p>BH controls the <a href="https://en.wikipedia.org/wiki/False_discovery_rate">False Discovery Rate</a> (FDR)</p></li>
-<li class="fragment"><p>The FDR is the proportion of false positives among the genes called significant</p></li>
-</ul>
-</div>
-</section><section id="normalisation" class="slide level2"><h2>Normalisation</h2>
-<div>
-<ul>
-<li class="fragment"><p>Normalisation adjusts raw counts to account for factors that prevent direct comparisons</p></li>
-<li class="fragment"><p>Normalisation usually influences the experimental design as well as the analysis</p></li>
-<li class="fragment"><p>The 🐭 mouse data have been normalised to simplify the analysis for you; the 🐸 frog data have not but the DE method will do this for you.</p></li>
-<li class="fragment"><p>Normalisation is a big topic. See <span class="citation" data-cites="düren2022">Düren, Lederer, and Qin (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>; <span class="citation" data-cites="bullard2010">Bullard et al. (<a href="#/references" role="doc-biblioref" onclick="">2010</a>)</span>; <span class="citation" data-cites="lytal2020">Lytal, Ran, and An (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span>; <span class="citation" data-cites="abrams2019">Abrams et al. (<a href="#/references" role="doc-biblioref" onclick="">2019</a>)</span>; <span class="citation" data-cites="vallejos2017">Vallejos et al. (<a href="#/references" role="doc-biblioref" onclick="">2017</a>)</span>; <span class="citation" data-cites="evans2017">Evans, Hardin, and Stoebel (<a href="#/references" role="doc-biblioref" onclick="">2017</a>)</span></p></li>
-</ul>
-</div>
-</section><section id="type-of-test-the-function" class="slide level2"><h2>Type of test (the function)</h2>
-<div>
-<ul>
-<li class="fragment"><p>A large number of computational methods have been developed for differential expression analysis</p></li>
-<li class="fragment"><p>Methods vary in the types of normalisation they do, the statistical model they use, and the assumptions they make</p></li>
-<li class="fragment"><p>Some of the most well-known methods are provided by: <strong><code>DESeq2</code></strong> <span class="citation" data-cites="DESeq2">(<a href="#/references" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span>, <strong><code>edgeR</code></strong> <span class="citation" data-cites="robinson2010 mccarthy2012 chen2016">(<a href="#/references" role="doc-biblioref" onclick="">Robinson, McCarthy, and Smyth 2010</a>; <a href="#/references" role="doc-biblioref" onclick="">McCarthy, Chen, and Smyth 2012</a>; <a href="#/references" role="doc-biblioref" onclick="">Chen, Lun, and Smyth 2016</a>)</span>, <strong><code>limma</code></strong> <span class="citation" data-cites="ritchie2015">(<a href="#/references" role="doc-biblioref" onclick="">Ritchie et al. 2015</a>)</span> and <strong><code>scran</code></strong> <span class="citation" data-cites="scran">(<a href="#/references" role="doc-biblioref" onclick="">Lun, McCarthy, and Marioni 2016</a>)</span></p></li>
-</ul>
-</div>
-</section><section id="type-of-test-the-function-1" class="slide level2"><h2>Type of test (the function)</h2>
-<div>
-<ul>
-<li class="fragment">
-<strong><code>DESeq2</code></strong> and <strong><code>edgeR</code></strong>
-<ul>
-<li class="fragment">both require raw counts as input</li>
-<li class="fragment">both assume that most genes are not DE</li>
-<li class="fragment">both use a negative binomial distribution<sup>1</sup> to model the data</li>
-<li class="fragment">use slightly different normalisation methods: <strong><code>DESeq2</code></strong> uses the median of ratios method; <strong><code>edgeR</code></strong> uses the trimmed mean of M values (TMM) method</li>
-</ul>
-</li>
-</ul>
-</div>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>A discrete distribution for counts, similar to the Poisson distribution</p></li></ol></aside></section><section id="type-of-test-the-function-2" class="slide level2"><h2>Type of test (the function)</h2>
-<ul>
-<li>
-<strong><code>scran</code></strong>
-<ul>
-<li>works on normalized log-expression values</li>
-<li>performs Welch t-tests</li>
-</ul>
-</li>
-</ul></section><section id="meta-data" class="slide level2"><h2>Meta data</h2>
-<div>
-<ul>
-<li class="fragment"><p>DE methods require two types of data: the expression data and the meta data</p></li>
-<li class="fragment"><p>The meta data is the information about the samples</p></li>
-<li class="fragment"><p>It says which samples (columns) are in which group (s)</p></li>
-<li class="fragment"><p>It is usually stored in a separate file</p></li>
-</ul>
-</div>
-</section><section id="data" class="slide level2"><h2>🐸 Data</h2>
-<ul>
-<li><p>Expression for the whole transcriptome <a href="https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp"><em>X. laevis</em> v10.1 genome assembly</a></p></li>
-<li><p>Values are raw counts</p></li>
-<li><p>The statistical analysis method we will use <strong><code>DESeq2</code></strong> <span class="citation" data-cites="DESeq2">(<a href="#/references" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span> requires raw counts and performs the normalisation itself</p></li>
-</ul></section><section id="data-1" class="slide level2"><h2>🐭 Data</h2>
-<ul>
-<li><p>Expression for a subset of genes, the surfaceome</p></li>
-<li><p>Values are log2 normalised values</p></li>
-<li><p>The statistical analysis method we will use <strong><code>scran</code></strong> <span class="citation" data-cites="scran">(<a href="#/references" role="doc-biblioref" onclick="">Lun, McCarthy, and Marioni 2016</a>)</span> requires normalised values</p></li>
-</ul></section><section id="packages-to-install-before-the-workshop" class="slide level2"><h2>Packages to install before the workshop</h2>
-<p><strong><code>BiocManager</code></strong> from CRAN in the the normal way:</p>
+<p><strong>``</strong> from CRAN in the the normal way:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">""</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong><code>DESeq2</code></strong> from Bioconductor using BiocManager:</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html">install</a></span><span class="op">(</span><span class="st">"DESeq2"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong><code>scran</code></strong> from Bioconductor using BiocManager:</p>
-<div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html">install</a></span><span class="op">(</span><span class="st">"scran"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section><section><section id="workshops" class="title-slide slide level1 center"><h1>Workshops</h1>
 
@@ -633,51 +495,10 @@ Emma Rand
 <li><p>Omics 1: Hello data Getting to know the data. Checking the distributions of values</p></li>
 <li><p>Omics 2: Statistical Analysis Identifying which genes are differentially expressed between treatments.</p></li>
 <li><p>Omics 3: Visualising and Interpreting. PCA, Volcano plots and heatmaps to visualise results. Interpreting the results and finding out more about genes of interest.</p></li>
-</ul></section><section id="references" class="slide level2 smaller scrollable"><h2>References</h2>
+</ul></section><section id="references" class="slide level2"><h2>References</h2>
 
 <div class="footer footer-default">
-<p>🔗 <a href="https://3mmarand.github.io/BIO00088H-data/omics/week-4/overview.html">About Omics 2: Statistical Analysis</a></p>
-</div>
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-abrams2019" class="csl-entry" role="listitem">
-Abrams, Zachary B., Travis S. Johnson, Kun Huang, Philip R. O. Payne, and Kevin Coombes. 2019. <span>“A Protocol to Evaluate RNA Sequencing Normalization Methods.”</span> <em>BMC Bioinformatics</em> 20 (24): 679. <a href="https://doi.org/10.1186/s12859-019-3247-x">https://doi.org/10.1186/s12859-019-3247-x</a>.
-</div>
-<div id="ref-benjamini1995" class="csl-entry" role="listitem">
-Benjamini, Yoav, and Yosef Hochberg. 1995. <span>“Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing.”</span> <em>J. R. Stat. Soc. Series B Stat. Methodol.</em> 57 (1): 289–300. <a href="http://www.jstor.org/stable/2346101">http://www.jstor.org/stable/2346101</a>.
-</div>
-<div id="ref-bullard2010" class="csl-entry" role="listitem">
-Bullard, James H., Elizabeth Purdom, Kasper D. Hansen, and Sandrine Dudoit. 2010. <span>“Evaluation of Statistical Methods for Normalization and Differential Expression in mRNA-Seq Experiments.”</span> <em>BMC Bioinformatics</em> 11 (1): 94. <a href="https://doi.org/10.1186/1471-2105-11-94">https://doi.org/10.1186/1471-2105-11-94</a>.
-</div>
-<div id="ref-chen2016" class="csl-entry" role="listitem">
-Chen, Yunshun, Aaron T. L. Lun, and Gordon K. Smyth. 2016. <span>“From Reads to Genes to Pathways: Differential Expression Analysis of RNA-Seq Experiments Using Rsubread and the edgeR Quasi-Likelihood Pipeline.”</span> <a href="https://doi.org/10.12688/f1000research.8987.2">https://doi.org/10.12688/f1000research.8987.2</a>.
-</div>
-<div id="ref-düren2022" class="csl-entry" role="listitem">
-Düren, Yannick, Johannes Lederer, and Li-Xuan Qin. 2022. <span>“Depth Normalization of Small RNA Sequencing: Using Data and Biology to Select a Suitable Method.”</span> <em>Nucleic Acids Research</em> 50 (10): e56. <a href="https://doi.org/10.1093/nar/gkac064">https://doi.org/10.1093/nar/gkac064</a>.
-</div>
-<div id="ref-evans2017" class="csl-entry" role="listitem">
-Evans, Ciaran, Johanna Hardin, and Daniel M Stoebel. 2017. <span>“Selecting Between-Sample RNA-Seq Normalization Methods from the Perspective of Their Assumptions.”</span> <em>Briefings in Bioinformatics</em> 19 (5): 776–92. <a href="https://doi.org/10.1093/bib/bbx008">https://doi.org/10.1093/bib/bbx008</a>.
-</div>
-<div id="ref-DESeq2" class="csl-entry" role="listitem">
-Love, Michael I., Wolfgang Huber, and Simon Anders. 2014. <span>“Moderated Estimation of Fold Change and Dispersion for RNA-Seq Data with DESeq2”</span> 15: 550. <a href="https://doi.org/10.1186/s13059-014-0550-8">https://doi.org/10.1186/s13059-014-0550-8</a>.
-</div>
-<div id="ref-scran" class="csl-entry" role="listitem">
-Lun, Aaron T. L., Davis J. McCarthy, and John C. Marioni. 2016. <span>“A Step-by-Step Workflow for Low-Level Analysis of Single-Cell RNA-Seq Data with Bioconductor”</span> 5: 2122. <a href="https://doi.org/10.12688/f1000research.9501.2">https://doi.org/10.12688/f1000research.9501.2</a>.
-</div>
-<div id="ref-lytal2020" class="csl-entry" role="listitem">
-Lytal, Nicholas, Di Ran, and Lingling An. 2020. <span>“Normalization Methods on Single-Cell RNA-Seq Data: An Empirical Survey.”</span> <em>Frontiers in Genetics</em> 11. <a href="https://www.frontiersin.org/articles/10.3389/fgene.2020.00041">https://www.frontiersin.org/articles/10.3389/fgene.2020.00041</a>.
-</div>
-<div id="ref-mccarthy2012" class="csl-entry" role="listitem">
-McCarthy, Davis J., Yunshun Chen, and Gordon K. Smyth. 2012. <span>“Differential Expression Analysis of Multifactor RNA-Seq Experiments with Respect to Biological Variation.”</span> <em>Nucleic Acids Research</em> 40 (10): 4288–97. <a href="https://doi.org/10.1093/nar/gks042">https://doi.org/10.1093/nar/gks042</a>.
-</div>
-<div id="ref-ritchie2015" class="csl-entry" role="listitem">
-Ritchie, Matthew E., Belinda Phipson, Di Wu, Yifang Hu, Charity W. Law, Wei Shi, and Gordon K. Smyth. 2015. <span>“Limma Powers Differential Expression Analyses for RNA-Sequencing and Microarray Studies.”</span> <em>Nucleic Acids Research</em> 43 (7): e47. <a href="https://doi.org/10.1093/nar/gkv007">https://doi.org/10.1093/nar/gkv007</a>.
-</div>
-<div id="ref-robinson2010" class="csl-entry" role="listitem">
-Robinson, Mark D., Davis J. McCarthy, and Gordon K. Smyth. 2010. <span>“edgeR: A Bioconductor Package for Differential Expression Analysis of Digital Gene Expression Data.”</span> <em>Bioinformatics</em> 26 (1): 139–40. <a href="https://doi.org/10.1093/bioinformatics/btp616">https://doi.org/10.1093/bioinformatics/btp616</a>.
-</div>
-<div id="ref-vallejos2017" class="csl-entry" role="listitem">
-Vallejos, Catalina A., Davide Risso, Antonio Scialdone, Sandrine Dudoit, and John C. Marioni. 2017. <span>“Normalizing Single-Cell RNA Sequencing Data: Challenges and Opportunities.”</span> <em>Nature Methods</em> 14 (6): 565–71. <a href="https://doi.org/10.1038/nmeth.4292">https://doi.org/10.1038/nmeth.4292</a>.
-</div>
+<p>🔗 <a href="https://3mmarand.github.io/BIO00088H-data/omics/week-5/overview.html">About Omics 3: Visualising and Interpreting</a></p>
 </div>
 </section></section>
 </div>

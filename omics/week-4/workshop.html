@@ -246,25 +246,25 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../omics/week-5/overview.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../../omics/week-5/overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../omics/week-5/study_before_workshop.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../../omics/week-5/study_before_workshop.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prepare!</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../omics/week-5/workshop.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../../omics/week-5/workshop.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workshop</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../omics/week-5/study_after_workshop.qmd" class="sidebar-item-text sidebar-link">
+  <a href="../../omics/week-5/study_after_workshop.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Consolidate!</span></a>
   </div>
 </li>
@@ -332,7 +332,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">18 October, 2023</p>
+      <p class="date">19 October, 2023</p>
     </div>
   </div>
   
@@ -618,6 +618,7 @@ S30_F_A     S30_F_A    stage_30   FGF            A   </code></pre>
 #   Prog_025 &lt;dbl&gt;, Prog_026 &lt;dbl&gt;, Prog_027 &lt;dbl&gt;, Prog_028 &lt;dbl&gt;, …</code></pre>
 </div>
 </div>
+<p>Notice that we have summed across all the columns.</p>
 <p>❓ What do you conclude?</p>
 <!-- #---THINKING ANSWER--- -->
 <!-- The are no genes that are completely unexpressed in this set of 280 genes -->
@@ -641,7 +642,7 @@ ENSMUSG00000023132 ENSMUSG00000026285
 <!-- values is less that it would be for raw counts) -->
 </section><section id="find-the-genes-that-are-expressed-in-only-one-cell-type" class="level2"><h2 class="anchored" data-anchor-id="find-the-genes-that-are-expressed-in-only-one-cell-type">Find the genes that are expressed in only one cell type</h2>
 <p>To find the genes that are expressed in only one cell type, we can use the same approach as above but only sum the columns for one cell type.</p>
-<p>🎬 Find the genes that are 0 in every column for the Prog cells:</p>
+<p>🎬 Find the genes that are 0 in every column for the HSPC cells:</p>
 <div class="cell">
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">prog_hspc</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -658,8 +659,9 @@ ENSMUSG00000023132 ENSMUSG00000026285
 #   Prog_025 &lt;dbl&gt;, Prog_026 &lt;dbl&gt;, Prog_027 &lt;dbl&gt;, Prog_028 &lt;dbl&gt;, …</code></pre>
 </div>
 </div>
-<p>Note that if we knew there were some rows that were all zero across both cerll types, we would need to add <code>|&gt; filter(sum(c_across(Prog_001:Prog_852)) != 0)</code></p>
-<p>🎬 Now you find the genes that are 0 in every column for the HSPC cells:</p>
+<p>We have summed across the HSPC cells only. Note that if we knew there were some rows that were all zero across both cell types, we would need to add <code>|&gt; filter(sum(c_across(Prog_001:Prog_852)) != 0)</code></p>
+<p>meaning zero in all the HSPC but not zero in all the Prog</p>
+<p>🎬 Now you find the genes that are 0 in every column for the Prog cells:</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 0 × 1,499
@@ -878,7 +880,7 @@ ENSMUSG00000023132 ENSMUSG00000026285
 <p><a href="../../omics/week-4/study_after_workshop.html">Consolidate</a></p>
 </section><section id="the-code-file" class="level1"><h1>The Code file</h1>
 <p>These contain all the code needed in the workshop even where it is not visible on the webpage.</p>
-<p>The <a href="../../omics/week-4/workshop.html">workshop.qmd</a> file is the file I use to compile the practical. Qmd stands for Quarto markdown. It allows code and ordinary text to be interleaved to produce well-formatted reports including webpages. Right-click on the link and choose Save-As to download. You will be able to open the Qmd file in RStudio. Alternatively, <a href="https://github.com/3mmaRand/">View in Browser</a>. Coding and thinking answers are marked with <code>#---CODING ANSWER---</code> and <code>#---THINKING ANSWER---</code></p>
+<p>The <a href="../../omics/week-4/workshop.html">workshop.qmd</a> file is the file I use to compile the practical. Qmd stands for Quarto markdown. It allows code and ordinary text to be interleaved to produce well-formatted reports including webpages. Right-click on the link and choose Save-As to download. You will be able to open the Qmd file in RStudio. Alternatively, <a href="https://github.com/3mmaRand/BIO00088H-data/blob/main/omics/week-4/workshop.qmd">View in Browser</a>. Coding and thinking answers are marked with <code>#---CODING ANSWER---</code> and <code>#---THINKING ANSWER---</code></p>
 <p>Pages made with R <span class="citation" data-cites="R-core">(<a href="#ref-R-core" role="doc-biblioref">R Core Team 2023</a>)</span>, Quarto <span class="citation" data-cites="allaire2022">(<a href="#ref-allaire2022" role="doc-biblioref">Allaire et al. 2022</a>)</span>, <code>knitr</code> <span class="citation" data-cites="knitr">(<a href="#ref-knitr" role="doc-biblioref">Xie 2022</a>)</span>, <code>kableExtra</code> <span class="citation" data-cites="kableExtra">(<a href="#ref-kableExtra" role="doc-biblioref">Zhu 2021</a>)</span></p>
 </section><section id="references" class="level1">
 
