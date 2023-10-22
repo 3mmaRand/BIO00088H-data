@@ -11,7 +11,7 @@ library(conflicted)
 # Import ------------------------------------------------------------------
 
 # 🐭 import the hspc data
-hspc <- read_csv("data-raw/surfaceome_hspc.csv")
+hspc <- read_csv("omics/week-3/data-raw/surfaceome_hspc.csv")
 
 # Explore -----------------------------------------------------------------
 
@@ -84,7 +84,7 @@ hspc_summary_samp |>
 
 # Write `hspc_summary_samp` to a file called "hspc_summary_samp.csv":
 write_csv(hspc_summary_samp, 
-          file = "data-processed/hspc_summary_samp.csv")
+          file = "omics/week-3/data-processed/hspc_summary_samp.csv")
 
 
 # Distribution of values across the genes ---------------------------------
@@ -123,7 +123,7 @@ hspc_summary_gene |>
 
 # Write `hspc_summary_gene` to a file called "hspc_summary_gene.csv":
 write_csv(hspc_summary_gene, 
-          file = "data-processed/hspc_summary_gene.csv")
+          file = "omics/week-3/data-processed/hspc_summary_gene.csv")
 
 
 
@@ -153,7 +153,7 @@ write_csv(hspc_summary_gene,
 # Import ------------------------------------------------------------------
 
 # 🐭 import the prog data
-prog <- read_csv("data-raw/surfaceome_prog.csv")
+prog <- read_csv("omics/week-3/data-raw/surfaceome_prog.csv")
 
 # Explore -----------------------------------------------------------------
 
@@ -205,7 +205,7 @@ prog_summary_samp |>
 
 # Write `prog_summary_samp` to a file called "prog_summary_samp.csv":
 write_csv(prog_summary_samp, 
-          file = "data-processed/prog_summary_samp.csv")
+          file = "omics/week-3/data-processed/prog_summary_samp.csv")
 
 
 # Distribution of values across the genes ---------------------------------
@@ -244,7 +244,7 @@ prog_summary_gene |>
 
 # Write prog_summary_gene to a file called "prog_summary_gene.csv":
 write_csv(prog_summary_gene, 
-          file = "data-processed/prog_summary_gene.csv")
+          file = "omics/week-3/data-processed/prog_summary_gene.csv")
 
 
 
@@ -308,7 +308,7 @@ row.names(prog_hspc) <- prog$ensembl_gene_id
 
 prog_hspc |> 
   rowwise() |> 
-  filter(sum(c_across(Prog_001:HSPC_852)) == 0)
+  dplyr::filter(sum(c_across(Prog_001:HSPC_852)) == 0)
 # There are no genes that are completely unexpressed in this set of 280 genes
 
 # We might also examine the genes which are least expressed.
@@ -324,20 +324,20 @@ rowSums(prog_hspc) |> sort() |> head(10)
 # To find the genes that are expressed in only one cell type, 
 # we can use the same approach as above but only sum the columns for one cell type. 
 # 
-# Find the genes that are 0 in every column for the Prog cells:
+# Find the genes that are 0 in every column for the HSPC cells:
   
 prog_hspc |> 
   rowwise() |> 
-  filter(sum(c_across(HSPC_001:HSPC_852)) == 0)
+  dplyr::filter(sum(c_across(HSPC_001:HSPC_852)) == 0)
 
 # Note that if we knew there were some rows that were all zero across both 
 # cell types, we would need to add 
-# |> filter(sum(c_across(Prog_001:Prog_852)) != 0)
+# |> dplyr::filter(sum(c_across(Prog_001:Prog_852)) != 0)
 
-# Genes that are 0 in every column for the HSPC cells:
+# Genes that are 0 in every column for the Prog cells:
 prog_hspc |> 
   rowwise() |> 
-  filter(sum(c_across(HSPC_001:HSPC_852)) == 0)
+  dplyr::filter(sum(c_across(Prog_001:Prog_852)) == 0)
 # there are no genes that are expressed in only one cell type 
   
 # Differential expression analysis ----------------------------------------
@@ -381,7 +381,7 @@ res_prog_hspc <- findMarkers(prog_hspc,
 # Write the results to file:
 data.frame(res_prog_hspc$prog, 
            ensembl_gene_id = row.names(res_prog_hspc$prog)) |> 
-  write_csv("results/prog_hspc_results.csv")
+  write_csv("omics/week-4/results/prog_hspc_results.csv")
 
 
 
@@ -389,4 +389,239 @@ data.frame(res_prog_hspc$prog,
 
 
 # OMICS 3 VISUALISE AND INTERPRET -----------------------------------------
+
+library(tidyverse)
+library(conflicted)
+conflict_prefer("filter", "dplyr")
+
+
+# import the normalised counts
+prog <- read_csv("omics/week-5/data-raw/surfaceome_prog.csv")
+hspc <- read_csv("omics/week-5/data-raw/surfaceome_hspc.csv")
+
+# combine into one dataframe dropping one of the gene id columns
+prog_hspc <- bind_cols(prog, hspc[-1])
+
+# import the DE results
+prog_hspc_results <- read_csv("omics/week-5/results/prog_hspc_results.csv")
+
+
+# merge stats results with normalise values
+prog_hspc_results <- prog_hspc_results |> 
+  left_join(prog_hspc, by = "ensembl_gene_id")
+
+# LINKING INFORMATION -----------------------------------------------------
+# add the gene information using biomart
+
+# [Ensembl](https://www.ensembl.org/index.html) [@birney2004] is a 
+# bioinformatics project to organise all the biological information around
+# the sequences of large genomes. The are a large number of databases 
+# but [BioMart](https://www.ensembl.org/info/data/biomart/index.html) 
+# [@smedley2009] provides a consistent interface to the material. 
+# There are web-based tools to use these but the R package **`biomaRtr`**
+# [@biomaRt] enables you to rapidly access and integrate information 
+# into your R data structures.
+
+library(biomaRt)
+
+# Connect to the mouse database
+
+ensembl <- useMart(biomart = "ensembl", 
+                   dataset = "mmusculus_gene_ensembl")
+
+
+# See what info we can retrieve:
+listAttributes(mart = ensembl) |> View()
+
+# We need
+# ensembl_gene_id: because we will need to merge the info
+# external_gene_name: name for gene
+# description: description	
+
+gene_info <- getBM(filters = "ensembl_gene_id",
+                   attributes = c("ensembl_gene_id",
+                                  "external_gene_name",
+                                  "description"),
+                   values = prog_hspc_results$ensembl_gene_id,
+                   mart = ensembl)
+
+# Notice the dataframe returned only has 279 rows, not 280. Which one is missing?
+
+prog_hspc_results |> dplyr::select(ensembl_gene_id) |> 
+  dplyr::filter(!ensembl_gene_id %in% gene_info$ensembl_gene_id)
+
+# Error:
+#   ! [conflicted] select found in 2 packages.
+# Either pick the one you want with `::`:
+# • biomaRt::select
+# • dplyr::select
+# Or declare a preference with `conflicts_prefer()`:
+# • conflicts_prefer(biomaRt::select)
+# • conflicts_prefer(dplyr::select)
+# Run `rlang::last_trace()` to see where the error occurred.
+
+prog_hspc_results |> dplyr::select(ensembl_gene_id) |> 
+  filter(!ensembl_gene_id %in% gene_info$ensembl_gene_id)
+
+# We might want to look that up. Google it. Let's worry about it 
+# later if it turns out to be something important.
+
+# merge the gene info with the results
+prog_hspc_results <- prog_hspc_results |> 
+  left_join(gene_info, by = "ensembl_gene_id")
+
+
+# We now have datatframe with all the info we need, normalised counts, 
+# log2 normalised counts, statistical comparisons with fold changes and p values, 
+# information about the gene
+# other than just the id
+
+
+# save the most sig genes to file
+prog_hspc_results_sig0.01 <- prog_hspc_results |> 
+  filter(FDR <= 0.01)
+# 168 genes
+
+# write to csv file
+write_csv(prog_hspc_results_sig0.01, 
+          file = "omics/week-5/results/prog_hspc_results_sig0.01.csv")
+
+prog_hspc_results_sig0.05 <- prog_hspc_results |> 
+  filter(FDR <= 0.05)
+
+# 182 genes
+
+# write to csv file
+write_csv(prog_hspc_results_sig0.05, 
+          file = "omics/week-5/results/prog_hspc_results_sig0.05.csv")
+
+
+# pca
+# we do this on the log2 transformed normalised counts or the regularized the
+# log transformed counts
+
+# transpose the data
+# we are reducing he number of dimensions from 280
+prog_hspc_trans <- prog_hspc_results |> 
+  dplyr::select(starts_with(c("Prog_", "HSPC_"))) |>
+  t() |> 
+  data.frame()
+
+colnames(prog_hspc_trans) <- prog_hspc_results$ensembl_gene_id
+
+# perform PCA using standard functions
+pca <- prog_hspc_trans |>
+  prcomp(scale. = TRUE) 
+
+summary(pca)
+# Importance of components:
+#                        PC1     PC2     PC3     PC4     PC5     PC6     PC7     PC8
+# Standard deviation     4.3892 3.08797 2.25263 2.13943 1.96659 1.76697 1.62753 1.47668
+# Proportion of Variance 0.0688 0.03406 0.01812 0.01635 0.01381 0.01115 0.00946 0.00779
+# Cumulative Proportion  0.0688 0.10286 0.12098 0.13733 0.15114 0.16229 0.17175 0.17954
+
+pca_labelled <- data.frame(pca$x,
+                           cell_id = row.names(prog_hspc_trans))
+
+# add the cell type information
+# so we can label points 
+# split cell_id into cell type and replicate and keep cell_id column
+
+pca_labelled <- pca_labelled |> 
+  extract(cell_id, 
+          remove = FALSE,
+          c("cell_type", "cell_number"),
+          "([a-zA-Z]{4})_([0-9]{3})")
+
+
+
+pca <- pca_labelled |> 
+  ggplot(aes(x = PC1, y = PC2, 
+             colour = cell_type)) +
+  geom_point(alpha = 0.4) +
+  scale_colour_viridis_d(end = 0.8, begin = 0.15,
+                         name = "Cell type") +
+  theme_classic()
+
+# Fairly good separation of cell types but plenty of overlap
+
+ggsave("omics/week-5/figures/prog_hspc-pca.png",
+       plot = pca,
+       height = 3, 
+       width = 4,
+       units = "in",
+       device = "png")
+
+
+# tSNE ??
+# heatmap
+library(heatmaply)
+# we will use the most significant genes
+# on a random subset of the cells
+mat <- prog_hspc_results_sig0.01 |> 
+  dplyr::select(starts_with(c("Prog", "HSPC"))) |>
+  dplyr::select(sample(1:1499, size = 70)) |>
+  as.matrix()
+
+rownames(mat) <- prog_hspc_results_sig0.01$external_gene_name
+
+n_cell_clusters <- 2
+n_gene_clusters <- 2
+heatmaply(mat, 
+          scale = "row",
+          hide_colorbar = TRUE,
+          k_col = n_cell_clusters,
+          k_row = n_gene_clusters,
+          label_names = c("Gene", "Cell id", "Expression (normalised, log2)"),
+          fontsize_row = 7, fontsize_col = 10,
+          labCol = colnames(mat),
+          labRow = rownames(mat),
+          heatmap_layers = theme(axis.line = element_blank()))
+# will take a few mins to run, and longer to appear in the viewer
+# separation is not as strong as for the frog data
+
+
+# volcano plot
+
+
+# colour the points if FDR < 0.05
+# and prog_hspc_results > 1
+library(ggrepel)
+
+
+prog_hspc_results <- prog_hspc_results |> 
+  mutate(log10_FDR = -log10(FDR),
+         sig = FDR < 0.05,
+         bigfc = abs(summary.logFC) >= 2) 
+
+vol <- prog_hspc_results |> 
+  ggplot(aes(x = summary.logFC, 
+             y = log10_FDR, 
+             colour = interaction(sig, bigfc))) +
+  geom_point() +
+  geom_hline(yintercept = -log10(0.05), 
+             linetype = "dashed") +
+  geom_vline(xintercept = 1, 
+             linetype = "dashed") +
+  geom_vline(xintercept = -1, 
+             linetype = "dashed") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_colour_manual(values = c("gray",
+                                 "pink",
+                                 "deeppink")) +
+  geom_text_repel(data = subset(prog_hspc_results, 
+                                bigfc & sig),
+                  aes(label = external_gene_name),
+                  size = 3,
+                  max.overlaps = 50) +
+  theme_classic() +
+  theme(legend.position = "none")
+
+ggsave("omics/week-5/figures/prog-hspc-volcano.png",
+       plot = vol,
+       height = 4.5, 
+       width = 4.5,
+       units = "in",
+       device = "png")
 

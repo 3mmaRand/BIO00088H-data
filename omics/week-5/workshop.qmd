@@ -32,6 +32,20 @@ Or
 🎬 Open 🐭 `mice-88H` Project and the `hspc-prog.R` script.
 
 
+
+🎬 Make a new folder `figures` in the project directory. You can use the
+New Folder button in the Files pane but here I have used the **`fs`**
+[@fs] package
+
+```{r}
+#| eval: false
+fs::dir_create("figures")
+```
+
+This is where we will save our figure files.
+
+
+
 🎬 Load **`tidyverse`** [@tidyverse] and **`conflicted`**. You most likely have this code at
 the top of `cont-fgf-s30.R` or `hspc-prog.R` already.
 
@@ -61,70 +75,360 @@ library(conflicted)
 conflict_prefer("filter", "dplyr")
 ```
 
+
+
+
 # 🐸 Analysis
 
 We will carry out several steps
 
-1.  Import the data
-2.  
+1.  Import data and  merge statistical results with normalised values
+2.  Add gene information from xenbase
+3.  Write the significant genes to file
+4.  View the relationship between samples using PCA
+5.  Visualise the expression of the most significant genes using a heatmap
+6.  Visual all the results with a volcano plot
 
 
 
 ## Import
 
-We need to import t
+We need to import both the normalised counts and the statistical results. We will need all of these for the visualisation and interpretation.
 
-🎬 Import the data from the `results` folder.
+🎬 Import files saved from last week from the `results` folder: s30_normalised_counts.csv and s30_results.csv. I used the names `s30_count_norm` and `s30_results` for the dataframes.
 
 ```{r}
 #| echo: false
 #---CODING ANSWER---
- <- read_csv("")
+# Import the normalised counts
+s30_count_norm <- read_csv("results/s30_normalised_counts.csv")
+
+# DE results
+s30_results <- read_csv("omics/week-4/results/s30_results.csv")
+
 ```
 
 
 
-❓ H
-
-<!-- #---THINKING ANSWER--- -->
-
-<!-- There are 26 genes expressed only in the FGF-treated group. -->
-
-🎬 Now you find any genes that are expressed only in the control group.
+🎬  Remind yourself what is in the rows and columns and the structure of the dataframes (perhaps using `glimpse()`)
 
 
 
-
-The normalised counts are the counts that have been transformed to
-account for the library size (i.e., the total number of reads in a
-sample) and the gene length. We have to first estimate the normalisation
-factors and store them in the DESeqDataSet object and then we can get
-the normalised counts.
-
-
-
-🎬 Make a dataframe of the normalised counts, add a column for the gene
-ids and write to file:
+🎬  Merge the two dataframes:
 
 ```{r}
-data.frame(normalised_counts,
-           xenbase_gene_id = row.names(normalised_counts)) |>
-  write_csv(file = "results/S30_normalised_counts.csv")
+# merge the results with the normalised counts
+s30_results <- s30_count_norm |>
+  left_join(s30_results, by = "xenbase_gene_id")
 ```
 
-🎬 Save the results to a file:
+This means you have the counts for each sample along with the statistical results for each gene.
+
+
+## Add gene information from xenbase
+
+This information comes from the [Xenbase information pages](https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp)
+
+> xenbase Gene Product Information [readme]gzipped gpi (tab separated)
+
+The [xenbase.gpi.gz](https://download.xenbase.org/xenbase/GenePageReports/xenbase.gpi.gz) file contains gene product information for species specific Xenbase genes. 
+
+If you click on the readme link you can see information telling you that the file is in the Gene Product information 2.1 format and is provided with gzip compression. gene product information for both 
+*Xenopus tropicalis* (taxon:8364) and *Xenopus laevis* (taxon:8355)
+
+🎬 ......
+
+```{bash}
+gunzip xenbase.gpi.gz
+less xenbase.gpi
+q
+```
 
 ```{r}
-data.frame(results_fgf,
-           xenbase_gene_id = row.names(results_fgf)) |> 
-  write_csv(file = "results/S30_results.csv")
+library(readxl)
 ```
+
+```{r}
+gene_info <- read_excel("omics/week-5/meta/xenbase_info.xlsx") 
+```
+
+
+```{r}
+# join the gene info with the results
+s30_results <- s30_results |>
+  left_join(gene_info, by = "xenbase_gene_id")
+```
+
+```{r}
+# Import metadata that maps the sample names to treatments
+meta <- read_table("omics/week-4/meta/frog_meta_data.txt")
+row.names(meta) <- meta$sample_id
+```
+
+We only need the s30
+
+```{r}
+
+meta_s30 <- meta |>
+  dplyr::filter(stage == "stage_30")
+```
+
+
+log2 transformed normalised counts needed for data viz
+
+log2 transform the counts in s30_count_norm
+add a tiny amount to avoid log(0)
+
+```{r}
+# log2 transform the counts in s30_count_norm
+# add a tiny amount to avoid log(0)
+s30_results <- s30_results |>
+  mutate(across(starts_with("s30"), 
+                \(x) log2(x + 0.001),
+                .names = "log2_{.col}"))
+```
+
+read more about `across()` and anonymous functions from my [posit::conf(2023) workshop](https://posit-conf-2023.github.io/programming-r/03-iteration-01.html#/title-slide)
+
+
+We now have datatframe with all the info we need, normalised counts, 
+log2 normalised counts, statistical comparisons with fold changes and p values, 
+information about the gene
+other than just the id
+
+## Write the significant genes to file
+
+
+```{r}
+s30_results_sig0.01 <- s30_results |> 
+  filter(padj <= 0.01)
+# 59 genes
+```
+
+
+```{r}
+# write to csv file
+write_csv(s30_results_sig0.01, 
+          file = "omics/week-5/results/s30_results_sig0.01.csv")
+```
+
+```{r}
+s30_results_sig0.05 <- s30_results |> 
+  filter(padj <= 0.05)
+
+# 117 genes
+```
+
+```{r}
+# write to csv file
+write_csv(s30_results_sig0.05, 
+          file = "omics/week-5/results/s30_results_sig0.05.csv")
+
+```
+
+
+
+## View the relationship between samples using PCA
+
+we do this on the log2 transformed normalised counts or the regularized the
+log transformed counts
+
+transpose the data
+we are reducing he number of dimensions from 10136
+to 6
+
+```{r}
+s30_log2_trans <- s30_results |> 
+  select(starts_with("log2_")) |>
+  t() |> 
+  data.frame()
+```
+
+
+```{r}
+colnames(s30_log2_trans) <- s30_results$xenbase_gene_id
+```
+
+perform PCA using standard functions
+
+```{r}
+pca <- s30_log2_trans |>
+  prcomp(scale. = TRUE) 
+```
+
+```{r}
+summary(pca)
+```
+Importance of components:
+                         PC1     PC2     PC3     PC4     PC5       PC6
+ Standard deviation     57.1519 50.3285 43.8382 35.4644 33.9440 2.403e-13
+ Proportion of Variance  0.3224  0.2500  0.1897  0.1241  0.1137 0.000e+00
+ Cumulative Proportion   0.3224  0.5724  0.7621  0.8863  1.0000 1.000e+00
+
+
+remove log2 from  row.names(s30_log2_trans)
+to label the pca results
+
+```{r}
+sample_id <- row.names(s30_log2_trans) |> str_remove("log2_")
+```
+
+```{r}
+pca_labelled <- data.frame(pca$x,
+                           sample_id)
+```
+
+
+merge with metadata
+so we can label points by treatment and sib group
+
+```{r}
+pca_labelled <- pca_labelled |> 
+  left_join(meta_s30, 
+            by = "sample_id")
+```
+
+```{r}
+pca <- pca_labelled |> 
+  ggplot(aes(x = PC1, y = PC2, 
+             colour = sibling_rep,
+             shape = treatment)) +
+  geom_point(size = 3) +
+  scale_colour_viridis_d(end = 0.95, begin = 0.15,
+                         name = "Sibling pair",
+                         labels = c("A", ".5", ".6")) +
+  scale_shape_manual(values = c(21, 19),
+                     name = NULL,
+                     labels = c("Control", "FGF-Treated")) +
+  theme_classic()
+```
+
+There is a bit of separation between treatments on PCA2
+not that it isn't easy to draw strong conclusions on the basis of 3 points
+
+```{r}
+ggsave("omics/week-5/figures/frog-s30-pca.png",
+       plot = pca,
+       height = 3, 
+       width = 4,
+       units = "in",
+       device = "png")
+```
+
+
+
+
+
+## Visualise the expression of the most significant genes using a heatmap
+
+
+only should do on sig genes.
+but use the log 2 normalised values
+
+```{r}
+mat <- s30_results_sig0.01 |> 
+  select(starts_with("log2_")) |>
+  as.matrix()
+```
+
+```{r}
+rownames(mat) <- s30_results_sig0.01$xenbase_gene_symbol
+```
+
+
+```{r}
+library(heatmaply)
+```
+
+```{r}
+n_treatment_clusters <- 2
+n_gene_clusters <- 2
+```
+
+```{r}
+heatmaply(mat, 
+          scale = "row",
+          hide_colorbar = TRUE,
+          k_col = n_treatment_clusters,
+          k_row = n_gene_clusters,
+          label_names = c("Gene", "Sample", "Expression (normalised, log2)"),
+          fontsize_row = 7, fontsize_col = 10,
+          labCol = str_remove(colnames(mat), pattern = "log2_"),
+          labRow = rownames(mat),
+          heatmap_layers = theme(axis.line = element_blank()))
+```
+
+
+
+
+## Visual all the results with a volcano plot
+
+
+colour the points if padj < 0.05
+and log2FoldChange > 1
+
+```{r}
+library(ggrepel)
+```
+
+```{r}
+
+s30_results <- s30_results |> 
+  mutate(log10_padj = -log10(padj),
+         sig = padj < 0.05,
+         bigfc = abs(log2FoldChange) >= 2) 
+```
+
+```{r}
+vol <- s30_results |> 
+  ggplot(aes(x = log2FoldChange, 
+             y = log10_padj, 
+             colour = interaction(sig, bigfc))) +
+  geom_point() +
+  geom_hline(yintercept = -log10(0.05), 
+             linetype = "dashed") +
+  geom_vline(xintercept = 2, 
+             linetype = "dashed") +
+  geom_vline(xintercept = -2, 
+             linetype = "dashed") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_colour_manual(values = c("gray", 
+                                 "pink",
+                                 "gray30",
+                                 "deeppink")) +
+  geom_text_repel(data = subset(s30_results, 
+                                bigfc & sig),
+                  aes(label = xenbase_gene_symbol),
+                  size = 3,
+                  max.overlaps = 50) +
+  theme_classic() +
+  theme(legend.position = "none")
+```
+
+
+```{r}
+ggsave("omics/week-5/figures/frog-s30-volcano.png",
+       plot = vol,
+       height = 4.5, 
+       width = 4.5,
+       units = "in",
+       device = "png")
+```
+
+
+
 
 # 🐭 Analysis
 
 We will carry out several steps
 
-1.  Import the 
+1.  Import data and  merge statistical results with normalised values
+2.  Add gene information from the NCBI using biomaRt
+3.  Write the significant genes to file
+4.  View the relationship between cells using PCA
+5.  Visualise the expression of the most significant genes using a heatmap
+6.  Visual all the results with a volcano plot
 
 ## Import
 
@@ -133,32 +437,350 @@ We will carry out several steps
 ```{r}
 #| echo: false
 #---CODING ANSWER---
- <- read_csv("v")
+# import the normalised counts
+prog <- read_csv("omics/week-5/data-raw/surfaceome_prog.csv")
+hspc <- read_csv("omics/week-5/data-raw/surfaceome_hspc.csv")
 
 ```
 
 
-The dataframe `res_prog_hspc$prog` is log prog - log hspc
-(i.e.,Prog/HSPC). This means - Positive fold change: prog is higher than
-hspc - Negative fold change: hspc is higher than prog
 
-The dataframe `res_prog_hspc$hspc` is log hspc - log prog (i.e.,
-HSPC/Prog). . This means - Positive fold change: hspc is higher than
-prog - Negative fold change: prog is higher than hspc
-
-
-🎬 Write the results to file:
+🎬 Combine the two dataframes (minus the gene ids) into one dataframe called prog_hspc:
 
 ```{r}
-data.frame(res_prog_hspc$prog, 
-           ensembl_gene_id = row.names(res_prog_hspc$prog)) |> 
-  write_csv("results/prog_hspc_results.csv")
+# combine into one dataframe dropping one of the gene id columns
+prog_hspc <- bind_cols(prog, hspc[-1])
 ```
+
+🎬 ...
+
+```{r}
+# import the DE results
+prog_hspc_results <- read_csv("omics/week-5/results/prog_hspc_results.csv")
+```
+
+
+
+🎬 ...
+
+```{r}
+# merge stats results with normalise values
+prog_hspc_results <- prog_hspc_results |> 
+  left_join(prog_hspc, by = "ensembl_gene_id")
+```
+
+## Add gene information from the NCBI using biomaRt
+
+add the gene information using biomart
+
+[Ensembl](https://www.ensembl.org/index.html) [@birney2004] is a 
+bioinformatics project to organise all the biological information around
+the sequences of large genomes. The are a large number of databases 
+but [BioMart](https://www.ensembl.org/info/data/biomart/index.html) 
+[@smedley2009] provides a consistent interface to the material. 
+There are web-based tools to use these but the R package **`biomaRtr`**
+[@biomaRt] enables you to rapidly access and integrate information 
+into your R data structures.
+
+```{r}
+library(biomaRt)
+```
+
+```{r}
+# Connect to the mouse database
+
+ensembl <- useMart(biomart = "ensembl", 
+                   dataset = "mmusculus_gene_ensembl")
+
+```
+
+
+# See what info we can retrieve:
+listAttributes(mart = ensembl) |> View()
+
+# We need
+# ensembl_gene_id: because we will need to merge the info
+# external_gene_name: name for gene
+# description: description	
+
+gene_info <- getBM(filters = "ensembl_gene_id",
+                   attributes = c("ensembl_gene_id",
+                                  "external_gene_name",
+                                  "description"),
+                   values = prog_hspc_results$ensembl_gene_id,
+                   mart = ensembl)
+
+Notice the dataframe returned only has 279 rows, not 280. Which one is missing?
+
+```{r}
+#| error: true
+prog_hspc_results |> (ensembl_gene_id) |> 
+  filter(!ensembl_gene_id %in% gene_info$ensembl_gene_id)
+
+```
+
+
+```
+Error:
+ ! [conflicted] select found in 2 packages.
+Either pick the one you want with `::`:
+• biomaRt::select
+• dplyr::select
+Or declare a preference with `conflicts_prefer()`:
+• conflicts_prefer(biomaRt::select)
+• conflicts_prefer(dplyr::select)
+Run `rlang::last_trace()` to see where the error occurred.
+```
+
+```{r}
+prog_hspc_results |> dplyr::select(ensembl_gene_id) |> 
+  filter(!ensembl_gene_id %in% gene_info$ensembl_gene_id)
+```
+
+We might want to look that up. Google it. Let's worry about it 
+later if it turns out to be something important.
+
+merge the gene info with the results
+
+```{r}
+prog_hspc_results <- prog_hspc_results |> 
+  left_join(gene_info, by = "ensembl_gene_id")
+```
+
+We now have datatframe with all the info we need, normalised counts, 
+log2 normalised counts, statistical comparisons with fold changes and p values, 
+information about the gene
+other than just the id
+
+
+
+## Write the significant genes to file
+
+save the most sig genes to file
+
+```{r}
+prog_hspc_results_sig0.01 <- prog_hspc_results |> 
+  filter(FDR <= 0.01)
+```
+
+168 genes
+
+write to csv file
+```{r}
+write_csv(prog_hspc_results_sig0.01, 
+          file = "omics/week-5/results/prog_hspc_results_sig0.01.csv")
+```
+
+
+```{r}
+prog_hspc_results_sig0.05 <- prog_hspc_results |> 
+  filter(FDR <= 0.05)
+```
+182 genes
+
+write to csv file
+
+```{r}
+write_csv(prog_hspc_results_sig0.05, 
+          file = "omics/week-5/results/prog_hspc_results_sig0.05.csv")
+
+```
+
+
+
+## View the relationship between cells using PCA 
+
+we do this on the log2 transformed normalised counts or the regularized the
+log transformed counts
+
+transpose the data
+we are reducing he number of dimensions from 280
+
+```{r}
+prog_hspc_trans <- prog_hspc_results |> 
+  dplyr::select(starts_with(c("Prog_", "HSPC_"))) |>
+  t() |> 
+  data.frame()
+```
+
+
+```{r}
+colnames(prog_hspc_trans) <- prog_hspc_results$ensembl_gene_id
+```
+
+perform PCA using standard functions
+
+```{r}
+pca <- prog_hspc_trans |>
+  prcomp(scale. = TRUE) 
+```
+
+```{r}
+summary(pca)
+```
+
+Importance of components:
+                        PC1     PC2     PC3     PC4     PC5     PC6     PC7     PC8
+Standard deviation     4.3892 3.08797 2.25263 2.13943 1.96659 1.76697 1.62753 1.47668
+Proportion of Variance 0.0688 0.03406 0.01812 0.01635 0.01381 0.01115 0.00946 0.00779
+Cumulative Proportion  0.0688 0.10286 0.12098 0.13733 0.15114 0.16229 0.17175 0.17954
+
+```{r}
+pca_labelled <- data.frame(pca$x,
+                           cell_id = row.names(prog_hspc_trans))
+```
+
+
+add the cell type information
+so we can label points 
+split cell_id into cell type and replicate and keep cell_id column
+
+```{r}
+pca_labelled <- pca_labelled |> 
+  extract(cell_id, 
+          remove = FALSE,
+          c("cell_type", "cell_number"),
+          "([a-zA-Z]{4})_([0-9]{3})")
+```
+
+```{r}
+pca <- pca_labelled |> 
+  ggplot(aes(x = PC1, y = PC2, 
+             colour = cell_type)) +
+  geom_point(alpha = 0.4) +
+  scale_colour_viridis_d(end = 0.8, begin = 0.15,
+                         name = "Cell type") +
+  theme_classic()
+```
+
+
+Fairly good separation of cell types but plenty of overlap
+
+```{r}
+ggsave("omics/week-5/figures/prog_hspc-pca.png",
+       plot = pca,
+       height = 3, 
+       width = 4,
+       units = "in",
+       device = "png")
+```
+
+tSNE ??
+
+## Visualise the expression of the most significant genes using a heatmap 
+
+```{r}
+library(heatmaply)
+```
+
+we will use the most significant genes
+on a random subset of the cells since ~1500 columns is a lot
+```{r}
+mat <- prog_hspc_results_sig0.01 |> 
+  dplyr::select(starts_with(c("Prog", "HSPC"))) |>
+  dplyr::select(sample(1:1499, size = 70)) |>
+  as.matrix()
+```
+
+```{r}
+rownames(mat) <- prog_hspc_results_sig0.01$external_gene_name
+```
+
+```{r}
+n_cell_clusters <- 2
+n_gene_clusters <- 2
+```
+
+```{r}
+
+heatmaply(mat, 
+          scale = "row",
+          hide_colorbar = TRUE,
+          k_col = n_cell_clusters,
+          k_row = n_gene_clusters,
+          label_names = c("Gene", "Cell id", "Expression (normalised, log2)"),
+          fontsize_row = 7, fontsize_col = 10,
+          labCol = colnames(mat),
+          labRow = rownames(mat),
+          heatmap_layers = theme(axis.line = element_blank()))
+```
+
+will take a few mins to run, and longer to appear in the viewer
+separation is not as strong as for the frog data
+run a few times to see different subset
+
+
+## Visual all the results with a volcano plot
+
+colour the points if FDR < 0.05
+and prog_hspc_results > 1
+
+```{r}
+library(ggrepel)
+```
+
+```{r}
+
+prog_hspc_results <- prog_hspc_results |> 
+  mutate(log10_FDR = -log10(FDR),
+         sig = FDR < 0.05,
+         bigfc = abs(summary.logFC) >= 2) 
+```
+
+```{r}
+vol <- prog_hspc_results |> 
+  ggplot(aes(x = summary.logFC, 
+             y = log10_FDR, 
+             colour = interaction(sig, bigfc))) +
+  geom_point() +
+  geom_hline(yintercept = -log10(0.05), 
+             linetype = "dashed") +
+  geom_vline(xintercept = 1, 
+             linetype = "dashed") +
+  geom_vline(xintercept = -1, 
+             linetype = "dashed") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_colour_manual(values = c("gray",
+                                 "pink",
+                                 "deeppink")) +
+  geom_text_repel(data = subset(prog_hspc_results, 
+                                bigfc & sig),
+                  aes(label = external_gene_name),
+                  size = 3,
+                  max.overlaps = 50) +
+  theme_classic() +
+  theme(legend.position = "none")
+```
+
+
+```{r}
+ggsave("omics/week-5/figures/prog-hspc-volcano.png",
+       plot = vol,
+       height = 4.5, 
+       width = 4.5,
+       units = "in",
+       device = "png")
+```
+
+
+
+
+<!-- The dataframe `res_prog_hspc$prog` is log prog - log hspc -->
+<!-- (i.e.,Prog/HSPC). This means - Positive fold change: prog is higher than -->
+<!-- hspc - Negative fold change: hspc is higher than prog -->
+
+<!-- The dataframe `res_prog_hspc$hspc` is log hspc - log prog (i.e., -->
+<!-- HSPC/Prog). . This means - Positive fold change: hspc is higher than -->
+<!-- prog - Negative fold change: prog is higher than hspc -->
+
+
+
 
 # 🤗 Look after future you!
 
 🎬 Go through your script (`cont-fgf-s30.R` or `hspc-prog.R`) and tidy
-up. You might need to :
+up. I would suggest restarting R and trying to run the full pipeline from start to finish. You might need to :
 
 -   collect together library statements at the top of the script
 -   remove code that you needed to start today but which wouldn't be

@@ -22,7 +22,7 @@ In these slides we will:
 ::: incremental
 -   Check where you are
 
--   learn some concepts 
+-   learn some concepts
 
     -   
 
@@ -36,15 +36,17 @@ In these slides we will:
 ::: incremental
 ::: {style="font-size: 90%;"}
 -   
+
 -   
+
 -   Saved files .
 :::
 :::
 
 ## Where should you be?
 
-After the [Omics 2: 👋 Statistical Analysis Workshop](../week-4/workshop.html)
-including:
+After the [Omics 2: 👋 Statistical Analysis
+Workshop](../week-4/workshop.html) including:
 
 -   [🤗 Look after future
     you!](../week-4/workshop.html#look-after-future-you) and
@@ -87,8 +89,7 @@ Either of the other examples.
 
 Go through:
 
--   [Omics 2: Statistical Analysis](../week-4/workshop.html)
-    including:
+-   [Omics 2: Statistical Analysis](../week-4/workshop.html) including:
 
 -   [🤗 Look after future
     you!](../week-4/workshop.html#look-after-future-you) and
@@ -96,34 +97,107 @@ Go through:
 -   the [Independent Study to
     consolidate](../week-4/study_after_workshop.html)
 
-# xx
+# Examine the results files
 
-## xx
+## Examine the results files
+
+
+
+# Adding gene information
+
+## from xenbase
+
+
+![xenbase logo](images/Xenbase-Logo-Medium.png){width="700"}
+
+
+Xenbase (http://www.xenbase.org/, RRID:SCR_003280)
+
+Xenbase is a model organism database that provides genomic, molecular,
+and developmental biology information about Xenopus laevis and Xenopus
+tropicalis. Xenbase is funded by the National Institutes of Health
+(NIH) and the National Science Foundation (NSF).
+
+our data gives the xenbase gene id so we are using xenbase to get the information
+a lot of the information would also be in the ncbi
+
+## from the ncbi
+
+biomart is a package that allows you to get information from the ncbi
+database such as gene names and descriptions
+
+
+
+
+
+
+# Plots 
+
+## plots purpose
+
+dimsenion reduction
+
+## pca
+
+lots of variables 
+
+## tsne
+
+lots of variables and lots of observations
+
+
+
+# normalsing before plotting
+
+## normalising before plotting
+
+log 
+
+normalisation
+regularised log is a method to bias from low count genes.
+https://hbctraining.github.io/DGE_workshop_salmon_online/lessons/03_DGE_QC_analysis.html
+
+
 
 ::: incremental
 -   T
 :::
 
+rlog is a method to bias from low count genes.
+https://hbctraining.github.io/DGE_workshop_salmon_online/lessons/03_DGE_QC_analysis.html
+gives a good explanation of regularized the log transform (rlog)
 
+The rlog transformation of the normalized counts is only necessary for
+these visualization methods during this quality assessment. They are not
+used for DE because DESeq2 takes care of that
+
+in the workshop we just to log transformed
 
 -   The 🐭 mouse data have been normalised to simplify the analysis for
     you; the 🐸 frog data have not but the DE method will do this for
     you.
+   
 
--
+
+
+
 ## Packages to install before the workshop
 
-**``** from CRAN in the the normal way:
+**`heatmaply`** **`ggrepel`** from CRAN in the the normal way:
 
 ```{r}
 #| eval: false
-install.packages("")
+
+install.packages("heatmaply")
+install.packages("ggrepel")
+
 ```
 
-**`DESeq2`** from Bioconductor using BiocManager:
+
+**`biomaRt`** from Bioconductor using **`BiocManager`**:
 ```{r}
 #| eval: false
-BiocManager::install("DESeq2")
+BiocManager::install("biomaRt")
 ```
 
 
@@ -138,6 +212,8 @@ BiocManager::install("DESeq2")
 -   Omics 2: Statistical Analysis Identifying which genes are
     differentially expressed between treatments.
 
--   Omics 3: Visualising and Interpreting. PCA, Volcano plots and heatmaps to visualise results. Interpreting the results and finding out more about genes of interest.
+-   Omics 3: Visualising and Interpreting. PCA, Volcano plots and
+    heatmaps to visualise results. Interpreting the results and finding
+    out more about genes of interest.
 
 ## References
