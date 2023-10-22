@@ -95,16 +95,16 @@ We will carry out several steps
 
 We need to import both the normalised counts and the statistical results. We will need all of these for the visualisation and interpretation.
 
-🎬 Import files saved from last week from the `results` folder: s30_normalised_counts.csv and s30_results.csv. I used the names `s30_count_norm` and `s30_results` for the dataframes.
+🎬 Import files saved from last week from the `results` folder: S30_normalised_counts.csv and S30_results.csv. I used the names `s30_count_norm` and `s30_results` for the dataframes.
 
 ```{r}
 #| echo: false
 #---CODING ANSWER---
 # Import the normalised counts
-s30_count_norm <- read_csv("results/s30_normalised_counts.csv")
+s30_count_norm <- read_csv("results/S30_normalised_counts.csv")
 
 # DE results
-s30_results <- read_csv("omics/week-4/results/s30_results.csv")
+s30_results <- read_csv("results/S30_results.csv")
 
 ```
 
