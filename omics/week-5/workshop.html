@@ -289,12 +289,31 @@ div.csl-indent {
 <a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">🐸 Analysis</a>
   <ul>
 <li><a href="#import" id="toc-import" class="nav-link" data-scroll-target="#import">Import</a></li>
+  <li><a href="#add-gene-information-from-xenbase" id="toc-add-gene-information-from-xenbase" class="nav-link" data-scroll-target="#add-gene-information-from-xenbase">Add gene information from xenbase</a></li>
+  <li><a href="#write-the-significant-genes-to-file" id="toc-write-the-significant-genes-to-file" class="nav-link" data-scroll-target="#write-the-significant-genes-to-file">Write the significant genes to file</a></li>
+  <li><a href="#view-the-relationship-between-samples-using-pca" id="toc-view-the-relationship-between-samples-using-pca" class="nav-link" data-scroll-target="#view-the-relationship-between-samples-using-pca">View the relationship between samples using PCA</a></li>
+  <li><a href="#visualise-the-expression-of-the-most-significant-genes-using-a-heatmap" id="toc-visualise-the-expression-of-the-most-significant-genes-using-a-heatmap" class="nav-link" data-scroll-target="#visualise-the-expression-of-the-most-significant-genes-using-a-heatmap">Visualise the expression of the most significant genes using a heatmap</a></li>
+  <li><a href="#visual-all-the-results-with-a-volcano-plot" id="toc-visual-all-the-results-with-a-volcano-plot" class="nav-link" data-scroll-target="#visual-all-the-results-with-a-volcano-plot">Visual all the results with a volcano plot</a></li>
   </ul>
 </li>
   <li>
 <a href="#analysis-1" id="toc-analysis-1" class="nav-link" data-scroll-target="#analysis-1">🐭 Analysis</a>
   <ul>
 <li><a href="#import-1" id="toc-import-1" class="nav-link" data-scroll-target="#import-1">Import</a></li>
+  <li><a href="#add-gene-information-from-the-ncbi-using-biomart" id="toc-add-gene-information-from-the-ncbi-using-biomart" class="nav-link" data-scroll-target="#add-gene-information-from-the-ncbi-using-biomart">Add gene information from the NCBI using biomaRt</a></li>
+  </ul>
+</li>
+  <li><a href="#see-what-info-we-can-retrieve" id="toc-see-what-info-we-can-retrieve" class="nav-link" data-scroll-target="#see-what-info-we-can-retrieve">See what info we can retrieve:</a></li>
+  <li><a href="#we-need" id="toc-we-need" class="nav-link" data-scroll-target="#we-need">We need</a></li>
+  <li><a href="#ensembl_gene_id-because-we-will-need-to-merge-the-info" id="toc-ensembl_gene_id-because-we-will-need-to-merge-the-info" class="nav-link" data-scroll-target="#ensembl_gene_id-because-we-will-need-to-merge-the-info">ensembl_gene_id: because we will need to merge the info</a></li>
+  <li><a href="#external_gene_name-name-for-gene" id="toc-external_gene_name-name-for-gene" class="nav-link" data-scroll-target="#external_gene_name-name-for-gene">external_gene_name: name for gene</a></li>
+  <li>
+<a href="#description-description" id="toc-description-description" class="nav-link" data-scroll-target="#description-description">description: description</a>
+  <ul>
+<li><a href="#write-the-significant-genes-to-file-1" id="toc-write-the-significant-genes-to-file-1" class="nav-link" data-scroll-target="#write-the-significant-genes-to-file-1">Write the significant genes to file</a></li>
+  <li><a href="#view-the-relationship-between-cells-using-pca" id="toc-view-the-relationship-between-cells-using-pca" class="nav-link" data-scroll-target="#view-the-relationship-between-cells-using-pca">View the relationship between cells using PCA</a></li>
+  <li><a href="#visualise-the-expression-of-the-most-significant-genes-using-a-heatmap-1" id="toc-visualise-the-expression-of-the-most-significant-genes-using-a-heatmap-1" class="nav-link" data-scroll-target="#visualise-the-expression-of-the-most-significant-genes-using-a-heatmap-1">Visualise the expression of the most significant genes using a heatmap</a></li>
+  <li><a href="#visual-all-the-results-with-a-volcano-plot-1" id="toc-visual-all-the-results-with-a-volcano-plot-1" class="nav-link" data-scroll-target="#visual-all-the-results-with-a-volcano-plot-1">Visual all the results with a volcano plot</a></li>
   </ul>
 </li>
   <li><a href="#look-after-future-you" id="toc-look-after-future-you" class="nav-link" data-scroll-target="#look-after-future-you">🤗 Look after future you!</a></li>
@@ -324,7 +343,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">19 October, 2023</p>
+      <p class="date">22 October, 2023</p>
     </div>
   </div>
   
@@ -340,9 +359,14 @@ div.csl-indent {
 <p>🎬 Open 🐸 <code>frogs-88H</code> Project and the <code>cont-fgf-s30.R</code> script.</p>
 <p>Or</p>
 <p>🎬 Open 🐭 <code>mice-88H</code> Project and the <code>hspc-prog.R</code> script.</p>
+<p>🎬 Make a new folder <code>figures</code> in the project directory. You can use the New Folder button in the Files pane but here I have used the <strong><code>fs</code></strong> <span class="citation" data-cites="fs">(<a href="#ref-fs" role="doc-biblioref">Hester, Wickham, and Csárdi 2023</a>)</span> package</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/create.html">dir_create</a></span><span class="op">(</span><span class="st">"figures"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This is where we will save our figure files.</p>
 <p>🎬 Load <strong><code>tidyverse</code></strong> <span class="citation" data-cites="tidyverse">(<a href="#ref-tidyverse" role="doc-biblioref">Wickham et al. 2019</a>)</span> and <strong><code>conflicted</code></strong>. You most likely have this code at the top of <code>cont-fgf-s30.R</code> or <code>hspc-prog.R</code> already.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://conflicted.r-lib.org/">conflicted</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <pre><code>── Attaching core tidyverse packages ─────────────────────────────────────────────── tidyverse 2.0.0 ──
@@ -357,76 +381,626 @@ div.csl-indent {
 ℹ Use the conflicted package to force all conflicts to become errors</code></pre>
 <p>🎬 Use the <strong><code>dplyr</code></strong> version of <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> by default:</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://conflicted.r-lib.org/reference/conflict_prefer.html">conflict_prefer</a></span><span class="op">(</span><span class="st">"filter"</span>, <span class="st">"dplyr"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://conflicted.r-lib.org/reference/conflict_prefer.html">conflict_prefer</a></span><span class="op">(</span><span class="st">"filter"</span>, <span class="st">"dplyr"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="analysis" class="level1"><h1>🐸 Analysis</h1>
 <p>We will carry out several steps</p>
 <ol type="1">
-<li>Import the data</li>
-<li>
-</li></ol>
+<li>Import data and merge statistical results with normalised values</li>
+<li>Add gene information from xenbase</li>
+<li>Write the significant genes to file</li>
+<li>View the relationship between samples using PCA</li>
+<li>Visualise the expression of the most significant genes using a heatmap</li>
+<li>Visual all the results with a volcano plot</li>
+</ol>
 <section id="import" class="level2"><h2 class="anchored" data-anchor-id="import">Import</h2>
-<p>We need to import t</p>
-<p>🎬 Import the data from the <code>results</code> folder.</p>
+<p>We need to import both the normalised counts and the statistical results. We will need all of these for the visualisation and interpretation.</p>
+<p>🎬 Import files saved from last week from the <code>results</code> folder: s30_normalised_counts.csv and s30_results.csv. I used the names <code>s30_count_norm</code> and <code>s30_results</code> for the dataframes.</p>
 <div class="cell">
 <div class="cell-output cell-output-error">
-<pre><code>Error: &lt;text&gt;:2:2: unexpected assignment
-1: #---CODING ANSWER---
-2:  &lt;-
-    ^</code></pre>
+<pre><code>Error: 'results/s30_normalised_counts.csv' does not exist in current working directory ('/home/runner/work/BIO00088H-data/BIO00088H-data/omics/week-5').</code></pre>
 </div>
-</div>
-<p>❓ H</p>
-<!-- #---THINKING ANSWER--- -->
-<!-- There are 26 genes expressed only in the FGF-treated group. -->
-<p>🎬 Now you find any genes that are expressed only in the control group.</p>
-<p>The normalised counts are the counts that have been transformed to account for the library size (i.e., the total number of reads in a sample) and the gene length. We have to first estimate the normalisation factors and store them in the DESeqDataSet object and then we can get the normalised counts.</p>
-<p>🎬 Make a dataframe of the normalised counts, add a column for the gene ids and write to file:</p>
-<div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">normalised_counts</span>,</span>
-<span>           xenbase_gene_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">normalised_counts</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"results/S30_normalised_counts.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 'normalised_counts' not found</code></pre>
+<pre><code>Error: 'omics/week-4/results/s30_results.csv' does not exist in current working directory ('/home/runner/work/BIO00088H-data/BIO00088H-data/omics/week-5').</code></pre>
 </div>
 </div>
-<p>🎬 Save the results to a file:</p>
+<p>🎬 Remind yourself what is in the rows and columns and the structure of the dataframes (perhaps using <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code>)</p>
+<p>🎬 Merge the two dataframes:</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">results_fgf</span>,</span>
-<span>           xenbase_gene_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">results_fgf</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"results/S30_results.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># merge the results with the normalised counts</span></span>
+<span><span class="va">s30_results</span> <span class="op">&lt;-</span> <span class="va">s30_count_norm</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">s30_results</span>, by <span class="op">=</span> <span class="st">"xenbase_gene_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 'results_fgf' not found</code></pre>
+<pre><code>Error in eval(expr, envir, enclos): object 's30_count_norm' not found</code></pre>
+</div>
+</div>
+<p>This means you have the counts for each sample along with the statistical results for each gene.</p>
+</section><section id="add-gene-information-from-xenbase" class="level2"><h2 class="anchored" data-anchor-id="add-gene-information-from-xenbase">Add gene information from xenbase</h2>
+<p>This information comes from the <a href="https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp">Xenbase information pages</a></p>
+<blockquote class="blockquote">
+<p>xenbase Gene Product Information [readme]gzipped gpi (tab separated)</p>
+</blockquote>
+<p>The <a href="https://download.xenbase.org/xenbase/GenePageReports/xenbase.gpi.gz">xenbase.gpi.gz</a> file contains gene product information for species specific Xenbase genes.</p>
+<p>If you click on the readme link you can see information telling you that the file is in the Gene Product information 2.1 format and is provided with gzip compression. gene product information for both <em>Xenopus tropicalis</em> (taxon:8364) and <em>Xenopus laevis</em> (taxon:8355)</p>
+<p>🎬 ……</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> xenbase.gpi.gz</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> xenbase.gpi</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">q</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Error in running command bash</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gene_info</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"omics/week-5/meta/xenbase_info.xlsx"</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: `path` does not exist: 'omics/week-5/meta/xenbase_info.xlsx'</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># join the gene info with the results</span></span>
+<span><span class="va">s30_results</span> <span class="op">&lt;-</span> <span class="va">s30_results</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">gene_info</span>, by <span class="op">=</span> <span class="st">"xenbase_gene_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 's30_results' not found</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Import metadata that maps the sample names to treatments</span></span>
+<span><span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_table.html">read_table</a></span><span class="op">(</span><span class="st">"omics/week-4/meta/frog_meta_data.txt"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: 'omics/week-4/meta/frog_meta_data.txt' does not exist in current working directory ('/home/runner/work/BIO00088H-data/BIO00088H-data/omics/week-5').</code></pre>
+</div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">meta</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">meta</span><span class="op">$</span><span class="va">sample_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'meta' not found</code></pre>
+</div>
+</div>
+<p>We only need the s30</p>
+<div class="cell">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">meta_s30</span> <span class="op">&lt;-</span> <span class="va">meta</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">stage</span> <span class="op">==</span> <span class="st">"stage_30"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'meta' not found</code></pre>
+</div>
+</div>
+<p>log2 transformed normalised counts needed for data viz</p>
+<p>log2 transform the counts in s30_count_norm add a tiny amount to avoid log(0)</p>
+<div class="cell">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># log2 transform the counts in s30_count_norm</span></span>
+<span><span class="co"># add a tiny amount to avoid log(0)</span></span>
+<span><span class="va">s30_results</span> <span class="op">&lt;-</span> <span class="va">s30_results</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"s30"</span><span class="op">)</span>, </span>
+<span>                \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log2</a></span><span class="op">(</span><span class="va">x</span> <span class="op">+</span> <span class="fl">0.001</span><span class="op">)</span>,</span>
+<span>                .names <span class="op">=</span> <span class="st">"log2_{.col}"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 's30_results' not found</code></pre>
+</div>
+</div>
+<p>read more about <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> and anonymous functions from my <a href="https://posit-conf-2023.github.io/programming-r/03-iteration-01.html#/title-slide">posit::conf(2023) workshop</a></p>
+<p>We now have datatframe with all the info we need, normalised counts, log2 normalised counts, statistical comparisons with fold changes and p values, information about the gene other than just the id</p>
+</section><section id="write-the-significant-genes-to-file" class="level2"><h2 class="anchored" data-anchor-id="write-the-significant-genes-to-file">Write the significant genes to file</h2>
+<div class="cell">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_results_sig0.01</span> <span class="op">&lt;-</span> <span class="va">s30_results</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">padj</span> <span class="op">&lt;=</span> <span class="fl">0.01</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 's30_results' not found</code></pre>
+</div>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 59 genes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># write to csv file</span></span>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">s30_results_sig0.01</span>, </span>
+<span>          file <span class="op">=</span> <span class="st">"omics/week-5/results/s30_results_sig0.01.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 's30_results_sig0.01' not found</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_results_sig0.05</span> <span class="op">&lt;-</span> <span class="va">s30_results</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">padj</span> <span class="op">&lt;=</span> <span class="fl">0.05</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 's30_results' not found</code></pre>
+</div>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 117 genes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># write to csv file</span></span>
+<span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">s30_results_sig0.05</span>, </span>
+<span>          file <span class="op">=</span> <span class="st">"omics/week-5/results/s30_results_sig0.05.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 's30_results_sig0.05' not found</code></pre>
+</div>
+</div>
+</section><section id="view-the-relationship-between-samples-using-pca" class="level2"><h2 class="anchored" data-anchor-id="view-the-relationship-between-samples-using-pca">View the relationship between samples using PCA</h2>
+<p>we do this on the log2 transformed normalised counts or the regularized the log transformed counts</p>
+<p>transpose the data we are reducing he number of dimensions from 10136 to 6</p>
+<div class="cell">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_log2_trans</span> <span class="op">&lt;-</span> <span class="va">s30_results</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"log2_"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 's30_results' not found</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">s30_log2_trans</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">s30_results</span><span class="op">$</span><span class="va">xenbase_gene_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 's30_results' not found</code></pre>
+</div>
+</div>
+<p>perform PCA using standard functions</p>
+<div class="cell">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca</span> <span class="op">&lt;-</span> <span class="va">s30_log2_trans</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/prcomp.html">prcomp</a></span><span class="op">(</span>scale. <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 's30_log2_trans' not found</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">pca</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'pca' not found</code></pre>
+</div>
+</div>
+<p>Importance of components: PC1 PC2 PC3 PC4 PC5 PC6 Standard deviation 57.1519 50.3285 43.8382 35.4644 33.9440 2.403e-13 Proportion of Variance 0.3224 0.2500 0.1897 0.1241 0.1137 0.000e+00 Cumulative Proportion 0.3224 0.5724 0.7621 0.8863 1.0000 1.000e+00</p>
+<p>remove log2 from row.names(s30_log2_trans) to label the pca results</p>
+<div class="cell">
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">s30_log2_trans</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove</a></span><span class="op">(</span><span class="st">"log2_"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 's30_log2_trans' not found</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">pca</span><span class="op">$</span><span class="va">x</span>,</span>
+<span>                           <span class="va">sample_id</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'pca' not found</code></pre>
+</div>
+</div>
+<p>merge with metadata so we can label points by treatment and sib group</p>
+<div class="cell">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">&lt;-</span> <span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">meta_s30</span>, </span>
+<span>            by <span class="op">=</span> <span class="st">"sample_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'pca_labelled' not found</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca</span> <span class="op">&lt;-</span> <span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">PC1</span>, y <span class="op">=</span> <span class="va">PC2</span>, </span>
+<span>             colour <span class="op">=</span> <span class="va">sibling_rep</span>,</span>
+<span>             shape <span class="op">=</span> <span class="va">treatment</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_colour_viridis_d</a></span><span class="op">(</span>end <span class="op">=</span> <span class="fl">0.95</span>, begin <span class="op">=</span> <span class="fl">0.15</span>,</span>
+<span>                         name <span class="op">=</span> <span class="st">"Sibling pair"</span>,</span>
+<span>                         labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">".5"</span>, <span class="st">".6"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_shape_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">21</span>, <span class="fl">19</span><span class="op">)</span>,</span>
+<span>                     name <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>                     labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Control"</span>, <span class="st">"FGF-Treated"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'pca_labelled' not found</code></pre>
+</div>
+</div>
+<p>There is a bit of separation between treatments on PCA2 not that it isn’t easy to draw strong conclusions on the basis of 3 points</p>
+<div class="cell">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="st">"omics/week-5/figures/frog-s30-pca.png"</span>,</span>
+<span>       plot <span class="op">=</span> <span class="va">pca</span>,</span>
+<span>       height <span class="op">=</span> <span class="fl">3</span>, </span>
+<span>       width <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>       units <span class="op">=</span> <span class="st">"in"</span>,</span>
+<span>       device <span class="op">=</span> <span class="st">"png"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'pca' not found</code></pre>
+</div>
+</div>
+</section><section id="visualise-the-expression-of-the-most-significant-genes-using-a-heatmap" class="level2"><h2 class="anchored" data-anchor-id="visualise-the-expression-of-the-most-significant-genes-using-a-heatmap">Visualise the expression of the most significant genes using a heatmap</h2>
+<p>only should do on sig genes. but use the log 2 normalised values</p>
+<div class="cell">
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mat</span> <span class="op">&lt;-</span> <span class="va">s30_results_sig0.01</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"log2_"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 's30_results_sig0.01' not found</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">mat</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">s30_results_sig0.01</span><span class="op">$</span><span class="va">xenbase_gene_symbol</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 's30_results_sig0.01' not found</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://talgalili.github.io/heatmaply/">heatmaply</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n_treatment_clusters</span> <span class="op">&lt;-</span> <span class="fl">2</span></span>
+<span><span class="va">n_gene_clusters</span> <span class="op">&lt;-</span> <span class="fl">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://talgalili.github.io/heatmaply/reference/heatmaply.html">heatmaply</a></span><span class="op">(</span><span class="va">mat</span>, </span>
+<span>          scale <span class="op">=</span> <span class="st">"row"</span>,</span>
+<span>          hide_colorbar <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>          k_col <span class="op">=</span> <span class="va">n_treatment_clusters</span>,</span>
+<span>          k_row <span class="op">=</span> <span class="va">n_gene_clusters</span>,</span>
+<span>          label_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Gene"</span>, <span class="st">"Sample"</span>, <span class="st">"Expression (normalised, log2)"</span><span class="op">)</span>,</span>
+<span>          fontsize_row <span class="op">=</span> <span class="fl">7</span>, fontsize_col <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>          labCol <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">mat</span><span class="op">)</span>, pattern <span class="op">=</span> <span class="st">"log2_"</span><span class="op">)</span>,</span>
+<span>          labRow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">mat</span><span class="op">)</span>,</span>
+<span>          heatmap_layers <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.line <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'mat' not found</code></pre>
+</div>
+</div>
+</section><section id="visual-all-the-results-with-a-volcano-plot" class="level2"><h2 class="anchored" data-anchor-id="visual-all-the-results-with-a-volcano-plot">Visual all the results with a volcano plot</h2>
+<p>colour the points if padj &lt; 0.05 and log2FoldChange &gt; 1</p>
+<div class="cell">
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/slowkow/ggrepel">ggrepel</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_results</span> <span class="op">&lt;-</span> <span class="va">s30_results</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>log10_padj <span class="op">=</span> <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">padj</span><span class="op">)</span>,</span>
+<span>         sig <span class="op">=</span> <span class="va">padj</span> <span class="op">&lt;</span> <span class="fl">0.05</span>,</span>
+<span>         bigfc <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">log2FoldChange</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fl">2</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 's30_results' not found</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vol</span> <span class="op">&lt;-</span> <span class="va">s30_results</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">log2FoldChange</span>, </span>
+<span>             y <span class="op">=</span> <span class="va">log10_padj</span>, </span>
+<span>             colour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/interaction.html">interaction</a></span><span class="op">(</span><span class="va">sig</span>, <span class="va">bigfc</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="fl">0.05</span><span class="op">)</span>, </span>
+<span>             linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">2</span>, </span>
+<span>             linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="op">-</span><span class="fl">2</span>, </span>
+<span>             linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_colour_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"gray"</span>, </span>
+<span>                                 <span class="st">"pink"</span>,</span>
+<span>                                 <span class="st">"gray30"</span>,</span>
+<span>                                 <span class="st">"deeppink"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/ggrepel/man/geom_text_repel.html">geom_text_repel</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">s30_results</span>, </span>
+<span>                                <span class="va">bigfc</span> <span class="op">&amp;</span> <span class="va">sig</span><span class="op">)</span>,</span>
+<span>                  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">xenbase_gene_symbol</span><span class="op">)</span>,</span>
+<span>                  size <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>                  max.overlaps <span class="op">=</span> <span class="fl">50</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 's30_results' not found</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="st">"omics/week-5/figures/frog-s30-volcano.png"</span>,</span>
+<span>       plot <span class="op">=</span> <span class="va">vol</span>,</span>
+<span>       height <span class="op">=</span> <span class="fl">4.5</span>, </span>
+<span>       width <span class="op">=</span> <span class="fl">4.5</span>,</span>
+<span>       units <span class="op">=</span> <span class="st">"in"</span>,</span>
+<span>       device <span class="op">=</span> <span class="st">"png"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'vol' not found</code></pre>
 </div>
 </div>
 </section></section><section id="analysis-1" class="level1"><h1>🐭 Analysis</h1>
 <p>We will carry out several steps</p>
 <ol type="1">
-<li>Import the</li>
+<li>Import data and merge statistical results with normalised values</li>
+<li>Add gene information from the NCBI using biomaRt</li>
+<li>Write the significant genes to file</li>
+<li>View the relationship between cells using PCA</li>
+<li>Visualise the expression of the most significant genes using a heatmap</li>
+<li>Visual all the results with a volcano plot</li>
 </ol>
 <section id="import-1" class="level2"><h2 class="anchored" data-anchor-id="import-1">Import</h2>
 <p>🎬 Import</p>
 <div class="cell">
 <div class="cell-output cell-output-error">
-<pre><code>Error: &lt;text&gt;:2:2: unexpected assignment
-1: #---CODING ANSWER---
-2:  &lt;-
-    ^</code></pre>
+<pre><code>Error: 'omics/week-5/data-raw/surfaceome_prog.csv' does not exist in current working directory ('/home/runner/work/BIO00088H-data/BIO00088H-data/omics/week-5').</code></pre>
 </div>
-</div>
-<p>The dataframe <code>res_prog_hspc$prog</code> is log prog - log hspc (i.e.,Prog/HSPC). This means - Positive fold change: prog is higher than hspc - Negative fold change: hspc is higher than prog</p>
-<p>The dataframe <code>res_prog_hspc$hspc</code> is log hspc - log prog (i.e., HSPC/Prog). . This means - Positive fold change: hspc is higher than prog - Negative fold change: prog is higher than hspc</p>
-<p>🎬 Write the results to file:</p>
-<div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">res_prog_hspc</span><span class="op">$</span><span class="va">prog</span>, </span>
-<span>           ensembl_gene_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">res_prog_hspc</span><span class="op">$</span><span class="va">prog</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="st">"results/prog_hspc_results.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 'res_prog_hspc' not found</code></pre>
+<pre><code>Error: 'omics/week-5/data-raw/surfaceome_hspc.csv' does not exist in current working directory ('/home/runner/work/BIO00088H-data/BIO00088H-data/omics/week-5').</code></pre>
 </div>
 </div>
+<p>🎬 Combine the two dataframes (minus the gene ids) into one dataframe called prog_hspc:</p>
+<div class="cell">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># combine into one dataframe dropping one of the gene id columns</span></span>
+<span><span class="va">prog_hspc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_cols.html">bind_cols</a></span><span class="op">(</span><span class="va">prog</span>, <span class="va">hspc</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'prog' not found</code></pre>
+</div>
+</div>
+<p>🎬 …</p>
+<div class="cell">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># import the DE results</span></span>
+<span><span class="va">prog_hspc_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"omics/week-5/results/prog_hspc_results.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: 'omics/week-5/results/prog_hspc_results.csv' does not exist in current working directory ('/home/runner/work/BIO00088H-data/BIO00088H-data/omics/week-5').</code></pre>
+</div>
+</div>
+<p>🎬 …</p>
+<div class="cell">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># merge stats results with normalise values</span></span>
+<span><span class="va">prog_hspc_results</span> <span class="op">&lt;-</span> <span class="va">prog_hspc_results</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">prog_hspc</span>, by <span class="op">=</span> <span class="st">"ensembl_gene_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'prog_hspc_results' not found</code></pre>
+</div>
+</div>
+</section><section id="add-gene-information-from-the-ncbi-using-biomart" class="level2"><h2 class="anchored" data-anchor-id="add-gene-information-from-the-ncbi-using-biomart">Add gene information from the NCBI using biomaRt</h2>
+<p>add the gene information using biomart</p>
+<p><a href="https://www.ensembl.org/index.html">Ensembl</a> <span class="citation" data-cites="birney2004">(<a href="#ref-birney2004" role="doc-biblioref"><strong>birney2004?</strong></a>)</span> is a bioinformatics project to organise all the biological information around the sequences of large genomes. The are a large number of databases but <a href="https://www.ensembl.org/info/data/biomart/index.html">BioMart</a> <span class="citation" data-cites="smedley2009">(<a href="#ref-smedley2009" role="doc-biblioref"><strong>smedley2009?</strong></a>)</span> provides a consistent interface to the material. There are web-based tools to use these but the R package <strong><code>biomaRtr</code></strong> <span class="citation" data-cites="biomaRt">(<a href="#ref-biomaRt" role="doc-biblioref"><strong>biomaRt?</strong></a>)</span> enables you to rapidly access and integrate information into your R data structures.</p>
+<div class="cell">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/grimbough/biomaRt">biomaRt</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Connect to the mouse database</span></span>
+<span></span>
+<span><span class="va">ensembl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/useMart.html">useMart</a></span><span class="op">(</span>biomart <span class="op">=</span> <span class="st">"ensembl"</span>, </span>
+<span>                   dataset <span class="op">=</span> <span class="st">"mmusculus_gene_ensembl"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section><section id="see-what-info-we-can-retrieve" class="level1"><h1>See what info we can retrieve:</h1>
+<p>listAttributes(mart = ensembl) |&gt; View()</p>
+</section><section id="we-need" class="level1"><h1>We need</h1>
+</section><section id="ensembl_gene_id-because-we-will-need-to-merge-the-info" class="level1"><h1>ensembl_gene_id: because we will need to merge the info</h1>
+</section><section id="external_gene_name-name-for-gene" class="level1"><h1>external_gene_name: name for gene</h1>
+</section><section id="description-description" class="level1"><h1>description: description</h1>
+<p>gene_info &lt;- getBM(filters = “ensembl_gene_id”, attributes = c(“ensembl_gene_id”, “external_gene_name”, “description”), values = prog_hspc_results$ensembl_gene_id, mart = ensembl)</p>
+<p>Notice the dataframe returned only has 279 rows, not 280. Which one is missing?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>prog_hspc_results <span class="sc">|&gt;</span> (ensembl_gene_id) <span class="sc">|&gt;</span> </span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>ensembl_gene_id <span class="sc">%in%</span> gene_info<span class="sc">$</span>ensembl_gene_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error: function '(' not supported in RHS call of a pipe (&lt;text&gt;:1:22)</code></pre>
+</div>
+</div>
+<pre><code>Error:
+ ! [conflicted] select found in 2 packages.
+Either pick the one you want with `::`:
+• biomaRt::select
+• dplyr::select
+Or declare a preference with `conflicts_prefer()`:
+• conflicts_prefer(biomaRt::select)
+• conflicts_prefer(dplyr::select)
+Run `rlang::last_trace()` to see where the error occurred.</code></pre>
+<div class="cell">
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">prog_hspc_results</span> <span class="op">|&gt;</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">ensembl_gene_id</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">ensembl_gene_id</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">gene_info</span><span class="op">$</span><span class="va">ensembl_gene_id</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'prog_hspc_results' not found</code></pre>
+</div>
+</div>
+<p>We might want to look that up. Google it. Let’s worry about it later if it turns out to be something important.</p>
+<p>merge the gene info with the results</p>
+<div class="cell">
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">prog_hspc_results</span> <span class="op">&lt;-</span> <span class="va">prog_hspc_results</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">gene_info</span>, by <span class="op">=</span> <span class="st">"ensembl_gene_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'prog_hspc_results' not found</code></pre>
+</div>
+</div>
+<p>We now have datatframe with all the info we need, normalised counts, log2 normalised counts, statistical comparisons with fold changes and p values, information about the gene other than just the id</p>
+<section id="write-the-significant-genes-to-file-1" class="level2"><h2 class="anchored" data-anchor-id="write-the-significant-genes-to-file-1">Write the significant genes to file</h2>
+<p>save the most sig genes to file</p>
+<div class="cell">
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">prog_hspc_results_sig0.01</span> <span class="op">&lt;-</span> <span class="va">prog_hspc_results</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">FDR</span> <span class="op">&lt;=</span> <span class="fl">0.01</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'prog_hspc_results' not found</code></pre>
+</div>
+</div>
+<p>168 genes</p>
+<p>write to csv file</p>
+<div class="cell">
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">prog_hspc_results_sig0.01</span>, </span>
+<span>          file <span class="op">=</span> <span class="st">"omics/week-5/results/prog_hspc_results_sig0.01.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'prog_hspc_results_sig0.01' not found</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">prog_hspc_results_sig0.05</span> <span class="op">&lt;-</span> <span class="va">prog_hspc_results</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">FDR</span> <span class="op">&lt;=</span> <span class="fl">0.05</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'prog_hspc_results' not found</code></pre>
+</div>
+</div>
+<p>182 genes</p>
+<p>write to csv file</p>
+<div class="cell">
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">prog_hspc_results_sig0.05</span>, </span>
+<span>          file <span class="op">=</span> <span class="st">"omics/week-5/results/prog_hspc_results_sig0.05.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'prog_hspc_results_sig0.05' not found</code></pre>
+</div>
+</div>
+</section><section id="view-the-relationship-between-cells-using-pca" class="level2"><h2 class="anchored" data-anchor-id="view-the-relationship-between-cells-using-pca">View the relationship between cells using PCA</h2>
+<p>we do this on the log2 transformed normalised counts or the regularized the log transformed counts</p>
+<p>transpose the data we are reducing he number of dimensions from 280</p>
+<div class="cell">
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">prog_hspc_trans</span> <span class="op">&lt;-</span> <span class="va">prog_hspc_results</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Prog_"</span>, <span class="st">"HSPC_"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'prog_hspc_results' not found</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">prog_hspc_trans</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">prog_hspc_results</span><span class="op">$</span><span class="va">ensembl_gene_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'prog_hspc_results' not found</code></pre>
+</div>
+</div>
+<p>perform PCA using standard functions</p>
+<div class="cell">
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca</span> <span class="op">&lt;-</span> <span class="va">prog_hspc_trans</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/prcomp.html">prcomp</a></span><span class="op">(</span>scale. <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'prog_hspc_trans' not found</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">pca</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'pca' not found</code></pre>
+</div>
+</div>
+<p>Importance of components: PC1 PC2 PC3 PC4 PC5 PC6 PC7 PC8 Standard deviation 4.3892 3.08797 2.25263 2.13943 1.96659 1.76697 1.62753 1.47668 Proportion of Variance 0.0688 0.03406 0.01812 0.01635 0.01381 0.01115 0.00946 0.00779 Cumulative Proportion 0.0688 0.10286 0.12098 0.13733 0.15114 0.16229 0.17175 0.17954</p>
+<div class="cell">
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">pca</span><span class="op">$</span><span class="va">x</span>,</span>
+<span>                           cell_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">prog_hspc_trans</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'pca' not found</code></pre>
+</div>
+</div>
+<p>add the cell type information so we can label points split cell_id into cell type and replicate and keep cell_id column</p>
+<div class="cell">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">&lt;-</span> <span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/extract.html">extract</a></span><span class="op">(</span><span class="va">cell_id</span>, </span>
+<span>          remove <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>          <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cell_type"</span>, <span class="st">"cell_number"</span><span class="op">)</span>,</span>
+<span>          <span class="st">"([a-zA-Z]{4})_([0-9]{3})"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'pca_labelled' not found</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca</span> <span class="op">&lt;-</span> <span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">PC1</span>, y <span class="op">=</span> <span class="va">PC2</span>, </span>
+<span>             colour <span class="op">=</span> <span class="va">cell_type</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_colour_viridis_d</a></span><span class="op">(</span>end <span class="op">=</span> <span class="fl">0.8</span>, begin <span class="op">=</span> <span class="fl">0.15</span>,</span>
+<span>                         name <span class="op">=</span> <span class="st">"Cell type"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'pca_labelled' not found</code></pre>
+</div>
+</div>
+<p>Fairly good separation of cell types but plenty of overlap</p>
+<div class="cell">
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="st">"omics/week-5/figures/prog_hspc-pca.png"</span>,</span>
+<span>       plot <span class="op">=</span> <span class="va">pca</span>,</span>
+<span>       height <span class="op">=</span> <span class="fl">3</span>, </span>
+<span>       width <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>       units <span class="op">=</span> <span class="st">"in"</span>,</span>
+<span>       device <span class="op">=</span> <span class="st">"png"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'pca' not found</code></pre>
+</div>
+</div>
+<p>tSNE ??</p>
+</section><section id="visualise-the-expression-of-the-most-significant-genes-using-a-heatmap-1" class="level2"><h2 class="anchored" data-anchor-id="visualise-the-expression-of-the-most-significant-genes-using-a-heatmap-1">Visualise the expression of the most significant genes using a heatmap</h2>
+<div class="cell">
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://talgalili.github.io/heatmaply/">heatmaply</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>we will use the most significant genes on a random subset of the cells since ~1500 columns is a lot</p>
+<div class="cell">
+<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mat</span> <span class="op">&lt;-</span> <span class="va">prog_hspc_results_sig0.01</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Prog"</span>, <span class="st">"HSPC"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">1499</span>, size <span class="op">=</span> <span class="fl">70</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'prog_hspc_results_sig0.01' not found</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">mat</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">prog_hspc_results_sig0.01</span><span class="op">$</span><span class="va">external_gene_name</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'prog_hspc_results_sig0.01' not found</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n_cell_clusters</span> <span class="op">&lt;-</span> <span class="fl">2</span></span>
+<span><span class="va">n_gene_clusters</span> <span class="op">&lt;-</span> <span class="fl">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://talgalili.github.io/heatmaply/reference/heatmaply.html">heatmaply</a></span><span class="op">(</span><span class="va">mat</span>, </span>
+<span>          scale <span class="op">=</span> <span class="st">"row"</span>,</span>
+<span>          hide_colorbar <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>          k_col <span class="op">=</span> <span class="va">n_cell_clusters</span>,</span>
+<span>          k_row <span class="op">=</span> <span class="va">n_gene_clusters</span>,</span>
+<span>          label_names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Gene"</span>, <span class="st">"Cell id"</span>, <span class="st">"Expression (normalised, log2)"</span><span class="op">)</span>,</span>
+<span>          fontsize_row <span class="op">=</span> <span class="fl">7</span>, fontsize_col <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>          labCol <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">mat</span><span class="op">)</span>,</span>
+<span>          labRow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">mat</span><span class="op">)</span>,</span>
+<span>          heatmap_layers <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.line <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'mat' not found</code></pre>
+</div>
+</div>
+<p>will take a few mins to run, and longer to appear in the viewer separation is not as strong as for the frog data run a few times to see different subset</p>
+</section><section id="visual-all-the-results-with-a-volcano-plot-1" class="level2"><h2 class="anchored" data-anchor-id="visual-all-the-results-with-a-volcano-plot-1">Visual all the results with a volcano plot</h2>
+<p>colour the points if FDR &lt; 0.05 and prog_hspc_results &gt; 1</p>
+<div class="cell">
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/slowkow/ggrepel">ggrepel</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">prog_hspc_results</span> <span class="op">&lt;-</span> <span class="va">prog_hspc_results</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>log10_FDR <span class="op">=</span> <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">FDR</span><span class="op">)</span>,</span>
+<span>         sig <span class="op">=</span> <span class="va">FDR</span> <span class="op">&lt;</span> <span class="fl">0.05</span>,</span>
+<span>         bigfc <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">summary.logFC</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fl">2</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'prog_hspc_results' not found</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vol</span> <span class="op">&lt;-</span> <span class="va">prog_hspc_results</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">summary.logFC</span>, </span>
+<span>             y <span class="op">=</span> <span class="va">log10_FDR</span>, </span>
+<span>             colour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/interaction.html">interaction</a></span><span class="op">(</span><span class="va">sig</span>, <span class="va">bigfc</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="fl">0.05</span><span class="op">)</span>, </span>
+<span>             linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">1</span>, </span>
+<span>             linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, </span>
+<span>             linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_colour_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"gray"</span>,</span>
+<span>                                 <span class="st">"pink"</span>,</span>
+<span>                                 <span class="st">"deeppink"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/ggrepel/man/geom_text_repel.html">geom_text_repel</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">prog_hspc_results</span>, </span>
+<span>                                <span class="va">bigfc</span> <span class="op">&amp;</span> <span class="va">sig</span><span class="op">)</span>,</span>
+<span>                  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">external_gene_name</span><span class="op">)</span>,</span>
+<span>                  size <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>                  max.overlaps <span class="op">=</span> <span class="fl">50</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'prog_hspc_results' not found</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="st">"omics/week-5/figures/prog-hspc-volcano.png"</span>,</span>
+<span>       plot <span class="op">=</span> <span class="va">vol</span>,</span>
+<span>       height <span class="op">=</span> <span class="fl">4.5</span>, </span>
+<span>       width <span class="op">=</span> <span class="fl">4.5</span>,</span>
+<span>       units <span class="op">=</span> <span class="st">"in"</span>,</span>
+<span>       device <span class="op">=</span> <span class="st">"png"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'vol' not found</code></pre>
+</div>
+</div>
+<!-- The dataframe `res_prog_hspc$prog` is log prog - log hspc -->
+<!-- (i.e.,Prog/HSPC). This means - Positive fold change: prog is higher than -->
+<!-- hspc - Negative fold change: hspc is higher than prog -->
+<!-- The dataframe `res_prog_hspc$hspc` is log hspc - log prog (i.e., -->
+<!-- HSPC/Prog). . This means - Positive fold change: hspc is higher than -->
+<!-- prog - Negative fold change: prog is higher than hspc -->
 </section></section><section id="look-after-future-you" class="level1"><h1>🤗 Look after future you!</h1>
-<p>🎬 Go through your script (<code>cont-fgf-s30.R</code> or <code>hspc-prog.R</code>) and tidy up. You might need to :</p>
+<p>🎬 Go through your script (<code>cont-fgf-s30.R</code> or <code>hspc-prog.R</code>) and tidy up. I would suggest restarting R and trying to run the full pipeline from start to finish. You might need to :</p>
 <ul>
 <li>collect together library statements at the top of the script</li>
 <li>remove code that you needed to start today but which wouldn’t be needed running the script from the top (e.g., importing)</li>
@@ -449,6 +1023,9 @@ div.csl-indent {
 </section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-allaire2022" class="csl-entry" role="listitem">
 Allaire, J. J., Charles Teague, Carlos Scheidegger, Yihui Xie, and Christophe Dervieux. 2022. <em>Quarto</em>. <a href="https://doi.org/10.5281/zenodo.5960048">https://doi.org/10.5281/zenodo.5960048</a>.
+</div>
+<div id="ref-fs" class="csl-entry" role="listitem">
+Hester, Jim, Hadley Wickham, and Gábor Csárdi. 2023. <span>“Fs: Cross-Platform File System Operations Based on ’Libuv’.”</span>
 </div>
 <div id="ref-R-core" class="csl-entry" role="listitem">
 R Core Team. 2023. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.

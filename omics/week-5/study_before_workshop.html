@@ -402,7 +402,7 @@ Emma Rand
 </div>
 </div>
 
-  <p class="date">19 October, 2023</p>
+  <p class="date">22 October, 2023</p>
 </section><section id="overview" class="slide level2"><h2>Overview</h2>
 <p>In these slides we will:</p>
 <div>
@@ -468,25 +468,50 @@ Emma Rand
 <li><p><a href="../week-4/workshop.html">Omics 2: Statistical Analysis</a> including:</p></li>
 <li><p><a href="../week-4/workshop.html#look-after-future-you">🤗 Look after future you!</a> and</p></li>
 <li><p>the <a href="../week-4/study_after_workshop.html">Independent Study to consolidate</a></p></li>
-</ul></section></section><section><section id="xx" class="title-slide slide level1 center"><h1>xx</h1>
+</ul></section></section><section><section id="examine-the-results-files" class="title-slide slide level1 center"><h1>Examine the results files</h1>
 
-</section><section id="xx-1" class="slide level2"><h2>xx</h2>
+</section><section id="examine-the-results-files-1" class="slide level2"><h2>Examine the results files</h2>
+</section></section><section><section id="adding-gene-information" class="title-slide slide level1 center"><h1>Adding gene information</h1>
+
+</section><section id="from-xenbase" class="slide level2"><h2>from xenbase</h2>
+
+<img data-src="images/Xenbase-Logo-Medium.png" width="700" class="r-stretch quarto-figure-center"><p class="caption">xenbase logo</p><p>Xenbase (http://www.xenbase.org/, RRID:SCR_003280)</p>
+<p>Xenbase is a model organism database that provides genomic, molecular, and developmental biology information about Xenopus laevis and Xenopus tropicalis. Xenbase is funded by the National Institutes of Health (NIH) and the National Science Foundation (NSF).</p>
+<p>our data gives the xenbase gene id so we are using xenbase to get the information a lot of the information would also be in the ncbi</p>
+</section><section id="from-the-ncbi" class="slide level2"><h2>from the ncbi</h2>
+<p>biomart is a package that allows you to get information from the ncbi database such as gene names and descriptions</p>
+</section></section><section><section id="plots" class="title-slide slide level1 center"><h1>Plots</h1>
+
+</section><section id="plots-purpose" class="slide level2"><h2>plots purpose</h2>
+<p>dimsenion reduction</p>
+</section><section id="pca" class="slide level2"><h2>pca</h2>
+<p>lots of variables</p>
+</section><section id="tsne" class="slide level2"><h2>tsne</h2>
+<p>lots of variables and lots of observations</p>
+</section></section><section><section id="normalsing-before-plotting" class="title-slide slide level1 center"><h1>normalsing before plotting</h1>
+
+</section><section id="normalising-before-plotting" class="slide level2"><h2>normalising before plotting</h2>
+<p>log</p>
+<p>normalisation regularised log is a method to bias from low count genes. https://hbctraining.github.io/DGE_workshop_salmon_online/lessons/03_DGE_QC_analysis.html</p>
 <div>
 <ul>
 <li class="fragment">T</li>
 </ul>
 </div>
+<p>rlog is a method to bias from low count genes. https://hbctraining.github.io/DGE_workshop_salmon_online/lessons/03_DGE_QC_analysis.html gives a good explanation of regularized the log transform (rlog)</p>
+<p>The rlog transformation of the normalized counts is only necessary for these visualization methods during this quality assessment. They are not used for DE because DESeq2 takes care of that</p>
+<p>in the workshop we just to log transformed</p>
 <ul>
-<li><p>The 🐭 mouse data have been normalised to simplify the analysis for you; the 🐸 frog data have not but the DE method will do this for you.</p></li>
-<li><h2 id="packages-to-install-before-the-workshop">Packages to install before the workshop</h2></li>
-</ul>
-<p><strong>``</strong> from CRAN in the the normal way:</p>
+<li>The 🐭 mouse data have been normalised to simplify the analysis for you; the 🐸 frog data have not but the DE method will do this for you.</li>
+</ul></section><section id="packages-to-install-before-the-workshop" class="slide level2"><h2>Packages to install before the workshop</h2>
+<p><strong><code>heatmaply</code></strong> <strong><code>ggrepel</code></strong> from CRAN in the the normal way:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">""</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"heatmaply"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggrepel"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong><code>DESeq2</code></strong> from Bioconductor using BiocManager:</p>
+<p><strong><code>biomaRt</code></strong> from Bioconductor using <strong><code>BiocManager</code></strong>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html">install</a></span><span class="op">(</span><span class="st">"DESeq2"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html">install</a></span><span class="op">(</span><span class="st">"biomaRt"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section><section><section id="workshops" class="title-slide slide level1 center"><h1>Workshops</h1>
 

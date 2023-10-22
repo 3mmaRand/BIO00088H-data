@@ -423,7 +423,7 @@ Emma Rand
 </div>
 </div>
 
-  <p class="date">19 October, 2023</p>
+  <p class="date">22 October, 2023</p>
 </section><section id="overview" class="slide level2"><h2>Overview</h2>
 <ul>
 <li>RStudio Projects revisited
@@ -551,13 +551,13 @@ Emma Rand
 <p>If this is a good place to create a Project directory then…</p>
 <p>🎬 Create a project with:</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/create_package.html">create_project</a></span><span class="op">(</span><span class="st">"bananas"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu">create_project</span><span class="op">(</span><span class="st">"bananas"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="using-the-usethis-package-3" class="slide level2"><h2>Using the <strong><code>usethis</code></strong> package</h2>
 <p>Otherwise</p>
 <p>If you want the project directory elsewhere, you will need to give the relative path, e.g.</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/create_package.html">create_project</a></span><span class="op">(</span><span class="st">"../Documents/bananas"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu">create_project</span><span class="op">(</span><span class="st">"../Documents/bananas"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="using-the-usethis-package-4" class="slide level2"><h2>Using the <strong><code>usethis</code></strong> package</h2>
 <p>The output will look like this and a new RStudio session will start.</p>
@@ -614,7 +614,7 @@ Emma Rand
 <div class="fragment">
 <p>🎬 We can add a README with:</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_readme_rmd.html">use_readme_md</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu">use_readme_md</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
@@ -660,7 +660,7 @@ Emma Rand
 </ul></section><section id="ugly-code" class="slide level2"><h2>😩 Ugly code 😩</h2>
 <div class="cell">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data</span><span class="op">&lt;-</span><span class="fu">read_csv</span><span class="op">(</span><span class="st">'../data-raw/Y101_Y102_Y201_Y202_Y101-5.csv'</span>,skip<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sfirke/janitor">janitor</a></span><span class="op">)</span>;<span class="va">sol</span><span class="op">&lt;-</span><span class="fu"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sfirke/janitor">janitor</a></span><span class="op">)</span>;<span class="va">sol</span><span class="op">&lt;-</span><span class="fu">clean_names</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
 <span><span class="va">data</span><span class="op">=</span><span class="va">data</span><span class="op">|&gt;</span><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="fu">str_detect</span><span class="op">(</span><span class="va">description</span>,<span class="st">"OS=Homo sapiens"</span><span class="op">)</span><span class="op">)</span><span class="op">|&gt;</span><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">x1pep</span><span class="op">==</span><span class="st">'x'</span><span class="op">)</span></span>
 <span><span class="va">data</span><span class="op">=</span><span class="va">data</span><span class="op">|&gt;</span></span>
 <span><span class="fu">mutate</span><span class="op">(</span>g<span class="op">=</span><span class="fu">str_extract</span><span class="op">(</span><span class="va">description</span>,</span>
@@ -690,7 +690,7 @@ Emma Rand
 <span></span>
 <span><span class="co"># import: column headers and data are from row 3</span></span>
 <span><span class="va">solu_protein</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="va">file</span>, skip <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>  <span class="fu">janitor</span><span class="fu">::</span><span class="fu">clean_names</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Tidy data ----------------------------------------------------------------</span></span>
 <span></span>
