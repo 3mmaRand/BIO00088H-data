@@ -495,20 +495,27 @@ ensembl <- useMart(biomart = "ensembl",
 ```
 
 
-# See what info we can retrieve:
+See what info we can retrieve:
+```{r}
 listAttributes(mart = ensembl) |> View()
+```
+
 
 We need
 ensembl_gene_id: because we will need to merge the info
 external_gene_name: name for gene
 description: description	
 
+```{r}
 gene_info <- getBM(filters = "ensembl_gene_id",
                    attributes = c("ensembl_gene_id",
                                   "external_gene_name",
                                   "description"),
                    values = prog_hspc_results$ensembl_gene_id,
                    mart = ensembl)
+```
+
+
 
 Notice the dataframe returned only has 279 rows, not 280. Which one is missing?
 
