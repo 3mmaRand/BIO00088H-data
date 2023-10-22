@@ -521,23 +521,12 @@ Notice the dataframe returned only has 279 rows, not 280. Which one is missing?
 
 ```{r}
 #| error: true
-prog_hspc_results |> (ensembl_gene_id) |> 
+prog_hspc_results |> select(ensembl_gene_id) |> 
   filter(!ensembl_gene_id %in% gene_info$ensembl_gene_id)
 
 ```
 
 
-```
-Error:
- ! [conflicted] select found in 2 packages.
-Either pick the one you want with `::`:
-• biomaRt::select
-• dplyr::select
-Or declare a preference with `conflicts_prefer()`:
-• conflicts_prefer(biomaRt::select)
-• conflicts_prefer(dplyr::select)
-Run `rlang::last_trace()` to see where the error occurred.
-```
 
 ```{r}
 prog_hspc_results |> dplyr::select(ensembl_gene_id) |> 
