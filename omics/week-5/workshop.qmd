@@ -149,7 +149,7 @@ library(readxl)
 ```
 
 ```{r}
-gene_info <- read_excel("omics/week-5/meta/xenbase_info.xlsx") 
+gene_info <- read_excel("meta/xenbase_info.xlsx") 
 ```
 
 
@@ -161,7 +161,7 @@ s30_results <- s30_results |>
 
 ```{r}
 # Import metadata that maps the sample names to treatments
-meta <- read_table("omics/week-4/meta/frog_meta_data.txt")
+meta <- read_table("meta/frog_meta_data.txt")
 row.names(meta) <- meta$sample_id
 ```
 
@@ -307,7 +307,7 @@ There is a bit of separation between treatments on PCA2
 not that it isn't easy to draw strong conclusions on the basis of 3 points
 
 ```{r}
-ggsave("omics/week-5/figures/frog-s30-pca.png",
+ggsave("figures/frog-s30-pca.png",
        plot = pca,
        height = 3, 
        width = 4,
@@ -408,7 +408,7 @@ vol <- s30_results |>
 
 
 ```{r}
-ggsave("omics/week-5/figures/frog-s30-volcano.png",
+ggsave("figures/frog-s30-volcano.png",
        plot = vol,
        height = 4.5, 
        width = 4.5,
@@ -498,10 +498,10 @@ ensembl <- useMart(biomart = "ensembl",
 # See what info we can retrieve:
 listAttributes(mart = ensembl) |> View()
 
-# We need
-# ensembl_gene_id: because we will need to merge the info
-# external_gene_name: name for gene
-# description: description	
+We need
+ensembl_gene_id: because we will need to merge the info
+external_gene_name: name for gene
+description: description	
 
 gene_info <- getBM(filters = "ensembl_gene_id",
                    attributes = c("ensembl_gene_id",
@@ -657,7 +657,7 @@ pca <- pca_labelled |>
 Fairly good separation of cell types but plenty of overlap
 
 ```{r}
-ggsave("omics/week-5/figures/prog_hspc-pca.png",
+ggsave("figures/prog_hspc-pca.png",
        plot = pca,
        height = 3, 
        width = 4,
@@ -755,7 +755,7 @@ vol <- prog_hspc_results |>
 
 
 ```{r}
-ggsave("omics/week-5/figures/prog-hspc-volcano.png",
+ggsave("figures/prog-hspc-volcano.png",
        plot = vol,
        height = 4.5, 
        width = 4.5,
