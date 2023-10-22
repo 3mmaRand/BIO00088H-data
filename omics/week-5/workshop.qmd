@@ -209,7 +209,7 @@ s30_results_sig0.01 <- s30_results |>
 ```{r}
 # write to csv file
 write_csv(s30_results_sig0.01, 
-          file = "omics/week-5/results/s30_results_sig0.01.csv")
+          file = "results/s30_results_sig0.01.csv")
 ```
 
 ```{r}
@@ -222,7 +222,7 @@ s30_results_sig0.05 <- s30_results |>
 ```{r}
 # write to csv file
 write_csv(s30_results_sig0.05, 
-          file = "omics/week-5/results/s30_results_sig0.05.csv")
+          file = "results/s30_results_sig0.05.csv")
 
 ```
 
@@ -438,8 +438,8 @@ We will carry out several steps
 #| echo: false
 #---CODING ANSWER---
 # import the normalised counts
-prog <- read_csv("omics/week-5/data-raw/surfaceome_prog.csv")
-hspc <- read_csv("omics/week-5/data-raw/surfaceome_hspc.csv")
+prog <- read_csv("data-raw/surfaceome_prog.csv")
+hspc <- read_csv("data-raw/surfaceome_hspc.csv")
 
 ```
 
@@ -456,7 +456,7 @@ prog_hspc <- bind_cols(prog, hspc[-1])
 
 ```{r}
 # import the DE results
-prog_hspc_results <- read_csv("omics/week-5/results/prog_hspc_results.csv")
+prog_hspc_results <- read_csv("results/prog_hspc_results.csv")
 ```
 
 
@@ -568,7 +568,7 @@ prog_hspc_results_sig0.01 <- prog_hspc_results |>
 write to csv file
 ```{r}
 write_csv(prog_hspc_results_sig0.01, 
-          file = "omics/week-5/results/prog_hspc_results_sig0.01.csv")
+          file = "results/prog_hspc_results_sig0.01.csv")
 ```
 
 
@@ -582,7 +582,7 @@ write to csv file
 
 ```{r}
 write_csv(prog_hspc_results_sig0.05, 
-          file = "omics/week-5/results/prog_hspc_results_sig0.05.csv")
+          file = "results/prog_hspc_results_sig0.05.csv")
 
 ```
 
