@@ -458,50 +458,20 @@ s30_log2_trans <- s30_results |>
 colnames(s30_log2_trans) <- s30_results$xenbase_gene_id
 
 # just for indep study before
-# s30_log2_trans$sample <- row.names(s30_log2_trans)
-# a <- s30_log2_trans |> ggplot(aes(x = `XB-GENE-1000007`, 
+# sample_id <- row.names(s30_log2_trans) |> str_remove("log2_")
+# fig <- s30_log2_trans |> ggplot(aes(x = `XB-GENE-1000007`,
 #                              y = `XB-GENE-1000023`)) +
 #   geom_point() +
-#   geom_text(aes(label = sample), 
+#   geom_text(aes(label = sample_id),
 #             vjust = -1, size = 3) +
 #   scale_x_continuous(expand = c(0.05,0.05)) +
 #   scale_y_continuous(expand = c(0.05,0.05)) +
 #   theme_classic()
 # 
 # 
-# b <- s30_log2_trans |> ggplot(aes(x = `XB-GENE-1000062`, 
-#                                   y = `XB-GENE-1000072`)) +
-#   geom_point() +
-#   geom_text(aes(label = sample), 
-#             vjust = -1, size = 3) +
-#   scale_x_continuous(expand = c(0.05,0.05)) +
-#   scale_y_continuous(expand = c(0.05,0.05)) +
-#   theme_classic()
-# 
-# c <- s30_log2_trans |> ggplot(aes(x = `XB-GENE-1000113`, 
-#                                   y = `XB-GENE-1000132`)) +
-#   geom_point() +
-#   geom_text(aes(label = sample), 
-#             vjust = -1, size = 3) +
-#   scale_x_continuous(expand = c(0.05,0.05)) +
-#   scale_y_continuous(expand = c(0.05,0.05)) +
-#   theme_classic()
-# 
-# d <- s30_log2_trans |> ggplot(aes(x = `XB-GENE-1000149`, 
-#                                   y = `XB-GENE-1000251`)) +
-#   geom_point() +
-#   geom_text(aes(label = sample), 
-#             vjust = -1, size = 3) +
-#   scale_x_continuous(expand = c(0.05,0.05)) +
-#   scale_y_continuous(expand = c(0.05,0.05)) +
-#   theme_classic()
-# 
-# library(patchwork)
-# fig <- (a + b) / (c + d)
-# 
-# ggsave("omics/week-5/images/why_pca.png", 
+# ggsave("omics/week-5/images/why_pca_frog.png",
 #        plot = fig,
-#        width = 6, height = 6)
+#        width = 4, height = 4)
 
 # perform PCA using standard functions
 pca <- s30_log2_trans |>

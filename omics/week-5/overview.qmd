@@ -14,12 +14,11 @@ We suggest you sit together with your group in the workshop.
 The successful student will be able to:
 
 -   verify they have the required RStudio Project set up and the data and code files from the previous Workshop and Consolidation study
--   explain 
--   
--   
--   
--   
--   ,
+-   explain where gene information came from and add it to their results
+-   perform a PCA and understand how to interpret them
+-   create a heatmap and understand how to interpret them
+-   create a volcano plot and understand how to interpret them
+  
 
 ### Instructions
 
@@ -29,11 +28,13 @@ The successful student will be able to:
 
 2.  [Workshop](workshop.qmd)
 
-    i.  💻 ....
+    i.  💻 Add gene information to the results of DE
 
-    ii. 💻 ...
+    ii. 💻 Perform and plot a PCA
 
-    iii. 💻 ....
+    iii. 💻 Visualise results with a heatmap
+    
+    iv. 💻 Visualise all the results with a volcano plot
 
     iv. Look after future you!
 

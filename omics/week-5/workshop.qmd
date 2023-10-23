@@ -136,7 +136,7 @@ The [xenbase.gpi.gz](https://download.xenbase.org/xenbase/GenePageReports/xenbas
 If you click on the readme link you can see information telling you that the file is in the Gene Product information 2.1 format and is provided with gzip compression. gene product information for both 
 *Xenopus tropicalis* (taxon:8364) and *Xenopus laevis* (taxon:8355)
 
-🎬 ......
+🎬 If you want to 
 
 ```bash
 gunzip xenbase.gpi.gz
@@ -346,6 +346,7 @@ n_gene_clusters <- 2
 ```
 
 ```{r}
+#| fig-height: 8
 heatmaply(mat, 
           scale = "row",
           hide_colorbar = TRUE,
@@ -361,7 +362,7 @@ heatmaply(mat,
 
 
 
-## Visual all the results with a volcano plot
+## Visualise all the results with a volcano plot
 
 
 colour the points if padj < 0.05
@@ -706,7 +707,7 @@ separation is not as strong as for the frog data
 run a few times to see different subset
 
 
-## Visual all the results with a volcano plot
+## Visualise all the results with a volcano plot
 
 colour the points if FDR < 0.05
 and prog_hspc_results > 1
