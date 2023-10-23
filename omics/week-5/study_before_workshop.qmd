@@ -126,7 +126,7 @@ Remind yourself of the key columns you have in the results files:
 
 ```{r}
 #| echo: false
-read_csv("results/s30_results.csv") |> glimpse()
+read_csv("results/S30_results.csv") |> glimpse()
 
 ```
 
@@ -401,7 +401,7 @@ change](figures/prog-hspc-volcano.png)
 
 ## Packages to install before the workshop
 
-**`heatmaply`** [@heatmapply] and **`ggrepel`** [@ggrepel] from CRAN in
+**`heatmaply`** [@heatmaply] and **`ggrepel`** [@ggrepel] from CRAN in
 the the normal way:
 
 ```{r}
