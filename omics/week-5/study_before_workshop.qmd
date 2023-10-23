@@ -15,6 +15,13 @@ editor:
     wrap: 72
 ---
 
+```{r}
+#| include: false
+library(tidyverse)
+
+```
+
+
 ## Overview
 
 In these slides we will:
@@ -22,9 +29,11 @@ In these slides we will:
 ::: incremental
 -   Check where you are
 
--   learn some concepts
+-   learn some concepts used omics visualisation
 
-    -   
+    -   Principle Component Analysis (PCA)
+    -   Volcano plots
+    -   Heatmaps
 
 -   Find out what packages to install before the workshop
 :::
@@ -34,13 +43,14 @@ In these slides we will:
 ## What we did in Omics 2: Statistical Analysis
 
 ::: incremental
-::: {style="font-size: 90%;"}
--   
 
--   
 
--   Saved files .
-:::
+-   carried out differential expression analysis
+
+-   found genes not expressed at all, or expressed in one group only
+
+-   Saved results files
+
 :::
 
 ## Where should you be?
@@ -56,13 +66,16 @@ Workshop](../week-4/workshop.html) including:
 
 ## 🐸 Frogs
 
-::: {style="font-size: 90%;"}
+::: {style="font-size: 70%;"}
+
 -   An RStudio Project called `frogs-88H` which contains:
     -   Raw data (S14, S20 and S30)
     -   Processed data (`s30_filtered.csv`, `s30_summary_gene.csv`,
         `s30_summary_gene_filtered.csv`, `s30_summary_samp.csv` and
         equivalents for S14 *OR* S20)
-    -   Two scripts called `cont-fgf-s30.R` and `cont-fgf-s20.R` *OR*
+    -   Results files (`s30_fgf_only.csv`, `S30_normalised_counts.csv`, `S30_results.csv` and
+        equivalents for S14 *OR* S20)    
+    -   Two scripts called `cont-fgf-s30.R` and either `cont-fgf-s20.R` *OR*
         `cont-fgf-s14.R`
 :::
 
@@ -71,12 +84,18 @@ easy to read.
 
 ## 🐭 Mice
 
+::: {style="font-size: 70%;"}
+
 -   An RStudio Project called `mice-88H` which contains
     -   Raw data (hspc, prog, lthsc)
     -   Processed data (`hspc_summary_gene.csv`,
         `hspc_summary_samp.csv`, `prog_summary_gene.csv`,
-        `prog_summary_samp.csv`)
--   One script called `hspc-prog.R`
+        `prog_summary_samp.csv`, `lthsc_summary_gene.csv`,
+        `lthsc_summary_samp.csv`)
+-   Results files (`prog_hspc_results.csv` and an equivalent for lthsc vs prog or hspc vs lthsc)
+-   Two scripts called `hspc-prog.R` and either `hspc-lthsc.R` *OR*
+    `prog-lthsc.R`
+:::
 
 Files should be organised into folders. Code should well commented and
 easy to read.
@@ -101,33 +120,98 @@ Go through:
 
 ## Examine the results files
 
+Remind yourself of the key columns you have in the results files:
+
+-   a fold change, logged to base 2
+-   an unadjusted p-value
+-   a p value adjusted for multiple testing (`FDR` or `padj`)
+-   a gene id
+
+
+## 🐸 Frogs
+
+```{r}
+#| echo: false
+read_csv("results/s30_results.csv") |> glimpse()
+
+```
+-   `baseMean` is the mean of the normalised counts for the gene across
+    all samples
+-   `lfcSE` standard error of the fold change
+-   `stat` is the test statistic (the Wald statistic)
+
+
+
+
+## 🐭 Mice
+```{r}
+#| echo: false
+read_csv("results/prog_hspc_results.csv") |> glimpse()
+
+
+```
+
+-   Top is the rank of the gene ordered by the p value (smallest first)
+
+
 
 
 # Adding gene information
 
-## from xenbase
+## Adding gene information
+
+::: incremental
+
+-   The gene id is difficult to interpret in plots/tables
+
+-   Therefore we need to add information such as the gene name and a description to the results
+
+-   For the 🐸 Frog data information comes from xenbase
+
+-   For the 🐭 Mice data information comes from Ensembl 
+
+:::
+
+## 🐸 Xenbase
 
 
-![xenbase logo](images/Xenbase-Logo-Medium.png){width="700"}
+![xenbase logo](images/Xenbase-Logo-Medium.png){width="800"}
 
 
-Xenbase (http://www.xenbase.org/, RRID:SCR_003280)
+[Xenbase](http://www.xenbase.org/) is a model organism database that provides genomic, molecular, and developmental biology information about *Xenopus laevis* and *Xenopus tropicalis*. 
 
-Xenbase is a model organism database that provides genomic, molecular,
-and developmental biology information about Xenopus laevis and Xenopus
-tropicalis. Xenbase is funded by the National Institutes of Health
-(NIH) and the National Science Foundation (NSF).
+. . . 
 
-our data gives the xenbase gene id so we are using xenbase to get the information
-a lot of the information would also be in the ncbi
-
-## from the ncbi
-
-biomart is a package that allows you to get information from the ncbi
-database such as gene names and descriptions
+It took me some time to find the information you need.
 
 
+## 🐸 Xenbase
 
+::: incremental
+
+-   I got the information from the [Xenbase information pages](https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp) under Data Reports | Gene Information
+
+-   This is listed:  Xenbase Gene Product Information [readme] [gzipped gpi (tab separated)](https://download.xenbase.org/xenbase/GenePageReports/xenbase.gpi.gz) 
+
+-   Click on the readme link to see the file format and columns  
+
+-   I downloaded [xenbase.gpi.gz](https://download.xenbase.org/xenbase/GenePageReports/xenbase.gpi.gz), unzipped it, removed header lines and the *Xenopus tropicalis* (taxon:8364) entries and saved it as [xenbase_info.xlsx](meta/xenbase_info.xlsx)
+
+-   In the workshop you will merge this information with the results file
+:::
+
+## 🐭 Ensembl
+
+::: incremental
+
+-   [Ensembl](https://www.ensembl.org/index.html) creates, integrates and distributes reference datasets and analysis tools that enable genomics 
+
+-   [BioMart](https://grch37.ensembl.org/info/data/biomart/index.html)  provides a access to these large datasets
+
+-   **`biomaRt`** is a Bioconductor package gives you programmatic access to BioMart.
+
+-   In the workshop you use this package to get information you can merge with the results file
+:::
 
 
 

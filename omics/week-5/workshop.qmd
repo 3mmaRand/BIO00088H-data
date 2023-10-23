@@ -138,7 +138,7 @@ If you click on the readme link you can see information telling you that the fil
 
 🎬 ......
 
-```{bash}
+```bash
 gunzip xenbase.gpi.gz
 less xenbase.gpi
 q

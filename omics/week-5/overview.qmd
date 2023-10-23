@@ -5,7 +5,7 @@ toc: true
 toc-location: right
 ---
 
-This week we cover how to visualise and interpret the results of your differential expression analysis. The independent study will allow you to check you have what you should have following the [Omics 2: Statistical Analysis workshop](../week-4/workshop.html) and [Consolidation study](../week-4/study_after_workshop.html). It will also summarise the the methods and plots we will go through in the workshop. In the workshop, we will learn how to conduct a Principle Component Analysis (PCA) and plot the results as well as how to create a nicely formatted Volcano plot and heatmap. We will also consider three factors that help us choose an interesting/important gene: the absolute expression, the fold change and the adjusted p-value. 
+This week we cover how to visualise and interpret the results of your differential expression analysis. The independent study will allow you to check you have what you should have following the [Omics 2: Statistical Analysis workshop](../week-4/workshop.html) and [Consolidation study](../week-4/study_after_workshop.html). It will also summarise the the methods and plots we will go through in the workshop. In the workshop, we will learn how to conduct a Principle Component Analysis (PCA) and plot the results as well as how to create a nicely formatted Volcano plot and heatmap.  
 
 We suggest you sit together with your group in the workshop.
 
