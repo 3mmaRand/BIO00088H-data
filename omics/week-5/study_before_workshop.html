@@ -503,8 +503,16 @@ Emma Rand
 <li>a gene id</li>
 </ul></section><section id="frogs-1" class="slide level2"><h2>🐸 Frogs</h2>
 <div class="cell">
-<div class="cell-output cell-output-error">
-<pre><code>Error: 'results/s30_results.csv' does not exist in current working directory ('/home/runner/work/BIO00088H-data/BIO00088H-data/omics/week-5').</code></pre>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 10,136
+Columns: 7
+$ baseMean        &lt;dbl&gt; 237.553928, 531.565700, 86.392830, 49.813502, 419.9983…
+$ log2FoldChange  &lt;dbl&gt; 0.096601855, -0.089588528, -0.192811203, -0.008858703,…
+$ lfcSE           &lt;dbl&gt; 0.2079396, 0.1557384, 0.3253216, 0.4342614, 0.1685420,…
+$ stat            &lt;dbl&gt; 0.46456683, -0.57525007, -0.59267874, -0.02039947, -0.…
+$ pvalue          &lt;dbl&gt; 0.64224169, 0.56512218, 0.55339617, 0.98372471, 0.8699…
+$ padj            &lt;dbl&gt; 0.9998970, 0.9998970, 0.9998970, 0.9998970, 0.9998970,…
+$ xenbase_gene_id &lt;chr&gt; "XB-GENE-1000007", "XB-GENE-1000023", "XB-GENE-1000062…</code></pre>
 </div>
 </div>
 <div class="fragment">
@@ -708,7 +716,7 @@ $ ensembl_gene_id &lt;chr&gt; "ENSMUSG00000028639", "ENSMUSG00000024053", "ENSMU
 <li><p>The 🐭 mouse data were already log<sub>2</sub>normalised</p></li>
 <li><p>The 🐸 frog data were normalised by the DE method and saved to file. We will log<sub>2</sub> transform before doing visualisations</p></li>
 </ul></section><section id="packages-to-install-before-the-workshop" class="slide level2"><h2>Packages to install before the workshop</h2>
-<p><strong><code>heatmaply</code></strong> <span class="citation" data-cites="heatmapply">(<a href="#/references" role="doc-biblioref" onclick=""><strong>heatmapply?</strong></a>)</span> and <strong><code>ggrepel</code></strong> <span class="citation" data-cites="ggrepel">(<a href="#/references" role="doc-biblioref" onclick="">Slowikowski 2023</a>)</span> from CRAN in the the normal way:</p>
+<p><strong><code>heatmaply</code></strong> <span class="citation" data-cites="heatmaply">(<a href="#/references" role="doc-biblioref" onclick="">Galili et al. 2017</a>)</span> and <strong><code>ggrepel</code></strong> <span class="citation" data-cites="ggrepel">(<a href="#/references" role="doc-biblioref" onclick="">Slowikowski 2023</a>)</span> from CRAN in the the normal way:</p>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"heatmaply"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggrepel"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -738,6 +746,9 @@ Durinck, Steffen, Paul T. Spellman, Ewan Birney, and Wolfgang Huber. 2009. <span
 </div>
 <div id="ref-fisher2023" class="csl-entry" role="listitem">
 Fisher, Malcolm, Christina James-Zorn, Virgilio Ponferrada, Andrew J Bell, Nivitha Sundararaj, Erik Segerdell, Praneet Chaturvedi, et al. 2023. <span>“Xenbase: Key Features and Resources of the Xenopus Model Organism Knowledgebase.”</span> <em>Genetics</em> 224 (1): iyad018. <a href="https://doi.org/10.1093/genetics/iyad018">https://doi.org/10.1093/genetics/iyad018</a>.
+</div>
+<div id="ref-heatmaply" class="csl-entry" role="listitem">
+Galili, Tal, O’Callaghan, Alan, Sidi, Jonathan, Sievert, and Carson. 2017. <span>“Heatmaply: An r Package for Creating Interactive Cluster Heatmaps for Online Publishing.”</span> <em>Bioinformatics</em>. <a href="https://doi.org/10.1093/bioinformatics/btx657">https://doi.org/10.1093/bioinformatics/btx657</a>.
 </div>
 <div id="ref-DESeq2" class="csl-entry" role="listitem">
 Love, Michael I., Wolfgang Huber, and Simon Anders. 2014. <span>“Moderated Estimation of Fold Change and Dispersion for RNA-Seq Data with DESeq2”</span> 15: 550. <a href="https://doi.org/10.1186/s13059-014-0550-8">https://doi.org/10.1186/s13059-014-0550-8</a>.
