@@ -509,6 +509,30 @@ prog_hspc_trans <- prog_hspc_results |>
 
 colnames(prog_hspc_trans) <- prog_hspc_results$ensembl_gene_id
 
+# just for indep study before
+# prog_hspc_trans$cell_id <- row.names(prog_hspc_trans)
+# prog_hspc_trans <- prog_hspc_trans |> 
+#   extract(cell_id, 
+#           remove = FALSE,
+#           c("cell_type", "cell_number"),
+#           "([a-zA-Z]{4})_([0-9]{3})")
+# 
+# fig <- prog_hspc_trans |> ggplot(aes(x = ENSMUSG00000028639,
+#                              y = ENSMUSG00000024053, colour = cell_type)) +
+#   geom_point() +
+#   # geom_text(aes(label = cell_id),
+#   #           vjust = -1, size = 3) +
+#   scale_x_continuous(expand = c(0.05,0.05)) +
+#   scale_y_continuous(expand = c(0.05,0.05)) +
+#   theme_classic() +
+# theme(legend.position = "none")
+# 
+# 
+# ggsave("omics/week-5/images/why_pca_mouse.png",
+#        plot = fig,
+#        width = 4, height = 4)
+
+
 # perform PCA using standard functions
 pca <- prog_hspc_trans |>
   prcomp(scale. = TRUE) 
@@ -625,3 +649,16 @@ ggsave("omics/week-5/figures/prog-hspc-volcano.png",
        units = "in",
        device = "png")
 
+
+# # just for the independent study slides
+# vol <- prog_hspc_results |> 
+#   ggplot(aes(x = summary.logFC, 
+#              y = FDR)) +
+#   geom_point() +
+#   theme_classic() 
+# ggsave("omics/week-5/images/volcano-why.png",
+#        plot = vol,
+#        height = 4.5, 
+#        width = 4.5,
+#        units = "in",
+#        device = "png")

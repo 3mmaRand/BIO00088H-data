@@ -5,7 +5,7 @@ toc: true
 toc-location: right
 ---
 
-This week we cover how to visualise and interpret the results of your differential expression analysis. The independent study will allow you to check you have what you should have following the [Omics 2: Statistical Analysis workshop](../week-4/workshop.html) and [Consolidation study](../week-4/study_after_workshop.html). It will also summarise the the methods and plots we will go through in the workshop. In the workshop, we will learn how to conduct a Principle Component Analysis (PCA) and plot the results as well as how to create a nicely formatted Volcano plot and heatmap. We will also consider three factors that help us choose an interesting/important gene: the absolute expression, the fold change and the adjusted p-value. 
+This week we cover how to visualise and interpret the results of your differential expression analysis. The independent study will allow you to check you have what you should have following the [Omics 2: Statistical Analysis workshop](../week-4/workshop.html) and [Consolidation study](../week-4/study_after_workshop.html). It will also summarise the the methods and plots we will go through in the workshop. In the workshop, we will learn how to conduct a Principle Component Analysis (PCA) and plot the results as well as how to create a nicely formatted Volcano plot and heatmap.  
 
 We suggest you sit together with your group in the workshop.
 
@@ -14,12 +14,11 @@ We suggest you sit together with your group in the workshop.
 The successful student will be able to:
 
 -   verify they have the required RStudio Project set up and the data and code files from the previous Workshop and Consolidation study
--   explain 
--   
--   
--   
--   
--   ,
+-   explain where gene information came from and add it to their results
+-   perform a PCA and understand how to interpret them
+-   create a heatmap and understand how to interpret them
+-   create a volcano plot and understand how to interpret them
+  
 
 ### Instructions
 
@@ -29,11 +28,13 @@ The successful student will be able to:
 
 2.  [Workshop](workshop.qmd)
 
-    i.  💻 ....
+    i.  💻 Add gene information to the results of DE
 
-    ii. 💻 ...
+    ii. 💻 Perform and plot a PCA
 
-    iii. 💻 ....
+    iii. 💻 Visualise results with a heatmap
+    
+    iv. 💻 Visualise all the results with a volcano plot
 
     iv. Look after future you!
 
