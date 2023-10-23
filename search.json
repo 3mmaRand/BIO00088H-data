@@ -60,7 +60,7 @@
     "href": "omics/week-5/workshop.html#add-gene-information-from-xenbase",
     "title": "Workshop",
     "section": "Add gene information from xenbase",
-    "text": "Add gene information from xenbase\nThis information comes from the Xenbase information pages\n\nxenbase Gene Product Information [readme]gzipped gpi (tab separated)\n\nThe xenbase.gpi.gz file contains gene product information for species specific Xenbase genes.\nIf you click on the readme link you can see information telling you that the file is in the Gene Product information 2.1 format and is provided with gzip compression. gene product information for both Xenopus tropicalis (taxon:8364) and Xenopus laevis (taxon:8355)\n🎬 ……\n\ngunzip xenbase.gpi.gz\nless xenbase.gpi\nq\n\nError in running command bash\n\n\n\nlibrary(readxl)\n\n\ngene_info &lt;- read_excel(\"meta/xenbase_info.xlsx\") \n\n\n# join the gene info with the results\ns30_results &lt;- s30_results |&gt;\n  left_join(gene_info, by = \"xenbase_gene_id\")\n\n\n# Import metadata that maps the sample names to treatments\nmeta &lt;- read_table(\"meta/frog_meta_data.txt\")\nrow.names(meta) &lt;- meta$sample_id\n\nWe only need the s30\n\nmeta_s30 &lt;- meta |&gt;\n  dplyr::filter(stage == \"stage_30\")\n\nlog2 transformed normalised counts needed for data viz\nlog2 transform the counts in s30_count_norm add a tiny amount to avoid log(0)\n\n# log2 transform the counts in s30_count_norm\n# add a tiny amount to avoid log(0)\ns30_results &lt;- s30_results |&gt;\n  mutate(across(starts_with(\"s30\"), \n                \\(x) log2(x + 0.001),\n                .names = \"log2_{.col}\"))\n\nread more about across() and anonymous functions from my posit::conf(2023) workshop\nWe now have datatframe with all the info we need, normalised counts, log2 normalised counts, statistical comparisons with fold changes and p values, information about the gene other than just the id"
+    "text": "Add gene information from xenbase\nThis information comes from the Xenbase information pages\n\nxenbase Gene Product Information [readme]gzipped gpi (tab separated)\n\nThe xenbase.gpi.gz file contains gene product information for species specific Xenbase genes.\nIf you click on the readme link you can see information telling you that the file is in the Gene Product information 2.1 format and is provided with gzip compression. gene product information for both Xenopus tropicalis (taxon:8364) and Xenopus laevis (taxon:8355)\n🎬 If you want to\ngunzip xenbase.gpi.gz\nless xenbase.gpi\nq\n\nlibrary(readxl)\n\n\ngene_info &lt;- read_excel(\"meta/xenbase_info.xlsx\") \n\n\n# join the gene info with the results\ns30_results &lt;- s30_results |&gt;\n  left_join(gene_info, by = \"xenbase_gene_id\")\n\n\n# Import metadata that maps the sample names to treatments\nmeta &lt;- read_table(\"meta/frog_meta_data.txt\")\nrow.names(meta) &lt;- meta$sample_id\n\nWe only need the s30\n\nmeta_s30 &lt;- meta |&gt;\n  dplyr::filter(stage == \"stage_30\")\n\nlog2 transformed normalised counts needed for data viz\nlog2 transform the counts in s30_count_norm add a tiny amount to avoid log(0)\n\n# log2 transform the counts in s30_count_norm\n# add a tiny amount to avoid log(0)\ns30_results &lt;- s30_results |&gt;\n  mutate(across(starts_with(\"s30\"), \n                \\(x) log2(x + 0.001),\n                .names = \"log2_{.col}\"))\n\nread more about across() and anonymous functions from my posit::conf(2023) workshop\nWe now have datatframe with all the info we need, normalised counts, log2 normalised counts, statistical comparisons with fold changes and p values, information about the gene other than just the id"
   },
   {
     "objectID": "omics/week-5/workshop.html#write-the-significant-genes-to-file",
@@ -84,11 +84,11 @@
     "text": "Visualise the expression of the most significant genes using a heatmap\nonly should do on sig genes. but use the log 2 normalised values\n\nmat &lt;- s30_results_sig0.01 |&gt; \n  select(starts_with(\"log2_\")) |&gt;\n  as.matrix()\n\n\nrownames(mat) &lt;- s30_results_sig0.01$xenbase_gene_symbol\n\n\nlibrary(heatmaply)\n\n\nn_treatment_clusters &lt;- 2\nn_gene_clusters &lt;- 2\n\n\nheatmaply(mat, \n          scale = \"row\",\n          hide_colorbar = TRUE,\n          k_col = n_treatment_clusters,\n          k_row = n_gene_clusters,\n          label_names = c(\"Gene\", \"Sample\", \"Expression (normalised, log2)\"),\n          fontsize_row = 7, fontsize_col = 10,\n          labCol = str_remove(colnames(mat), pattern = \"log2_\"),\n          labRow = rownames(mat),\n          heatmap_layers = theme(axis.line = element_blank()))"
   },
   {
-    "objectID": "omics/week-5/workshop.html#visual-all-the-results-with-a-volcano-plot",
-    "href": "omics/week-5/workshop.html#visual-all-the-results-with-a-volcano-plot",
+    "objectID": "omics/week-5/workshop.html#visualise-all-the-results-with-a-volcano-plot",
+    "href": "omics/week-5/workshop.html#visualise-all-the-results-with-a-volcano-plot",
     "title": "Workshop",
-    "section": "Visual all the results with a volcano plot",
-    "text": "Visual all the results with a volcano plot\ncolour the points if padj &lt; 0.05 and log2FoldChange &gt; 1\n\nlibrary(ggrepel)\n\n\ns30_results &lt;- s30_results |&gt; \n  mutate(log10_padj = -log10(padj),\n         sig = padj &lt; 0.05,\n         bigfc = abs(log2FoldChange) &gt;= 2) \n\n\nvol &lt;- s30_results |&gt; \n  ggplot(aes(x = log2FoldChange, \n             y = log10_padj, \n             colour = interaction(sig, bigfc))) +\n  geom_point() +\n  geom_hline(yintercept = -log10(0.05), \n             linetype = \"dashed\") +\n  geom_vline(xintercept = 2, \n             linetype = \"dashed\") +\n  geom_vline(xintercept = -2, \n             linetype = \"dashed\") +\n  scale_x_continuous(expand = c(0, 0)) +\n  scale_y_continuous(expand = c(0, 0)) +\n  scale_colour_manual(values = c(\"gray\", \n                                 \"pink\",\n                                 \"gray30\",\n                                 \"deeppink\")) +\n  geom_text_repel(data = subset(s30_results, \n                                bigfc & sig),\n                  aes(label = xenbase_gene_symbol),\n                  size = 3,\n                  max.overlaps = 50) +\n  theme_classic() +\n  theme(legend.position = \"none\")\n\n\nggsave(\"figures/frog-s30-volcano.png\",\n       plot = vol,\n       height = 4.5, \n       width = 4.5,\n       units = \"in\",\n       device = \"png\")"
+    "section": "Visualise all the results with a volcano plot",
+    "text": "Visualise all the results with a volcano plot\ncolour the points if padj &lt; 0.05 and log2FoldChange &gt; 1\n\nlibrary(ggrepel)\n\n\ns30_results &lt;- s30_results |&gt; \n  mutate(log10_padj = -log10(padj),\n         sig = padj &lt; 0.05,\n         bigfc = abs(log2FoldChange) &gt;= 2) \n\n\nvol &lt;- s30_results |&gt; \n  ggplot(aes(x = log2FoldChange, \n             y = log10_padj, \n             colour = interaction(sig, bigfc))) +\n  geom_point() +\n  geom_hline(yintercept = -log10(0.05), \n             linetype = \"dashed\") +\n  geom_vline(xintercept = 2, \n             linetype = \"dashed\") +\n  geom_vline(xintercept = -2, \n             linetype = \"dashed\") +\n  scale_x_continuous(expand = c(0, 0)) +\n  scale_y_continuous(expand = c(0, 0)) +\n  scale_colour_manual(values = c(\"gray\", \n                                 \"pink\",\n                                 \"gray30\",\n                                 \"deeppink\")) +\n  geom_text_repel(data = subset(s30_results, \n                                bigfc & sig),\n                  aes(label = xenbase_gene_symbol),\n                  size = 3,\n                  max.overlaps = 50) +\n  theme_classic() +\n  theme(legend.position = \"none\")\n\n\nggsave(\"figures/frog-s30-volcano.png\",\n       plot = vol,\n       height = 4.5, \n       width = 4.5,\n       units = \"in\",\n       device = \"png\")"
   },
   {
     "objectID": "omics/week-5/workshop.html#import-1",
@@ -102,7 +102,7 @@
     "href": "omics/week-5/workshop.html#add-gene-information-from-the-ncbi-using-biomart",
     "title": "Workshop",
     "section": "Add gene information from the NCBI using biomaRt",
-    "text": "Add gene information from the NCBI using biomaRt\nadd the gene information using biomart\nEnsembl (birney2004?) is a bioinformatics project to organise all the biological information around the sequences of large genomes. The are a large number of databases but BioMart (smedley2009?) provides a consistent interface to the material. There are web-based tools to use these but the R package biomaRtr (biomaRt?) enables you to rapidly access and integrate information into your R data structures.\n\nlibrary(biomaRt)\n\n\n# Connect to the mouse database\n\nensembl &lt;- useMart(biomart = \"ensembl\", \n                   dataset = \"mmusculus_gene_ensembl\")\n\nSee what info we can retrieve:\n\nlistAttributes(mart = ensembl) |&gt; View()\n\nError in .External2(C_dataviewer, x, title): unable to start data viewer\n\n\nWe need ensembl_gene_id: because we will need to merge the info external_gene_name: name for gene description: description\n\ngene_info &lt;- getBM(filters = \"ensembl_gene_id\",\n                   attributes = c(\"ensembl_gene_id\",\n                                  \"external_gene_name\",\n                                  \"description\"),\n                   values = prog_hspc_results$ensembl_gene_id,\n                   mart = ensembl)\n\nNotice the dataframe returned only has 279 rows, not 280. Which one is missing?\n\nprog_hspc_results |&gt; select(ensembl_gene_id) |&gt; \n  filter(!ensembl_gene_id %in% gene_info$ensembl_gene_id)\n\nError:\n! [conflicted] select found in 2 packages.\nEither pick the one you want with `::`:\n• biomaRt::select\n• plotly::select\nOr declare a preference with `conflicts_prefer()`:\n• `conflicts_prefer(biomaRt::select)`\n• `conflicts_prefer(plotly::select)`\n\n\n\nprog_hspc_results |&gt; dplyr::select(ensembl_gene_id) |&gt; \n  filter(!ensembl_gene_id %in% gene_info$ensembl_gene_id)\n\n# A tibble: 1 × 1\n  ensembl_gene_id   \n  &lt;chr&gt;             \n1 ENSMUSG00000029386\n\n\nWe might want to look that up. Google it. Let’s worry about it later if it turns out to be something important.\nmerge the gene info with the results\n\nprog_hspc_results &lt;- prog_hspc_results |&gt; \n  left_join(gene_info, by = \"ensembl_gene_id\")\n\nWe now have datatframe with all the info we need, normalised counts, log2 normalised counts, statistical comparisons with fold changes and p values, information about the gene other than just the id"
+    "text": "Add gene information from the NCBI using biomaRt\nadd the gene information using biomart\nEnsembl (Birney et al. 2004) is a bioinformatics project to organise all the biological information around the sequences of large genomes. The are a large number of databases but BioMart (smedley2009?) provides a consistent interface to the material. There are web-based tools to use these but the R package biomaRtr (Durinck et al. 2009) enables you to rapidly access and integrate information into your R data structures.\n\nlibrary(biomaRt)\n\n\n# Connect to the mouse database\n\nensembl &lt;- useMart(biomart = \"ensembl\", \n                   dataset = \"mmusculus_gene_ensembl\")\n\nSee what info we can retrieve:\n\nlistAttributes(mart = ensembl) |&gt; View()\n\nError in .External2(C_dataviewer, x, title): unable to start data viewer\n\n\nWe need ensembl_gene_id: because we will need to merge the info external_gene_name: name for gene description: description\n\ngene_info &lt;- getBM(filters = \"ensembl_gene_id\",\n                   attributes = c(\"ensembl_gene_id\",\n                                  \"external_gene_name\",\n                                  \"description\"),\n                   values = prog_hspc_results$ensembl_gene_id,\n                   mart = ensembl)\n\nNotice the dataframe returned only has 279 rows, not 280. Which one is missing?\n\nprog_hspc_results |&gt; select(ensembl_gene_id) |&gt; \n  filter(!ensembl_gene_id %in% gene_info$ensembl_gene_id)\n\nError:\n! [conflicted] select found in 2 packages.\nEither pick the one you want with `::`:\n• biomaRt::select\n• plotly::select\nOr declare a preference with `conflicts_prefer()`:\n• `conflicts_prefer(biomaRt::select)`\n• `conflicts_prefer(plotly::select)`\n\n\n\nprog_hspc_results |&gt; dplyr::select(ensembl_gene_id) |&gt; \n  filter(!ensembl_gene_id %in% gene_info$ensembl_gene_id)\n\n# A tibble: 1 × 1\n  ensembl_gene_id   \n  &lt;chr&gt;             \n1 ENSMUSG00000029386\n\n\nWe might want to look that up. Google it. Let’s worry about it later if it turns out to be something important.\nmerge the gene info with the results\n\nprog_hspc_results &lt;- prog_hspc_results |&gt; \n  left_join(gene_info, by = \"ensembl_gene_id\")\n\nWe now have datatframe with all the info we need, normalised counts, log2 normalised counts, statistical comparisons with fold changes and p values, information about the gene other than just the id"
   },
   {
     "objectID": "omics/week-5/workshop.html#write-the-significant-genes-to-file-1",
@@ -126,11 +126,11 @@
     "text": "Visualise the expression of the most significant genes using a heatmap\n\nlibrary(heatmaply)\n\nwe will use the most significant genes on a random subset of the cells since ~1500 columns is a lot\n\nmat &lt;- prog_hspc_results_sig0.01 |&gt; \n  dplyr::select(starts_with(c(\"Prog\", \"HSPC\"))) |&gt;\n  dplyr::select(sample(1:1499, size = 70)) |&gt;\n  as.matrix()\n\n\nrownames(mat) &lt;- prog_hspc_results_sig0.01$external_gene_name\n\n\nn_cell_clusters &lt;- 2\nn_gene_clusters &lt;- 2\n\n\nheatmaply(mat, \n          scale = \"row\",\n          hide_colorbar = TRUE,\n          k_col = n_cell_clusters,\n          k_row = n_gene_clusters,\n          label_names = c(\"Gene\", \"Cell id\", \"Expression (normalised, log2)\"),\n          fontsize_row = 7, fontsize_col = 10,\n          labCol = colnames(mat),\n          labRow = rownames(mat),\n          heatmap_layers = theme(axis.line = element_blank()))\n\n\n\n\n\nwill take a few mins to run, and longer to appear in the viewer separation is not as strong as for the frog data run a few times to see different subset"
   },
   {
-    "objectID": "omics/week-5/workshop.html#visual-all-the-results-with-a-volcano-plot-1",
-    "href": "omics/week-5/workshop.html#visual-all-the-results-with-a-volcano-plot-1",
+    "objectID": "omics/week-5/workshop.html#visualise-all-the-results-with-a-volcano-plot-1",
+    "href": "omics/week-5/workshop.html#visualise-all-the-results-with-a-volcano-plot-1",
     "title": "Workshop",
-    "section": "Visual all the results with a volcano plot",
-    "text": "Visual all the results with a volcano plot\ncolour the points if FDR &lt; 0.05 and prog_hspc_results &gt; 1\n\nlibrary(ggrepel)\n\n\nprog_hspc_results &lt;- prog_hspc_results |&gt; \n  mutate(log10_FDR = -log10(FDR),\n         sig = FDR &lt; 0.05,\n         bigfc = abs(summary.logFC) &gt;= 2) \n\n\nvol &lt;- prog_hspc_results |&gt; \n  ggplot(aes(x = summary.logFC, \n             y = log10_FDR, \n             colour = interaction(sig, bigfc))) +\n  geom_point() +\n  geom_hline(yintercept = -log10(0.05), \n             linetype = \"dashed\") +\n  geom_vline(xintercept = 1, \n             linetype = \"dashed\") +\n  geom_vline(xintercept = -1, \n             linetype = \"dashed\") +\n  scale_x_continuous(expand = c(0, 0)) +\n  scale_y_continuous(expand = c(0, 0)) +\n  scale_colour_manual(values = c(\"gray\",\n                                 \"pink\",\n                                 \"deeppink\")) +\n  geom_text_repel(data = subset(prog_hspc_results, \n                                bigfc & sig),\n                  aes(label = external_gene_name),\n                  size = 3,\n                  max.overlaps = 50) +\n  theme_classic() +\n  theme(legend.position = \"none\")\n\n\nggsave(\"figures/prog-hspc-volcano.png\",\n       plot = vol,\n       height = 4.5, \n       width = 4.5,\n       units = \"in\",\n       device = \"png\")"
+    "section": "Visualise all the results with a volcano plot",
+    "text": "Visualise all the results with a volcano plot\ncolour the points if FDR &lt; 0.05 and prog_hspc_results &gt; 1\n\nlibrary(ggrepel)\n\n\nprog_hspc_results &lt;- prog_hspc_results |&gt; \n  mutate(log10_FDR = -log10(FDR),\n         sig = FDR &lt; 0.05,\n         bigfc = abs(summary.logFC) &gt;= 2) \n\n\nvol &lt;- prog_hspc_results |&gt; \n  ggplot(aes(x = summary.logFC, \n             y = log10_FDR, \n             colour = interaction(sig, bigfc))) +\n  geom_point() +\n  geom_hline(yintercept = -log10(0.05), \n             linetype = \"dashed\") +\n  geom_vline(xintercept = 1, \n             linetype = \"dashed\") +\n  geom_vline(xintercept = -1, \n             linetype = \"dashed\") +\n  scale_x_continuous(expand = c(0, 0)) +\n  scale_y_continuous(expand = c(0, 0)) +\n  scale_colour_manual(values = c(\"gray\",\n                                 \"pink\",\n                                 \"deeppink\")) +\n  geom_text_repel(data = subset(prog_hspc_results, \n                                bigfc & sig),\n                  aes(label = external_gene_name),\n                  size = 3,\n                  max.overlaps = 50) +\n  theme_classic() +\n  theme(legend.position = \"none\")\n\n\nggsave(\"figures/prog-hspc-volcano.png\",\n       plot = vol,\n       height = 4.5, \n       width = 4.5,\n       units = \"in\",\n       device = \"png\")"
   },
   {
     "objectID": "omics/week-3/study_after_workshop.html",
@@ -466,7 +466,7 @@
     "href": "core/week-2/workshop.html#rstudio-terminal",
     "title": "Workshop",
     "section": "RStudio terminal",
-    "text": "RStudio terminal\nThe RStudio terminal is a convenient interface to the shell without leaving RStudio. It is useful for running commands that are not available in R. For example, you can use it to run other programs like fasqc, git, ftp, ssh\nNavigating your file system\nSeveral commands are frequently used to create, inspect, rename, and delete files and directories.\n$\nThe dollar sign is the prompt (like &gt; on the R console), which shows us that the shell is waiting for input.\nYou can find out where you are using the pwd command, which stands for “print working directory”.\n\npwd\n\n/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2\n\n\nYou can find out what you can see with ls which stands for “list”.\n\nls\n\ndata\nimages\noverview.qmd\nstudy_after_workshop.qmd\nstudy_before_workshop.ipynb\nstudy_before_workshop.qmd\nworkshop.qmd\nworkshop.rmarkdown\n\n\nYou might have noticed that unlike R, the commands do not have brackets after them. Instead, options (or switches) are given after the command. For example, we can modify the ls command to give us more information with the -l option, which stands for “long”.\n\nls -l\n\ntotal 64\ndrwxr-xr-x 2 runner docker  4096 Oct 22 15:21 data\ndrwxr-xr-x 2 runner docker  4096 Oct 22 15:21 images\n-rw-r--r-- 1 runner docker  1597 Oct 22 15:21 overview.qmd\n-rw-r--r-- 1 runner docker   184 Oct 22 15:21 study_after_workshop.qmd\n-rw-r--r-- 1 runner docker  4807 Oct 22 15:21 study_before_workshop.ipynb\n-rw-r--r-- 1 runner docker 13029 Oct 22 15:21 study_before_workshop.qmd\n-rw-r--r-- 1 runner docker  8550 Oct 22 15:21 workshop.qmd\n-rw-r--r-- 1 runner docker  8564 Oct 22 15:24 workshop.rmarkdown\n\n\nYou can use more than one option at once. The -h option stands for “human readable” and makes the file sizes easier to understand for humans:\n\nls -hl\n\ntotal 64K\ndrwxr-xr-x 2 runner docker 4.0K Oct 22 15:21 data\ndrwxr-xr-x 2 runner docker 4.0K Oct 22 15:21 images\n-rw-r--r-- 1 runner docker 1.6K Oct 22 15:21 overview.qmd\n-rw-r--r-- 1 runner docker  184 Oct 22 15:21 study_after_workshop.qmd\n-rw-r--r-- 1 runner docker 4.7K Oct 22 15:21 study_before_workshop.ipynb\n-rw-r--r-- 1 runner docker  13K Oct 22 15:21 study_before_workshop.qmd\n-rw-r--r-- 1 runner docker 8.4K Oct 22 15:21 workshop.qmd\n-rw-r--r-- 1 runner docker 8.4K Oct 22 15:24 workshop.rmarkdown\n\n\nThe -a option stands for “all” and shows us all the files, including hidden files.\n\nls -alh\n\ntotal 72K\ndrwxr-xr-x 4 runner docker 4.0K Oct 22 15:24 .\ndrwxr-xr-x 5 runner docker 4.0K Oct 22 15:21 ..\ndrwxr-xr-x 2 runner docker 4.0K Oct 22 15:21 data\ndrwxr-xr-x 2 runner docker 4.0K Oct 22 15:21 images\n-rw-r--r-- 1 runner docker 1.6K Oct 22 15:21 overview.qmd\n-rw-r--r-- 1 runner docker  184 Oct 22 15:21 study_after_workshop.qmd\n-rw-r--r-- 1 runner docker 4.7K Oct 22 15:21 study_before_workshop.ipynb\n-rw-r--r-- 1 runner docker  13K Oct 22 15:21 study_before_workshop.qmd\n-rw-r--r-- 1 runner docker 8.4K Oct 22 15:21 workshop.qmd\n-rw-r--r-- 1 runner docker 8.4K Oct 22 15:24 workshop.rmarkdown\n\n\nYou can move about with the cd command, which stands for “change directory”. You can use it to move into a directory by specifying the path to the directory:\n\ncd data\npwd\ncd ..\npwd\ncd data\npwd\n\n/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2/data\n/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2\n/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2/data\n\n\nhead 1cq2.pdb\nHEADER    OXYGEN STORAGE/TRANSPORT                04-AUG-99   1CQ2              \nTITLE     NEUTRON STRUCTURE OF FULLY DEUTERATED SPERM WHALE MYOGLOBIN AT 2.0    \nTITLE    2 ANGSTROM                                                             \nCOMPND    MOL_ID: 1;                                                            \nCOMPND   2 MOLECULE: MYOGLOBIN;                                                 \nCOMPND   3 CHAIN: A;                                                            \nCOMPND   4 ENGINEERED: YES;                                                     \nCOMPND   5 OTHER_DETAILS: PROTEIN IS FULLY DEUTERATED                           \nSOURCE    MOL_ID: 1;                                                            \nSOURCE   2 ORGANISM_SCIENTIFIC: PHYSETER CATODON;      \nhead -20 data/1cq2.pdb\nHEADER    OXYGEN STORAGE/TRANSPORT                04-AUG-99   1CQ2              \nTITLE     NEUTRON STRUCTURE OF FULLY DEUTERATED SPERM WHALE MYOGLOBIN AT 2.0    \nTITLE    2 ANGSTROM                                                             \nCOMPND    MOL_ID: 1;                                                            \nCOMPND   2 MOLECULE: MYOGLOBIN;                                                 \nCOMPND   3 CHAIN: A;                                                            \nCOMPND   4 ENGINEERED: YES;                                                     \nCOMPND   5 OTHER_DETAILS: PROTEIN IS FULLY DEUTERATED                           \nSOURCE    MOL_ID: 1;                                                            \nSOURCE   2 ORGANISM_SCIENTIFIC: PHYSETER CATODON;                               \nSOURCE   3 ORGANISM_COMMON: SPERM WHALE;                                        \nSOURCE   4 ORGANISM_TAXID: 9755;                                                \nSOURCE   5 EXPRESSION_SYSTEM: ESCHERICHIA COLI;                                 \nSOURCE   6 EXPRESSION_SYSTEM_TAXID: 562;                                        \nSOURCE   7 EXPRESSION_SYSTEM_VECTOR_TYPE: PLASMID;                              \nSOURCE   8 EXPRESSION_SYSTEM_PLASMID: PET15A                                    \nKEYWDS    HELICAL, GLOBULAR, ALL-HYDROGEN CONTAINING STRUCTURE, OXYGEN STORAGE- \nKEYWDS   2 TRANSPORT COMPLEX                                                    \nEXPDTA    NEUTRON DIFFRACTION                                                   \nAUTHOR    F.SHU,V.RAMAKRISHNAN,B.P.SCHOENBORN   \nless 1cq2.pdb\nless is a program that displays the contents of a file, one page at a time. It is useful for viewing large files because it does not load the whole file into memory before displaying it. Instead, it reads and displays a few lines at a time. You can navigate forward through the file with the spacebar, and backwards with the b key. Press q to quit.\nA wildcard is a character that can be used as a substitute for any of a class of characters in a search, The most common wildcard characters are the asterisk (*) and the question mark (?).\nls *.csv\ncp stands for “copy”. You can copy a file from one directory to another by giving cp the path to the file you want to copy and the path to the destination directory.\ncp 1cq2.pdb copy_of_1cq2.pdb\ncp 1cq2.pdb ../copy_of_1cq2.pdb\ncp 1cq2.pdb ../bob.txt\nTo delete a file use the rm command, which stands for “remove”.\nrm ../bob.txt\nbut be careful because the file will be gone forever. There is no “are you sure?” or undo.\nTo move a file from one directory to another, use the mv command. mv works like cp except that it also deletes the original file.\nmv ../copy_of_1cq2.pdb .\nMake a directory\nmkdir mynewdir"
+    "text": "RStudio terminal\nThe RStudio terminal is a convenient interface to the shell without leaving RStudio. It is useful for running commands that are not available in R. For example, you can use it to run other programs like fasqc, git, ftp, ssh\nNavigating your file system\nSeveral commands are frequently used to create, inspect, rename, and delete files and directories.\n$\nThe dollar sign is the prompt (like &gt; on the R console), which shows us that the shell is waiting for input.\nYou can find out where you are using the pwd command, which stands for “print working directory”.\n\npwd\n\n/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2\n\n\nYou can find out what you can see with ls which stands for “list”.\n\nls\n\ndata\nimages\noverview.qmd\nstudy_after_workshop.qmd\nstudy_before_workshop.ipynb\nstudy_before_workshop.qmd\nworkshop.qmd\nworkshop.rmarkdown\n\n\nYou might have noticed that unlike R, the commands do not have brackets after them. Instead, options (or switches) are given after the command. For example, we can modify the ls command to give us more information with the -l option, which stands for “long”.\n\nls -l\n\ntotal 64\ndrwxr-xr-x 2 runner docker  4096 Oct 23 15:06 data\ndrwxr-xr-x 2 runner docker  4096 Oct 23 15:06 images\n-rw-r--r-- 1 runner docker  1597 Oct 23 15:06 overview.qmd\n-rw-r--r-- 1 runner docker   184 Oct 23 15:06 study_after_workshop.qmd\n-rw-r--r-- 1 runner docker  4807 Oct 23 15:06 study_before_workshop.ipynb\n-rw-r--r-- 1 runner docker 13029 Oct 23 15:06 study_before_workshop.qmd\n-rw-r--r-- 1 runner docker  8550 Oct 23 15:06 workshop.qmd\n-rw-r--r-- 1 runner docker  8564 Oct 23 15:08 workshop.rmarkdown\n\n\nYou can use more than one option at once. The -h option stands for “human readable” and makes the file sizes easier to understand for humans:\n\nls -hl\n\ntotal 64K\ndrwxr-xr-x 2 runner docker 4.0K Oct 23 15:06 data\ndrwxr-xr-x 2 runner docker 4.0K Oct 23 15:06 images\n-rw-r--r-- 1 runner docker 1.6K Oct 23 15:06 overview.qmd\n-rw-r--r-- 1 runner docker  184 Oct 23 15:06 study_after_workshop.qmd\n-rw-r--r-- 1 runner docker 4.7K Oct 23 15:06 study_before_workshop.ipynb\n-rw-r--r-- 1 runner docker  13K Oct 23 15:06 study_before_workshop.qmd\n-rw-r--r-- 1 runner docker 8.4K Oct 23 15:06 workshop.qmd\n-rw-r--r-- 1 runner docker 8.4K Oct 23 15:08 workshop.rmarkdown\n\n\nThe -a option stands for “all” and shows us all the files, including hidden files.\n\nls -alh\n\ntotal 72K\ndrwxr-xr-x 4 runner docker 4.0K Oct 23 15:08 .\ndrwxr-xr-x 5 runner docker 4.0K Oct 23 15:06 ..\ndrwxr-xr-x 2 runner docker 4.0K Oct 23 15:06 data\ndrwxr-xr-x 2 runner docker 4.0K Oct 23 15:06 images\n-rw-r--r-- 1 runner docker 1.6K Oct 23 15:06 overview.qmd\n-rw-r--r-- 1 runner docker  184 Oct 23 15:06 study_after_workshop.qmd\n-rw-r--r-- 1 runner docker 4.7K Oct 23 15:06 study_before_workshop.ipynb\n-rw-r--r-- 1 runner docker  13K Oct 23 15:06 study_before_workshop.qmd\n-rw-r--r-- 1 runner docker 8.4K Oct 23 15:06 workshop.qmd\n-rw-r--r-- 1 runner docker 8.4K Oct 23 15:08 workshop.rmarkdown\n\n\nYou can move about with the cd command, which stands for “change directory”. You can use it to move into a directory by specifying the path to the directory:\n\ncd data\npwd\ncd ..\npwd\ncd data\npwd\n\n/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2/data\n/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2\n/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2/data\n\n\nhead 1cq2.pdb\nHEADER    OXYGEN STORAGE/TRANSPORT                04-AUG-99   1CQ2              \nTITLE     NEUTRON STRUCTURE OF FULLY DEUTERATED SPERM WHALE MYOGLOBIN AT 2.0    \nTITLE    2 ANGSTROM                                                             \nCOMPND    MOL_ID: 1;                                                            \nCOMPND   2 MOLECULE: MYOGLOBIN;                                                 \nCOMPND   3 CHAIN: A;                                                            \nCOMPND   4 ENGINEERED: YES;                                                     \nCOMPND   5 OTHER_DETAILS: PROTEIN IS FULLY DEUTERATED                           \nSOURCE    MOL_ID: 1;                                                            \nSOURCE   2 ORGANISM_SCIENTIFIC: PHYSETER CATODON;      \nhead -20 data/1cq2.pdb\nHEADER    OXYGEN STORAGE/TRANSPORT                04-AUG-99   1CQ2              \nTITLE     NEUTRON STRUCTURE OF FULLY DEUTERATED SPERM WHALE MYOGLOBIN AT 2.0    \nTITLE    2 ANGSTROM                                                             \nCOMPND    MOL_ID: 1;                                                            \nCOMPND   2 MOLECULE: MYOGLOBIN;                                                 \nCOMPND   3 CHAIN: A;                                                            \nCOMPND   4 ENGINEERED: YES;                                                     \nCOMPND   5 OTHER_DETAILS: PROTEIN IS FULLY DEUTERATED                           \nSOURCE    MOL_ID: 1;                                                            \nSOURCE   2 ORGANISM_SCIENTIFIC: PHYSETER CATODON;                               \nSOURCE   3 ORGANISM_COMMON: SPERM WHALE;                                        \nSOURCE   4 ORGANISM_TAXID: 9755;                                                \nSOURCE   5 EXPRESSION_SYSTEM: ESCHERICHIA COLI;                                 \nSOURCE   6 EXPRESSION_SYSTEM_TAXID: 562;                                        \nSOURCE   7 EXPRESSION_SYSTEM_VECTOR_TYPE: PLASMID;                              \nSOURCE   8 EXPRESSION_SYSTEM_PLASMID: PET15A                                    \nKEYWDS    HELICAL, GLOBULAR, ALL-HYDROGEN CONTAINING STRUCTURE, OXYGEN STORAGE- \nKEYWDS   2 TRANSPORT COMPLEX                                                    \nEXPDTA    NEUTRON DIFFRACTION                                                   \nAUTHOR    F.SHU,V.RAMAKRISHNAN,B.P.SCHOENBORN   \nless 1cq2.pdb\nless is a program that displays the contents of a file, one page at a time. It is useful for viewing large files because it does not load the whole file into memory before displaying it. Instead, it reads and displays a few lines at a time. You can navigate forward through the file with the spacebar, and backwards with the b key. Press q to quit.\nA wildcard is a character that can be used as a substitute for any of a class of characters in a search, The most common wildcard characters are the asterisk (*) and the question mark (?).\nls *.csv\ncp stands for “copy”. You can copy a file from one directory to another by giving cp the path to the file you want to copy and the path to the destination directory.\ncp 1cq2.pdb copy_of_1cq2.pdb\ncp 1cq2.pdb ../copy_of_1cq2.pdb\ncp 1cq2.pdb ../bob.txt\nTo delete a file use the rm command, which stands for “remove”.\nrm ../bob.txt\nbut be careful because the file will be gone forever. There is no “are you sure?” or undo.\nTo move a file from one directory to another, use the mv command. mv works like cp except that it also deletes the original file.\nmv ../copy_of_1cq2.pdb .\nMake a directory\nmkdir mynewdir"
   },
   {
     "objectID": "core/week-2/workshop.html#differences-between-r-and-python",
@@ -1103,21 +1103,21 @@
     "href": "omics/week-5/overview.html",
     "title": "Overview",
     "section": "",
-    "text": "This week we cover how to visualise and interpret the results of your differential expression analysis. The independent study will allow you to check you have what you should have following the Omics 2: Statistical Analysis workshop and Consolidation study. It will also summarise the the methods and plots we will go through in the workshop. In the workshop, we will learn how to conduct a Principle Component Analysis (PCA) and plot the results as well as how to create a nicely formatted Volcano plot and heatmap. We will also consider three factors that help us choose an interesting/important gene: the absolute expression, the fold change and the adjusted p-value.\nWe suggest you sit together with your group in the workshop.\n\nLearning objectives\nThe successful student will be able to:\n\nverify they have the required RStudio Project set up and the data and code files from the previous Workshop and Consolidation study\nexplain\n\n\n\n\n,\n\n\n\nInstructions\n\nPrepare\n\n📖 Read what you should have so far and about concepts in PCA, volcano plots and heatmaps.\n\nWorkshop\n\n💻 ….\n💻 …\n💻 ….\nLook after future you!\n\nConsolidate\n\n💻 Use the work you completed in the workshop as a template to apply to a new case.\n\n\n\n\nReferences"
+    "text": "This week we cover how to visualise and interpret the results of your differential expression analysis. The independent study will allow you to check you have what you should have following the Omics 2: Statistical Analysis workshop and Consolidation study. It will also summarise the the methods and plots we will go through in the workshop. In the workshop, we will learn how to conduct a Principle Component Analysis (PCA) and plot the results as well as how to create a nicely formatted Volcano plot and heatmap.\nWe suggest you sit together with your group in the workshop.\n\nLearning objectives\nThe successful student will be able to:\n\nverify they have the required RStudio Project set up and the data and code files from the previous Workshop and Consolidation study\nexplain where gene information came from and add it to their results\nperform a PCA and understand how to interpret them\ncreate a heatmap and understand how to interpret them\ncreate a volcano plot and understand how to interpret them\n\n\n\nInstructions\n\nPrepare\n\n📖 Read what you should have so far and about concepts in PCA, volcano plots and heatmaps.\n\nWorkshop\n\n💻 Add gene information to the results of DE\n💻 Perform and plot a PCA\n💻 Visualise results with a heatmap\n💻 Visualise all the results with a volcano plot\nLook after future you!\n\nConsolidate\n\n💻 Use the work you completed in the workshop as a template to apply to a new case.\n\n\n\n\nReferences"
   },
   {
     "objectID": "omics/week-5/study_before_workshop.html#overview",
     "href": "omics/week-5/study_before_workshop.html#overview",
     "title": "Independent Study to prepare for workshop",
     "section": "Overview",
-    "text": "Overview\nIn these slides we will:\n\n\nCheck where you are\n\nlearn some concepts\n\n\n\n\nFind out what packages to install before the workshop"
+    "text": "Overview\nIn these slides we will:\n\n\nCheck where you are\n\nlearn some concepts used omics visualisation\n\nPrinciple Component Analysis (PCA)\nVolcano plots\nHeatmaps\n\n\nFind out what packages to install before the workshop"
   },
   {
     "objectID": "omics/week-5/study_before_workshop.html#what-we-did-in-omics-2-statistical-analysis",
     "href": "omics/week-5/study_before_workshop.html#what-we-did-in-omics-2-statistical-analysis",
     "title": "Independent Study to prepare for workshop",
     "section": "What we did in Omics 2: Statistical Analysis",
-    "text": "What we did in Omics 2: Statistical Analysis\n\n\n\n\n\nSaved files ."
+    "text": "What we did in Omics 2: Statistical Analysis\n\n\ncarried out differential expression analysis\nfound genes not expressed at all, or expressed in one group only\nSaved results files"
   },
   {
     "objectID": "omics/week-5/study_before_workshop.html#where-should-you-be-1",
@@ -1131,14 +1131,14 @@
     "href": "omics/week-5/study_before_workshop.html#frogs",
     "title": "Independent Study to prepare for workshop",
     "section": "🐸 Frogs",
-    "text": "🐸 Frogs\n\n\nAn RStudio Project called frogs-88H which contains:\n\nRaw data (S14, S20 and S30)\nProcessed data (s30_filtered.csv, s30_summary_gene.csv, s30_summary_gene_filtered.csv, s30_summary_samp.csv and equivalents for S14 OR S20)\nTwo scripts called cont-fgf-s30.R and cont-fgf-s20.R OR cont-fgf-s14.R\n\n\n\n\n\nFiles should be organised into folders. Code should well commented and easy to read."
+    "text": "🐸 Frogs\n\n\nAn RStudio Project called frogs-88H which contains:\n\nRaw data (S14, S20 and S30)\nProcessed data (s30_filtered.csv, s30_summary_gene.csv, s30_summary_gene_filtered.csv, s30_summary_samp.csv and equivalents for S14 OR S20)\nResults files (s30_fgf_only.csv, S30_normalised_counts.csv, S30_results.csv and equivalents for S14 OR S20)\n\nTwo scripts called cont-fgf-s30.R and either cont-fgf-s20.R OR cont-fgf-s14.R\n\n\n\n\n\nFiles should be organised into folders. Code should well commented and easy to read."
   },
   {
     "objectID": "omics/week-5/study_before_workshop.html#mice",
     "href": "omics/week-5/study_before_workshop.html#mice",
     "title": "Independent Study to prepare for workshop",
     "section": "🐭 Mice",
-    "text": "🐭 Mice\n\nAn RStudio Project called mice-88H which contains\n\nRaw data (hspc, prog, lthsc)\nProcessed data (hspc_summary_gene.csv, hspc_summary_samp.csv, prog_summary_gene.csv, prog_summary_samp.csv)\n\n\nOne script called hspc-prog.R\n\n\nFiles should be organised into folders. Code should well commented and easy to read."
+    "text": "🐭 Mice\n\n\nAn RStudio Project called mice-88H which contains\n\nRaw data (hspc, prog, lthsc)\nProcessed data (hspc_summary_gene.csv, hspc_summary_samp.csv, prog_summary_gene.csv, prog_summary_samp.csv, lthsc_summary_gene.csv, lthsc_summary_samp.csv)\n\n\nResults files (prog_hspc_results.csv and an equivalent for lthsc vs prog or hspc vs lthsc)\nTwo scripts called hspc-prog.R and either hspc-lthsc.R OR prog-lthsc.R\n\n\n\nFiles should be organised into folders. Code should well commented and easy to read."
   },
   {
     "objectID": "omics/week-5/study_before_workshop.html#section",
@@ -1159,56 +1159,147 @@
     "href": "omics/week-5/study_before_workshop.html#examine-the-results-files-1",
     "title": "Independent Study to prepare for workshop",
     "section": "Examine the results files",
-    "text": "Examine the results files"
+    "text": "Examine the results files\nRemind yourself of the key columns you have in the results files:\n\na log2 fold change\nan unadjusted p-value\na p value adjusted for multiple testing (FDR or padj)\na gene id"
   },
   {
-    "objectID": "omics/week-5/study_before_workshop.html#from-xenbase",
-    "href": "omics/week-5/study_before_workshop.html#from-xenbase",
+    "objectID": "omics/week-5/study_before_workshop.html#frogs-1",
+    "href": "omics/week-5/study_before_workshop.html#frogs-1",
     "title": "Independent Study to prepare for workshop",
-    "section": "from xenbase",
-    "text": "from xenbase\n\nxenbase logoXenbase (http://www.xenbase.org/, RRID:SCR_003280)\nXenbase is a model organism database that provides genomic, molecular, and developmental biology information about Xenopus laevis and Xenopus tropicalis. Xenbase is funded by the National Institutes of Health (NIH) and the National Science Foundation (NSF).\nour data gives the xenbase gene id so we are using xenbase to get the information a lot of the information would also be in the ncbi"
+    "section": "🐸 Frogs",
+    "text": "🐸 Frogs\n\n\nError: 'results/s30_results.csv' does not exist in current working directory ('/home/runner/work/BIO00088H-data/BIO00088H-data/omics/week-5').\n\n\n\n\n\nbaseMean is the mean of the normalised counts for the gene across all samples\n\nlfcSE standard error of the fold change\n\nstat is the test statistic (the Wald statistic)\nGenerated by DESeq2 (Love, Huber, and Anders 2014)"
   },
   {
-    "objectID": "omics/week-5/study_before_workshop.html#from-the-ncbi",
-    "href": "omics/week-5/study_before_workshop.html#from-the-ncbi",
+    "objectID": "omics/week-5/study_before_workshop.html#mice-1",
+    "href": "omics/week-5/study_before_workshop.html#mice-1",
     "title": "Independent Study to prepare for workshop",
-    "section": "from the ncbi",
-    "text": "from the ncbi\nbiomart is a package that allows you to get information from the ncbi database such as gene names and descriptions"
+    "section": "🐭 Mice",
+    "text": "🐭 Mice\n\n\nRows: 280\nColumns: 6\n$ Top             &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,…\n$ p.value         &lt;dbl&gt; 7.038138e-117, 4.736622e-90, 1.832630e-88, 4.211954e-7…\n$ FDR             &lt;dbl&gt; 1.970679e-114, 6.631271e-88, 1.710455e-86, 2.948368e-7…\n$ summary.logFC   &lt;dbl&gt; 1.596910, 3.035165, 3.261056, -2.146491, -3.056730, 3.…\n$ logFC.hspc      &lt;dbl&gt; 1.596910, 3.035165, 3.261056, -2.146491, -3.056730, 3.…\n$ ensembl_gene_id &lt;chr&gt; \"ENSMUSG00000028639\", \"ENSMUSG00000024053\", \"ENSMUSG00…\n\n\n\n\nTop is the rank of the gene ordered by the p-value (smallest first)\n\nsummary.logFC and logFC.hspc give the same value (in this case since comparing two cell types)\ngenerated by scran (Lun, McCarthy, and Marioni 2016)"
   },
   {
-    "objectID": "omics/week-5/study_before_workshop.html#plots-purpose",
-    "href": "omics/week-5/study_before_workshop.html#plots-purpose",
+    "objectID": "omics/week-5/study_before_workshop.html#adding-gene-information-1",
+    "href": "omics/week-5/study_before_workshop.html#adding-gene-information-1",
     "title": "Independent Study to prepare for workshop",
-    "section": "plots purpose",
-    "text": "plots purpose\ndimsenion reduction"
+    "section": "Adding gene information",
+    "text": "Adding gene information\n\n\nThe gene id is difficult to interpret in plots/tables\nTherefore we need to add information such as the gene name and a description to the results\nFor the 🐸 Frog data information comes from Xenbase (Fisher et al. 2023)\nFor the 🐭 Mice data information comes from Ensembl (Birney et al. 2004)"
+  },
+  {
+    "objectID": "omics/week-5/study_before_workshop.html#xenbase",
+    "href": "omics/week-5/study_before_workshop.html#xenbase",
+    "title": "Independent Study to prepare for workshop",
+    "section": "🐸 Xenbase",
+    "text": "🐸 Xenbase\n\nxenbase logoXenbase is a model organism database that provides genomic, molecular, and developmental biology information about Xenopus laevis and Xenopus tropicalis.\n\nIt took me some time to find the information you need."
+  },
+  {
+    "objectID": "omics/week-5/study_before_workshop.html#xenbase-1",
+    "href": "omics/week-5/study_before_workshop.html#xenbase-1",
+    "title": "Independent Study to prepare for workshop",
+    "section": "🐸 Xenbase",
+    "text": "🐸 Xenbase\n\n\nI got the information from the Xenbase information pages under Data Reports | Gene Information\nThis is listed: Xenbase Gene Product Information [readme] gzipped gpi (tab separated)\nClick on the readme link to see the file format and columns\nI downloaded xenbase.gpi.gz, unzipped it, removed header lines and the Xenopus tropicalis (taxon:8364) entries and saved it as xenbase_info.xlsx\nIn the workshop you will import this file and merge the information with the results file"
+  },
+  {
+    "objectID": "omics/week-5/study_before_workshop.html#ensembl",
+    "href": "omics/week-5/study_before_workshop.html#ensembl",
+    "title": "Independent Study to prepare for workshop",
+    "section": "🐭 Ensembl",
+    "text": "🐭 Ensembl\n\n\nEnsembl creates, integrates and distributes reference datasets and analysis tools that enable genomics\nBioMart provides a access to these large datasets\nbiomaRt (Durinck et al. 2009) is a Bioconductor package gives you programmatic access to BioMart.\nIn the workshop you use this package to get information you can merge with the results file"
+  },
+  {
+    "objectID": "omics/week-5/study_before_workshop.html#what-is-the-purpose-of-an-omics-plot",
+    "href": "omics/week-5/study_before_workshop.html#what-is-the-purpose-of-an-omics-plot",
+    "title": "Independent Study to prepare for workshop",
+    "section": "What is the purpose of an Omics plot?",
+    "text": "What is the purpose of an Omics plot?\n\n\nIn general, we plot data to help us summarise and understand it\nThis is especially import for omics data where we have a very large number of variables and often a large number of observations\nWe will look at three plots very commonly used in omics analysis: Principal Component Analysis (PCA) plot, Heatmaps and Volcano Plots"
   },
   {
     "objectID": "omics/week-5/study_before_workshop.html#pca",
     "href": "omics/week-5/study_before_workshop.html#pca",
     "title": "Independent Study to prepare for workshop",
-    "section": "pca",
-    "text": "pca\nlots of variables"
+    "section": "PCA",
+    "text": "PCA\n\n\nPrincipal Component Analysis is an unsupervised machine learning technique\nUnsupervised methods1 are unsupervised in that they do not use/optimise to a particular output. The goal is to uncover structure. They do not test hypotheses\nIt is often used to visualise high dimensional data because it is a dimension reduction technique\n\n\nYou may wish to read a previous introduction to unsupervised methods I have written An introduction to Machine Learning: Unsupervised methods (Rand 2021)"
   },
   {
-    "objectID": "omics/week-5/study_before_workshop.html#tsne",
-    "href": "omics/week-5/study_before_workshop.html#tsne",
+    "objectID": "omics/week-5/study_before_workshop.html#pca-1",
+    "href": "omics/week-5/study_before_workshop.html#pca-1",
     "title": "Independent Study to prepare for workshop",
-    "section": "tsne",
-    "text": "tsne\nlots of variables and lots of observations"
+    "section": "PCA",
+    "text": "PCA\n\n\nIt takes a large number of continuous variables (like gene expression) and reduces them to a smaller number of variables (called principal components) that explain most of the variation in the data\nThe principal components can be plotted to see how samples cluster together"
   },
   {
-    "objectID": "omics/week-5/study_before_workshop.html#normalising-before-plotting",
-    "href": "omics/week-5/study_before_workshop.html#normalising-before-plotting",
+    "objectID": "omics/week-5/study_before_workshop.html#pca-2",
+    "href": "omics/week-5/study_before_workshop.html#pca-2",
     "title": "Independent Study to prepare for workshop",
-    "section": "normalising before plotting",
-    "text": "normalising before plotting\nlog\nnormalisation regularised log is a method to bias from low count genes. https://hbctraining.github.io/DGE_workshop_salmon_online/lessons/03_DGE_QC_analysis.html\n\n\nT\n\n\nrlog is a method to bias from low count genes. https://hbctraining.github.io/DGE_workshop_salmon_online/lessons/03_DGE_QC_analysis.html gives a good explanation of regularized the log transform (rlog)\nThe rlog transformation of the normalized counts is only necessary for these visualization methods during this quality assessment. They are not used for DE because DESeq2 takes care of that\nin the workshop we just to log transformed\n\nThe 🐭 mouse data have been normalised to simplify the analysis for you; the 🐸 frog data have not but the DE method will do this for you."
+    "section": "PCA",
+    "text": "PCA\n\n\nTo see if samples cluster as we would expect, we might plot the expression of one gene against another\n\n\n\n\n\n\nSamples\n\n\n\n\n\nCells\n\n\n\n\nThis gives some insight but we have 280 (mice) or 10,000+(frogs) genes to consider. How do we know if the pair we use is typical? How can we consider al the genes at once?"
+  },
+  {
+    "objectID": "omics/week-5/study_before_workshop.html#pca-3",
+    "href": "omics/week-5/study_before_workshop.html#pca-3",
+    "title": "Independent Study to prepare for workshop",
+    "section": "PCA",
+    "text": "PCA\n\n\nPCA is a solution for this - It takes a large number of continuous variables (like gene expression) and reduces them to a smaller number of “principal components” that explain most of the variation in the data.\n\n\n\n\n\n\nSamples\n\n\n\n\n\nCells"
+  },
+  {
+    "objectID": "omics/week-5/study_before_workshop.html#pca-4",
+    "href": "omics/week-5/study_before_workshop.html#pca-4",
+    "title": "Independent Study to prepare for workshop",
+    "section": "PCA",
+    "text": "PCA\nWe have done PCA in Omics 3, but often PCA might be one of the first exploratory steps because it gives you an idea whether you expect general patterns in gene expression that distinguish groups."
+  },
+  {
+    "objectID": "omics/week-5/study_before_workshop.html#heatmaps-1",
+    "href": "omics/week-5/study_before_workshop.html#heatmaps-1",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Heatmaps",
+    "text": "Heatmaps\n\n\nare a grid of genes on one axis and samples on the other with each grid cell coloured by another variable\nin this case the other variable is gene expression\nthey allow you to quickly get an overview of the expression patterns across genes and samples\nwe often couple them with clustering to group genes and samples with similar expression patterns together which helps us see which genes are responsible for distinguishing groups"
+  },
+  {
+    "objectID": "omics/week-5/study_before_workshop.html#section-1",
+    "href": "omics/week-5/study_before_workshop.html#section-1",
+    "title": "Independent Study to prepare for workshop",
+    "section": "",
+    "text": "Heat map for the frog data\n\nSee next slide for information"
+  },
+  {
+    "objectID": "omics/week-5/study_before_workshop.html#heatmaps-2",
+    "href": "omics/week-5/study_before_workshop.html#heatmaps-2",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Heatmaps",
+    "text": "Heatmaps\n\n\nOn the vertical axis are genes which are differentially expressed at the 0.01 level\nOn the horizontal axis are samples\nWe can see that the FGF-treated samples cluster together and the control samples cluster together\nWe can also see two clusters of genes; one of these shows genes upregulated (more yellow) in the FGF-treated samples and the other shows genes downregulated (more blue) in the FGF-treated samples"
+  },
+  {
+    "objectID": "omics/week-5/study_before_workshop.html#volcano-plots-1",
+    "href": "omics/week-5/study_before_workshop.html#volcano-plots-1",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Volcano plots",
+    "text": "Volcano plots\n\n\nVolcano plots often used to visualise the results of differential expression analysis\nThey are just a scatter of the corrected p value against the fold change….\nalmost - the we actually plot the negative log of the corrected p value against the fold change"
+  },
+  {
+    "objectID": "omics/week-5/study_before_workshop.html#volcano-plots-2",
+    "href": "omics/week-5/study_before_workshop.html#volcano-plots-2",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Volcano plots",
+    "text": "Volcano plots\n\n\nThis is because just plotting the p-value means the axis is counter intuitive. Small p-values (i.e., significant values) are at the bottom of the axis)\nAnd since p-values range from 1 to very tiny the points are all squashed at the bottom of the axis\n\n\n\nVolcano plot FDR against fold change"
+  },
+  {
+    "objectID": "omics/week-5/study_before_workshop.html#volcano-plots-3",
+    "href": "omics/week-5/study_before_workshop.html#volcano-plots-3",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Volcano plots",
+    "text": "Volcano plots\n\n\nPlotting the negative log of the corrected p-value means that the values are spread out and the significant values are at the top of the axis\n\n\n\nVolcano plot -log(FDR) against fold change"
+  },
+  {
+    "objectID": "omics/week-5/study_before_workshop.html#visualisations",
+    "href": "omics/week-5/study_before_workshop.html#visualisations",
+    "title": "Independent Study to prepare for workshop",
+    "section": "Visualisations",
+    "text": "Visualisations\n\nShould be done on normalised data so meaningful comparisons can be made\nThe 🐭 mouse data were already log2normalised\nThe 🐸 frog data were normalised by the DE method and saved to file. We will log2 transform before doing visualisations"
   },
   {
     "objectID": "omics/week-5/study_before_workshop.html#packages-to-install-before-the-workshop",
     "href": "omics/week-5/study_before_workshop.html#packages-to-install-before-the-workshop",
     "title": "Independent Study to prepare for workshop",
     "section": "Packages to install before the workshop",
-    "text": "Packages to install before the workshop\nheatmaply ggrepel from CRAN in the the normal way:\n\ninstall.packages(\"heatmaply\")\ninstall.packages(\"ggrepel\")\n\nbiomaRt from Bioconductor using BiocManager:\n\nBiocManager::install(\"biomaRt\")"
+    "text": "Packages to install before the workshop\nheatmaply (heatmapply?) and ggrepel (Slowikowski 2023) from CRAN in the the normal way:\n\ninstall.packages(\"heatmaply\")\ninstall.packages(\"ggrepel\")\n\nbiomaRt (Durinck et al. 2009) from Bioconductor using BiocManager (Morgan and Ramos 2023)\n\nBiocManager::install(\"biomaRt\")"
   },
   {
     "objectID": "omics/week-5/study_before_workshop.html#workshops-1",
@@ -1222,6 +1313,6 @@
     "href": "omics/week-5/study_before_workshop.html#references",
     "title": "Independent Study to prepare for workshop",
     "section": "References",
-    "text": "References\n\n\n🔗 About Omics 3: Visualising and Interpreting"
+    "text": "References\n\n\n🔗 About Omics 3: Visualising and Interpreting\n\n\n\nBirney, Ewan, T. Daniel Andrews, Paul Bevan, Mario Caccamo, Yuan Chen, Laura Clarke, Guy Coates, et al. 2004. “An Overview of Ensembl.” Genome Research 14 (5): 925–28. https://doi.org/10.1101/gr.1860604.\n\n\nDurinck, Steffen, Paul T. Spellman, Ewan Birney, and Wolfgang Huber. 2009. “Mapping Identifiers for the Integration of Genomic Datasets with the r/Bioconductor Package biomaRt” 4.\n\n\nFisher, Malcolm, Christina James-Zorn, Virgilio Ponferrada, Andrew J Bell, Nivitha Sundararaj, Erik Segerdell, Praneet Chaturvedi, et al. 2023. “Xenbase: Key Features and Resources of the Xenopus Model Organism Knowledgebase.” Genetics 224 (1): iyad018. https://doi.org/10.1093/genetics/iyad018.\n\n\nLove, Michael I., Wolfgang Huber, and Simon Anders. 2014. “Moderated Estimation of Fold Change and Dispersion for RNA-Seq Data with DESeq2” 15: 550. https://doi.org/10.1186/s13059-014-0550-8.\n\n\nLun, Aaron T. L., Davis J. McCarthy, and John C. Marioni. 2016. “A Step-by-Step Workflow for Low-Level Analysis of Single-Cell RNA-Seq Data with Bioconductor” 5: 2122. https://doi.org/10.12688/f1000research.9501.2.\n\n\nMorgan, Martin, and Marcel Ramos. 2023. BiocManager: Access the Bioconductor Project Package Repository. https://bioconductor.github.io/BiocManager/.\n\n\nRand, Emma. 2021. Data Science Strand of BIO00058M. https://doi.org/10.5281/zenodo.5527705.\n\n\nSlowikowski, Kamil. 2023. Ggrepel: Automatically Position Non-Overlapping Text Labels with ’Ggplot2’. https://github.com/slowkow/ggrepel."
   }
 ]
