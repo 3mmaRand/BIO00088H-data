@@ -19,7 +19,9 @@ editor:
 
 ## Session overview
 
-In the workshop, you will learn how to merge gene information into our results, conduct and plot a Principle Component Analysis (PCA) as well as how to create a nicely formatted Volcano plot and heatmap.  
+In the workshop, you will learn how to merge gene information into our
+results, conduct and plot a Principle Component Analysis (PCA) as well
+as how to create a nicely formatted Volcano plot and heatmap.
 
 # Set up
 
@@ -30,8 +32,6 @@ Either:
 Or
 
 🎬 Open 🐭 `mice-88H` Project and the `hspc-prog.R` script.
-
-
 
 🎬 Make a new folder `figures` in the project directory. You can use the
 New Folder button in the Files pane but here I have used the **`fs`**
@@ -44,9 +44,9 @@ fs::dir_create("figures")
 
 This is where we will save our figure files.
 
-
-
-🎬 Load **`tidyverse`** [@tidyverse] and **`conflicted`** [@conflicted]. You most likely have this code at the top of `cont-fgf-s30.R` or `hspc-prog.R` already.
+🎬 Load **`tidyverse`** [@tidyverse] and **`conflicted`** [@conflicted].
+You most likely have this code at the top of `cont-fgf-s30.R` or
+`hspc-prog.R` already.
 
 ```{r}
 library(tidyverse)
@@ -66,36 +66,34 @@ library(conflicted)
 ℹ Use the conflicted package to force all conflicts to become errors
 ```
 
-
-
 🎬 Use the **`dplyr`** version of `filter()` by default:
 
 ```{r}
 conflict_prefer("filter", "dplyr")
 ```
 
-
-
-
 # 🐸 Analysis
 
 We will carry out several steps
 
-1.  Import data and  merge statistical results with normalised values
+1.  Import data and merge statistical results with normalised values
 2.  Add gene information from Xenbase [@fisher2023]
 3.  log~2~ transform the data
 4.  Write the significant genes to file
 5.  View the relationship between samples using PCA
-6.  Visualise the expression of the most significant genes using a heatmap
+6.  Visualise the expression of the most significant genes using a
+    heatmap
 7.  Visual all the results with a volcano plot
-
-
 
 ## Import
 
-We need to import both the normalised counts and the statistical results. We will need all of these for the visualisation and interpretation.
+We need to import both the normalised counts and the statistical
+results. We will need all of these for the visualisation and
+interpretation.
 
-🎬 Import files saved from last week from the `results` folder: S30_normalised_counts.csv and S30_results.csv. I used the names `s30_count_norm` and `s30_results` for the dataframes.
+🎬 Import files saved from last week from the `results` folder:
+S30_normalised_counts.csv and S30_results.csv. I used the names
+`s30_count_norm` and `s30_results` for the dataframes.
 
 ```{r}
 #| echo: false
@@ -108,9 +106,8 @@ s30_results <- read_csv("results/S30_results.csv")
 
 ```
 
-
-
-🎬  Remind yourself what is in the rows and columns and the structure of the dataframes (perhaps using `glimpse()`)
+🎬 Remind yourself what is in the rows and columns and the structure of
+the dataframes (perhaps using `glimpse()`)
 
 ```{r}
 #---CODING ANSWER---
@@ -121,16 +118,20 @@ glimpse(s30_count_norm)
 <!-- #---THINKING ANSWER--- -->
 
 <!-- The normalised counts dataframe has 10,136 rows and 7 columns: which arethe sample names and the xenbase gene ids. -->
+
 <!-- S30_C_5          -->
+
 <!-- S30_C_6          -->
+
 <!-- S30_C_A          -->
+
 <!-- S30_F_5          -->
+
 <!-- S30_F_6          -->
+
 <!-- S30_F_A          -->
+
 <!-- xenbase_gene_id  -->
-
-
-
 
 ```{r}
 #---CODING ANSWER---
@@ -141,13 +142,17 @@ glimpse(s30_results)
 <!-- #---THINKING ANSWER--- -->
 
 <!-- the results dataframe contains the fold change and p values for each gene. -->
+
 <!-- 10,136 rows and 7 columns:  -->
+
 <!-- baseMean , log2FoldChange, lfcSE, stat, pvalue, padj, xenbase_gene_id    -->
 
-It is useful to have this information in a single dataframe to which we will add the gene information from xenbase. Having all the information together will make it easier to interpret the results and select genes of interest.
+It is useful to have this information in a single dataframe to which we
+will add the gene information from xenbase. Having all the information
+together will make it easier to interpret the results and select genes
+of interest.
 
-
-🎬  Merge the two dataframes:
+🎬 Merge the two dataframes:
 
 ```{r}
 # merge the results with the normalised counts
@@ -155,8 +160,8 @@ s30_results <- s30_count_norm |>
   left_join(s30_results, by = "xenbase_gene_id")
 ```
 
-This means you have the counts for each sample along with the statistical results for each gene.
-
+This means you have the counts for each sample along with the
+statistical results for each gene.
 
 ## Add gene information from Xenbase
 
@@ -164,26 +169,37 @@ This means you have the counts for each sample along with the statistical result
     pages](https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp)
     under Data Reports \| Gene Information
 
--   This is listed: Xenbase Gene Product Information \[readme\] [gzipped gpi (tab separated)](https://download.xenbase.org/xenbase/GenePageReports/xenbase.gpi.gz)
+-   This is listed: Xenbase Gene Product Information \[readme\] [gzipped
+    gpi (tab
+    separated)](https://download.xenbase.org/xenbase/GenePageReports/xenbase.gpi.gz)
 
 -   Click on the readme link to see the file format and columns
 
--   I downloaded [xenbase.gpi.gz](https://download.xenbase.org/xenbase/GenePageReports/xenbase.gpi.gz), unzipped it, removed header lines and the *Xenopus tropicalis*
-    (taxon:8364) entries and saved it as [xenbase_info.xlsx](meta/xenbase_info.xlsx)
+-   I downloaded
+    [xenbase.gpi.gz](https://download.xenbase.org/xenbase/GenePageReports/xenbase.gpi.gz),
+    unzipped it, removed header lines and the *Xenopus tropicalis*
+    (taxon:8364) entries and saved it as
+    [xenbase_info.xlsx](meta/xenbase_info.xlsx)
 
+If you want to emulate what I did you can use the following commands in
+the terminal after downloading the file:
 
-If you want to emulate what I did you can use the following commands in the terminal after downloading the file:
-
-```bash
+``` bash
 gunzip xenbase.gpi.gz
 less xenbase.gpi
 q
 ```
 
-`gunzip` unzips the file and `less` allows you to view the file. `q` quits the viewer. You will see the header lines and that the file contains both *Xenopus tropicalis*  and *Xenopus laevis*. I read the file in with `read_tsv` (skipping the first header lines) then filtered out the *Xenopus tropicalis* entries, dropped some columns and saved the file as an excel file.
+`gunzip` unzips the file and `less` allows you to view the file. `q`
+quits the viewer. You will see the header lines and that the file
+contains both *Xenopus tropicalis* and *Xenopus laevis*. I read the file
+in with `read_tsv` (skipping the first header lines) then filtered out
+the *Xenopus tropicalis* entries, dropped some columns and saved the
+file as an excel file.
 
-However, I have already done this for you and saved the file as `xenbase_info.xlsx` in the `meta` folder. We will import this file and join it to the results dataframe.
-
+However, I have already done this for you and saved the file as
+`xenbase_info.xlsx` in the `meta` folder. We will import this file and
+join it to the results dataframe.
 
 🎬 Load the **`readxl`** [@readxl] package:
 
@@ -197,8 +213,8 @@ library(readxl)
 gene_info <- read_excel("meta/xenbase_info.xlsx") 
 ```
 
-You should view the resulting dataframe to see what information is available. You can use `glimpse()` or `View()`.
-
+You should view the resulting dataframe to see what information is
+available. You can use `glimpse()` or `View()`.
 
 🎬 Merge the gene information with the results:
 
@@ -208,7 +224,9 @@ s30_results <- s30_results |>
   left_join(gene_info, by = "xenbase_gene_id")
 ```
 
-We will also find it useful to import the metadata that maps the sample names to treatments. This will allow us to label the samples in the visualisations.
+We will also find it useful to import the metadata that maps the sample
+names to treatments. This will allow us to label the samples in the
+visualisations.
 
 🎬 Import the metadata that maps the sample names to treatments:
 
@@ -223,8 +241,11 @@ meta_s30 <- meta |>
 
 ## log~2~ transform the data
 
-We use the normalised counts for data visualisations so that the comparisons are meaningful. Since the fold changes are given is log~2~ it is useful to log~2~ transform the normalised counts too.
-We will add columns to the dataframe with these transformed values. Since we have some counts of 0 we will add a tiny amount to avoid `-Inf` values.
+We use the normalised counts for data visualisations so that the
+comparisons are meaningful. Since the fold changes are given is log~2~
+it is useful to log~2~ transform the normalised counts too. We will add
+columns to the dataframe with these transformed values. Since we have
+some counts of 0 we will add a tiny amount to avoid `-Inf` values.
 
 🎬 log~2~ transform the normalised counts:
 
@@ -236,27 +257,39 @@ s30_results <- s30_results |>
                 .names = "log2_{.col}"))
 ```
 
-This is a wonderful bit or R wizardy. We are using the `across()` function to apply a transformation to multiple columns. We have selected all the columns that start with `s30`. The `\(x)` is an "anonymous" function that takes the value of the column and adds 0.001 to it before applying the `log2()` function. The `.names = "log2_{.col}"` argument tells `across()` to name the new columns with the prefix `log2_` followed by the original column name. You can read more about `across()` and anonymous functions from my [posit::conf(2023) workshop](https://posit-conf-2023.github.io/programming-r/03-iteration-01.html#/title-slide)
+This is a wonderful bit or R wizardy. We are using the `across()`
+function to apply a transformation to multiple columns. We have selected
+all the columns that start with `s30`. The `\(x)` is an "anonymous"
+function that takes the value of the column and adds 0.001 to it before
+applying the `log2()` function. The `.names = "log2_{.col}"` argument
+tells `across()` to name the new columns with the prefix `log2_`
+followed by the original column name. You can read more about `across()`
+and anonymous functions from my [posit::conf(2023)
+workshop](https://posit-conf-2023.github.io/programming-r/03-iteration-01.html#/title-slide)
 
 I recommend viewing the dataframe to see the new columns.
 
-We now have dataframe with all the information we need: normalised counts, 
-log~2~ normalised counts, statistical comparisons with fold changes and p values, 
-and information about the gene other than just the id.
+We now have dataframe with all the information we need: normalised
+counts, log~2~ normalised counts, statistical comparisons with fold
+changes and p values, and information about the gene other than just the
+id.
 
 ## Write the significant genes to file
 
-We will create dateframe of the signifcant genes and wrte them to file. These are the files you want to examine in more detail along with the visualisations to select your genes of interest.
+We will create dateframe of the signifcant genes and wrte them to file.
+These are the files you want to examine in more detail along with the
+visualisations to select your genes of interest.
 
 🎬 Create a dataframe of the genes significant at the 0.01 level:
+
 ```{r}
 s30_results_sig0.01 <- s30_results |> 
   filter(padj <= 0.01)
 
 ```
 
-
 🎬 Write the dataframe to file
+
 ```{r}
 #---CODING ANSWER---
 #| include: false
@@ -265,7 +298,9 @@ write_csv(s30_results_sig0.01,
           file = "results/s30_results_sig0.01.csv")
 ```
 
-🎬 Create a dataframe of the genes significant at the 0.05 level and write to file:
+🎬 Create a dataframe of the genes significant at the 0.05 level and
+write to file:
+
 ```{r}
 #---CODING ANSWER---
 #| include: false
@@ -277,21 +312,28 @@ write_csv(s30_results_sig0.05,
           file = "results/s30_results_sig0.05.csv")
 ```
 
-
 ❓How many genes are significant at the 0.01 and 0.05 levels?
 
 <!-- #---THINKING ANSWER--- -->
-<!-- 59 genes are significant at the 0.01 level and 117 genes are  -->
-<!-- significant at the 0.05 level. -->
 
+<!-- 59 genes are significant at the 0.01 level and 117 genes are  -->
+
+<!-- significant at the 0.05 level. -->
 
 ## View the relationship between samples using PCA
 
-We have 10,136 genes in our dataset. PCA will allow us to plot our samples in the "gene expression" space so we can see if FGF-treated sample cluster together and control samples cluster together as we would expect. We do this on the log~2~ transformed normalised counts. 
+We have 10,136 genes in our dataset. PCA will allow us to plot our
+samples in the "gene expression" space so we can see if FGF-treated
+sample cluster together and control samples cluster together as we would
+expect. We do this on the log~2~ transformed normalised counts.
 
-Our data have genes in rows and samples in columns which is a common organisation for gene expression data. However, PCA expects samples in rows and genes, the variables, in columns. We can transpose the data to get it in the correct format.
+Our data have genes in rows and samples in columns which is a common
+organisation for gene expression data. However, PCA expects samples in
+rows and genes, the variables, in columns. We can transpose the data to
+get it in the correct format.
 
 🎬 Transpose the log~2~ transformed normalised counts:
+
 ```{r}
 s30_log2_trans <- s30_results |> 
   select(starts_with("log2_")) |>
@@ -299,7 +341,12 @@ s30_log2_trans <- s30_results |>
   data.frame()
 ```
 
-We have used the `select()` function to select all the columns that start with `log2_`. We then use the `t()` function to transpose the dataframe. We then convert the resulting matrix to a dataframe using `data.frame()`. If you view that dataframe you'll see it has default column name which we can fix using `colnames()` to set the column names to the Xenbase gene ids.
+We have used the `select()` function to select all the columns that
+start with `log2_`. We then use the `t()` function to transpose the
+dataframe. We then convert the resulting matrix to a dataframe using
+`data.frame()`. If you view that dataframe you'll see it has default
+column name which we can fix using `colnames()` to set the column names
+to the Xenbase gene ids.
 
 🎬 Set the column names to the Xenbase gene ids:
 
@@ -314,30 +361,41 @@ pca <- s30_log2_trans |>
   prcomp(rank. = 4) 
 ```
 
-The `rank.` argument tells `prcomp()` to only calculate the first 4 principal components. This is useful for visualisation as we can only plot in 2 or 3 dimensions. We can see the results of the PCA by viewing the `summary()` of the `pca` object.
+The `rank.` argument tells `prcomp()` to only calculate the first 4
+principal components. This is useful for visualisation as we can only
+plot in 2 or 3 dimensions. We can see the results of the PCA by viewing
+the `summary()` of the `pca` object.
 
 ```{r}
 summary(pca)
 ```
 
-The Proportion of Variance tells us how much of the variance is explained by each component. We can see that the first component explains 0.4243 of the variance, the second 0.2320, and the third 0.1532. Together the first three components explain nearly 81% of the total variance in the data. Plotting PC1 against PC2 will capture about 66% of the variance which is likely much better than we would get plotting any two genes against each other.
-To plot the PC1 against PC2 we will need to extract the PC1 and PC2
-score from the pca object and add labels for the samples.
+The Proportion of Variance tells us how much of the variance is
+explained by each component. We can see that the first component
+explains 0.4243 of the variance, the second 0.2320, and the third
+0.1532. Together the first three components explain nearly 81% of the
+total variance in the data. Plotting PC1 against PC2 will capture about
+66% of the variance which is likely much better than we would get
+plotting any two genes against each other. To plot the PC1 against PC2
+we will need to extract the PC1 and PC2 score from the pca object and
+add labels for the samples.
 
-🎬 Remove `log2` from  the row names:
+🎬 Remove `log2` from the row names:
 
 ```{r}
 sample_id <- row.names(s30_log2_trans) |> str_remove("log2_")
 ```
 
-🎬 Create a dataframe of the PC1 and PC2 scores which are in `pca$x` and add the sample ids:
+🎬 Create a dataframe of the PC1 and PC2 scores which are in `pca$x` and
+add the sample ids:
 
 ```{r}
 pca_labelled <- data.frame(pca$x,
                            sample_id)
 ```
 
-🎬 Merge with the metadata so we can label points by treatment and sibling pair:
+🎬 Merge with the metadata so we can label points by treatment and
+sibling pair:
 
 ```{r}
 pca_labelled <- pca_labelled |> 
@@ -345,17 +403,18 @@ pca_labelled <- pca_labelled |>
             by = "sample_id")
 ```
 
-
-Since the metadata contained the sample ids, it was especially important to remove the `log2_` from the row names so that the join would work. The dataframe should look like this:
+Since the metadata contained the sample ids, it was especially important
+to remove the `log2_` from the row names so that the join would work.
+The dataframe should look like this:
 
 ```{r}
 #| echo: false
 knitr::kable(pca_labelled)
 ```
 
+🎬 Plot PC1 against PC2 and colour by sibling pair and shape by
+treatment:
 
-
-🎬 Plot PC1 against PC2 and colour by sibling pair and shape by treatment:
 ```{r}
 pca <- pca_labelled |> 
   ggplot(aes(x = PC1, y = PC2, 
@@ -372,9 +431,11 @@ pca <- pca_labelled |>
 pca
 ```
 
-There is a good separation between treatments on PCA1. The sibling pairs do not seem to cluster together. 
+There is a good separation between treatments on PCA1. The sibling pairs
+do not seem to cluster together.
 
 🎬 Save the plot to file:
+
 ```{r}
 ggsave("figures/frog-s30-pca.png",
        plot = pca,
@@ -384,13 +445,9 @@ ggsave("figures/frog-s30-pca.png",
        device = "png")
 ```
 
-
-
 ## Visualise the expression of the most significant genes using a heatmap
 
-
-only should do on sig genes.
-but use the log 2 normalised values
+only should do on sig genes. but use the log 2 normalised values
 
 ```{r}
 mat <- s30_results_sig0.01 |> 
@@ -401,7 +458,6 @@ mat <- s30_results_sig0.01 |>
 ```{r}
 rownames(mat) <- s30_results_sig0.01$xenbase_gene_symbol
 ```
-
 
 ```{r}
 library(heatmaply)
@@ -426,14 +482,9 @@ heatmaply(mat,
           heatmap_layers = theme(axis.line = element_blank()))
 ```
 
-
-
-
 ## Visualise all the results with a volcano plot
 
-
-colour the points if padj < 0.05
-and log2FoldChange > 1
+colour the points if padj \< 0.05 and log2FoldChange \> 1
 
 ```{r}
 library(ggrepel)
@@ -474,7 +525,6 @@ vol <- s30_results |>
   theme(legend.position = "none")
 ```
 
-
 ```{r}
 ggsave("figures/frog-s30-volcano.png",
        plot = vol,
@@ -484,23 +534,26 @@ ggsave("figures/frog-s30-volcano.png",
        device = "png")
 ```
 
-
-
-
 # 🐭 Analysis
 
 We will carry out several steps
 
-1.  Import data and  merge statistical results with normalised values
+1.  Import data and merge statistical results with normalised values
 2.  Add gene information from the NCBI using biomaRt
 3.  Write the significant genes to file
 4.  View the relationship between cells using PCA
-5.  Visualise the expression of the most significant genes using a heatmap
+5.  Visualise the expression of the most significant genes using a
+    heatmap
 6.  Visual all the results with a volcano plot
 
 ## Import
 
-🎬 Import 
+We need to import both the normalised counts and the statistical
+results. We will need all of these for the visualisation and
+interpretation.
+
+🎬 Import the normalised counts for the Prog and HSPC cell types. I used
+the names `prog` and `hspc` for the dataframes.
 
 ```{r}
 #| echo: false
@@ -511,25 +564,57 @@ hspc <- read_csv("data-raw/surfaceome_hspc.csv")
 
 ```
 
-
-
-🎬 Combine the two dataframes (minus the gene ids) into one dataframe called prog_hspc:
+🎬 Combine the two dataframes (minus one set of gene ids) into one
+dataframe called prog_hspc:
 
 ```{r}
 # combine into one dataframe dropping one of the gene id columns
 prog_hspc <- bind_cols(prog, hspc[-1])
 ```
 
-🎬 ...
+🎬 Import the statistical results in `results/prog_hspc_results.csv`. I
+used the name `prog_hspc_results` for the dataframe.
 
 ```{r}
+#| echo: false
+#---CODING ANSWER---
 # import the DE results
 prog_hspc_results <- read_csv("results/prog_hspc_results.csv")
 ```
 
+🎬 Remind yourself what is in the rows and columns and the structure of
+the dataframes (perhaps using `glimpse()`)
 
+```{r}
+#---CODING ANSWER---
+#| include: false
+glimpse(prog_hspc)
+```
 
-🎬 ...
+<!-- #---THINKING ANSWER--- -->
+
+<!-- The normalised counts dataframe has 280 rows and 1,500 columns: which are the cell id names and the gene ids. -->
+
+```{r}
+#---CODING ANSWER---
+#| include: false
+glimpse(prog_hspc_results)
+```
+
+<!-- #---THINKING ANSWER--- -->
+
+<!-- the results dataframe contains the fold change and p values for each gene. -->
+
+<!-- 280 rows and 6 columns:  -->
+
+<!-- Top, p.value, FDR, summary.logFC, logFC.hspc, ensembl_gene_id  -->
+
+It is useful to have this information in a single dataframe to which we
+will add the gene information from Ensembl Having all the information
+together will make it easier to interpret the results and select genes
+of interest.
+
+🎬 Merge the two dataframes:
 
 ```{r}
 # merge stats results with normalise values
@@ -537,43 +622,40 @@ prog_hspc_results <- prog_hspc_results |>
   left_join(prog_hspc, by = "ensembl_gene_id")
 ```
 
-## Add gene information from the NCBI using biomaRt
+This means you have the counts for each sample along with the
+statistical results for each gene.
 
-add the gene information using biomart
+## Add gene information from Ensembl using biomaRt
 
-[Ensembl](https://www.ensembl.org/index.html) [@birney2004] is a 
-bioinformatics project to organise all the biological information around
-the sequences of large genomes. The are a large number of databases 
-but [BioMart](https://www.ensembl.org/info/data/biomart/index.html) 
-[@smedley2009] provides a consistent interface to the material. 
-There are web-based tools to use these but the R package **`biomaRtr`**
-[@biomaRt] enables you to rapidly access and integrate information 
-into your R data structures.
+[Ensembl](https://www.ensembl.org/index.html) [@martin2023;
+@birney2004]is a bioinformatics project to organise all the biological
+information around the sequences of large genomes. The are a large
+number of databases but [BioMart](https://www.ensembl.org/info/data/biomart/index.html)
+[@smedley2009] provides a consistent interface to the material. There
+are web-based tools to use these but the R package **`biomaRt`**
+[@biomaRt] gives you programmatic access making it easier to integrate information into R dataframes
+
+🎬 Load the **`biomaRt`** [@biomaRt] package:
 
 ```{r}
 library(biomaRt)
 ```
 
+🎬 Connect to the mouse database and see what information we can retrieve:
 ```{r}
 # Connect to the mouse database
-
 ensembl <- useMart(biomart = "ensembl", 
                    dataset = "mmusculus_gene_ensembl")
 
-```
-
-
-See what info we can retrieve:
-```{r}
+# See what information we can retrieve
 listAttributes(mart = ensembl) |> View()
 ```
 
+This may take a moment
 
-We need
-ensembl_gene_id: because we will need to merge the info
-external_gene_name: name for gene
-description: description	
+We use the `getBM()` function to retrieve information from the database. The `filters` argument is used to specified what kind of identifier we are supplying to retrieve information. The `attributes` argument is used to select the information we want to retrieve. The `values` argument is used to specify the identifers. The mart argument is used to specify the connection we created.
 
+🎬 Get the gene information:
 ```{r}
 gene_info <- getBM(filters = "ensembl_gene_id",
                    attributes = c("ensembl_gene_id",
@@ -583,9 +665,9 @@ gene_info <- getBM(filters = "ensembl_gene_id",
                    mart = ensembl)
 ```
 
+We are getting the gene name and and a description. We also need to get the id because we will use that to merge the `gene_info` dataframe with the `prog_hspc_results` dataframe. Notice the dataframe returned only has 279 rows - one of the ids does not have information.
 
-
-Notice the dataframe returned only has 279 rows, not 280. Which one is missing?
+🎬 We can find which is missing with:
 
 ```{r}
 #| error: true
@@ -594,72 +676,85 @@ prog_hspc_results |> select(ensembl_gene_id) |>
 
 ```
 
+Oh, **`conflicted`** has flagged a conflict for us.
+
+🎬 Take the appropriate action to resolve the conflict:
 
 
 ```{r}
+#| include: false
+#---CODING ANSWER---
 prog_hspc_results |> dplyr::select(ensembl_gene_id) |> 
   filter(!ensembl_gene_id %in% gene_info$ensembl_gene_id)
 ```
+❓ What is the id which is missing information?
 
-We might want to look that up. Google it. Let's worry about it 
-later if it turns out to be something important.
+<!-- #---THINKING ANSWER--- -->
+<!-- ENSMUSG00000029386	 -->
 
-merge the gene info with the results
+
+We might want to look that up - but let's worry about it later if
+it turns out to be something important.
+
+🎬 Merge the gene information with the results:
 
 ```{r}
 prog_hspc_results <- prog_hspc_results |> 
   left_join(gene_info, by = "ensembl_gene_id")
 ```
 
-We now have datatframe with all the info we need, normalised counts, 
-log2 normalised counts, statistical comparisons with fold changes and p values, 
-information about the gene
-other than just the id
-
-
+I recommend viewing the dataframe to see the new columns.
+We now have dataframe with all the info we need, normalised counts,
+log~2~ normalised counts, statistical comparisons with fold changes and p
+values, information about the gene other than just the id
 
 ## Write the significant genes to file
 
-save the most sig genes to file
+We will create dateframe of the signifcant genes and write them to file. These are the files you want to examine in more detail along with the visualisations to select your genes of interest.
 
+
+🎬 Create a dataframe of the genes significant at the 0.01 level:
 ```{r}
 prog_hspc_results_sig0.01 <- prog_hspc_results |> 
   filter(FDR <= 0.01)
 ```
 
-168 genes
+🎬 Write the dataframe to file
 
-write to csv file
 ```{r}
+#---CODING ANSWER---
+#| include: false
 write_csv(prog_hspc_results_sig0.01, 
           file = "results/prog_hspc_results_sig0.01.csv")
 ```
 
-
+🎬 Create a dataframe of the genes significant at the 0.05 level and write to file:
 ```{r}
+#---CODING ANSWER---
+#| include: false
+
 prog_hspc_results_sig0.05 <- prog_hspc_results |> 
   filter(FDR <= 0.05)
-```
-182 genes
 
-write to csv file
-
-```{r}
+# write to csv file
 write_csv(prog_hspc_results_sig0.05, 
           file = "results/prog_hspc_results_sig0.05.csv")
-
 ```
 
+❓How many genes are significant at the 0.01 and 0.05 levels?
+
+<!-- #---THINKING ANSWER--- -->
+<!-- 168 genes are significant at the 0.01 level and 182 genes are  -->
+<!-- significant at the 0.05 level. -->
 
 
-## View the relationship between cells using PCA 
+## View the relationship between cells using PCA
 
-we do this on the log2 transformed normalised counts or the regularized the
-log transformed counts
+We have 280 genes in our dataset. PCA will allow us to plot our cells in the "gene expression" space so we can see if Prog cells cluster together and HSPC cells cluster together as we would expect. We do this on the log~2~ transformed normalised counts. 
 
-transpose the data
-we are reducing he number of dimensions from 280
+Our data have genes in rows and samples in columns which is a common organisation for gene expression data. However, PCA expects cells in rows and genes, the variables, in columns. We can transpose the data to get it in the correct format.
 
+🎬 Transpose the log~2~ transformed normalised counts:
 ```{r}
 prog_hspc_trans <- prog_hspc_results |> 
   dplyr::select(starts_with(c("Prog_", "HSPC_"))) |>
@@ -667,6 +762,9 @@ prog_hspc_trans <- prog_hspc_results |>
   data.frame()
 ```
 
+We have used the `select()` function to select all the columns that start with `Prog_` or  `HSPC_`. We then use the `t()` function to transpose the dataframe. We then convert the resulting matrix to a dataframe using `data.frame()`. If you view that dataframe you'll see it has default column name which we can fix using `colnames()` to set the column names to the gene ids.
+
+🎬 Set the column names to the gene ids:
 
 ```{r}
 colnames(prog_hspc_trans) <- prog_hspc_results$ensembl_gene_id
@@ -676,29 +774,30 @@ perform PCA using standard functions
 
 ```{r}
 pca <- prog_hspc_trans |>
-  prcomp(scale. = TRUE) 
+  prcomp(rank. = 15) 
 ```
+
+The `rank.` argument tells `prcomp()` to only calculate the first 15 principal components. This is useful for visualisation as we can only plot in 2 or 3 dimensions. We can see the results of the PCA by viewing the `summary()` of the `pca` object.
+
 
 ```{r}
 summary(pca)
 ```
 
-Importance of components:
-                        PC1     PC2     PC3     PC4     PC5     PC6     PC7     PC8
-Standard deviation     4.3892 3.08797 2.25263 2.13943 1.96659 1.76697 1.62753 1.47668
-Proportion of Variance 0.0688 0.03406 0.01812 0.01635 0.01381 0.01115 0.00946 0.00779
-Cumulative Proportion  0.0688 0.10286 0.12098 0.13733 0.15114 0.16229 0.17175 0.17954
+The Proportion of Variance tells us how much of the variance is explained by each component. We can see that the first component explains 0.1099 of the variance, the second 0.04874, and the third 0.2498. Together the first three components explain 18% of the total variance in the data. Plotting PC1 against PC2 will capture about 16% of the variance. This is not that high but it likely better than we would get plotting any two genes against each other.
+To plot the PC1 against PC2 we will need to extract the PC1 and PC2
+score from the pca object and add labels for the cells.
 
+
+🎬 Create a dataframe of the PC1 and PC2 scores which are in `pca$x` and add the cell ids:
 ```{r}
 pca_labelled <- data.frame(pca$x,
                            cell_id = row.names(prog_hspc_trans))
 ```
 
+It will be helpful to add a column for the cell type so we can label points. One way to do this is to extract the information in the cell_id column into two columns. 
 
-add the cell type information
-so we can label points 
-split cell_id into cell type and replicate and keep cell_id column
-
+🎬 Extract the cell type and cell number from the `cell_id` column (keeping the `cell_id` column):
 ```{r}
 pca_labelled <- pca_labelled |> 
   extract(cell_id, 
@@ -707,6 +806,12 @@ pca_labelled <- pca_labelled |>
           "([a-zA-Z]{4})_([0-9]{3})")
 ```
 
+`"([a-zA-Z]{4})_([0-9]{3})"` is a [regular expression](https://en.wikipedia.org/wiki/Regular_expression) - or regex. `[a-zA-Z]` means any lower or upper case letter, `{4}` means 4 of them, and `[0-9]` means any number, `{3}` means 3 of them. The brackets around the two parts of the regex mean we want to extract those parts. The first part goes into `cell_type` and the second part goes into `cell_number`. The `_` between the two patterns matches the underscore and the fact it isn't in a bracket means we don't want to keep it.
+
+We can now plot the PC1 and PC2 scores.
+
+
+🎬 Plot PC1 against PC2 and colour the points by cell type:
 ```{r}
 pca <- pca_labelled |> 
   ggplot(aes(x = PC1, y = PC2, 
@@ -715,11 +820,12 @@ pca <- pca_labelled |>
   scale_colour_viridis_d(end = 0.8, begin = 0.15,
                          name = "Cell type") +
   theme_classic()
+pca
 ```
-
 
 Fairly good separation of cell types but plenty of overlap
 
+🎬 Save the plot to file:
 ```{r}
 ggsave("figures/prog_hspc-pca.png",
        plot = pca,
@@ -729,16 +835,17 @@ ggsave("figures/prog_hspc-pca.png",
        device = "png")
 ```
 
-tSNE ??
 
-## Visualise the expression of the most significant genes using a heatmap 
+
+## Visualise the expression of the most significant genes using a heatmap
 
 ```{r}
 library(heatmaply)
 ```
 
-we will use the most significant genes
-on a random subset of the cells since ~1500 columns is a lot
+we will use the most significant genes on a random subset of the cells
+since \~1500 columns is a lot
+
 ```{r}
 mat <- prog_hspc_results_sig0.01 |> 
   dplyr::select(starts_with(c("Prog", "HSPC"))) |>
@@ -770,14 +877,12 @@ heatmaply(mat,
 ```
 
 will take a few mins to run, and longer to appear in the viewer
-separation is not as strong as for the frog data
-run a few times to see different subset
-
+separation is not as strong as for the frog data run a few times to see
+different subset
 
 ## Visualise all the results with a volcano plot
 
-colour the points if FDR < 0.05
-and prog_hspc_results > 1
+colour the points if FDR \< 0.05 and prog_hspc_results \> 1
 
 ```{r}
 library(ggrepel)
@@ -817,7 +922,6 @@ vol <- prog_hspc_results |>
   theme(legend.position = "none")
 ```
 
-
 ```{r}
 ggsave("figures/prog-hspc-volcano.png",
        plot = vol,
@@ -827,24 +931,23 @@ ggsave("figures/prog-hspc-volcano.png",
        device = "png")
 ```
 
-
-
-
 <!-- The dataframe `res_prog_hspc$prog` is log prog - log hspc -->
+
 <!-- (i.e.,Prog/HSPC). This means - Positive fold change: prog is higher than -->
+
 <!-- hspc - Negative fold change: hspc is higher than prog -->
 
 <!-- The dataframe `res_prog_hspc$hspc` is log hspc - log prog (i.e., -->
+
 <!-- HSPC/Prog). . This means - Positive fold change: hspc is higher than -->
+
 <!-- prog - Negative fold change: prog is higher than hspc -->
-
-
-
 
 # 🤗 Look after future you!
 
 🎬 Go through your script (`cont-fgf-s30.R` or `hspc-prog.R`) and tidy
-up. I would suggest restarting R and trying to run the full pipeline from start to finish. You might need to :
+up. I would suggest restarting R and trying to run the full pipeline
+from start to finish. You might need to :
 
 -   collect together library statements at the top of the script
 -   remove code that you needed to start today but which wouldn't be
@@ -872,8 +975,9 @@ practical. Qmd stands for Quarto markdown. It allows code and ordinary
 text to be interleaved to produce well-formatted reports including
 webpages. Right-click on the link and choose Save-As to download. You
 will be able to open the Qmd file in RStudio. Alternatively, [View in
-Browser](https://github.com/3mmaRand/BIO00088H-data/blob/main/omics/week-4/workshop.qmd). Coding and thinking answers are
-marked with `#---CODING ANSWER---` and `#---THINKING ANSWER---`
+Browser](https://github.com/3mmaRand/BIO00088H-data/blob/main/omics/week-4/workshop.qmd).
+Coding and thinking answers are marked with `#---CODING ANSWER---` and
+`#---THINKING ANSWER---`
 
 Pages made with R [@R-core], Quarto [@allaire2022], `knitr` [@knitr],
 `kableExtra` [@kableExtra]
