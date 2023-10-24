@@ -110,9 +110,8 @@ s30_results <- read_csv("results/S30_results.csv")
 the dataframes (perhaps using `glimpse()`)
 
 ```{r}
+#| include: false
 #---CODING ANSWER---
-#| echo: false
-#| output: false
 glimpse(s30_count_norm)
 ```
 
@@ -135,9 +134,8 @@ glimpse(s30_count_norm)
 <!-- xenbase_gene_id  -->
 
 ```{r}
+#| include: false
 #---CODING ANSWER---
-#| echo: false
-#| output: false
 glimpse(s30_results)
 ```
 
@@ -293,9 +291,8 @@ s30_results_sig0.01 <- s30_results |>
 🎬 Write the dataframe to file
 
 ```{r}
+#| include: false
 #---CODING ANSWER---
-#| echo: false
-#| output: false
 # write to csv file
 write_csv(s30_results_sig0.01, 
           file = "results/s30_results_sig0.01.csv")
@@ -305,9 +302,8 @@ write_csv(s30_results_sig0.01,
 write to file:
 
 ```{r}
+#| include: false
 #---CODING ANSWER---
-#| echo: false
-#| output: false
 s30_results_sig0.05 <- s30_results |> 
   filter(padj <= 0.05)
 
@@ -560,7 +556,7 @@ interpretation.
 the names `prog` and `hspc` for the dataframes.
 
 ```{r}
-#| echo: false
+#| include: false
 #---CODING ANSWER---
 # import the normalised counts
 prog <- read_csv("data-raw/surfaceome_prog.csv")
@@ -580,7 +576,7 @@ prog_hspc <- bind_cols(prog, hspc[-1])
 used the name `prog_hspc_results` for the dataframe.
 
 ```{r}
-#| echo: false
+#| include: false
 #---CODING ANSWER---
 # import the DE results
 prog_hspc_results <- read_csv("results/prog_hspc_results.csv")
@@ -590,9 +586,8 @@ prog_hspc_results <- read_csv("results/prog_hspc_results.csv")
 the dataframes (perhaps using `glimpse()`)
 
 ```{r}
+#| include: false
 #---CODING ANSWER---
-#| echo: false
-#| output: false
 glimpse(prog_hspc)
 ```
 
@@ -601,9 +596,8 @@ glimpse(prog_hspc)
 <!-- The normalised counts dataframe has 280 rows and 1,500 columns: which are the cell id names and the gene ids. -->
 
 ```{r}
+#| include: false
 #---CODING ANSWER---
-#| echo: false
-#| output: false
 glimpse(prog_hspc_results)
 ```
 
@@ -688,8 +682,7 @@ Oh, **`conflicted`** has flagged a conflict for us.
 
 
 ```{r}
-#| echo: false
-#| output: false
+#| include: false
 #---CODING ANSWER---
 prog_hspc_results |> dplyr::select(ensembl_gene_id) |> 
   filter(!ensembl_gene_id %in% gene_info$ensembl_gene_id)
@@ -729,19 +722,16 @@ prog_hspc_results_sig0.01 <- prog_hspc_results |>
 🎬 Write the dataframe to file
 
 ```{r}
+#| include: false
 #---CODING ANSWER---
-#| echo: false
-#| output: false
 write_csv(prog_hspc_results_sig0.01, 
           file = "results/prog_hspc_results_sig0.01.csv")
 ```
 
 🎬 Create a dataframe of the genes significant at the 0.05 level and write to file:
 ```{r}
+#| include: false
 #---CODING ANSWER---
-#| echo: false
-#| output: false
-
 prog_hspc_results_sig0.05 <- prog_hspc_results |> 
   filter(FDR <= 0.05)
 
