@@ -287,11 +287,11 @@ write_csv(s30_results_sig0.05,
 
 ## View the relationship between samples using PCA
 
-we do this on the log2 transformed normalised counts or 
-transpose the data
-we are reducing he number of dimensions from 10136
-to 6
+We have 10,136 genes in our dataset. PCA will allow us to plot our samples in the "gene expression" space so we can see if FGF-treated sample cluster together and control samples cluster together as we would expect. We do this on the log~2~ transformed normalised counts. 
 
+Our data have genes in rows and samples in columns which is a common organisation for gene expression data. However, PCA expects samples in rows and genes, the variables, in columns. We can transpose the data to get it in the correct format.
+
+🎬 Transpose the log~2~ transformed normalised counts:
 ```{r}
 s30_log2_trans <- s30_results |> 
   select(starts_with("log2_")) |>
@@ -299,43 +299,45 @@ s30_log2_trans <- s30_results |>
   data.frame()
 ```
 
+We have used the `select()` function to select all the columns that start with `log2_`. We then use the `t()` function to transpose the dataframe. We then convert the resulting matrix to a dataframe using `data.frame()`. If you view that dataframe you'll see it has default column name which we can fix using `colnames()` to set the column names to the Xenbase gene ids.
+
+🎬 Set the column names to the Xenbase gene ids:
 
 ```{r}
 colnames(s30_log2_trans) <- s30_results$xenbase_gene_id
 ```
 
-perform PCA using standard functions
+🎬 Perform PCA on the log~2~ transformed normalised counts:
 
 ```{r}
 pca <- s30_log2_trans |>
-  prcomp(scale. = TRUE) 
+  prcomp(rank. = 4) 
 ```
+
+The `rank.` argument tells `prcomp()` to only calculate the first 4 principal components. This is useful for visualisation as we can only plot in 2 or 3 dimensions. We can see the results of the PCA by viewing the `summary()` of the `pca` object.
 
 ```{r}
 summary(pca)
 ```
-Importance of components:
-                         PC1     PC2     PC3     PC4     PC5       PC6
- Standard deviation     57.1519 50.3285 43.8382 35.4644 33.9440 2.403e-13
- Proportion of Variance  0.3224  0.2500  0.1897  0.1241  0.1137 0.000e+00
- Cumulative Proportion   0.3224  0.5724  0.7621  0.8863  1.0000 1.000e+00
 
+The Proportion of Variance tells us how much of the variance is explained by each component. We can see that the first component explains 0.4243 of the variance, the second 0.2320, and the third 0.1532. Together the first three components explain nearly 81% of the total variance in the data. Plotting PC1 against PC2 will capture about 66% of the variance which is likely much better than we would get plotting any two genes against each other.
+To plot the PC1 against PC2 we will need to extract the PC1 and PC2
+score from the pca object and add labels for the samples.
 
-remove log2 from  row.names(s30_log2_trans)
-to label the pca results
+🎬 Remove `log2` from  the row names:
 
 ```{r}
 sample_id <- row.names(s30_log2_trans) |> str_remove("log2_")
 ```
+
+🎬 Create a dataframe of the PC1 and PC2 scores which are in `pca$x` and add the sample ids:
 
 ```{r}
 pca_labelled <- data.frame(pca$x,
                            sample_id)
 ```
 
-
-merge with metadata
-so we can label points by treatment and sib group
+🎬 Merge with the metadata so we can label points by treatment and sibling pair:
 
 ```{r}
 pca_labelled <- pca_labelled |> 
@@ -343,6 +345,17 @@ pca_labelled <- pca_labelled |>
             by = "sample_id")
 ```
 
+
+Since the metadata contained the sample ids, it was especially important to remove the `log2_` from the row names so that the join would work. The dataframe should look like this:
+
+```{r}
+#| echo: false
+knitr::kable(pca_labelled)
+```
+
+
+
+🎬 Plot PC1 against PC2 and colour by sibling pair and shape by treatment:
 ```{r}
 pca <- pca_labelled |> 
   ggplot(aes(x = PC1, y = PC2, 
@@ -356,11 +369,12 @@ pca <- pca_labelled |>
                      name = NULL,
                      labels = c("Control", "FGF-Treated")) +
   theme_classic()
+pca
 ```
 
-There is a bit of separation between treatments on PCA2
-not that it isn't easy to draw strong conclusions on the basis of 3 points
+There is a good separation between treatments on PCA1. The sibling pairs do not seem to cluster together. 
 
+🎬 Save the plot to file:
 ```{r}
 ggsave("figures/frog-s30-pca.png",
        plot = pca,
@@ -369,8 +383,6 @@ ggsave("figures/frog-s30-pca.png",
        units = "in",
        device = "png")
 ```
-
-
 
 
 
