@@ -197,8 +197,7 @@ in with `read_tsv` (skipping the first header lines) then filtered out
 the *Xenopus tropicalis* entries, dropped some columns and saved the
 file as an excel file.
 
-However, I have already done this for you and saved the file as
-`xenbase_info.xlsx` in the `meta` folder. We will import this file and
+However, I have already done this for you and saved the file as [xenbase_info.xlsx](meta/xenbase_info.xlsx) in the `meta` folder. We will import this file and
 join it to the results dataframe.
 
 🎬 Load the **`readxl`** [@readxl] package:
@@ -257,7 +256,7 @@ s30_results <- s30_results |>
                 .names = "log2_{.col}"))
 ```
 
-This is a wonderful bit or R wizardy. We are using the `across()`
+This is a wonderful bit or R wizardry. We are using the `across()`
 function to apply a transformation to multiple columns. We have selected
 all the columns that start with `s30`. The `\(x)` is an "anonymous"
 function that takes the value of the column and adds 0.001 to it before
@@ -276,7 +275,7 @@ id.
 
 ## Write the significant genes to file
 
-We will create dateframe of the signifcant genes and wrte them to file.
+We will create dataframe of the significant genes and write them to file.
 These are the files you want to examine in more detail along with the
 visualisations to select your genes of interest.
 
@@ -540,6 +539,7 @@ vol <- s30_results |>
                   max.overlaps = 50) +
   theme_classic() +
   theme(legend.position = "none")
+vol
 ```
 
 ```{r}
@@ -658,19 +658,20 @@ are web-based tools to use these but the R package **`biomaRt`**
 library(biomaRt)
 ```
 
-🎬 Connect to the mouse database and see what information we can retrieve:
+🎬 Connect to the mouse database and see the first 20 bits of information we can retrieve:
 ```{r}
 # Connect to the mouse database
 ensembl <- useMart(biomart = "ensembl", 
                    dataset = "mmusculus_gene_ensembl")
 
 # See what information we can retrieve
-listAttributes(mart = ensembl) |> View()
+listAttributes(mart = ensembl) |> head(20)
+
 ```
 
-This may take a moment
+There are many (2,985!) possible bits of information (attributes) that can be obtained. You can replace `head(20)` with `View()` to see them all.
 
-We use the `getBM()` function to retrieve information from the database. The `filters` argument is used to specified what kind of identifier we are supplying to retrieve information. The `attributes` argument is used to select the information we want to retrieve. The `values` argument is used to specify the identifers. The mart argument is used to specify the connection we created.
+We use the `getBM()` function to retrieve information from the database. The `filters` argument is used to specified what kind of identifier we are supplying to retrieve information. The `attributes` argument is used to select the information we want to retrieve. The `values` argument is used to specify the identifiers. The mart argument is used to specify the connection we created.
 
 🎬 Get the gene information:
 ```{r}
@@ -951,6 +952,7 @@ vol <- prog_hspc_results |>
                   max.overlaps = 50) +
   theme_classic() +
   theme(legend.position = "none")
+vol
 ```
 
 ```{r}
