@@ -111,7 +111,8 @@ the dataframes (perhaps using `glimpse()`)
 
 ```{r}
 #---CODING ANSWER---
-#| include: false
+#| echo: false
+#| output: false
 glimpse(s30_count_norm)
 ```
 
@@ -135,7 +136,8 @@ glimpse(s30_count_norm)
 
 ```{r}
 #---CODING ANSWER---
-#| include: false
+#| echo: false
+#| output: false
 glimpse(s30_results)
 ```
 
@@ -292,7 +294,8 @@ s30_results_sig0.01 <- s30_results |>
 
 ```{r}
 #---CODING ANSWER---
-#| include: false
+#| echo: false
+#| output: false
 # write to csv file
 write_csv(s30_results_sig0.01, 
           file = "results/s30_results_sig0.01.csv")
@@ -303,7 +306,8 @@ write to file:
 
 ```{r}
 #---CODING ANSWER---
-#| include: false
+#| echo: false
+#| output: false
 s30_results_sig0.05 <- s30_results |> 
   filter(padj <= 0.05)
 
@@ -587,7 +591,8 @@ the dataframes (perhaps using `glimpse()`)
 
 ```{r}
 #---CODING ANSWER---
-#| include: false
+#| echo: false
+#| output: false
 glimpse(prog_hspc)
 ```
 
@@ -597,7 +602,8 @@ glimpse(prog_hspc)
 
 ```{r}
 #---CODING ANSWER---
-#| include: false
+#| echo: false
+#| output: false
 glimpse(prog_hspc_results)
 ```
 
@@ -682,7 +688,8 @@ Oh, **`conflicted`** has flagged a conflict for us.
 
 
 ```{r}
-#| include: false
+#| echo: false
+#| output: false
 #---CODING ANSWER---
 prog_hspc_results |> dplyr::select(ensembl_gene_id) |> 
   filter(!ensembl_gene_id %in% gene_info$ensembl_gene_id)
@@ -723,7 +730,8 @@ prog_hspc_results_sig0.01 <- prog_hspc_results |>
 
 ```{r}
 #---CODING ANSWER---
-#| include: false
+#| echo: false
+#| output: false
 write_csv(prog_hspc_results_sig0.01, 
           file = "results/prog_hspc_results_sig0.01.csv")
 ```
@@ -731,7 +739,8 @@ write_csv(prog_hspc_results_sig0.01,
 🎬 Create a dataframe of the genes significant at the 0.05 level and write to file:
 ```{r}
 #---CODING ANSWER---
-#| include: false
+#| echo: false
+#| output: false
 
 prog_hspc_results_sig0.05 <- prog_hspc_results |> 
   filter(FDR <= 0.05)
