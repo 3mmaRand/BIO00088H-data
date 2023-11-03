@@ -1,6 +1,8 @@
 ---
 title: "Independent Study to prepare for workshop"
 subtitle: "Core 3 Research Compendia and Reproducible Reporting"
+toc: true
+toc-location: right
 ---
 
 1.  📖 Read xxxx
