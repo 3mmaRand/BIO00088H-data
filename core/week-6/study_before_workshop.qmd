@@ -7,7 +7,7 @@ subtitle: "Core Drop-in"
 
 2.  📖 Read materials from [Core 2 File types, workflow tips and other tools](../week-2/overview.qmd) and make a note of questions you have.
 
-3.  📖 Review Stage 1 and 2 content to see if there are areas you might benefit from revisiting. You can access these through the past VLE sites but you might find it helpful to use the latest versions, particularly for stage 1.
+3.  📖 Review Stage 1 and 2 (88H students) or 52M (70M students) content to see if there are areas you might benefit from revisiting. You can access these through the past VLE sites but you might find it helpful to use the latest versions, particularly for stage 1.
 
 Stage 1 
 
@@ -20,3 +20,8 @@ Stage 2
 -   [Get Introductory Statistical Tests as Linear models: A guide for R users](https://3mmarand.github.io/gist-lm/) 
 
 -   [A simple introduction to GLM for analysing Poisson and Binomial responses in R](https://3mmarand.github.io/singlm/)
+
+
+52M
+
+-   [52M Data Analysis in R](https://3mmarand.github.io/R4BABS/pgt52m/pgt52m.html). Core concepts about scientific computing, types of variable, the role of variables in analysis and how to use RStudio to organise analysis and import, summarise and plot data, the logic of hypothesis testing, confidence intervals, what is meant by a statistical model, two-sample tests and one-way analysis of variance (ANOVA) and reproducible reports in Quarto. 

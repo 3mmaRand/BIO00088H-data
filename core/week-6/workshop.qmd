@@ -25,7 +25,7 @@ types, workflow tips and other tools](../week-2/overview.qmd) in
 particular, or about R and RStudio in general. We will also try to
 answer any questions about the 'mics, Image and Structure strands.
 
-You might also review Stage 1 and 2 content to see if there are areas
+88H students might also review Stage 1 and 2 content to see if there are areas
 you might benefit from revisiting. You can access these through the past
 VLE sites but you might find it helpful to use the latest versions
 because there is no 2FA and the resources are searchable.
@@ -51,6 +51,14 @@ Stage 2
 
 -   [A simple introduction to GLM for analysing Poisson and Binomial
     responses in R](https://3mmarand.github.io/singlm/)
+
+
+
+70M students might also review 52M content to see if there are areas you might benefit from revisiting. You can access these through the VLE site but you might find it helpful to use this link without 2FA.
+
+-   [52M Data Analysis in R](https://3mmarand.github.io/R4BABS/pgt52m/pgt52m.html). Core concepts about scientific computing, types of variable, the role of variables in analysis and how to use RStudio to organise analysis and import, summarise and plot data, the logic of hypothesis testing, confidence intervals, what is meant by a statistical model, two-sample tests and one-way analysis of variance (ANOVA) and reproducible reports in Quarto. 
+
+
 
 Pages made with R [@R-core], Quarto [@allaire2022], `knitr` [@knitr],
 `kableExtra` [@kableExtra]
