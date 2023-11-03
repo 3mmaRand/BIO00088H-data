@@ -1,0 +1,33 @@
+---
+title: "Overview"
+subtitle: "Core 3: Research Compendia and Reproducible Reporting"
+---
+
+xxxxx
+
+### Learning objectives
+
+-   dd
+-   dd.
+-   dd
+-   d
+
+### Instructions
+
+1.  [Prepare](study_before_workshop.qmd)
+
+    i.  📖 Read 
+
+2.  [Workshop](workshop.qmd)
+
+    i.  💻 dd.
+
+    ii. 💻 ddd
+
+    iii. 💻 ddd
+
+3.  [Consolidate](study_after_workshop.qmd)
+
+    i.  💻 dd
+
+    ii. 💻 dd

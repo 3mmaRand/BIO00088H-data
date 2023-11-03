@@ -5,7 +5,9 @@ toc-location: right
 ---
 
 # Content
-There are three workshops taken by everyone on BIO00088H and BIO00070M. These are in weeks 1, 2 and 6. The first two cover some useful workflow tips and how to organise your analyses effectively so they are reproducible but you will also have the chance to revise material from stage 1 and 2.
+There are three workshops taken by everyone on BIO00088H. These are in weeks 1, 2 and 11. The first two cover some useful workflow tips and how to organise your analyses effectively so they are reproducible but you will also have the chance to revise material from stage 1 and 2. The third workshop covers Research Compendia and Reproducible Reporting. In week 6 there is a drop-in session where you can ask questions about the material covered in the first two workshops.
+
+Students doing BIO00070M will do week 1 and 2 of the core workshops, then 3-5 of the Omics workshops. You can also attend the week 6 drop-in.  You do not do the week 11 session because your assessment differs. However, you will learn about Reproducible reporting in BIO00052M in week 10 because your that applies to your 52M assessment.
 
 Good organisation is important because you will want to be able to set work aside for holidays and assessment periods and then restart easily. You will also be assessed on the organisation, reproducibility and transparency of your work. 
 
@@ -19,9 +21,11 @@ This week you will revise some essential concepts for scientific computing: file
 This week we will consider File types, workflow tips and other tools. The independent study (~20 mins)  reiterates the value of RStudio projects and shows you how you create them with usethis. You will also learn how to recognise and write cool 😎 code, not 😩 ugly code and code algorithmically. In the workshop we will examine some common biological data formats and discover some awesome short cuts to help you write cool 😎 code. You will also get a brief introduction to the command line and Google Colab.
 
 
-<!-- After -->
+## Week 6 Core Drop-in
 
-## Week 6 Core 3 Reproducible Reporting
+This week there is a drop-in session where you can ask questions about the material particular covered in the first two workshops. However, we will also endeavour to answer questions about any of the material in the omics, images or structure strand.
+
+## Week 11 Core 3 Research Compendia and Reproducible Reporting
 
 <!-- Before -->
 <!--  (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown and BIO00058M-Data-science-2020/slides/04_advanced_rmarkdown.html) -->
