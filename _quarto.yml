@@ -82,13 +82,13 @@ website:
           - text: ---
           - section: "Week 11: Research Compendia"
             contents: 
-             - href: core/week-6/overview.qmd
+             - href: core/week-11/overview.qmd
                text: About  
-             - href: core/week-6/study_before_workshop.qmd
+             - href: core/week-11/study_before_workshop.qmd
                text: Prepare! 
-             - href: core/week-6/workshop.qmd
+             - href: core/week-11/workshop.qmd
                text: Workshop
-             - href: core/week-6/study_after_workshop.qmd
+             - href: core/week-11/study_after_workshop.qmd
                text: Consolidate!  
     - title: "Omics"
       style: "floating"
