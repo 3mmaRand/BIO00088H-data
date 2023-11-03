@@ -69,7 +69,18 @@ website:
              - href: core/week-2/study_after_workshop.qmd
                text: Consolidate!  
           - text: ---
-          - section: "Week 6: Quarto"
+          - section: "Week 6: Core Drop-in"
+            contents: 
+             - href: core/week-6/overview.qmd
+               text: About  
+             - href: core/week-6/study_before_workshop.qmd
+               text: Prepare! 
+             - href: core/week-6/workshop.qmd
+               text: Workshop
+             - href: core/week-6/study_after_workshop.qmd
+               text: Consolidate!  
+          - text: ---
+          - section: "Week 11: Research Compendia"
             contents: 
              - href: core/week-6/overview.qmd
                text: About  
