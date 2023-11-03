@@ -1,6 +1,8 @@
 ---
 title: "Independent Study to prepare for workshop"
 subtitle: "Core Drop-in"
+toc: true
+toc-location: right
 ---
 
 1.  📖 Read materials from [Core 1 Organising reproducible data analyses](../week-1/overview.qmd) and make a note of questions you have

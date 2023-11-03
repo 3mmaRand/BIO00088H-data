@@ -1,6 +1,8 @@
 ---
 title: "Overview"
 subtitle: "Core 3: Research Compendia and Reproducible Reporting"
+toc: true
+toc-location: right
 ---
 
 xxxxx

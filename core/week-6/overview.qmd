@@ -1,6 +1,8 @@
 ---
 title: "Overview"
 subtitle: "Core Drop-in"
+toc: true
+toc-location: right
 ---
 
 This week's session is a drop-in and introduces no new material. Instead, it is an opportunity to ask questions about the content from Core 1 and 2 and to revise skills from stage 1 and 2 as needed.
