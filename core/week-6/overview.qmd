@@ -1,33 +1,27 @@
 ---
 title: "Overview"
-subtitle: "Core 3: Reproducible Reporting"
+subtitle: "Core Drop-in"
 ---
 
-xxxxx
+This week's session is a drop-in and introduces no new material. Instead, it is an opportunity to ask questions about the content from Core 1 and 2 and to revise skills from stage 1 and 2 as needed.
 
-### Learning objectives
-
--   dd
--   dd.
--   dd
--   d
 
 ### Instructions
 
 1.  [Prepare](study_before_workshop.qmd)
 
-    i.  📖 Read 
+    i.  📖 Review content from Core 1 and 2 
 
 2.  [Workshop](workshop.qmd)
 
-    i.  💻 dd.
+    i.  💻 Ask questions about the content from Core 1 and 2 as needed
+    
+    ii. 💻 Revise skills from stage 1 and 2 (88H students) or 52M (70M students) as needed
 
-    ii. 💻 ddd
 
-    iii. 💻 ddd
 
 3.  [Consolidate](study_after_workshop.qmd)
 
-    i.  💻 dd
+    i.  There is no consolidation work for this drop-in
 
-    ii. 💻 dd
+

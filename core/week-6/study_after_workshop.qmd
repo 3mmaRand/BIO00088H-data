@@ -1,25 +1,10 @@
 ---
 title: "Independent Study to consolidate this week"
-subtitle: "Core 3 Reproducible Reporting"
+subtitle: "Core Drop-in"
 format:
   html:
     code-fold: true
     code-summary: "Answer - don't look until you have tried!"
 ---
 
-# Set up
-
-If you have just opened RStudio you will want to load the packages and import the data.
-
-```{r}
-#| code-fold: false
-library(tidyverse)
-library(readxl)
-```
-
-1.  💻 xx.
-
-```{r}
-
- 
-```
+There is no consolidation work other than to continue revising what you have learned over the course of your degree about data analysis.

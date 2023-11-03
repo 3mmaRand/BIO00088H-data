@@ -1,0 +1,65 @@
+---
+title: "Workshop"
+subtitle: "Research Compendia and Reproducible Reporting"
+author: "Emma Rand"
+toc: true
+toc-depth: 4
+toc-location: right
+execute:
+  echo: true
+  include: true
+  error: true
+bibliography: ../../references.bib
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+```
+
+# Introduction
+
+
+## Session overview
+
+In this workshop you will 
+
+
+::: callout-note
+## Key
+
+
+:::
+
+# Getting started
+
+
+# Exercises
+
+
+🎬 
+
+
+
+You're finished!
+
+# 🥳 Well Done! 🎉
+
+
+
+# Independent study following the workshop
+
+[Consolidate](study_after_workshop.qmd)
+
+# The Code file
+
+These contain all the code needed in the workshop even where it is not visible on the webpage.
+
+The [workshop.qmd](workshop.qmd) file is the file I use to compile the practical. Qmd stands for Quarto markdown. It allows code and ordinary text to be interleaved to produce well-formatted reports including webpages. Right-click on the link and choose Save-As to download. You will be able to open the Qmd file in RStudio. Alternatively, [View in Browser](https://github.com/3mmaRand/). Coding and thinking answers are marked with `#---CODING ANSWER---` and `#---THINKING ANSWER---`
+
+Pages made with R [@R-core], Quarto [@allaire2022], `knitr` [@knitr], `kableExtra` [@kableExtra]
+
+# References
