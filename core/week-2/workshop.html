@@ -80,6 +80,8 @@ div.csl-indent {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -107,7 +109,26 @@ div.csl-indent {
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><link rel="stylesheet" href="../../styles.css">
+}</script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TVF95J593T"></script><script type="text/plain" cookie-consent="tracking">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
+</script><script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"headline",
+  "consent_type":"implied",
+  "palette":"light",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary","functionality","tracking","targeting"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script><link rel="stylesheet" href="../../styles.css">
 </head>
 <body class="nav-sidebar floating nav-fixed">
 
@@ -375,7 +396,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">3 November, 2023</p>
+      <p class="date">9 November, 2023</p>
     </div>
   </div>
   
@@ -463,17 +484,17 @@ workshop_files</code></pre>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>total 140
-drwxr-xr-x 2 runner docker  4096 Nov  3 15:29 data
-drwxr-xr-x 2 runner docker  4096 Nov  3 15:29 images
--rw-r--r-- 1 runner docker 26145 Nov  3 15:32 overview.html
--rw-r--r-- 1 runner docker  1597 Nov  3 15:29 overview.qmd
--rw-r--r-- 1 runner docker   184 Nov  3 15:29 study_after_workshop.qmd
--rw-r--r-- 1 runner docker  4807 Nov  3 15:29 study_before_workshop.ipynb
--rw-r--r-- 1 runner docker 13029 Nov  3 15:29 study_before_workshop.qmd
--rw-r--r-- 1 runner docker 44938 Nov  3 15:29 workshop.html
--rw-r--r-- 1 runner docker  8550 Nov  3 15:29 workshop.qmd
--rw-r--r-- 1 runner docker  8564 Nov  3 15:32 workshop.rmarkdown
-drwxr-xr-x 3 runner docker  4096 Nov  3 15:29 workshop_files</code></pre>
+drwxr-xr-x 2 runner docker  4096 Nov  9 17:24 data
+drwxr-xr-x 2 runner docker  4096 Nov  9 17:24 images
+-rw-r--r-- 1 runner docker 27168 Nov  9 17:25 overview.html
+-rw-r--r-- 1 runner docker  1597 Nov  9 17:24 overview.qmd
+-rw-r--r-- 1 runner docker   184 Nov  9 17:24 study_after_workshop.qmd
+-rw-r--r-- 1 runner docker  4807 Nov  9 17:24 study_before_workshop.ipynb
+-rw-r--r-- 1 runner docker 13029 Nov  9 17:24 study_before_workshop.qmd
+-rw-r--r-- 1 runner docker 44938 Nov  9 17:24 workshop.html
+-rw-r--r-- 1 runner docker  8550 Nov  9 17:24 workshop.qmd
+-rw-r--r-- 1 runner docker  8564 Nov  9 17:25 workshop.rmarkdown
+drwxr-xr-x 3 runner docker  4096 Nov  9 17:24 workshop_files</code></pre>
 </div>
 </div>
 <p>You can use more than one option at once. The <code>-h</code> option stands for “human readable” and makes the file sizes easier to understand for humans:</p>
@@ -481,17 +502,17 @@ drwxr-xr-x 3 runner docker  4096 Nov  3 15:29 workshop_files</code></pre>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-hl</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>total 140K
-drwxr-xr-x 2 runner docker 4.0K Nov  3 15:29 data
-drwxr-xr-x 2 runner docker 4.0K Nov  3 15:29 images
--rw-r--r-- 1 runner docker  26K Nov  3 15:32 overview.html
--rw-r--r-- 1 runner docker 1.6K Nov  3 15:29 overview.qmd
--rw-r--r-- 1 runner docker  184 Nov  3 15:29 study_after_workshop.qmd
--rw-r--r-- 1 runner docker 4.7K Nov  3 15:29 study_before_workshop.ipynb
--rw-r--r-- 1 runner docker  13K Nov  3 15:29 study_before_workshop.qmd
--rw-r--r-- 1 runner docker  44K Nov  3 15:29 workshop.html
--rw-r--r-- 1 runner docker 8.4K Nov  3 15:29 workshop.qmd
--rw-r--r-- 1 runner docker 8.4K Nov  3 15:32 workshop.rmarkdown
-drwxr-xr-x 3 runner docker 4.0K Nov  3 15:29 workshop_files</code></pre>
+drwxr-xr-x 2 runner docker 4.0K Nov  9 17:24 data
+drwxr-xr-x 2 runner docker 4.0K Nov  9 17:24 images
+-rw-r--r-- 1 runner docker  27K Nov  9 17:25 overview.html
+-rw-r--r-- 1 runner docker 1.6K Nov  9 17:24 overview.qmd
+-rw-r--r-- 1 runner docker  184 Nov  9 17:24 study_after_workshop.qmd
+-rw-r--r-- 1 runner docker 4.7K Nov  9 17:24 study_before_workshop.ipynb
+-rw-r--r-- 1 runner docker  13K Nov  9 17:24 study_before_workshop.qmd
+-rw-r--r-- 1 runner docker  44K Nov  9 17:24 workshop.html
+-rw-r--r-- 1 runner docker 8.4K Nov  9 17:24 workshop.qmd
+-rw-r--r-- 1 runner docker 8.4K Nov  9 17:25 workshop.rmarkdown
+drwxr-xr-x 3 runner docker 4.0K Nov  9 17:24 workshop_files</code></pre>
 </div>
 </div>
 <p>The <code>-a</code> option stands for “all” and shows us all the files, including hidden files.</p>
@@ -499,19 +520,19 @@ drwxr-xr-x 3 runner docker 4.0K Nov  3 15:29 workshop_files</code></pre>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-alh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>total 148K
-drwxr-xr-x 5 runner docker 4.0K Nov  3 15:32 .
-drwxr-xr-x 6 runner docker 4.0K Nov  3 15:31 ..
-drwxr-xr-x 2 runner docker 4.0K Nov  3 15:29 data
-drwxr-xr-x 2 runner docker 4.0K Nov  3 15:29 images
--rw-r--r-- 1 runner docker  26K Nov  3 15:32 overview.html
--rw-r--r-- 1 runner docker 1.6K Nov  3 15:29 overview.qmd
--rw-r--r-- 1 runner docker  184 Nov  3 15:29 study_after_workshop.qmd
--rw-r--r-- 1 runner docker 4.7K Nov  3 15:29 study_before_workshop.ipynb
--rw-r--r-- 1 runner docker  13K Nov  3 15:29 study_before_workshop.qmd
--rw-r--r-- 1 runner docker  44K Nov  3 15:29 workshop.html
--rw-r--r-- 1 runner docker 8.4K Nov  3 15:29 workshop.qmd
--rw-r--r-- 1 runner docker 8.4K Nov  3 15:32 workshop.rmarkdown
-drwxr-xr-x 3 runner docker 4.0K Nov  3 15:29 workshop_files</code></pre>
+drwxr-xr-x 5 runner docker 4.0K Nov  9 17:25 .
+drwxr-xr-x 6 runner docker 4.0K Nov  9 17:25 ..
+drwxr-xr-x 2 runner docker 4.0K Nov  9 17:24 data
+drwxr-xr-x 2 runner docker 4.0K Nov  9 17:24 images
+-rw-r--r-- 1 runner docker  27K Nov  9 17:25 overview.html
+-rw-r--r-- 1 runner docker 1.6K Nov  9 17:24 overview.qmd
+-rw-r--r-- 1 runner docker  184 Nov  9 17:24 study_after_workshop.qmd
+-rw-r--r-- 1 runner docker 4.7K Nov  9 17:24 study_before_workshop.ipynb
+-rw-r--r-- 1 runner docker  13K Nov  9 17:24 study_before_workshop.qmd
+-rw-r--r-- 1 runner docker  44K Nov  9 17:24 workshop.html
+-rw-r--r-- 1 runner docker 8.4K Nov  9 17:24 workshop.qmd
+-rw-r--r-- 1 runner docker 8.4K Nov  9 17:25 workshop.rmarkdown
+drwxr-xr-x 3 runner docker 4.0K Nov  9 17:24 workshop_files</code></pre>
 </div>
 </div>
 <p>You can move about with the <code>cd</code> command, which stands for “change directory”. You can use it to move into a directory by specifying the path to the directory:</p>
@@ -860,9 +881,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">Rand E (2023). Data Analysis for Group Project. <a href="https://3mmarand.github.io/BIO00088H-data/" class="uri">https://3mmarand.github.io/BIO00088H-data/</a>.</div>   
-    <div class="nav-footer-center">
-      &nbsp;
-    </div>
+    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
 <li class="nav-item compact">
