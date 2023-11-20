@@ -8,7 +8,10 @@ toc-location: right
 
 ## Worm Tracking
 
+The following ImageJ workflow uses the processing steps you used in workshop 3 with one change. That change is to save the results to file rather than having the results window pop up and saving from there. Or maybe two changes: it also tells you to use meaning systematic file names that will be easy to process when importing data. The RStudio workflow shows you how to import multiple files into one dataframe with columns indicating the treatment.
+
 ### ImageJ
+
 Save files with systematic names: ev_control.avi 343_control.avi ev_1.avi 343_1.avi ev_2.5.avi 343_2.5.avi
 
 Open ImageJ
@@ -49,21 +52,17 @@ Open video file eg `ev_2.5.avi`
         ![wrMTrck window with the settings listed above shown](images/wrMTrck-settings.png)
 
     -   Click OK. Save to a folder for all the tracking data files. I recommend deleting the "Results of.." part of the name
-
 -   Check that the Summary window indicates 3 tracks and that the 3 larvae are what is tracked by using the slider on the Result image
-
 -   Repeat for all videos
 
 ### RStudio
 
-This is the code you need to import multiple csv files into a single dataframe and add a column with the treatment information from the filename.
+This is the code you need to import multiple csv files into a single dataframe and add a column with the treatment information from the file name. This is why systematic file names are good.
 
-It assumes 
+It assumes
 
--   your files are called *type*_*concentration*.txt for example: ev_control.txt 343_control.txt ev_1.txt 343_1.txt ev_2.5.txt 343_2.5.txt. 
-
+-   your files are called *type*\_*concentration*.txt for example: ev_control.txt 343_control.txt ev_1.txt 343_1.txt ev_2.5.txt 343_2.5.txt.
 -   the .txt datafile are in a folder called `track` inside your working directory
-
 -   you have installed the following packages: **`tidyverse`**, **`janitor`**
 
 🎬 Load the **`tidyverse`**
@@ -73,8 +72,8 @@ It assumes
 library(tidyverse)
 ```
 
-
 🎬 Put the file names into a vector we will iterate through
+
 ```{r}
 #| eval: false
 # get a vector of the file names
@@ -83,7 +82,6 @@ files <- list.files(path = "track", full.names = TRUE )
 ```
 
 We can use `map_df()` from the **`purrr`** package which is one of the tidyverse gems loaded with tidyvserse. `map_df()` will iterate through `files` and read them into a dataframe with a specified import function. We are using `read_table()`. `map_df()` keeps track of the file by adding an index column called `file` to the resulting dataframe. Instead of this being a number (1 - 6 here) we can use `set_names()` to use the file names instead. The `clean_names()` function from the **`janitor`** package will clean up the column names (make them lower case, replace spaces with `_` remove special characters etc)
-
 
 🎬 Import multiple csv files into one dataframe called `tracking`
 
@@ -98,10 +96,9 @@ tracking <- files |>
   janitor::clean_names()
 ```
 
-You will get a warning `Duplicated column names deduplicated: 'avgX' => 'avgX_1' [15]` for each of the files because the csv files each have two columns called `avgX`. 
-If you click on the `tracking` dataframe you see is contains the data from all the files.
+You will get a warning `Duplicated column names deduplicated: 'avgX' => 'avgX_1' [15]` for each of the files because the csv files each have two columns called `avgX`. If you click on the `tracking` dataframe you see is contains the data from all the files.
 
-Now we can add columns for the type and the concentration by processing the values in the `file`. The values are like `track/343_0.txt` so we need to remove `.txt` and `track/` and separate the remaining words into two columns.  
+Now we can add columns for the type and the concentration by processing the values in the `file`. The values are like `track/343_0.txt` so we need to remove `.txt` and `track/` and separate the remaining words into two columns.
 
 🎬 Process the `file` column to add columns for the type and the concentration
 
@@ -117,18 +114,15 @@ tracking <- tracking |>
           regex = "([^_]{2,3})_(.+)") 
 ```
 
-`[^_]{2,3}` matches two or three characters that are not `_` at the strat of the string (`^`)
+`[^_]{2,3}` matches two or three characters that are not `_` at the start of the string (`^`)
 
 `.+` matches one or more characters. The `extract()` function puts the first match into the first column, `type`, and the second match into the second column, `conc`. The `remove = FALSE` argument means the original column is kept.
-
 
 You now have a dataframe with all the tracking data which is relatively easy to summarise and plot using tools you know.
 
 There is an example RStudio project containing this code here: [tips](https://github.com/3mmaRand/tips). You can download and open directly in RStudio using the following code. Since this is an RStudio Project, do not run the code from inside a project:
 
-
 ```{r}
 #| eval: false
 usethis::use_course("3mmaRand/tips")
 ```
-
