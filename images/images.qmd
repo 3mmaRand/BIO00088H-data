@@ -103,6 +103,7 @@ Now we can add columns for the type and the concentration by processing the valu
 🎬 Process the `file` column to add columns for the type and the concentration
 
 ```{r}
+#| eval: false
 # extract type and concentration from file name
 # and put them into additopnal separate columns
 tracking <- tracking |> 
