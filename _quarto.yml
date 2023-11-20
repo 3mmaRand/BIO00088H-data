@@ -9,7 +9,7 @@ website:
   title: "Data Analysis for Group Project"
   cookie-consent:
     type: implied
-    style: headline
+    style: simple
     palette: light
   google-analytics: "G-TVF95J593T"
   
