@@ -134,6 +134,11 @@ website:
                text: Workshop
              - href: omics/week-5/study_after_workshop.qmd
                text: Consolidate!  
+    - title: "Images"
+      style: "floating"
+      contents: 
+          - href: images/images.qmd
+
 execute:
   echo: true
   warning: false
