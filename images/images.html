@@ -215,22 +215,21 @@ cookieconsent.run({
 
 </header><section id="extra-help-to-work-reproducibly" class="level1"><h1>Extra help to work reproducibly</h1>
 <section id="worm-tracking" class="level2"><h2 class="anchored" data-anchor-id="worm-tracking">Worm Tracking</h2>
+<p>The following ImageJ workflow uses the processing steps you used in workshop 3 with one change. That change is to save the results to file rather than having the results window pop up and saving from there. Or maybe two changes: it also tells you to use meaning systematic file names that will be easy to process when importing data. The RStudio workflow shows you how to import multiple files into one dataframe with columns indicating the treatment.</p>
 <section id="imagej" class="level3"><h3 class="anchored" data-anchor-id="imagej">ImageJ</h3>
 <p>Save files with systematic names: ev_control.avi 343_control.avi ev_1.avi 343_1.avi ev_2.5.avi 343_2.5.avi</p>
 <p>Open ImageJ</p>
 <p>Open video file eg <code>ev_2.5.avi</code></p>
 <ul>
-<li><p>Convert to 8-bit: Image | Type | 8-bit</p></li>
-<li><p>Crop to petri dish: Select then Image | Crop</p></li>
-<li>
-<p>Calculate average pixel intensity: Image | Stacks | Z Project</p>
+<li>Convert to 8-bit: Image | Type | 8-bit</li>
+<li>Crop to petri dish: Select then Image | Crop</li>
+<li>Calculate average pixel intensity: Image | Stacks | Z Project
 <ul>
 <li>Projection type: Average Intensity to create <code>AVG_ev_2.5.avi</code>
 </li>
 </ul>
 </li>
-<li>
-<p>Subtract average from image: Process | Image Calculator</p>
+<li>Subtract average from image: Process | Image Calculator
 <ul>
 <li>Image 1: <code>ev_2.5.avi</code>
 </li>
@@ -241,9 +240,8 @@ cookieconsent.run({
 <li>OK, Yes to Process all</li>
 </ul>
 </li>
-<li><p>Invert: Edit | Invert</p></li>
-<li>
-<p>Adjust threshold: Image | Adjust | Threshold</p>
+<li>Invert: Edit | Invert</li>
+<li>Adjust threshold: Image | Adjust | Threshold
 <ul>
 <li>Method: Default</li>
 <li>Thresholding: Default, B&amp;W</li>
@@ -252,9 +250,8 @@ cookieconsent.run({
 <li>Apply</li>
 </ul>
 </li>
-<li><p>Invert: Edit | Invert</p></li>
-<li>
-<p>Track: Plugins | wrMTrck</p>
+<li>Invert: Edit | Invert</li>
+<li>Track: Plugins | wrMTrck
 <ul>
 <li><p>Set minSize: 10</p></li>
 <li><p>Set maxSize: 400</p></li>
@@ -271,15 +268,16 @@ cookieconsent.run({
 <li><p>Click OK. Save to a folder for all the tracking data files. I recommend deleting the “Results of..” part of the name</p></li>
 </ul>
 </li>
-<li><p>Check that the Summary window indicates 3 tracks and that the 3 larvae are what is tracked by using the slider on the Result image</p></li>
-<li><p>Repeat for all videos</p></li>
+<li>Check that the Summary window indicates 3 tracks and that the 3 larvae are what is tracked by using the slider on the Result image</li>
+<li>Repeat for all videos</li>
 </ul></section><section id="rstudio" class="level3"><h3 class="anchored" data-anchor-id="rstudio">RStudio</h3>
-<p>This is the code you need to import multiple csv files into a single dataframe and add a column with the treatment information from the filename.</p>
+<p>This is the code you need to import multiple csv files into a single dataframe and add a column with the treatment information from the file name. This is why systematic file names are good.</p>
 <p>It assumes</p>
 <ul>
-<li><p>your files are called <em>type</em>_<em>concentration</em>.txt for example: ev_control.txt 343_control.txt ev_1.txt 343_1.txt ev_2.5.txt 343_2.5.txt.</p></li>
-<li><p>the .txt datafile are in a folder called <code>track</code> inside your working directory</p></li>
-<li><p>you have installed the following packages: <strong><code>tidyverse</code></strong>, <strong><code>janitor</code></strong></p></li>
+<li>your files are called <em>type</em>_<em>concentration</em>.txt for example: ev_control.txt 343_control.txt ev_1.txt 343_1.txt ev_2.5.txt 343_2.5.txt.</li>
+<li>the .txt datafile are in a folder called <code>track</code> inside your working directory</li>
+<li>you have installed the following packages: <strong><code>tidyverse</code></strong>, <strong><code>janitor</code></strong>
+</li>
 </ul>
 <p>🎬 Load the <strong><code>tidyverse</code></strong></p>
 <div class="cell">
@@ -318,7 +316,7 @@ cookieconsent.run({
 <pre><code>Error in extract(mutate(mutate(tracking, file = str_remove(file, ".txt")), : could not find function "extract"</code></pre>
 </div>
 </div>
-<p><code>[^_]{2,3}</code> matches two or three characters that are not <code>_</code> at the strat of the string (<code>^</code>)</p>
+<p><code>[^_]{2,3}</code> matches two or three characters that are not <code>_</code> at the start of the string (<code>^</code>)</p>
 <p><code>.+</code> matches one or more characters. The <code><a href="https://tidyr.tidyverse.org/reference/extract.html">extract()</a></code> function puts the first match into the first column, <code>type</code>, and the second match into the second column, <code>conc</code>. The <code>remove = FALSE</code> argument means the original column is kept.</p>
 <p>You now have a dataframe with all the tracking data which is relatively easy to summarise and plot using tools you know.</p>
 <p>There is an example RStudio project containing this code here: <a href="https://github.com/3mmaRand/tips">tips</a>. You can download and open directly in RStudio using the following code. Since this is an RStudio Project, do not run the code from inside a project:</p>
