@@ -38,6 +38,8 @@ website:
         file:  core/core.qmd
       - text: "Omics"
         file:  omics/omics.qmd
+      - text: "Image Analysis"
+        file:  images/images.qmd
     tools:
       - icon: twitter
         href: https://twitter.com/er_13
@@ -138,6 +140,7 @@ website:
       style: "floating"
       contents: 
           - href: images/images.qmd
+          - text: Extra help
 
 execute:
   echo: true
