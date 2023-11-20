@@ -650,6 +650,52 @@ ggsave("omics/week-5/figures/prog-hspc-volcano.png",
        device = "png")
 
 
+
+
+prog_hspc_results <- prog_hspc_results |> 
+  mutate(log10_FDR = -log10(FDR),
+         sig = FDR < 0.05,
+         bigfc = abs(summary.logFC) >= 2,
+         gene = external_gene_name == "Cd27") 
+
+vol <- prog_hspc_results |> 
+  ggplot(aes(x = summary.logFC, 
+             y = log10_FDR, 
+             colour = interaction(sig, bigfc, gene))) +
+  geom_point() +
+  geom_hline(yintercept = -log10(0.05), 
+             linetype = "dashed") +
+  geom_vline(xintercept = 1, 
+             linetype = "dashed") +
+  geom_vline(xintercept = -1, 
+             linetype = "dashed") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_colour_manual(values = c("gray",
+                                 "pink",
+                                 "deeppink",
+                                 "blue")) +
+  geom_text_repel(data = subset(prog_hspc_results, 
+                                bigfc & sig & !gene),
+                  aes(label = external_gene_name),
+                  size = 3,
+                  max.overlaps = 50) +
+  geom_text_repel(data = subset(prog_hspc_results, 
+                                bigfc & sig & gene),
+                  aes(label = external_gene_name),
+                  size = 4) +
+  theme_classic() +
+  theme(legend.position = "none")
+
+ggsave("omics/week-5/figures/prog-hspc-volcano-2.png",
+       plot = vol,
+       height = 4.5, 
+       width = 4.5,
+       units = "in",
+       device = "png")
+
+
+
 # # just for the independent study slides
 # vol <- prog_hspc_results |> 
 #   ggplot(aes(x = summary.logFC, 
@@ -662,3 +708,35 @@ ggsave("omics/week-5/figures/prog-hspc-volcano.png",
 #        width = 4.5,
 #        units = "in",
 #        device = "png")
+
+
+# from line 472
+# Question in Q&A 
+# I am trying to make my table neat and presentable but don't 
+# know how to save it because if I save it as a csv file then
+# it's no longer pretty. My code is as follows:
+  
+# Create a custom formatter colour for the Summary logFC column
+
+library(formattable)
+summarylogFC_formatter <- 
+  formatter("span", 
+            style = x ~ style(
+              font.weight = "bold", 
+              color = ifelse(x < 0, 
+                             "lightgreen", 
+                             ifelse(x > 0, 
+                                    "lightblue",
+                                    "black"))))
+
+
+# Make the table pretty
+formattable(prog_hspc_results, 
+            align = c("l","c","c","c","c", "c", "c", "l"),
+            list(`Top` = formatter(
+              "span", 
+              style = x ~ style(color = "grey",
+                                font.weight = "bold"), 
+              x ~ icontext(ifelse(x == "18", "star", ""), x)), 
+              `Summary logFC` = summarylogFC_formatter
+            ))
