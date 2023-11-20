@@ -217,7 +217,7 @@ cookieconsent.run({
 <section id="worm-tracking" class="level2"><h2 class="anchored" data-anchor-id="worm-tracking">Worm Tracking</h2>
 <p>The following ImageJ workflow uses the processing steps you used in workshop 3 with one change. That change is to save the results to file rather than having the results window pop up and saving from there. Or maybe two changes: it also tells you to use meaning systematic file names that will be easy to process when importing data. The RStudio workflow shows you how to import multiple files into one dataframe with columns indicating the treatment.</p>
 <section id="imagej" class="level3"><h3 class="anchored" data-anchor-id="imagej">ImageJ</h3>
-<p>Save files with systematic names: ev_control.avi 343_control.avi ev_1.avi 343_1.avi ev_2.5.avi 343_2.5.avi</p>
+<p>Save files with systematic names: ev_0.avi 343_0.avi ev_1.avi 343_1.avi ev_2.5.avi 343_2.5.avi</p>
 <p>Open ImageJ</p>
 <p>Open video file eg <code>ev_2.5.avi</code></p>
 <ul>
@@ -274,7 +274,7 @@ cookieconsent.run({
 <p>This is the code you need to import multiple csv files into a single dataframe and add a column with the treatment information from the file name. This is why systematic file names are good.</p>
 <p>It assumes</p>
 <ul>
-<li>your files are called <em>type</em>_<em>concentration</em>.txt for example: ev_control.txt 343_control.txt ev_1.txt 343_1.txt ev_2.5.txt 343_2.5.txt.</li>
+<li>your files are called <em>type</em>_<em>concentration</em>.txt for example: ev_0.txt 343_0.txt ev_1.txt 343_1.txt ev_2.5.txt 343_2.5.txt.</li>
 <li>the .txt datafile are in a folder called <code>track</code> inside your working directory</li>
 <li>you have installed the following packages: <strong><code>tidyverse</code></strong>, <strong><code>janitor</code></strong>
 </li>
