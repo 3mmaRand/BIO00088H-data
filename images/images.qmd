@@ -125,5 +125,5 @@ There is an example RStudio project containing this code here: [tips](https://gi
 
 ```{r}
 #| eval: false
-usethis::use_course("3mmaRand/tips")
+usethis::use_course(url = "3mmaRand/tips")
 ```
