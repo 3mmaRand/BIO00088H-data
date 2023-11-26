@@ -121,9 +121,12 @@ tracking <- tracking |>
 
 You now have a dataframe with all the tracking data which is relatively easy to summarise and plot using tools you know.
 
-There is an example RStudio project containing this code here: [tips](https://github.com/3mmaRand/tips). You can download and open directly in RStudio using the following code. Since this is an RStudio Project, do not run the code from inside a project:
+There is an example RStudio project containing this code here: [tips](https://github.com/3mmaRand/tips). You can also download the project as a zip file from there but there is some code that will do that automatically for you. Since this is an RStudio Project, do not run the code from inside a project:
 
 ```{r}
 #| eval: false
 usethis::use_course(url = "3mmaRand/tips")
 ```
+
+You can agree to deleting the zip. You should find RStudio restarts and you have a new project called tips-xxxxxx. The xxxxxx is a commit reference - you do not need to worry about that, it is just a way to tell you which version of the repro you downloaded.
+You can now run the code in the project.
