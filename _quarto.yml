@@ -40,6 +40,8 @@ website:
         file:  omics/omics.qmd
       - text: "Image Analysis"
         file:  images/images.qmd
+      - text: "Structure Analysis"
+        file:  structures/structures.qmd
     tools:
       - icon: twitter
         href: https://twitter.com/er_13
@@ -140,6 +142,11 @@ website:
       style: "floating"
       contents: 
           - href: images/images.qmd
+          - text: Extra help
+    - title: "Structures"
+      style: "floating"
+      contents: 
+          - href: structures/structures.qmd
           - text: Extra help
 
 execute:
