@@ -22,25 +22,31 @@ library(tidyverse)
 
 # Introduction
 
+## Literate Programming
+
+-   Literate programming is a way of writing code and text together in a single document
+
+-   The document is then processed to produce a report
+
+-   [Quarto](https://quarto.org/) (recommended) or [R Markdown](https://rmarkdown.rstudio.com/index.html) 
+
 
 ## Session overview
 
-In this workshop you will 
+In this workshop we will go through an example quarto document. You will learn:
 
+-   formatting (bold, italics, headings)
+-   chunk options to control whether code and output are in the rendered document
+-   adding citations
+-   figures and tables with cross referencing and autonumberiung
+-   inline coding to report results
+-   special characters and equations
 
-::: callout-note
-## Key
+# Exercise
 
+🎬 make a start on your compendium
 
-:::
-
-# Getting started
-
-
-# Exercises
-
-
-🎬 
+🎬 make a start on a quarto doc
 
 
 
@@ -58,7 +64,7 @@ You're finished!
 
 These contain all the code needed in the workshop even where it is not visible on the webpage.
 
-The [workshop.qmd](workshop.qmd) file is the file I use to compile the practical. Qmd stands for Quarto markdown. It allows code and ordinary text to be interleaved to produce well-formatted reports including webpages. Right-click on the link and choose Save-As to download. You will be able to open the Qmd file in RStudio. Alternatively, [View in Browser](https://github.com/3mmaRand/). Coding and thinking answers are marked with `#---CODING ANSWER---` and `#---THINKING ANSWER---`
+The [workshop.qmd](workshop.qmd) file is the file I use to compile the practical. Qmd stands for Quarto markdown. It allows code and ordinary text to be interleaved to produce well-formatted reports including webpages. Right-click on the link and choose Save-As to download. You will be able to open the Qmd file in RStudio. Alternatively, [View in Browser](https://github.com/3mmaRand/BIO00088H-data/core/week-11/workshop.qmd). Coding and thinking answers are marked with `#---CODING ANSWER---` and `#---THINKING ANSWER---`
 
 Pages made with R [@R-core], Quarto [@allaire2022], `knitr` [@knitr], `kableExtra` [@kableExtra]
 
