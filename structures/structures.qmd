@@ -65,11 +65,11 @@ You can then install the gemmi package again.
 
 I think that's it! You can now download the RStudio project and run each chunk in the quarto document.
 
-There is an example RStudio project here: [structure-analysis](https://github.com/3mmaRand/structure-analysis). You can also download the project as a zip file from there but there is some code that will do that automatically for you. Since this is an RStudio Project, do not run the code from inside a project:
+There is an example RStudio project here: [structure-analysis](https://github.com/3mmaRand/structure-analysis). You can also download the project as a zip file from there but there is some code that will do that automatically for you. Since this is an RStudio Project, do not run the code from inside a project. You may want to navigate to a particular directory or edit the `destdir`:
 
 ```{r}
 #| eval: false
-usethis::use_course(url = "3mmaRand/structure-analysis")
+usethis::use_course(url = "3mmaRand/structure-analysis", destdir = ".")
 ```
 
 You can agree to deleting the zip. You should find RStudio restarts and you have a new project called structure-analysis-xxxxxx. The xxxxxx is a commit reference - you do not need to worry about that, it is just a way to tell you which version of the repo you downloaded. 
