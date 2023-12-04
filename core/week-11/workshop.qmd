@@ -35,18 +35,27 @@ library(tidyverse)
 
 In this workshop we will go through an example quarto document. You will learn:
 
+-   what the YAML header is 
 -   formatting (bold, italics, headings)
--   chunk options to control whether code and output are in the rendered document
--   adding citations
--   figures and tables with cross referencing and autonumberiung
--   inline coding to report results
--   special characters and equations
+-   to control default and individual chunk options 
+-   how to add citations
+-   figures and tables with cross referencing and automatic numbering
+-   how to use inline coding to report results
+-   how to insert special characters and equations
 
 # Exercise
 
-🎬 make a start on your compendium
+🎬 The example RStudio project containing this code here: [chaffinch](https://github.com/3mmaRand/chaffinch). You can download the project as a zip file from there but there is some code that will do that automatically for you. Since this is an RStudio Project, do not run the code from inside a project. You may want to navigate to a particular directory or edit the `destdir`:
 
-🎬 make a start on a quarto doc
+```r
+usethis::use_course(url = "3mmaRand/chaffinch", destdir = ".")
+
+```
+You can agree to deleting the zip. You should find RStudio restarts and you have a new project called chaffinch-xxxxxx. The xxxxxx is a commit reference - you do not need to worry about that, it is just a way to tell you which version of the repo you downloaded. You can now run the code in the project.
+
+🎬 Make an outline of your compendium. This could be a sketch on paper or slide or from the mindmap software you usually use. Or it could be a skeleton of folders and files on your computer.
+
+🎬 Make a start on a quarto doc. 
 
 
 

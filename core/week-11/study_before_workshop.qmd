@@ -19,7 +19,7 @@ editor:
 
 This module is assessed by:
 
-::: incremental
+
 -   Oral presentation 30%
 
 -   Project Report and Research Compendium 70% of which
@@ -28,11 +28,13 @@ This module is assessed by:
     -   30% compendium (*i.e.*, 21% of the total mark)
 
 These slides are a guide to Research compendium.
-:::
+
 
 ## What is a Research Compendium?
 
 **Overview of assessment**
+
+::: {style="font-size: 60%;"}
 
 *Stage 3 Integrated Masters students are expected to submit a Research
 Compendium that is a documented collection of all the digital parts of
@@ -49,9 +51,13 @@ of the results which is covered in the report. There is no word or size
 limit for any part of the compendium but its contents should be concise
 and minimal. Extraneous text, code or files will be penalised.*
 
+:::
+
 ## What is a Research Compendium?
 
 **Overview of assessment**
+
+::: {style="font-size: 60%;"}
 
 *Stage 3 Integrated Masters students are expected to submit a Research
 Compendium that is a **documented collection of all the digital parts of
@@ -70,17 +76,22 @@ no word or size limit for any part of the compendium but its contents
 should be concise and minimal. Extraneous text, code or files will be
 penalised.*
 
+:::
+
 ## What is a Research Compendium?
 
+::: {style="font-size: 80%;"}
+
 ::: incremental
--   Zipped folder containing all data, code, and text associated with a
+-   Zipped folder containing all data, code and text associated with a
     research project organised and documented clearly. Any unscripted
     processing should be described.
 
--   Everything needed to reproduce the results, and no more. The
-    compendium should not be a dumping ground for data files and
-    scripts. It needs to be curated. You may generate files that are not
-    needed to reproduce your work and these should be removed.
+-   Everything needed to understand what the project is and reproduce 
+    the results, and no more. The compendium should not be a dumping 
+    ground for data files and scripts. It needs to be curated. You 
+    may generate files that are not needed to reproduce your work and 
+    these should be removed.
 
 -   Your compendium might be a single Quarto/RStudio Project, or it
     might be folder including an RStudio Project and some additional
@@ -89,15 +100,17 @@ penalised.*
 -   Ideally uses literate programming to create submitted report
 :::
 
+:::
+
 ## Use guidelines from Core 1 and 2
 
 -   follow the guidance in [Core
     1](https://3mmarand.github.io/BIO00088H-data/core/week-1/overview.html)
-    on organisation, naming things, and documentation
+    on organisation, naming things and documentation
 
 -   follow the guidance in [Core
     2](https://3mmarand.github.io/BIO00088H-data/core/week-2/overview.html)
-    well-formatted code, consistency, modularisation and documentation
+    on well-formatted code, consistency, modularisation and documentation
 
 ## Project level documentation
 
@@ -106,8 +119,8 @@ penalised.*
 
 -   primarily in the README file but some details may be in scripts
 
--   title, concise description of the work, date, overview of compendium
-    contents
+-   title, concise description of the work, author exam number, date, overview 
+    of compendium contents
 
 -   all the software information including versions
 

@@ -9,27 +9,27 @@ xxxxx
 
 ### Learning objectives
 
--   dd
--   dd.
--   dd
--   d
+The successful student will be able to:
+
+-   explain what a research compendium is and describe its components
+-   relate the content and concepts in Core 1 and Core 2 to the
+    research compendium
+-   Create a quarto document and:
+    -   appreciate the role of the YAML header 
+    -   format text as bold, italics, headings etc
+    -   add citations and a bibliography
+    -   create automatically numbered figures and tables with cross references in text
+    -   set default code chunk behaviour and those for individual chunks 
+    -   use inline code to report results
+    -   insert special characters and mathematical expressions with LaTeX
+
 
 ### Instructions
 
 1.  [Prepare](study_before_workshop.qmd)
 
-    i.  📖 Read 
 
 2.  [Workshop](workshop.qmd)
 
-    i.  💻 dd.
 
-    ii. 💻 ddd
 
-    iii. 💻 ddd
-
-3.  [Consolidate](study_after_workshop.qmd)
-
-    i.  💻 dd
-
-    ii. 💻 dd
