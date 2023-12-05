@@ -27,19 +27,5 @@ This week there is a drop-in session where you can ask questions about the mater
 
 ## Week 11 Core 3 Research Compendia and Reproducible Reporting
 
-<!-- Before -->
-<!--  (BIO00058M-Data-science-2020/slides/03_repro_and_intro_to_rmarkdown and BIO00058M-Data-science-2020/slides/04_advanced_rmarkdown.html) -->
-<!-- Literate programming -->
-<!-- What is quarto -->
-<!-- markdown basics: text, code chunks, headings -->
-<!-- yaml -->
-<!-- automatic numbering of figures and tables -->
-<!-- cross references -->
-<!-- special characters -->
-<!-- citations -->
-
-<!-- Workshop -->
-
-<!-- practice doing the above with your project and data -->
-
+This week we will cover the “Research compendium” and reproducible reporting which are part of the assessment. Research Compendium that is a documented collection of all the digital parts of the research project including data (or access to data), code and outputs. The Compendium might be a single Quarto/RStudio Project, or it might be a folder including an Quarto/RStudio Project and some additional materials including the description of unscripted processing. The collection is organised and documented in such a way that reproducing all the results is straightforward for another individual. We will also cover reproducible reporting which means using literate programming to weave together code and text together in a single document. Quarto is a multi-language literate programming tool (very like R Markdown).
 

@@ -6,17 +6,17 @@ toc-location: right
 
 # Overview
 
-You are *either* 
+You are *either*
 
--  an integrated masters student doing BIO00088H Group Research Project *or* 
--  an MSc Bioinformatics student doing BIO00070M Research, Professional and Team Skills
+-   an integrated masters student doing BIO00088H Group Research Project *or*
+-   an MSc Bioinformatics student doing BIO00070M Research, Professional and Team Skills
 
 For students doing BIO00088H, Data Analysis compromises six workshops covering computational skills needed in your project. Three of these are core and taken by everyone and three are specific to your project type. MSc Bioinformatics students do the Core workshops and the 'omics workshops as part of BIO00070M.
 
 The project types are:
 
 | Project                                 | Data Strand                     |
-|-----------------------------------------|---------------------------------|
+|----------------------------------------|--------------------------------|
 | Stem Cells, Jillian Barlow              | 'omics, Emma Rand               |
 | Developmental Biology, Betsy Pownal     | 'omics, Emma Rand               |
 | Microbial Ecology, Kelly Redeker        | 'omics, Emma Rand               |
@@ -26,16 +26,15 @@ The project types are:
 
 The data analysis workshops are:
 
-| Week | Data Strand              |
-|------|--------------------------|
-| 1    | Core 1                   |
-| 2    | Core 2                   |
-| 3    | omics/structure/images 1 |
-| 4    | omics/structure/images 2 |
-| 5    | omics/structure/images 3 |
-| 6    | Core 3                   |
-
-
+| Week | Data Strand                                          |
+|------|------------------------------------------------------|
+| 1    | Core 1 Organising reproducible data analyses         |
+| 2    | Core 2 File types, workflow tips and other tools     |
+| 3    | omics/structure/images 1                             |
+| 4    | omics/structure/images 2                             |
+| 5    | omics/structure/images 3                             |
+| 6    | Drop-in                                              |
+| 6    | Core 3 Research Compendia and Reproducible Reporting |
 
 ## Module Learning Outcome linked to this content
 
@@ -47,11 +46,6 @@ Students who successfully complete this module will be able to
 
 All material is on the VLE so why is this site useful? This site collects everything together in a searchable way. The search icon is on the top right.
 
+## Please cite as
 
-## Please cite as 
-
-```{r}
-#| echo: false
-cffr::cff_to_bibtex("CITATION.cff")
-```
-
+Rand E (2023). Data Analysis for Group Project. https://3mmarand.github.io/BIO00088H-data/.

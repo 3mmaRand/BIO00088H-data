@@ -36,12 +36,15 @@ These slides are a guide to Research compendium.
 *Stage 3 Integrated Masters students are expected to submit a Research
 Compendium that is a documented collection of all the digital parts of
 the research project including data (or access to data), code and
-outputs. The collection is organised and documented in such a way that
+outputs. The Compendium might be a single Quarto/RStudio Project, or it
+might be a folder including an Quarto/RStudio Project and some
+additional materials including the description of unscripted processing.
+The collection is organised and documented in such a way that
 reproducing all the results is straightforward for another individual.*
 
 *Students will be assessed on the technical complexity, completeness and
 organisation of their compendium and the completeness, reproducibility
-and clarity of their documentation at the project and code/process
+and clarity of their documentation at the project and the code/process
 level. Marking will focus on the reproducibility of the results and the
 clarity of the decision making processes rather than the interpretation
 of the results which is covered in the report. There is no word or size
@@ -56,18 +59,21 @@ and minimal. Extraneous text, code or files will be penalised.*
 ::: {style="font-size: 65%;"}
 *Stage 3 Integrated Masters students are expected to submit a Research
 Compendium that is a* **documented collection of all the digital parts
-of the research project** *including data (or access to data), code and
-outputs. The collection is* **organised and documented in such a way
-that reproducing all the results is straightforward** *for another
-individual.*
+of the research project including data (or access to data), code and
+outputs.** *The Compendium might be a single Quarto/RStudio Project, or
+it might be a folder including an Quarto/RStudio Project and some
+additional materials including the description of unscripted
+processing.* **The collection is organised and documented in such a way
+that reproducing all the results is straightforward for another
+individual.**
 
 *Students will be assessed on the* **technical complexity, completeness
-and organisation of their compendium** *and the* **completeness,
+and organisation of their compendium and the completeness,
 reproducibility and clarity of their documentation at the project and
-code/process level.** *Marking will focus on the reproducibility of the
-results and the clarity of the decision making processes rather than the
-interpretation of the results which is covered in the report. There is
-no word or size limit for any part of the compendium but its contents
+the code/process level.** *Marking will focus on the reproducibility of
+the results and the clarity of the decision making processes rather than
+the interpretation of the results which is covered in the report. There
+is no word or size limit for any part of the compendium but its contents
 should be concise and minimal. Extraneous text, code or files will be
 penalised.*
 :::
