@@ -1,0 +1,463 @@
+---
+title: "Kelly"
+subtitle: "VFAs"
+author: "Emma Rand"
+toc: true
+toc-depth: 4
+toc-location: right
+execute:
+  echo: true
+  include: true
+  error: true
+bibliography: ../../references.bib
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+# Introduction
+
+## Overview
+
+VFAs from AD vials
+
+-   Two treatments: straw (CN10) and water (NC)
+
+-   10 time points: 1, 3, 5, 9, 11, 13, 16, 18, 20, 22
+
+-   three replicates per treatment per time point
+
+-   2 x 10 x 3 = 60 groups 
+
+-   8 VFA with concentration in mM (millimolar): acetate, propanoate, isobutyrate, butyrate, isopentanoate, pentanoate, isohexanoate, hexanoate
+
+
+To calculate from this data
+
+-   Recalculate the data into grams per litre
+    -   convert to molar: 1 millimolar to molar = 0.001 molar
+    -   multiply by the molecular weight of each VFA
+-   Calculate *Change* in VFA g/l with time
+-   Calculate the percent representation of each VFA, by mM and by weight	
+
+## Data files
+
+-   8 VFA in mM for 60 samples [vfa.csv](data-raw/vfa.csv)
+
+-   Molecular weights for each VFA in grams per mole [mol_wt.txt](data-raw/mol_wt.txt)
+
+
+## Getting started
+
+## Set up a Project
+
+🎬 Start RStudio from the Start menu
+
+🎬 Make an RStudio project. Be deliberate about where you create it so
+that it is a good place for you
+
+🎬 Use the Files pane to make new folders for the data. I suggest
+`data-raw` and `data-processed`
+
+🎬 Make a new script called `analysis.R` to carry out the rest of the
+work.
+
+
+🎬 Load `tidyverse` [@tidyverse] for importing, summarising, plotting
+and filtering.
+
+```{r}
+library(tidyverse)
+```
+
+## Examine the data 
+
+🎬 Save the files to `data-raw`. Open them and examine them. You may want to use Excel for the csv file.
+
+🎬 Answer the following questions:
+
+-   What is in the rows and columns of each file?
+-   How many rows and columns are there in each file? 
+-   How are the data organised ? 
+
+
+## Import
+
+
+🎬 Import
+
+```{r}
+vfa_cummul <- read_csv("data-raw/vfa.csv") |> janitor::clean_names()
+```
+
+
+🎬 Split treatment and replicate to separate columns so there is a treatment column:
+
+```{r}
+vfa_cummul <- vfa_cummul |> 
+  separate(col = sample_replicate, 
+           into = c("treatment", "replicate"), 
+           sep = "-",
+           remove = FALSE)
+```
+
+The provided data is cumulative/absolute. We need to calculate the change in VFA with time. There is a function, `lag()` that will help us do this. It will take the previous value and subtract it from the current value. We need to do that separately for each `sample_replicate` so we need to group by `sample_replicate` first. We also need to make sure the data is in the right order so we will arrange by `sample_replicate` and `time_day`.
+
+
+🎬 Create dataframe for the change in VFA
+```{r}
+vfa_delta <- vfa_cummul |> 
+    group_by(sample_replicate)  |> 
+    arrange(sample_replicate, time_day) |>
+    mutate(acetate = acetate - lag(acetate),
+           propanoate = propanoate - lag(propanoate),
+           isobutyrate = isobutyrate - lag(isobutyrate),
+           butyrate = butyrate - lag(butyrate),
+           isopentanoate = isopentanoate - lag(isopentanoate),
+           pentanoate = pentanoate - lag(pentanoate),
+           isohexanoate = isohexanoate - lag(isohexanoate),
+           hexanoate = hexanoate - lag(hexanoate))
+```
+
+Now we have two dataframes, one for the cumulative data and one for the change in VFA. 
+
+
+To make conversions from mM to g/l we need to do mM * 0.001 * MW. We will import the molecular weight data, pivot the VFA data to long format and join the molecular weight data to the VFA data. Then we can calculate the g/l. We will do this for both the cumulative and delta dataframes.
+
+
+🎬 import molecular weight data
+
+```{r}
+mol_wt <- read_table("data-raw/mol_wt.txt") |>
+  mutate(vfa = tolower(vfa))
+```
+
+🎬 Pivot the cumulative data to long format:
+
+
+```{r}
+#| echo: false
+vfa_cummul <- vfa_cummul |> 
+  pivot_longer(cols = -c(sample_replicate,
+                         treatment, 
+                         replicate,
+                         time_day),
+               values_to = "conc_mM",
+               names_to = "vfa") 
+```
+
+View `vfa_cummul` to check you understand what you have done.
+
+🎬 Join molecular weight to data and calculate g/l (mutate to convert to g/l * 0.001 * MW):
+
+```{r}
+vfa_cummul <- vfa_cummul |> 
+  left_join(mol_wt, by = "vfa") |>
+  mutate(conc_g_l = conc_mM * 0.001 * mw)
+```
+
+
+View `vfa_cummul` to check you understand what you have done.
+
+
+🎬  Add a column which is the percent representation of each VFA for mM and g/l:
+```{r}
+vfa_cummul <- vfa_cummul |> 
+  group_by(sample_replicate, time_day) |> 
+  mutate(percent_conc_g_l = conc_g_l / sum(conc_g_l) * 100,
+         percent_conc_mM = conc_mM / sum(conc_mM) * 100)
+
+```
+
+
+
+
+
+🎬 Pivot the change data, `delta_vfa` to long format: 
+
+
+```{r}
+#| echo: false
+vfa_delta <- vfa_delta |> 
+  pivot_longer(cols = -c(sample_replicate,
+                         treatment, 
+                         replicate,
+                         time_day),
+               values_to = "conc_mM",
+               names_to = "vfa") 
+```
+
+View `vfa_delta` to check it looks like `vfa_cummul`
+
+🎬 Join molecular weight to data and calculate g/l (mutate to convert to g/l * 0.001 * MW):
+
+
+```{r}
+#| echo: false
+vfa_delta <- vfa_delta |> 
+  left_join(mol_wt, by = "vfa") |>
+  mutate(conc_g_l = conc_mM * 0.001 * mw)
+```
+
+## Graphs
+
+🎬 Make summary data for graphing
+
+```{r}
+vfa_cummul_summary <- vfa_cummul |> 
+  group_by(treatment, time_day, vfa) |> 
+  summarise(mean_g_l = mean(conc_g_l),
+            se_g_l = sd(conc_g_l)/sqrt(length(conc_g_l)),
+            mean_mM = mean(conc_mM),
+            se_mM = sd(conc_mM)/sqrt(length(conc_mM))) |> 
+  ungroup()
+```
+
+```{r}
+vfa_delta_summary <- vfa_delta |> 
+  group_by(treatment, time_day, vfa) |> 
+  summarise(mean_g_l = mean(conc_g_l),
+            se_g_l = sd(conc_g_l)/sqrt(length(conc_g_l)),
+            mean_mM = mean(conc_mM),
+            se_mM = sd(conc_mM)/sqrt(length(conc_mM))) |> 
+  ungroup()
+```
+
+🎬 Graph the cumulative data, grams per litre:
+```{r}
+
+vfa_cummul_summary |> 
+  ggplot(aes(x = time_day, colour = vfa)) +
+  geom_line(aes(y = mean_g_l), 
+            linewidth = 1) +
+  geom_errorbar(aes(ymin = mean_g_l - se_g_l,
+                    ymax = mean_g_l + se_g_l),
+                width = 0.5, 
+                show.legend = F,
+                linewidth = 1) +
+  scale_color_viridis_d(name = NULL) +
+  scale_x_continuous(name = "Time (days)") +
+  scale_y_continuous(name = "Mean VFA concentration (g/l)") +
+  theme_bw() +
+  facet_wrap(~treatment) +
+  theme(strip.background = element_blank())
+
+
+
+```
+
+🎬 Graph the change data, grams per litre:
+
+```{r}
+
+vfa_delta_summary |> 
+  ggplot(aes(x = time_day, colour = vfa)) +
+  geom_line(aes(y = mean_g_l), 
+            linewidth = 1) +
+  geom_errorbar(aes(ymin = mean_g_l - se_g_l,
+                    ymax = mean_g_l + se_g_l),
+                width = 0.5, 
+                show.legend = F,
+                linewidth = 1) +
+  scale_color_viridis_d(name = NULL) +
+  scale_x_continuous(name = "Time (days)") +
+  scale_y_continuous(name = "Mean change in VFA concentration (g/l)") +
+  theme_bw() +
+  facet_wrap(~treatment) +
+  theme(strip.background = element_blank())
+
+
+
+```
+
+
+
+🎬 Graph the mean percent representation of each VFA g/l. Note `geom_col()` will plot proportion if we set` position = "fill"` 
+
+
+```{r}
+vfa_cummul_summary |> 
+  ggplot(aes(x = time_day, y = mean_g_l, fill = vfa)) +
+  geom_col(position = "fill") +
+  scale_fill_viridis_d(name = NULL) +
+  scale_x_continuous(name = "Time (days)") +
+  scale_y_continuous(name = "Mean Proportion VFA") +
+  theme_bw() +
+  facet_wrap(~treatment) +
+  theme(strip.background = element_blank())
+```
+
+
+
+## View the relationship between samples using PCA
+
+We have 8 genes in our dataset. PCA will allow us to plot our
+samples in the "VFA" space so we can see if treatments, time or replicate cluster.
+
+However, PCA expects a matrix with samples in rows and VFA, the variables, in columns. We will need to select the columns we need and pivot wider. Then convert to a matrix.
+
+🎬 
+
+```{r}
+vfa_cummul_pca <- vfa_cummul |> 
+  select(sample_replicate, 
+         treatment, 
+         replicate, 
+         time_day, 
+         vfa, 
+         conc_g_l) |> 
+  pivot_wider(names_from = vfa, 
+              values_from = conc_g_l)
+  
+```
+```{r}
+mat <- vfa_cummul_pca |> 
+  ungroup() |>
+  select(-sample_replicate, 
+         -treatment, 
+         -replicate, 
+         -time_day) |> 
+  as.matrix()
+
+```
+
+
+🎬 Perform PCA on the matrix:
+
+
+```{r}
+pca <- mat |>
+  prcomp(scale. = TRUE, 
+         rank. = 4) 
+```
+
+
+The `scale.` argument tells `prcomp()` to scale the data to have a mean
+of 0 and a standard deviation of 1. 
+The `rank.` argument tells `prcomp()` to only calculate the first 4
+principal components. This is useful for visualisation as we can only
+plot in 2 or 3 dimensions. We can see the results of the PCA by viewing
+the `summary()` of the `pca` object.
+
+```{r}
+summary(pca)
+```
+
+The Proportion of Variance tells us how much of the variance is
+explained by each component. We can see that the first component
+explains 0.7798 of the variance, the second 0.1018, and the third
+0.07597.  Together the first three components explain nearly 96% of the
+total variance in the data. Plotting PC1 against PC2 will capture about
+78% of the variance which is likely much better than we would get
+plotting any two VFA against each other. To plot the PC1 against PC2
+we will need to extract the PC1 and PC2 score from the pca object and
+add labels for the samples.
+
+
+
+🎬 Create a dataframe of the PC1 and PC2 scores which are in `pca$x` and
+add the sample information from vfa_cummul_pca:
+
+```{r}
+pca_labelled <- data.frame(pca$x,
+                           sample_replicate = vfa_cummul_pca$sample_replicate,
+                           treatment = vfa_cummul_pca$treatment,
+                           replicate = vfa_cummul_pca$replicate,
+                           time_day = vfa_cummul_pca$time_day) 
+```
+
+The dataframe should look like this:
+
+```{r}
+#| echo: false
+knitr::kable(pca_labelled)
+```
+
+🎬 Plot PC1 against PC2 and colour by time and shape by
+treatment:
+
+```{r}
+pca_labelled |> 
+  ggplot(aes(x = PC1, y = PC2, 
+             colour = factor(time_day),
+             shape = treatment)) +
+  geom_point(size = 3) +
+  scale_colour_viridis_d(end = 0.95, begin = 0.15,
+                         name = "Time") +
+  scale_shape_manual(values = c(17, 19),
+                     name = NULL) +
+  theme_classic()
+
+```
+🎬 Plot PC1 against PC2 and colour by time and facet
+treatment:
+
+```{r}
+pca_labelled |> 
+  ggplot(aes(x = PC1, y = PC2, colour = factor(time_day))) +
+  geom_point(size = 3) +
+  scale_colour_viridis_d(end = 0.95, begin = 0.15,
+                         name = "Time") +
+  facet_wrap(~treatment, ncol = 1) +
+  theme_classic()
+
+```
+
+replicates are similar at the same time and treatment especially early as we might expect. PC is essentially an axis of time.
+
+
+## Visualise the VFA concentration using a heatmap
+
+We are going to create an interactive heatmap with the **`heatmaply`** [@heatmaply] package. **`heatmaply`** takes a matrix as input so we  can use `mat`
+
+🎬 Set the rownames to the sample id whihcih is combination of `sample_replicate` and `time_day`:
+
+```{r}
+rownames(mat) <- interaction(vfa_cummul_pca$sample_replicate, 
+                             vfa_cummul_pca$time_day)
+
+```
+
+You might want to view the matrix by clicking on it in the environment pane. 
+
+
+🎬 Load the **`heatmaply`** package:
+```{r}
+library(heatmaply)
+```
+
+We need to tell the clustering algorithm how many clusters to create. We will set the number of clusters for the treatments to be 2 and the number of clusters for the vfa to be the same since it makes sense to see what clusters of genes correlate with the treatments.
+
+🎬 Set the number of clusters for the treatments and vfa:
+
+```{r}
+n_treatment_clusters <- 2
+n_vfa_clusters <- 2
+```
+
+
+🎬 Create the heatmap:
+```{r}
+#| fig-height: 10
+heatmaply(mat, 
+          scale = "column",
+          k_col = n_vfa_clusters,
+          k_row = n_treatment_clusters,
+          fontsize_row = 7, fontsize_col = 10,
+          labCol = colnames(mat),
+          labRow = rownames(mat),
+          heatmap_layers = theme(axis.line = element_blank()))
+```
+
+The heatmap will open in the viewer pane (rather than the plot pane) because it is html. You can "Show in a new window" to see it in a larger format. You can also zoom in and out and pan around the heatmap and download it as a png. You might feel the colour bars is not adding much to the plot. You can remove it by setting `hide_colorbar = TRUE,` in the `heatmaply()` function. 
+
+One of the NC replicates at time = 22 is very different from the other replicates. 
+The CN10 treatments cluster together at high time points. CN10 samples are more similar to NC samples early on.
+Most of the VFAs behave similarly with highest values later in the experiment for CN10 but isohexanoate and hexanoate differ. The difference might be because isohexanoate is especially low in the NC replicates at time = 1 and hexanoate is especially high in the NC replicate 2 at time = 22
+
+
+
+Pages made with R [@R-core], Quarto [@allaire2022], `knitr` [@knitr],
+`kableExtra` [@kableExtra]
+
+# References

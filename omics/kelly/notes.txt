@@ -1,0 +1,20 @@
+Notes:																	
+Each sample has three replicates																	
+Concentrations are listed here in mM (millimolar, or "moles / L *  1000 millimoles / 1 moles")																	
+CN samples have straw biomass added to AD vials																	
+NC samples have had water added to AD vials																	
+														
+To calculate from this data		Change in VFA with time	
+		Recalculate the data into grams per liter, and change in VFA g/l with time
+		Calculate the percent representation of each VFA, by mM and by weight				
+
+Data for mM to g/l calculations		
+
+MW (g/mol)	
+Acetate	Propanoate	Isobutyrate	Butyrate	Isopentanoate	Pentanoate	Isohexanoate	Hexanoate
+60.05	  74.08	      88.11	      88.11	    102.13	      102.13	    116.1583	    116.1583
+
+													
+Useful graphs would include 1) mM or mg/l versus time for VFAs, 2) Delta mg/l versus time for each VFA															
+																	
+																	
