@@ -1,6 +1,6 @@
 ---
-title: "Kelly"
-subtitle: "VFAs"
+title: "Workflow for VFA analysis"
+subtitle: "Kelly's project"
 author: "Emma Rand"
 toc: true
 toc-depth: 4
@@ -17,39 +17,77 @@ editor:
 
 # Introduction
 
-## Overview
+I have some data and information from Kelly. I have interpreted it and
+written some code to do the calculations.
 
-VFAs from AD vials
+However, Kelly hasn't had a chance to look at it yet so I am providing
+the exact information and data he supplied along with my suggested
+workflow based on my interpretation of the data and info.
 
--   Two treatments: straw (CN10) and water (NC)
+## Exact information supplied by Kelly
 
--   10 time points: 1, 3, 5, 9, 11, 13, 16, 18, 20, 22
+*The [file is a CSV
+file](data-raw/VFAdata%20for%20BIO00088H%20R_studio.csv), with some
+notes on top and the data in the following order, post notes and
+headers. Please note that all chemical data is in millimolar. There are
+62 rows of actual data.*
 
--   three replicates per treatment per time point
+*Sample Name -- Replicate, Time (days), Acetate, Propanoate,
+Isobutyrate, Butyrate, Isopentanoate, Pentanoate, Isohexanoate,
+Hexanoate*
 
--   2 x 10 x 3 = 60 groups 
+*The students should be able to transform the data from mM to mg/L, and
+to g/L. To do this they only need to multiply the molecular weight of
+the compound (listed in the notes in the file) by the concentration in
+mM to get mg/L. Obviously to get g/L they will just divide by 1000. They
+should be able to graph the VFA concentrations with time.*
 
--   8 VFA with concentration in mM (millimolar): acetate, propanoate, isobutyrate, butyrate, isopentanoate, pentanoate, isohexanoate, hexanoate
+*They should also be able to do a simple flux measurement, which is the
+change in VFA concentration over a period of time, divided by weight or
+volume of material. In this case it might be equal to == Delta(Acetate
+at 3 days - Acetate at 1 day)/Delta (3days - 1day)/50 mls sludge. This
+would provide a final flux with the units of mg acetate per ml sludge
+per day. Let me know if this isn't clear.*
 
+*Perhaps more importantly they should be able to graph and extract the
+reaction rate, assuming a first order chemical/biological reaction and
+an exponential falloff rate. I found this as a starting point
+(https://martinlab.chem.umass.edu/r-fitting-data/) , but I assume Emma
+has something much more effective already in the pipeline.*
 
-To calculate from this data
+## Emma's Worklflow interpretation
 
--   Recalculate the data into grams per litre
-    -   convert to molar: 1 millimolar to molar = 0.001 molar
-    -   multiply by the molecular weight of each VFA
--   Calculate *Change* in VFA g/l with time
--   Calculate the percent representation of each VFA, by mM and by weight	
+I created these two data files from the original.
 
-## Data files
+1.  8 VFA in mM for 60 samples [vfa.csv](data-raw/vfa.csv). There were
+    63 rows of data in the original file. There were no time 0 for one
+    treatment and all values were zero for the other treatment so I
+    removed those.
+    -   Two treatments: straw (CN10) and water (NC)
+    -   10 time points: 1, 3, 5, 9, 11, 13, 16, 18, 20, 22
+    -   three replicates per treatment per time point
+    -   2 x 10 x 3 = 60 groups
+    -   8 VFA with concentration in mM (millimolar): acetate,
+        propanoate, isobutyrate, butyrate, isopentanoate, pentanoate,
+        isohexanoate, hexanoate
+2.  Molecular weights for each VFA in grams per mole
+    [mol_wt.txt](data-raw/mol_wt.txt) VFAs from AD vials
 
--   8 VFA in mM for 60 samples [vfa.csv](data-raw/vfa.csv)
+We need to:
 
--   Molecular weights for each VFA in grams per mole [mol_wt.txt](data-raw/mol_wt.txt)
-
+1.  Calculate *Change* in VFA g/l with time
+2.  Recalculate the data into grams per litre - convert to molar: 1
+    millimolar to molar = 0.001 molar - multiply by the molecular weight
+    of each VFA
+3.  Calculate the percent representation of each VFA, by mM and by
+    weight
+4.  Calculate the flux (change in VFA concentration over a period of
+    time, divided by weight or volume of material) of each VFA, by mM
+    and by weight
+5.  Graph and extract the reaction rate, assuming a first order
+    chemical/biological reaction and an exponential falloff rate
 
 ## Getting started
-
-## Set up a Project
 
 🎬 Start RStudio from the Start menu
 
@@ -62,7 +100,6 @@ that it is a good place for you
 🎬 Make a new script called `analysis.R` to carry out the rest of the
 work.
 
-
 🎬 Load `tidyverse` [@tidyverse] for importing, summarising, plotting
 and filtering.
 
@@ -70,19 +107,18 @@ and filtering.
 library(tidyverse)
 ```
 
-## Examine the data 
+## Examine the data
 
-🎬 Save the files to `data-raw`. Open them and examine them. You may want to use Excel for the csv file.
+🎬 Save the files to `data-raw`. Open them and examine them. You may
+want to use Excel for the csv file.
 
 🎬 Answer the following questions:
 
 -   What is in the rows and columns of each file?
--   How many rows and columns are there in each file? 
--   How are the data organised ? 
-
+-   How many rows and columns are there in each file?
+-   How are the data organised ?
 
 ## Import
-
 
 🎬 Import
 
@@ -90,8 +126,8 @@ library(tidyverse)
 vfa_cummul <- read_csv("data-raw/vfa.csv") |> janitor::clean_names()
 ```
 
-
-🎬 Split treatment and replicate to separate columns so there is a treatment column:
+🎬 Split treatment and replicate to separate columns so there is a
+treatment column:
 
 ```{r}
 vfa_cummul <- vfa_cummul |> 
@@ -101,10 +137,18 @@ vfa_cummul <- vfa_cummul |>
            remove = FALSE)
 ```
 
-The provided data is cumulative/absolute. We need to calculate the change in VFA with time. There is a function, `lag()` that will help us do this. It will take the previous value and subtract it from the current value. We need to do that separately for each `sample_replicate` so we need to group by `sample_replicate` first. We also need to make sure the data is in the right order so we will arrange by `sample_replicate` and `time_day`.
+The provided data is cumulative/absolute. We need to calculate the
+change in VFA with time. There is a function, `lag()` that will help us
+do this. It will take the previous value and subtract it from the
+current value. We need to do that separately for each `sample_replicate`
+so we need to group by `sample_replicate` first. We also need to make
+sure the data is in the right order so we will arrange by
+`sample_replicate` and `time_day`.
 
+## 1. Calculate *Change* in VFA g/l with time
 
 🎬 Create dataframe for the change in VFA
+
 ```{r}
 vfa_delta <- vfa_cummul |> 
     group_by(sample_replicate)  |> 
@@ -119,11 +163,16 @@ vfa_delta <- vfa_cummul |>
            hexanoate = hexanoate - lag(hexanoate))
 ```
 
-Now we have two dataframes, one for the cumulative data and one for the change in VFA. 
+Now we have two dataframes, one for the cumulative data and one for the
+change in VFA.
 
+## 2. Recalculate the data into grams per litre
 
-To make conversions from mM to g/l we need to do mM * 0.001 * MW. We will import the molecular weight data, pivot the VFA data to long format and join the molecular weight data to the VFA data. Then we can calculate the g/l. We will do this for both the cumulative and delta dataframes.
-
+To make conversions from mM to g/l we need to do mM \* 0.001 \* MW. We
+will import the molecular weight data, pivot the VFA data to long format
+and join the molecular weight data to the VFA data. Then we can
+calculate the g/l. We will do this for both the cumulative and delta
+dataframes.
 
 🎬 import molecular weight data
 
@@ -133,7 +182,6 @@ mol_wt <- read_table("data-raw/mol_wt.txt") |>
 ```
 
 🎬 Pivot the cumulative data to long format:
-
 
 ```{r}
 #| echo: false
@@ -148,7 +196,8 @@ vfa_cummul <- vfa_cummul |>
 
 View `vfa_cummul` to check you understand what you have done.
 
-🎬 Join molecular weight to data and calculate g/l (mutate to convert to g/l * 0.001 * MW):
+🎬 Join molecular weight to data and calculate g/l (mutate to convert to
+g/l \* 0.001 \* MW):
 
 ```{r}
 vfa_cummul <- vfa_cummul |> 
@@ -156,25 +205,11 @@ vfa_cummul <- vfa_cummul |>
   mutate(conc_g_l = conc_mM * 0.001 * mw)
 ```
 
-
 View `vfa_cummul` to check you understand what you have done.
 
+Repeat for the delta data.
 
-🎬  Add a column which is the percent representation of each VFA for mM and g/l:
-```{r}
-vfa_cummul <- vfa_cummul |> 
-  group_by(sample_replicate, time_day) |> 
-  mutate(percent_conc_g_l = conc_g_l / sum(conc_g_l) * 100,
-         percent_conc_mM = conc_mM / sum(conc_mM) * 100)
-
-```
-
-
-
-
-
-🎬 Pivot the change data, `delta_vfa` to long format: 
-
+🎬 Pivot the change data, `delta_vfa` to long format:
 
 ```{r}
 #| echo: false
@@ -189,8 +224,8 @@ vfa_delta <- vfa_delta |>
 
 View `vfa_delta` to check it looks like `vfa_cummul`
 
-🎬 Join molecular weight to data and calculate g/l (mutate to convert to g/l * 0.001 * MW):
-
+🎬 Join molecular weight to data and calculate g/l (mutate to convert to
+g/l \* 0.001 \* MW):
 
 ```{r}
 #| echo: false
@@ -199,7 +234,22 @@ vfa_delta <- vfa_delta |>
   mutate(conc_g_l = conc_mM * 0.001 * mw)
 ```
 
-## Graphs
+## 3. Calculate the percent representation of each VFA
+
+by mM and by weight
+
+🎬 Add a column which is the percent representation of each VFA for mM
+and g/l:
+
+```{r}
+vfa_cummul <- vfa_cummul |> 
+  group_by(sample_replicate, time_day) |> 
+  mutate(percent_conc_g_l = conc_g_l / sum(conc_g_l) * 100,
+         percent_conc_mM = conc_mM / sum(conc_mM) * 100)
+
+```
+
+## Graphs for info so far
 
 🎬 Make summary data for graphing
 
@@ -224,6 +274,7 @@ vfa_delta_summary <- vfa_delta |>
 ```
 
 🎬 Graph the cumulative data, grams per litre:
+
 ```{r}
 
 vfa_cummul_summary |> 
@@ -270,10 +321,8 @@ vfa_delta_summary |>
 
 ```
 
-
-
-🎬 Graph the mean percent representation of each VFA g/l. Note `geom_col()` will plot proportion if we set` position = "fill"` 
-
+🎬 Graph the mean percent representation of each VFA g/l. Note
+`geom_col()` will plot proportion if we set`position = "fill"`
 
 ```{r}
 vfa_cummul_summary |> 
@@ -287,16 +336,16 @@ vfa_cummul_summary |>
   theme(strip.background = element_blank())
 ```
 
+### View the relationship between samples using PCA
 
+We have 8 VFA in our dataset. PCA will allow us to plot our samples in
+the "VFA" space so we can see if treatments, time or replicate cluster.
 
-## View the relationship between samples using PCA
+However, PCA expects a matrix with samples in rows and VFA, the
+variables, in columns. We will need to select the columns we need and
+pivot wider. Then convert to a matrix.
 
-We have 8 genes in our dataset. PCA will allow us to plot our
-samples in the "VFA" space so we can see if treatments, time or replicate cluster.
-
-However, PCA expects a matrix with samples in rows and VFA, the variables, in columns. We will need to select the columns we need and pivot wider. Then convert to a matrix.
-
-🎬 
+🎬
 
 ```{r}
 vfa_cummul_pca <- vfa_cummul |> 
@@ -310,6 +359,7 @@ vfa_cummul_pca <- vfa_cummul |>
               values_from = conc_g_l)
   
 ```
+
 ```{r}
 mat <- vfa_cummul_pca |> 
   ungroup() |>
@@ -321,9 +371,7 @@ mat <- vfa_cummul_pca |>
 
 ```
 
-
 🎬 Perform PCA on the matrix:
-
 
 ```{r}
 pca <- mat |>
@@ -331,13 +379,12 @@ pca <- mat |>
          rank. = 4) 
 ```
 
-
 The `scale.` argument tells `prcomp()` to scale the data to have a mean
-of 0 and a standard deviation of 1. 
-The `rank.` argument tells `prcomp()` to only calculate the first 4
-principal components. This is useful for visualisation as we can only
-plot in 2 or 3 dimensions. We can see the results of the PCA by viewing
-the `summary()` of the `pca` object.
+of 0 and a standard deviation of 1. The `rank.` argument tells
+`prcomp()` to only calculate the first 4 principal components. This is
+useful for visualisation as we can only plot in 2 or 3 dimensions. We
+can see the results of the PCA by viewing the `summary()` of the `pca`
+object.
 
 ```{r}
 summary(pca)
@@ -346,14 +393,12 @@ summary(pca)
 The Proportion of Variance tells us how much of the variance is
 explained by each component. We can see that the first component
 explains 0.7798 of the variance, the second 0.1018, and the third
-0.07597.  Together the first three components explain nearly 96% of the
+0.07597. Together the first three components explain nearly 96% of the
 total variance in the data. Plotting PC1 against PC2 will capture about
 78% of the variance which is likely much better than we would get
-plotting any two VFA against each other. To plot the PC1 against PC2
-we will need to extract the PC1 and PC2 score from the pca object and
-add labels for the samples.
-
-
+plotting any two VFA against each other. To plot the PC1 against PC2 we
+will need to extract the PC1 and PC2 score from the pca object and add
+labels for the samples.
 
 🎬 Create a dataframe of the PC1 and PC2 scores which are in `pca$x` and
 add the sample information from vfa_cummul_pca:
@@ -373,8 +418,7 @@ The dataframe should look like this:
 knitr::kable(pca_labelled)
 ```
 
-🎬 Plot PC1 against PC2 and colour by time and shape by
-treatment:
+🎬 Plot PC1 against PC2 and colour by time and shape by treatment:
 
 ```{r}
 pca_labelled |> 
@@ -387,10 +431,9 @@ pca_labelled |>
   scale_shape_manual(values = c(17, 19),
                      name = NULL) +
   theme_classic()
-
 ```
-🎬 Plot PC1 against PC2 and colour by time and facet
-treatment:
+
+🎬 Plot PC1 against PC2 and colour by time and facet treatment:
 
 ```{r}
 pca_labelled |> 
@@ -400,33 +443,38 @@ pca_labelled |>
                          name = "Time") +
   facet_wrap(~treatment, ncol = 1) +
   theme_classic()
-
 ```
 
-replicates are similar at the same time and treatment especially early as we might expect. PC is essentially an axis of time.
+replicates are similar at the same time and treatment especially early
+as we might expect. PC is essentially an axis of time.
 
+### Visualise the VFA concentration using a heatmap
 
-## Visualise the VFA concentration using a heatmap
+We are going to create an interactive heatmap with the **`heatmaply`**
+[@heatmaply] package. **`heatmaply`** takes a matrix as input so we can
+use `mat`
 
-We are going to create an interactive heatmap with the **`heatmaply`** [@heatmaply] package. **`heatmaply`** takes a matrix as input so we  can use `mat`
-
-🎬 Set the rownames to the sample id whihcih is combination of `sample_replicate` and `time_day`:
+🎬 Set the rownames to the sample id whihcih is combination of
+`sample_replicate` and `time_day`:
 
 ```{r}
 rownames(mat) <- interaction(vfa_cummul_pca$sample_replicate, 
                              vfa_cummul_pca$time_day)
-
 ```
 
-You might want to view the matrix by clicking on it in the environment pane. 
-
+You might want to view the matrix by clicking on it in the environment
+pane.
 
 🎬 Load the **`heatmaply`** package:
+
 ```{r}
 library(heatmaply)
 ```
 
-We need to tell the clustering algorithm how many clusters to create. We will set the number of clusters for the treatments to be 2 and the number of clusters for the vfa to be the same since it makes sense to see what clusters of genes correlate with the treatments.
+We need to tell the clustering algorithm how many clusters to create. We
+will set the number of clusters for the treatments to be 2 and the
+number of clusters for the vfa to be the same since it makes sense to
+see what clusters of genes correlate with the treatments.
 
 🎬 Set the number of clusters for the treatments and vfa:
 
@@ -435,8 +483,8 @@ n_treatment_clusters <- 2
 n_vfa_clusters <- 2
 ```
 
-
 🎬 Create the heatmap:
+
 ```{r}
 #| fig-height: 10
 heatmaply(mat, 
@@ -449,13 +497,41 @@ heatmaply(mat,
           heatmap_layers = theme(axis.line = element_blank()))
 ```
 
-The heatmap will open in the viewer pane (rather than the plot pane) because it is html. You can "Show in a new window" to see it in a larger format. You can also zoom in and out and pan around the heatmap and download it as a png. You might feel the colour bars is not adding much to the plot. You can remove it by setting `hide_colorbar = TRUE,` in the `heatmaply()` function. 
+The heatmap will open in the viewer pane (rather than the plot pane)
+because it is html. You can "Show in a new window" to see it in a larger
+format. You can also zoom in and out and pan around the heatmap and
+download it as a png. You might feel the colour bars is not adding much
+to the plot. You can remove it by setting `hide_colorbar = TRUE,` in the
+`heatmaply()` function.
 
-One of the NC replicates at time = 22 is very different from the other replicates. 
-The CN10 treatments cluster together at high time points. CN10 samples are more similar to NC samples early on.
-Most of the VFAs behave similarly with highest values later in the experiment for CN10 but isohexanoate and hexanoate differ. The difference might be because isohexanoate is especially low in the NC replicates at time = 1 and hexanoate is especially high in the NC replicate 2 at time = 22
+One of the NC replicates at time = 22 is very different from the other
+replicates. The CN10 treatments cluster together at high time points.
+CN10 samples are more similar to NC samples early on. Most of the VFAs
+behave similarly with highest values later in the experiment for CN10
+but isohexanoate and hexanoate differ. The difference might be because
+isohexanoate is especially low in the NC replicates at time = 1 and
+hexanoate is especially high in the NC replicate 2 at time = 22
 
+## 4. Calculate the flux - pending.
 
+Calculate the flux(change in VFA concentration over a period of time,
+divided by weight or volume of material) of each VFA, by mM and by
+weight.
+
+I've requested clarification: *for the flux measurements, do they need
+graphs of the rate of change wrt time? And is the sludge volume going to
+be a constant for all samples or something they measure and varies by
+vial?*
+
+## 5. Graph and extract the reaction rate - pending
+
+Graph and extract the reaction rate assuming a first order
+chemical/biological reaction and an exponential falloff rate
+
+I've requested clarification: *for the nonlinear least squares curve
+fitting, I assume x is time but I'm not clear what the Y variable is -
+concentration? or change in concentration? or rate of change of
+concentration?*
 
 Pages made with R [@R-core], Quarto [@allaire2022], `knitr` [@knitr],
 `kableExtra` [@kableExtra]
