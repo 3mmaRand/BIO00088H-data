@@ -10,7 +10,7 @@
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.450">
+  <meta name="generator" content="quarto-1.4.549">
 
   <meta name="author" content="Emma Rand">
   <title>Data Analysis for Group Project - Independent Study to prepare for workshop</title>
@@ -35,6 +35,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -73,6 +74,8 @@
     "notice_banner_reject_button_hide":false,
     "preferences_center_close_button_hide":false,
     "website_name":""
+    ,
+  "language":"en"
     });
   });
   </script> 
@@ -204,7 +207,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -384,7 +388,7 @@ Emma Rand
 </div>
 </div>
 
-  <p class="date">18 December, 2023</p>
+  <p class="date">9 February, 2024</p>
 </section>
 <section id="overview" class="slide level2">
 <h2>Overview</h2>
@@ -414,11 +418,11 @@ Emma Rand
 <section id="experimental-design-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">🐸 Experimental design</h2>
 
-<img data-src="images/88H-exp-design-betsy.png" width="700" class="r-stretch quarto-figure-center"><p class="caption">Schematic of frog development experiment</p></section>
+<img data-src="images/88H-exp-design-betsy.png" class="quarto-figure quarto-figure-center r-stretch" width="700"><p class="caption">Schematic of frog development experiment</p></section>
 <section id="experimental-design-2" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">🐸 Experimental design</h2>
 
-<img data-src="images/88H-exp-design-betsy.png" width="200" class="r-stretch quarto-figure-left"><p class="caption">Schematic of frog development experiment</p><div>
+<img data-src="images/88H-exp-design-betsy.png" class="quarto-figure quarto-figure-left r-stretch" width="200"><p class="caption">Schematic of frog development experiment</p><div>
 <ul>
 <li class="fragment"><p>3 fertilisations</p></li>
 <li class="fragment"><p>two siblings from each fertilisation one control, on FGF treated</p></li>
@@ -430,7 +434,7 @@ Emma Rand
 <section id="experimental-design-3" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">🐸 Experimental design</h2>
 
-<img data-src="images/88H-exp-design-betsy.png" width="200" class="r-stretch quarto-figure-left"><p class="caption">Schematic of frog development experiment</p><div>
+<img data-src="images/88H-exp-design-betsy.png" class="quarto-figure quarto-figure-left r-stretch" width="200"><p class="caption">Schematic of frog development experiment</p><div>
 <ul>
 <li class="fragment"><p>3 fertilisations. <span style="color:#009900">These are the replicates, <code>.5</code>, <code>.6</code>, <code>A</code></span></p></li>
 <li class="fragment"><p>two siblings from each fertilisation one control, one FGF treated. <span style="color:#009900">The treatments are paired</span></p></li>
@@ -462,11 +466,11 @@ Emma Rand
 <section id="experimental-design-4" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">🐭 Experimental design</h2>
 
-<img data-src="images/88H-exp-design-jillian.png" width="700" class="r-stretch quarto-figure-center"><p class="caption">Schematic of stem cell experiment</p></section>
+<img data-src="images/88H-exp-design-jillian.png" class="quarto-figure quarto-figure-center r-stretch" width="700"><p class="caption">Schematic of stem cell experiment</p></section>
 <section id="experimental-design-5" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">🐭 Experimental design</h2>
 
-<img data-src="images/88H-exp-design-jillian.png" width="200" class="r-stretch quarto-figure-left"><p class="caption">Schematic of stem cell experiment</p><div>
+<img data-src="images/88H-exp-design-jillian.png" class="quarto-figure quarto-figure-left r-stretch" width="200"><p class="caption">Schematic of stem cell experiment</p><div>
 <ul>
 <li class="fragment"><p>Cells were sorted using flow cytometry on the basis of cell surface markers</p></li>
 <li class="fragment"><p>There are three cell types: LT-HSCs, HSPCs, Progs</p></li>
@@ -477,7 +481,7 @@ Emma Rand
 <section id="experimental-design-6" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">🐭 Experimental design</h2>
 
-<img data-src="images/88H-exp-design-jillian.png" width="200" class="r-stretch quarto-figure-left"><p class="caption">Schematic of stem cell experiment</p><div>
+<img data-src="images/88H-exp-design-jillian.png" class="quarto-figure quarto-figure-left r-stretch" width="200"><p class="caption">Schematic of stem cell experiment</p><div>
 <ul>
 <li class="fragment"><p>There are three cell types: LT-HSCs, HSPCs, Progs <span style="color:#009900">These are the “treaments”</span></p></li>
 <li class="fragment"><p>Many cells of each type were sequenced: <span style="color:#009900">These are the replicates</span></p></li>
@@ -598,10 +602,12 @@ Emma Rand
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
 
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p>🔗 <a href="https://3mmarand.github.io/BIO00088H-data/omics/week-3/overview.html">About Omics 1: Hello data!</a></p>
 </div>
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-DESeq2" class="csl-entry" role="listitem">
 Love, Michael I., Wolfgang Huber, and Simon Anders. 2014. <span>“Moderated Estimation of Fold Change and Dispersion for RNA-Seq Data with DESeq2”</span> 15: 550. <a href="https://doi.org/10.1186/s13059-014-0550-8">https://doi.org/10.1186/s13059-014-0550-8</a>.
 </div>
@@ -643,7 +649,6 @@ Rand, Emma, and Sarah Forrester. 2022. <span>“Statistically Useful Experimenta
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -905,10 +910,9 @@ Rand, Emma, and Sarah Forrester. 2022. <span>“Statistically Useful Experimenta
         // clear code selection
         e.clearSelection();
       });
-      function tippyHover(el, contentFn) {
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -918,8 +922,17 @@ Rand, Emma, and Sarah Forrester. 2022. <span>“Statistically Useful Experimenta
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
