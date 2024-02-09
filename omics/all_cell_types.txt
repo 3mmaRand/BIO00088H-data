@@ -1,4 +1,4 @@
-	LTHSC_broad	LMPP_broad	MPP_broad	CMP_broad	MEP_broad	GMP_broad	MPP1_broad	MPP2_broad	MPP3_broad	STHSC_broad	LTHSC	LMPP	MPP	CMP	MEP	GMP	MPP1	MPP2	MPP3	STHSC	ESLAM	HSC1	Projected
+cell	LTHSC_broad	LMPP_broad	MPP_broad	CMP_broad	MEP_broad	GMP_broad	MPP1_broad	MPP2_broad	MPP3_broad	STHSC_broad	LTHSC	LMPP	MPP	CMP	MEP	GMP	MPP1	MPP2	MPP3	STHSC	ESLAM	HSC1	Projected
 HSPC_001	0	0	1	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0
 HSPC_002	1	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0
 HSPC_003	0	0	1	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0
