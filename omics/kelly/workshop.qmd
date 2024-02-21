@@ -184,7 +184,7 @@ mol_wt <- read_table("data-raw/mol_wt.txt") |>
 🎬 Pivot the cumulative data to long format:
 
 ```{r}
-#| echo: false
+
 vfa_cummul <- vfa_cummul |> 
   pivot_longer(cols = -c(sample_replicate,
                          treatment, 
