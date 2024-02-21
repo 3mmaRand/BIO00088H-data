@@ -212,7 +212,6 @@ Repeat for the delta data.
 🎬 Pivot the change data, `delta_vfa` to long format:
 
 ```{r}
-#| echo: false
 vfa_delta <- vfa_delta |> 
   pivot_longer(cols = -c(sample_replicate,
                          treatment, 
