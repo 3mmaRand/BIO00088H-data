@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.552">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Emma Rand">
 <title>Data Analysis for Group Project - Workshop</title>
@@ -414,7 +414,7 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">21 February, 2024</p>
+      <p class="date">28 March, 2024</p>
     </div>
   </div>
   
@@ -488,7 +488,6 @@ cookieconsent.run({
 <pre><code>data
 images
 overview.qmd
-study_after_workshop.html
 study_after_workshop.qmd
 study_before_workshop.ipynb
 study_before_workshop.qmd
@@ -502,56 +501,53 @@ workshop_files</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>total 160
-drwxr-xr-x 2 runner docker  4096 Feb 21 07:57 data
-drwxr-xr-x 2 runner docker  4096 Feb 21 07:57 images
--rw-r--r-- 1 runner docker  1597 Feb 21 07:57 overview.qmd
--rw-r--r-- 1 runner docker 31227 Feb 21 08:28 study_after_workshop.html
--rw-r--r-- 1 runner docker   184 Feb 21 07:57 study_after_workshop.qmd
--rw-r--r-- 1 runner docker  4807 Feb 21 07:57 study_before_workshop.ipynb
--rw-r--r-- 1 runner docker 13029 Feb 21 07:57 study_before_workshop.qmd
--rw-r--r-- 1 runner docker 58063 Feb 21 07:57 workshop.html
--rw-r--r-- 1 runner docker  8550 Feb 21 07:57 workshop.qmd
--rw-r--r-- 1 runner docker  8564 Feb 21 08:28 workshop.rmarkdown
-drwxr-xr-x 3 runner docker  4096 Feb 21 07:57 workshop_files</code></pre>
+<pre><code>total 128
+drwxr-xr-x 2 runner docker  4096 Mar 28 13:59 data
+drwxr-xr-x 2 runner docker  4096 Mar 28 13:59 images
+-rw-r--r-- 1 runner docker  1597 Mar 28 13:59 overview.qmd
+-rw-r--r-- 1 runner docker   184 Mar 28 13:59 study_after_workshop.qmd
+-rw-r--r-- 1 runner docker  4807 Mar 28 13:59 study_before_workshop.ipynb
+-rw-r--r-- 1 runner docker 13029 Mar 28 13:59 study_before_workshop.qmd
+-rw-r--r-- 1 runner docker 58063 Mar 28 13:59 workshop.html
+-rw-r--r-- 1 runner docker  8550 Mar 28 13:59 workshop.qmd
+-rw-r--r-- 1 runner docker  8564 Mar 28 14:23 workshop.rmarkdown
+drwxr-xr-x 3 runner docker  4096 Mar 28 13:59 workshop_files</code></pre>
 </div>
 </div>
 <p>You can use more than one option at once. The <code>-h</code> option stands for “human readable” and makes the file sizes easier to understand for humans:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-hl</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>total 160K
-drwxr-xr-x 2 runner docker 4.0K Feb 21 07:57 data
-drwxr-xr-x 2 runner docker 4.0K Feb 21 07:57 images
--rw-r--r-- 1 runner docker 1.6K Feb 21 07:57 overview.qmd
--rw-r--r-- 1 runner docker  31K Feb 21 08:28 study_after_workshop.html
--rw-r--r-- 1 runner docker  184 Feb 21 07:57 study_after_workshop.qmd
--rw-r--r-- 1 runner docker 4.7K Feb 21 07:57 study_before_workshop.ipynb
--rw-r--r-- 1 runner docker  13K Feb 21 07:57 study_before_workshop.qmd
--rw-r--r-- 1 runner docker  57K Feb 21 07:57 workshop.html
--rw-r--r-- 1 runner docker 8.4K Feb 21 07:57 workshop.qmd
--rw-r--r-- 1 runner docker 8.4K Feb 21 08:28 workshop.rmarkdown
-drwxr-xr-x 3 runner docker 4.0K Feb 21 07:57 workshop_files</code></pre>
+<pre><code>total 128K
+drwxr-xr-x 2 runner docker 4.0K Mar 28 13:59 data
+drwxr-xr-x 2 runner docker 4.0K Mar 28 13:59 images
+-rw-r--r-- 1 runner docker 1.6K Mar 28 13:59 overview.qmd
+-rw-r--r-- 1 runner docker  184 Mar 28 13:59 study_after_workshop.qmd
+-rw-r--r-- 1 runner docker 4.7K Mar 28 13:59 study_before_workshop.ipynb
+-rw-r--r-- 1 runner docker  13K Mar 28 13:59 study_before_workshop.qmd
+-rw-r--r-- 1 runner docker  57K Mar 28 13:59 workshop.html
+-rw-r--r-- 1 runner docker 8.4K Mar 28 13:59 workshop.qmd
+-rw-r--r-- 1 runner docker 8.4K Mar 28 14:23 workshop.rmarkdown
+drwxr-xr-x 3 runner docker 4.0K Mar 28 13:59 workshop_files</code></pre>
 </div>
 </div>
 <p>The <code>-a</code> option stands for “all” and shows us all the files, including hidden files.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-alh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>total 168K
-drwxr-xr-x 5 runner docker 4.0K Feb 21 08:28 .
-drwxr-xr-x 6 runner docker 4.0K Feb 21 08:28 ..
-drwxr-xr-x 2 runner docker 4.0K Feb 21 07:57 data
-drwxr-xr-x 2 runner docker 4.0K Feb 21 07:57 images
--rw-r--r-- 1 runner docker 1.6K Feb 21 07:57 overview.qmd
--rw-r--r-- 1 runner docker  31K Feb 21 08:28 study_after_workshop.html
--rw-r--r-- 1 runner docker  184 Feb 21 07:57 study_after_workshop.qmd
--rw-r--r-- 1 runner docker 4.7K Feb 21 07:57 study_before_workshop.ipynb
--rw-r--r-- 1 runner docker  13K Feb 21 07:57 study_before_workshop.qmd
--rw-r--r-- 1 runner docker  57K Feb 21 07:57 workshop.html
--rw-r--r-- 1 runner docker 8.4K Feb 21 07:57 workshop.qmd
--rw-r--r-- 1 runner docker 8.4K Feb 21 08:28 workshop.rmarkdown
-drwxr-xr-x 3 runner docker 4.0K Feb 21 07:57 workshop_files</code></pre>
+<pre><code>total 136K
+drwxr-xr-x 5 runner docker 4.0K Mar 28 14:23 .
+drwxr-xr-x 6 runner docker 4.0K Mar 28 13:59 ..
+drwxr-xr-x 2 runner docker 4.0K Mar 28 13:59 data
+drwxr-xr-x 2 runner docker 4.0K Mar 28 13:59 images
+-rw-r--r-- 1 runner docker 1.6K Mar 28 13:59 overview.qmd
+-rw-r--r-- 1 runner docker  184 Mar 28 13:59 study_after_workshop.qmd
+-rw-r--r-- 1 runner docker 4.7K Mar 28 13:59 study_before_workshop.ipynb
+-rw-r--r-- 1 runner docker  13K Mar 28 13:59 study_before_workshop.qmd
+-rw-r--r-- 1 runner docker  57K Mar 28 13:59 workshop.html
+-rw-r--r-- 1 runner docker 8.4K Mar 28 13:59 workshop.qmd
+-rw-r--r-- 1 runner docker 8.4K Mar 28 14:23 workshop.rmarkdown
+drwxr-xr-x 3 runner docker 4.0K Mar 28 13:59 workshop_files</code></pre>
 </div>
 </div>
 <p>You can move about with the <code>cd</code> command, which stands for “change directory”. You can use it to move into a directory by specifying the path to the directory:</p>
@@ -740,6 +736,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
           // target, if specified
           link.setAttribute("target", "_blank");
           if (link.getAttribute("rel") === null) {
@@ -781,7 +782,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

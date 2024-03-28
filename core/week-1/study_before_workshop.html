@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.552">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -339,7 +339,7 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">21 February, 2024</p>
+      <p class="date">28 March, 2024</p>
     </div>
   </div>
   
@@ -352,7 +352,8 @@ cookieconsent.run({
 
 
 <ol type="1">
-<li>📖 Read <a href="https://3mmarand.github.io/comp4biosci/file_systems.html">Understanding file systems</a>. This is an approximately 15 - 20 minute read revising file types and filesystems. It covers concepts of working directories and paths. We learned these ideas in stage 1 and you may feel completely confident with them but many students will benefit from a refresher. For BIO00070M students, this is part of the work you will also be asked to complete for BIO00052M Data Analysis in R.</li>
+<li><p>📖 Read <a href="https://3mmarand.github.io/comp4biosci/file_systems.html">Understanding file systems</a>. This is an approximately 15 - 20 minute read revising file types and filesystems. It covers concepts of working directories and paths. We learned these ideas in stage 1 and you may feel completely confident with them but many students will benefit from a refresher. For BIO00070M students, this is part of the work you will also be asked to complete for BIO00052M Data Analysis in R.</p></li>
+<li><p>In previous years you have submitted and RStudio Project as part of your BABS work. In this module you will develop this by submitting a Research Compendium. A Research Compendium is a documented collection of all the digital parts of the research project including data (or access to data), code and outputs. The Compendium might be a single Quarto/RStudio Project, (like you have done previously but with better documentation) or it might be a folder including an Quarto/RStudio Project and other material/scripts including the description of unscripted processing. You might want to remind yourself of the example RStudio Project, <a href="Y12345678.zip">Y12345678.zip</a> used in BABS 2.</p></li>
 </ol>
 
 
@@ -448,6 +449,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
           // target, if specified
           link.setAttribute("target", "_blank");
           if (link.getAttribute("rel") === null) {
@@ -489,7 +495,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');

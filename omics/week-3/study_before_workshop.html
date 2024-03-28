@@ -10,7 +10,7 @@
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.4.550">
+  <meta name="generator" content="quarto-1.4.552">
 
   <meta name="author" content="Emma Rand">
   <title>Data Analysis for Group Project - Independent Study to prepare for workshop</title>
@@ -388,7 +388,7 @@ Emma Rand
 </div>
 </div>
 
-  <p class="date">21 February, 2024</p>
+  <p class="date">28 March, 2024</p>
 </section>
 <section id="overview" class="slide level2">
 <h2>Overview</h2>
@@ -418,11 +418,11 @@ Emma Rand
 <section id="experimental-design-1" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">🐸 Experimental design</h2>
 
-<img data-src="images/88H-exp-design-betsy.png" class="quarto-figure quarto-figure-center r-stretch" width="700"><p class="caption">Schematic of frog development experiment</p></section>
+<img data-src="images/88H-exp-design-betsy.png" width="700" class="r-stretch quarto-figure-center"><p class="caption">Schematic of frog development experiment</p></section>
 <section id="experimental-design-2" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">🐸 Experimental design</h2>
 
-<img data-src="images/88H-exp-design-betsy.png" class="quarto-figure quarto-figure-left r-stretch" width="200"><p class="caption">Schematic of frog development experiment</p><div>
+<img data-src="images/88H-exp-design-betsy.png" width="200" class="r-stretch quarto-figure-left"><p class="caption">Schematic of frog development experiment</p><div>
 <ul>
 <li class="fragment"><p>3 fertilisations</p></li>
 <li class="fragment"><p>two siblings from each fertilisation one control, on FGF treated</p></li>
@@ -434,7 +434,7 @@ Emma Rand
 <section id="experimental-design-3" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">🐸 Experimental design</h2>
 
-<img data-src="images/88H-exp-design-betsy.png" class="quarto-figure quarto-figure-left r-stretch" width="200"><p class="caption">Schematic of frog development experiment</p><div>
+<img data-src="images/88H-exp-design-betsy.png" width="200" class="r-stretch quarto-figure-left"><p class="caption">Schematic of frog development experiment</p><div>
 <ul>
 <li class="fragment"><p>3 fertilisations. <span style="color:#009900">These are the replicates, <code>.5</code>, <code>.6</code>, <code>A</code></span></p></li>
 <li class="fragment"><p>two siblings from each fertilisation one control, one FGF treated. <span style="color:#009900">The treatments are paired</span></p></li>
@@ -466,11 +466,11 @@ Emma Rand
 <section id="experimental-design-4" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">🐭 Experimental design</h2>
 
-<img data-src="images/88H-exp-design-jillian.png" class="quarto-figure quarto-figure-center r-stretch" width="700"><p class="caption">Schematic of stem cell experiment</p></section>
+<img data-src="images/88H-exp-design-jillian.png" width="700" class="r-stretch quarto-figure-center"><p class="caption">Schematic of stem cell experiment</p></section>
 <section id="experimental-design-5" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">🐭 Experimental design</h2>
 
-<img data-src="images/88H-exp-design-jillian.png" class="quarto-figure quarto-figure-left r-stretch" width="200"><p class="caption">Schematic of stem cell experiment</p><div>
+<img data-src="images/88H-exp-design-jillian.png" width="200" class="r-stretch quarto-figure-left"><p class="caption">Schematic of stem cell experiment</p><div>
 <ul>
 <li class="fragment"><p>Cells were sorted using flow cytometry on the basis of cell surface markers</p></li>
 <li class="fragment"><p>There are three cell types: LT-HSCs, HSPCs, Progs</p></li>
@@ -481,7 +481,7 @@ Emma Rand
 <section id="experimental-design-6" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">🐭 Experimental design</h2>
 
-<img data-src="images/88H-exp-design-jillian.png" class="quarto-figure quarto-figure-left r-stretch" width="200"><p class="caption">Schematic of stem cell experiment</p><div>
+<img data-src="images/88H-exp-design-jillian.png" width="200" class="r-stretch quarto-figure-left"><p class="caption">Schematic of stem cell experiment</p><div>
 <ul>
 <li class="fragment"><p>There are three cell types: LT-HSCs, HSPCs, Progs <span style="color:#009900">These are the “treaments”</span></p></li>
 <li class="fragment"><p>Many cells of each type were sequenced: <span style="color:#009900">These are the replicates</span></p></li>
@@ -910,6 +910,24 @@ Rand, Emma, and Sarah Forrester. 2022. <span>“Statistically Useful Experimenta
         // clear code selection
         e.clearSelection();
       });
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
       function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
@@ -946,7 +964,11 @@ Rand, Emma, and Sarah Forrester. 2022. <span>“Statistically Useful Experimenta
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {
