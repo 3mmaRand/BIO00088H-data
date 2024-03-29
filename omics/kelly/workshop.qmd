@@ -227,7 +227,7 @@ View `vfa_delta` to check it looks like `vfa_cummul`
 g/l \* 0.001 \* MW):
 
 ```{r}
-#| echo: false
+
 vfa_delta <- vfa_delta |> 
   left_join(mol_wt, by = "vfa") |>
   mutate(conc_g_l = conc_mM * 0.001 * mw)
