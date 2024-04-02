@@ -136,6 +136,9 @@ vfa_cummul <- vfa_cummul |>
            sep = "-",
            remove = FALSE)
 ```
+📢 This code depends on the `sample_replicate` column being in the form treatment-replicate. In the sample data CN10 and NC are the treatments. The replicate is a number from 1 to 3. The value does include a encoding for time. You might want to edit your file to match this format.
+ 
+
 
 The provided data is cumulative/absolute. We need to calculate the
 change in VFA with time. There is a function, `lag()` that will help us
@@ -147,7 +150,7 @@ sure the data is in the right order so we will arrange by
 
 ## 1. Calculate *Change* in VFA g/l with time
 
-🎬 Create dataframe for the change in VFA
+🎬 Create dataframe for the change in VFA 📢 and the change in time
 
 ```{r}
 vfa_delta <- vfa_cummul |> 
@@ -160,11 +163,15 @@ vfa_delta <- vfa_cummul |>
            isopentanoate = isopentanoate - lag(isopentanoate),
            pentanoate = pentanoate - lag(pentanoate),
            isohexanoate = isohexanoate - lag(isohexanoate),
-           hexanoate = hexanoate - lag(hexanoate))
+           hexanoate = hexanoate - lag(hexanoate),
+           delta_time = time_day - lag(time_day))
 ```
 
 Now we have two dataframes, one for the cumulative data and one for the
-change in VFA.
+change in VFA and time. Note that the VFA values have been replaced by the change in VFA but the change in time is in a separate column. I have done this because we later want to plot flux (not yet added) against time
+
+📢 This code also depends on the `sample_replicate` column being in the form treatment-replicate. lag is calculating the difference between a value at one time point and the next for a treatment-replicate combination. 
+
 
 ## 2. Recalculate the data into grams per litre
 
@@ -209,14 +216,15 @@ View `vfa_cummul` to check you understand what you have done.
 
 Repeat for the delta data.
 
-🎬 Pivot the change data, `delta_vfa` to long format:
+🎬 Pivot the change data, `delta_vfa` to long format (📢 delta_time is added to the list of columns that do not need to be pivoted but repeated):
 
 ```{r}
 vfa_delta <- vfa_delta |> 
   pivot_longer(cols = -c(sample_replicate,
                          treatment, 
                          replicate,
-                         time_day),
+                         time_day,
+                         delta_time),
                values_to = "conc_mM",
                names_to = "vfa") 
 ```
@@ -515,12 +523,38 @@ hexanoate is especially high in the NC replicate 2 at time = 22
 
 Calculate the flux(change in VFA concentration over a period of time,
 divided by weight or volume of material) of each VFA, by mM and by
-weight.
+weight. 
+Emma's note: I think the terms flux and reaction rate are used 
+interchangeably
 
 I've requested clarification: *for the flux measurements, do they need
 graphs of the rate of change wrt time? And is the sludge volume going to
 be a constant for all samples or something they measure and varies by
 vial?*
+
+Answer: **The sludge volume is constant, at 30 mls within a 120ml vial.
+Some students will want to graph reaction rate with time, others will
+want to compare the measured GC-FID concentrations against the model
+output.**
+
+📢 Kelly asked for ".. a simple flux measurement, which is the change in VFA concentration over a period of time, divided by weight or volume of material. In this case it might be equal to == Delta(Acetate at 3 days - Acetate at 1 day)/Delta (3days - 1day)/50 mls sludge. This would provide a final flux with the units of mg acetate per ml sludge per day."
+
+Note: Kelly says mg/ml where earlier he used g/L. These are the same (but I called 
+my column `conc_g_l`)
+
+We need to use the `vfa_delta` data frame. It contains the change in VFA concentration and the change in time. We will add a column for the flux of each VFA in g/L/day. (mg/ml/day)
+
+```{r}
+
+sludge_volume <- 30 # ml
+vfa_delta <- vfa_delta |> 
+  mutate(flux = conc_g_l / delta_time / sludge_volume)
+  
+```
+
+NAs at time 1 are expected because there's no time before that to calculate a changes 
+
+
 
 ## 5. Graph and extract the reaction rate - pending
 
@@ -531,6 +565,75 @@ I've requested clarification: *for the nonlinear least squares curve
 fitting, I assume x is time but I'm not clear what the Y variable is -
 concentration? or change in concentration? or rate of change of
 concentration?*
+
+Answer: **The non-linear equation describes concentration change with
+time. Effectively the change in concentration is dependent upon the
+available concentration, in this example \[Hex\] represents the
+concentration of Hexanoic acid, while the T0 and T1 represent time
+steps.**
+
+**\[Hex\]T1 = \[Hex\]T0 - \[Hex\]T0 \* k**
+
+**Or. the amount of Hexanoic acid remaining at T1 (let's say one hour
+from the last data point) is equal to the starting concentration
+(\[Hex\]T0) minus the concentration dependent metabolism (\[Hex\]To \*
+k).**
+
+📢 We can now plot the observed fluxes (reaction rates) over time
+
+I've summarised the data to add error bars and means
+```{r}
+vfa_delta_summary <- vfa_delta |> 
+  group_by(treatment, time_day, vfa) |> 
+  summarise(mean_flux = mean(flux),
+            se_flux = sd(flux)/sqrt(length(flux))) |> 
+  ungroup()
+```
+
+
+```{r}
+ggplot(data = vfa_delta, aes(x = time_day, colour = vfa)) +
+  geom_point(aes(y = flux), alpha = 0.6) +
+  geom_errorbar(data = vfa_delta_summary, 
+                aes(ymin = mean_flux - se_flux, 
+                    ymax = mean_flux + se_flux), 
+                width = 1) +
+  geom_errorbar(data = vfa_delta_summary, 
+                aes(ymin = mean_flux, 
+                    ymax = mean_flux), 
+                width = 0.8) +
+  scale_color_viridis_d(name = NULL) +
+  scale_x_continuous(name = "Time (days)") +
+  scale_y_continuous(name = "VFA Flux mg/ml/day") +
+  theme_bw() +
+  facet_wrap(~treatment) +
+  theme(strip.background = element_blank())
+```
+
+Or maybe this is easier to read:
+
+```{r}
+ggplot(data = vfa_delta, aes(x = time_day, colour = treatment)) +
+  geom_point(aes(y = flux), alpha = 0.6) +
+  geom_errorbar(data = vfa_delta_summary, 
+                aes(ymin = mean_flux - se_flux, 
+                    ymax = mean_flux + se_flux), 
+                width = 1) +
+  geom_errorbar(data = vfa_delta_summary, 
+                aes(ymin = mean_flux, 
+                    ymax = mean_flux), 
+                width = 0.8) +
+  scale_color_viridis_d(name = NULL, begin = 0.2, end = 0.7) +
+  scale_x_continuous(name = "Time (days)") +
+  scale_y_continuous(name = "VFA Flux mg/ml/day") +
+  theme_bw() +
+  facet_wrap(~ vfa, nrow = 2) +
+  theme(strip.background = element_blank(),
+        legend.position = "top")
+```
+
+
+I have not yet worked out the best way to plot the modelled reaction rate
 
 Pages made with R [@R-core], Quarto [@allaire2022], `knitr` [@knitr],
 `kableExtra` [@kableExtra]
