@@ -635,6 +635,471 @@ ggplot(data = vfa_delta, aes(x = time_day, colour = treatment)) +
 
 I have not yet worked out the best way to plot the modelled reaction rate
 
+
+# Workflow 2024-04-04
+
+This workflow has been written for the data files I now have! Bear in mind that what you might need from here is going to depend on the narrative of your report. You only need include in the compendium things that support your report.
+
+-   [VFAs](https://docs.google.com/spreadsheets/d/1evdDxURggeYih0e4WX1mer9-qjwi0ADZsqlN3JEj3-o/edit#gid=191095748)
+
+
+-   [pH](https://docs.google.com/spreadsheets/d/19nDa1EXuZ9Yf7SSwnVPjHQm9MU_zqpaaCeO3VuZtRsk/edit#gid=0)
+
+I fixed some inconsistent formatting and unhelpful naming (sigh!) and down loaded these as csv files and saved them in the data-raw folder as:
+
+-   [vfa2.csv](data-raw/vfa2.csv)
+
+-   [ph.csv](data-raw/ph.csv)
+
+-   We also have  the Molecular weights for each VFA in grams per mole
+    [mol_wt.txt](data-raw/mol_wt.txt) 
+
+I recommend restarting R before you start this workflow: Control-Shift-F10 (or use the Session menu)
+
+
+
+## VFA data
+
+
+🎬 Load packages
+```{r}
+library(tidyverse)
+```
+
+
+
+```{r}
+
+vfa_cummul <- read_csv("data-raw/vfa2.csv") |> janitor::clean_names()
+```
+
+This what I think we have:
+-   set_number Two data sets, one about VFA treatment (2) and one about Protein treatments (1)
+
+-   replicate 
+
+    -   for set 1: 1-4
+    -   for set 2: 1-3
+
+-   treatment
+
+    -   for set 1: Casein, Keratin
+    -   for set 2: Acetate, Hexanoic, Decanoic
+
+-   time_day time in days (note time in the ph data in in hours)
+
+-   then columns for each of the 8 measured VFA: acetate, propanoate, isobutyrate, butyrate, isopentanoate, pentanoate, isohexanoate, hexanoate
+
+
+I think some of the data have been mislabelled as set 2 when it is set 1. I changed these in the csv file. 
+
+
+I'm going to split these into the two data sets and work on them separately
+
+🎬 Split the data into the two sets. Note we also remove the set number column as it is no longer needed
+
+```{r}
+vfa_cummul_protein <- vfa_cummul |> 
+  filter(set_number == 1) |> 
+  select(-set_number)
+
+vfa_cummul_vfa <- vfa_cummul |> 
+  filter(set_number == 2) |>
+  select(-set_number)
+```
+
+
+`vfa_cummul_protein` has 2 treatments, four replicates and 10 days = 2 x 4 x 10 = 80 rows
+
+`vfa_cummul_vfa` has 3 treatments, 3 replicates and 10 days = 3 x 3 x 10 = 90 rows
+
+🎬 import molecular weight data
+
+```{r}
+mol_wt <- read_table("data-raw/mol_wt.txt") |>
+  mutate(vfa = tolower(vfa))
+```
+
+### Set 1: Protein treatments
+
+#### 1. Calculate *Change* in VFA g/l with time
+
+🎬 Create dataframe for the change in VFA the change in time
+
+```{r}
+vfa_delta_protein <- vfa_cummul_protein |> 
+    group_by(treatment, replicate)  |> 
+    arrange(treatment, replicate, time_day) |>
+    mutate(acetate = acetate - lag(acetate),
+           propanoate = propanoate - lag(propanoate),
+           isobutyrate = isobutyrate - lag(isobutyrate),
+           butyrate = butyrate - lag(butyrate),
+           isopentanoate = isopentanoate - lag(isopentanoate),
+           pentanoate = pentanoate - lag(pentanoate),
+           isohexanoate = isohexanoate - lag(isohexanoate),
+           hexanoate = hexanoate - lag(hexanoate),
+           delta_time = time_day - lag(time_day))
+```
+
+Now we have two dataframes, one for the cumulative data and one for the
+change in VFA and time. Note that the VFA values have been replaced by the change in VFA but the change in time is in a separate column. I have done this because we later want to plot flux. Note that unlike the sample data, the time steps are all 1 day so the change in time is always 1 and not really needed. I have included it here to make more clear that the units of flux are which is the change in VFA concentration per unit of time per unit of weight or volume of material
+
+#### 2. Recalculate the data into grams per litre
+
+To make conversions from mM to g/l we need to do mM \* 0.001 \* MW. We
+will pivot the VFA data to long format
+and join the molecular weight data to the VFA data. Then we can
+calculate the g/l. We will do this for both the cumulative and delta
+dataframes.
+
+
+
+🎬 Pivot the cumulative data to long format:
+
+```{r}
+
+vfa_cummul_protein <- vfa_cummul_protein |> 
+  pivot_longer(cols = -c(treatment, 
+                         replicate,
+                         time_day),
+               values_to = "conc_mM",
+               names_to = "vfa") 
+```
+
+View `vfa_cummul_protein` to check you understand what you have done.
+
+🎬 Join molecular weight to data and calculate g/l (mutate to convert to
+g/l \* 0.001 \* MW):
+
+```{r}
+vfa_cummul_protein <- vfa_cummul_protein |> 
+  left_join(mol_wt, by = "vfa") |>
+  mutate(conc_g_l = conc_mM * 0.001 * mw)
+```
+
+View `vfa_cummul_protein` to check you understand what you have done.
+
+Repeat for the delta data.
+
+🎬 Pivot the change data, `vfa_delta_protein` to long format (📢 delta_time is added to the list of columns that do not need to be pivoted but repeated):
+
+```{r}
+vfa_delta_protein <- vfa_delta_protein |> 
+  pivot_longer(cols = -c(treatment, 
+                         replicate,
+                         time_day),
+               values_to = "conc_mM",
+               names_to = "vfa") 
+```
+
+View `vfa_delta_protein` to check it looks like `vfa_cummul_protein`.
+
+🎬 Join molecular weight to data and calculate g/l (mutate to convert to
+g/l \* 0.001 \* MW):
+
+```{r}
+
+vfa_delta_protein <- vfa_delta_protein |> 
+  left_join(mol_wt, by = "vfa") |>
+  mutate(conc_g_l = conc_mM * 0.001 * mw)
+```
+
+## 3. Calculate the percent representation of each VFA
+
+by mM and by weight
+
+🎬 Add a column which is the percent representation of each VFA for mM
+and g/l:
+
+```{r}
+vfa_cummul_protein <- vfa_cummul_protein |> 
+  group_by(treatment, replicate, time_day) |> 
+  mutate(percent_conc_g_l = conc_g_l / sum(conc_g_l) * 100,
+         percent_conc_mM = conc_mM / sum(conc_mM) * 100)
+
+```
+
+## Graphs for info so far
+
+🎬 Make summary data for graphing
+
+```{r}
+vfa_cummul_protein_summary <- vfa_cummul_protein |> 
+  group_by(treatment, time_day, vfa) |> 
+  summarise(mean_g_l = mean(conc_g_l),
+            se_g_l = sd(conc_g_l)/sqrt(length(conc_g_l)),
+            mean_mM = mean(conc_mM),
+            se_mM = sd(conc_mM)/sqrt(length(conc_mM))) |> 
+  ungroup()
+```
+
+```{r}
+vfa_delta_protein_summary <- vfa_delta_protein |> 
+  group_by(treatment, time_day, vfa) |> 
+  summarise(mean_g_l = mean(conc_g_l),
+            se_g_l = sd(conc_g_l)/sqrt(length(conc_g_l)),
+            mean_mM = mean(conc_mM),
+            se_mM = sd(conc_mM)/sqrt(length(conc_mM))) |> 
+  ungroup()
+```
+
+🎬 Graph the cumulative data, grams per litre:
+
+```{r}
+
+vfa_cummul_protein_summary |> 
+  ggplot(aes(x = time_day, colour = vfa)) +
+  geom_line(aes(y = mean_g_l), 
+            linewidth = 1) +
+  geom_errorbar(aes(ymin = mean_g_l - se_g_l,
+                    ymax = mean_g_l + se_g_l),
+                width = 0.5, 
+                show.legend = F,
+                linewidth = 1) +
+  scale_color_viridis_d(name = NULL) +
+  scale_x_continuous(name = "Time (days)") +
+  scale_y_continuous(name = "Mean VFA concentration (g/l)") +
+  theme_bw() +
+  facet_wrap(~treatment) +
+  theme(strip.background = element_blank())
+
+
+
+```
+
+🎬 Graph the change data, grams per litre:
+
+```{r}
+
+vfa_delta_protein_summary |> 
+  ggplot(aes(x = time_day, colour = vfa)) +
+  geom_line(aes(y = mean_g_l), 
+            linewidth = 1) +
+  geom_errorbar(aes(ymin = mean_g_l - se_g_l,
+                    ymax = mean_g_l + se_g_l),
+                width = 0.5, 
+                show.legend = F,
+                linewidth = 1) +
+  scale_color_viridis_d(name = NULL) +
+  scale_x_continuous(name = "Time (days)") +
+  scale_y_continuous(name = "Mean change in VFA concentration (g/l)") +
+  theme_bw() +
+  facet_wrap(~treatment) +
+  theme(strip.background = element_blank())
+
+
+
+```
+
+🎬 Graph the mean percent representation of each VFA g/l. Note
+`geom_col()` will plot proportion if we set`position = "fill"`
+
+```{r}
+vfa_cummul_protein_summary |> 
+  ggplot(aes(x = time_day, y = mean_g_l, fill = vfa)) +
+  geom_col(position = "fill") +
+  scale_fill_viridis_d(name = NULL) +
+  scale_x_continuous(name = "Time (days)") +
+  scale_y_continuous(name = "Mean Proportion VFA") +
+  theme_bw() +
+  facet_wrap(~treatment) +
+  theme(strip.background = element_blank())
+```
+
+
+
+### Set 2: VFA treatments
+
+#### 1. Calculate *Change* in VFA g/l with time
+
+🎬 Create dataframe for the change in VFA the change in time
+
+```{r}
+vfa_delta_vfa <- vfa_cummul_vfa |> 
+    group_by(treatment, replicate)  |> 
+    arrange(treatment, replicate, time_day) |>
+    mutate(acetate = acetate - lag(acetate),
+           propanoate = propanoate - lag(propanoate),
+           isobutyrate = isobutyrate - lag(isobutyrate),
+           butyrate = butyrate - lag(butyrate),
+           isopentanoate = isopentanoate - lag(isopentanoate),
+           pentanoate = pentanoate - lag(pentanoate),
+           isohexanoate = isohexanoate - lag(isohexanoate),
+           hexanoate = hexanoate - lag(hexanoate),
+           delta_time = time_day - lag(time_day))
+```
+
+Now we have two dataframes, one for the cumulative data and one for the
+change in VFA and time. Note that the VFA values have been replaced by the change in VFA but the change in time is in a separate column. I have done this because we later want to plot flux. Note that unlike the sample data, the time steps are all 1 day so the change in time is always 1 and not really needed. I have included it here to make more clear that the units of flux are which is the change in VFA concentration per unit of time per unit of weight or volume of material
+
+#### 2. Recalculate the data into grams per litre
+
+To make conversions from mM to g/l we need to do mM \* 0.001 \* MW. We
+will pivot the VFA data to long format
+and join the molecular weight data to the VFA data. Then we can
+calculate the g/l. We will do this for both the cumulative and delta
+dataframes.
+
+
+🎬 Pivot the cumulative data to long format:
+
+```{r}
+
+vfa_cummul_vfa <- vfa_cummul_vfa |> 
+  pivot_longer(cols = -c(treatment, 
+                         replicate,
+                         time_day),
+               values_to = "conc_mM",
+               names_to = "vfa") 
+```
+
+View `vfa_cummul_vfa` to check you understand what you have done.
+
+🎬 Join molecular weight to data and calculate g/l (mutate to convert to
+g/l \* 0.001 \* MW):
+
+```{r}
+vfa_cummul_vfa <- vfa_cummul_vfa |> 
+  left_join(mol_wt, by = "vfa") |>
+  mutate(conc_g_l = conc_mM * 0.001 * mw)
+```
+
+View `vfa_cummul_vfa` to check you understand what you have done.
+
+Repeat for the delta data.
+
+🎬 Pivot the change data, `vfa_delta_vfa` to long format (📢 delta_time is added to the list of columns that do not need to be pivoted but repeated):
+
+```{r}
+vfa_delta_vfa <- vfa_delta_vfa |> 
+  pivot_longer(cols = -c(treatment, 
+                         replicate,
+                         time_day),
+               values_to = "conc_mM",
+               names_to = "vfa") 
+```
+
+View `vfa_delta_vfa` to check it looks like `vfa_cummul_vfa`.
+
+🎬 Join molecular weight to data and calculate g/l (mutate to convert to
+g/l \* 0.001 \* MW):
+
+```{r}
+
+vfa_delta_vfa <- vfa_delta_vfa |> 
+  left_join(mol_wt, by = "vfa") |>
+  mutate(conc_g_l = conc_mM * 0.001 * mw)
+```
+
+## 3. Calculate the percent representation of each VFA
+
+by mM and by weight
+
+🎬 Add a column which is the percent representation of each VFA for mM
+and g/l:
+
+```{r}
+vfa_cummul_vfa <- vfa_cummul_vfa |> 
+  group_by(treatment, replicate, time_day) |> 
+  mutate(percent_conc_g_l = conc_g_l / sum(conc_g_l) * 100,
+         percent_conc_mM = conc_mM / sum(conc_mM) * 100)
+
+```
+
+## Graphs for info so far
+
+🎬 Make summary data for graphing
+
+```{r}
+vfa_cummul_vfa_summary <- vfa_cummul_vfa |> 
+  group_by(treatment, time_day, vfa) |> 
+  summarise(mean_g_l = mean(conc_g_l),
+            se_g_l = sd(conc_g_l)/sqrt(length(conc_g_l)),
+            mean_mM = mean(conc_mM),
+            se_mM = sd(conc_mM)/sqrt(length(conc_mM))) |> 
+  ungroup()
+```
+
+```{r}
+vfa_delta_vfa_summary <- vfa_delta_vfa |> 
+  group_by(treatment, time_day, vfa) |> 
+  summarise(mean_g_l = mean(conc_g_l),
+            se_g_l = sd(conc_g_l)/sqrt(length(conc_g_l)),
+            mean_mM = mean(conc_mM),
+            se_mM = sd(conc_mM)/sqrt(length(conc_mM))) |> 
+  ungroup()
+```
+
+🎬 Graph the cumulative data, grams per litre:
+
+```{r}
+
+vfa_cummul_vfa_summary |> 
+  ggplot(aes(x = time_day, colour = vfa)) +
+  geom_line(aes(y = mean_g_l), 
+            linewidth = 1) +
+  geom_errorbar(aes(ymin = mean_g_l - se_g_l,
+                    ymax = mean_g_l + se_g_l),
+                width = 0.5, 
+                show.legend = F,
+                linewidth = 1) +
+  scale_color_viridis_d(name = NULL) +
+  scale_x_continuous(name = "Time (days)") +
+  scale_y_continuous(name = "Mean VFA concentration (g/l)") +
+  theme_bw() +
+  facet_wrap(~treatment) +
+  theme(strip.background = element_blank())
+
+
+
+```
+
+🎬 Graph the change data, grams per litre:
+
+```{r}
+
+vfa_delta_vfa_summary |> 
+  ggplot(aes(x = time_day, colour = vfa)) +
+  geom_line(aes(y = mean_g_l), 
+            linewidth = 1) +
+  geom_errorbar(aes(ymin = mean_g_l - se_g_l,
+                    ymax = mean_g_l + se_g_l),
+                width = 0.5, 
+                show.legend = F,
+                linewidth = 1) +
+  scale_color_viridis_d(name = NULL) +
+  scale_x_continuous(name = "Time (days)") +
+  scale_y_continuous(name = "Mean change in VFA concentration (g/l)") +
+  theme_bw() +
+  facet_wrap(~treatment) +
+  theme(strip.background = element_blank())
+
+
+
+```
+
+🎬 Graph the mean percent representation of each VFA g/l. Note
+`geom_col()` will plot proportion if we set`position = "fill"`
+
+```{r}
+vfa_cummul_vfa_summary |> 
+  ggplot(aes(x = time_day, y = mean_g_l, fill = vfa)) +
+  geom_col(position = "fill") +
+  scale_fill_viridis_d(name = NULL) +
+  scale_x_continuous(name = "Time (days)") +
+  scale_y_continuous(name = "Mean Proportion VFA") +
+  theme_bw() +
+  facet_wrap(~treatment) +
+  theme(strip.background = element_blank())
+```
+
+
+
+
+
+
+
+
 Pages made with R [@R-core], Quarto [@allaire2022], `knitr` [@knitr],
 `kableExtra` [@kableExtra]
 
