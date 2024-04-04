@@ -639,10 +639,13 @@ I have not yet worked out the best way to plot the modelled reaction rate
 
 This workflow has been written for the data files I now have! Bear in mind that what you might need from here is going to depend on the narrative of your report. You only need include in the compendium things that support your report.
 
--   [VFAs](https://docs.google.com/spreadsheets/d/1evdDxURggeYih0e4WX1mer9-qjwi0ADZsqlN3JEj3-o/edit#gid=191095748)
+These are the two files I have
+
+-   [VFAs](https://docs.google.com/spreadsheets/d/1evdDxURggeYih0e4WX1mer9-qjwi0ADZsqlN3JEj3-o/edit#gid=191095748) This actually very similar to the sample data we had. Apart from naming things.
 
 
 -   [pH](https://docs.google.com/spreadsheets/d/19nDa1EXuZ9Yf7SSwnVPjHQm9MU_zqpaaCeO3VuZtRsk/edit#gid=0)
+
 
 I fixed some inconsistent formatting and unhelpful naming (sigh!) and down loaded these as csv files and saved them in the data-raw folder as:
 
@@ -673,6 +676,7 @@ vfa_cummul <- read_csv("data-raw/vfa2.csv") |> janitor::clean_names()
 ```
 
 This what I think we have:
+
 -   set_number Two data sets, one about VFA treatment (2) and one about Protein treatments (1)
 
 -   replicate 
@@ -690,12 +694,12 @@ This what I think we have:
 -   then columns for each of the 8 measured VFA: acetate, propanoate, isobutyrate, butyrate, isopentanoate, pentanoate, isohexanoate, hexanoate
 
 
-I think some of the data have been mislabelled as set 2 when it is set 1. I changed these in the csv file. 
+I think some of the data have been mislabelled as set 2 when it is set 1. I changed these in the csv file but not on the google sheet until someone can confirm there really are mislabelled). 
 
 
 I'm going to split these into the two data sets and work on them separately
 
-🎬 Split the data into the two sets. Note we also remove the set number column as it is no longer needed
+🎬 Split the data into the two sets. Note we also remove the set number column as it isn't need if the data is split into the two sets.
 
 ```{r}
 vfa_cummul_protein <- vfa_cummul |> 
