@@ -519,7 +519,7 @@ but isohexanoate and hexanoate differ. The difference might be because
 isohexanoate is especially low in the NC replicates at time = 1 and
 hexanoate is especially high in the NC replicate 2 at time = 22
 
-## 4. Calculate the flux - pending.
+## 4. Calculate the flux
 
 Calculate the flux(change in VFA concentration over a period of time,
 divided by weight or volume of material) of each VFA, by mM and by
@@ -539,8 +539,7 @@ output.**
 
 📢 Kelly asked for ".. a simple flux measurement, which is the change in VFA concentration over a period of time, divided by weight or volume of material. In this case it might be equal to == Delta(Acetate at 3 days - Acetate at 1 day)/Delta (3days - 1day)/50 mls sludge. This would provide a final flux with the units of mg acetate per ml sludge per day."
 
-Note: Kelly says mg/ml where earlier he used g/L. These are the same (but I called 
-my column `conc_g_l`)
+Note: Kelly says mg/ml where earlier he used g/L. These are the same (but I called my column `conc_g_l`)
 
 We need to use the `vfa_delta` data frame. It contains the change in VFA concentration and the change in time. We will add a column for the flux of each VFA in g/L/day. (mg/ml/day)
 
@@ -787,7 +786,8 @@ Repeat for the delta data.
 vfa_delta_protein <- vfa_delta_protein |> 
   pivot_longer(cols = -c(treatment, 
                          replicate,
-                         time_day),
+                         time_day, 
+                         delta_time),
                values_to = "conc_mM",
                names_to = "vfa") 
 ```
@@ -804,7 +804,7 @@ vfa_delta_protein <- vfa_delta_protein |>
   mutate(conc_g_l = conc_mM * 0.001 * mw)
 ```
 
-## 3. Calculate the percent representation of each VFA
+#### 3. Calculate the percent representation of each VFA
 
 by mM and by weight
 
@@ -819,7 +819,7 @@ vfa_cummul_protein <- vfa_cummul_protein |>
 
 ```
 
-## Graphs for info so far
+#### Graphs for info so far
 
 🎬 Make summary data for graphing
 
@@ -887,8 +887,6 @@ vfa_delta_protein_summary |>
   facet_wrap(~treatment) +
   theme(strip.background = element_blank())
 
-
-
 ```
 
 🎬 Graph the mean percent representation of each VFA g/l. Note
@@ -906,6 +904,88 @@ vfa_cummul_protein_summary |>
   theme(strip.background = element_blank())
 ```
 
+#### 4. Calculate the flux
+
+Calculate the flux(change in VFA concentration over a period of time,
+divided by weight or volume of material) of each VFA, by mM and by
+weight. 
+Emma's note: I think the terms flux and reaction rate are used 
+interchangeably
+
+The sludge volume is constant, at 30 mls. 
+Flux units are mg vfa per ml sludge per day
+
+
+Note: Kelly says mg/ml where earlier he used g/L. These are the same (but I called my column `conc_g_l`)
+
+We need to use the `vfa_delta_protein` data frame. It contains the change in VFA concentration and the change in time. We will add a column for the flux of each VFA in g/L/day. (mg/ml/day)
+
+```{r}
+
+sludge_volume <- 30 # ml
+vfa_delta_protein <- vfa_delta_protein |> 
+  mutate(flux = conc_g_l / delta_time / sludge_volume)
+  
+```
+
+NAs at time 1 are expected because there's no time before that to calculate a changes 
+
+
+
+#### 5. Graph and extract the reaction rate
+
+We can now plot the observed fluxes (reaction rates) over time
+
+I've summarised the data to add error bars and means
+```{r}
+vfa_delta_protein_summary <- vfa_delta_protein |> 
+  group_by(treatment, time_day, vfa) |> 
+  summarise(mean_flux = mean(flux),
+            se_flux = sd(flux)/sqrt(length(flux))) |> 
+  ungroup()
+```
+
+
+```{r}
+ggplot(data = vfa_delta_protein, aes(x = time_day, colour = vfa)) +
+  geom_point(aes(y = flux), alpha = 0.6) +
+  geom_errorbar(data = vfa_delta_protein_summary, 
+                aes(ymin = mean_flux - se_flux, 
+                    ymax = mean_flux + se_flux), 
+                width = 1) +
+  geom_errorbar(data = vfa_delta_protein_summary, 
+                aes(ymin = mean_flux, 
+                    ymax = mean_flux), 
+                width = 0.8) +
+  scale_color_viridis_d(name = NULL) +
+  scale_x_continuous(name = "Time (days)") +
+  scale_y_continuous(name = "VFA Flux mg/ml/day") +
+  theme_bw() +
+  facet_wrap(~treatment) +
+  theme(strip.background = element_blank())
+```
+
+Or maybe this is easier to read:
+
+```{r}
+ggplot(data = vfa_delta_protein, aes(x = time_day, colour = treatment)) +
+  geom_point(aes(y = flux), alpha = 0.6) +
+  geom_errorbar(data = vfa_delta_protein_summary, 
+                aes(ymin = mean_flux - se_flux, 
+                    ymax = mean_flux + se_flux), 
+                width = 1) +
+  geom_errorbar(data = vfa_delta_protein_summary, 
+                aes(ymin = mean_flux, 
+                    ymax = mean_flux), 
+                width = 0.8) +
+  scale_color_viridis_d(name = NULL, begin = 0.2, end = 0.7) +
+  scale_x_continuous(name = "Time (days)") +
+  scale_y_continuous(name = "VFA Flux mg/ml/day") +
+  theme_bw() +
+  facet_wrap(~ vfa, nrow = 2) +
+  theme(strip.background = element_blank(),
+        legend.position = "top")
+```
 
 
 ### Set 2: VFA treatments
@@ -974,7 +1054,8 @@ Repeat for the delta data.
 vfa_delta_vfa <- vfa_delta_vfa |> 
   pivot_longer(cols = -c(treatment, 
                          replicate,
-                         time_day),
+                         time_day,
+                         delta_time),
                values_to = "conc_mM",
                names_to = "vfa") 
 ```
@@ -991,7 +1072,7 @@ vfa_delta_vfa <- vfa_delta_vfa |>
   mutate(conc_g_l = conc_mM * 0.001 * mw)
 ```
 
-## 3. Calculate the percent representation of each VFA
+#### 3. Calculate the percent representation of each VFA
 
 by mM and by weight
 
@@ -1006,7 +1087,7 @@ vfa_cummul_vfa <- vfa_cummul_vfa |>
 
 ```
 
-## Graphs for info so far
+#### Graphs for info so far
 
 🎬 Make summary data for graphing
 
@@ -1095,9 +1176,91 @@ vfa_cummul_vfa_summary |>
 
 
 
+#### 4. Calculate the flux
+
+Calculate the flux(change in VFA concentration over a period of time,
+divided by weight or volume of material) of each VFA, by mM and by
+weight. 
+Emma's note: I think the terms flux and reaction rate are used 
+interchangeably
+
+The sludge volume is constant, at 30 mls. 
+Flux units are mg vfa per ml sludge per day
+
+
+Note: Kelly says mg/ml where earlier he used g/L. These are the same (but I called my column `conc_g_l`)
+
+We need to use the `vfa_delta_vfa` data frame. It contains the change in VFA concentration and the change in time. We will add a column for the flux of each VFA in g/L/day. (mg/ml/day)
+
+```{r}
+
+sludge_volume <- 30 # ml
+vfa_delta_vfa <- vfa_delta_vfa |> 
+  mutate(flux = conc_g_l / delta_time / sludge_volume)
+  
+```
+
+NAs at time 1 are expected because there's no time before that to calculate a changes 
 
 
 
+#### 5. Graph and extract the reaction rate
+
+We can now plot the observed fluxes (reaction rates) over time
+
+I've summarised the data to add error bars and means
+```{r}
+vfa_delta_vfa_summary <- vfa_delta_vfa |> 
+  group_by(treatment, time_day, vfa) |> 
+  summarise(mean_flux = mean(flux),
+            se_flux = sd(flux)/sqrt(length(flux))) |> 
+  ungroup()
+```
+
+
+```{r}
+ggplot(data = vfa_delta_vfa, aes(x = time_day, colour = vfa)) +
+  geom_point(aes(y = flux), alpha = 0.6) +
+  geom_errorbar(data = vfa_delta_vfa_summary, 
+                aes(ymin = mean_flux - se_flux, 
+                    ymax = mean_flux + se_flux), 
+                width = 1) +
+  geom_errorbar(data = vfa_delta_vfa_summary, 
+                aes(ymin = mean_flux, 
+                    ymax = mean_flux), 
+                width = 0.8) +
+  scale_color_viridis_d(name = NULL) +
+  scale_x_continuous(name = "Time (days)") +
+  scale_y_continuous(name = "VFA Flux mg/ml/day") +
+  theme_bw() +
+  facet_wrap(~treatment) +
+  theme(strip.background = element_blank())
+```
+
+Or maybe this is easier to read:
+
+```{r}
+ggplot(data = vfa_delta_vfa, aes(x = time_day, colour = treatment)) +
+  geom_point(aes(y = flux), alpha = 0.6) +
+  geom_errorbar(data = vfa_delta_vfa_summary, 
+                aes(ymin = mean_flux - se_flux, 
+                    ymax = mean_flux + se_flux), 
+                width = 1) +
+  geom_errorbar(data = vfa_delta_vfa_summary, 
+                aes(ymin = mean_flux, 
+                    ymax = mean_flux), 
+                width = 0.8) +
+  scale_color_viridis_d(name = NULL, begin = 0.2, end = 0.7) +
+  scale_x_continuous(name = "Time (days)") +
+  scale_y_continuous(name = "VFA Flux mg/ml/day") +
+  theme_bw() +
+  facet_wrap(~ vfa, nrow = 2) +
+  theme(strip.background = element_blank(),
+        legend.position = "top")
+```
+
+
+## ph data
 
 
 Pages made with R [@R-core], Quarto [@allaire2022], `knitr` [@knitr],
