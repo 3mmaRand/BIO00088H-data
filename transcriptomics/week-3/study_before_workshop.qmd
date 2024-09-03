@@ -1,10 +1,10 @@
 ---
 title: "Independent Study to prepare for workshop"
-subtitle: "Omics 1: 👋 Hello data!"
+subtitle: "Transcriptomics 1: 👋 Hello data!"
 author: "Emma Rand"
 format: 
   revealjs:
-    footer: "🔗 [About Omics 1: Hello data!](https://3mmarand.github.io/BIO00088H-data/omics/week-3/overview.html)"
+    footer: "🔗 [About Transcriptomics 1: Hello data!](https://3mmarand.github.io/BIO00088H-data/omics/week-3/overview.html)"
     slide-number: true
     chalkboard: true
     code-link: true
@@ -253,17 +253,17 @@ width="200"}
 
 ## Workshops
 
--   Omics 1: Hello data Getting to know the data. Checking the
+-   Transcriptomics 1: Hello data Getting to know the data. Checking the
     distributions of values overall, across samples and across genes to
     check things are as we expect and detect genes/samples that need to
     be removed
 
--   Omics 2: Statistical Analysis Identifying which genes are
+-   Transcriptomics 2: Statistical Analysis Identifying which genes are
     differentially expressed between treatments. This is the main
     analysis step. We will use different methods for bulk and single
     cell data.
 
--   Omics 3: Visualising and Interpreting Production of volcano plots
+-   Transcriptomics 3: Visualising and Interpreting Production of volcano plots
     and heatmaps to visualise the results of the statistical analysis.
     We will also look at how to interpret the results and how to find
     out more about the genes of interest.

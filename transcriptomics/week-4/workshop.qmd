@@ -1,6 +1,6 @@
 ---
 title: "Workshop"
-subtitle: "Omics 2: Statistical Analysis"
+subtitle: "Transcripttranscriptomics 2: Statistical Analysis"
 author: "Emma Rand"
 toc: true
 toc-depth: 4
@@ -499,7 +499,7 @@ that was deliberately selected. However, we will go through how to do
 this because it is an important step in most analyses.
 
 For the 🐸 frog data you should remember that we were able to filter out
-our unexpressed genes in [Omics 1](../week-3/workshop.html) because we
+our unexpressed genes in [Transcripttranscriptomics 1](../week-3/workshop.html) because we
 were examining both groups to be compared. In that workshop, [we
 discussed](../week-3/workshop.html#frog-filtering) that we could not
 filter out unexpressed genes in the 🐭 mouse data because we only had
@@ -699,7 +699,7 @@ practical. Qmd stands for Quarto markdown. It allows code and ordinary
 text to be interleaved to produce well-formatted reports including
 webpages. Right-click on the link and choose Save-As to download. You
 will be able to open the Qmd file in RStudio. Alternatively, [View in
-Browser](https://github.com/3mmaRand/BIO00088H-data/blob/main/omics/week-4/workshop.qmd). Coding and thinking answers are
+Browser](https://github.com/3mmaRand/BIO00088H-data/blob/main/transcriptomics/week-4/workshop.qmd). Coding and thinking answers are
 marked with `#---CODING ANSWER---` and `#---THINKING ANSWER---`
 
 Pages made with R [@R-core], Quarto [@allaire2022], `knitr` [@knitr],

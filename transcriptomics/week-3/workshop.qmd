@@ -1,6 +1,6 @@
 ---
 title: "Workshop"
-subtitle: "Omics 1: Hello data!"
+subtitle: "Transcriptomics 1: Hello data!"
 author: "Emma Rand"
 toc: true
 toc-depth: 4
@@ -20,7 +20,7 @@ editor:
 ## Session overview
 
 In this workshop you will learn what steps to take to get a good
-understanding of your 'omics data before you consider any statistical
+understanding of your transcriptomics data before you consider any statistical
 analysis. This is an often overlooked, but very valuable and
 informative, part of any data pipeline. It gives you the deep
 understanding of the data structures and values that you will need to

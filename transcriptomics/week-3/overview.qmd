@@ -1,6 +1,6 @@
 ---
 title: "Overview"
-subtitle: "Omics 1: 👋 Hello data!"
+subtitle: "Transcriptomics 1: 👋 Hello data!"
 toc: true
 toc-location: right
 ---
@@ -14,11 +14,11 @@ We suggest you sit together with your group in the workshop.
 
 The successful student will be able to:
 
--   explore 'omics data to find the number of rows and columns and know how these correspond to samples and variables
+-   explore transcriptomics data to find the number of rows and columns and know how these correspond to samples and variables
 -   explore the distribution of expression measures across whole data sets, across variables and across samples by summarising and plotting
 -   explain what distributions are expected and interpret the distributions they have
 -   explain on what basis we might filter out variables or samples
--   import, explore and filter 'omics data reproducibly so they can understand and reuse their code in the future
+-   import, explore and filter transcriptomics data reproducibly so they can understand and reuse their code in the future
 
 ### Instructions
 

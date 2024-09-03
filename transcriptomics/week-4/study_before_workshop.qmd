@@ -1,10 +1,10 @@
 ---
 title: "Independent Study to prepare for workshop"
-subtitle: "Omics 2: Statistical Analysis"
+subtitle: "Transcriptomics 2: Statistical Analysis"
 author: "Emma Rand"
 format: 
   revealjs:
-    footer: "🔗 [About Omics 2: Statistical Analysis](https://3mmarand.github.io/BIO00088H-data/omics/week-4/overview.html)"
+    footer: "🔗 [About Transcriptomics 2: Statistical Analysis](https://3mmarand.github.io/BIO00088H-data/omics/week-4/overview.html)"
     slide-number: true
     chalkboard: true
     code-link: true
@@ -34,7 +34,7 @@ In these slides we will:
 
 # Where should you be?
 
-## What we did in Omics 1: 👋 Hello data!
+## What we did in Transcriptomics 1: 👋 Hello data!
 
 ::: incremental
 ::: {style="font-size: 90%;"}
@@ -52,7 +52,7 @@ In these slides we will:
 
 ## Where should you be?
 
-After the [Omics 1: 👋 Hello data! Workshop](../week-3/workshop.html)
+After the [Transcriptomics 1: 👋 Hello data! Workshop](../week-3/workshop.html)
 including:
 
 -   [🤗 Look after future
@@ -96,7 +96,7 @@ Either of the other examples.
 
 Go through:
 
--   [Omics 1: 👋 Hello data! Workshop](../week-3/workshop.html)
+-   [Transcriptomics 1: 👋 Hello data! Workshop](../week-3/workshop.html)
     including:
 
 -   [🤗 Look after future
@@ -315,13 +315,13 @@ BiocManager::install("scran")
 
 ## Workshops
 
--   Omics 1: Hello data Getting to know the data. Checking the
+-   Transcriptomics 1: Hello data Getting to know the data. Checking the
     distributions of values
 
--   Omics 2: Statistical Analysis Identifying which genes are
+-   Transcriptomics 2: Statistical Analysis Identifying which genes are
     differentially expressed between treatments.
 
--   Omics 3: Visualising and Interpreting. PCA, Volcano plots and
+-   Transcriptomics 3: Visualising and Interpreting. PCA, Volcano plots and
     heatmaps to visualise results. Interpreting the results and finding
     out more about genes of interest.
 
