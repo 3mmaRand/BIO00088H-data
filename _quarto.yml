@@ -139,10 +139,6 @@ website:
              - href: omics/week-5/study_after_workshop.qmd
                text: Consolidate!  
           - text: ---
-          - section: "Kelly's Project"
-            contents: 
-             - href: omics/kelly/workshop.qmd
-               text: Workshop
     - title: "Images"
       style: "floating"
       contents: 

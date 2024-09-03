@@ -1,9 +1,0 @@
-vfa mw
-Acetate	60.05
-Propanoate	74.08
-Isobutyrate	88.11
-Butyrate	88.11
-Isopentanoate	102.13
-Pentanoate	102.13
-Isohexanoate	116.1583
-Hexanoate	116.1583
