@@ -164,8 +164,8 @@ cookieconsent.run({
 <span class="menu-text">Core</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../omics/omics.html"> 
-<span class="menu-text">Omics</span></a>
+    <a class="nav-link" href="../../transcriptomics/transcriptomics.html"> 
+<span class="menu-text">Transcriptomics</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../images/images.html"> 
@@ -200,8 +200,6 @@ cookieconsent.run({
  <span class="menu-text">Core Data Analysis</span></a>
   </div>
 </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
@@ -237,7 +235,6 @@ cookieconsent.run({
 </li>
       </ul>
 </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
@@ -273,7 +270,6 @@ cookieconsent.run({
 </li>
       </ul>
 </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
@@ -309,7 +305,6 @@ cookieconsent.run({
 </li>
       </ul>
 </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
@@ -504,18 +499,18 @@ workshop_files</code></pre>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>total 236
-drwxr-xr-x 2 runner docker  4096 Sep  3 12:18 data
-drwxr-xr-x 2 runner docker  4096 Sep  3 12:18 images
--rw-r--r-- 1 runner docker 34305 Sep  3 12:43 overview.html
--rw-r--r-- 1 runner docker  1597 Sep  3 12:18 overview.qmd
--rw-r--r-- 1 runner docker   184 Sep  3 12:18 study_after_workshop.qmd
--rw-r--r-- 1 runner docker 72936 Sep  3 12:43 study_before_workshop.html
--rw-r--r-- 1 runner docker  4807 Sep  3 12:18 study_before_workshop.ipynb
--rw-r--r-- 1 runner docker 13029 Sep  3 12:18 study_before_workshop.qmd
--rw-r--r-- 1 runner docker 58063 Sep  3 12:18 workshop.html
--rw-r--r-- 1 runner docker  8550 Sep  3 12:18 workshop.qmd
--rw-r--r-- 1 runner docker  8590 Sep  3 12:43 workshop.rmarkdown
-drwxr-xr-x 3 runner docker  4096 Sep  3 12:18 workshop_files</code></pre>
+drwxr-xr-x 2 runner docker  4096 Sep  3 13:15 data
+drwxr-xr-x 2 runner docker  4096 Sep  3 13:15 images
+-rw-r--r-- 1 runner docker 34020 Sep  3 13:19 overview.html
+-rw-r--r-- 1 runner docker  1597 Sep  3 13:15 overview.qmd
+-rw-r--r-- 1 runner docker   184 Sep  3 13:15 study_after_workshop.qmd
+-rw-r--r-- 1 runner docker 72936 Sep  3 13:19 study_before_workshop.html
+-rw-r--r-- 1 runner docker  4807 Sep  3 13:15 study_before_workshop.ipynb
+-rw-r--r-- 1 runner docker 13029 Sep  3 13:15 study_before_workshop.qmd
+-rw-r--r-- 1 runner docker 58063 Sep  3 13:15 workshop.html
+-rw-r--r-- 1 runner docker  8550 Sep  3 13:15 workshop.qmd
+-rw-r--r-- 1 runner docker  8590 Sep  3 13:19 workshop.rmarkdown
+drwxr-xr-x 3 runner docker  4096 Sep  3 13:15 workshop_files</code></pre>
 </div>
 </div>
 <p>You can use more than one option at once. The <code>-h</code> option stands for “human readable” and makes the file sizes easier to understand for humans:</p>
@@ -523,18 +518,18 @@ drwxr-xr-x 3 runner docker  4096 Sep  3 12:18 workshop_files</code></pre>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-hl</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>total 236K
-drwxr-xr-x 2 runner docker 4.0K Sep  3 12:18 data
-drwxr-xr-x 2 runner docker 4.0K Sep  3 12:18 images
--rw-r--r-- 1 runner docker  34K Sep  3 12:43 overview.html
--rw-r--r-- 1 runner docker 1.6K Sep  3 12:18 overview.qmd
--rw-r--r-- 1 runner docker  184 Sep  3 12:18 study_after_workshop.qmd
--rw-r--r-- 1 runner docker  72K Sep  3 12:43 study_before_workshop.html
--rw-r--r-- 1 runner docker 4.7K Sep  3 12:18 study_before_workshop.ipynb
--rw-r--r-- 1 runner docker  13K Sep  3 12:18 study_before_workshop.qmd
--rw-r--r-- 1 runner docker  57K Sep  3 12:18 workshop.html
--rw-r--r-- 1 runner docker 8.4K Sep  3 12:18 workshop.qmd
--rw-r--r-- 1 runner docker 8.4K Sep  3 12:43 workshop.rmarkdown
-drwxr-xr-x 3 runner docker 4.0K Sep  3 12:18 workshop_files</code></pre>
+drwxr-xr-x 2 runner docker 4.0K Sep  3 13:15 data
+drwxr-xr-x 2 runner docker 4.0K Sep  3 13:15 images
+-rw-r--r-- 1 runner docker  34K Sep  3 13:19 overview.html
+-rw-r--r-- 1 runner docker 1.6K Sep  3 13:15 overview.qmd
+-rw-r--r-- 1 runner docker  184 Sep  3 13:15 study_after_workshop.qmd
+-rw-r--r-- 1 runner docker  72K Sep  3 13:19 study_before_workshop.html
+-rw-r--r-- 1 runner docker 4.7K Sep  3 13:15 study_before_workshop.ipynb
+-rw-r--r-- 1 runner docker  13K Sep  3 13:15 study_before_workshop.qmd
+-rw-r--r-- 1 runner docker  57K Sep  3 13:15 workshop.html
+-rw-r--r-- 1 runner docker 8.4K Sep  3 13:15 workshop.qmd
+-rw-r--r-- 1 runner docker 8.4K Sep  3 13:19 workshop.rmarkdown
+drwxr-xr-x 3 runner docker 4.0K Sep  3 13:15 workshop_files</code></pre>
 </div>
 </div>
 <p>The <code>-a</code> option stands for “all” and shows us all the files, including hidden files.</p>
@@ -542,20 +537,20 @@ drwxr-xr-x 3 runner docker 4.0K Sep  3 12:18 workshop_files</code></pre>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-alh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>total 244K
-drwxr-xr-x 5 runner docker 4.0K Sep  3 12:43 .
-drwxr-xr-x 6 runner docker 4.0K Sep  3 12:18 ..
-drwxr-xr-x 2 runner docker 4.0K Sep  3 12:18 data
-drwxr-xr-x 2 runner docker 4.0K Sep  3 12:18 images
--rw-r--r-- 1 runner docker  34K Sep  3 12:43 overview.html
--rw-r--r-- 1 runner docker 1.6K Sep  3 12:18 overview.qmd
--rw-r--r-- 1 runner docker  184 Sep  3 12:18 study_after_workshop.qmd
--rw-r--r-- 1 runner docker  72K Sep  3 12:43 study_before_workshop.html
--rw-r--r-- 1 runner docker 4.7K Sep  3 12:18 study_before_workshop.ipynb
--rw-r--r-- 1 runner docker  13K Sep  3 12:18 study_before_workshop.qmd
--rw-r--r-- 1 runner docker  57K Sep  3 12:18 workshop.html
--rw-r--r-- 1 runner docker 8.4K Sep  3 12:18 workshop.qmd
--rw-r--r-- 1 runner docker 8.4K Sep  3 12:43 workshop.rmarkdown
-drwxr-xr-x 3 runner docker 4.0K Sep  3 12:18 workshop_files</code></pre>
+drwxr-xr-x 5 runner docker 4.0K Sep  3 13:19 .
+drwxr-xr-x 6 runner docker 4.0K Sep  3 13:15 ..
+drwxr-xr-x 2 runner docker 4.0K Sep  3 13:15 data
+drwxr-xr-x 2 runner docker 4.0K Sep  3 13:15 images
+-rw-r--r-- 1 runner docker  34K Sep  3 13:19 overview.html
+-rw-r--r-- 1 runner docker 1.6K Sep  3 13:15 overview.qmd
+-rw-r--r-- 1 runner docker  184 Sep  3 13:15 study_after_workshop.qmd
+-rw-r--r-- 1 runner docker  72K Sep  3 13:19 study_before_workshop.html
+-rw-r--r-- 1 runner docker 4.7K Sep  3 13:15 study_before_workshop.ipynb
+-rw-r--r-- 1 runner docker  13K Sep  3 13:15 study_before_workshop.qmd
+-rw-r--r-- 1 runner docker  57K Sep  3 13:15 workshop.html
+-rw-r--r-- 1 runner docker 8.4K Sep  3 13:15 workshop.qmd
+-rw-r--r-- 1 runner docker 8.4K Sep  3 13:19 workshop.rmarkdown
+drwxr-xr-x 3 runner docker 4.0K Sep  3 13:15 workshop_files</code></pre>
 </div>
 </div>
 <p>You can move about with the <code>cd</code> command, which stands for “change directory”. You can use it to move into a directory by specifying the path to the directory:</p>
