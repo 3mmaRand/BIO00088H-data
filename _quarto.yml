@@ -36,8 +36,8 @@ website:
         file: index.qmd
       - text: "Core"
         file:  core/core.qmd
-      - text: "Omics"
-        file:  omics/omics.qmd
+      - text: "Transcriptomics"
+        file:  transcriptomics/transcriptomics.qmd
       - text: "Image Analysis"
         file:  images/images.qmd
       - text: "Structure Analysis"
@@ -98,36 +98,36 @@ website:
     - title: "Omics"
       style: "floating"
       contents: 
-          - href: omics/omics.qmd
+          - href: transcriptomics/transcriptomics.qmd
           - section: "Week 3: Hello data!"
             contents: 
-             - href: omics/week-3/overview.qmd
+             - href: transcriptomics/week-3/overview.qmd
                text: About  
-             - href: omics/week-3/study_before_workshop.qmd
+             - href: transcriptomics/week-3/study_before_workshop.qmd
                text: Prepare! 
-             - href: omics/week-3/workshop.qmd
+             - href: transcriptomics/week-3/workshop.qmd
                text: Workshop
-             - href: omics/week-3/study_after_workshop.qmd
+             - href: transcriptomics/week-3/study_after_workshop.qmd
                text: Consolidate!  
           - section: "Week 4: Statistical Analysis"
             contents: 
-             - href: omics/week-4/overview.qmd
+             - href: transcriptomics/week-4/overview.qmd
                text: About  
-             - href: omics/week-4/study_before_workshop.qmd
+             - href: transcriptomics/week-4/study_before_workshop.qmd
                text: Prepare! 
-             - href: omics/week-4/workshop.qmd
+             - href: transcriptomics/week-4/workshop.qmd
                text: Workshop
-             - href: omics/week-4/study_after_workshop.qmd
+             - href: transcriptomics/week-4/study_after_workshop.qmd
                text: Consolidate!  
           - section: "Week 5: Visualising and Interpreting"
             contents: 
-             - href: omics/week-5/overview.qmd
+             - href: transcriptomics/week-5/overview.qmd
                text: About  
-             - href: omics/week-5/study_before_workshop.qmd
+             - href: transcriptomics/week-5/study_before_workshop.qmd
                text: Prepare! 
-             - href: omics/week-5/workshop.qmd
+             - href: transcriptomics/week-5/workshop.qmd
                text: Workshop
-             - href: omics/week-5/study_after_workshop.qmd
+             - href: transcriptomics/week-5/study_after_workshop.qmd
                text: Consolidate!  
     - title: "Images"
       style: "floating"

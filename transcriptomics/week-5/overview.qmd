@@ -1,11 +1,11 @@
 ---
 title: "Overview"
-subtitle: "Omics 3: Visualising and Interpreting"
+subtitle: "Transcriptomics 3: Visualising and Interpreting"
 toc: true
 toc-location: right
 ---
 
-This week we cover how to visualise and interpret the results of your differential expression analysis. The independent study will allow you to check you have what you should have following the [Omics 2: Statistical Analysis workshop](../week-4/workshop.html) and [Consolidation study](../week-4/study_after_workshop.html). It will also summarise the the methods and plots we will go through in the workshop. In the workshop, we will learn how to merge gene information into our results, conduct a Principle Component Analysis (PCA) and plot the results as well as how to create a nicely formatted Volcano plot and heatmap.  
+This week we cover how to visualise and interpret the results of your differential expression analysis. The independent study will allow you to check you have what you should have following the [Transcriptomics 2: Statistical Analysis workshop](../week-4/workshop.html) and [Consolidation study](../week-4/study_after_workshop.html). It will also summarise the the methods and plots we will go through in the workshop. In the workshop, we will learn how to merge gene information into our results, conduct a Principle Component Analysis (PCA) and plot the results as well as how to create a nicely formatted Volcano plot and heatmap.  
 
 We suggest you sit together with your group in the workshop.
 

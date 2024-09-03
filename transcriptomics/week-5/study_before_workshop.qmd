@@ -1,10 +1,10 @@
 ---
 title: "Independent Study to prepare for workshop"
-subtitle: "Omics 3: Visualising and Interpreting"
+subtitle: "Transcriptomics 3: Visualising and Interpreting"
 author: "Emma Rand"
 format: 
   revealjs:
-    footer: "🔗 [About Omics 3: Visualising and Interpreting](https://3mmarand.github.io/BIO00088H-data/omics/week-5/overview.html)"
+    footer: "🔗 [About Transcriptomics 3: Visualising and Interpreting](https://3mmarand.github.io/BIO00088H-data/omics/week-5/overview.html)"
     slide-number: true
     chalkboard: true
     code-link: true
@@ -39,7 +39,7 @@ In these slides we will:
 
 # Where should you be?
 
-## What we did in Omics 2: Statistical Analysis
+## What we did in Transcriptomics 2: Statistical Analysis
 
 ::: incremental
 -   carried out differential expression analysis
@@ -51,7 +51,7 @@ In these slides we will:
 
 ## Where should you be?
 
-After the [Omics 2: 👋 Statistical Analysis
+After the [Transcriptomics 2: 👋 Statistical Analysis
 Workshop](../week-4/workshop.html) including:
 
 -   [🤗 Look after future
@@ -103,7 +103,7 @@ Either of the other examples.
 
 Go through:
 
--   [Omics 2: Statistical Analysis](../week-4/workshop.html) including:
+-   [Transcriptomics 2: Statistical Analysis](../week-4/workshop.html) including:
 
 -   [🤗 Look after future
     you!](../week-4/workshop.html#look-after-future-you) and
@@ -224,7 +224,7 @@ It took me some time to find the information you need.
 
 # Plots
 
-## What is the purpose of an Omics plot?
+## What is the purpose of an Transcriptomics plot?
 
 ::: incremental
 -   In general, we plot data to help us summarise and understand it
@@ -306,7 +306,7 @@ consider al the genes at once?
 :::
 ## PCA
 
-We have done PCA in Omics 3, but often PCA might be one of the first
+We have done PCA in Transcriptomics 3, but often PCA might be one of the first
 exploratory steps because it gives you an idea whether you expect
 general patterns in gene expression that distinguish groups.
 
@@ -424,13 +424,13 @@ BiocManager::install("biomaRt")
 
 ## Workshops
 
--   Omics 1: Hello data Getting to know the data. Checking the
+-   Transcriptomics 1: Hello data Getting to know the data. Checking the
     distributions of values
 
--   Omics 2: Statistical Analysis Identifying which genes are
+-   Transcriptomics 2: Statistical Analysis Identifying which genes are
     differentially expressed between treatments.
 
--   Omics 3: Visualising and Interpreting. PCA, Volcano plots and
+-   Transcriptomics 3: Visualising and Interpreting. PCA, Volcano plots and
     heatmaps to visualise results. Interpreting the results and finding
     out more about genes of interest.
 
