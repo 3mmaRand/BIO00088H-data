@@ -59,3 +59,10 @@ DESeq2 BiocManager::install("DESeq2")
 which genes matters: first do venn diagram, present absent
 then to differential expressions
 
+
+Helper code:
+if you want to generate a bib file, you can use bibtex::write.bib
+
+deps <- renv::dependencies()
+pkgs <- setdiff(unique(deps$Package), "R")
+bibtex::write.bib(entry = pkgs, file = "references_libs.bib", append = FALSE)
