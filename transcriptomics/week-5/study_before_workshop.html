@@ -606,7 +606,7 @@ $ ensembl_gene_id &lt;chr&gt; "ENSMUSG00000028639", "ENSMUSG00000024053", "ENSMU
 <ul>
 <li class="fragment"><p><a href="https://www.ensembl.org/index.html">Ensembl</a> creates, integrates and distributes reference datasets and analysis tools that enable genomics</p></li>
 <li class="fragment"><p><a href="https://grch37.ensembl.org/info/data/biomart/index.html">BioMart</a> provides a access to these large datasets</p></li>
-<li class="fragment"><p><strong><code>biomaRt</code></strong> <span class="citation" data-cites="biomaRt">(<a href="#/references" role="doc-biblioref" onclick="">Durinck et al. 2009</a>)</span> is a Bioconductor package gives you programmatic access to BioMart.</p></li>
+<li class="fragment"><p><strong><code>biomaRt</code></strong> <span class="citation" data-cites="biomaRt">(<a href="#/references" role="doc-biblioref" onclick=""><strong>biomaRt?</strong></a>)</span> is a Bioconductor package gives you programmatic access to BioMart.</p></li>
 <li class="fragment"><p>In the workshop you use this package to get information you can merge with the results file</p></li>
 </ul>
 </div>
@@ -747,12 +747,12 @@ $ ensembl_gene_id &lt;chr&gt; "ENSMUSG00000028639", "ENSMUSG00000024053", "ENSMU
 <li><p>The 🐭 mouse data were already log<sub>2</sub>normalised</p></li>
 <li><p>The 🐸 frog data were normalised by the DE method and saved to file. We will log<sub>2</sub> transform before doing visualisations</p></li>
 </ul></section><section id="packages-to-install-before-the-workshop" class="slide level2"><h2>Packages to install before the workshop</h2>
-<p><strong><code>heatmaply</code></strong> <span class="citation" data-cites="heatmaply">(<a href="#/references" role="doc-biblioref" onclick="">Galili et al. 2017</a>)</span> and <strong><code>ggrepel</code></strong> <span class="citation" data-cites="ggrepel">(<a href="#/references" role="doc-biblioref" onclick="">Slowikowski 2023</a>)</span> from CRAN in the the normal way:</p>
+<p><strong><code>heatmaply</code></strong> <span class="citation" data-cites="heatmaply">(<a href="#/references" role="doc-biblioref" onclick="">Galili et al. 2017</a>)</span> and <strong><code>ggrepel</code></strong> <span class="citation" data-cites="ggrepel">(<a href="#/references" role="doc-biblioref" onclick="">Slowikowski 2024</a>)</span> from CRAN in the the normal way:</p>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"heatmaply"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggrepel"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong><code>biomaRt</code></strong> <span class="citation" data-cites="biomaRt">(<a href="#/references" role="doc-biblioref" onclick="">Durinck et al. 2009</a>)</span> from Bioconductor using <strong><code>BiocManager</code></strong> <span class="citation" data-cites="BiocManager">(<a href="#/references" role="doc-biblioref" onclick="">Morgan and Ramos 2023</a>)</span></p>
+<p><strong><code>biomaRt</code></strong> <span class="citation" data-cites="biomaRt">(<a href="#/references" role="doc-biblioref" onclick=""><strong>biomaRt?</strong></a>)</span> from Bioconductor using <strong><code>BiocManager</code></strong> <span class="citation" data-cites="BiocManager">(<a href="#/references" role="doc-biblioref" onclick="">Morgan and Ramos 2024</a>)</span></p>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html">install</a></span><span class="op">(</span><span class="st">"biomaRt"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -774,9 +774,6 @@ $ ensembl_gene_id &lt;chr&gt; "ENSMUSG00000028639", "ENSMUSG00000024053", "ENSMU
 <div id="ref-birney2004" class="csl-entry" role="listitem">
 Birney, Ewan, T. Daniel Andrews, Paul Bevan, Mario Caccamo, Yuan Chen, Laura Clarke, Guy Coates, et al. 2004. <span>“An Overview of Ensembl.”</span> <em>Genome Research</em> 14 (5): 925–28. <a href="https://doi.org/10.1101/gr.1860604">https://doi.org/10.1101/gr.1860604</a>.
 </div>
-<div id="ref-biomaRt" class="csl-entry" role="listitem">
-Durinck, Steffen, Paul T. Spellman, Ewan Birney, and Wolfgang Huber. 2009. <span>“Mapping Identifiers for the Integration of Genomic Datasets with the r/Bioconductor Package biomaRt”</span> 4.
-</div>
 <div id="ref-fisher2023" class="csl-entry" role="listitem">
 Fisher, Malcolm, Christina James-Zorn, Virgilio Ponferrada, Andrew J Bell, Nivitha Sundararaj, Erik Segerdell, Praneet Chaturvedi, et al. 2023. <span>“Xenbase: Key Features and Resources of the Xenopus Model Organism Knowledgebase.”</span> <em>Genetics</em> 224 (1): iyad018. <a href="https://doi.org/10.1093/genetics/iyad018">https://doi.org/10.1093/genetics/iyad018</a>.
 </div>
@@ -784,19 +781,19 @@ Fisher, Malcolm, Christina James-Zorn, Virgilio Ponferrada, Andrew J Bell, Nivit
 Galili, Tal, O’Callaghan, Alan, Sidi, Jonathan, Sievert, and Carson. 2017. <span>“Heatmaply: An r Package for Creating Interactive Cluster Heatmaps for Online Publishing.”</span> <em>Bioinformatics</em>. <a href="https://doi.org/10.1093/bioinformatics/btx657">https://doi.org/10.1093/bioinformatics/btx657</a>.
 </div>
 <div id="ref-DESeq2" class="csl-entry" role="listitem">
-Love, Michael I., Wolfgang Huber, and Simon Anders. 2014. <span>“Moderated Estimation of Fold Change and Dispersion for RNA-Seq Data with DESeq2”</span> 15: 550. <a href="https://doi.org/10.1186/s13059-014-0550-8">https://doi.org/10.1186/s13059-014-0550-8</a>.
+Love, Michael I., Wolfgang Huber, and Simon Anders. 2014. <span>“Moderated Estimation of Fold Change and Dispersion for RNA-Seq Data with DESeq2.”</span> <em>Genome Biology</em> 15: 550. <a href="https://doi.org/10.1186/s13059-014-0550-8">https://doi.org/10.1186/s13059-014-0550-8</a>.
 </div>
 <div id="ref-scran" class="csl-entry" role="listitem">
-Lun, Aaron T. L., Davis J. McCarthy, and John C. Marioni. 2016. <span>“A Step-by-Step Workflow for Low-Level Analysis of Single-Cell RNA-Seq Data with Bioconductor”</span> 5: 2122. <a href="https://doi.org/10.12688/f1000research.9501.2">https://doi.org/10.12688/f1000research.9501.2</a>.
+Lun, Aaron T. L., Davis J. McCarthy, and John C. Marioni. 2016. <span>“A Step-by-Step Workflow for Low-Level Analysis of Single-Cell RNA-Seq Data with Bioconductor.”</span> <em>F1000Res.</em> 5: 2122. <a href="https://doi.org/10.12688/f1000research.9501.2">https://doi.org/10.12688/f1000research.9501.2</a>.
 </div>
 <div id="ref-BiocManager" class="csl-entry" role="listitem">
-Morgan, Martin, and Marcel Ramos. 2023. <em>BiocManager: Access the Bioconductor Project Package Repository</em>. <a href="https://bioconductor.github.io/BiocManager/">https://bioconductor.github.io/BiocManager/</a>.
+Morgan, Martin, and Marcel Ramos. 2024. <em>BiocManager: Access the Bioconductor Project Package Repository</em>. <a href="https://bioconductor.github.io/BiocManager/">https://bioconductor.github.io/BiocManager/</a>.
 </div>
 <div id="ref-rand2021" class="csl-entry" role="listitem">
 Rand, Emma. 2021. <em>Data Science Strand of BIO00058M</em>. <a href="https://doi.org/10.5281/zenodo.5527705">https://doi.org/10.5281/zenodo.5527705</a>.
 </div>
 <div id="ref-ggrepel" class="csl-entry" role="listitem">
-Slowikowski, Kamil. 2023. <em>Ggrepel: Automatically Position Non-Overlapping Text Labels with ’Ggplot2’</em>. <a href="https://github.com/slowkow/ggrepel">https://github.com/slowkow/ggrepel</a>.
+Slowikowski, Kamil. 2024. <em>Ggrepel: Automatically Position Non-Overlapping Text Labels with ’Ggplot2’</em>. <a href="https://ggrepel.slowkow.com/">https://ggrepel.slowkow.com/</a>.
 </div>
 </div>
 </section></section>
