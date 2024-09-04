@@ -1,31 +1,30 @@
 ---
-title: "Core Data Analysis"
+title: "Core: Supporting Information"
 toc: true
 toc-location: right
 ---
 
 # Content
-There are three workshops taken by everyone on BIO00088H. These are in weeks 1, 2 and 11. The first two cover some useful workflow tips and how to organise your analyses effectively so they are reproducible but you will also have the chance to revise material from stage 1 and 2. The third workshop covers Research Compendia and Reproducible Reporting. In week 6 there is a drop-in session where you can ask questions about the material covered in the first two workshops.
 
-Students doing BIO00070M will do week 1 and 2 of the core workshops, then 3-5 of the Omics workshops. You can also attend the week 6 drop-in.  You do not do the week 11 session because your assessment differs. However, you will learn about Reproducible reporting in BIO00052M in week 10 because your that applies to your 52M assessment.
-
-Good organisation is important because you will want to be able to set work aside for holidays and assessment periods and then restart easily. You will also be assessed on the organisation, reproducibility and transparency of your work. 
-
-## Week 1 Core 1 Organising reproducible data analyses
-
-This week you will revise some essential concepts for scientific computing: file system organisation, file types, working directories and paths. The workshop will cover a rationale for working reproducibly, project oriented workflow, naming things and documenting your work.
+![futureself, CC-BY-NC, by Julen
+Colomb](images/future_you.png){fig-alt="Person working at a computer with an offstage person asking 'How is the analysis going?' The person at the computer replies 'Can't understand the date...and the data collector does not answer my emails or calls' Person offstage: 'That's terrible! So cruel! Who did collect the data? I will sack them!' Person at the computer: 'um...I did, 3 years ago.'"
+width="400"}
 
 
-## Week 2 Core 2 File types, workflow tips and other tools
+There are two workshops taken by everyone on BIO00088H. These are in weeks 2 and 6. These are important in understanding both how to assemble, curate and document your "Supporting Information" and how to work reproducibly so future you (Spring semester you) can painlessly work with past you and your work is demonstrably repeatable. This is essential because you will want to be able to set work aside for holidays and assessment periods and then restart easily. The Supporting Information you submit with your Report will be be assessed on its organisation, reproducibility and documentation. 
 
-This week we will consider File types, workflow tips and other tools. The independent study (~20 mins)  reiterates the value of RStudio projects and shows you how you create them with usethis. You will also learn how to recognise and write cool 😎 code, not 😩 ugly code and code algorithmically. In the workshop we will examine some common biological data formats and discover some awesome short cuts to help you write cool 😎 code. You will also get a brief introduction to the command line and Google Colab.
+BIO00070M students do week 1 and 6 of the core workshops along with weeks 3, 4 and 5 of transcriptomics. 
 
 
-## Week 6 Core Drop-in
 
-This week there is a drop-in session where you can ask questions about the material particular covered in the first two workshops. However, we will also endeavour to answer questions about any of the material in the omics, images or structure strand.
+## Week 1 Core: Supporting Information 1 
 
-## Week 11 Core 3 Research Compendia and Reproducible Reporting
+Why reproducibility matters, project-oriented workflow, organisation and naming things. You will also learn how to recognise and write cool 😎 code, not 😩 ugly code and code algorithmically and discover some awesome short cuts to help you write cool 😎 code. 
 
-This week we will cover the “Research compendium” and reproducible reporting which are part of the assessment. Research Compendium that is a documented collection of all the digital parts of the research project including data (or access to data), code and outputs. The Compendium might be a single Quarto/RStudio Project, or it might be a folder including an Quarto/RStudio Project and some additional materials including the description of unscripted processing. The collection is organised and documented in such a way that reproducing all the results is straightforward for another individual. We will also cover reproducible reporting which means using literate programming to weave together code and text together in a single document. Quarto is a multi-language literate programming tool (very like R Markdown).
+
+## Week 6 Core: Supporting Information 2 
+
+Documenting your Supporting Information with a read me and appropriate code commenting, curating code, non-coded processing
+
+
 

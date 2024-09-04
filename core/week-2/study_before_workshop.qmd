@@ -1,0 +1,10 @@
+---
+title: "Independent Study to prepare for workshop"
+subtitle: "Core: Supporting Information 1"
+toc: true
+toc-location: right
+---
+
+1.  📖 Read  [Understanding file systems](https://3mmarand.github.io/comp4biosci/file_systems.html). This is an approximately 15 - 20 minute read revising file types and file systems. It covers concepts of working directories and paths. We learned these ideas in stage 1 and you may feel completely confident with them but many students will benefit from a refresher. For BIO00070M students, this is part of the work you will also be asked to complete for BIO00052M Data Analysis in R.
+
+2.  In previous years you have submitted and RStudio Project as part of your BABS work. In this module you will submit Supporting Information for your Project Report. The Supporting Information is documented and organised collection of all the digital parts of the research project including data (or access to data), code or non-coded processing and outputs. The Supporting Information could be a single RStudio Project (like you have done previously but with better documentation) or a folder that includes an RStudio Project and other material/scripts. 

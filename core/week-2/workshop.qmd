@@ -1,0 +1,639 @@
+---
+title: "Workshop"
+subtitle: "Organising Reproducible Data Analyses"
+author: "Emma Rand"
+toc: true
+toc-depth: 4
+toc-location: right
+execute:
+  echo: true
+  include: true
+  error: true
+bibliography: ../../references.bib
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+# Introduction
+
+## Session overview
+
+In this workshop we will discuss why reproducibility matters and how to
+organise your work to make it reproducible. We will cover:
+
+# Reproducibility
+
+## What is reproducibility?
+
+-   **Reproducible: Same data + same analysis = identical results**.
+    *"... obtaining consistent results using the same input data;
+    computational steps, methods, and code; and conditions of analysis.
+    This definition is synonymous with"computational reproducibility"*
+    [@nationalacademiesofsciences2019]
+
+-   Replicable: Different data + same analysis = qualitatively similar
+    results. The work is not dependent on the specificities of the data.
+
+-   Robust: Same data + different analysis = qualitatively similar or
+    identical results. The work is not dependent on the specificities of
+    the analysis.
+
+-   Generalisable: Different data + different analysis = qualitatively
+    similar results and same conclusions. The findings can be
+    generalised
+
+[![The Turing Way\'s definitions of reproducible research
+](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
+
+## Why does it matter?
+
+-   Five selfish reasons to work reproducibly [@markowetz2015].
+    Alternatively, see the very entertaining
+    [talk](https://youtu.be/yVT07Sukv9Q)
+
+-   Many high profile cases of work which did not reproduce e.g. Anil
+    Potti unravelled by @baggerly2009
+
+-   **Will** become standard in Science and publishing e.g OECD Global
+    Science Forum Building digital workforce capacity and skills for
+    data-intensive science [@oecdglobalscienceforum2020]
+
+## How to achieve reproducibility
+
+-   Scripting
+
+-   Organisation: Project-oriented workflows with file and folder
+    structure, naming things
+
+-   Documentation: Readme files, code comments, metadata, version
+    control
+
+# Scripting
+
+## Rationale for scripting?
+
+-   Science is the generation of ideas, designing work to test them and
+    reporting the results.
+
+-   We ensure laboratory and field work is replicable, robust and
+    generalisable by planning and recording in lab books and using
+    standard protocols. Repeating results is still hard.
+
+-   Workflows for computational projects, and the data analysis and
+    reporting of other work can, and should, be 100% reproducible!
+
+-   Scripting is the way to achieve this.
+
+# Organisation
+
+## Project-oriented workflow
+
+-   use folders to organise your work
+
+-   you are aiming for structured, systematic and repeatable.
+
+-   inputs and outputs should be clearly identifiable from structure
+    and/or naming
+
+Examples
+
+```         
+-- liver_transcriptome/
+   |__data
+      |__raw/
+      |__processed/
+   |__images/
+   |__code/
+   |__reports/
+   |__figures/
+```
+
+
+add an example which is an RSP and one which includes an RSP
+
+
+---
+
+
+## Reproducibility is a continuum
+
+Some is better than none!
+
+-   Organise your project   
+-   Script **everything**.  
+-   Format code and follow a consistent style.  
+-   Code algorithmically 
+-   Modularise your code: organise into sections and scripts 
+-   Document your project - commenting, READMEs 
+
+
+# RStudio Projects revisited
+
+## RStudio Projects
+
+::: incremental
+
+-   RStudio Projects make it easy to manage working directories and
+    paths because they set the working directory to the RStudio Projects
+    directory automatically.
+:::
+
+## RStudio Projects
+
+::: columns
+::: {.column width="60%"}
+```{bash}
+#| eval: false
+#| code-line-numbers: "1"
+-- stem_cell_rna
+   |__stem_cell_rna.Rproj   
+   |__raw_ data/            
+      |__2019-03-21_donor_1.csv
+   |__README. md
+   |__R/
+      |__01_data_processing.R
+      |__02_exploratory.R
+      |__functions/
+         |__theme_volcano.R
+         |__normalise.R
+```
+:::
+
+::: {.column width="40%"}
+The project directory is the folder at the top [^1]
+:::
+:::
+
+[^1]: Thanks to [Mine
+    Çetinkaya-Rundel](https://mastodon.social/@minecr@fosstodon.org) who
+    helped me work out how to highlight a line
+    <https://gist.github.com/mine-cetinkaya-rundel/3af3415eab70a65be3791c3dcff6e2e3>.
+    Note to futureself: the `engine: knitr` matters.
+
+## RStudio Projects
+
+::: columns
+::: {.column width="60%"}
+```{bash}
+#| eval: false
+#| code-line-numbers: "2"
+-- stem_cell_rna
+   |__stem_cell_rna.Rproj   
+   |__raw_ data/            
+      |__2019-03-21_donor_1.csv
+   |__README. md
+   |__R/
+      |__01_data_processing.R
+      |__02_exploratory.R
+      |__functions/
+         |__theme_volcano.R
+         |__normalise.R
+```
+:::
+
+::: {.column width="40%"}
+the `.RProj` file is directly under the project folder. Its presence is what makes the folder an RStudio Project
+:::
+:::
+
+## RStudio Projects
+
+::: incremental
+-   When you open an RStudio Project, the working directory is set to
+    the Project directory (i.e., the location of the `.Rproj` file).
+
+-   When you use an RStudio Project you do not need to use `setwd()`
+
+-   When someone, including future you, opens the project on another
+    machine, all the paths just work.
+:::
+
+## RStudio Projects
+
+![Jenny Bryan](images/JennyBryan.jpg){fig-align="left" width="400"}
+
+In the words of [Jenny
+Bryan](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/):
+
+> "If the first line of your R script is
+> setwd("C:/Users/jenny/path/that/only/I/have") I will come into your
+> office and SET YOUR COMPUTER ON FIRE"
+
+## Creating an RStudio Project
+
+There are two menus options:
+
+1.  Top left, File menu
+
+2.  Top Right, drop-down indicated by the `.RProj` icon
+
+They both do the same thing. 
+
+In both cases you choose: New Project \| New Directory \| New Project
+
+Make sure you "Browse" to the folder you want to create the project.
+
+
+❔ Is your working directory a good place to create a Project folder?
+
+
+When you create a new RStudio Project 
+
+::: incremental
+
+-   A folder called `bananas/` is created
+-   RStudio starts a new session in `bananas/` i.e., your working
+    directory is now `bananas/`
+-   A file called `bananas.Rproj` is created
+-   the `.Rproj` file is what makes the directory an RStudio Project
+:::
+
+
+## Opening and closing
+
+You can close an RStudio Project with ONE of:
+
+1.  File \| Close Project
+2.  Using the drop-down option on the far right of the tool bar where
+    you see the Project name
+
+. . .
+
+You can open an RStudio Project with ONE of:
+
+1.  File \| Open Project or File \| Recent Projects\
+2.  Using the drop-down option on the far right of the tool bar where
+    you see the Project name\
+3.  Double-clicking an .Rproj file from your file explorer/finder
+
+When you open project, a new R session starts.
+
+
+
+#  Code formatting and style
+
+
+##  Code formatting and style
+
+> "Good coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread."
+
+[The tidyverse style guide](https://style.tidyverse.org/) 
+
+##  Code formatting and style
+
+We have all written code which is hard to read! 
+
+We all improve over time.
+
+```{r}
+#| echo: false
+tweetrmd::include_tweet("https://twitter.com/hadleywickham/status/589068687669243905")
+```
+
+
+
+##  Code formatting and style
+
+Some keys points:
+
+-   be consistent, emulate experienced coders  
+-   use snake_case for variable names (not CamelCase, dot.case)  
+-   use `<-` not `=` for assignment  
+-   use spacing around most operators and after commas  
+-   use indentation  
+-   avoid long lines, break up code blocks with new lines  
+-   use `"` for quoting text (not `'`) unless the text contains double quotes  
+
+
+
+## 😩 Ugly code 😩
+
+
+
+```{r}
+#| eval: false
+data<-read_csv('../data-raw/Y101_Y102_Y201_Y202_Y101-5.csv',skip=2)
+library(janitor);sol<-clean_names(data)
+data=data|>filter(str_detect(description,"OS=Homo sapiens"))|>filter(x1pep=='x')
+data=data|>
+mutate(g=str_extract(description,
+"GN=[^\\s]+")|>str_replace("GN=",''))
+data<-data|>mutate(id=str_extract(accession,"1::[^;]+")|>str_replace("1::",""))
+```
+
+
+## 😩 Ugly code 😩
+
+-   no spacing or indentation
+-   inconsistent splitting of code blocks over lines
+-   inconsistent use of quote characters
+-   no comments
+-   variable names convey no meaning
+-   use of `=` for assignment and inconsistently
+-   multiple commands on a line
+-   library statement in the middle of the analysis
+
+
+
+## 😎 Cool code 😎
+
+
+```{r}
+#| eval: false
+
+# Packages ----------------------------------------------------------------
+library(tidyverse)
+library(janitor)
+
+# Import ------------------------------------------------------------------
+
+# define file name
+file <- "../data-raw/Y101_Y102_Y201_Y202_Y101-5.csv"
+
+# import: column headers and data are from row 3
+solu_protein <- read_csv(file, skip = 2) |>
+  janitor::clean_names()
+
+# Tidy data ----------------------------------------------------------------
+
+# filter out the bovine proteins and those proteins 
+# identified from fewer than 2 peptides
+solu_protein <- solu_protein |>
+  filter(str_detect(description, "OS=Homo sapiens")) |>
+  filter(x1pep == "x")
+
+# Extract the genename from description column to a column
+# of its own
+solu_protein <- solu_protein |>
+  mutate(genename =  str_extract(description,"GN=[^\\s]+") |>
+           str_replace("GN=", ""))
+
+# Extract the top protein identifier from accession column (first
+# Uniprot ID after "1::") to a column of its own
+solu_protein <- solu_protein |>
+  mutate(protid =  str_extract(accession, "1::[^;]+") |>
+           str_replace("1::", ""))
+```
+
+
+## 😎 Cool code 😎
+
+-   `library()` calls collected
+
+-   Uses code sections to make it easier to navigate
+
+-   Uses white space and proper indentation
+
+-   Commented
+
+-   Uses more informative name for the dataframe
+
+
+
+# Code 'algorithmically'
+
+
+##  Code 'algorithmically'
+
+::: incremental
+
+-   Write code which expresses the structure of the problem/solution.
+
+-   Avoid hard coding numbers if at all possible - declare variables instead
+
+-   Declare frequently used values as variables at the start e.g., colour schemes, figure saving settings
+
+:::
+
+## 😩 Hard coding numbers.
+
+::: incremental
+
+-   Suppose we want to calculate the sums of squares, $SS(x)$, for the number of eggs in five nests. 
+
+-   The formula is given by: $\sum (x_i- \bar{x})^2$  
+
+-   We could calculate the mean and copy it, and the individual numbers into the formula
+
+:::
+
+## 😩 Hard coding numbers.
+
+```{r}
+# mean number of eggs per nest
+sum(3, 5, 6, 7, 8) / 5
+
+# ss(x) of number of eggs
+(3 - 5.8)^2 + (5 - 5.8)^2 + (6 - 5.8)^2 + (7 - 5.8)^2 + (8 - 5.8)^2
+```
+
+
+I am coding the calculation of the mean rather using the `mean()` function only to explain what 'coding algorithmically' means using a simple example.
+
+
+## 😩 Hard coding numbers
+
+::: incremental
+
+-   if any of the sample numbers must be altered, all the code needs changing
+
+-   it is hard to tell that the output of the first line is a mean
+
+-   its hard to recognise that the numbers in the mean calculation correspond to those in the next calculation
+
+-   it is hard to tell that 5 is just the number of nests
+
+-   no way of know if numbers are the same by coincidence or they refer to the same thing
+
+:::
+
+## 😎 Better
+
+```{r}
+# eggs each nest
+eggs <- c(3, 5, 6, 7, 8)
+
+# mean eggs per nest
+mean_eggs <- sum(eggs) / length(eggs)
+
+# ss(x) of number of eggs
+sum((eggs - mean_eggs)^2)
+```
+
+## 😎 Better
+
+::: incremental
+
+-   the commenting is similar but it is easier to follow
+
+-   if any of the sample numbers must be altered, only that number needs changing
+
+-   assigning a value you will later use to a variable with a meaningful name allows us to understand the first and second calculations
+
+-   makes use of R's elementwise calculation which resembles the formula (i.e., is expressed as the general rule)
+
+:::
+
+## Summary
+
+::: incremental
+
+-  Use an RStudio project for any R work (you can also incorporate other languages)
+
+-  Write Cool code not Ugly code: space, consistency, indentation, comments, meaningful variable names
+
+-  Write code which expresses the structure of the problem/solution.
+
+-  Avoid hard coding numbers if at all possible - declare variables instead
+
+:::
+
+# Reading
+
+Recommended if you still need convincing to use RStudio Projects
+
+-   [Project-oriented workflow \| What They Forgot to Teach You About
+    R](https://rstats.wtf/projects) [@bryan]
+
+Completely optional suggestions for further reading
+
+-   Ten simple rules for reproducible computational research
+    [@sandve2013]
+-   Good enough practices in scientific computing [@wilson2017]
+-   Excuse Me, Do You Have a Moment to Talk About Version Control?
+    [@bryan2018]
+
+
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Naming things
+
+![documents, CC-BY-NC,
+https://xkcd.com/1459/](images/xkcd-comic-file-names.png){fig-alt="A comic figure is looking over the shoulder of another and is shocked by a list of files with names like 'Untitled 138 copy.docx' and 'Untitled 243.doc'. Caption: 'Protip: Never look in someone else's documents folder'"}
+
+Guiding principle - Have a convention! Good file names are:
+
+-   machine readable
+
+-   human readable
+
+-   play nicely with sorting
+
+I suggest
+
+-   no spaces in names
+
+-   use snake_case or kebab-case rather than CamelCase or dot.case
+
+-   use all lower case except very occasionally where convention is
+    otherwise, e.g., README, LICENSE
+
+-   ordering: use left-padded numbers e.g., 01, 02....99 or 001,
+    002....999
+
+-   dates [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
+    2020-10-16
+
+-   write down your conventions
+
+```         
+-- liver_transcriptome/
+   |__data
+      |__raw/
+         |__2022-03-21_donor_1.csv
+         |__2022-03-21_donor_2.csv
+         |__2022-03-21_donor_3.csv
+         |__2022-05-14_donor_1.csv
+         |__2022-05-14_donor_2.csv
+         |__2022-05-14_donor_3.csv
+      |__processed/
+   |__images/
+   |__code/
+      |__functions/
+         |__summarise.R
+         |__normalise.R
+         |__theme_volcano.R
+      |__01_data_processing.py
+      |__02_exploratory.R
+      |__03_modelling.R
+      |__04_figures.R
+   |__reports/
+      |__01_report.qmd
+      |__02_supplementary.qmd
+   |__figures/
+      |__01_volcano_donor_1_vs_donor_2.eps
+      |__02_volcano_donor_1_vs_donor_3.eps
+```
+
+# Documentation
+
+
+# Useful exercises
+
+-   Want github co-pilot?
+
+    🎬 Create a [GitHub account](https://github.com/)
+
+    🎬 Apply for [student
+    benefits](https://education.github.com/discount_requests/application)
+
+-   Update R and RStudio
+
+    🎬 [Update R]()
+
+    🎬 [Update RStudio](https://posit.co/download/rstudio-desktop/). 
+
+-   Install package building tools
+
+    🎬 Windows Install
+    [Rtools](https://cran.r-project.org/bin/windows/Rtools/rtools43/rtools.html)
+
+    🎬 Mac install [Xcode from Mac App
+    Store](https://apps.apple.com/ca/app/xcode/id497799835?mt=12)
+
+-   Update packages:
+
+    🎬 devtools, tidyverse, BiocManager, readxl
+
+
+You're finished!
+
+# 🥳 Well Done! 🎉
+
+# Independent study following the workshop
+
+[Consolidate](study_after_workshop.qmd)
+
+Pages made with R [@R-core] and Quarto [@allaire2022]
+
+# References

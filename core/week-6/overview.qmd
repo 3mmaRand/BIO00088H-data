@@ -1,6 +1,6 @@
 ---
 title: "Overview"
-subtitle: "Core 1: Organising Data Analyses"
+subtitle: "Core: Supporting Information 2"
 toc: true
 toc-location: right
 ---
