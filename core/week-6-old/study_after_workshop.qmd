@@ -1,6 +1,6 @@
 ---
 title: "Independent Study to consolidate this week"
-subtitle: "Core 3 Research Compendia and Reproducible Reporting"
+subtitle: "Core Drop-in"
 toc: true
 toc-location: right
 format:
@@ -9,4 +9,4 @@ format:
     code-summary: "Answer - don't look until you have tried!"
 ---
 
-💻 Just work on your project!
+There is no consolidation work other than to continue revising what you have learned over the course of your degree about data analysis.

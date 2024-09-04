@@ -34,7 +34,7 @@ website:
     left:
       - text: "Welcome!"
         file: index.qmd
-      - text: "Core"
+      - text: "Core Supporting Info"
         file:  core/core.qmd
       - text: "Transcriptomics"
         file:  transcriptomics/transcriptomics.qmd
@@ -55,18 +55,7 @@ website:
       style: "floating"
       contents: 
           - href: core/core.qmd
-          - section: "Week 1: Organising analyses"
-            contents: 
-             - href: core/week-1/overview.qmd
-               text: About  
-             - href: core/week-1/study_before_workshop.qmd
-               text: Prepare! 
-             - href: core/week-1/workshop.qmd
-               text: Workshop
-             - href: core/week-1/study_after_workshop.qmd
-               text: Consolidate!  
-          - section: "Week 2: Workflow tips"
-            contents: 
+          - section: "Week 2: Supporting Information 1"
              - href: core/week-2/overview.qmd
                text: About  
              - href: core/week-2/study_before_workshop.qmd
@@ -75,7 +64,7 @@ website:
                text: Workshop
              - href: core/week-2/study_after_workshop.qmd
                text: Consolidate!  
-          - section: "Week 6: Core Drop-in"
+          - section: "Week 6: Supporting Information 2"
             contents: 
              - href: core/week-6/overview.qmd
                text: About  
@@ -84,16 +73,6 @@ website:
              - href: core/week-6/workshop.qmd
                text: Workshop
              - href: core/week-6/study_after_workshop.qmd
-               text: Consolidate!  
-          - section: "Week 11: Research Compendia"
-            contents: 
-             - href: core/week-11/overview.qmd
-               text: About  
-             - href: core/week-11/study_before_workshop.qmd
-               text: Prepare! 
-             - href: core/week-11/workshop.qmd
-               text: Workshop
-             - href: core/week-11/study_after_workshop.qmd
                text: Consolidate!  
     - title: "Omics"
       style: "floating"

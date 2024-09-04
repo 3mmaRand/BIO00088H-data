@@ -1,0 +1,29 @@
+---
+title: "Overview"
+subtitle: "Core Drop-in"
+toc: true
+toc-location: right
+---
+
+This week's session is a drop-in and introduces no new material. Instead, it is an opportunity to ask questions about the content from Core 1 and 2 and to revise skills from stage 1 and 2 as needed.
+
+
+### Instructions
+
+1.  [Prepare](study_before_workshop.qmd)
+
+    i.  📖 Review content from Core 1 and 2 
+
+2.  [Workshop](workshop.qmd)
+
+    i.  💻 Ask questions about the content from Core 1 and 2 as needed
+    
+    ii. 💻 Revise skills from stage 1 and 2 (88H students) or 52M (70M students) as needed
+
+
+
+3.  [Consolidate](study_after_workshop.qmd)
+
+    i.  There is no consolidation work for this drop-in
+
+
