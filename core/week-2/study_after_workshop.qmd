@@ -1,10 +1,39 @@
 ---
 title: "Independent Study to consolidate this week"
-subtitle: "Core 2"
+subtitle: "Core: Supporting Information 1"
+toc: true
+toc-location: right
 format:
   html:
     code-fold: true
     code-summary: "Answer - don't look until you have tried!"
 ---
 
-# bbbb
+These are suggestions
+
+
+-   Want github co-pilot?
+
+    🎬 Create a [GitHub account](https://github.com/)
+
+    🎬 Apply for [student
+    benefits](https://education.github.com/discount_requests/application)
+
+-   Update R and RStudio
+
+    🎬 [Update R](https://www.r-project.org/)
+
+    🎬 [Update RStudio](https://posit.co/download/rstudio-desktop/). 
+
+-   Install package building tools
+
+    🎬 Windows Install
+    [Rtools](https://cran.r-project.org/bin/windows/Rtools/rtools43/rtools.html)
+
+    🎬 Mac install [Xcode from Mac App
+    Store](https://apps.apple.com/ca/app/xcode/id497799835?mt=12)
+
+-   Update packages:
+
+    🎬 devtools, tidyverse, BiocManager, readxl
+

@@ -1,11 +1,11 @@
 ---
-title: "Workshop"
-subtitle: "Supporting Information 1 Organising Reproducible Data Analyse"
+title: "Independent Study to prepare for workshop"
+subtitle: "Core 2: File types, workflow tips and other tools"
 author: "Emma Rand"
 format: 
   revealjs:
     css: styles.css
-    footer: "🔗 [About Core: Supporting Information 1](https://3mmarand.github.io/BIO00088H-data/core/week-2/overview.html)"
+    footer: "🔗 [About Core 2: File types, workflow tips and other tools](https://3mmarand.github.io/BIO00088H-data/core/week-2/overview.html)"
     slide-number: true
     chalkboard: true
     code-link: true
@@ -18,154 +18,43 @@ engine: knitr
 ---
 
 
-# Introduction
-
-## Session overview
-
-In this workshop we will discuss why reproducibility matters and how to
-organise your work to make it reproducible. We will cover:
-
-What is reproducibility
-How to achieve reproducibility
-Rationale for scripting
-Project-oriented workflow
-
-# Reproducibility
-
-## What is reproducibility?
-
--   **Reproducible: Same data + same analysis = identical results**.
-    *"... obtaining consistent results using the same input data;
-    computational steps, methods, and code; and conditions of analysis.
-    This definition is synonymous with"computational reproducibility"*
-    [@nationalacademiesofsciences2019]
-
--   Replicable: Different data + same analysis = qualitatively similar
-    results. The work is not dependent on the specificities of the data.
-
--   Robust: Same data + different analysis = qualitatively similar or
-    identical results. The work is not dependent on the specificities of
-    the analysis.
-
--   Generalisable: Different data + different analysis = qualitatively
-    similar results and same conclusions. 
-
-## What is reproducibility?
-
-[![The Turing Way\'s definitions of reproducible research
-](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
-
-## Why does it matter?
-
-::: incremental
-
--   Five selfish reasons to work reproducibly [@markowetz2015].
-    Alternatively, see the very entertaining
-    [talk](https://youtu.be/yVT07Sukv9Q)
-
--   Many high profile cases of work which did not reproduce e.g. Anil
-    Potti unravelled by @baggerly2009
-
--   **Will** become standard in Science and publishing e.g OECD Global
-    Science Forum Building digital workforce capacity and skills for
-    data-intensive science [@oecdglobalscienceforum2020]
-
-:::
-
-## How to achieve reproducibility
+## Overview
 
 
--   Reproducibility is a continuum. Some is better than none!
-
--   Script **everything**
-
--   Organisation: Project-oriented workflows with file and folder
-    structure, naming things
-    
--   Code: follow a consistent style, organise into sections and scripts 
-    (be modular), Code algorithmically 
-
--   Documentation: Readme files, code comments, metadata, version
-    control, continuous integration
-
-# Scripting
-
-## Rationale for scripting
-
--   Science is the generation of ideas, designing work to test them and
-    reporting the results.
-
--   We ensure laboratory and field work is replicable, robust and
-    generalisable by planning and recording in lab books and using
-    standard protocols. Repeating results is still hard.
-
--   Workflows for computational projects, and the data analysis and
-    reporting of other work can, and should, be 100% reproducible!
-
--   Scripting is the way to achieve this.
-
-# Organisation of Supporting Information
-
-## Project-oriented workflow
-
--   use folders to organise your work
-
--   you are aiming for structured, systematic and repeatable.
-
--   inputs and outputs should be clearly identifiable from structure
-    and/or naming
+-   RStudio Projects revisited
+    -   using **`usethis`** package
+    -   Adding a README
+-   Formatting code
+-   Code algorithmically / algebraically.
 
 
-## Example: SI itself is an RSP
+## Reproducibility is a continuum
 
-```{bash}
--- stem_cell_rna
-   |__stem_cell_rna.Rproj   
-   |__raw_ data/            
-      |__2019-03-21_donor_1.csv
-      |__2019-03-21_donor_2.csv
-      |__2019-03-21_donor_3.csv
-   |__README. md
-   |__R/
-      |__01_data_processing.R
-      |__02_exploratory.R
-      |__functions/
-         |__theme_volcano.R
-         |__normalise.R
-```
+Some is better than none!
 
+-   Organise your project   
+-   Script **everything**.  
+-   Format code and follow a consistent style.  
+-   Code algorithmically 
+-   Modularise your code: organise into sections and scripts 
+-   Document your project - commenting, READMEs 
+-   Use literate programming e.g., R Markdown or Quarto
 
-## Example: SI includes an RSP
+. . .
 
-```{bash}
-
--- stem_cell_rna
-   |__data_processing/
-      |__01_data_processing.py
-      |__02_exploratory.py
-      |__raw_data/
-         |__2019-03-21_donor_1.csv
-         |__2019-03-21_donor_2.csv
-         |__2019-03-21_donor_3.csv
-   |__README. md
-   |__statistical_analysis
-      |__statistical_analysis.Rproj   
-      |__processed_data/
-      |__R/
-         |__01_DGE.R
-         |__02_visualisation.R
-         |__functions/
-            |__theme_volcano.R
-            |__normalise.R
-```
-
-
+-   More advanced: Version control, continuous integration, environments, containers
 
 # RStudio Projects revisited
 
 ## RStudio Projects
 
 ::: incremental
+
+-   We used RStudio Projects in stage one but they are so useful, it is
+    worth covering them again in case you are not yet using them.
+    
+-   We will also cover the **`usethis`**workflow to create an RStudio
+    Project.
 
 -   RStudio Projects make it easy to manage working directories and
     paths because they set the working directory to the RStudio Projects
@@ -255,7 +144,15 @@ Bryan](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/):
 
 ## Creating an RStudio Project
 
-There are two menus options:
+There are two ways to create an RStudio Project.
+
+1.  Using one of the two menus
+
+2.  Using the **`usethis`** package
+
+## Using a menu
+
+There are two menus:
 
 1.  Top left, File menu
 
@@ -265,23 +162,98 @@ They both do the same thing.
 
 In both cases you choose: New Project \| New Directory \| New Project
 
+. . .
+
 Make sure you "Browse" to the folder you want to create the project.
 
 
+# Using the **`usethis`** package
+
+
+## Using the **`usethis`** package
+
+I occasionally use the menu but I mostly use the **`usethis`** package.
+
+. . .
+
+🎬 Go to RStudio and check your working directory:
+
+```{r}
+#| eval: false
+getwd()
+```
+
+`"C:/Users/er13/Desktop"`
+
+. . .
+
 ❔ Is your working directory a good place to create a Project folder?
 
+## Using the **`usethis`** package
 
-When you create a new RStudio Project 
+If this is a good place to create a Project directory then...
+
+🎬 Create a project with:
+
+```{r}
+#| eval: false
+usethis::create_project("bananas")
+```
+
+## Using the **`usethis`** package
+
+Otherwise
+
+If you want the project directory elsewhere, you will need to give the
+relative path, e.g.
+
+```{r}
+#| eval: false
+usethis::create_project("../Documents/bananas")
+```
+
+## Using the **`usethis`** package
+
+The output will look like this and a new RStudio session will start.
+
+```         
+> usethis::create_project("bananas")
+√ Creating 'bananas/'
+√ Setting active project to 'C:/Users/er13/Desktop/bananas'
+√ Creating 'R/'
+√ Writing 'bananas.Rproj'
+√ Adding '.Rproj.user' to '.gitignore'
+√ Opening 'C:/Users/er13/Desktop/bananas/' in new RStudio session
+√ Setting active project to '<no active project>'
+```
+
+## Using the **`usethis`** package
+
+When you create a new RStudio Project with **`usethis`**:
 
 ::: incremental
 
 -   A folder called `bananas/` is created
 -   RStudio starts a new session in `bananas/` i.e., your working
     directory is now `bananas/`
+-   A folder called `R/` is created
 -   A file called `bananas.Rproj` is created
--   the `.Rproj` file is what makes the directory an RStudio Project
+-   A file called `.gitignore` is created
+-   A hidden directory called `.Rproj.user` is created
+
 :::
 
+## Using the **`usethis`** package
+
+::: incremental
+-   the `.Rproj` file is what makes the directory an RStudio Project
+
+-   the `Rproj.user` directory is where project-specific temporary files
+    are stored. You don't need to mess with it.
+
+-   the `.gitignore` is used for version controlled projects. If not using git, 
+    you can ignore it.
+:::
 
 ## Opening and closing
 
@@ -302,6 +274,30 @@ You can open an RStudio Project with ONE of:
 
 When you open project, a new R session starts.
 
+# Adding a README
+
+## Using the **`usethis`** package
+
+Once the RStudio project has been created, **`usethis`** helps you
+follow good practice.
+
+. . .
+
+🎬 We can add a README with:
+
+```{r}
+#| eval: false
+usethis::use_readme_md()
+```
+
+. . . 
+
+This creates a file called `README.md`, with a little default text, in
+the Project directory and opens it for editing.
+
+. . .
+
+`md` stands for markdown, it is a extremely widely used text formatting language which is readable as plain text. If you have ever used asterisks to make text bold or italic, you have used markdown.
 
 
 #  Code formatting and style
@@ -342,7 +338,7 @@ Some keys points:
 
 ## 😩 Ugly code 😩
 
-::: {style="font-size: 50%;"}
+
 
 ```{r}
 #| eval: false
@@ -354,7 +350,7 @@ mutate(g=str_extract(description,
 "GN=[^\\s]+")|>str_replace("GN=",''))
 data<-data|>mutate(id=str_extract(accession,"1::[^;]+")|>str_replace("1::",""))
 ```
-:::
+
 
 ## 😩 Ugly code 😩
 
@@ -371,7 +367,6 @@ data<-data|>mutate(id=str_extract(accession,"1::[^;]+")|>str_replace("1::",""))
 
 ## 😎 Cool code 😎
 
-::: {style="font-size: 50%;"}
 
 ```{r}
 #| eval: false
@@ -410,7 +405,6 @@ solu_protein <- solu_protein |>
            str_replace("1::", ""))
 ```
 
-:::
 
 ## 😎 Cool code 😎
 
@@ -435,11 +429,9 @@ solu_protein <- solu_protein |>
 
 -   Write code which expresses the structure of the problem/solution.
 
--   Avoid hard coding numbers if at all possible - declare variables 
-    instead
+-   Avoid hard coding numbers if at all possible - declare variables instead
 
--   Declare frequently used values as variables at the start e.g.,
-    colour schemes, figure saving settings
+-   Declare frequently used values as variables at the start e.g., colour schemes, figure saving settings
 
 :::
 
@@ -447,13 +439,11 @@ solu_protein <- solu_protein |>
 
 ::: incremental
 
--   Suppose we want to calculate the sums of squares, $SS(x)$, for 
-    the number of eggs in five nests. 
+-   Suppose we want to calculate the sums of squares, $SS(x)$, for the number of eggs in five nests. 
 
 -   The formula is given by: $\sum (x_i- \bar{x})^2$  
 
--   We could calculate the mean and copy it, and 
-    the individual numbers into the formula
+-   We could calculate the mean and copy it, and the individual numbers into the formula
 
 :::
 
@@ -468,27 +458,22 @@ sum(3, 5, 6, 7, 8) / 5
 ```
 
 
-I am coding the calculation of the mean rather using the `mean()` 
-function only to explain what 'coding algorithmically' means using 
-a simple example.
+I am coding the calculation of the mean rather using the `mean()` function only to explain what 'coding algorithmically' means using a simple example.
 
 
 ## 😩 Hard coding numbers
 
 ::: incremental
 
--   if any of the sample numbers must be altered, all the code needs 
-    changing
+-   if any of the sample numbers must be altered, all the code needs changing
 
 -   it is hard to tell that the output of the first line is a mean
 
--   its hard to recognise that the numbers in the mean calculation 
-    correspond to those in the next calculation
+-   its hard to recognise that the numbers in the mean calculation correspond to those in the next calculation
 
 -   it is hard to tell that 5 is just the number of nests
 
--   no way of know if numbers are the same by coincidence or they 
-    refer to the same thing
+-   no way of know if numbers are the same by coincidence or they refer to the same thing
 
 :::
 
@@ -511,76 +496,11 @@ sum((eggs - mean_eggs)^2)
 
 -   the commenting is similar but it is easier to follow
 
--   if any of the sample numbers must be altered, only that number
-    needs changing
+-   if any of the sample numbers must be altered, only that number needs changing
 
--   assigning a value you will later use to a variable with a meaningful 
-    name allows us to understand the first and second calculations
+-   assigning a value you will later use to a variable with a meaningful name allows us to understand the first and second calculations
 
--   makes use of R's elementwise calculation which resembles the formula 
-    (i.e., is expressed as the general rule)
-
-:::
-
-
-
-
-## Naming things
-
-![documents, CC-BY-NC,
-https://xkcd.com/1459/](images/xkcd-comic-file-names.png){fig-alt="A comic figure is looking over the shoulder of another and is shocked by a list of files with names like 'Untitled 138 copy.docx' and 'Untitled 243.doc'. Caption: 'Protip: Never look in someone else's documents folder'"}
-
-Guiding principle - Have a convention! Good file names are:
-
--   machine readable
-
--   human readable
-
--   play nicely with sorting
-
-## Naming suggestions
-
--   no spaces in names
-
--   use snake_case or kebab-case rather than CamelCase or dot.case
-
--   use all lower case except very occasionally where convention is
-    otherwise, e.g., README, LICENSE
-
--   ordering: use left-padded numbers e.g., 01, 02....99 or 001,
-    002....999
-
--   dates [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format:
-    2020-10-16
-
--   write down your conventions
-
-
-# Workflow tips
-
-::: {style="font-size: 50%;"}
--   multiple cursors
-
--   open a file/function or find a variable CONTROL+.
-
--   the command palette CONTROL+SHIFT+P
-
--   segmenting code CONTROL+SHIFT+R
-
--   to correct indentation CONTROL+i
-
--   to reformat code CONTROL+SHIFT+A Not perfect but corrects spacing,
-    indentation, multiple commands on lines and assignment with `=`
-
--   to comment and uncomment lines CONTROL+SHIFT+C
-
--   Tools \| Global options \| Code \| Display \| Show margin
-
--   Tools \| Global options \| Code \| Diagnostic \| Provide R style
-    diagnostics
-
--   [GitHub Copilot in RStudio, it's finally
-    here!](https://colorado.posit.co/rsc/rstudio-copilot/#/TitleSlide)
+-   makes use of R's elementwise calculation which resembles the formula (i.e., is expressed as the general rule)
 
 :::
 
@@ -590,8 +510,7 @@ Guiding principle - Have a convention! Good file names are:
 
 -  Use an RStudio project for any R work (you can also incorporate other languages)
 
--  Write Cool code not Ugly code: space, consistency, indentation, 
-   comments, meaningful variable names
+-  Write Cool code not Ugly code: space, consistency, indentation, comments, meaningful variable names
 
 -  Write code which expresses the structure of the problem/solution.
 
@@ -599,19 +518,19 @@ Guiding principle - Have a convention! Good file names are:
 
 :::
 
-## Reading
+# Reading
 
-Completely optional suggestions for further reading 
+Recommended if you still need convincing to use RStudio Projects
 
 -   [Project-oriented workflow \| What They Forgot to Teach You About
-    R](https://rstats.wtf/projects) [@bryan]. Recommended if you still 
-    need convincing to use RStudio Projects
+    R](https://rstats.wtf/projects) [@bryan]
+
+Completely optional suggestions for further reading
+
 -   Ten simple rules for reproducible computational research
     [@sandve2013]
 -   Good enough practices in scientific computing [@wilson2017]
 -   Excuse Me, Do You Have a Moment to Talk About Version Control?
     [@bryan2018]
-
-Pages made with R [@R-core] and Quarto [@allaire2022]
 
 ## References

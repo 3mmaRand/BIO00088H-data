@@ -1,29 +1,10 @@
 ---
 title: "Independent Study to prepare for workshop"
-subtitle: "Core Drop-in"
+subtitle: "Core 1"
 toc: true
 toc-location: right
 ---
 
-1.  📖 Read materials from [Core 1 Organising reproducible data analyses](../week-1/overview.qmd) and make a note of questions you have
+1.  📖 Read  [Understanding file systems](https://3mmarand.github.io/comp4biosci/file_systems.html). This is an approximately 15 - 20 minute read revising file types and filesystems. It covers concepts of working directories and paths. We learned these ideas in stage 1 and you may feel completely confident with them but many students will benefit from a refresher. For BIO00070M students, this is part of the work you will also be asked to complete for BIO00052M Data Analysis in R.
 
-2.  📖 Read materials from [Core 2 File types, workflow tips and other tools](../week-2/overview.qmd) and make a note of questions you have.
-
-3.  📖 Review Stage 1 and 2 (88H students) or 52M (70M students) content to see if there are areas you might benefit from revisiting. You can access these through the past VLE sites but you might find it helpful to use the latest versions, particularly for stage 1.
-
-Stage 1 
-
--  [Data Analysis in R for Becoming a Bioscientist 1](https://3mmarand.github.io/R4BABS/r4babs1/r4babs1.html).Core concepts about scientific computing, types of variable, the role of variables in analysis and how to use RStudio to organise analysis and import, summarise and plot data. 
-
--    [Data Analysis in R for Becoming a Bioscientist 2](https://3mmarand.github.io/R4BABS/r4babs2/r4babs2.html). The logic of hypothesis testing, confidence intervals, what is meant by a statistical model, two-sample tests and one- and two-way analysis of variance (ANOVA).
-
-Stage 2 
-
--   [Get Introductory Statistical Tests as Linear models: A guide for R users](https://3mmarand.github.io/gist-lm/) 
-
--   [A simple introduction to GLM for analysing Poisson and Binomial responses in R](https://3mmarand.github.io/singlm/)
-
-
-52M
-
--   [52M Data Analysis in R](https://3mmarand.github.io/R4BABS/pgt52m/pgt52m.html). Core concepts about scientific computing, types of variable, the role of variables in analysis and how to use RStudio to organise analysis and import, summarise and plot data, the logic of hypothesis testing, confidence intervals, what is meant by a statistical model, two-sample tests and one-way analysis of variance (ANOVA) and reproducible reports in Quarto. 
+2.  In previous years you have submitted and RStudio Project as part of your BABS work. In this module you will develop this by submitting a Research Compendium. A Research Compendium is a documented collection of all the digital parts of the research project including data (or access to data), code and outputs. The Compendium might be a single Quarto/RStudio Project, (like you have done previously but with better documentation) or it might be a folder including an Quarto/RStudio Project and other material/scripts including the description of unscripted processing. You might want to remind yourself of the example RStudio Project, [Y12345678.zip](Y12345678.zip) used in BABS 2.

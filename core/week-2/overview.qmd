@@ -1,42 +1,34 @@
 ---
 title: "Overview"
-subtitle: "Core 2: File types, workflow tips and other tools"
+subtitle: "Core: Supporting Information 1"
+toc: true
+toc-location: right
 ---
 
-This week we will consider File types, workflow tips and other tools. The independent study reiterates the value of RStudio projects and shows you how you create them with **`usethis`**. You will also learn how to recognise and write cool 😎 code, not 😩 ugly code and code algorithmically. In the workshop we will examine some common biological data formats and discover some awesome short cuts to help you write cool 😎 code. You will also get a brief introduction to the command line and Google Colab.
+This week you will revise some essential concepts for scientific computing: file system organisation, file types, working directories and paths. The workshop will cover a rationale for working reproducibly, project oriented workflow, naming things and documenting your work. 
+
 
 ### Learning objectives
 
 The successful student will be able to:
 
--   explain why RStudio are useful/essential and be able to use the **`usethis`** package 
+-   explain the organisation of files and directories in a file systems including root, home and working directories
+-   explain absolute and relative file paths
+-   explain why working reproducibly is important
+-   know how to use a project-oriented workflow to organise work
+-   be able to give files human- and machine-readable names
 -   write cool 😎 code not 😩 ugly code
 -   explain the value of code which expresses the structure of the problem/solution.
--   describe some common file types for biological data
 -   use some useful shortcuts to help write cool 😎 code
--   know what the command line is and how to use it for simple tasks
--   use Google colab to run code
--   recognise some of the differences between R and Python
 
 ### Instructions
 
-1.  [Prepare](study_before_workshop.qmd) 20 mins reading on RStudio Projects revisited, formatting code and coding algorithmically
+1.  [Prepare](study_before_workshop.qmd)
 
+    i.  📖 Read Understanding file systems
 
 2.  [Workshop](workshop.qmd)
 
-    i.  💬 Types of biological data files
-
-    ii. 🪄 Workflow tips and shortcuts
-
-    iii. 💻 The command line
-    
-    iv.  💻 Google colab
-    
-    v.  💻 Python
 
 3.  [Consolidate](study_after_workshop.qmd)
-
-    i.  💻 not sure yet :)
-
 

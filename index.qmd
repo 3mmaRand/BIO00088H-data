@@ -16,7 +16,7 @@ Integrated masters students doing 88H will be doing one of these projects:
 The project types are:
 
 | Title                                                                         | Director        | Data analysis strand            |
-|--------------------------------------|------------|----------------------|
+|-----------------------------------|-----------------|--------------------|
 | Identifying transcriptional targets of FGF signalling in Xenopus embryos.     | Betsy Pownall   | Transcriptomics, Emma Rand      |
 | Investigating the differentiation of stem cells in healthy bone marrow        | Jillian Barlow  | Transcriptomics, Emma Rand      |
 | Investigating  pathways involved in the Nickel detoxification in Willow       | Liz Rylott      | Transcriptomics, Emma Rand      |
@@ -27,14 +27,14 @@ The project types are:
 
 Data Analysis compromises five workshops covering computational skills needed in your project. MSc Bioinformatics students do the Core workshops and the transcriptomics workshops as part of BIO00070M. The data analysis workshops are:
 
-| Week | Data Strand                                                                                            |
-|---------------|---------------------------------------------------------|
-| 2    | Core 1 Supporting Information - reproducibility, project-oriented workflow, naming things,             |
-| 3    | Strand specific 1                                                                                      |
-| 4    | Strand specific 2                                                                                      |
-| 5    | Strand specific 3                                                                                      |
-| 6    | Core 2 Supporting Information - documenting, curating, cool code, handy shortcuts, non-coded processes |
-|      |                                                                                                        |
+| Week | Data Strand                                                                                                           |
+|-----------------|-------------------------------------------------------|
+| 2    | Core 1 Supporting Information - reproducibility, project-oriented workflow, naming things, cool code, handy shortcuts |
+| 3    | Strand specific 1                                                                                                     |
+| 4    | Strand specific 2                                                                                                     |
+| 5    | Strand specific 3                                                                                                     |
+| 6    | Core 2 Supporting Information - documenting with a README, curating code, non-coded processes                         |
+|      |                                                                                                                       |
 
 ## Module Learning Outcome linked to this content
 
