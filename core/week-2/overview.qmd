@@ -5,7 +5,7 @@ toc: true
 toc-location: right
 ---
 
-This week you will revise some essential concepts for scientific computing: file system organisation, file types, working directories and paths. The workshop will cover a rationale for working reproducibly, project oriented workflow, naming things and documenting your work. We will also examine some file types and the concept of tidy data.
+This week you will revise some essential concepts for scientific computing: file system organisation, file types, working directories and paths. The workshop will cover a rationale for working reproducibly, project oriented workflow, naming things and documenting your work. 
 
 
 ### Learning objectives
@@ -17,7 +17,9 @@ The successful student will be able to:
 -   explain why working reproducibly is important
 -   know how to use a project-oriented workflow to organise work
 -   be able to give files human- and machine-readable names
--   outline some common biological data file formats
+-   write cool 😎 code not 😩 ugly code
+-   explain the value of code which expresses the structure of the problem/solution.
+-   use some useful shortcuts to help write cool 😎 code
 
 ### Instructions
 

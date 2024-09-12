@@ -1,19 +1,22 @@
 ---
 title: "Workshop"
-subtitle: "Organising Reproducible Data Analyses"
+subtitle: "Supporting Information 1 Organising Reproducible Data Analyse"
 author: "Emma Rand"
-toc: true
-toc-depth: 4
-toc-location: right
-execute:
-  echo: true
-  include: true
-  error: true
+format: 
+  revealjs:
+    css: styles.css
+    footer: "🔗 [About Core: Supporting Information 1](https://3mmarand.github.io/BIO00088H-data/core/week-2/overview.html)"
+    slide-number: true
+    chalkboard: true
+    code-link: true
+    code-line-numbers: false
 bibliography: ../../references.bib
 editor: 
   markdown: 
     wrap: 72
+engine: knitr
 ---
+
 
 # Introduction
 
@@ -21,6 +24,11 @@ editor:
 
 In this workshop we will discuss why reproducibility matters and how to
 organise your work to make it reproducible. We will cover:
+
+What is reproducibility
+How to achieve reproducibility
+Rationale for scripting
+Project-oriented workflow
 
 # Reproducibility
 
@@ -40,13 +48,16 @@ organise your work to make it reproducible. We will cover:
     the analysis.
 
 -   Generalisable: Different data + different analysis = qualitatively
-    similar results and same conclusions. The findings can be
-    generalised
+    similar results and same conclusions. 
+
+## What is reproducibility?
 
 [![The Turing Way\'s definitions of reproducible research
 ](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
 
 ## Why does it matter?
+
+::: incremental
 
 -   Five selfish reasons to work reproducibly [@markowetz2015].
     Alternatively, see the very entertaining
@@ -59,19 +70,27 @@ organise your work to make it reproducible. We will cover:
     Science Forum Building digital workforce capacity and skills for
     data-intensive science [@oecdglobalscienceforum2020]
 
+:::
+
 ## How to achieve reproducibility
 
--   Scripting
+
+-   Reproducibility is a continuum. Some is better than none!
+
+-   Script **everything**
 
 -   Organisation: Project-oriented workflows with file and folder
     structure, naming things
+    
+-   Code: follow a consistent style, organise into sections and scripts 
+    (be modular), Code algorithmically 
 
 -   Documentation: Readme files, code comments, metadata, version
-    control
+    control, continuous integration
 
 # Scripting
 
-## Rationale for scripting?
+## Rationale for scripting
 
 -   Science is the generation of ideas, designing work to test them and
     reporting the results.
@@ -85,7 +104,7 @@ organise your work to make it reproducible. We will cover:
 
 -   Scripting is the way to achieve this.
 
-# Organisation
+# Organisation of Supporting Information
 
 ## Project-oriented workflow
 
@@ -96,36 +115,50 @@ organise your work to make it reproducible. We will cover:
 -   inputs and outputs should be clearly identifiable from structure
     and/or naming
 
-Examples
 
-```         
--- liver_transcriptome/
-   |__data
-      |__raw/
-      |__processed/
-   |__images/
-   |__code/
-   |__reports/
-   |__figures/
+## Example: SI itself is an RSP
+
+```{bash}
+-- stem_cell_rna
+   |__stem_cell_rna.Rproj   
+   |__raw_ data/            
+      |__2019-03-21_donor_1.csv
+      |__2019-03-21_donor_2.csv
+      |__2019-03-21_donor_3.csv
+   |__README. md
+   |__R/
+      |__01_data_processing.R
+      |__02_exploratory.R
+      |__functions/
+         |__theme_volcano.R
+         |__normalise.R
 ```
 
 
-add an example which is an RSP and one which includes an RSP
+## Example: SI includes an RSP
 
+```{bash}
 
----
+-- stem_cell_rna
+   |__data_processing/
+      |__01_data_processing.py
+      |__02_exploratory.py
+      |__raw_data/
+         |__2019-03-21_donor_1.csv
+         |__2019-03-21_donor_2.csv
+         |__2019-03-21_donor_3.csv
+   |__README. md
+   |__statistical_analysis
+      |__statistical_analysis.Rproj   
+      |__processed_data/
+      |__R/
+         |__01_DGE.R
+         |__02_visualisation.R
+         |__functions/
+            |__theme_volcano.R
+            |__normalise.R
+```
 
-
-## Reproducibility is a continuum
-
-Some is better than none!
-
--   Organise your project   
--   Script **everything**.  
--   Format code and follow a consistent style.  
--   Code algorithmically 
--   Modularise your code: organise into sections and scripts 
--   Document your project - commenting, READMEs 
 
 
 # RStudio Projects revisited
@@ -309,7 +342,7 @@ Some keys points:
 
 ## 😩 Ugly code 😩
 
-
+::: {style="font-size: 50%;"}
 
 ```{r}
 #| eval: false
@@ -321,7 +354,7 @@ mutate(g=str_extract(description,
 "GN=[^\\s]+")|>str_replace("GN=",''))
 data<-data|>mutate(id=str_extract(accession,"1::[^;]+")|>str_replace("1::",""))
 ```
-
+:::
 
 ## 😩 Ugly code 😩
 
@@ -338,6 +371,7 @@ data<-data|>mutate(id=str_extract(accession,"1::[^;]+")|>str_replace("1::",""))
 
 ## 😎 Cool code 😎
 
+::: {style="font-size: 50%;"}
 
 ```{r}
 #| eval: false
@@ -376,6 +410,7 @@ solu_protein <- solu_protein |>
            str_replace("1::", ""))
 ```
 
+:::
 
 ## 😎 Cool code 😎
 
@@ -400,9 +435,11 @@ solu_protein <- solu_protein |>
 
 -   Write code which expresses the structure of the problem/solution.
 
--   Avoid hard coding numbers if at all possible - declare variables instead
+-   Avoid hard coding numbers if at all possible - declare variables 
+    instead
 
--   Declare frequently used values as variables at the start e.g., colour schemes, figure saving settings
+-   Declare frequently used values as variables at the start e.g.,
+    colour schemes, figure saving settings
 
 :::
 
@@ -410,11 +447,13 @@ solu_protein <- solu_protein |>
 
 ::: incremental
 
--   Suppose we want to calculate the sums of squares, $SS(x)$, for the number of eggs in five nests. 
+-   Suppose we want to calculate the sums of squares, $SS(x)$, for 
+    the number of eggs in five nests. 
 
 -   The formula is given by: $\sum (x_i- \bar{x})^2$  
 
--   We could calculate the mean and copy it, and the individual numbers into the formula
+-   We could calculate the mean and copy it, and 
+    the individual numbers into the formula
 
 :::
 
@@ -429,22 +468,27 @@ sum(3, 5, 6, 7, 8) / 5
 ```
 
 
-I am coding the calculation of the mean rather using the `mean()` function only to explain what 'coding algorithmically' means using a simple example.
+I am coding the calculation of the mean rather using the `mean()` 
+function only to explain what 'coding algorithmically' means using 
+a simple example.
 
 
 ## 😩 Hard coding numbers
 
 ::: incremental
 
--   if any of the sample numbers must be altered, all the code needs changing
+-   if any of the sample numbers must be altered, all the code needs 
+    changing
 
 -   it is hard to tell that the output of the first line is a mean
 
--   its hard to recognise that the numbers in the mean calculation correspond to those in the next calculation
+-   its hard to recognise that the numbers in the mean calculation 
+    correspond to those in the next calculation
 
 -   it is hard to tell that 5 is just the number of nests
 
--   no way of know if numbers are the same by coincidence or they refer to the same thing
+-   no way of know if numbers are the same by coincidence or they 
+    refer to the same thing
 
 :::
 
@@ -467,71 +511,16 @@ sum((eggs - mean_eggs)^2)
 
 -   the commenting is similar but it is easier to follow
 
--   if any of the sample numbers must be altered, only that number needs changing
+-   if any of the sample numbers must be altered, only that number
+    needs changing
 
--   assigning a value you will later use to a variable with a meaningful name allows us to understand the first and second calculations
+-   assigning a value you will later use to a variable with a meaningful 
+    name allows us to understand the first and second calculations
 
--   makes use of R's elementwise calculation which resembles the formula (i.e., is expressed as the general rule)
-
-:::
-
-## Summary
-
-::: incremental
-
--  Use an RStudio project for any R work (you can also incorporate other languages)
-
--  Write Cool code not Ugly code: space, consistency, indentation, comments, meaningful variable names
-
--  Write code which expresses the structure of the problem/solution.
-
--  Avoid hard coding numbers if at all possible - declare variables instead
+-   makes use of R's elementwise calculation which resembles the formula 
+    (i.e., is expressed as the general rule)
 
 :::
-
-# Reading
-
-Recommended if you still need convincing to use RStudio Projects
-
--   [Project-oriented workflow \| What They Forgot to Teach You About
-    R](https://rstats.wtf/projects) [@bryan]
-
-Completely optional suggestions for further reading
-
--   Ten simple rules for reproducible computational research
-    [@sandve2013]
--   Good enough practices in scientific computing [@wilson2017]
--   Excuse Me, Do You Have a Moment to Talk About Version Control?
-    [@bryan2018]
-
-
-
----
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -549,7 +538,7 @@ Guiding principle - Have a convention! Good file names are:
 
 -   play nicely with sorting
 
-I suggest
+## Naming suggestions
 
 -   no spaces in names
 
@@ -566,74 +555,63 @@ I suggest
 
 -   write down your conventions
 
-```         
--- liver_transcriptome/
-   |__data
-      |__raw/
-         |__2022-03-21_donor_1.csv
-         |__2022-03-21_donor_2.csv
-         |__2022-03-21_donor_3.csv
-         |__2022-05-14_donor_1.csv
-         |__2022-05-14_donor_2.csv
-         |__2022-05-14_donor_3.csv
-      |__processed/
-   |__images/
-   |__code/
-      |__functions/
-         |__summarise.R
-         |__normalise.R
-         |__theme_volcano.R
-      |__01_data_processing.py
-      |__02_exploratory.R
-      |__03_modelling.R
-      |__04_figures.R
-   |__reports/
-      |__01_report.qmd
-      |__02_supplementary.qmd
-   |__figures/
-      |__01_volcano_donor_1_vs_donor_2.eps
-      |__02_volcano_donor_1_vs_donor_3.eps
-```
 
-# Documentation
+# Workflow tips
 
+::: {style="font-size: 50%;"}
+-   multiple cursors
 
-# Useful exercises
+-   open a file/function or find a variable CONTROL+.
 
--   Want github co-pilot?
+-   the command palette CONTROL+SHIFT+P
 
-    🎬 Create a [GitHub account](https://github.com/)
+-   segmenting code CONTROL+SHIFT+R
 
-    🎬 Apply for [student
-    benefits](https://education.github.com/discount_requests/application)
+-   to correct indentation CONTROL+i
 
--   Update R and RStudio
+-   to reformat code CONTROL+SHIFT+A Not perfect but corrects spacing,
+    indentation, multiple commands on lines and assignment with `=`
 
-    🎬 [Update R]()
+-   to comment and uncomment lines CONTROL+SHIFT+C
 
-    🎬 [Update RStudio](https://posit.co/download/rstudio-desktop/). 
+-   Tools \| Global options \| Code \| Display \| Show margin
 
--   Install package building tools
+-   Tools \| Global options \| Code \| Diagnostic \| Provide R style
+    diagnostics
 
-    🎬 Windows Install
-    [Rtools](https://cran.r-project.org/bin/windows/Rtools/rtools43/rtools.html)
+-   [GitHub Copilot in RStudio, it's finally
+    here!](https://colorado.posit.co/rsc/rstudio-copilot/#/TitleSlide)
 
-    🎬 Mac install [Xcode from Mac App
-    Store](https://apps.apple.com/ca/app/xcode/id497799835?mt=12)
+:::
 
--   Update packages:
+## Summary
 
-    🎬 devtools, tidyverse, BiocManager, readxl
+::: incremental
 
+-  Use an RStudio project for any R work (you can also incorporate other languages)
 
-You're finished!
+-  Write Cool code not Ugly code: space, consistency, indentation, 
+   comments, meaningful variable names
 
-# 🥳 Well Done! 🎉
+-  Write code which expresses the structure of the problem/solution.
 
-# Independent study following the workshop
+-  Avoid hard coding numbers if at all possible - declare variables instead
 
-[Consolidate](study_after_workshop.qmd)
+:::
+
+## Reading
+
+Completely optional suggestions for further reading 
+
+-   [Project-oriented workflow \| What They Forgot to Teach You About
+    R](https://rstats.wtf/projects) [@bryan]. Recommended if you still 
+    need convincing to use RStudio Projects
+-   Ten simple rules for reproducible computational research
+    [@sandve2013]
+-   Good enough practices in scientific computing [@wilson2017]
+-   Excuse Me, Do You Have a Moment to Talk About Version Control?
+    [@bryan2018]
 
 Pages made with R [@R-core] and Quarto [@allaire2022]
 
-# References
+## References

@@ -11,10 +11,29 @@ format:
 
 These are suggestions
 
-<!-- ## BIO00088H Group Research Project students -->
 
-<!-- 1.  Revise previous Data Analysis materials. You can find the version you took on the VLE site for 17C / 08C. However, my latest versions (in development) are here: [Data Analysis in R](https://3mmarand.github.io/R4BABS/). The Becoming a Bioscientist (BABS) modules replace the Laboratory and Professional Skills modules. BABS1 and BABS2 are stage one, and I've tried to improve them over 17C / 08C. The site is also searchable (icon top right) -->
+-   Want github co-pilot?
 
-<!-- ## MSc Bioinformatics students doing BIO00070M -->
+    🎬 Create a [GitHub account](https://github.com/)
 
-<!-- 1.  Make sure you carry out the [preparatory work for week 2 of 52M](https://3mmarand.github.io/R4BABS/pgt52m/week-2/overview.html) -->
+    🎬 Apply for [student
+    benefits](https://education.github.com/discount_requests/application)
+
+-   Update R and RStudio
+
+    🎬 [Update R](https://www.r-project.org/)
+
+    🎬 [Update RStudio](https://posit.co/download/rstudio-desktop/). 
+
+-   Install package building tools
+
+    🎬 Windows Install
+    [Rtools](https://cran.r-project.org/bin/windows/Rtools/rtools43/rtools.html)
+
+    🎬 Mac install [Xcode from Mac App
+    Store](https://apps.apple.com/ca/app/xcode/id497799835?mt=12)
+
+-   Update packages:
+
+    🎬 devtools, tidyverse, BiocManager, readxl
+
