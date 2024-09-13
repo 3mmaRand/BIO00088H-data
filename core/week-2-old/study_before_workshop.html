@@ -13,7 +13,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.57">
 <meta name="author" content="Emma Rand">
-<title>Data Analysis for Group Project – Workshop</title>
+<title>Data Analysis for Group Project – Independent Study to prepare for workshop</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -437,8 +437,8 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center"><h1 class="title">Workshop</h1>
-  <p class="subtitle">Supporting Information 1 Organising Reproducible Data Analyse</p>
+<section id="title-slide" class="quarto-title-block center"><h1 class="title">Independent Study to prepare for workshop</h1>
+  <p class="subtitle">Core 2: File types, workflow tips and other tools</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -449,145 +449,60 @@ Emma Rand
 </div>
 
   <p class="date">13 September, 2024</p>
-</section><section><section id="introduction" class="title-slide slide level1 center"><h1>Introduction</h1>
-
-</section><section id="session-overview" class="slide level2"><h2>Session overview</h2>
-<p>In this workshop we will discuss why reproducibility matters and how to organise your work to make it reproducible. We will cover:</p>
-<p>What is reproducibility How to achieve reproducibility Rationale for scripting Project-oriented workflow</p>
-</section></section><section><section id="reproducibility" class="title-slide slide level1 center"><h1>Reproducibility</h1>
-
-</section><section id="what-is-reproducibility" class="slide level2"><h2>What is reproducibility?</h2>
+</section><section id="overview" class="slide level2"><h2>Overview</h2>
 <ul>
-<li><p><strong>Reproducible: Same data + same analysis = identical results</strong>. <em>“… obtaining consistent results using the same input data; computational steps, methods, and code; and conditions of analysis. This definition is synonymous with”computational reproducibility”</em> <span class="citation" data-cites="nationalacademiesofsciences2019">(<a href="#/references" role="doc-biblioref" onclick="">National Academies of Sciences et al. 2019</a>)</span></p></li>
-<li><p>Replicable: Different data + same analysis = qualitatively similar results. The work is not dependent on the specificities of the data.</p></li>
-<li><p>Robust: Same data + different analysis = qualitatively similar or identical results. The work is not dependent on the specificities of the analysis.</p></li>
-<li><p>Generalisable: Different data + different analysis = qualitatively similar results and same conclusions.</p></li>
-</ul></section><section id="what-is-reproducibility-1" class="slide level2"><h2>What is reproducibility?</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure><p><a href="https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions"><img data-src="images/reproducible-matrix.jpg" alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"></a></p>
-<figcaption>The Turing Way's definitions of reproducible research</figcaption></figure>
-</div>
-</section><section id="why-does-it-matter" class="slide level2"><h2>Why does it matter?</h2>
-<div>
+<li>RStudio Projects revisited
 <ul>
-<li class="fragment"><p>Five selfish reasons to work reproducibly <span class="citation" data-cites="markowetz2015">(<a href="#/references" role="doc-biblioref" onclick="">Markowetz 2015</a>)</span>. Alternatively, see the very entertaining <a href="https://youtu.be/yVT07Sukv9Q">talk</a></p></li>
-<li class="fragment"><p>Many high profile cases of work which did not reproduce e.g.&nbsp;Anil Potti unravelled by <span class="citation" data-cites="baggerly2009">Baggerly and Coombes (<a href="#/references" role="doc-biblioref" onclick="">2009</a>)</span></p></li>
-<li class="fragment"><p><strong>Will</strong> become standard in Science and publishing e.g OECD Global Science Forum Building digital workforce capacity and skills for data-intensive science <span class="citation" data-cites="oecdglobalscienceforum2020">(<a href="#/references" role="doc-biblioref" onclick="">OECD Global Science Forum 2020</a>)</span></p></li>
+<li>using <strong><code>usethis</code></strong> package</li>
+<li>Adding a README</li>
+</ul>
+</li>
+<li>Formatting code</li>
+<li>Code algorithmically / algebraically.</li>
+</ul></section><section id="reproducibility-is-a-continuum" class="slide level2"><h2>Reproducibility is a continuum</h2>
+<p>Some is better than none!</p>
+<ul>
+<li>Organise your project<br>
+</li>
+<li>Script <strong>everything</strong>.<br>
+</li>
+<li>Format code and follow a consistent style.<br>
+</li>
+<li>Code algorithmically</li>
+<li>Modularise your code: organise into sections and scripts</li>
+<li>Document your project - commenting, READMEs</li>
+<li>Use literate programming e.g., R Markdown or Quarto</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>More advanced: Version control, continuous integration, environments, containers</li>
 </ul>
 </div>
-</section><section id="how-to-achieve-reproducibility" class="slide level2"><h2>How to achieve reproducibility</h2>
-<ul>
-<li><p>Reproducibility is a continuum. Some is better than none!</p></li>
-<li><p>Script <strong>everything</strong></p></li>
-<li><p>Organisation: Project-oriented workflows with file and folder structure, naming things</p></li>
-<li><p>Code: follow a consistent style, organise into sections and scripts (be modular), Code algorithmically</p></li>
-<li><p>Documentation: Readme files, code comments, metadata, version control, continuous integration</p></li>
-</ul></section></section><section><section id="scripting" class="title-slide slide level1 center"><h1>Scripting</h1>
-
-</section><section id="rationale-for-scripting" class="slide level2"><h2>Rationale for scripting</h2>
-<ul>
-<li><p>Science is the generation of ideas, designing work to test them and reporting the results.</p></li>
-<li><p>We ensure laboratory and field work is replicable, robust and generalisable by planning and recording in lab books and using standard protocols. Repeating results is still hard.</p></li>
-<li><p>Workflows for computational projects, and the data analysis and reporting of other work can, and should, be 100% reproducible!</p></li>
-<li><p>Scripting is the way to achieve this.</p></li>
-</ul></section></section><section><section id="organisation-of-supporting-information" class="title-slide slide level1 center"><h1>Organisation of Supporting Information</h1>
-
-</section><section id="project-oriented-workflow" class="slide level2"><h2>Project-oriented workflow</h2>
-<ul>
-<li><p>use folders to organise your work</p></li>
-<li><p>you are aiming for structured, systematic and repeatable.</p></li>
-<li><p>inputs and outputs should be clearly identifiable from structure and/or naming</p></li>
-</ul></section><section id="example-si-itself-is-an-rsp" class="slide level2"><h2>Example: SI itself is an RSP</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">--</span> stem_cell_rna</span>
-<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a>   <span class="kw">|</span><span class="ex">__stem_cell_rna.Rproj</span>   </span>
-<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>   <span class="kw">|</span><span class="ex">__raw_</span> data/            </span>
-<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>      <span class="kw">|</span><span class="ex">__2019-03-21_donor_1.csv</span></span>
-<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a>      <span class="kw">|</span><span class="ex">__2019-03-21_donor_2.csv</span></span>
-<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a>      <span class="kw">|</span><span class="ex">__2019-03-21_donor_3.csv</span></span>
-<span id="cb1-7"><a aria-hidden="true" tabindex="-1"></a>   <span class="kw">|</span><span class="ex">__README.</span> md</span>
-<span id="cb1-8"><a aria-hidden="true" tabindex="-1"></a>   <span class="kw">|</span><span class="ex">__R/</span></span>
-<span id="cb1-9"><a aria-hidden="true" tabindex="-1"></a>      <span class="kw">|</span><span class="ex">__01_data_processing.R</span></span>
-<span id="cb1-10"><a aria-hidden="true" tabindex="-1"></a>      <span class="kw">|</span><span class="ex">__02_exploratory.R</span></span>
-<span id="cb1-11"><a aria-hidden="true" tabindex="-1"></a>      <span class="kw">|</span><span class="ex">__functions/</span></span>
-<span id="cb1-12"><a aria-hidden="true" tabindex="-1"></a>         <span class="kw">|</span><span class="ex">__theme_volcano.R</span></span>
-<span id="cb1-13"><a aria-hidden="true" tabindex="-1"></a>         <span class="kw">|</span><span class="ex">__normalise.R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>bash: --: invalid option
-Usage:  bash [GNU long option] [option] ...
-    bash [GNU long option] [option] script-file ...
-GNU long options:
-    --debug
-    --debugger
-    --dump-po-strings
-    --dump-strings
-    --help
-    --init-file
-    --login
-    --noediting
-    --noprofile
-    --norc
-    --posix
-    --pretty-print
-    --rcfile
-    --restricted
-    --verbose
-    --version
-Shell options:
-    -ilrsD or -c command or -O shopt_option     (invocation only)
-    -abefhkmnptuvxBCHP or -o option</code></pre>
-</div>
-</div>
-</section><section id="example-si-includes-an-rsp" class="slide level2"><h2>Example: SI includes an RSP</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">--</span> stem_cell_rna</span>
-<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a>   <span class="kw">|</span><span class="ex">__data_processing/</span></span>
-<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a>      <span class="kw">|</span><span class="ex">__01_data_processing.py</span></span>
-<span id="cb3-5"><a aria-hidden="true" tabindex="-1"></a>      <span class="kw">|</span><span class="ex">__02_exploratory.py</span></span>
-<span id="cb3-6"><a aria-hidden="true" tabindex="-1"></a>      <span class="kw">|</span><span class="ex">__raw_data/</span></span>
-<span id="cb3-7"><a aria-hidden="true" tabindex="-1"></a>         <span class="kw">|</span><span class="ex">__2019-03-21_donor_1.csv</span></span>
-<span id="cb3-8"><a aria-hidden="true" tabindex="-1"></a>         <span class="kw">|</span><span class="ex">__2019-03-21_donor_2.csv</span></span>
-<span id="cb3-9"><a aria-hidden="true" tabindex="-1"></a>         <span class="kw">|</span><span class="ex">__2019-03-21_donor_3.csv</span></span>
-<span id="cb3-10"><a aria-hidden="true" tabindex="-1"></a>   <span class="kw">|</span><span class="ex">__README.</span> md</span>
-<span id="cb3-11"><a aria-hidden="true" tabindex="-1"></a>   <span class="kw">|</span><span class="ex">__statistical_analysis</span></span>
-<span id="cb3-12"><a aria-hidden="true" tabindex="-1"></a>      <span class="kw">|</span><span class="ex">__statistical_analysis.Rproj</span>   </span>
-<span id="cb3-13"><a aria-hidden="true" tabindex="-1"></a>      <span class="kw">|</span><span class="ex">__processed_data/</span></span>
-<span id="cb3-14"><a aria-hidden="true" tabindex="-1"></a>      <span class="kw">|</span><span class="ex">__R/</span></span>
-<span id="cb3-15"><a aria-hidden="true" tabindex="-1"></a>         <span class="kw">|</span><span class="ex">__01_DGE.R</span></span>
-<span id="cb3-16"><a aria-hidden="true" tabindex="-1"></a>         <span class="kw">|</span><span class="ex">__02_visualisation.R</span></span>
-<span id="cb3-17"><a aria-hidden="true" tabindex="-1"></a>         <span class="kw">|</span><span class="ex">__functions/</span></span>
-<span id="cb3-18"><a aria-hidden="true" tabindex="-1"></a>            <span class="kw">|</span><span class="ex">__theme_volcano.R</span></span>
-<span id="cb3-19"><a aria-hidden="true" tabindex="-1"></a>            <span class="kw">|</span><span class="ex">__normalise.R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>bash: line 2: --: command not found
-bash: -c: line 3: syntax error near unexpected token `|'
-bash: -c: line 3: `   |__data_processing/'</code></pre>
-</div>
-</div>
-</section></section><section><section id="rstudio-projects-revisited" class="title-slide slide level1 center"><h1>RStudio Projects revisited</h1>
+</section><section><section id="rstudio-projects-revisited" class="title-slide slide level1 center"><h1>RStudio Projects revisited</h1>
 
 </section><section id="rstudio-projects" class="slide level2"><h2>RStudio Projects</h2>
 <div>
 <ul>
-<li class="fragment">RStudio Projects make it easy to manage working directories and paths because they set the working directory to the RStudio Projects directory automatically.</li>
+<li class="fragment"><p>We used RStudio Projects in stage one but they are so useful, it is worth covering them again in case you are not yet using them.</p></li>
+<li class="fragment"><p>We will also cover the <strong><code>usethis</code></strong>workflow to create an RStudio Project.</p></li>
+<li class="fragment"><p>RStudio Projects make it easy to manage working directories and paths because they set the working directory to the RStudio Projects directory automatically.</p></li>
 </ul>
 </div>
 </section><section id="rstudio-projects-1" class="slide level2"><h2>RStudio Projects</h2>
 <div class="columns">
 <div class="column" style="width:60%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a></a><span class="ex">--</span> stem_cell_rna</span>
-<span id="cb5-2"><a></a>   <span class="kw">|</span><span class="ex">__stem_cell_rna.Rproj</span>   </span>
-<span id="cb5-3"><a></a>   <span class="kw">|</span><span class="ex">__raw_</span> data/            </span>
-<span id="cb5-4"><a></a>      <span class="kw">|</span><span class="ex">__2019-03-21_donor_1.csv</span></span>
-<span id="cb5-5"><a></a>   <span class="kw">|</span><span class="ex">__README.</span> md</span>
-<span id="cb5-6"><a></a>   <span class="kw">|</span><span class="ex">__R/</span></span>
-<span id="cb5-7"><a></a>      <span class="kw">|</span><span class="ex">__01_data_processing.R</span></span>
-<span id="cb5-8"><a></a>      <span class="kw">|</span><span class="ex">__02_exploratory.R</span></span>
-<span id="cb5-9"><a></a>      <span class="kw">|</span><span class="ex">__functions/</span></span>
-<span id="cb5-10"><a></a>         <span class="kw">|</span><span class="ex">__theme_volcano.R</span></span>
-<span id="cb5-11"><a></a>         <span class="kw">|</span><span class="ex">__normalise.R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a></a><span class="ex">--</span> stem_cell_rna</span>
+<span id="cb1-2"><a></a>   <span class="kw">|</span><span class="ex">__stem_cell_rna.Rproj</span>   </span>
+<span id="cb1-3"><a></a>   <span class="kw">|</span><span class="ex">__raw_</span> data/            </span>
+<span id="cb1-4"><a></a>      <span class="kw">|</span><span class="ex">__2019-03-21_donor_1.csv</span></span>
+<span id="cb1-5"><a></a>   <span class="kw">|</span><span class="ex">__README.</span> md</span>
+<span id="cb1-6"><a></a>   <span class="kw">|</span><span class="ex">__R/</span></span>
+<span id="cb1-7"><a></a>      <span class="kw">|</span><span class="ex">__01_data_processing.R</span></span>
+<span id="cb1-8"><a></a>      <span class="kw">|</span><span class="ex">__02_exploratory.R</span></span>
+<span id="cb1-9"><a></a>      <span class="kw">|</span><span class="ex">__functions/</span></span>
+<span id="cb1-10"><a></a>         <span class="kw">|</span><span class="ex">__theme_volcano.R</span></span>
+<span id="cb1-11"><a></a>         <span class="kw">|</span><span class="ex">__normalise.R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:40%;">
 <p>The project directory is the folder at the top <sup>1</sup></p>
@@ -596,17 +511,17 @@ bash: -c: line 3: `   |__data_processing/'</code></pre>
 <div class="columns">
 <div class="column" style="width:60%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a></a><span class="ex">--</span> stem_cell_rna</span>
-<span id="cb6-2"><a></a>   <span class="kw">|</span><span class="ex">__stem_cell_rna.Rproj</span>   </span>
-<span id="cb6-3"><a></a>   <span class="kw">|</span><span class="ex">__raw_</span> data/            </span>
-<span id="cb6-4"><a></a>      <span class="kw">|</span><span class="ex">__2019-03-21_donor_1.csv</span></span>
-<span id="cb6-5"><a></a>   <span class="kw">|</span><span class="ex">__README.</span> md</span>
-<span id="cb6-6"><a></a>   <span class="kw">|</span><span class="ex">__R/</span></span>
-<span id="cb6-7"><a></a>      <span class="kw">|</span><span class="ex">__01_data_processing.R</span></span>
-<span id="cb6-8"><a></a>      <span class="kw">|</span><span class="ex">__02_exploratory.R</span></span>
-<span id="cb6-9"><a></a>      <span class="kw">|</span><span class="ex">__functions/</span></span>
-<span id="cb6-10"><a></a>         <span class="kw">|</span><span class="ex">__theme_volcano.R</span></span>
-<span id="cb6-11"><a></a>         <span class="kw">|</span><span class="ex">__normalise.R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a></a><span class="ex">--</span> stem_cell_rna</span>
+<span id="cb2-2"><a></a>   <span class="kw">|</span><span class="ex">__stem_cell_rna.Rproj</span>   </span>
+<span id="cb2-3"><a></a>   <span class="kw">|</span><span class="ex">__raw_</span> data/            </span>
+<span id="cb2-4"><a></a>      <span class="kw">|</span><span class="ex">__2019-03-21_donor_1.csv</span></span>
+<span id="cb2-5"><a></a>   <span class="kw">|</span><span class="ex">__README.</span> md</span>
+<span id="cb2-6"><a></a>   <span class="kw">|</span><span class="ex">__R/</span></span>
+<span id="cb2-7"><a></a>      <span class="kw">|</span><span class="ex">__01_data_processing.R</span></span>
+<span id="cb2-8"><a></a>      <span class="kw">|</span><span class="ex">__02_exploratory.R</span></span>
+<span id="cb2-9"><a></a>      <span class="kw">|</span><span class="ex">__functions/</span></span>
+<span id="cb2-10"><a></a>         <span class="kw">|</span><span class="ex">__theme_volcano.R</span></span>
+<span id="cb2-11"><a></a>         <span class="kw">|</span><span class="ex">__normalise.R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:40%;">
 <p>the <code>.RProj</code> file is directly under the project folder. Its presence is what makes the folder an RStudio Project</p>
@@ -626,23 +541,76 @@ bash: -c: line 3: `   |__data_processing/'</code></pre>
 <p>“If the first line of your R script is setwd(”C:/Users/jenny/path/that/only/I/have”) I will come into your office and SET YOUR COMPUTER ON FIRE”</p>
 </blockquote>
 </section><section id="creating-an-rstudio-project" class="slide level2"><h2>Creating an RStudio Project</h2>
-<p>There are two menus options:</p>
+<p>There are two ways to create an RStudio Project.</p>
+<ol type="1">
+<li><p>Using one of the two menus</p></li>
+<li><p>Using the <strong><code>usethis</code></strong> package</p></li>
+</ol></section><section id="using-a-menu" class="slide level2"><h2>Using a menu</h2>
+<p>There are two menus:</p>
 <ol type="1">
 <li><p>Top left, File menu</p></li>
 <li><p>Top Right, drop-down indicated by the <code>.RProj</code> icon</p></li>
 </ol>
 <p>They both do the same thing.</p>
 <p>In both cases you choose: New Project | New Directory | New Project</p>
+<div class="fragment">
 <p>Make sure you “Browse” to the folder you want to create the project.</p>
+</div>
+</section></section><section><section id="using-the-usethis-package" class="title-slide slide level1 center"><h1>Using the <strong><code>usethis</code></strong> package</h1>
+
+</section><section id="using-the-usethis-package-1" class="slide level2"><h2>Using the <strong><code>usethis</code></strong> package</h2>
+<p>I occasionally use the menu but I mostly use the <strong><code>usethis</code></strong> package.</p>
+<div class="fragment">
+<p>🎬 Go to RStudio and check your working directory:</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>"C:/Users/er13/Desktop"</code></p>
+</div>
+<div class="fragment">
 <p>❔ Is your working directory a good place to create a Project folder?</p>
-<p>When you create a new RStudio Project</p>
+</div>
+</section><section id="using-the-usethis-package-2" class="slide level2"><h2>Using the <strong><code>usethis</code></strong> package</h2>
+<p>If this is a good place to create a Project directory then…</p>
+<p>🎬 Create a project with:</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu">create_project</span><span class="op">(</span><span class="st">"bananas"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="using-the-usethis-package-3" class="slide level2"><h2>Using the <strong><code>usethis</code></strong> package</h2>
+<p>Otherwise</p>
+<p>If you want the project directory elsewhere, you will need to give the relative path, e.g.</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu">create_project</span><span class="op">(</span><span class="st">"../Documents/bananas"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="using-the-usethis-package-4" class="slide level2"><h2>Using the <strong><code>usethis</code></strong> package</h2>
+<p>The output will look like this and a new RStudio session will start.</p>
+<pre><code>&gt; usethis::create_project("bananas")
+√ Creating 'bananas/'
+√ Setting active project to 'C:/Users/er13/Desktop/bananas'
+√ Creating 'R/'
+√ Writing 'bananas.Rproj'
+√ Adding '.Rproj.user' to '.gitignore'
+√ Opening 'C:/Users/er13/Desktop/bananas/' in new RStudio session
+√ Setting active project to '&lt;no active project&gt;'</code></pre>
+</section><section id="using-the-usethis-package-5" class="slide level2"><h2>Using the <strong><code>usethis</code></strong> package</h2>
+<p>When you create a new RStudio Project with <strong><code>usethis</code></strong>:</p>
 <div>
 <ul>
 <li class="fragment">A folder called <code>bananas/</code> is created</li>
 <li class="fragment">RStudio starts a new session in <code>bananas/</code> i.e., your working directory is now <code>bananas/</code>
 </li>
+<li class="fragment">A folder called <code>R/</code> is created</li>
 <li class="fragment">A file called <code>bananas.Rproj</code> is created</li>
-<li class="fragment">the <code>.Rproj</code> file is what makes the directory an RStudio Project</li>
+<li class="fragment">A file called <code>.gitignore</code> is created</li>
+<li class="fragment">A hidden directory called <code>.Rproj.user</code> is created</li>
+</ul>
+</div>
+</section><section id="using-the-usethis-package-6" class="slide level2"><h2>Using the <strong><code>usethis</code></strong> package</h2>
+<div>
+<ul>
+<li class="fragment"><p>the <code>.Rproj</code> file is what makes the directory an RStudio Project</p></li>
+<li class="fragment"><p>the <code>Rproj.user</code> directory is where project-specific temporary files are stored. You don’t need to mess with it.</p></li>
+<li class="fragment"><p>the <code>.gitignore</code> is used for version controlled projects. If not using git, you can ignore it.</p></li>
 </ul>
 </div>
 </section><section id="opening-and-closing" class="slide level2"><h2>Opening and closing</h2>
@@ -661,6 +629,22 @@ bash: -c: line 3: `   |__data_processing/'</code></pre>
 <li>Double-clicking an .Rproj file from your file explorer/finder</li>
 </ol>
 <p>When you open project, a new R session starts.</p>
+</div>
+</section></section><section><section id="adding-a-readme" class="title-slide slide level1 center"><h1>Adding a README</h1>
+
+</section><section id="using-the-usethis-package-7" class="slide level2"><h2>Using the <strong><code>usethis</code></strong> package</h2>
+<p>Once the RStudio project has been created, <strong><code>usethis</code></strong> helps you follow good practice.</p>
+<div class="fragment">
+<p>🎬 We can add a README with:</p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu">use_readme_md</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="fragment">
+<p>This creates a file called <code>README.md</code>, with a little default text, in the Project directory and opens it for editing.</p>
+</div>
+<div class="fragment">
+<p><code>md</code> stands for markdown, it is a extremely widely used text formatting language which is readable as plain text. If you have ever used asterisks to make text bold or italic, you have used markdown.</p>
 </div>
 </section></section><section><section id="code-formatting-and-style" class="title-slide slide level1 center"><h1>Code formatting and style</h1>
 
@@ -697,16 +681,14 @@ bash: -c: line 3: `   |__data_processing/'</code></pre>
 </li>
 <li>use <code>"</code> for quoting text (not <code>'</code>) unless the text contains double quotes</li>
 </ul></section><section id="ugly-code" class="slide level2"><h2>😩 Ugly code 😩</h2>
-<div style="font-size: 50%;">
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data</span><span class="op">&lt;-</span><span class="fu">read_csv</span><span class="op">(</span><span class="st">'../data-raw/Y101_Y102_Y201_Y202_Y101-5.csv'</span>,skip<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data</span><span class="op">&lt;-</span><span class="fu">read_csv</span><span class="op">(</span><span class="st">'../data-raw/Y101_Y102_Y201_Y202_Y101-5.csv'</span>,skip<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sfirke/janitor">janitor</a></span><span class="op">)</span>;<span class="va">sol</span><span class="op">&lt;-</span><span class="fu">clean_names</span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
 <span><span class="va">data</span><span class="op">=</span><span class="va">data</span><span class="op">|&gt;</span><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="fu">str_detect</span><span class="op">(</span><span class="va">description</span>,<span class="st">"OS=Homo sapiens"</span><span class="op">)</span><span class="op">)</span><span class="op">|&gt;</span><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">x1pep</span><span class="op">==</span><span class="st">'x'</span><span class="op">)</span></span>
 <span><span class="va">data</span><span class="op">=</span><span class="va">data</span><span class="op">|&gt;</span></span>
 <span><span class="fu">mutate</span><span class="op">(</span>g<span class="op">=</span><span class="fu">str_extract</span><span class="op">(</span><span class="va">description</span>,</span>
 <span><span class="st">"GN=[^\\s]+"</span><span class="op">)</span><span class="op">|&gt;</span><span class="fu">str_replace</span><span class="op">(</span><span class="st">"GN="</span>,<span class="st">''</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">data</span><span class="op">&lt;-</span><span class="va">data</span><span class="op">|&gt;</span><span class="fu">mutate</span><span class="op">(</span>id<span class="op">=</span><span class="fu">str_extract</span><span class="op">(</span><span class="va">accession</span>,<span class="st">"1::[^;]+"</span><span class="op">)</span><span class="op">|&gt;</span><span class="fu">str_replace</span><span class="op">(</span><span class="st">"1::"</span>,<span class="st">""</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </div>
 </section><section id="ugly-code-1" class="slide level2"><h2>😩 Ugly code 😩</h2>
 <ul>
@@ -719,9 +701,8 @@ bash: -c: line 3: `   |__data_processing/'</code></pre>
 <li>multiple commands on a line</li>
 <li>library statement in the middle of the analysis</li>
 </ul></section><section id="cool-code" class="slide level2"><h2>😎 Cool code 😎</h2>
-<div style="font-size: 50%;">
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Packages ----------------------------------------------------------------</span></span>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Packages ----------------------------------------------------------------</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/sfirke/janitor">janitor</a></span><span class="op">)</span></span>
 <span></span>
@@ -754,7 +735,6 @@ bash: -c: line 3: `   |__data_processing/'</code></pre>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>protid <span class="op">=</span>  <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span><span class="op">(</span><span class="va">accession</span>, <span class="st">"1::[^;]+"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>           <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace</a></span><span class="op">(</span><span class="st">"1::"</span>, <span class="st">""</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
 </section><section id="cool-code-1" class="slide level2"><h2>😎 Cool code 😎</h2>
 <ul>
 <li><p><code><a href="https://rdrr.io/r/base/library.html">library()</a></code> calls collected</p></li>
@@ -782,12 +762,12 @@ bash: -c: line 3: `   |__data_processing/'</code></pre>
 </div>
 </section><section id="hard-coding-numbers.-1" class="slide level2"><h2>😩 Hard coding numbers.</h2>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># mean number of eggs per nest</span></span>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># mean number of eggs per nest</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">7</span>, <span class="fl">8</span><span class="op">)</span> <span class="op">/</span> <span class="fl">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5.8</code></pre>
 </div>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ss(x) of number of eggs</span></span>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># ss(x) of number of eggs</span></span>
 <span><span class="op">(</span><span class="fl">3</span> <span class="op">-</span> <span class="fl">5.8</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="op">(</span><span class="fl">5</span> <span class="op">-</span> <span class="fl">5.8</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="op">(</span><span class="fl">6</span> <span class="op">-</span> <span class="fl">5.8</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="op">(</span><span class="fl">7</span> <span class="op">-</span> <span class="fl">5.8</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="op">(</span><span class="fl">8</span> <span class="op">-</span> <span class="fl">5.8</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 14.8</code></pre>
@@ -806,7 +786,7 @@ bash: -c: line 3: `   |__data_processing/'</code></pre>
 </div>
 </section><section id="better" class="slide level2"><h2>😎 Better</h2>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># eggs each nest</span></span>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># eggs each nest</span></span>
 <span><span class="va">eggs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">7</span>, <span class="fl">8</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># mean eggs per nest</span></span>
@@ -827,36 +807,6 @@ bash: -c: line 3: `   |__data_processing/'</code></pre>
 <li class="fragment"><p>makes use of R’s elementwise calculation which resembles the formula (i.e., is expressed as the general rule)</p></li>
 </ul>
 </div>
-</section><section id="naming-things" class="slide level2"><h2>Naming things</h2>
-
-<img data-src="images/xkcd-comic-file-names.png" alt="A comic figure is looking over the shoulder of another and is shocked by a list of files with names like 'Untitled 138 copy.docx' and 'Untitled 243.doc'. Caption: 'Protip: Never look in someone else's documents folder'" class="r-stretch quarto-figure-center"><p class="caption">documents, CC-BY-NC, https://xkcd.com/1459/</p><p>Guiding principle - Have a convention! Good file names are:</p>
-<ul>
-<li><p>machine readable</p></li>
-<li><p>human readable</p></li>
-<li><p>play nicely with sorting</p></li>
-</ul></section><section id="naming-suggestions" class="slide level2"><h2>Naming suggestions</h2>
-<ul>
-<li><p>no spaces in names</p></li>
-<li><p>use snake_case or kebab-case rather than CamelCase or dot.case</p></li>
-<li><p>use all lower case except very occasionally where convention is otherwise, e.g., README, LICENSE</p></li>
-<li><p>ordering: use left-padded numbers e.g., 01, 02….99 or 001, 002….999</p></li>
-<li><p>dates <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> format: 2020-10-16</p></li>
-<li><p>write down your conventions</p></li>
-</ul></section></section><section><section id="workflow-tips" class="title-slide slide level1 center"><h1>Workflow tips</h1>
-<div style="font-size: 50%;">
-<ul>
-<li><p>multiple cursors</p></li>
-<li><p>open a file/function or find a variable CONTROL+.</p></li>
-<li><p>the command palette CONTROL+SHIFT+P</p></li>
-<li><p>segmenting code CONTROL+SHIFT+R</p></li>
-<li><p>to correct indentation CONTROL+i</p></li>
-<li><p>to reformat code CONTROL+SHIFT+A Not perfect but corrects spacing, indentation, multiple commands on lines and assignment with <code>=</code></p></li>
-<li><p>to comment and uncomment lines CONTROL+SHIFT+C</p></li>
-<li><p>Tools | Global options | Code | Display | Show margin</p></li>
-<li><p>Tools | Global options | Code | Diagnostic | Provide R style diagnostics</p></li>
-<li><p><a href="https://colorado.posit.co/rsc/rstudio-copilot/#/TitleSlide">GitHub Copilot in RStudio, it’s finally here!</a></p></li>
-</ul>
-</div>
 </section><section id="summary" class="slide level2"><h2>Summary</h2>
 <div>
 <ul>
@@ -866,47 +816,34 @@ bash: -c: line 3: `   |__data_processing/'</code></pre>
 <li class="fragment"><p>Avoid hard coding numbers if at all possible - declare variables instead</p></li>
 </ul>
 </div>
-</section><section id="reading" class="slide level2"><h2>Reading</h2>
-<p>Completely optional suggestions for further reading</p>
+</section></section><section><section id="reading" class="title-slide slide level1 center"><h1>Reading</h1>
+<p>Recommended if you still need convincing to use RStudio Projects</p>
 <ul>
 <li>
-<a href="https://rstats.wtf/projects">Project-oriented workflow | What They Forgot to Teach You About R</a> <span class="citation" data-cites="bryan">(<a href="#/references" role="doc-biblioref" onclick="">Bryan et al., n.d.</a>)</span>. Recommended if you still need convincing to use RStudio Projects</li>
+<a href="https://rstats.wtf/projects">Project-oriented workflow | What They Forgot to Teach You About R</a> <span class="citation" data-cites="bryan">(<a href="#/references" role="doc-biblioref" onclick="">Bryan et al., n.d.</a>)</span>
+</li>
+</ul>
+<p>Completely optional suggestions for further reading</p>
+<ul>
 <li>Ten simple rules for reproducible computational research <span class="citation" data-cites="sandve2013">(<a href="#/references" role="doc-biblioref" onclick="">Sandve et al. 2013</a>)</span>
 </li>
 <li>Good enough practices in scientific computing <span class="citation" data-cites="wilson2017">(<a href="#/references" role="doc-biblioref" onclick="">Wilson et al. 2017</a>)</span>
 </li>
 <li>Excuse Me, Do You Have a Moment to Talk About Version Control? <span class="citation" data-cites="bryan2018">(<a href="#/references" role="doc-biblioref" onclick="">Bryan 2018</a>)</span>
 </li>
-</ul>
-<p>Pages made with R <span class="citation" data-cites="R-core">(<a href="#/references" role="doc-biblioref" onclick="">R Core Team 2024</a>)</span> and Quarto <span class="citation" data-cites="allaire2022">(<a href="#/references" role="doc-biblioref" onclick=""><strong>allaire2022?</strong></a>)</span></p>
-</section><section id="references" class="slide level2 smaller scrollable"><h2>References</h2>
+</ul></section><section id="references" class="slide level2 smaller scrollable"><h2>References</h2>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
-<p>🔗 <a href="https://3mmarand.github.io/BIO00088H-data/core/week-2/overview.html">About Core: Supporting Information 1</a></p>
+<p>🔗 <a href="https://3mmarand.github.io/BIO00088H-data/core/week-2/overview.html">About Core 2: File types, workflow tips and other tools</a></p>
 </div>
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-baggerly2009" class="csl-entry" role="listitem">
-Baggerly, Keith A, and Kevin R Coombes. 2009. <span>“DERIVING CHEMOSENSITIVITY FROM CELL LINES: FORENSIC BIOINFORMATICS AND REPRODUCIBLE RESEARCH IN HIGH-THROUGHPUT BIOLOGY.”</span> <em>Ann. Appl. Stat.</em> 3 (4): 1309–34. <a href="https://doi.org/10.2307/27801549">https://doi.org/10.2307/27801549</a>.
-</div>
 <div id="ref-bryan2018" class="csl-entry" role="listitem">
 Bryan, Jennifer. 2018. <span>“Excuse Me, Do You Have a Moment to Talk about Version Control?”</span> <em>Am. Stat.</em> 72 (1): 20–27. <a href="https://doi.org/10.1080/00031305.2017.1399928">https://doi.org/10.1080/00031305.2017.1399928</a>.
 </div>
 <div id="ref-bryan" class="csl-entry" role="listitem">
 Bryan, Jennifer, Jim Hester, Shannon Pileggi, and E. David Aja. n.d. <em>What They Forgot to Teach You about r</em>. <a href="https://rstats.wtf/">https://rstats.wtf/</a>.
-</div>
-<div id="ref-markowetz2015" class="csl-entry" role="listitem">
-Markowetz, Florian. 2015. <span>“Five Selfish Reasons to Work Reproducibly.”</span> <em>Genome Biol.</em> 16 (December): 274. <a href="https://doi.org/10.1186/s13059-015-0850-7">https://doi.org/10.1186/s13059-015-0850-7</a>.
-</div>
-<div id="ref-nationalacademiesofsciences2019" class="csl-entry" role="listitem">
-National Academies of Sciences, Engineering, Medicine, Policy, Global Affairs, Engineering, Medicine Committee on Science, Public Policy, Board on Research Data, et al. 2019. <em>Understanding Reproducibility and Replicability</em>. National Academies Press (US). <a href="https://www.ncbi.nlm.nih.gov/books/NBK547546/">https://www.ncbi.nlm.nih.gov/books/NBK547546/</a>.
-</div>
-<div id="ref-oecdglobalscienceforum2020" class="csl-entry" role="listitem">
-OECD Global Science Forum. 2020. <span>“Building Digital Workforce Capacity and Skills for Data-Intensive Science.”</span> <a href="http://www.oecd.org/officialdocuments/publicdisplaydocumentpdf/?cote=DSTI/STP/GSF(2020)6/FINAL&amp;docLanguage=En">http://www.oecd.org/officialdocuments/publicdisplaydocumentpdf/?cote=DSTI/STP/GSF(2020)6/FINAL&amp;docLanguage=En</a>.
-</div>
-<div id="ref-R-core" class="csl-entry" role="listitem">
-R Core Team. 2024. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
 </div>
 <div id="ref-sandve2013" class="csl-entry" role="listitem">
 Sandve, Geir Kjetil, Anton Nekrutenko, James Taylor, and Eivind Hovig. 2013. <span>“Ten Simple Rules for Reproducible Computational Research.”</span> <em>PLoS Comput. Biol.</em> 9 (10): e1003285. <a href="https://doi.org/10.1371/journal.pcbi.1003285">https://doi.org/10.1371/journal.pcbi.1003285</a>.

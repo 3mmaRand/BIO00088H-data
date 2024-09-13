@@ -141,7 +141,7 @@ cookieconsent.run({
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../core/core.html"> 
-<span class="menu-text">Core</span></a>
+<span class="menu-text">Core Supporting Info</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../transcriptomics/transcriptomics.html"> 
@@ -218,7 +218,7 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">3 September, 2024</p>
+      <p class="date">13 September, 2024</p>
     </div>
   </div>
   
@@ -311,7 +311,7 @@ cookieconsent.run({
 <span><span class="va">tracking</span> <span class="op">&lt;-</span> <span class="va">files</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rlang.r-lib.org/reference/set_names.html">set_names</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map_dfr.html">map_dfr</a></span><span class="op">(</span><span class="va">read_table</span>, .id <span class="op">=</span> <span class="st">"file"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu">janitor</span><span class="fu">::</span><span class="fu">clean_names</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You will get a warning <code>Duplicated column names deduplicated: 'avgX' =&gt; 'avgX_1' [15]</code> for each of the files because the csv files each have two columns called <code>avgX</code>. If you click on the <code>tracking</code> dataframe you see is contains the data from all the files.</p>
 <p>Now we can add columns for the type and the concentration by processing the values in the <code>file</code>. The values are like <code>track/343_0.txt</code> so we need to remove <code>.txt</code> and <code>track/</code> and separate the remaining words into two columns.</p>

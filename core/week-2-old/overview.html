@@ -21,27 +21,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -121,7 +101,7 @@ cookieconsent.run({
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -147,7 +127,7 @@ cookieconsent.run({
 <span class="menu-text">Core Supporting Info</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../../transcriptomics/transcriptomics.html" aria-current="page"> 
+    <a class="nav-link" href="../../transcriptomics/transcriptomics.html"> 
 <span class="menu-text">Transcriptomics</span></a>
   </li>  
   <li class="nav-item">
@@ -166,157 +146,19 @@ cookieconsent.run({
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../transcriptomics/week-4/overview.html">Week 4: Statistical Analysis</a></li><li class="breadcrumb-item"><a href="../../transcriptomics/week-4/overview.html">About</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../transcriptomics/transcriptomics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Transcriptomics Data Analysis for Group Project</span></a>
-  </div>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Week 3: Hello data!</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../transcriptomics/week-3/overview.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">About</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../transcriptomics/week-3/study_before_workshop.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prepare!</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../transcriptomics/week-3/workshop.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Workshop</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../transcriptomics/week-3/study_after_workshop.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Consolidate!</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Week 4: Statistical Analysis</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../transcriptomics/week-4/overview.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">About</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../transcriptomics/week-4/study_before_workshop.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prepare!</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../transcriptomics/week-4/workshop.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Workshop</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../transcriptomics/week-4/study_after_workshop.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Consolidate!</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Week 5: Visualising and Interpreting</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../transcriptomics/week-5/overview.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">About</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../transcriptomics/week-5/study_before_workshop.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prepare!</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../transcriptomics/week-5/workshop.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Workshop</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../transcriptomics/week-5/study_after_workshop.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Consolidate!</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning objectives</a></li>
-  <li><a href="#instructions" id="toc-instructions" class="nav-link" data-scroll-target="#instructions">Instructions</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../transcriptomics/week-4/overview.html">Week 4: Statistical Analysis</a></li><li class="breadcrumb-item"><a href="../../transcriptomics/week-4/overview.html">About</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Overview</h1>
-<p class="subtitle lead">Transcriptomics 2: Statistical Analysis</p>
+<p class="subtitle lead">Core 2: File types, workflow tips and other tools</p>
 </div>
 
 
@@ -339,56 +181,43 @@ cookieconsent.run({
 </header>
 
 
-<p>This week we cover differential expression analysis on raw counts or log normalised values. The independent study will allow you to check you have what you should have following the <a href="../week-3/workshop.html">Transcriptomics 1: Hello Data workshop</a> and <a href="../week-3/study_after_workshop.html">Consolidation study</a>. It will also summarise the concepts and methods we will use in the workshop. In the workshop, you will learn how to perform differential expression analysis on raw counts using <strong><code>DESeq2</code></strong> <span class="citation" data-cites="DESeq2">(<a href="#ref-DESeq2" role="doc-biblioref">Love, Huber, and Anders 2014</a>)</span> or on logged normalised expression values using <strong><code>scran</code></strong> <span class="citation" data-cites="scran">(<a href="#ref-scran" role="doc-biblioref">Lun, McCarthy, and Marioni 2016</a>)</span> or both.</p>
-<p>We suggest you sit together with your group in the workshop.</p>
+<p>This week we will consider File types, workflow tips and other tools. The independent study reiterates the value of RStudio projects and shows you how you create them with <strong><code>usethis</code></strong>. You will also learn how to recognise and write cool 😎 code, not 😩 ugly code and code algorithmically. In the workshop we will examine some common biological data formats and discover some awesome short cuts to help you write cool 😎 code. You will also get a brief introduction to the command line and Google Colab.</p>
 <section id="learning-objectives" class="level3">
 <h3 class="anchored" data-anchor-id="learning-objectives">Learning objectives</h3>
 <p>The successful student will be able to:</p>
 <ul>
-<li>verify they have the required RStudio Project set up and the data and code files from the previous Workshop and Consolidation study</li>
-<li>explain the goal of differential expression analysis and the importance of normalisation</li>
-<li>explain why and how the nature of the input values determines the analysis package used</li>
-<li>describe the metadata needed to carry out differential expression analysis and the statistical models used by <strong><code>DESeq2</code></strong> and <strong><code>scran</code></strong></li>
-<li>find genes that are unexpressed or expressed in a a single cell type or treatment group</li>
-<li>perform differential expression analysis on raw counts using <strong><code>DESeq2</code></strong> or on logged normalised expression values using <strong><code>scran</code></strong> or both.</li>
-<li>explain the output of differential expression: log fold change, p-value, adjusted p-value,</li>
+<li>explain why RStudio are useful/essential and be able to use the <strong><code>usethis</code></strong> package</li>
+<li>write cool 😎 code not 😩 ugly code</li>
+<li>explain the value of code which expresses the structure of the problem/solution.</li>
+<li>describe some common file types for biological data</li>
+<li>use some useful shortcuts to help write cool 😎 code</li>
+<li>know what the command line is and how to use it for simple tasks</li>
+<li>use Google colab to run code</li>
+<li>recognise some of the differences between R and Python</li>
 </ul>
 </section>
 <section id="instructions" class="level3">
 <h3 class="anchored" data-anchor-id="instructions">Instructions</h3>
 <ol type="1">
-<li><p><a href="../../transcriptomics/week-4/study_before_workshop.html">Prepare</a></p>
+<li><p><a href="../../core/week-2-old/study_before_workshop.html">Prepare</a> 20 mins reading on RStudio Projects revisited, formatting code and coding algorithmically</p></li>
+<li><p><a href="../../core/week-2-old/workshop.html">Workshop</a></p>
 <ol type="i">
-<li>📖 Read what you should have so far and about concepts in differential expression analysis.</li>
+<li><p>💬 Types of biological data files</p></li>
+<li><p>🪄 Workflow tips and shortcuts</p></li>
+<li><p>💻 The command line</p></li>
+<li><p>💻 Google colab</p></li>
+<li><p>💻 Python</p></li>
 </ol></li>
-<li><p><a href="../../transcriptomics/week-4/workshop.html">Workshop</a></p>
+<li><p><a href="../../core/week-2-old/study_after_workshop.html">Consolidate</a></p>
 <ol type="i">
-<li><p>💻 Find unexpressed genes and those expressed in a single cell type or treatment group.</p></li>
-<li><p>💻 Set up the metadata for differential expression analysis.</p></li>
-<li><p>💻 Perform differential expression analysis on raw counts using <strong><code>DESeq2</code></strong> or on logged normalised expression values using <strong><code>scran</code></strong> or both.</p></li>
-<li><p>Look after future you!</p></li>
-</ol></li>
-<li><p><a href="../../transcriptomics/week-4/study_after_workshop.html">Consolidate</a></p>
-<ol type="i">
-<li>💻 Use the work you completed in the workshop as a template to apply to a new case.</li>
+<li>💻 not sure yet :)</li>
 </ol></li>
 </ol>
-</section>
-<section id="references" class="level3">
-
-
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-DESeq2" class="csl-entry" role="listitem">
-Love, Michael I., Wolfgang Huber, and Simon Anders. 2014. <span>“Moderated Estimation of Fold Change and Dispersion for RNA-Seq Data with DESeq2.”</span> <em>Genome Biology</em> 15: 550. <a href="https://doi.org/10.1186/s13059-014-0550-8">https://doi.org/10.1186/s13059-014-0550-8</a>.
-</div>
-<div id="ref-scran" class="csl-entry" role="listitem">
-Lun, Aaron T. L., Davis J. McCarthy, and John C. Marioni. 2016. <span>“A Step-by-Step Workflow for Low-Level Analysis of Single-Cell RNA-Seq Data with Bioconductor.”</span> <em>F1000Res.</em> 5: 2122. <a href="https://doi.org/10.12688/f1000research.9501.2">https://doi.org/10.12688/f1000research.9501.2</a>.
-</div>
-</div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
