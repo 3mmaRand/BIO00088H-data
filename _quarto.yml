@@ -56,6 +56,7 @@ website:
       contents: 
           - href: core/core.qmd
           - section: "Week 2: Supporting Information 1"
+            contents: 
              - href: core/week-2/overview.qmd
                text: About  
              - href: core/week-2/study_before_workshop.qmd
