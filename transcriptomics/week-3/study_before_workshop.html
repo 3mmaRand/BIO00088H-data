@@ -388,7 +388,7 @@ Emma Rand
 </div>
 </div>
 
-  <p class="date">13 September, 2024</p>
+  <p class="date">17 September, 2024</p>
 </section>
 <section id="overview" class="slide level2">
 <h2>Overview</h2>
@@ -436,7 +436,7 @@ Emma Rand
 
 <img data-src="images/88H-exp-design-betsy.png" width="200" class="r-stretch quarto-figure-left"><p class="caption">Schematic of frog development experiment</p><div>
 <ul>
-<li class="fragment"><p>3 fertilisations. <span style="color:#009900">These are the replicates, <code>.5</code>, <code>.6</code>, <code>A</code></span></p></li>
+<li class="fragment"><p>3 fertilisations. <span style="color:#009900">These are the replicates, <code>1</code>, <code>2</code>, <code>3</code></span></p></li>
 <li class="fragment"><p>two siblings from each fertilisation one control, one FGF treated. <span style="color:#009900">The treatments are paired</span></p></li>
 <li class="fragment"><p>sequenced at three time points. <span style="color:#009900">S14, S20, S30</span></p></li>
 <li class="fragment"><p>3 x 2 x 3 = 18 groups</p></li>
@@ -546,7 +546,7 @@ Emma Rand
 <h2>Raw Sequence data</h2>
 <div>
 <ul>
-<li class="fragment"><p>The RNA-seq data are from an Illumina machine 150-300bp; Metagenomic data are often Nanopore 10,000 - 30000bp</p></li>
+<li class="fragment"><p>The RNA-seq data are from an Illumina machine 150-300bp</p></li>
 <li class="fragment"><p>Reads are in FASTQ files</p></li>
 <li class="fragment"><p>FASTQ files contain the sequence of each read and a quality score for each base</p></li>
 </ul>
@@ -562,9 +562,9 @@ Emma Rand
 <div>
 <ul>
 <li class="fragment"><p>Reads are filtered and trimmed on the basis of the quality score</p></li>
-<li class="fragment"><p>They are then aligned/pseudo-aligned to a reference genome/transcriptome or, in metagenomics, assembled de novo.</p></li>
-<li class="fragment"><p>Reads are then counted to quantify the expression or number of genomes in metagenomics</p></li>
-<li class="fragment"><p>Counts are normalised to account for differences in sequencing depth and gene/transcript/genome length before statistical analysis</p></li>
+<li class="fragment"><p>They are then aligned/pseudo-aligned to a reference genome/transcriptome</p></li>
+<li class="fragment"><p>Reads are then counted to quantify the expression</p></li>
+<li class="fragment"><p>Counts will need to be normalised to account for differences in sequencing depth and gene/transcript/ length before, or as part of, statistical analysis.</p></li>
 </ul>
 </div>
 </section>
@@ -581,7 +581,7 @@ Emma Rand
 <h2>🐭 Data</h2>
 <ul>
 <li><p>Published in <span class="citation" data-cites="nestorowa2016">Nestorowa et al. (<a href="#/references" role="doc-biblioref" onclick="">2016</a>)</span></p></li>
-<li><p>Expression for a subset of genes, the surfaceome</p></li>
+<li><p>Expression for a <strong>subset of genes</strong>, the surfaceome</p></li>
 <li><p>Values are log2 normalised values</p></li>
 <li><p>The statistical analysis method we will use <code>scran</code> <span class="citation" data-cites="scran">(<a href="#/references" role="doc-biblioref" onclick="">Lun, McCarthy, and Marioni 2016</a>)</span> requires normalised values</p></li>
 </ul>

@@ -367,7 +367,7 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">13 September, 2024</p>
+      <p class="date">17 September, 2024</p>
     </div>
   </div>
   
@@ -429,30 +429,42 @@ cookieconsent.run({
 </section><section id="genes-expressed-in-one-treatment" class="level2"><h2 class="anchored" data-anchor-id="genes-expressed-in-one-treatment">Genes expressed in one treatment</h2>
 <p>The genes expressed in only one treatment group are those with zeros in all three replicates in one group and non-zero values in all three replicates in the other group. For example, those shown here:</p>
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 7
-  xenbase_gene_id  S30_C_5 S30_C_6 S30_C_A S30_F_5 S30_F_6 S30_F_A
-  &lt;chr&gt;              &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-1 XB-GENE-1018260        0       0       0      10       2      16
-2 XB-GENE-17330117       0       0       0      13       4      17
-3 XB-GENE-17332184       0       0       0       6      19       6</code></pre>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `arrange()`:
+ℹ In argument: `..1 = S30_C_3`.
+Caused by error:
+! object 'S30_C_3' not found</code></pre>
 </div>
 </div>
 <p>We will use <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> to find these genes.</p>
 <p>🎬 Find the genes that are expressed only in the FGF-treated group:</p>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_fgf_only</span> <span class="op">&lt;-</span> <span class="va">s30_filtered</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">S30_C_5</span> <span class="op">==</span> <span class="fl">0</span>, </span>
-<span>         <span class="va">S30_C_6</span> <span class="op">==</span> <span class="fl">0</span>, </span>
-<span>         <span class="va">S30_C_A</span> <span class="op">==</span> <span class="fl">0</span>, </span>
-<span>         <span class="va">S30_F_5</span> <span class="op">&gt;</span> <span class="fl">0</span>, </span>
-<span>         <span class="va">S30_F_6</span> <span class="op">&gt;</span> <span class="fl">0</span>, </span>
-<span>         <span class="va">S30_F_A</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">S30_C_1</span> <span class="op">==</span> <span class="fl">0</span>, </span>
+<span>         <span class="va">S30_C_2</span> <span class="op">==</span> <span class="fl">0</span>, </span>
+<span>         <span class="va">S30_C_3</span> <span class="op">==</span> <span class="fl">0</span>, </span>
+<span>         <span class="va">S30_F_1</span> <span class="op">&gt;</span> <span class="fl">0</span>, </span>
+<span>         <span class="va">S30_F_2</span> <span class="op">&gt;</span> <span class="fl">0</span>, </span>
+<span>         <span class="va">S30_F_3</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `filter()`:
+ℹ In argument: `S30_C_1 == 0`.
+Caused by error:
+! object 'S30_C_1' not found</code></pre>
+</div>
 </div>
 <p>❓ How many genes are expressed only in the FGF-treated group?</p>
 <!-- #---THINKING ANSWER--- -->
 <!-- There are 26 genes expressed only in the FGF-treated group. -->
 <p>🎬 Now you find any genes that are expressed only in the control group.</p>
+<div class="cell">
+<div class="cell-output cell-output-error">
+<pre><code>Error in `filter()`:
+ℹ In argument: `S30_C_1 &gt; 0`.
+Caused by error:
+! object 'S30_C_1' not found</code></pre>
+</div>
+</div>
 <p>❓ Do the results make sense to you in light of what you know about the biology?</p>
 <!-- #---THINKING ANSWER--- -->
 <!-- there are no genes expressed in the control group but not in the FGF-treated group -->
@@ -462,6 +474,11 @@ cookieconsent.run({
 <!-- Domain expertise is important when analysing data so discuss your results with Betsy  -->
 <!-- and your group. -->
 <p>🎬 Write to file (saved in <code>results</code>) all the genes that are expressed one group only.</p>
+<div class="cell">
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 's30_fgf_only' not found</code></pre>
+</div>
+</div>
 </section><section id="create-deseqdataset-object" class="level2"><h2 class="anchored" data-anchor-id="create-deseqdataset-object">Create DESeqDataSet object</h2>
 <p>🎬 Load the DESeq2 package:</p>
 <p>A DEseqDataSet object is a custom data type that is used by <strong><code>DESeq2</code></strong>. Custom data types are common in the Bioconductor<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> packages. They are used to store data in a way that is useful for the analysis. These data types typically have data, transformed data, metadata and experimental designs within them.</p>
@@ -475,13 +492,13 @@ cookieconsent.run({
 <p>The counts must in a matrix rather than a dataframe. Unlike a dataframe, a matrix has columns of all the same type. That is, it will contain only the counts. The gene ids are given as row names rather than a column. The <code><a href="https://rdrr.io/r/base/matrix.html">matrix()</a></code> function will create a matrix from a dataframe of columns of the same type and the <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> function can be used to remove the gene ids column.</p>
 <p>🎬 Create a matrix of the counts:</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_count_mat</span> <span class="op">&lt;-</span> <span class="va">s30_filtered</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_count_mat</span> <span class="op">&lt;-</span> <span class="va">s30_filtered</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">xenbase_gene_id</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Add the gene ids as row names to the matrix:</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># add the row names to the matrix</span></span>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># add the row names to the matrix</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">s30_count_mat</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">s30_filtered</span><span class="op">$</span><span class="va">xenbase_gene_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You might want to view the matrix.</p>
@@ -489,19 +506,19 @@ cookieconsent.run({
 <p>🎬 Make a folder called <code>meta</code> and save the file to it.</p>
 <p>🎬 Read the metadata into a dataframe:</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_table.html">read_table</a></span><span class="op">(</span><span class="st">"meta/frog_meta_data.txt"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_table.html">read_table</a></span><span class="op">(</span><span class="st">"meta/frog_meta_data.txt"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Examine the resulting dataframe.</p>
 <p>We need to add the sample names as row names to the metadata dataframe. This is because the DESeqDataSet object will use the row names to match the samples in the metadata to the samples in the counts matrix.</p>
 <p>🎬 Add the sample names as row names to the metadata dataframe:</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">meta</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">meta</span><span class="op">$</span><span class="va">sample_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">meta</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">meta</span><span class="op">$</span><span class="va">sample_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>(you will get a warning message but you can ignore it)</p>
 <p>We are dealing only with the S30 data so we need to remove the samples that are not in the S30 data.</p>
 <p>🎬 Filter the metadata to keep only the S30 information:</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">meta_S30</span> <span class="op">&lt;-</span> <span class="va">meta</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">meta_S30</span> <span class="op">&lt;-</span> <span class="va">meta</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">stage</span> <span class="op">==</span> <span class="st">"stage_30"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
@@ -520,7 +537,7 @@ cookieconsent.run({
 <p>We can now create the DESeqDataSet object. The design formula describes the statistical model You should notice that it is the same sort of formula we used in <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code>, <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code>,<code><a href="https://rdrr.io/r/stats/glm.html">glm()</a></code> etc. The <code>~</code> indicates that the left hand side is the response variable (in this case counts) and the right hand side are the explanatory variables. We are interested in the difference between the treatments but we include <code>sibling_rep</code> to account for the fact that the data are paired. The names of the columns in the count matrix have to match the names in the metadata dataframe and the names of the explanatory variables in the design formula have to match the names of columns in the metadata.</p>
 <p>🎬 Create the DESeqDataSet object:</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu">DESeqDataSetFromMatrix</span><span class="op">(</span>countData <span class="op">=</span> <span class="va">s30_count_mat</span>,</span>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu">DESeqDataSetFromMatrix</span><span class="op">(</span>countData <span class="op">=</span> <span class="va">s30_count_mat</span>,</span>
 <span>                              colData <span class="op">=</span> <span class="va">meta_S30</span>,</span>
 <span>                              design <span class="op">=</span> <span class="op">~</span> <span class="va">treatment</span> <span class="op">+</span> <span class="va">sibling_rep</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -529,14 +546,14 @@ cookieconsent.run({
 <p>The counts are in <code>dds@assays@data@listData[["counts"]]</code> and the metadata are in <code>dds@colData</code> but the easiest way to see them is to use the <code>counts()</code> and <code>colData()</code> functions from the <strong><code>DESeq2</code></strong> package.</p>
 <p>🎬 View the counts:</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">counts</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">counts</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in .External2(C_dataviewer, x, title): unable to start data viewer</code></pre>
 </div>
 </div>
 <p>You should be able to see that this is the same as in <code>s30_count_mat</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">colData</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">colData</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>DataFrame with 6 rows and 4 columns
           sample_id       stage treatment sibling_rep
@@ -553,11 +570,11 @@ S30_F_A     S30_F_A    stage_30   FGF            A   </code></pre>
 <p>The normalised counts are the counts that have been transformed to account for the library size (i.e., the total number of reads in a sample) and the gene length. We have to first estimate the normalisation factors and store them in the DESeqDataSet object and then we can get the normalised counts.</p>
 <p>🎬 Estimate the factors for normalisation and store them in the DESeqDataSet object:</p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu">estimateSizeFactors</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu">estimateSizeFactors</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Look at the factors (just for information):</p>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">sizeFactors</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">sizeFactors</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  S30_C_5   S30_C_6   S30_C_A   S30_F_5   S30_F_6   S30_F_A 
 0.8812200 0.9454600 1.2989886 1.0881870 1.0518961 0.8322894 </code></pre>
@@ -566,12 +583,12 @@ S30_F_A     S30_F_A    stage_30   FGF            A   </code></pre>
 <p>To get the normalised counts we again used the <code>counts()</code> function but this time we use the <code>normalized=TRUE</code> argument.</p>
 <p>🎬 Save the normalised to a matrix:</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">normalised_counts</span> <span class="op">&lt;-</span> <span class="fu">counts</span><span class="op">(</span><span class="va">dds</span>, normalized <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">normalised_counts</span> <span class="op">&lt;-</span> <span class="fu">counts</span><span class="op">(</span><span class="va">dds</span>, normalized <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We will write the normalised counts to a file so that we can use them in the future.</p>
 <p>🎬 Make a dataframe of the normalised counts, add a column for the gene ids and write to file:</p>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">normalised_counts</span>,</span>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">normalised_counts</span>,</span>
 <span>           xenbase_gene_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">normalised_counts</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"results/S30_normalised_counts.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -579,13 +596,13 @@ S30_F_A     S30_F_A    stage_30   FGF            A   </code></pre>
 <p>We used the <code>DESeq()</code> function to do the differential expression analysis. This function fits the statistical model to the data and then uses the model to calculate the significance of the difference between the treatments. It again stored the results in the DESseqDataSet object. Note that the differential expression needs the raw (unnormalised counts) as it does its own normalisation as part of the process.</p>
 <p>🎬 Run the differential expression analysis:</p>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu">DESeq</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu">DESeq</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The function will take only a few moments to run on this data but can take longer for bigger datasets.</p>
 <p>We need to define the contrasts we want to test. We want to test the difference between the treatments so we will define the contrast as <code>FGF</code> and <code>control</code>.</p>
 <p>🎬 Define the contrast:</p>
 <div class="cell">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">contrast_fgf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"treatment"</span>, <span class="st">"FGF"</span>, <span class="st">"control"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">contrast_fgf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"treatment"</span>, <span class="st">"FGF"</span>, <span class="st">"control"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note that <code>treatment</code> is the name of the column in the metadata dataframe and <code>FGF</code> and <code>control</code> are the names of the levels in the <code>treatment</code> column. By putting them in the order <code>FGF</code> , <code>control</code> we are saying the fold change will be FGF / control. If we had put them in the order <code>control</code>, <code>FGF</code> we would have got the fold change as control / FGF. This means:</p>
 <ul>
@@ -594,13 +611,13 @@ S30_F_A     S30_F_A    stage_30   FGF            A   </code></pre>
 </ul>
 <p>🎬 Extract the results from the DESseqDataSet object:</p>
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results_fgf</span> <span class="op">&lt;-</span> <span class="fu">results</span><span class="op">(</span><span class="va">dds</span>,</span>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results_fgf</span> <span class="op">&lt;-</span> <span class="fu">results</span><span class="op">(</span><span class="va">dds</span>,</span>
 <span>                       contrast <span class="op">=</span> <span class="va">contrast_fgf</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This will give us the log2 fold change and p-value for the contrast.</p>
 <p>🎬 Save the results to a file:</p>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">results_fgf</span>,</span>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">results_fgf</span>,</span>
 <span>           xenbase_gene_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">results_fgf</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span>file <span class="op">=</span> <span class="st">"results/S30_results.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -619,7 +636,7 @@ S30_F_A     S30_F_A    stage_30   FGF            A   </code></pre>
 <p>We need to combine the two datasets of 701 and 798 cells into one dataset of 1499 cells, i.e., 1499 columns. The number of rows is the number of genes, 280. Before combining, we must make sure genes in the same order in both dataframes or we would be comparing the expression of one gene in one cell type to the expression of a different gene in the other cell type!</p>
 <p>🎬 Check the gene ids are in the same order in both dataframes:</p>
 <div class="cell">
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">prog</span><span class="op">$</span><span class="va">ensembl_gene_id</span>, <span class="va">hspc</span><span class="op">$</span><span class="va">ensembl_gene_id</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/identical.html">identical</a></span><span class="op">(</span><span class="va">prog</span><span class="op">$</span><span class="va">ensembl_gene_id</span>, <span class="va">hspc</span><span class="op">$</span><span class="va">ensembl_gene_id</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
@@ -627,11 +644,11 @@ S30_F_A     S30_F_A    stage_30   FGF            A   </code></pre>
 <p><strong><code>scran</code></strong> can use a matrix or a dataframe of counts but theses must be log normalised counts. If using a dataframe, the columns must only contain the expression values (not the gene ids).</p>
 <p>🎬 Combine the two dataframes (minus the gene ids) into one dataframe called <code>prog_hspc</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">prog_hspc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_cols.html">bind_cols</a></span><span class="op">(</span><span class="va">prog</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span>, <span class="va">hspc</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">prog_hspc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_cols.html">bind_cols</a></span><span class="op">(</span><span class="va">prog</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span>, <span class="va">hspc</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Now add the gene ids as the row names:</p>
 <div class="cell">
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">prog_hspc</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">prog</span><span class="op">$</span><span class="va">ensembl_gene_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">prog_hspc</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">prog</span><span class="op">$</span><span class="va">ensembl_gene_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="filter-to-remove-unexpressed-genes" class="level2"><h2 class="anchored" data-anchor-id="filter-to-remove-unexpressed-genes">Filter to remove unexpressed genes</h2>
 <p>In this dataset, we will not see and genes that are not expressed in any of the cells because we are using a specific subset of the transcriptome that was deliberately selected. However, we will go through how to do this because it is an important step in most analyses.</p>
@@ -639,7 +656,7 @@ S30_F_A     S30_F_A    stage_30   FGF            A   </code></pre>
 <p>Where the sum of all the values in the rows is zero, all the entries must be zero. We can use this to find the filter the genes that are not expressed in any of the cells. To do row wise aggregates such as the sum across rows we can use the <code><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise()</a></code> function. <code><a href="https://dplyr.tidyverse.org/reference/c_across.html">c_across()</a></code> allows us to use the colon notation <code>Prog_001:HSPC_852</code> in <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> rather than having to list all the column names: <code>sum(Prog_001, Prog_002, Prog_002, Prog_004,.....)</code></p>
 <p>🎬 Find the genes that are 0 in every column of the prog_hspc dataframe:</p>
 <div class="cell">
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">prog_hspc</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">prog_hspc</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/c_across.html">c_across</a></span><span class="op">(</span><span class="va">Prog_001</span><span class="op">:</span><span class="va">HSPC_852</span><span class="op">)</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -661,7 +678,7 @@ S30_F_A     S30_F_A    stage_30   FGF            A   </code></pre>
 <p>We might also examine the genes which are least expressed.</p>
 <p>🎬 Find ten least expressed genes:</p>
 <div class="cell">
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="va">prog_hspc</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html">rowSums</a></span><span class="op">(</span><span class="va">prog_hspc</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>ENSMUSG00000041046 ENSMUSG00000012428 ENSMUSG00000022225 ENSMUSG00000027863 
           30.70322           35.35796           50.45975           61.27461 
@@ -680,7 +697,7 @@ ENSMUSG00000023132 ENSMUSG00000026285
 <p>To find the genes that are expressed in only one cell type, we can use the same approach as above but only sum the columns for one cell type.</p>
 <p>🎬 Find the genes that are 0 in every column for the HSPC cells:</p>
 <div class="cell">
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">prog_hspc</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">prog_hspc</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/c_across.html">c_across</a></span><span class="op">(</span><span class="va">HSPC_001</span><span class="op">:</span><span class="va">HSPC_852</span><span class="op">)</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -720,14 +737,14 @@ ENSMUSG00000023132 ENSMUSG00000026285
 <p>The meta data needed for the frog data was information about which columns were in which treatment group and which sibling group and we had that information in a file. Similarly, here we need information on which columns are from which cell type. Instead of having this is a file, we will create a vector that indicates which column belongs to which cell type.</p>
 <p>🎬 Create a vector that indicates which column belongs to which cell type:</p>
 <div class="cell">
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cell_type</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"prog"</span>,<span class="st">"hspc"</span><span class="op">)</span>, </span>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cell_type</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"prog"</span>,<span class="st">"hspc"</span><span class="op">)</span>, </span>
 <span>                 times <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">prog</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span>,</span>
 <span>                           <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">hspc</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The number of times each cell type is repeated is the number of columns in that cell type minus 1. This is because we have removed the column with the gene ids. Do check that the length of the <code>cell_type</code> vector is the same as the number of columns in the <code>prog_hspc</code> dataframe.</p>
 <p>🎬 Run the differential expression analysis:</p>
 <div class="cell">
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">res_prog_hspc</span> <span class="op">&lt;-</span> <span class="fu">findMarkers</span><span class="op">(</span><span class="va">prog_hspc</span>, </span>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">res_prog_hspc</span> <span class="op">&lt;-</span> <span class="fu">findMarkers</span><span class="op">(</span><span class="va">prog_hspc</span>, </span>
 <span>                             <span class="va">cell_type</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>findMarkers()</code> is the function that runs the differential expression analysis. The first argument is the dataframe containing the data. The second argument is the vector indicating which columns are in which cell type. It gives us two dataframes of the results - rather unnecessarily. One is the results with fold changes that are Prog/HSPC and the other is the results with fold changes that are HSPC/Prog. These have the same magnitude, just a different sign</p>
@@ -897,7 +914,7 @@ ENSMUSG00000023132 ENSMUSG00000026285
 </div>
 <p>🎬 Write the results to file:</p>
 <div class="cell">
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">res_prog_hspc</span><span class="op">$</span><span class="va">prog</span>, </span>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">res_prog_hspc</span><span class="op">$</span><span class="va">prog</span>, </span>
 <span>           ensembl_gene_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">res_prog_hspc</span><span class="op">$</span><span class="va">prog</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="st">"results/prog_hspc_results.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -917,12 +934,15 @@ ENSMUSG00000023132 ENSMUSG00000026285
 </section><section id="the-code-file" class="level1"><h1>The Code file</h1>
 <p>These contain all the code needed in the workshop even where it is not visible on the webpage.</p>
 <p>The <a href="../../transcriptomics/week-4/workshop.html">workshop.qmd</a> file is the file I use to compile the practical. Qmd stands for Quarto markdown. It allows code and ordinary text to be interleaved to produce well-formatted reports including webpages. Right-click on the link and choose Save-As to download. You will be able to open the Qmd file in RStudio. Alternatively, <a href="https://github.com/3mmaRand/BIO00088H-data/blob/main/transcriptomics/week-4/workshop.qmd">View in Browser</a>. Coding and thinking answers are marked with <code>#---CODING ANSWER---</code> and <code>#---THINKING ANSWER---</code></p>
-<p>Pages made with R <span class="citation" data-cites="R-core">(<a href="#ref-R-core" role="doc-biblioref">R Core Team 2024</a>)</span>, Quarto <span class="citation" data-cites="allaire2022">(<a href="#ref-allaire2022" role="doc-biblioref"><strong>allaire2022?</strong></a>)</span>, <code>knitr</code> <span class="citation" data-cites="knitr">(<a href="#ref-knitr" role="doc-biblioref"><strong>knitr?</strong></a>)</span>, <code>kableExtra</code> <span class="citation" data-cites="kableExtra">(<a href="#ref-kableExtra" role="doc-biblioref">Zhu 2021</a>)</span></p>
+<p>Pages made with R <span class="citation" data-cites="R-core">(<a href="#ref-R-core" role="doc-biblioref">R Core Team 2024</a>)</span>, Quarto <span class="citation" data-cites="Allaire_Quarto_2024">(<a href="#ref-Allaire_Quarto_2024" role="doc-biblioref">Allaire et al. 2024</a>)</span>, <code>knitr</code> [<span class="citation" data-cites="knitr1">Xie (<a href="#ref-knitr1" role="doc-biblioref">2024</a>)</span>; knitr2; knitr3], <code>kableExtra</code> <span class="citation" data-cites="kableExtra">(<a href="#ref-kableExtra" role="doc-biblioref">Zhu 2021</a>)</span></p>
 </section><section id="references" class="level1">
 
 
 
 </section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Allaire_Quarto_2024" class="csl-entry" role="listitem">
+Allaire, J. J., Charles Teague, Carlos Scheidegger, Yihui Xie, and Christophe Dervieux. 2024. <span>“<span>Quarto</span>.”</span> <a href="https://doi.org/10.5281/zenodo.5960048">https://doi.org/10.5281/zenodo.5960048</a>.
+</div>
 <div id="ref-fs" class="csl-entry" role="listitem">
 Hester, Jim, Hadley Wickham, and Gábor Csárdi. 2023. <span>“Fs: Cross-Platform File System Operations Based on ’Libuv’.”</span>
 </div>
@@ -940,6 +960,9 @@ Wickham, Hadley. 2023. <em>Conflicted: An Alternative Conflict Resolution Strate
 </div>
 <div id="ref-tidyverse" class="csl-entry" role="listitem">
 Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
+</div>
+<div id="ref-knitr1" class="csl-entry" role="listitem">
+Xie, Yihui. 2024. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in r</em>. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
 </div>
 <div id="ref-kableExtra" class="csl-entry" role="listitem">
 Zhu, Hao. 2021. <span>“kableExtra: Construct Complex Table with ’Kable’ and Pipe Syntax.”</span> <a href="https://CRAN.R-project.org/package=kableExtra">https://CRAN.R-project.org/package=kableExtra</a>.

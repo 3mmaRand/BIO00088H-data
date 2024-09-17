@@ -394,7 +394,7 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">13 September, 2024</p>
+      <p class="date">17 September, 2024</p>
     </div>
   </div>
   
@@ -540,14 +540,14 @@ cookieconsent.run({
 <span><span class="co"># works well with smaller numbers of column</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">s30</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> xenbase_gene_id       S30_C_5            S30_C_6            S30_C_A        
+<pre><code> xenbase_gene_id       S30_C_1            S30_C_2            S30_C_3        
  Length:11893       Min.   :     0.0   Min.   :     0.0   Min.   :     0.0  
  Class :character   1st Qu.:    14.0   1st Qu.:    14.0   1st Qu.:    23.0  
  Mode  :character   Median :    70.0   Median :    75.0   Median :   107.0  
                     Mean   :   317.1   Mean   :   335.8   Mean   :   426.3  
                     3rd Qu.:   205.0   3rd Qu.:   220.0   3rd Qu.:   301.0  
                     Max.   :101746.0   Max.   :118708.0   Max.   :117945.0  
-    S30_F_5            S30_F_6            S30_F_A       
+    S30_F_1            S30_F_2            S30_F_3       
  Min.   :     0.0   Min.   :     0.0   Min.   :    0.0  
  1st Qu.:    19.0   1st Qu.:    17.0   1st Qu.:   16.0  
  Median :    88.0   Median :    84.0   Median :   69.0  
@@ -557,23 +557,23 @@ cookieconsent.run({
 </div>
 </div>
 <p>Notice that: - the minimum count is 0 and the maximums are very high in all the columns - the medians are quite a lot lower than the means so the data are skewed (hump to the left, tail to the right) - there must be quite a lot of zeros - the columns are roughly similar and it doesn’t look like there is an anomalous replicate.</p>
-<p>To find out how may zeros there are in a column we can make use of the fact that <code>TRUE</code> evaluates to 1 and <code>FALSE</code> evaluates to 0. This means <code>sum(S30_C_5 == 0)</code> gives the number of 0 in the <code>S30_C_5</code> column</p>
+<p>To find out how may zeros there are in a column we can make use of the fact that <code>TRUE</code> evaluates to 1 and <code>FALSE</code> evaluates to 0. This means <code>sum(S30_C_1 == 0)</code> gives the number of 0 in the <code>S30_C_1</code> column</p>
 <p>🎬 Find the number of zeros in all six columns:</p>
 <div class="cell">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">S30_C_5</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span>,</span>
-<span>            <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">S30_C_6</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span>,</span>
-<span>            <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">S30_C_A</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span>,</span>
-<span>            <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">S30_F_5</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span>,</span>
-<span>            <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">S30_F_6</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span>,</span>
-<span>            <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">S30_F_A</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">S30_C_1</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span>,</span>
+<span>            <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">S30_C_2</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span>,</span>
+<span>            <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">S30_C_3</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span>,</span>
+<span>            <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">S30_F_1</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span>,</span>
+<span>            <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">S30_F_2</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span>,</span>
+<span>            <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">S30_F_3</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 6
-  `sum(S30_C_5 == 0)` `sum(S30_C_6 == 0)` `sum(S30_C_A == 0)`
+  `sum(S30_C_1 == 0)` `sum(S30_C_2 == 0)` `sum(S30_C_3 == 0)`
                 &lt;int&gt;               &lt;int&gt;               &lt;int&gt;
 1                1340                1361                 998
-# ℹ 3 more variables: `sum(S30_F_5 == 0)` &lt;int&gt;, `sum(S30_F_6 == 0)` &lt;int&gt;,
-#   `sum(S30_F_A == 0)` &lt;int&gt;</code></pre>
+# ℹ 3 more variables: `sum(S30_F_1 == 0)` &lt;int&gt;, `sum(S30_F_2 == 0)` &lt;int&gt;,
+#   `sum(S30_F_3 == 0)` &lt;int&gt;</code></pre>
 </div>
 </div>
 <p>There is a better way of doing this that saves you having to repeat so much code - especially useful if you have a lot more than 6 columns. We can use <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> to put the data in tidy format and then use the <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> approach we have used extensively before.</p>
@@ -589,12 +589,12 @@ cookieconsent.run({
 <pre><code># A tibble: 6 × 2
   sample  n_zero
   &lt;chr&gt;    &lt;int&gt;
-1 S30_C_5   1340
-2 S30_C_6   1361
-3 S30_C_A    998
-4 S30_F_5   1210
-5 S30_F_6   1199
-6 S30_F_A    963</code></pre>
+1 S30_C_1   1340
+2 S30_C_2   1361
+3 S30_C_3    998
+4 S30_F_1   1210
+5 S30_F_2   1199
+6 S30_F_3    963</code></pre>
 </div>
 </div>
 <p>You could expand to get all the summary information</p>
@@ -616,12 +616,12 @@ cookieconsent.run({
 <pre><code># A tibble: 6 × 8
   sample    min lowerq  mean median upperq    max n_zero
   &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;int&gt;
-1 S30_C_5     0     14  317.     70    205 101746   1340
-2 S30_C_6     0     14  336.     75    220 118708   1361
-3 S30_C_A     0     23  426.    107    301 117945    998
-4 S30_F_5     0     19  376.     88    251 117573   1210
-5 S30_F_6     0     17  376.     84    246 130672   1199
-6 S30_F_A     0     16  260.     69    187  61531    963</code></pre>
+1 S30_C_1     0     14  317.     70    205 101746   1340
+2 S30_C_2     0     14  336.     75    220 118708   1361
+3 S30_C_3     0     23  426.    107    301 117945    998
+4 S30_F_1     0     19  376.     88    251 117573   1210
+5 S30_F_2     0     17  376.     84    246 130672   1199
+6 S30_F_3     0     16  260.     69    187  61531    963</code></pre>
 </div>
 </div>
 <p>The mean count ranges from 260 to 426.</p>
@@ -2057,7 +2057,7 @@ cookieconsent.run({
 <li>a lot of genes with zero counts in several of the samples</li>
 <li>some very very low counts.</li>
 </ul>
-<p>These should be filtered out because they are unreliable - or, at the least, uninformative. The goal of our downstream analysis will be to see if there is a signifcance difference in gene expression between the control and FGF-treated sibling. Since we have only three replicates in each group, having one or two unreliable, missing or zero values, makes such a determination impossible for a particular gene. We will use the total counts and the number of samples with non-zero values to filter our genes later.</p>
+<p>These should be filtered out because they are unreliable - or, at the least, uninformative. The goal of our downstream analysis will be to see if there is a significant difference in gene expression between the control and FGF-treated sibling. Since we have only three replicates in each group, having one or two unreliable, missing or zero values, makes such a determination impossible for a particular gene. We will use the total counts and the number of samples with non-zero values to filter our genes later.</p>
 <p>As we have a lot of genes, it is again helpful to plot the mean counts with pointrange to get an overview. We will plot the log of the counts - we saw earlier that logging made it easier to understand the distribution of counts over such a wide range. We will also order the genes from lowest to highest mean count.</p>
 <p>🎬 Plot the logged mean counts for each gene in order of size using <code><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_pointrange()</a></code>:</p>
 <div class="cell">
@@ -2154,28 +2154,30 @@ cookieconsent.run({
 </section><section id="mice-and-future-you" class="level3"><h3 class="anchored" data-anchor-id="mice-and-future-you">🐭 Mice and future you</h3>
 <p>🎬 Create a new Project, <code>mice-88H</code>, populated with folders and your data. Make a script file called <code>hspc-prog.R</code>. This will a be commented analysis of the hspc cells vs the prog cells. At this point you will have only code for the hspc cells. You will build on this each workshop and be able to use it as a template to examine other comparisons. Copy in the appropriate code and comments from <code>workshop-1.R</code>. Edit to improve your comments where your understanding has developed since you made them. Make sure you can close down RStudio, reopen it and run your whole script again.</p>
 </section><section id="xxxx-and-future-you" class="level3"><h3 class="anchored" data-anchor-id="xxxx-and-future-you">🍂 xxxx and future you</h3>
-<p><strong>Do one of the other two examples.</strong></p>
-<!-- 🎬 Create a new Project, `xxxx-88H`, populated with folders and your -->
-<!-- data. Make a script file called `xxxx.R`. This will a be commented -->
-<!-- analysis of t xxxxxxxxxxxx. -->
 </section></section></section><section id="finished" class="level1"><h1>🥳 Finished</h1>
 <p>Well Done!</p>
 </section><section id="independent-study-following-the-workshop" class="level1"><h1>Independent study following the workshop</h1>
-<p><a href="../../transcriptomics/week-3/study_after_workshop.html">Consolidate</a></p>
+<p><a href="study_3fter_workshop.qmd">Consolidate</a></p>
 </section><section id="the-code-file" class="level1"><h1>The Code file</h1>
 <p>These contain all the code needed in the workshop even where it is not visible on the webpage.</p>
 <p>The <a href="../../transcriptomics/week-3/workshop.html">workshop.qmd</a> file is the file I use to compile the practical. Qmd stands for Quarto markdown. It allows code and ordinary text to be interleaved to produce well-formatted reports including webpages. Right-click on the link and choose Save-As to download. You will be able to open the Qmd file in RStudio. Alternatively, <a href="https://github.com/3mmaRand/">View in Browser</a>. Coding and thinking answers are marked with <code>#---CODING ANSWER---</code> and <code>#---THINKING ANSWER---</code></p>
-<p>Pages made with R <span class="citation" data-cites="R-core">(<a href="#ref-R-core" role="doc-biblioref">R Core Team 2024</a>)</span>, Quarto <span class="citation" data-cites="allaire2022">(<a href="#ref-allaire2022" role="doc-biblioref"><strong>allaire2022?</strong></a>)</span>, <code>knitr</code> <span class="citation" data-cites="knitr">(<a href="#ref-knitr" role="doc-biblioref"><strong>knitr?</strong></a>)</span>, <code>kableExtra</code> <span class="citation" data-cites="kableExtra">(<a href="#ref-kableExtra" role="doc-biblioref">Zhu 2021</a>)</span></p>
+<p>Pages made with R <span class="citation" data-cites="R-core">(<a href="#ref-R-core" role="doc-biblioref">R Core Team 2024</a>)</span>, Quarto <span class="citation" data-cites="Allaire_Quarto_2024">(<a href="#ref-Allaire_Quarto_2024" role="doc-biblioref">Allaire et al. 2024</a>)</span>, <code>knitr</code> [<span class="citation" data-cites="knitr1">Xie (<a href="#ref-knitr1" role="doc-biblioref">2024</a>)</span>; knitr2; knitr3], <code>kableExtra</code> <span class="citation" data-cites="kableExtra">(<a href="#ref-kableExtra" role="doc-biblioref">Zhu 2021</a>)</span></p>
 </section><section id="references" class="level1">
 
 
 
 </section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Allaire_Quarto_2024" class="csl-entry" role="listitem">
+Allaire, J. J., Charles Teague, Carlos Scheidegger, Yihui Xie, and Christophe Dervieux. 2024. <span>“<span>Quarto</span>.”</span> <a href="https://doi.org/10.5281/zenodo.5960048">https://doi.org/10.5281/zenodo.5960048</a>.
+</div>
 <div id="ref-R-core" class="csl-entry" role="listitem">
 R Core Team. 2024. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
 </div>
 <div id="ref-tidyverse" class="csl-entry" role="listitem">
 Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
+</div>
+<div id="ref-knitr1" class="csl-entry" role="listitem">
+Xie, Yihui. 2024. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in r</em>. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
 </div>
 <div id="ref-kableExtra" class="csl-entry" role="listitem">
 Zhu, Hao. 2021. <span>“kableExtra: Construct Complex Table with ’Kable’ and Pipe Syntax.”</span> <a href="https://CRAN.R-project.org/package=kableExtra">https://CRAN.R-project.org/package=kableExtra</a>.

@@ -446,7 +446,7 @@ Emma Rand
 </div>
 </div>
 
-  <p class="date">13 September, 2024</p>
+  <p class="date">17 September, 2024</p>
 </section><section id="overview" class="slide level2"><h2>Overview</h2>
 <p>In these slides we will:</p>
 <div>
@@ -639,9 +639,10 @@ Emma Rand
 <li><p>Values are log2 normalised values</p></li>
 <li><p>The statistical analysis method we will use <strong><code>scran</code></strong> <span class="citation" data-cites="scran">(<a href="#/references" role="doc-biblioref" onclick="">Lun, McCarthy, and Marioni 2016</a>)</span> requires normalised values</p></li>
 </ul></section><section id="packages-to-install-before-the-workshop" class="slide level2"><h2>Packages to install before the workshop</h2>
-<p><strong><code>BiocManager</code></strong> from CRAN in the the normal way:</p>
+<p><strong><code>BiocManager</code></strong> from CRAN in the the normal way and set the version of Bioconductor packages to install:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
+<span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html">install</a></span><span class="op">(</span>version <span class="op">=</span> <span class="st">"3.19"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong><code>DESeq2</code></strong> from Bioconductor using BiocManager:</p>
 <div class="cell">
@@ -659,6 +660,7 @@ Emma Rand
 <li><p>Transcriptomics 2: Statistical Analysis Identifying which genes are differentially expressed between treatments.</p></li>
 <li><p>Transcriptomics 3: Visualising and Interpreting. PCA, Volcano plots and heatmaps to visualise results. Interpreting the results and finding out more about genes of interest.</p></li>
 </ul></section><section id="references" class="slide level2 smaller scrollable"><h2>References</h2>
+<p>Pages made with R <span class="citation" data-cites="R-core">(<a href="#/references" role="doc-biblioref" onclick="">R Core Team 2024</a>)</span>, Quarto <span class="citation" data-cites="Allaire_Quarto_2024">(<a href="#/references" role="doc-biblioref" onclick="">Allaire et al. 2024</a>)</span>, <code>knitr</code> [<span class="citation" data-cites="knitr1">Xie (<a href="#/references" role="doc-biblioref" onclick="">2024</a>)</span>; knitr2; knitr3], <code>kableExtra</code> <span class="citation" data-cites="kableExtra">(<a href="#/references" role="doc-biblioref" onclick="">Zhu 2021</a>)</span></p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
@@ -668,6 +670,9 @@ Emma Rand
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-abrams2019" class="csl-entry" role="listitem">
 Abrams, Zachary B., Travis S. Johnson, Kun Huang, Philip R. O. Payne, and Kevin Coombes. 2019. <span>“A Protocol to Evaluate RNA Sequencing Normalization Methods.”</span> <em>BMC Bioinformatics</em> 20 (24): 679. <a href="https://doi.org/10.1186/s12859-019-3247-x">https://doi.org/10.1186/s12859-019-3247-x</a>.
+</div>
+<div id="ref-Allaire_Quarto_2024" class="csl-entry" role="listitem">
+Allaire, J. J., Charles Teague, Carlos Scheidegger, Yihui Xie, and Christophe Dervieux. 2024. <span>“<span>Quarto</span>.”</span> <a href="https://doi.org/10.5281/zenodo.5960048">https://doi.org/10.5281/zenodo.5960048</a>.
 </div>
 <div id="ref-benjamini1995" class="csl-entry" role="listitem">
 Benjamini, Yoav, and Yosef Hochberg. 1995. <span>“Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing.”</span> <em>J. R. Stat. Soc. Series B Stat. Methodol.</em> 57 (1): 289–300. <a href="http://www.jstor.org/stable/2346101">http://www.jstor.org/stable/2346101</a>.
@@ -696,6 +701,9 @@ Lytal, Nicholas, Di Ran, and Lingling An. 2020. <span>“Normalization Methods o
 <div id="ref-mccarthy2012" class="csl-entry" role="listitem">
 McCarthy, Davis J., Yunshun Chen, and Gordon K. Smyth. 2012. <span>“Differential Expression Analysis of Multifactor RNA-Seq Experiments with Respect to Biological Variation.”</span> <em>Nucleic Acids Research</em> 40 (10): 4288–97. <a href="https://doi.org/10.1093/nar/gks042">https://doi.org/10.1093/nar/gks042</a>.
 </div>
+<div id="ref-R-core" class="csl-entry" role="listitem">
+R Core Team. 2024. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
 <div id="ref-ritchie2015" class="csl-entry" role="listitem">
 Ritchie, Matthew E., Belinda Phipson, Di Wu, Yifang Hu, Charity W. Law, Wei Shi, and Gordon K. Smyth. 2015. <span>“Limma Powers Differential Expression Analyses for RNA-Sequencing and Microarray Studies.”</span> <em>Nucleic Acids Research</em> 43 (7): e47. <a href="https://doi.org/10.1093/nar/gkv007">https://doi.org/10.1093/nar/gkv007</a>.
 </div>
@@ -704,6 +712,12 @@ Robinson, Mark D., Davis J. McCarthy, and Gordon K. Smyth. 2010. <span>“edgeR:
 </div>
 <div id="ref-vallejos2017" class="csl-entry" role="listitem">
 Vallejos, Catalina A., Davide Risso, Antonio Scialdone, Sandrine Dudoit, and John C. Marioni. 2017. <span>“Normalizing Single-Cell RNA Sequencing Data: Challenges and Opportunities.”</span> <em>Nature Methods</em> 14 (6): 565–71. <a href="https://doi.org/10.1038/nmeth.4292">https://doi.org/10.1038/nmeth.4292</a>.
+</div>
+<div id="ref-knitr1" class="csl-entry" role="listitem">
+Xie, Yihui. 2024. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in r</em>. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
+</div>
+<div id="ref-kableExtra" class="csl-entry" role="listitem">
+Zhu, Hao. 2021. <span>“kableExtra: Construct Complex Table with ’Kable’ and Pipe Syntax.”</span> <a href="https://CRAN.R-project.org/package=kableExtra">https://CRAN.R-project.org/package=kableExtra</a>.
 </div>
 </div>
 </section></section>
