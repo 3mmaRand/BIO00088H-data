@@ -261,19 +261,19 @@ look like there is an anomalous replicate.
 
 To find out how may zeros there are in a column we can make use of the
 fact that `TRUE` evaluates to 1 and `FALSE` evaluates to 0. This means
-`sum(S30_C_5 == 0)` gives the number of 0 in the `S30_C_5` column
+`sum(S30_C_1 == 0)` gives the number of 0 in the `S30_C_1` column
 
 🎬 Find the number of zeros in all six columns:
 
 ```{r}
 
 s30 |>
-  summarise(sum(S30_C_5 == 0),
-            sum(S30_C_6 == 0),
-            sum(S30_C_A == 0),
-            sum(S30_F_5 == 0),
-            sum(S30_F_6 == 0),
-            sum(S30_F_A == 0))
+  summarise(sum(S30_C_1 == 0),
+            sum(S30_C_2 == 0),
+            sum(S30_C_3 == 0),
+            sum(S30_F_1 == 0),
+            sum(S30_F_2 == 0),
+            sum(S30_F_3 == 0))
 ```
 
 There is a better way of doing this that saves you having to repeat so
@@ -559,7 +559,7 @@ Notice that we have:
 
 These should be filtered out because they are unreliable - or, at the
 least, uninformative. The goal of our downstream analysis will be to see
-if there is a signifcance difference in gene expression between the
+if there is a significant difference in gene expression between the
 control and FGF-treated sibling. Since we have only three replicates in
 each group, having one or two unreliable, missing or zero values, makes
 such a determination impossible for a particular gene. We will use the
@@ -757,11 +757,7 @@ whole script again.
 
 ### 🍂 xxxx and future you
 
-**Do one of the other two examples.**
 
-<!-- 🎬 Create a new Project, `xxxx-88H`, populated with folders and your -->
-<!-- data. Make a script file called `xxxx.R`. This will a be commented -->
-<!-- analysis of t xxxxxxxxxxxx. -->
 
 # 🥳 Finished
 
@@ -769,7 +765,7 @@ Well Done!
 
 # Independent study following the workshop
 
-[Consolidate](study_after_workshop.qmd)
+[Consolidate](study_3fter_workshop.qmd)
 
 # The Code file
 
@@ -784,7 +780,6 @@ will be able to open the Qmd file in RStudio. Alternatively, [View in
 Browser](https://github.com/3mmaRand/). Coding and thinking answers are
 marked with `#---CODING ANSWER---` and `#---THINKING ANSWER---`
 
-Pages made with R [@R-core], Quarto [@allaire2022], `knitr` [@knitr],
-`kableExtra` [@kableExtra]
+Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr` [@knitr1; knitr2; knitr3], `kableExtra` [@kableExtra]
 
 # References

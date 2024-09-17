@@ -292,11 +292,12 @@ Like familiar tests:
 
 ## Packages to install before the workshop
 
-**`BiocManager`** from CRAN in the the normal way:
+**`BiocManager`** from CRAN in the the normal way and set the version of Bioconductor packages to install:
 
 ```{r}
 #| eval: false
 install.packages("BiocManager")
+BiocManager::install(version = "3.19")
 ```
 
 **`DESeq2`** from Bioconductor using BiocManager:
@@ -326,3 +327,5 @@ BiocManager::install("scran")
     out more about genes of interest.
 
 ## References
+
+Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr` [@knitr1; knitr2; knitr3], `kableExtra` [@kableExtra]

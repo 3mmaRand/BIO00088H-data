@@ -119,17 +119,17 @@ glimpse(s30_count_norm)
 
 <!-- The normalised counts dataframe has 10,136 rows and 7 columns: which arethe sample names and the xenbase gene ids. -->
 
-<!-- S30_C_5          -->
+<!-- S30_C_1          -->
 
-<!-- S30_C_6          -->
+<!-- S30_C_2          -->
 
-<!-- S30_C_A          -->
+<!-- S30_C_3          -->
 
-<!-- S30_F_5          -->
+<!-- S30_F_1          -->
 
-<!-- S30_F_6          -->
+<!-- S30_F_2          -->
 
-<!-- S30_F_A          -->
+<!-- S30_F_3          -->
 
 <!-- xenbase_gene_id  -->
 
@@ -1012,7 +1012,6 @@ Browser](https://github.com/3mmaRand/BIO00088H-data/blob/main/transcriptomics/we
 Coding and thinking answers are marked with `#---CODING ANSWER---` and
 `#---THINKING ANSWER---`
 
-Pages made with R [@R-core], Quarto [@allaire2022], `knitr` [@knitr],
-`kableExtra` [@kableExtra]
+Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr` [@knitr1; knitr2; knitr3], `kableExtra` [@kableExtra]
 
 # References

@@ -1,34 +1,42 @@
 ADD WEBSITE LINK TO ALL SLIDES /MATERAILS
 
-
 VLE iframe
 
+<iframe src="https://3mmarand.github.io/BIO00088H-data/transcriptomics/week-5/overview.html" title="Week 5: transcriptomics 3: Visualising and Interpreting" allow="fullscreen"  width="800" height="400"></iframe>
 
-<iframe src="https://3mmarand.github.io/BIO00088H-data/omics/week-5/overview.html" title="Week 5: Omics 3: Visualising and Interpreting" allow="fullscreen"  width="800" height="400"></iframe>
+<iframe src="https://3mmarand.github.io/BIO00088H-data/transcriptomics/week-5/study_before_workshop.html" title="Prepare" allow="fullscreen"  width="800" height="400"></iframe>
 
-<iframe src="https://3mmarand.github.io/BIO00088H-data/omics/week-5/study_before_workshop.html" title="Prepare" allow="fullscreen"  width="800" height="400"></iframe>
+<iframe src="https://3mmarand.github.io/BIO00088H-data/transcriptomics/week-5/workshop.html" title="Workshop" allow="fullscreen"  width="800" height="400"></iframe>
 
-<iframe src="https://3mmarand.github.io/BIO00088H-data/omics/week-5/workshop.html" title="Workshop" allow="fullscreen"  width="800" height="400"></iframe>
+<iframe src="https://3mmarand.github.io/BIO00088H-data/transcriptomics/week-5/study_after_workshop.html" title="Consolidation" allow="fullscreen"  width="800" height="400"></iframe>
 
-<iframe src="https://3mmarand.github.io/BIO00088H-data/omics/week-5/study_after_workshop.html" title="Consolidation" allow="fullscreen"  width="800" height="400"></iframe>
-
-<h1 style="color:MediumSeaGreen;">Workshop material  <a href="" target="_blank">Direct link</a></h1>
+<h1 style="color:MediumSeaGreen;">Workshop material  <a href="" target="_blank">Open Workshop material on external site</a></h1>
 
 Independent Study to do before the workshop
 Workshop material
 Independent Study to do after the workshop
 
-Place holders:
 
-🍂 xxxx data
+Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr` [@knitr1; knitr2; knitr3], `kableExtra` [@kableExtra]
+
+
+Place holders:
 
 
 🐸 Frog development data:
 
+rename
+_5 -> 1
+_6 -> 2
+_A -> 3
+
 🐭 Stem cell data:
 
+🎄 Arabidopisis data
 
-omics hello data
+💉 🩸 Leishmania mexicana
+
+transcriptomics hello data
 
 usethis::create_project("undergrad-teaching-york/BIO00088H/hello-data")
 usethis::use_r("workshop-1")
@@ -38,7 +46,7 @@ fs::dir_create("data-processed")
 
 week 3
 
- <!-- MAY BE FOR NEXT WEEK -->
+<!-- MAY BE FOR NEXT WEEK -->
 <!-- ## Principle Components Analysis (PCA) -->
 
 <!-- explore data further - at the sample and gene level check reps cluster -->
@@ -48,6 +56,7 @@ Further explore the data with Principle Components Analysis (PCA) on the normali
 
 
 for workshop 2 they willneed
+Version!!
 
 biocmanager
 
