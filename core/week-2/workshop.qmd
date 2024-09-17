@@ -612,6 +612,6 @@ Completely optional suggestions for further reading
 -   Excuse Me, Do You Have a Moment to Talk About Version Control?
     [@bryan2018]
 
-Pages made with R [@R-core] and Quarto [@allaire2022]
+Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr` [@knitr1; knitr2; knitr3], `kableExtra` [@kableExtra]
 
 ## References

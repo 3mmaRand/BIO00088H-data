@@ -68,8 +68,8 @@ experiment](images/88H-exp-design-betsy.png){fig-align="left"
 width="200"}
 
 ::: incremental
--   3 fertilisations. [These are the replicates, `.5`, `.6`,
-    `A`]{style="color:#009900"}
+-   3 fertilisations. [These are the replicates, `1`, `2`,
+    `3`]{style="color:#009900"}
 
 -   two siblings from each fertilisation one control, one FGF treated.
     [The treatments are paired]{style="color:#009900"}
@@ -200,8 +200,7 @@ width="200"}
 ## Raw Sequence data
 
 ::: incremental
--   The RNA-seq data are from an Illumina machine 150-300bp; Metagenomic
-    data are often Nanopore 10,000 - 30000bp
+-   The RNA-seq data are from an Illumina machine 150-300bp
 
 -   Reads are in FASTQ files
 
@@ -217,13 +216,13 @@ width="200"}
 -   Reads are filtered and trimmed on the basis of the quality score
 
 -   They are then aligned/pseudo-aligned to a reference
-    genome/transcriptome or, in metagenomics, assembled de novo.
+    genome/transcriptome 
 
--   Reads are then counted to quantify the expression or number of
-    genomes in metagenomics
+-   Reads are then counted to quantify the expression 
 
--   Counts are normalised to account for differences in sequencing depth
-    and gene/transcript/genome length before statistical analysis
+-   Counts will need to be normalised to account for differences 
+    in sequencing depth and gene/transcript/ length before, or as part 
+    of, statistical analysis. 
 :::
 
 ## 🐸 Data
@@ -242,7 +241,7 @@ width="200"}
 
 -   Published in @nestorowa2016
 
--   Expression for a subset of genes, the surfaceome
+-   Expression for a **subset of genes**, the surfaceome
 
 -   Values are log2 normalised values
 
