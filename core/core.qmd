@@ -10,21 +10,27 @@ toc-location: right
 Colomb](images/future_you.png){fig-alt="Person working at a computer with an offstage person asking 'How is the analysis going?' The person at the computer replies 'Can't understand the date...and the data collector does not answer my emails or calls' Person offstage: 'That's terrible! So cruel! Who did collect the data? I will sack them!' Person at the computer: 'um...I did, 3 years ago.'"
 width="400"}
 
+There are two workshops taken by everyone on BIO00088H. These are in
+weeks 2 and 6. These are important in understanding both how to
+assemble, curate and document your "Supporting Information" and how to
+work reproducibly so future you (Spring semester you) can painlessly
+work with past you and your work is demonstrably repeatable. This is
+essential because you will want to be able to set work aside for
+holidays and assessment periods and then restart easily. The Supporting
+Information you submit with your Report will be be assessed on its
+organisation, reproducibility and documentation.
 
-There are two workshops taken by everyone on BIO00088H. These are in weeks 2 and 6. These are important in understanding both how to assemble, curate and document your "Supporting Information" and how to work reproducibly so future you (Spring semester you) can painlessly work with past you and your work is demonstrably repeatable. This is essential because you will want to be able to set work aside for holidays and assessment periods and then restart easily. The Supporting Information you submit with your Report will be be assessed on its organisation, reproducibility and documentation. 
+BIO00070M students do week 1 and 6 of the core workshops along with
+weeks 3, 4 and 5 of transcriptomics.
 
-BIO00070M students do week 1 and 6 of the core workshops along with weeks 3, 4 and 5 of transcriptomics. 
+## Week 1 Core: Supporting Information 1
 
+Why reproducibility matters, project-oriented workflow, organisation and
+naming things. You will also learn how to recognise and write cool 😎
+code, not 😩 ugly code and code algorithmically and discover some
+awesome short cuts to help you write cool 😎 code.
 
+## Week 6 Core: Supporting Information 2
 
-## Week 1 Core: Supporting Information 1 
-
-Why reproducibility matters, project-oriented workflow, organisation and naming things. You will also learn how to recognise and write cool 😎 code, not 😩 ugly code and code algorithmically and discover some awesome short cuts to help you write cool 😎 code. 
-
-
-## Week 6 Core: Supporting Information 2 
-
-Documenting your Supporting Information with a read me and appropriate code commenting, curating code, non-coded processing
-
-
-
+Documenting your Supporting Information with a read me and appropriate
+code commenting, curating code, non-coded processing
