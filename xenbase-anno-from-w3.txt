@@ -1,0 +1,63 @@
+## Add gene information from Xenbase
+
+-   I got the information from the [Xenbase information
+    pages](https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp)
+    under Data Reports \| Gene Information
+
+-   This is listed: Xenbase Gene Product Information \[readme\] [gzipped
+    gpi (tab
+    separated)](https://download.xenbase.org/xenbase/GenePageReports/xenbase.gpi.gz)
+
+-   Click on the readme link to see the file format and columns
+
+-   I downloaded
+    [xenbase.gpi.gz](https://download.xenbase.org/xenbase/GenePageReports/xenbase.gpi.gz),
+    unzipped it, removed header lines and the *Xenopus tropicalis*
+    (taxon:8364) entries and saved it as
+    [xenbase_info.xlsx](meta/xenbase_info.xlsx)
+
+If you want to emulate what I did you can use the following commands in
+the terminal after downloading the file:
+
+``` bash
+gunzip xenbase.gpi.gz
+less xenbase.gpi
+q
+```
+
+`gunzip` unzips the file and `less` allows you to view the file. `q`
+quits the viewer. You will see the header lines and that the file
+contains both *Xenopus tropicalis* and *Xenopus laevis*. I read the file
+in with `read_tsv` (skipping the first header lines) then filtered out
+the *Xenopus tropicalis* entries, dropped some columns and saved the
+file as an excel file.
+
+However, I have already done this for you and saved the file as [xenbase_info.xlsx](meta/xenbase_info.xlsx) in the `meta` folder. We will import this file and
+join it to the results dataframe.
+
+🎬 Load the **`readxl`** [@readxl] package:
+
+```{r}
+library(readxl)
+```
+
+🎬 Import the Xenbase gene information file:
+
+```{r}
+gene_info <- read_excel("meta/xenbase_info.xlsx") 
+```
+
+You should view the resulting dataframe to see what information is
+available. You can use `glimpse()` or `View()`.
+
+🎬 Merge the gene information with the results:
+
+```{r}
+# join the gene info with the results
+s30_results <- s30_results |>
+  left_join(gene_info, by = "xenbase_gene_id")
+```
+
+We will also find it useful to import the metadata that maps the sample
+names to treatments. This will allow us to label the samples in the
+visualisations.
