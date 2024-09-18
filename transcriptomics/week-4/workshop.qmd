@@ -770,8 +770,8 @@ We are getting the gene name and and a description. We also need to get the id b
 
 ```{r}
 #| error: true
-prog_hspc_results |> select(ensembl_gene_id) |> 
-  filter(!ensembl_gene_id %in% gene_info$ensembl_gene_id)
+# prog_hspc_results |> select(ensembl_gene_id) |> 
+#   filter(!ensembl_gene_id %in% gene_info$ensembl_gene_id)
 
 ```
 
@@ -783,8 +783,8 @@ Oh, **`conflicted`** has flagged a conflict for us.
 ```{r}
 #| include: false
 #---CODING ANSWER---
-prog_hspc_results |> dplyr::select(ensembl_gene_id) |> 
-  filter(!ensembl_gene_id %in% gene_info$ensembl_gene_id)
+# prog_hspc_results |> dplyr::select(ensembl_gene_id) |> 
+#   filter(!ensembl_gene_id %in% gene_info$ensembl_gene_id)
 ```
 ❓ What is the id which is missing information?
 
