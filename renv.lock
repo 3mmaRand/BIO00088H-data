@@ -1219,21 +1219,6 @@
       ],
       "Hash": "63cb26d12517c7863f5abb006c5e0f25"
     },
-    "formattable": {
-      "Package": "formattable",
-      "Version": "0.2.1",
-      "Source": "Repository",
-      "Repository": "RSPM",
-      "Requirements": [
-        "R",
-        "htmltools",
-        "htmlwidgets",
-        "knitr",
-        "methods",
-        "rmarkdown"
-      ],
-      "Hash": "870d6d5d39b23923d0c816f904075b4c"
-    },
     "fs": {
       "Package": "fs",
       "Version": "1.6.4",

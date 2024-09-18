@@ -424,6 +424,69 @@ results_fgf <- results(dds,
 ```
 
 This will give us the log2 fold change and p-value for the contrast.
+## Add gene information from Xenbase
+
+-   I got the information from the [Xenbase information
+    pages](https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp)
+    under Data Reports \| Gene Information
+
+-   This is listed: Xenbase Gene Product Information \[readme\] [gzipped
+    gpi (tab
+    separated)](https://download.xenbase.org/xenbase/GenePageReports/xenbase.gpi.gz)
+
+-   Click on the readme link to see the file format and columns
+
+-   I downloaded
+    [xenbase.gpi.gz](https://download.xenbase.org/xenbase/GenePageReports/xenbase.gpi.gz),
+    unzipped it, removed header lines and the *Xenopus tropicalis*
+    (taxon:8364) entries and saved it as
+    [xenbase_info.xlsx](meta/xenbase_info.xlsx)
+
+If you want to emulate what I did you can use the following commands in
+the terminal after downloading the file:
+
+``` bash
+gunzip xenbase.gpi.gz
+less xenbase.gpi
+q
+```
+
+`gunzip` unzips the file and `less` allows you to view the file. `q`
+quits the viewer. You will see the header lines and that the file
+contains both *Xenopus tropicalis* and *Xenopus laevis*. I read the file
+in with `read_tsv` (skipping the first header lines) then filtered out
+the *Xenopus tropicalis* entries, dropped some columns and saved the
+file as an excel file.
+
+However, I have already done this for you and saved the file as [xenbase_info.xlsx](meta/xenbase_info.xlsx) in the `meta` folder. We will import this file and
+join it to the results dataframe.
+
+🎬 Load the **`readxl`** [@readxl] package:
+
+```{r}
+library(readxl)
+```
+
+🎬 Import the Xenbase gene information file:
+
+```{r}
+gene_info <- read_excel("meta/xenbase_info.xlsx") 
+```
+
+You should view the resulting dataframe to see what information is
+available. You can use `glimpse()` or `View()`.
+
+🎬 Merge the gene information with the results:
+
+```{r}
+# join the gene info with the results
+s30_results <- s30_results |>
+  left_join(gene_info, by = "xenbase_gene_id")
+```
+
+We will also find it useful to import the metadata that maps the sample
+names to treatments. This will allow us to label the samples in the
+visualisations.
 
 🎬 Save the results to a file:
 
@@ -659,6 +722,94 @@ data.frame(res_prog_hspc$hspc,
   head() |> 
   knitr::kable(cap = "The res_prog_hspc$hspc dataframe. Notice the sign of the fold change is the other way")
 ```
+
+## Add gene information from Ensembl using biomaRt
+
+[Ensembl](https://www.ensembl.org/index.html) [@martin2023;
+@birney2004]is a bioinformatics project to organise all the biological
+information around the sequences of large genomes. The are a large
+number of databases but [BioMart](https://www.ensembl.org/info/data/biomart/index.html)
+[@smedley2009] provides a consistent interface to the material. There
+are web-based tools to use these but the R package **`biomaRt`**
+[@biomaRt] gives you programmatic access making it easier to integrate information into R dataframes
+
+🎬 Load the **`biomaRt`** [@biomaRt] package:
+
+```{r}
+library(biomaRt)
+```
+
+🎬 Connect to the mouse database and see the first 20 bits of information we can retrieve:
+```{r}
+# Connect to the mouse database
+ensembl <- useMart(biomart = "ensembl", 
+                   dataset = "mmusculus_gene_ensembl")
+
+# See what information we can retrieve
+listAttributes(mart = ensembl) |> head(20)
+
+```
+
+There are many (2,985!) possible bits of information (attributes) that can be obtained. You can replace `head(20)` with `View()` to see them all.
+
+We use the `getBM()` function to retrieve information from the database. The `filters` argument is used to specified what kind of identifier we are supplying to retrieve information. The `attributes` argument is used to select the information we want to retrieve. The `values` argument is used to specify the identifiers. The mart argument is used to specify the connection we created.
+
+🎬 Get the gene information:
+```{r}
+gene_info <- getBM(filters = "ensembl_gene_id",
+                   attributes = c("ensembl_gene_id",
+                                  "external_gene_name",
+                                  "description"),
+                   values = prog_hspc_results$ensembl_gene_id,
+                   mart = ensembl)
+```
+
+We are getting the gene name and and a description. We also need to get the id because we will use that to merge the `gene_info` dataframe with the `prog_hspc_results` dataframe. Notice the dataframe returned only has 279 rows - one of the ids does not have information.
+
+🎬 We can find which is missing with:
+
+```{r}
+#| error: true
+prog_hspc_results |> select(ensembl_gene_id) |> 
+  filter(!ensembl_gene_id %in% gene_info$ensembl_gene_id)
+
+```
+
+Oh, **`conflicted`** has flagged a conflict for us.
+
+🎬 Take the appropriate action to resolve the conflict:
+
+
+```{r}
+#| include: false
+#---CODING ANSWER---
+prog_hspc_results |> dplyr::select(ensembl_gene_id) |> 
+  filter(!ensembl_gene_id %in% gene_info$ensembl_gene_id)
+```
+❓ What is the id which is missing information?
+
+<!-- #---THINKING ANSWER--- -->
+<!-- ENSMUSG00000029386	 -->
+
+
+We might want to look that up - but let's worry about it later if
+it turns out to be something important.
+
+🎬 Merge the gene information with the results:
+
+```{r}
+prog_hspc_results <- prog_hspc_results |> 
+  left_join(gene_info, by = "ensembl_gene_id")
+```
+
+I recommend viewing the dataframe to see the new columns.
+We now have dataframe with all the info we need, normalised counts,
+log~2~ normalised counts, statistical comparisons with fold changes and p
+values, information about the gene other than just the id
+
+
+
+
 
 🎬 Write the results to file:
 
