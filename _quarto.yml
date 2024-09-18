@@ -7,10 +7,6 @@ date-format: D MMMM, YYYY
 
 website:
   title: "Data Analysis for Group Project"
-  cookie-consent:
-    type: implied
-    style: simple
-    palette: light
   google-analytics: "G-TVF95J593T"
   
   page-footer:

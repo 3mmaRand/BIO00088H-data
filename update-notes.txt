@@ -2,15 +2,22 @@ ADD WEBSITE LINK TO ALL SLIDES /MATERAILS
 
 VLE iframe
 
-<iframe src="https://3mmarand.github.io/BIO00088H-data/transcriptomics/week-5/overview.html" title="Week 5: transcriptomics 3: Visualising and Interpreting" allow="fullscreen"  width="800" height="400"></iframe>
+<h2 style="color:MediumSeaGreen;">Read an Overview of the Transcriptomics material (below <a href="https://3mmarand.github.io/BIO00088H-data/transcriptomics/transcriptomics.html" target="_blank">or open page on external site</a>)</h2>
+<iframe src="https://3mmarand.github.io/BIO00088H-data/transcriptomics/transcriptomics.html" allow="fullscreen"  width="800" height="800"></iframe>
 
-<iframe src="https://3mmarand.github.io/BIO00088H-data/transcriptomics/week-5/study_before_workshop.html" title="Prepare" allow="fullscreen"  width="800" height="400"></iframe>
 
-<iframe src="https://3mmarand.github.io/BIO00088H-data/transcriptomics/week-5/workshop.html" title="Workshop" allow="fullscreen"  width="800" height="400"></iframe>
+<h2 style="color:MediumSeaGreen;">Read an Overview of Transcriptomics 1: 👋 Hello data! (below <a href="https://3mmarand.github.io/BIO00088H-data/transcriptomics/week-3/overview.html" target="_blank">or open page on external site</a>)</h2>
+<iframe src="https://3mmarand.github.io/BIO00088H-data/transcriptomics/week-3/overview.html" allow="fullscreen"  width="800" height="800"></iframe>
 
-<iframe src="https://3mmarand.github.io/BIO00088H-data/transcriptomics/week-5/study_after_workshop.html" title="Consolidation" allow="fullscreen"  width="800" height="400"></iframe>
+<h2 style="color:MediumSeaGreen;">Do the independent study to prepare for the workshop (below <a href="https://3mmarand.github.io/BIO00088H-data/transcriptomics/week-3/study_before_workshop.html#/title-slide" target="_blank">or open page on external site</a>)</h2>
+<iframe src="https://3mmarand.github.io/BIO00088H-data/transcriptomics/week-3/study_before_workshop.html#/title-slide" allow="fullscreen"  width="800" height="800"></iframe>
 
-<h1 style="color:MediumSeaGreen;">Workshop material  <a href="" target="_blank">Open Workshop material on external site</a></h1>
+<h2 style="color:MediumSeaGreen;">Attend the workshop (material below <a href="https://3mmarand.github.io/BIO00088H-data/transcriptomics/week-3/workshop.html" target="_blank">or open page on external site</a>)</h2>
+<iframe src="https://3mmarand.github.io/BIO00088H-data/transcriptomics/week-3/workshop.html" allow="fullscreen"  width="800" height="800"></iframe>
+
+
+<h2 style="color:MediumSeaGreen;">Do the independent study following the workshop (below <a href="https://3mmarand.github.io/BIO00088H-data/transcriptomics/week-3/study_after_workshop.html#/title-slide" target="_blank">or open page on external site</a>)</h2>
+<iframe src="https://3mmarand.github.io/BIO00088H-data/transcriptomics/week-3/study_after_workshop.html#/title-slide" allow="fullscreen"  width="800" height="800"></iframe>
 
 Independent Study to do before the workshop
 Workshop material
