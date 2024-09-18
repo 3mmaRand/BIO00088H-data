@@ -21,27 +21,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -325,48 +305,22 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <h1>Content</h1>
 <section id="transcriptomics-1-hello-data" class="level2">
 <h2 class="anchored" data-anchor-id="transcriptomics-1-hello-data">Transcriptomics 1: 👋 Hello data!</h2>
-<p>This week you will meet your data. The independent study will concisely cover how these data were generated and how they have been processed before being given to you. There will also be an overview of the analysis we will carry out over three workshops. In the workshop, you will learn what steps to take to get a good understanding of ’omics data before you consider any statistical analysis. This is an often overlooked, but very valuable and informative, part of any data pipeline. It gives you the deep understanding of the data structures and values that you will need to code and trouble-shoot code, allows you to spot failed or problematic samples and informs your decisions on quality control.</p>
+<p>This week you will meet your data. There are four datasets, one for each project in this strand. The independent study will concisely cover how each of these four data sets were generated and how they have been processed before being given to you. It will also give an overview of the analysis we will carry out over three workshops. In the workshop, you will learn what steps to take to get a good understanding of transciptomics data before you consider any statistical analysis. This is an often overlooked, but very valuable and informative, part of any data pipeline. It will give you the understanding of the data and R data structures that you will need to code and trouble-shoot code. It will also allow you to spot failed or problematic samples and will inform your decisions on quality control. At the end of this workshop and the following independent study you will have performed quality control by filtering out uninformative genes and samples, and saved this filtered data for use in the next workshop. You will also have a script that you can use to repeat this process on other datasets.</p>
 </section>
 <section id="transcriptomics-2-statistical-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="transcriptomics-2-statistical-analysis">Transcriptomics 2: Statistical Analysis</h2>
-<p>This week we cover differential expression analysis on raw counts or log normalised values. The independent study will allow you to check you have what you should have following the <a href="week-3/workshop.html">Transcriptomics 1: Hello Data workshop</a> and <a href="week-3/study_after_workshop.html">Consolidation study</a>. It will also summarise the concepts and methods we will use in the workshop. In the workshop, you will learn how to perform differential expression analysis on raw counts using <strong><code>DESeq2</code></strong> <span class="citation" data-cites="DESeq2">(<a href="#ref-DESeq2" role="doc-biblioref">Love, Huber, and Anders 2014</a>)</span> or on logged normalised expression values using <strong><code>scran</code></strong> <span class="citation" data-cites="scran">(<a href="#ref-scran" role="doc-biblioref">Lun, McCarthy, and Marioni 2016</a>)</span> or both.</p>
+<p>This week we cover differential expression analysis on your quality controlled data. The independent study will allow you to check you have what you should have following the <a href="week-3/workshop.html">Transcriptomics 1: Hello Data workshop</a> and <a href="week-3/study_after_workshop.html">Consolidation study</a>. It then summarises the concepts and methods used to carry out differential expression analysis in workshop. In the workshop, you will perform the differential expression and learn how to compuationally annotate your genes with more information from the databases. This will include the Gene Ontology (GO) terms that describe the biological processes, molecular functions and cellular components that the gene is involved in. At the end of this workshop and the following independent study you will have files containing the genes which are differentially expressed, along with the statistical information, summary information and annotation. You will be able to consider which genes you want to investigates with your Project director and have what you need for the next workshop. You will also have a script that you can use to repeat this process on other datasets.</p>
 </section>
 <section id="transcriptomics-3-visualising-and-interpreting" class="level2">
 <h2 class="anchored" data-anchor-id="transcriptomics-3-visualising-and-interpreting">Transcriptomics 3: Visualising and Interpreting</h2>
-<p>before</p>
-<ul>
-<li>recap what we have</li>
-<li>PCA</li>
-<li>volcano plot described</li>
-<li>GO terms</li>
-<li></li>
-</ul>
-<p>workshop</p>
-<ul>
-<li>PCA</li>
-<li>volcano plot</li>
-<li>annotating with go terms</li>
-</ul>
-<p>after</p>
-<ul>
-<li>document what you have done</li>
-<li>repeat on another comparison</li>
-</ul>
+<p>This week you will learn some how to do some common data visualisations for transcriptomic data. You will conduct and present a Principal Component Analysis (PCA) and a Volcano plot. We will also conduct a GO enrichment analysis. The independent study will allow you to check you have what you should have following the <a href="week-4/workshop.html">Transcriptomics 2: Statistical Analysis workshop</a> and <a href="week-4/study_after_workshop.html">Consolidation study</a>. At the end of this workshop and the following independent study you will at least two figures suitable for including in your report, along with an understanding of the results you can report on. You will also have a script that you can use to repeat this process on other datasets.</p>
 <p>References</p>
 
 
-
 </section>
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-DESeq2" class="csl-entry" role="listitem">
-Love, Michael I., Wolfgang Huber, and Simon Anders. 2014. <span>“Moderated Estimation of Fold Change and Dispersion for RNA-Seq Data with DESeq2.”</span> <em>Genome Biology</em> 15: 550. <a href="https://doi.org/10.1186/s13059-014-0550-8">https://doi.org/10.1186/s13059-014-0550-8</a>.
-</div>
-<div id="ref-scran" class="csl-entry" role="listitem">
-Lun, Aaron T. L., Davis J. McCarthy, and John C. Marioni. 2016. <span>“A Step-by-Step Workflow for Low-Level Analysis of Single-Cell RNA-Seq Data with Bioconductor.”</span> <em>F1000Res.</em> 5: 2122. <a href="https://doi.org/10.12688/f1000research.9501.2">https://doi.org/10.12688/f1000research.9501.2</a>.
-</div>
-</div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
