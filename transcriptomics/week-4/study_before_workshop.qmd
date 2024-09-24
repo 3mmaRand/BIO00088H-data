@@ -4,7 +4,7 @@ subtitle: "Transcriptomics 2: Statistical Analysis"
 author: "Emma Rand"
 format: 
   revealjs:
-    footer: "🔗 [About Transcriptomics 2: Statistical Analysis](https://3mmarand.github.io/BIO00088H-data/omics/week-4/overview.html)"
+    footer: "🔗 [About Transcriptomics 2: Statistical Analysis](https://3mmarand.github.io/BIO00088H-data/transcriptomics/week-4/overview.html)"
     slide-number: true
     chalkboard: true
     code-link: true
