@@ -24,7 +24,7 @@ Workshop material
 Independent Study to do after the workshop
 
 
-Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr` [@knitr1; knitr2; knitr3], `kableExtra` [@kableExtra]
+Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr` [@knitr1; @knitr2; @knitr3], `kableExtra` [@kableExtra]
 
 
 Place holders:
@@ -39,9 +39,9 @@ _A -> 3
 
 🐭 Stem cell data:
 
-🎄 Arabidopisis data
+🎄 Arabidopisis data replace 🍂
 
-💉 🩸 Leishmania mexicana
+💉 Leishmania mexicana
 
 transcriptomics hello data
 
