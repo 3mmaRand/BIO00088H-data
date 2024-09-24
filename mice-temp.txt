@@ -1,0 +1,222 @@
+n_zero with n_above_zero
+
+
+
+🎬 Import [surfaceome_hspc.csv](data-raw/surfaceome_hspc.csv) and xxxxxxxx
+
+```{r}
+# 🐭 import the hspc data
+hspc <- read_csv("data-raw/surfaceome_hspc.csv")
+```
+
+
+
+
+🎬 Pivot the expression values (stack the columns) so all the counts are
+in a single column (`expr`) and pipe into `ggplot()` to create a
+histogram:
+
+```{r}
+hspc |>
+  pivot_longer(cols = -ensembl_gene_id,
+               names_to = "cell",
+               values_to = "expr") |> 
+  ggplot(aes(x = expr)) +
+  geom_histogram()
+```
+
+This is a very striking distribution. Is it what we are expecting?
+Again,the excess number of low values is almost certainly anomalous.
+They will be inaccurate measure and we will want to exclude expression
+values below (about) 1. We will revisit this after we have considered
+the distribution of expression across cells and genes.
+
+What about the bimodal appearance of the the 'real' values? If we had
+the whole genome we would not expect to see such a pattern - we'd expect
+to see a roughly normal distribution[^1]. However, this is a subset of
+the genome and the nature of the subsetting has had an influence here.
+These are a subset of cell surface proteins that show a significant
+difference between at least two of twelve cell subtypes. That is, all of
+these genes are either high or low.
+
+
+#### 🐭 Mouse cells
+
+We used the `summary()` function to get an overview of the columns in
+the frog data. Let's try that here.
+
+🎬 Get a quick overview of the columns:
+
+```{r}
+#| class: outputscroll
+summary(hspc)
+```
+
+Hmmmm, did you get all that? Nope, me neither! We have 701 cells but we
+only have 6 samples for the frogs. We will need a different approach to
+get an overview but I find it is still useful to look at the few columns
+
+🎬 Get a quick overview the first 20 columns:
+
+```{r}
+#| class: outputscroll
+summary(hspc[1:20])
+```
+
+Notice that:
+
+-   the maximum value is much less high than for the frogs and has
+    decimals. That is because the mouse data are logged (to base 2)
+    normalised counts, not raw counts as they are in the frog data set.
+-   a minimum value of 0 appears in all 20 columns - perhaps that is
+    true across the whole dataset (or at least common)
+-   at least some of the medians are zeros so there must be quite a lot
+    of zeros
+-   the few columns we can see are roughly similar
+-   it would not be very practical to plot the distributions of values
+    in cell cell using `facet_wrap()`.
+
+In this data set, there is even more of an advantage of using the
+`pivot_longer()`, `group_by()` and `summarise()` approach. We will be
+able to open the dataframe in the Viewer and make plots to examine
+whether the distributions are similar across cells.
+
+🎬 Summarise all the cells:
+
+```{r}
+hspc_summary_samp <- hspc |>
+  pivot_longer(cols = -ensembl_gene_id,
+               names_to = "cell",
+               values_to = "expr") |>
+  group_by(cell) |>
+  summarise(min = min(expr),
+            lowerq = quantile(expr, 0.25),
+            mean = mean(expr),
+            median = median(expr),
+            sd = sd(expr),
+            upperq = quantile(expr, 0.75),
+            max = max(expr),
+            n_zero = sum(expr == 0))
+```
+
+Notice that I have used `cell` as the column name rather than `sample`
+and `expr` (expression) rather than `count`. I've also added the
+standard deviation.
+
+🎬 View the `hspc_summary_samp` dataframe (click on it in the
+environment).
+
+All cells have quite a few zeros and the lower quartile is 0 for all
+cells, *i.e.*, every cell has many genes with zero expression.
+
+To get a better understanding of the distribution of expressions in
+cells we can create a ggplot using the pointrange geom. Pointrange puts
+a dot at the mean and a line between a minimum and a maximum such as +/-
+one s.d. Not unlike a boxplot, but when you need the boxes too be very
+narrow!
+
+🎬 Create a pointrange plot.
+
+```{r}
+hspc_summary_samp |> 
+  ggplot(aes(x = cell, y = mean)) +
+  geom_pointrange(aes(ymin = mean - sd, 
+                      ymax = mean + sd ),
+                  size = 0.1)
+```
+
+You will need to use the Zoom button to pop the plot window out so you
+can make it as wide as possible
+
+The things to notice are:
+
+-   the average expression in cells is similar for all cells. This is
+    good to know - if some cells had much lower expression perhaps there
+    is something wrong with them, or their sequencing, and they should
+    be excluded.
+-   the distributions are roughly similar in width too
+
+The default order of `cell` is alphabetical. It can be easier to see
+these (non-) effects if we order the lines by the size of the mean.
+
+🎬 Order a pointrange plot with `reorder(variable_to_order, order_by)`.
+
+```{r}
+hspc_summary_samp |> 
+  ggplot(aes(x = reorder(cell, mean), y = mean)) +
+  geom_pointrange(aes(ymin = mean - sd, 
+                      ymax = mean + sd ),
+                  size = 0.1)
+```
+
+`reorder()` arranges `cell` in increasing size of `mean`
+
+🎬 Write `hspc_summary_samp` to a file called "hspc_summary_samp.csv":
+
+```{r}
+#| echo: false
+write_csv(hspc_summary_samp, 
+          file = "data-processed/hspc_summary_samp.csv")
+```
+
+
+There are fewer genes in this dataset, but still more than you can
+understand without the overview provided by a plot. We will again pivot
+the data to tidy and then summarise the expression for each gene.
+
+🎬 Summarise the expression for each genes:
+
+```{r}
+hspc_summary_gene <- hspc |>
+  pivot_longer(cols = -ensembl_gene_id,
+               names_to = "cell",
+               values_to = "expr") |>
+  group_by(ensembl_gene_id) |>
+  summarise(min = min(expr),
+            lowerq = quantile(expr, 0.25),
+            sd = sd(expr),
+            mean = mean(expr),
+            median = median(expr),
+            upperq = quantile(expr, 0.75),
+            max = max(expr),
+            total = sum(expr),
+            n_zero = sum(expr == 0))
+```
+
+🎬 View the `hspc_summary_gene` dataframe. Remember these are normalised
+and logged (base 2) so we should not see very large values.
+
+Notice that we have:
+
+-   no genes with 0 in every cell
+-   very few genes (9) with no zeros at all
+-   quite a few genes with zero in many cells but this matters less than
+    zeros in the frog samples because we had just 6 samples and we have
+    701 cells.
+
+As we have a lot of genes, it is again helpful to plot the mean
+expression with pointrange to get an overview. We do not need to log the
+values but ordering the genes will help.
+
+🎬 Plot the logged mean counts for each gene in order of size using
+`geom_pointrange()`:
+
+```{r}
+hspc_summary_gene |> 
+  ggplot(aes(x = reorder(ensembl_gene_id, mean), y = mean)) +
+  geom_pointrange(aes(ymin = mean - sd, 
+                      ymax = mean + sd),
+                  size = 0.1)
+```
+
+Note again that the variability between genes (average expression
+between 0.02 and and 10.03) is far greater than between cells (average
+expression from1.46 to 3.18) which is expected.
+
+🎬 Write `s30_summary_gene` to a file called "s30_summary_gene.csv":
+
+```{r}
+#| echo: false
+write_csv(hspc_summary_gene, 
+          file = "data-processed/hspc_summary_gene.csv")
+```
