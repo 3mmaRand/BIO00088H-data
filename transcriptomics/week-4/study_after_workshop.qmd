@@ -20,8 +20,9 @@ You need only do the section for your own project data
 
 🎬 Open your `mice-88H` Project. Make a new script and, using `hspc-prog.R` as a template, repeat the analysis on a different comparisons. 
 
-🍂 xxxx
+🎄 Arabidopisis
 
-🎬 Follow one of the other examples
+
+💉 Leishmania
 
 
