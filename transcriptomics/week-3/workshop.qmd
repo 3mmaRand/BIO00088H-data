@@ -444,7 +444,7 @@ s30_summary_gene_filtered <- s30_summary_gene |>
   filter(n_above_zero >= 3)
 ```
 
-🎬 How many genes do you have left
+❓ How many genes do you have left
 
 <!-- #---THINKING ANSWER--- -->
 

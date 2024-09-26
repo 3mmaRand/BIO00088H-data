@@ -30,18 +30,21 @@ Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr` [@knitr1; @k
 Place holders:
 
 
-🐸 Frog development data:
+
 
 rename
 _5 -> 1
 _6 -> 2
 _A -> 3
+🐸 Frog development
 
-🐭 Stem cell data:
-
-🎄 Arabidopisis data replace 🍂
+🎄 Arabidopisis
 
 💉 Leishmania mexicana
+
+🐭 Stem cells
+
+
 
 transcriptomics hello data
 
