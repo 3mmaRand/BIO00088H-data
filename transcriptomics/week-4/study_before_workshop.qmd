@@ -413,13 +413,18 @@ BiocManager::install("biomaRt")
 
 ## Workshops
 
--   Transcriptomics 1: Hello data. Understanding the data, checking 
-    distributions, filtering data for QC
+-   Transcriptomics 1: Hello data Getting to know the data. Checking the
+    distributions of values overall, across rows and columns to
+    check things are as we expect and detect rows/columns that need to
+    be removed
 
--   Transcriptomics 2: Statistical Analysis Identifying which genes are
-    differentially expressed between treatments.
+-   Transcriptomics 2: Statistical Analysis. Identifying which genes are
+    differentially expressed between treatments. This is the main
+    analysis step. We will use different methods for bulk and single
+    cell data.
 
--   Transcriptomics 3: Visualising. PCA and Volcano plots
+-   Transcriptomics 3: Visualising. Principal Component 
+    Analysis (PCA) volcano plots to visualise the results of the 
 
 ## References
 
