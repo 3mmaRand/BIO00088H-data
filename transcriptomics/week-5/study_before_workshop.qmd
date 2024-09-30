@@ -283,7 +283,7 @@ groups.
 -   The 🐭 stem cell data were already log~2~normalised
 
 -   The other datasets were normalised by the DE method and we saved 
-    the values to the results files
+    the values to the results files. We will log transform them in the workshop
 
 ## Packages
 

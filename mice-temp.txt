@@ -546,3 +546,272 @@ data.frame(res_prog_hspc$prog,
            ensembl_gene_id = row.names(res_prog_hspc$prog)) |> 
   write_csv("results/prog_hspc_results.csv")
 ```
+
+
+We need to import both the normalised counts and the statistical
+results. We will need all of these for the visualisation and
+interpretation.
+
+🎬 Import the normalised counts for the Prog and HSPC cell types. I used
+the names `prog` and `hspc` for the dataframes.
+
+```{r}
+#| include: false
+#---CODING ANSWER---
+# import the normalised counts
+prog <- read_csv("data-raw/surfaceome_prog.csv")
+hspc <- read_csv("data-raw/surfaceome_hspc.csv")
+
+```
+
+🎬 Combine the two dataframes (minus one set of gene ids) into one
+dataframe called prog_hspc:
+
+```{r}
+# combine into one dataframe dropping one of the gene id columns
+prog_hspc <- bind_cols(prog, hspc[-1])
+```
+
+🎬 Import the statistical results in `results/prog_hspc_results.csv`. I
+used the name `prog_hspc_results` for the dataframe.
+
+```{r}
+#| include: false
+#---CODING ANSWER---
+# import the DE results
+prog_hspc_results <- read_csv("results/prog_hspc_results.csv")
+```
+
+🎬 Remind yourself what is in the rows and columns and the structure of
+the dataframe (perhaps using `glimpse()`)
+
+```{r}
+#| include: false
+#---CODING ANSWER---
+glimpse(prog_hspc)
+```
+
+<!-- #---THINKING ANSWER--- -->
+
+<!-- The normalised counts dataframe has 280 rows and 1,500 columns: which are the cell id names and the gene ids. -->
+
+```{r}
+#| include: false
+#---CODING ANSWER---
+glimpse(prog_hspc_results)
+```
+
+<!-- #---THINKING ANSWER--- -->
+
+<!-- the results dataframe contains the fold change and p values for each gene. -->
+
+<!-- 280 rows and 6 columns:  -->
+
+<!-- Top, p.value, FDR, summary.logFC, logFC.hspc, ensembl_gene_id  -->
+
+It is useful to have this information in a single dataframe to which we
+will add the gene information from Ensembl Having all the information
+together will make it easier to interpret the results and select genes
+of interest.
+
+🎬 Merge the two dataframes:
+
+```{r}
+# merge stats results with normalise values
+prog_hspc_results <- prog_hspc_results |> 
+  left_join(prog_hspc, by = "ensembl_gene_id")
+```
+
+This means you have the counts for each sample along with the
+statistical results for each gene.
+
+
+## Write the significant genes to file
+
+We will create dateframe of the signifcant genes and write them to file. These are the files you want to examine in more detail along with the visualisations to select your genes of interest.
+
+
+🎬 Create a dataframe of the genes significant at the 0.01 level:
+```{r}
+prog_hspc_results_sig0.01 <- prog_hspc_results |> 
+  filter(FDR <= 0.01)
+```
+
+🎬 Write the dataframe to file
+
+```{r}
+#| include: false
+#---CODING ANSWER---
+write_csv(prog_hspc_results_sig0.01, 
+          file = "results/prog_hspc_results_sig0.01.csv")
+```
+
+🎬 Create a dataframe of the genes significant at the 0.05 level and write to file:
+```{r}
+#| include: false
+#---CODING ANSWER---
+prog_hspc_results_sig0.05 <- prog_hspc_results |> 
+  filter(FDR <= 0.05)
+
+# write to csv file
+write_csv(prog_hspc_results_sig0.05, 
+          file = "results/prog_hspc_results_sig0.05.csv")
+```
+
+❓How many genes are significant at the 0.01 and 0.05 levels?
+
+<!-- #---THINKING ANSWER--- -->
+<!-- 168 genes are significant at the 0.01 level and 182 genes are  -->
+<!-- significant at the 0.05 level. -->
+
+
+## View the relationship between cells using PCA
+
+We have 280 genes in our dataset. PCA will allow us to plot our cells in the "gene expression" space so we can see if Prog cells cluster together and HSPC cells cluster together as we would expect. We do this on the log~2~ transformed normalised counts. 
+
+Our data have genes in rows and samples in columns which is a common organisation for gene expression data. However, PCA expects cells in rows and genes, the variables, in columns. We can transpose the data to get it in the correct format.
+
+🎬 Transpose the log~2~ transformed normalised counts:
+```{r}
+prog_hspc_trans <- prog_hspc_results |> 
+  dplyr::select(starts_with(c("Prog_", "HSPC_"))) |>
+  t() |> 
+  data.frame()
+```
+
+We have used the `select()` function to select all the columns that start with `Prog_` or  `HSPC_`. We then use the `t()` function to transpose the dataframe. We then convert the resulting matrix to a dataframe using `data.frame()`. If you view that dataframe you'll see it has default column name which we can fix using `colnames()` to set the column names to the gene ids.
+
+🎬 Set the column names to the gene ids:
+
+```{r}
+colnames(prog_hspc_trans) <- prog_hspc_results$ensembl_gene_id
+```
+
+perform PCA using standard functions
+
+```{r}
+pca <- prog_hspc_trans |>
+  prcomp(rank. = 15) 
+```
+
+The `rank.` argument tells `prcomp()` to only calculate the first 15 principal components. This is useful for visualisation as we can only plot in 2 or 3 dimensions. We can see the results of the PCA by viewing the `summary()` of the `pca` object.
+
+
+```{r}
+summary(pca)
+```
+
+The Proportion of Variance tells us how much of the variance is explained by each component. We can see that the first component explains 0.1099 of the variance, the second 0.04874, and the third 0.2498. Together the first three components explain 18% of the total variance in the data. Plotting PC1 against PC2 will capture about 16% of the variance. This is not that high but it likely better than we would get plotting any two genes against each other.
+To plot the PC1 against PC2 we will need to extract the PC1 and PC2
+score from the pca object and add labels for the cells.
+
+
+🎬 Create a dataframe of the PC1 and PC2 scores which are in `pca$x` and add the cell ids:
+```{r}
+pca_labelled <- data.frame(pca$x,
+                           cell_id = row.names(prog_hspc_trans))
+```
+
+It will be helpful to add a column for the cell type so we can label points. One way to do this is to extract the information in the cell_id column into two columns. 
+
+🎬 Extract the cell type and cell number from the `cell_id` column (keeping the `cell_id` column):
+```{r}
+pca_labelled <- pca_labelled |> 
+  extract(cell_id, 
+          remove = FALSE,
+          c("cell_type", "cell_number"),
+          "([a-zA-Z]{4})_([0-9]{3})")
+```
+
+`"([a-zA-Z]{4})_([0-9]{3})"` is a [regular expression](https://en.wikipedia.org/wiki/Regular_expression) - or regex. `[a-zA-Z]` means any lower or upper case letter, `{4}` means 4 of them, and `[0-9]` means any number, `{3}` means 3 of them. The brackets around the two parts of the regex mean we want to extract those parts. The first part goes into `cell_type` and the second part goes into `cell_number`. The `_` between the two patterns matches the underscore and the fact it isn't in a bracket means we don't want to keep it.
+
+We can now plot the PC1 and PC2 scores.
+
+
+🎬 Plot PC1 against PC2 and colour the points by cell type:
+```{r}
+pca <- pca_labelled |> 
+  ggplot(aes(x = PC1, y = PC2, 
+             colour = cell_type)) +
+  geom_point(alpha = 0.4) +
+  scale_colour_viridis_d(end = 0.8, begin = 0.15,
+                         name = "Cell type") +
+  theme_classic()
+pca
+```
+
+Fairly good separation of cell types but plenty of overlap
+
+🎬 Save the plot to file:
+```{r}
+ggsave("figures/prog_hspc-pca.png",
+       plot = pca,
+       height = 3, 
+       width = 4,
+       units = "in",
+       device = "png")
+```
+
+## Visualise all the results with a volcano plot
+
+colour the points if FDR \< 0.05 and prog_hspc_results \> 1
+
+```{r}
+library(ggrepel)
+```
+
+```{r}
+
+prog_hspc_results <- prog_hspc_results |> 
+  mutate(log10_FDR = -log10(FDR),
+         sig = FDR < 0.05,
+         bigfc = abs(summary.logFC) >= 2) 
+```
+
+```{r}
+vol <- prog_hspc_results |> 
+  ggplot(aes(x = summary.logFC, 
+             y = log10_FDR, 
+             colour = interaction(sig, bigfc))) +
+  geom_point() +
+  geom_hline(yintercept = -log10(0.05), 
+             linetype = "dashed") +
+  geom_vline(xintercept = 2, 
+             linetype = "dashed") +
+  geom_vline(xintercept = -2, 
+             linetype = "dashed") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_colour_manual(values = c("gray",
+                                 "pink",
+                                 "deeppink")) +
+  geom_text_repel(data = subset(prog_hspc_results, 
+                                bigfc & sig),
+                  aes(label = external_gene_name),
+                  size = 3,
+                  max.overlaps = 50) +
+  theme_classic() +
+  theme(legend.position = "none")
+vol
+```
+
+```{r}
+ggsave("figures/prog-hspc-volcano.png",
+       plot = vol,
+       height = 4.5, 
+       width = 4.5,
+       units = "in",
+       device = "png")
+```
+
+<!-- The dataframe `res_prog_hspc$prog` is log prog - log hspc -->
+
+<!-- (i.e.,Prog/HSPC). This means - Positive fold change: prog is higher than -->
+
+<!-- hspc - Negative fold change: hspc is higher than prog -->
+
+<!-- The dataframe `res_prog_hspc$hspc` is log hspc - log prog (i.e., -->
+
+<!-- HSPC/Prog). . This means - Positive fold change: hspc is higher than -->
+
+<!-- prog - Negative fold change: prog is higher than hspc -->
