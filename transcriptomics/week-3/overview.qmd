@@ -5,8 +5,8 @@ toc: true
 toc-location: right
 ---
 
-This week you will meet your data. The independent study will concisely cover how these data were generated and how they have been processed before being given to you. There will also be an overview of the analysis we will carry out over three workshops.
-In the workshop, you will learn what steps to take to get a good understanding of ’omics data before you consider any statistical analysis. This is an often overlooked, but very valuable and informative, part of any data pipeline. It gives you the deep understanding of the data structures and values that you will need to code and trouble-shoot code, allows you to spot failed or problematic samples and informs your decisions on quality control.
+This week you will meet your data. The independent study will summarise how these data were generated and how they have been processed before being given to you. There will also be an overview of the analysis we will carry out over three workshops.
+In the workshop, you will learn what steps to take to get a good understanding of transcriptomics data before you consider any statistical analysis. This is an often overlooked, but very valuable and informative, part of any data pipeline. It gives you the deep understanding of the data structures and values that you will need to code and trouble-shoot code, allows you to spot failed or problematic samples and informs your decisions on quality control.
 
 We suggest you sit together with your group in the workshop.
 
@@ -24,7 +24,9 @@ The successful student will be able to:
 
 1.  [Prepare](study_before_workshop.qmd)
     
-    i.   📖 Read how the data were generated and how they have been processed so far 
+    i.   📖 Read how the data were generated and how they have been 
+         processed so far and a summary of the analysis we will carry 
+         out over three workshops.
 
 
 2.  [Workshop](workshop.qmd)
@@ -33,12 +35,13 @@ The successful student will be able to:
 
     ii.  💻 Import data
 
-    iii. 💻 Explore the distribution of values across samples/cells and across genes/species
+    iii. 💻 Explore the distribution of values across rows and columns
     
     iv.  💻 Look after future you!
 
 3.  [Consolidate](study_after_workshop.qmd)
 
-    i.  💻 Use the work you completed in the workshop as a template to apply to a new case.
+    i.  💻 Use the work you completed in the workshop as a template 
+        to apply to a new case.
 
 

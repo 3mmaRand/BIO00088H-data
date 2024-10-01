@@ -4,7 +4,7 @@ subtitle: "Transcriptomics 1: 👋 Hello data!"
 author: "Emma Rand"
 format: 
   revealjs:
-    footer: "🔗 [About Transcriptomics 1: Hello data!](https://3mmarand.github.io/BIO00088H-data/omics/week-3/overview.html)"
+    footer: "🔗 [About Transcriptomics 1: Hello data!](https://3mmarand.github.io/BIO00088H-data/transcriptomics/week-3/overview.html)"
     slide-number: true
     chalkboard: true
     code-link: true
@@ -29,13 +29,15 @@ editor:
 
 ## The Data
 
-There are three datasets
+There are three transcriptomic datasets
 
--   🐸 transcriptomic data (bulk RNA-seq) from frog embryos.
+-   🐸 bulk RNA-seq from *Xenopus laevis* embryos.
 
--   🐭 transcriptomic data (single cell RNA-seq) from stemcells
+-   🐭 single cell RNA-seq from mouse stemcells
 
--   🍂 ??????? Metabolomic / Metagenomic data from anaerobic digesters
+-   🎄 bulk RNA-seq from *Arabidopsis thaliana*
+
+-   💉 bulk RNA-seq from *Leishmania mexicana*
 
 # Experimental design
 
@@ -54,7 +56,7 @@ width="200"}
 ::: incremental
 -   3 fertilisations
 
--   two siblings from each fertilisation one control, on FGF treated
+-   two siblings from each fertilisation one control, one FGF treated
 
 -   sequenced at three time points
 
@@ -83,10 +85,8 @@ width="200"}
 ## 🐸 Aim
 
 ::: incremental
--   find genes important in frog development
-
--   Important means the genes that are differentially expressed between
-    the control-treated and the FGF-treated siblings
+-   Find genes that are "differentially expressed" between
+     control-treated and FGF-treated siblings
 
 -   Differentially expressed means the expression in one group is
     significantly higher than in the other
@@ -97,11 +97,13 @@ width="200"}
 ::: incremental
 -   The workshops will take you through comparing the control and FGF
     treated sibling at S30
-
--   This is the "least interesting" comparison
+    
+-   You will make other comparisons independently
 
 -   You will be guided to carefully document your work so you can apply
     the same methods to other comparisons
+    
+-   Do the independent study before and after the workshop!
 :::
 
 ## 🐭 Experimental design {auto-animate="true"}
@@ -144,10 +146,7 @@ width="200"}
 ## 🐭 Aim
 
 ::: incremental
--   find genes for cell surface proteins that are important in stem cell
-    identity
-
--   Important means genes that are differentially expressed between at
+-   find genes that are "differentially expressed" between at
     least two cell types
 
 -   Differentially expressed means the expression in one group is
@@ -160,68 +159,50 @@ width="200"}
 -   The workshops will take you through comparing the HSPC and Prog
     cells
 
--   This is the "least interesting" comparison
+-   You will make other comparisons independently
 
 -   You will be guided to carefully document your work so you can apply
     the same methods to other comparisons
+    
+-   Do the independent study before and after the workshop!
 :::
 
-# The raw data
+# Where do the data come from?
 
 ## Raw Sequence data
 
 ::: incremental
--   The raw data are "reads" from a sequencing machine.
+-   The raw data are "reads" from a sequencing machine in FASTQ files
 
--   A read is sequence of DNA or RNA shorter than the whole genome or
+-   A read is sequence of RNA which is shorter than the whole 
     transcriptome
 
 -   The length of the reads depends on the type of sequencing machine
 
-    -   Short-read technologies e.g. Illumina have higher base accuracy
+    -   Short-read technologies (e.g. Illumina) have higher base accuracy
         but are harder to align
-    -   Long-read technologies e.g. Nanopore have lower base accuracy
+    -   Long-read technologies (e.g. Nanopore) have lower base accuracy
         but are easier to align
-:::
-
-# The raw data
-
-## Raw Sequence data
-
-::: incremental
--   Sequencing technology is constantly improving
 
 -   Optional: You can read more about Sequencing technologies in
     [Statistically useful experimental
     design](https://cloud-span.github.io/experimental_design00-overview/)
-    [@rand_statistically_2022]
-:::
-
-## Raw Sequence data
-
-::: incremental
--   The RNA-seq data are from an Illumina machine 150-300bp
-
--   Reads are in FASTQ files
-
--   FASTQ files contain the sequence of each read and a quality score
-    for each base
-:::
+    [@rand_statistically_2022]        
 
 # What has been done to the data so far
 
 ## General steps
 
 ::: incremental
--   Reads are filtered and trimmed on the basis of the quality score
+-   Reads are filtered and trimmed on the basis of a quality score
 
 -   They are then aligned/pseudo-aligned to a reference
     genome/transcriptome 
 
--   Reads are then counted to quantify the expression 
+-   And then counted to quantify the expression 
 
--   Counts will need to be normalised to account for differences 
-    in sequencing depth and gene/transcript/ length before, or as part 
+-   Counts need to be normalised to account for differences 
+    in sequencing depth and transcript length before, or as part 
     of, statistical analysis. 
 :::
 
@@ -253,18 +234,18 @@ width="200"}
 ## Workshops
 
 -   Transcriptomics 1: Hello data Getting to know the data. Checking the
-    distributions of values overall, across samples and across genes to
-    check things are as we expect and detect genes/samples that need to
+    distributions of values overall, across rows and columns to
+    check things are as we expect and detect rows/columns that need to
     be removed
 
--   Transcriptomics 2: Statistical Analysis Identifying which genes are
+-   Transcriptomics 2: Statistical Analysis. Identifying which genes are
     differentially expressed between treatments. This is the main
     analysis step. We will use different methods for bulk and single
     cell data.
 
--   Transcriptomics 3: Visualising and Interpreting Production of volcano plots
-    and heatmaps to visualise the results of the statistical analysis.
-    We will also look at how to interpret the results and how to find
-    out more about the genes of interest.
+-   Transcriptomics 3: Visualising. Principal Component 
+    Analysis (PCA) volcano plots to visualise the results of the 
+
 
 ## References
+Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr` [@knitr1; @knitr2; @knitr3], `kableExtra` [@kableExtra]

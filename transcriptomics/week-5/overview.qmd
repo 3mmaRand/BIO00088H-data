@@ -1,11 +1,14 @@
 ---
 title: "Overview"
-subtitle: "Transcriptomics 3: Visualising and Interpreting"
+subtitle: "Transcriptomics 3: Visualising"
 toc: true
 toc-location: right
 ---
 
-This week we cover how to visualise and interpret the results of your differential expression analysis. The independent study will allow you to check you have what you should have following the [Transcriptomics 2: Statistical Analysis workshop](../week-4/workshop.html) and [Consolidation study](../week-4/study_after_workshop.html). It will also summarise the the methods and plots we will go through in the workshop. In the workshop, we will learn how to merge gene information into our results, conduct a Principle Component Analysis (PCA) and plot the results as well as how to create a nicely formatted Volcano plot and heatmap.  
+This week we cover how to visualise the results of your differential expression analysis. The independent study will allow you to check you have what you should have following the [Transcriptomics 2: Statistical Analysis workshop](../week-4/workshop.html) and [Consolidation study](../week-4/study_after_workshop.html). It will also summarise the the methods and plots we will go through in the workshop. It will also explain
+how to write the methods for the analyses with have conducted. In the workshop, we will learn how to carry out and plot a Principle Component Analysis (PCA) as well as how to create a nicely formatted Volcano plot. 
+
+The plots you have by the end of this week will be suitable for including in your report.
 
 We suggest you sit together with your group in the workshop.
 
@@ -14,29 +17,26 @@ We suggest you sit together with your group in the workshop.
 The successful student will be able to:
 
 -   verify they have the required RStudio Project set up and the data and code files from the previous Workshop and Consolidation study
--   explain where gene information came from and add it to their results
 -   perform a PCA and understand how to interpret them
--   create a heatmap and understand how to interpret them
 -   create a volcano plot and understand how to interpret them
+-   write the methods for the analyses they have conducted
   
 
 ### Instructions
 
 1.  [Prepare](study_before_workshop.qmd)
 
-    i.  📖 Read what you should have so far and about concepts in PCA, volcano plots and heatmaps.
+    i.  📖 Read what you should have so far
+    ii.  📖 Read about concepts in PCA and volcano plots
+    iii. 📖 Read about how to write the methods for the analyses you have conducted
 
 2.  [Workshop](workshop.qmd)
 
-    i.  💻 Add gene information to the results of DE
+    i. 💻 Perform and plot a PCA
 
-    ii. 💻 Perform and plot a PCA
+    ii. 💻 Visualise all the results with a volcano plot
 
-    iii. 💻 Visualise results with a heatmap
-    
-    iv. 💻 Visualise all the results with a volcano plot
-
-    iv. Look after future you!
+    iii. 💻 Look after future you!
 
 3.  [Consolidate](study_after_workshop.qmd)
 

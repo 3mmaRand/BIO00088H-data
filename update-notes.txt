@@ -24,24 +24,27 @@ Workshop material
 Independent Study to do after the workshop
 
 
-Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr` [@knitr1; knitr2; knitr3], `kableExtra` [@kableExtra]
+Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr` [@knitr1; @knitr2; @knitr3], `kableExtra` [@kableExtra]
 
 
 Place holders:
 
 
-🐸 Frog development data:
+
 
 rename
 _5 -> 1
 _6 -> 2
 _A -> 3
+🐸 Frog development
 
-🐭 Stem cell data:
+🎄 Arabidopisis
 
-🎄 Arabidopisis data
+💉 Leishmania mexicana
 
-💉 🩸 Leishmania mexicana
+🐭 Stem cells
+
+
 
 transcriptomics hello data
 
@@ -50,7 +53,7 @@ usethis::use_r("workshop-1")
 fs::dir_create("data-raw")
 fs::dir_create("data-processed")
 
-
+#---THINKING ANSWER---
 week 3
 
 <!-- MAY BE FOR NEXT WEEK -->
@@ -77,7 +80,7 @@ then to differential expressions
 
 
 Helper code:
-if you want to generate a bib file, you can use bibtex::write.bib
+if you want to generate a bib file, you can use bibtex::write.bib for uplaoding to your ref manager
 
 deps <- renv::dependencies()
 pkgs <- setdiff(unique(deps$Package), "R")

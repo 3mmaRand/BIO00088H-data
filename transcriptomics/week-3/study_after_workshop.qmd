@@ -12,21 +12,27 @@ format:
 
 You need only do the section for your own project data
 
-🐸 Frogs
+🐸 Frog development
 
-🎬 Open your `frogs-88H` Project. Make a new script and, using `cont-fgf-s30.R` as a template, repeat the analysis on one of the other comparisons.
-
-
-🐭 Mice
-
-🎬 Open your `mice-88H` Project. Open your `hspc-prog.R` script and, using you code working with the hspc cells as a template, repeat the analysis on the prog cells.
+🎬 Open your `frogs-88H` Project. Make a new script and, using 
+`cont-fgf-s30.R` as a template, repeat the analysis on one of 
+the other comparisons. It does not matter which one you choose. I recommend
+making a new script.
 
 
-🍂 xxxx
+🐭 Stem cells
 
-Follow one of the other examples. 
+🎬 Open your `mice-88H` Project. Open your `hspc-prog.R` script and, 
+using your code working with the hspc cells as a template, repeat 
+the analysis on the prog cells. Add the code to `hspc-prog.R` as you will
+later add the statistical comparison between these cell types.
 
-<!-- 🎬 Open your `xxxx-88H` Project. Make a new script and, using `xxxxxxx.R` as a template, repeat the analysis on xxxxxxxx -->
+
+🎄 Arabidopisis
+
+
+💉 Leishmania
+
 
 
 
