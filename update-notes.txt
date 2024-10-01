@@ -53,7 +53,7 @@ usethis::use_r("workshop-1")
 fs::dir_create("data-raw")
 fs::dir_create("data-processed")
 
-
+#---THINKING ANSWER---
 week 3
 
 <!-- MAY BE FOR NEXT WEEK -->
@@ -80,7 +80,7 @@ then to differential expressions
 
 
 Helper code:
-if you want to generate a bib file, you can use bibtex::write.bib
+if you want to generate a bib file, you can use bibtex::write.bib for uplaoding to your ref manager
 
 deps <- renv::dependencies()
 pkgs <- setdiff(unique(deps$Package), "R")
