@@ -534,7 +534,7 @@ Well Done!
 
 # Independent study following the workshop
 
-[Consolidate](study_3fter_workshop.qmd)
+[Consolidate](study_after_workshop.qmd)
 
 # The Code file
 

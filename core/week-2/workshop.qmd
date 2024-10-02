@@ -17,7 +17,6 @@ editor:
 engine: knitr
 ---
 
-
 # Introduction
 
 ## Session overview
@@ -26,7 +25,6 @@ In this workshop we will discuss why reproducibility matters and how to
 organise your work to make it reproducible. We will cover:
 
 ::: {style="font-size: 70%;"}
-
 -   What is reproducibility
 -   How to achieve reproducibility
 -   Rationale for scripting
@@ -35,95 +33,60 @@ organise your work to make it reproducible. We will cover:
 -   Coding algorithmically
 -   Naming things
 -   And some handy workflow tips
-
 :::
 
 # Slide navigation
 
-
 # Reproducibility
-
 
 ## What is reproducibility?
 
-[![The Turing Way\'s definitions of reproducible research
-](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
+[![The Turing Way's definitions of reproducible
+research](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
 
 ## Definitions
 
+[![The Turing Way's definitions of reproducible
+research](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"
+width="400"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
 
-[![The Turing Way\'s definitions of reproducible research
-](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
-
-
-::: {style="font-size: 70%;"}
-
-**Reproducible: Same data + same analysis = identical results**.
-*"... obtaining consistent results using the same input data;
-computational steps, methods, and code; and conditions of analysis.
-This definition is synonymous with"computational reproducibility"*
-[@nationalacademiesofsciences2019]. This is what we are concentrating 
-on in the Supporting Information.
-
-
-:::
-
+**Reproducible: Same data + same analysis = identical results**. *"...
+obtaining consistent results using the same input data; computational
+steps, methods, and code; and conditions of analysis. This definition is
+synonymous with"computational reproducibility"*
+[@nationalacademiesofsciences2019]. This is what we are concentrating on
+in the Supporting Information.
 
 ## Definitions
 
-
-[![The Turing Way\'s definitions of reproducible research
-](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
-
-
-::: {style="font-size: 70%;"}
-
+[![The Turing Way's definitions of reproducible
+research](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"
+width="400"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
 
 Replicable: Different data + same analysis = qualitatively similar
 results. The work is not dependent on the specificities of the data.
 
-
-:::
-
 ## Definitions
 
-
-[![The Turing Way\'s definitions of reproducible research
-](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
-
-
-::: {style="font-size: 70%;"}
-
+[![The Turing Way's definitions of reproducible
+research](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"
+width="400"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
 
 Robust: Same data + different analysis = qualitatively similar or
-identical results. The work is not dependent on the specificities of
-the analysis.
-
-:::
+identical results. The work is not dependent on the specificities of the
+analysis.
 
 ## Definitions
 
-
-[![The Turing Way\'s definitions of reproducible research
-](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
-
-
-::: {style="font-size: 70%;"}
+[![The Turing Way's definitions of reproducible
+research](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
 
 Generalisable: Different data + different analysis = qualitatively
-similar results and same conclusions. 
-
-:::
-
-
-
-
+similar results and same conclusions.
 
 ## Why does it matter?
 
 ::: incremental
-
-
 -   Many high profile cases of work which did not reproduce e.g. Anil
     Potti unravelled by @baggerly2009
 
@@ -134,11 +97,9 @@ similar results and same conclusions.
 -   **Will** become standard in Science and publishing e.g OECD Global
     Science Forum Building digital workforce capacity and skills for
     data-intensive science [@oecdglobalscienceforum2020]
-
 :::
 
 ## How to achieve reproducibility
-
 
 -   Reproducibility is a continuum. Some is better than none!
 
@@ -146,14 +107,14 @@ similar results and same conclusions.
 
 -   Organisation: Project-oriented workflows with file and folder
     structure, naming things
-    
--   Code: follow a consistent style, organise into sections and scripts 
-    (be modular), Code algorithmically 
 
--   Documentation: Readme files, code comments, metadata, 
+-   Code: follow a consistent style, organise into sections and scripts
+    (be modular), Code algorithmically
 
--   More advanced: version, control, continuous integration and testing 
-    (not required for SI)
+-   Documentation: Readme files, code comments, metadata,
+
+-   More advanced: version, control, continuous integration and testing
+    (not required for Supporting Information)
 
 # Scripting
 
@@ -182,7 +143,6 @@ similar results and same conclusions.
 -   inputs and outputs should be clearly identifiable from structure
     and/or naming
 
-
 ## Example: SI itself is an RSP
 
 ```{bash}
@@ -193,7 +153,7 @@ similar results and same conclusions.
       |__2019-03-21_donor_1.csv
       |__2019-03-21_donor_2.csv
       |__2019-03-21_donor_3.csv
-   |__README. md
+   |__README.md
    |__R/
       |__01_data_processing.R
       |__02_exploratory.R
@@ -201,7 +161,6 @@ similar results and same conclusions.
          |__theme_volcano.R
          |__normalise.R
 ```
-
 
 ## Example: SI includes an RSP
 
@@ -215,7 +174,7 @@ similar results and same conclusions.
          |__2019-03-21_donor_1.csv
          |__2019-03-21_donor_2.csv
          |__2019-03-21_donor_3.csv
-   |__README. md
+   |__README.md
    |__statistical_analysis
       |__statistical_analysis.Rproj   
       |__processed_data/
@@ -227,14 +186,11 @@ similar results and same conclusions.
             |__normalise.R
 ```
 
-
-
 # RStudio Projects revisited
 
 ## RStudio Projects
 
 ::: incremental
-
 -   RStudio Projects make it easy to manage working directories and
     paths because they set the working directory to the RStudio Projects
     directory automatically.
@@ -262,11 +218,9 @@ similar results and same conclusions.
 :::
 
 ::: {.column width="40%"}
-The project directory is the folder at the top 
+The project directory is the folder at the top
 :::
 :::
-
-
 
 ## RStudio Projects
 
@@ -290,8 +244,8 @@ The project directory is the folder at the top
 :::
 
 ::: {.column width="40%"}
-the `.RProj` file is directly under the project folder[^1]. Its presence is 
-what makes the folder an RStudio Project
+the `.RProj` file is directly under the project folder[^1]. Its presence
+is what makes the folder an RStudio Project
 :::
 :::
 
@@ -300,7 +254,6 @@ what makes the folder an RStudio Project
     helped me work out how to highlight a line
     <https://gist.github.com/mine-cetinkaya-rundel/3af3415eab70a65be3791c3dcff6e2e3>.
     Note to futureself: the `engine: knitr` matters.
-
 
 ## RStudio Projects
 
@@ -333,7 +286,7 @@ There are two menus options:
 
 2.  Top Right, drop-down indicated by the `.RProj` icon
 
-They both do the same thing. 
+They both do the same thing.
 
 ## Creating an RStudio Project
 
@@ -341,22 +294,19 @@ Then Choose: New Project \| New Directory \| New Project
 
 Make sure you "Browse" to the folder you want to create the project.
 
-
 ❔ Is your working directory a good place to create a Project folder?
 
 ## Creating an RStudio Project
 
-When you create a new RStudio Project 
+When you create a new RStudio Project
 
 ::: incremental
-
 -   A folder called `bananas/` is created
 -   RStudio starts a new session in `bananas/` i.e., your working
     directory is now `bananas/`
 -   A file called `bananas.Rproj` is created
 -   the `.Rproj` file is what makes the directory an RStudio Project
 :::
-
 
 ## Opening and closing
 
@@ -377,16 +327,14 @@ You can **open** an RStudio Project with ONE of:
 
 When you open project, a new R session starts.
 
+# Code formatting and style
 
+## Code formatting and style
 
-#  Code formatting and style
+> "Good coding style is like correct punctuation: you can manage without
+> it butitsuremakesthingseasiertoread."
 
-
-##  Code formatting and style
-
-> "Good coding style is like correct punctuation: you can manage without it butitsuremakesthingseasiertoread."
-
-[The tidyverse style guide](https://style.tidyverse.org/) 
+[The tidyverse style guide](https://style.tidyverse.org/)
 
 . . .
 
@@ -394,9 +342,9 @@ Code is not write only.
 
 Code is communication!
 
-##  Code formatting and style
+## Code formatting and style
 
-We have all written code which is hard to read! 
+We have all written code which is hard to read!
 
 We all improve over time.
 
@@ -405,29 +353,25 @@ We all improve over time.
 tweetrmd::include_tweet("https://twitter.com/hadleywickham/status/589068687669243905")
 ```
 
-
-
-##  Code formatting and style
+## Code formatting and style
 
 Some keys points:
 
 ::: {style="font-size: 70%;"}
-
--   be consistent, emulate experienced coders  
--   use snake_case for variable names (not CamelCase, dot.case)  
--   use `<-` (not `=`) for assignment  
--   use spacing around most operators and after commas  
--   use indentation  
--   avoid long lines, break up code blocks with new lines  
--   use `"` for quoting text (not `'`) unless the text contains 
-    double quotes  
+-   be consistent, emulate experienced coders\
+-   use snake_case for variable names (not CamelCase, dot.case)\
+-   use `<-` (not `=`) for assignment\
+-   use spacing around most operators and after commas\
+-   use indentation\
+-   avoid long lines, break up code blocks with new lines\
+-   use `"` for quoting text (not `'`) unless the text contains double
+    quotes\
 -   space after `#` for comments
 :::
 
 ## 😩 Ugly code 😩
 
 ::: {style="font-size: 70%;"}
-
 ```{r}
 #| eval: false
 data<-read_csv('../data-raw/Y101_Y102_Y201_Y202_Y101-5.csv',skip=2)
@@ -451,12 +395,9 @@ data<-data|>mutate(id=str_extract(accession,"1::[^;]+")|>str_replace("1::",""))
 -   multiple commands on a line
 -   library statement in the middle of the analysis
 
-
-
 ## 😎 Cool code 😎
 
 ::: {style="font-size: 70%;"}
-
 ```{r}
 #| eval: false
 
@@ -471,7 +412,7 @@ file <- "../data-raw/Y101_Y102_Y201_Y202_Y101-5.csv"
 
 # import: column headers and data are from row 3
 solu_protein <- read_csv(file, skip = 2) |>
-  janitor::clean_names()
+  clean_names()
 
 # Tidy data ----------------------------------------------------------------
 
@@ -493,7 +434,6 @@ solu_protein <- solu_protein |>
   mutate(protid =  str_extract(accession, "1::[^;]+") |>
            str_replace("1::", ""))
 ```
-
 :::
 
 ## 😎 Cool code 😎
@@ -508,37 +448,30 @@ solu_protein <- solu_protein |>
 
 -   Uses more informative name for the dataframe
 
-
-
 # Code 'algorithmically'
 
-
-##  Code 'algorithmically'
+## Code 'algorithmically'
 
 ::: incremental
-
 -   Write code which expresses the structure of the problem/solution.
 
--   Avoid hard coding numbers if at all possible - declare variables 
+-   Avoid hard coding numbers if at all possible - declare variables
     instead
 
 -   Declare frequently used values as variables at the start e.g.,
     colour schemes, figure saving settings
-
 :::
 
 ## 😩 Hard coding numbers.
 
 ::: incremental
+-   Suppose we want to calculate the sums of squares, $SS(x)$, for the
+    number of eggs in five nests.
 
--   Suppose we want to calculate the sums of squares, $SS(x)$, for 
-    the number of eggs in five nests. 
+-   The formula is given by: $\sum (x_i- \bar{x})^2$
 
--   The formula is given by: $\sum (x_i- \bar{x})^2$  
-
--   We could calculate the mean and copy it, and 
-    the individual numbers into the formula
-
+-   We could calculate the mean and copy it, and the individual numbers
+    into the formula
 :::
 
 ## 😩 Hard coding numbers.
@@ -551,29 +484,25 @@ sum(3, 5, 6, 7, 8) / 5
 (3 - 5.8)^2 + (5 - 5.8)^2 + (6 - 5.8)^2 + (7 - 5.8)^2 + (8 - 5.8)^2
 ```
 
-
-I am coding the calculation of the mean rather using the `mean()` 
-function only to explain what 'coding algorithmically' means using 
-a simple example.
-
+I am coding the calculation of the mean rather using the `mean()`
+function only to explain what 'coding algorithmically' means using a
+simple example.
 
 ## 😩 Hard coding numbers
 
 ::: incremental
-
--   if any of the sample numbers must be altered, all the code needs 
+-   if any of the sample numbers must be altered, all the code needs
     changing
 
 -   it is hard to tell that the output of the first line is a mean
 
--   its hard to recognise that the numbers in the mean calculation 
+-   its hard to recognise that the numbers in the mean calculation
     correspond to those in the next calculation
 
 -   it is hard to tell that 5 is just the number of nests
 
--   no way of know if numbers are the same by coincidence or they 
-    refer to the same thing
-
+-   no way of know if numbers are the same by coincidence or they refer
+    to the same thing
 :::
 
 ## 😎 Better
@@ -592,33 +521,25 @@ sum((eggs - mean_eggs)^2)
 ## 😎 Better
 
 ::: incremental
-
 -   the commenting is similar but it is easier to follow
 
--   if any of the sample numbers must be altered, only that number
-    needs changing
+-   if any of the sample numbers must be altered, only that number needs
+    changing
 
--   assigning a value you will later use to a variable with a meaningful 
+-   assigning a value you will later use to a variable with a meaningful
     name allows us to understand the first and second calculations
 
--   makes use of R's elementwise calculation which resembles the formula 
+-   makes use of R's elementwise calculation which resembles the formula
     (i.e., is expressed as the general rule)
-
 :::
-
-
-
 
 ## Naming things
 
 ::: columns
 ::: {.column width="50%"}
-
 ![documents, CC-BY-NC,
 https://xkcd.com/1459/](images/xkcd-comic-file-names.png){fig-alt="A comic figure is looking over the shoulder of another and is shocked by a list of files with names like 'Untitled 138 copy.docx' and 'Untitled 243.doc'. Caption: 'Protip: Never look in someone else's documents folder'"}
-
 :::
-
 
 ::: {.column width="50%"}
 Guiding principle - Have a convention! Good file names are:
@@ -628,9 +549,7 @@ Guiding principle - Have a convention! Good file names are:
 -   human readable
 
 -   play nicely with sorting
-
 :::
-
 :::
 
 ## Naming suggestions
@@ -649,7 +568,6 @@ Guiding principle - Have a convention! Good file names are:
     2020-10-16
 
 -   write down your conventions
-
 
 # Workflow tips
 
@@ -680,31 +598,30 @@ Guiding principle - Have a convention! Good file names are:
 -   It's all gone wrong, Restart R CONTROL+SHIFT+F10
 
 -   [Fira Code](https://github.com/tonsky/FiraCode?tab=readme-ov-file)
-
 :::
 
 ## Summary
 
 ::: incremental
+-   Use an RStudio project for any R work (you can also incorporate
+    other languages)
 
--  Use an RStudio project for any R work (you can also incorporate other languages)
+-   Write Cool code not Ugly code: space, consistency, indentation,
+    comments, meaningful variable names
 
--  Write Cool code not Ugly code: space, consistency, indentation, 
-   comments, meaningful variable names
+-   Write code which expresses the structure of the problem/solution.
 
--  Write code which expresses the structure of the problem/solution.
-
--  Avoid hard coding numbers if at all possible - declare variables instead
-
+-   Avoid hard coding numbers if at all possible - declare variables
+    instead
 :::
 
 ## Reading
 
-Completely optional suggestions for further reading 
+Completely optional suggestions for further reading
 
 ::: {style="font-size: 70%;"}
 -   [Project-oriented workflow \| What They Forgot to Teach You About
-    R](https://rstats.wtf/projects) [@bryan]. Recommended if you still 
+    R](https://rstats.wtf/projects) [@bryan]. Recommended if you still
     need convincing to use RStudio Projects
 -   Ten simple rules for reproducible computational research
     [@sandve2013]
@@ -712,8 +629,8 @@ Completely optional suggestions for further reading
 -   Excuse Me, Do You Have a Moment to Talk About Version Control?
     [@bryan2018]
 
-Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr` [@knitr1; @knitr2; @knitr3], `kableExtra` [@kableExtra]
-
+Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr`
+[@knitr1; @knitr2; @knitr3], `kableExtra` [@kableExtra]
 :::
 
 ## References
