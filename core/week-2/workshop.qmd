@@ -25,46 +25,111 @@ engine: knitr
 In this workshop we will discuss why reproducibility matters and how to
 organise your work to make it reproducible. We will cover:
 
-What is reproducibility
-How to achieve reproducibility
-Rationale for scripting
-Project-oriented workflow
+::: {style="font-size: 70%;"}
+
+-   What is reproducibility
+-   How to achieve reproducibility
+-   Rationale for scripting
+-   Project-oriented workflow
+-   Code formatting and style
+-   Coding algorithmically
+-   Naming things
+-   And some handy workflow tips
+
+:::
+
+# Slide navigation
+
 
 # Reproducibility
 
-## What is reproducibility?
-
--   **Reproducible: Same data + same analysis = identical results**.
-    *"... obtaining consistent results using the same input data;
-    computational steps, methods, and code; and conditions of analysis.
-    This definition is synonymous with"computational reproducibility"*
-    [@nationalacademiesofsciences2019]
-
--   Replicable: Different data + same analysis = qualitatively similar
-    results. The work is not dependent on the specificities of the data.
-
--   Robust: Same data + different analysis = qualitatively similar or
-    identical results. The work is not dependent on the specificities of
-    the analysis.
-
--   Generalisable: Different data + different analysis = qualitatively
-    similar results and same conclusions. 
 
 ## What is reproducibility?
 
 [![The Turing Way\'s definitions of reproducible research
 ](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
 
+## Definitions
+
+
+[![The Turing Way\'s definitions of reproducible research
+](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
+
+
+::: {style="font-size: 70%;"}
+
+**Reproducible: Same data + same analysis = identical results**.
+*"... obtaining consistent results using the same input data;
+computational steps, methods, and code; and conditions of analysis.
+This definition is synonymous with"computational reproducibility"*
+[@nationalacademiesofsciences2019]. This is what we are concentrating 
+on in the Supporting Information.
+
+
+:::
+
+
+## Definitions
+
+
+[![The Turing Way\'s definitions of reproducible research
+](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
+
+
+::: {style="font-size: 70%;"}
+
+
+Replicable: Different data + same analysis = qualitatively similar
+results. The work is not dependent on the specificities of the data.
+
+
+:::
+
+## Definitions
+
+
+[![The Turing Way\'s definitions of reproducible research
+](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
+
+
+::: {style="font-size: 70%;"}
+
+
+Robust: Same data + different analysis = qualitatively similar or
+identical results. The work is not dependent on the specificities of
+the analysis.
+
+:::
+
+## Definitions
+
+
+[![The Turing Way\'s definitions of reproducible research
+](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
+
+
+::: {style="font-size: 70%;"}
+
+Generalisable: Different data + different analysis = qualitatively
+similar results and same conclusions. 
+
+:::
+
+
+
+
+
 ## Why does it matter?
 
 ::: incremental
 
--   Five selfish reasons to work reproducibly [@markowetz2015].
-    Alternatively, see the very entertaining
-    [talk](https://youtu.be/yVT07Sukv9Q)
 
 -   Many high profile cases of work which did not reproduce e.g. Anil
     Potti unravelled by @baggerly2009
+
+-   Five selfish reasons to work reproducibly [@markowetz2015].
+    Alternatively, see the very entertaining
+    [talk](https://youtu.be/yVT07Sukv9Q)
 
 -   **Will** become standard in Science and publishing e.g OECD Global
     Science Forum Building digital workforce capacity and skills for
@@ -85,8 +150,10 @@ Project-oriented workflow
 -   Code: follow a consistent style, organise into sections and scripts 
     (be modular), Code algorithmically 
 
--   Documentation: Readme files, code comments, metadata, version
-    control, continuous integration
+-   Documentation: Readme files, code comments, metadata, 
+
+-   More advanced: version, control, continuous integration and testing 
+    (not required for SI)
 
 # Scripting
 
@@ -119,6 +186,7 @@ Project-oriented workflow
 ## Example: SI itself is an RSP
 
 ```{bash}
+#| eval: false
 -- stem_cell_rna
    |__stem_cell_rna.Rproj   
    |__raw_ data/            
@@ -138,7 +206,7 @@ Project-oriented workflow
 ## Example: SI includes an RSP
 
 ```{bash}
-
+#| eval: false
 -- stem_cell_rna
    |__data_processing/
       |__01_data_processing.py
@@ -194,15 +262,11 @@ Project-oriented workflow
 :::
 
 ::: {.column width="40%"}
-The project directory is the folder at the top [^1]
+The project directory is the folder at the top 
 :::
 :::
 
-[^1]: Thanks to [Mine
-    Çetinkaya-Rundel](https://mastodon.social/@minecr@fosstodon.org) who
-    helped me work out how to highlight a line
-    <https://gist.github.com/mine-cetinkaya-rundel/3af3415eab70a65be3791c3dcff6e2e3>.
-    Note to futureself: the `engine: knitr` matters.
+
 
 ## RStudio Projects
 
@@ -226,9 +290,17 @@ The project directory is the folder at the top [^1]
 :::
 
 ::: {.column width="40%"}
-the `.RProj` file is directly under the project folder. Its presence is what makes the folder an RStudio Project
+the `.RProj` file is directly under the project folder[^1]. Its presence is 
+what makes the folder an RStudio Project
 :::
 :::
+
+[^1]: Thanks to [Mine
+    Çetinkaya-Rundel](https://mastodon.social/@minecr@fosstodon.org) who
+    helped me work out how to highlight a line
+    <https://gist.github.com/mine-cetinkaya-rundel/3af3415eab70a65be3791c3dcff6e2e3>.
+    Note to futureself: the `engine: knitr` matters.
+
 
 ## RStudio Projects
 
@@ -263,13 +335,16 @@ There are two menus options:
 
 They both do the same thing. 
 
-In both cases you choose: New Project \| New Directory \| New Project
+## Creating an RStudio Project
+
+Then Choose: New Project \| New Directory \| New Project
 
 Make sure you "Browse" to the folder you want to create the project.
 
 
 ❔ Is your working directory a good place to create a Project folder?
 
+## Creating an RStudio Project
 
 When you create a new RStudio Project 
 
@@ -285,15 +360,15 @@ When you create a new RStudio Project
 
 ## Opening and closing
 
-You can close an RStudio Project with ONE of:
+You can **close** an RStudio Project with ONE of:
 
 1.  File \| Close Project
 2.  Using the drop-down option on the far right of the tool bar where
     you see the Project name
 
-. . .
+## Opening and closing
 
-You can open an RStudio Project with ONE of:
+You can **open** an RStudio Project with ONE of:
 
 1.  File \| Open Project or File \| Recent Projects\
 2.  Using the drop-down option on the far right of the tool bar where
@@ -309,9 +384,15 @@ When you open project, a new R session starts.
 
 ##  Code formatting and style
 
-> "Good coding style is like correct punctuation: you can manage without it, butitsuremakesthingseasiertoread."
+> "Good coding style is like correct punctuation: you can manage without it butitsuremakesthingseasiertoread."
 
 [The tidyverse style guide](https://style.tidyverse.org/) 
+
+. . .
+
+Code is not write only.
+
+Code is communication!
 
 ##  Code formatting and style
 
@@ -330,19 +411,22 @@ tweetrmd::include_tweet("https://twitter.com/hadleywickham/status/58906868766924
 
 Some keys points:
 
+::: {style="font-size: 70%;"}
+
 -   be consistent, emulate experienced coders  
 -   use snake_case for variable names (not CamelCase, dot.case)  
--   use `<-` not `=` for assignment  
+-   use `<-` (not `=`) for assignment  
 -   use spacing around most operators and after commas  
 -   use indentation  
 -   avoid long lines, break up code blocks with new lines  
--   use `"` for quoting text (not `'`) unless the text contains double quotes  
-
-
+-   use `"` for quoting text (not `'`) unless the text contains 
+    double quotes  
+-   space after `#` for comments
+:::
 
 ## 😩 Ugly code 😩
 
-::: {style="font-size: 50%;"}
+::: {style="font-size: 70%;"}
 
 ```{r}
 #| eval: false
@@ -371,7 +455,7 @@ data<-data|>mutate(id=str_extract(accession,"1::[^;]+")|>str_replace("1::",""))
 
 ## 😎 Cool code 😎
 
-::: {style="font-size: 50%;"}
+::: {style="font-size: 70%;"}
 
 ```{r}
 #| eval: false
@@ -527,9 +611,16 @@ sum((eggs - mean_eggs)^2)
 
 ## Naming things
 
+::: columns
+::: {.column width="50%"}
+
 ![documents, CC-BY-NC,
 https://xkcd.com/1459/](images/xkcd-comic-file-names.png){fig-alt="A comic figure is looking over the shoulder of another and is shocked by a list of files with names like 'Untitled 138 copy.docx' and 'Untitled 243.doc'. Caption: 'Protip: Never look in someone else's documents folder'"}
 
+:::
+
+
+::: {.column width="50%"}
 Guiding principle - Have a convention! Good file names are:
 
 -   machine readable
@@ -537,6 +628,10 @@ Guiding principle - Have a convention! Good file names are:
 -   human readable
 
 -   play nicely with sorting
+
+:::
+
+:::
 
 ## Naming suggestions
 
@@ -558,7 +653,7 @@ Guiding principle - Have a convention! Good file names are:
 
 # Workflow tips
 
-::: {style="font-size: 50%;"}
+::: {style="font-size: 60%;"}
 -   multiple cursors
 
 -   open a file/function or find a variable CONTROL+.
@@ -582,6 +677,10 @@ Guiding principle - Have a convention! Good file names are:
 -   [GitHub Copilot in RStudio, it's finally
     here!](https://colorado.posit.co/rsc/rstudio-copilot/#/TitleSlide)
 
+-   It's all gone wrong, Restart R CONTROL+SHIFT+F10
+
+-   [Fira Code](https://github.com/tonsky/FiraCode?tab=readme-ov-file)
+
 :::
 
 ## Summary
@@ -603,6 +702,7 @@ Guiding principle - Have a convention! Good file names are:
 
 Completely optional suggestions for further reading 
 
+::: {style="font-size: 70%;"}
 -   [Project-oriented workflow \| What They Forgot to Teach You About
     R](https://rstats.wtf/projects) [@bryan]. Recommended if you still 
     need convincing to use RStudio Projects
@@ -612,6 +712,8 @@ Completely optional suggestions for further reading
 -   Excuse Me, Do You Have a Moment to Talk About Version Control?
     [@bryan2018]
 
-Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr` [@knitr1; knitr2; knitr3], `kableExtra` [@kableExtra]
+Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr` [@knitr1; @knitr2; @knitr3], `kableExtra` [@kableExtra]
+
+:::
 
 ## References
