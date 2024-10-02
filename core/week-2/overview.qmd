@@ -26,6 +26,7 @@ The successful student will be able to:
 1.  [Prepare](study_before_workshop.qmd)
 
     i.  📖 Read Understanding file systems
+    ii.  📖 Read Workflow in RStudio
 
 2.  [Workshop](workshop.qmd)
 
