@@ -307,7 +307,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">18 September, 2024</p>
+      <p class="date">2 October, 2024</p>
     </div>
   </div>
   
@@ -319,7 +319,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 </header>
 
 
-<p>This week we cover differential expression analysis on raw counts or log normalised values. The independent study will allow you to check you have what you should have following the <a href="../week-3/workshop.html">Transcriptomics 1: Hello Data workshop</a> and <a href="../week-3/study_after_workshop.html">Consolidation study</a>. It will also summarise the concepts and methods we will use in the workshop. In the workshop, you will learn how to perform differential expression analysis on raw counts using <strong><code>DESeq2</code></strong> <span class="citation" data-cites="DESeq2">(<a href="#ref-DESeq2" role="doc-biblioref">Love, Huber, and Anders 2014</a>)</span> or on logged normalised expression values using <strong><code>scran</code></strong> <span class="citation" data-cites="scran">(<a href="#ref-scran" role="doc-biblioref">Lun, McCarthy, and Marioni 2016</a>)</span> or both.</p>
+<p>This week we cover differential expression analysis on raw counts or log normalised values. The independent study will allow you to check you have what you should have following the <a href="../week-3/workshop.html">Transcriptomics 1: Hello Data workshop</a> and <a href="../week-3/study_after_workshop.html">Consolidation study</a>. It will also summarise the concepts and methods we will use in the workshop. In the workshop, you will learn how to perform differential expression analysis on raw counts using <strong><code>DESeq2</code></strong> <span class="citation" data-cites="DESeq2">(<a href="#ref-DESeq2" role="doc-biblioref">Love, Huber, and Anders 2014</a>)</span> or on logged normalised expression values using <strong><code>scran</code></strong> <span class="citation" data-cites="scran">(<a href="#ref-scran" role="doc-biblioref">Lun, McCarthy, and Marioni 2016</a>)</span> or both. You will also add information about genes programmatically.</p>
 <p>We suggest you sit together with your group in the workshop.</p>
 <section id="learning-objectives" class="level3">
 <h3 class="anchored" data-anchor-id="learning-objectives">Learning objectives</h3>
@@ -329,9 +329,11 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <li>explain the goal of differential expression analysis and the importance of normalisation</li>
 <li>explain why and how the nature of the input values determines the analysis package used</li>
 <li>describe the metadata needed to carry out differential expression analysis and the statistical models used by <strong><code>DESeq2</code></strong> and <strong><code>scran</code></strong></li>
-<li>find genes that are unexpressed or expressed in a a single cell type or treatment group</li>
+<li>find genes that are unexpressed or expressed in a just one group</li>
 <li>perform differential expression analysis on raw counts using <strong><code>DESeq2</code></strong> or on logged normalised expression values using <strong><code>scran</code></strong> or both.</li>
-<li>explain the output of differential expression: log fold change, p-value, adjusted p-value,</li>
+<li>explain the output of differential expression: log fold change, p-value, adjusted p-value</li>
+<li>add information about genes programmatically to their results</li>
+<li>prepare for a discussion with their project supervisor about genes of interest</li>
 </ul>
 </section>
 <section id="instructions" class="level3">
@@ -339,13 +341,15 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <ol type="1">
 <li><p><a href="../../transcriptomics/week-4/study_before_workshop.html">Prepare</a></p>
 <ol type="i">
-<li>📖 Read what you should have so far and about concepts in differential expression analysis.</li>
+<li>📖 Check what you should have after week 3</li>
+<li>📖 Read about concepts in differential expression analysis.</li>
+<li>📖 Find out what packages we will use.</li>
 </ol></li>
 <li><p><a href="../../transcriptomics/week-4/workshop.html">Workshop</a></p>
 <ol type="i">
 <li><p>💻 Find unexpressed genes and those expressed in a single cell type or treatment group.</p></li>
 <li><p>💻 Set up the metadata for differential expression analysis.</p></li>
-<li><p>💻 Perform differential expression analysis on raw counts using <strong><code>DESeq2</code></strong> or on logged normalised expression values using <strong><code>scran</code></strong> or both.</p></li>
+<li><p>💻 Perform differential expression analysis on raw counts using <strong><code>DESeq2</code></strong> or on logged normalised expression values using <strong><code>scran</code></strong>.</p></li>
 <li><p>Look after future you!</p></li>
 </ol></li>
 <li><p><a href="../../transcriptomics/week-4/study_after_workshop.html">Consolidate</a></p>

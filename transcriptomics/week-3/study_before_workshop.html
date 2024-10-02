@@ -368,7 +368,7 @@ Emma Rand
 </div>
 </div>
 
-  <p class="date">18 September, 2024</p>
+  <p class="date">2 October, 2024</p>
 </section>
 <section id="overview" class="slide level2">
 <h2>Overview</h2>
@@ -383,11 +383,12 @@ Emma Rand
 </section>
 <section id="the-data" class="slide level2">
 <h2>The Data</h2>
-<p>There are three datasets</p>
+<p>There are three transcriptomic datasets</p>
 <ul>
-<li><p>🐸 transcriptomic data (bulk RNA-seq) from frog embryos.</p></li>
-<li><p>🐭 transcriptomic data (single cell RNA-seq) from stemcells</p></li>
-<li><p>🍂 ??????? Metabolomic / Metagenomic data from anaerobic digesters</p></li>
+<li><p>🐸 bulk RNA-seq from <em>Xenopus laevis</em> embryos.</p></li>
+<li><p>🐭 single cell RNA-seq from mouse stemcells</p></li>
+<li><p>🎄 bulk RNA-seq from <em>Arabidopsis thaliana</em></p></li>
+<li><p>💉 bulk RNA-seq from <em>Leishmania mexicana</em></p></li>
 </ul>
 </section>
 <section>
@@ -405,7 +406,7 @@ Emma Rand
 <img data-src="images/88H-exp-design-betsy.png" width="200" class="r-stretch quarto-figure-left"><p class="caption">Schematic of frog development experiment</p><div>
 <ul>
 <li class="fragment"><p>3 fertilisations</p></li>
-<li class="fragment"><p>two siblings from each fertilisation one control, on FGF treated</p></li>
+<li class="fragment"><p>two siblings from each fertilisation one control, one FGF treated</p></li>
 <li class="fragment"><p>sequenced at three time points</p></li>
 <li class="fragment"><p>3 x 2 x 3 = 18 groups</p></li>
 </ul>
@@ -427,8 +428,7 @@ Emma Rand
 <h2>🐸 Aim</h2>
 <div>
 <ul>
-<li class="fragment"><p>find genes important in frog development</p></li>
-<li class="fragment"><p>Important means the genes that are differentially expressed between the control-treated and the FGF-treated siblings</p></li>
+<li class="fragment"><p>Find genes that are “differentially expressed” between control-treated and FGF-treated siblings</p></li>
 <li class="fragment"><p>Differentially expressed means the expression in one group is significantly higher than in the other</p></li>
 </ul>
 </div>
@@ -438,8 +438,9 @@ Emma Rand
 <div>
 <ul>
 <li class="fragment"><p>The workshops will take you through comparing the control and FGF treated sibling at S30</p></li>
-<li class="fragment"><p>This is the “least interesting” comparison</p></li>
+<li class="fragment"><p>You will make other comparisons independently</p></li>
 <li class="fragment"><p>You will be guided to carefully document your work so you can apply the same methods to other comparisons</p></li>
+<li class="fragment"><p>Do the independent study before and after the workshop!</p></li>
 </ul>
 </div>
 </section>
@@ -473,8 +474,7 @@ Emma Rand
 <h2>🐭 Aim</h2>
 <div>
 <ul>
-<li class="fragment"><p>find genes for cell surface proteins that are important in stem cell identity</p></li>
-<li class="fragment"><p>Important means genes that are differentially expressed between at least two cell types</p></li>
+<li class="fragment"><p>find genes that are “differentially expressed” between at least two cell types</p></li>
 <li class="fragment"><p>Differentially expressed means the expression in one group is significantly higher than in the other</p></li>
 </ul>
 </div>
@@ -484,55 +484,30 @@ Emma Rand
 <div>
 <ul>
 <li class="fragment"><p>The workshops will take you through comparing the HSPC and Prog cells</p></li>
-<li class="fragment"><p>This is the “least interesting” comparison</p></li>
+<li class="fragment"><p>You will make other comparisons independently</p></li>
 <li class="fragment"><p>You will be guided to carefully document your work so you can apply the same methods to other comparisons</p></li>
+<li class="fragment"><p>Do the independent study before and after the workshop!</p></li>
 </ul>
 </div>
 </section></section>
 <section>
-<section id="the-raw-data" class="title-slide slide level1 center">
-<h1>The raw data</h1>
+<section id="where-do-the-data-come-from" class="title-slide slide level1 center">
+<h1>Where do the data come from?</h1>
 
 </section>
-<section id="raw-sequence-data" class="slide level2">
+<section id="raw-sequence-data" class="slide level2 smaller scrollable">
 <h2>Raw Sequence data</h2>
 <div>
 <ul>
-<li class="fragment"><p>The raw data are “reads” from a sequencing machine.</p></li>
-<li class="fragment"><p>A read is sequence of DNA or RNA shorter than the whole genome or transcriptome</p></li>
+<li class="fragment"><p>The raw data are “reads” from a sequencing machine in FASTQ files</p></li>
+<li class="fragment"><p>A read is sequence of RNA which is shorter than the whole transcriptome</p></li>
 <li class="fragment"><p>The length of the reads depends on the type of sequencing machine</p>
 <ul>
-<li class="fragment">Short-read technologies e.g.&nbsp;Illumina have higher base accuracy but are harder to align</li>
-<li class="fragment">Long-read technologies e.g.&nbsp;Nanopore have lower base accuracy but are easier to align</li>
+<li class="fragment">Short-read technologies (e.g.&nbsp;Illumina) have higher base accuracy but are harder to align</li>
+<li class="fragment">Long-read technologies (e.g.&nbsp;Nanopore) have lower base accuracy but are easier to align</li>
 </ul></li>
+<li class="fragment"><p>Optional: You can read more about Sequencing technologies in <a href="https://cloud-span.github.io/experimental_design00-overview/">Statistically useful experimental design</a> <span class="citation" data-cites="rand_statistically_2022">(<a href="#/raw-sequence-data" role="doc-biblioref" onclick="">Rand and Forrester 2022</a>)</span></p></li>
 </ul>
-</div>
-</section></section>
-<section>
-<section id="the-raw-data-1" class="title-slide slide level1 center">
-<h1>The raw data</h1>
-
-</section>
-<section id="raw-sequence-data-1" class="slide level2">
-<h2>Raw Sequence data</h2>
-<div>
-<ul>
-<li class="fragment"><p>Sequencing technology is constantly improving</p></li>
-<li class="fragment"><p>Optional: You can read more about Sequencing technologies in <a href="https://cloud-span.github.io/experimental_design00-overview/">Statistically useful experimental design</a> <span class="citation" data-cites="rand_statistically_2022">(<a href="#/references" role="doc-biblioref" onclick="">Rand and Forrester 2022</a>)</span></p></li>
-</ul>
-</div>
-</section>
-<section id="raw-sequence-data-2" class="slide level2">
-<h2>Raw Sequence data</h2>
-<div>
-<ul>
-<li class="fragment"><p>The RNA-seq data are from an Illumina machine 150-300bp</p></li>
-<li class="fragment"><p>Reads are in FASTQ files</p></li>
-<li class="fragment"><p>FASTQ files contain the sequence of each read and a quality score for each base</p></li>
-</ul>
-</div>
-</section></section>
-<section>
 <section id="what-has-been-done-to-the-data-so-far" class="title-slide slide level1 center">
 <h1>What has been done to the data so far</h1>
 
@@ -541,32 +516,32 @@ Emma Rand
 <h2>General steps</h2>
 <div>
 <ul>
-<li class="fragment"><p>Reads are filtered and trimmed on the basis of the quality score</p></li>
+<li class="fragment"><p>Reads are filtered and trimmed on the basis of a quality score</p></li>
 <li class="fragment"><p>They are then aligned/pseudo-aligned to a reference genome/transcriptome</p></li>
-<li class="fragment"><p>Reads are then counted to quantify the expression</p></li>
-<li class="fragment"><p>Counts will need to be normalised to account for differences in sequencing depth and gene/transcript/ length before, or as part of, statistical analysis.</p></li>
+<li class="fragment"><p>And then counted to quantify the expression</p></li>
+<li class="fragment"><p>Counts need to be normalised to account for differences in sequencing depth and transcript length before, or as part of, statistical analysis.</p></li>
 </ul>
 </div>
 </section>
 <section id="data" class="slide level2">
 <h2>🐸 Data</h2>
 <ul>
-<li><p>Unpublished (so far!)</p></li>
-<li><p>Expression for the whole transcriptome <a href="https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp"><em>X. laevis</em> v10.1 genome assembly</a></p></li>
-<li><p>Values are raw counts</p></li>
-<li><p>The statistical analysis method we will use <code>DESeq2</code> <span class="citation" data-cites="DESeq2">(<a href="#/references" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span> requires raw counts and performs the normalisation itself</p></li>
+<li class="fragment"><p>Unpublished (so far!)</p></li>
+<li class="fragment"><p>Expression for the whole transcriptome <a href="https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp"><em>X. laevis</em> v10.1 genome assembly</a></p></li>
+<li class="fragment"><p>Values are raw counts</p></li>
+<li class="fragment"><p>The statistical analysis method we will use <code>DESeq2</code> <span class="citation" data-cites="DESeq2">(<a href="#/raw-sequence-data" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span> requires raw counts and performs the normalisation itself</p></li>
 </ul>
 </section>
 <section id="data-1" class="slide level2">
 <h2>🐭 Data</h2>
 <ul>
-<li><p>Published in <span class="citation" data-cites="nestorowa2016">Nestorowa et al. (<a href="#/references" role="doc-biblioref" onclick="">2016</a>)</span></p></li>
-<li><p>Expression for a <strong>subset of genes</strong>, the surfaceome</p></li>
-<li><p>Values are log2 normalised values</p></li>
-<li><p>The statistical analysis method we will use <code>scran</code> <span class="citation" data-cites="scran">(<a href="#/references" role="doc-biblioref" onclick="">Lun, McCarthy, and Marioni 2016</a>)</span> requires normalised values</p></li>
+<li class="fragment"><p>Published in <span class="citation" data-cites="nestorowa2016">Nestorowa et al. (<a href="#/raw-sequence-data" role="doc-biblioref" onclick="">2016</a>)</span></p></li>
+<li class="fragment"><p>Expression for a <strong>subset of genes</strong>, the surfaceome</p></li>
+<li class="fragment"><p>Values are log2 normalised values</p></li>
+<li class="fragment"><p>The statistical analysis method we will use <code>scran</code> <span class="citation" data-cites="scran">(<a href="#/raw-sequence-data" role="doc-biblioref" onclick="">Lun, McCarthy, and Marioni 2016</a>)</span> requires normalised values</p></li>
 </ul>
-</section></section>
-<section>
+</section>
+
 <section id="workshops" class="title-slide slide level1 center">
 <h1>Workshops</h1>
 
@@ -574,20 +549,27 @@ Emma Rand
 <section id="workshops-1" class="slide level2">
 <h2>Workshops</h2>
 <ul>
-<li><p>Transcriptomics 1: Hello data Getting to know the data. Checking the distributions of values overall, across samples and across genes to check things are as we expect and detect genes/samples that need to be removed</p></li>
-<li><p>Transcriptomics 2: Statistical Analysis Identifying which genes are differentially expressed between treatments. This is the main analysis step. We will use different methods for bulk and single cell data.</p></li>
-<li><p>Transcriptomics 3: Visualising and Interpreting Production of volcano plots and heatmaps to visualise the results of the statistical analysis. We will also look at how to interpret the results and how to find out more about the genes of interest.</p></li>
+<li class="fragment"><p>Transcriptomics 1: Hello data Getting to know the data. Checking the distributions of values overall, across rows and columns to check things are as we expect and detect rows/columns that need to be removed</p></li>
+<li class="fragment"><p>Transcriptomics 2: Statistical Analysis. Identifying which genes are differentially expressed between treatments. This is the main analysis step. We will use different methods for bulk and single cell data.</p></li>
+<li class="fragment"><p>Transcriptomics 3: Visualising. Principal Component Analysis (PCA) volcano plots to visualise the results of the</p></li>
 </ul>
 </section>
-<section id="references" class="slide level2 smaller scrollable">
+<section id="references" class="slide level2">
 <h2>References</h2>
+<p>Pages made with R <span class="citation" data-cites="R-core">(<a href="#/raw-sequence-data" role="doc-biblioref" onclick="">R Core Team 2024</a>)</span>, Quarto <span class="citation" data-cites="Allaire_Quarto_2024">(<a href="#/raw-sequence-data" role="doc-biblioref" onclick="">Allaire et al. 2024</a>)</span>, <code>knitr</code> <span class="citation" data-cites="knitr1 knitr2 knitr3">(<a href="#/raw-sequence-data" role="doc-biblioref" onclick="">Xie 2024</a>, <a href="#/raw-sequence-data" role="doc-biblioref" onclick="">2015</a>, <a href="#/raw-sequence-data" role="doc-biblioref" onclick="">2014</a>)</span>, <code>kableExtra</code> <span class="citation" data-cites="kableExtra">(<a href="#/raw-sequence-data" role="doc-biblioref" onclick="">Zhu 2021</a>)</span></p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
-<p>🔗 <a href="https://3mmarand.github.io/BIO00088H-data/omics/week-3/overview.html">About Transcriptomics 1: Hello data!</a></p>
+<p>🔗 <a href="https://3mmarand.github.io/BIO00088H-data/transcriptomics/week-3/overview.html">About Transcriptomics 1: Hello data!</a></p>
 </div>
+</div>
+</section>
+
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Allaire_Quarto_2024" class="csl-entry" role="listitem">
+Allaire, J. J., Charles Teague, Carlos Scheidegger, Yihui Xie, and Christophe Dervieux. 2024. <span>“<span>Quarto</span>.”</span> <a href="https://doi.org/10.5281/zenodo.5960048">https://doi.org/10.5281/zenodo.5960048</a>.
+</div>
 <div id="ref-DESeq2" class="csl-entry" role="listitem">
 Love, Michael I., Wolfgang Huber, and Simon Anders. 2014. <span>“Moderated Estimation of Fold Change and Dispersion for RNA-Seq Data with DESeq2.”</span> <em>Genome Biology</em> 15: 550. <a href="https://doi.org/10.1186/s13059-014-0550-8">https://doi.org/10.1186/s13059-014-0550-8</a>.
 </div>
@@ -597,8 +579,23 @@ Lun, Aaron T. L., Davis J. McCarthy, and John C. Marioni. 2016. <span>“A Step-
 <div id="ref-nestorowa2016" class="csl-entry" role="listitem">
 Nestorowa, Sonia, Fiona K. Hamey, Blanca Pijuan Sala, Evangelia Diamanti, Mairi Shepherd, Elisa Laurenti, Nicola K. Wilson, David G. Kent, and Berthold Göttgens. 2016. <span>“A Single-Cell Resolution Map of Mouse Hematopoietic Stem and Progenitor Cell Differentiation.”</span> <em>Blood</em> 128 (8): e20–31. <a href="https://doi.org/10.1182/blood-2016-05-716480">https://doi.org/10.1182/blood-2016-05-716480</a>.
 </div>
+<div id="ref-R-core" class="csl-entry" role="listitem">
+R Core Team. 2024. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
 <div id="ref-rand_statistically_2022" class="csl-entry" role="listitem">
 Rand, Emma, and Sarah Forrester. 2022. <span>“Statistically Useful Experimental Design.”</span> <a href="https://cloud-span.github.io/experimental_design00-overview/">https://cloud-span.github.io/experimental_design00-overview/</a>.
+</div>
+<div id="ref-knitr3" class="csl-entry" role="listitem">
+Xie, Yihui. 2014. <span>“Knitr: A Comprehensive Tool for Reproducible Research in <span>R</span>.”</span> In <em>Implementing Reproducible Computational Research</em>, edited by Victoria Stodden, Friedrich Leisch, and Roger D. Peng. Chapman; Hall/CRC.
+</div>
+<div id="ref-knitr2" class="csl-entry" role="listitem">
+———. 2015. <em>Dynamic Documents with <span>R</span> and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
+</div>
+<div id="ref-knitr1" class="csl-entry" role="listitem">
+———. 2024. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in r</em>. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
+</div>
+<div id="ref-kableExtra" class="csl-entry" role="listitem">
+Zhu, Hao. 2021. <span>“kableExtra: Construct Complex Table with ’Kable’ and Pipe Syntax.”</span> <a href="https://CRAN.R-project.org/package=kableExtra">https://CRAN.R-project.org/package=kableExtra</a>.
 </div>
 </div>
 </section></section>
