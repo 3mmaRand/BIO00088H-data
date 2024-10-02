@@ -96,7 +96,11 @@ For example, to always use the **`dplyr`** version of `filter()` by default you 
 ```{r}
 conflicts_prefer(dplyr::filter)
 ```
+We will also want to ensure that we are using the `setdiff()` function from the `GenomicRanges` package.
 
+```{r}
+conflicts_prefer(GenomicRanges::setdiff)
+```
 # Import 
 
 ## 🐸 Frog development
@@ -233,11 +237,7 @@ write_csv(s30_fgf_only, "results/s30_fgf_only.csv")
 #---CODING ANSWER---
 library(DESeq2)
 ```
-We will also want to ensure that we are using the `setdiff()` function from the `GenomicRanges` package.
 
-```{r}
-conflicts_prefer(GenomicRanges::setdiff)
-```
 
 
 A DEseqDataSet object is a custom data type that is used by
