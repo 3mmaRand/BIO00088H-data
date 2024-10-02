@@ -1,6 +1,6 @@
 ---
 title: "Independent Study to consolidate this week"
-subtitle: "Transcriptomics 3: Visualising and Interpreting"
+subtitle: "Transcriptomics 3: Visualising"
 toc: true
 toc-location: right
 format:
