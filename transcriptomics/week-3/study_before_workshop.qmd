@@ -29,7 +29,7 @@ editor:
 
 ## The Data
 
-There are three transcriptomic datasets
+There are 4 transcriptomic datasets
 
 -   🐸 bulk RNA-seq from *Xenopus laevis* embryos.
 
@@ -178,16 +178,17 @@ width="200"}
     transcriptome
 
 -   The length of the reads depends on the type of sequencing machine
-
+::: {style="font-size: 70%;"}
     -   Short-read technologies (e.g. Illumina) have higher base accuracy
         but are harder to align
     -   Long-read technologies (e.g. Nanopore) have lower base accuracy
         but are easier to align
-
+:::
 -   Optional: You can read more about Sequencing technologies in
     [Statistically useful experimental
     design](https://cloud-span.github.io/experimental_design00-overview/)
     [@rand_statistically_2022]        
+:::
 
 # What has been done to the data so far
 
