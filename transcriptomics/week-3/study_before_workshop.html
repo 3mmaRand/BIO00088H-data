@@ -383,7 +383,7 @@ Emma Rand
 </section>
 <section id="the-data" class="slide level2">
 <h2>The Data</h2>
-<p>There are three transcriptomic datasets</p>
+<p>There are 4 transcriptomic datasets</p>
 <ul>
 <li><p>🐸 bulk RNA-seq from <em>Xenopus laevis</em> embryos.</p></li>
 <li><p>🐭 single cell RNA-seq from mouse stemcells</p></li>
@@ -495,19 +495,25 @@ Emma Rand
 <h1>Where do the data come from?</h1>
 
 </section>
-<section id="raw-sequence-data" class="slide level2 smaller scrollable">
+<section id="raw-sequence-data" class="slide level2">
 <h2>Raw Sequence data</h2>
 <div>
 <ul>
 <li class="fragment"><p>The raw data are “reads” from a sequencing machine in FASTQ files</p></li>
 <li class="fragment"><p>A read is sequence of RNA which is shorter than the whole transcriptome</p></li>
-<li class="fragment"><p>The length of the reads depends on the type of sequencing machine</p>
+<li class="fragment"><p>The length of the reads depends on the type of sequencing machine ::: {style=“font-size: 70%;”}</p>
 <ul>
 <li class="fragment">Short-read technologies (e.g.&nbsp;Illumina) have higher base accuracy but are harder to align</li>
 <li class="fragment">Long-read technologies (e.g.&nbsp;Nanopore) have lower base accuracy but are easier to align</li>
 </ul></li>
-<li class="fragment"><p>Optional: You can read more about Sequencing technologies in <a href="https://cloud-span.github.io/experimental_design00-overview/">Statistically useful experimental design</a> <span class="citation" data-cites="rand_statistically_2022">(<a href="#/raw-sequence-data" role="doc-biblioref" onclick="">Rand and Forrester 2022</a>)</span></p></li>
 </ul>
+</div>
+<ul>
+<li>Optional: You can read more about Sequencing technologies in <a href="https://cloud-span.github.io/experimental_design00-overview/">Statistically useful experimental design</a> <span class="citation" data-cites="rand_statistically_2022">(<a href="#/references" role="doc-biblioref" onclick="">Rand and Forrester 2022</a>)</span><br>
+:::</li>
+</ul>
+</section></section>
+<section>
 <section id="what-has-been-done-to-the-data-so-far" class="title-slide slide level1 center">
 <h1>What has been done to the data so far</h1>
 
@@ -526,22 +532,22 @@ Emma Rand
 <section id="data" class="slide level2">
 <h2>🐸 Data</h2>
 <ul>
-<li class="fragment"><p>Unpublished (so far!)</p></li>
-<li class="fragment"><p>Expression for the whole transcriptome <a href="https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp"><em>X. laevis</em> v10.1 genome assembly</a></p></li>
-<li class="fragment"><p>Values are raw counts</p></li>
-<li class="fragment"><p>The statistical analysis method we will use <code>DESeq2</code> <span class="citation" data-cites="DESeq2">(<a href="#/raw-sequence-data" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span> requires raw counts and performs the normalisation itself</p></li>
+<li><p>Unpublished (so far!)</p></li>
+<li><p>Expression for the whole transcriptome <a href="https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp"><em>X. laevis</em> v10.1 genome assembly</a></p></li>
+<li><p>Values are raw counts</p></li>
+<li><p>The statistical analysis method we will use <code>DESeq2</code> <span class="citation" data-cites="DESeq2">(<a href="#/references" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span> requires raw counts and performs the normalisation itself</p></li>
 </ul>
 </section>
 <section id="data-1" class="slide level2">
 <h2>🐭 Data</h2>
 <ul>
-<li class="fragment"><p>Published in <span class="citation" data-cites="nestorowa2016">Nestorowa et al. (<a href="#/raw-sequence-data" role="doc-biblioref" onclick="">2016</a>)</span></p></li>
-<li class="fragment"><p>Expression for a <strong>subset of genes</strong>, the surfaceome</p></li>
-<li class="fragment"><p>Values are log2 normalised values</p></li>
-<li class="fragment"><p>The statistical analysis method we will use <code>scran</code> <span class="citation" data-cites="scran">(<a href="#/raw-sequence-data" role="doc-biblioref" onclick="">Lun, McCarthy, and Marioni 2016</a>)</span> requires normalised values</p></li>
+<li><p>Published in <span class="citation" data-cites="nestorowa2016">Nestorowa et al. (<a href="#/references" role="doc-biblioref" onclick="">2016</a>)</span></p></li>
+<li><p>Expression for a <strong>subset of genes</strong>, the surfaceome</p></li>
+<li><p>Values are log2 normalised values</p></li>
+<li><p>The statistical analysis method we will use <code>scran</code> <span class="citation" data-cites="scran">(<a href="#/references" role="doc-biblioref" onclick="">Lun, McCarthy, and Marioni 2016</a>)</span> requires normalised values</p></li>
 </ul>
-</section>
-
+</section></section>
+<section>
 <section id="workshops" class="title-slide slide level1 center">
 <h1>Workshops</h1>
 
@@ -549,22 +555,19 @@ Emma Rand
 <section id="workshops-1" class="slide level2">
 <h2>Workshops</h2>
 <ul>
-<li class="fragment"><p>Transcriptomics 1: Hello data Getting to know the data. Checking the distributions of values overall, across rows and columns to check things are as we expect and detect rows/columns that need to be removed</p></li>
-<li class="fragment"><p>Transcriptomics 2: Statistical Analysis. Identifying which genes are differentially expressed between treatments. This is the main analysis step. We will use different methods for bulk and single cell data.</p></li>
-<li class="fragment"><p>Transcriptomics 3: Visualising. Principal Component Analysis (PCA) volcano plots to visualise the results of the</p></li>
+<li><p>Transcriptomics 1: Hello data Getting to know the data. Checking the distributions of values overall, across rows and columns to check things are as we expect and detect rows/columns that need to be removed</p></li>
+<li><p>Transcriptomics 2: Statistical Analysis. Identifying which genes are differentially expressed between treatments. This is the main analysis step. We will use different methods for bulk and single cell data.</p></li>
+<li><p>Transcriptomics 3: Visualising. Principal Component Analysis (PCA) volcano plots to visualise the results of the</p></li>
 </ul>
 </section>
-<section id="references" class="slide level2">
+<section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
-<p>Pages made with R <span class="citation" data-cites="R-core">(<a href="#/raw-sequence-data" role="doc-biblioref" onclick="">R Core Team 2024</a>)</span>, Quarto <span class="citation" data-cites="Allaire_Quarto_2024">(<a href="#/raw-sequence-data" role="doc-biblioref" onclick="">Allaire et al. 2024</a>)</span>, <code>knitr</code> <span class="citation" data-cites="knitr1 knitr2 knitr3">(<a href="#/raw-sequence-data" role="doc-biblioref" onclick="">Xie 2024</a>, <a href="#/raw-sequence-data" role="doc-biblioref" onclick="">2015</a>, <a href="#/raw-sequence-data" role="doc-biblioref" onclick="">2014</a>)</span>, <code>kableExtra</code> <span class="citation" data-cites="kableExtra">(<a href="#/raw-sequence-data" role="doc-biblioref" onclick="">Zhu 2021</a>)</span></p>
+<p>Pages made with R <span class="citation" data-cites="R-core">(<a href="#/references" role="doc-biblioref" onclick="">R Core Team 2024</a>)</span>, Quarto <span class="citation" data-cites="Allaire_Quarto_2024">(<a href="#/references" role="doc-biblioref" onclick="">Allaire et al. 2024</a>)</span>, <code>knitr</code> <span class="citation" data-cites="knitr1 knitr2 knitr3">(<a href="#/references" role="doc-biblioref" onclick="">Xie 2024</a>, <a href="#/references" role="doc-biblioref" onclick="">2015</a>, <a href="#/references" role="doc-biblioref" onclick="">2014</a>)</span>, <code>kableExtra</code> <span class="citation" data-cites="kableExtra">(<a href="#/references" role="doc-biblioref" onclick="">Zhu 2021</a>)</span></p>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p>🔗 <a href="https://3mmarand.github.io/BIO00088H-data/transcriptomics/week-3/overview.html">About Transcriptomics 1: Hello data!</a></p>
 </div>
-</div>
-</section>
-
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Allaire_Quarto_2024" class="csl-entry" role="listitem">

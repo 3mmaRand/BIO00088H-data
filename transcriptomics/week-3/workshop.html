@@ -355,9 +355,9 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <a href="#look-after-future-you" id="toc-look-after-future-you" class="nav-link" data-scroll-target="#look-after-future-you">🤗 Look after future you!</a>
   <ul>
 <li><a href="#frogs-and-future-you" id="toc-frogs-and-future-you" class="nav-link" data-scroll-target="#frogs-and-future-you">🐸 Frogs and future you</a></li>
-  <li><a href="#mice-and-future-you" id="toc-mice-and-future-you" class="nav-link" data-scroll-target="#mice-and-future-you">🐭 Mice and future you</a></li>
   <li><a href="#arabidopsis-and-future-you" id="toc-arabidopsis-and-future-you" class="nav-link" data-scroll-target="#arabidopsis-and-future-you">🎄 Arabidopsis and future you</a></li>
   <li><a href="#leishmania-and-future-you" id="toc-leishmania-and-future-you" class="nav-link" data-scroll-target="#leishmania-and-future-you">💉 Leishmania and future you</a></li>
+  <li><a href="#mice-and-future-you" id="toc-mice-and-future-you" class="nav-link" data-scroll-target="#mice-and-future-you">🐭 Mice and future you</a></li>
   </ul>
 </li>
   <li><a href="#finished" id="toc-finished" class="nav-link" data-scroll-target="#finished">🥳 Finished</a></li>
@@ -531,7 +531,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <li>
 <code>S30_F_3</code> does have a somewhat lower maximum count</li>
 </ul>
-<p>We want to know how many zeros there are in each a column. A useful trick to determine this is to make use we can make use of the fact that <code>TRUE</code> evaluates to 1 and <code>FALSE</code> evaluates to 0. This means you can sum a column of TRUE/FALSE values to get the number of TRUE values. For example, <code>sum(S30_C_1 &gt; 0)</code> gives the number of values above zero in the <code>S30_C_1</code> column. If you wanted the number of zeros, you would use <code>sum(S30_C_1 == 0)</code>.</p>
+<p>We want to know how many zeros there are in each a column. To achieve this, we can make use of the fact that <code>TRUE</code> evaluates to 1 and <code>FALSE</code> evaluates to 0. Consequently, summing a column of TRUE/FALSE values will give you the number of TRUE values. For example, <code>sum(S30_C_1 &gt; 0)</code> gives the number of values above zero in the <code>S30_C_1</code> column. If you wanted the number of zeros, you could use <code>sum(S30_C_1 == 0)</code>.</p>
 <p>🎬 Find the number values above zero in all six columns:</p>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30</span> <span class="op">|&gt;</span></span>
@@ -597,7 +597,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 6 S30_F_3     0     16  260.     69    187  61531        10930</code></pre>
 </div>
 </div>
-<p>The mean count ranges from 260 to 426. <code>S30_F_3</code> does stand out a little but not by too much. If we had more replicates we might consider analysing with and with out this replicate. Since we have just 3, we will leave it in. The potential effect of an odd replicate is slightly statistical power. The major differences in gene expression will still be uncovered. Differences between genes with lower average expression and or more variable expression might be missed. Whether this matters depends on the biological question you are asking. In this case, it does not matter because the major differences in gene expression will be enough.</p>
+<p>The mean count ranges from 260 to 426. <code>S30_F_3</code> does stand out a little but not by too much. If we had more replicates we might consider conducting our analysis both with and without this replicate to determine whether its oddness was influencing our conclusions. Since we have just 3 replicates, we will leave it in. The potential effect of an odd replicate is reduced statistical power. Major differences in gene expression will still be uncovered. Differences between genes with lower average expression and or more variable expression might be missed. Whether this matters depends on the biological question you are asking. In this case, it does not matter because the major differences in gene expression will be enough.</p>
 <p>🎬 Save the summary as a dataframe, <code>s30_summary_samp</code> (using assignment).</p>
 <p>We can also plot the distribution of counts across samples. We have many values (11893) so we are not limited to using <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a></code>. <code><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density()</a></code> gives us a smooth distribution.</p>
 <p>🎬 Plot the log10 of the counts + 1 again but this time facet by the sample:</p>
@@ -618,11 +618,11 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 </div>
 <p>The key information to take from these plots is:</p>
 <ul>
-<li>the distributions are roughly similar with <code>S30_F_3</code> does stand out a little</li>
+<li>the distributions are roughly similar though <code>S30_F_3</code> does stand out a little</li>
 <li>the peak at zero suggests quite a few counts of 1.</li>
-<li>since we would expect the distribution of counts in each sample to be roughly log normal so that the small rise near the low end, even before the peak at zero, suggests that these lower counts might be anomalies.</li>
+<li>we would expect the distribution of counts in each sample to be roughly log normal so that the small rise near the low end, even before the peak at zero, suggests that these lower counts might be anomalies.</li>
 </ul>
-<p>We have found the distribution across samples to be like that to the distribution over all. This is good because it means that the samples are fairly consistent with each other. We can now move on to the next step.</p>
+<p>We have found the distribution across samples to be similar to that over all. This is good because it means that the samples are fairly consistent with each other. We can now move on to the next step.</p>
 </section><section id="distribution-of-values-across-the-genes" class="level3"><h3 class="anchored" data-anchor-id="distribution-of-values-across-the-genes">Distribution of values across the genes</h3>
 <p>There are lots of genes in this dataset therefore we will take a slightly different approach. We would not want to use plot a distribution for each gene in the same way. Will pivot the data to tidy and then summarise the counts for each gene.</p>
 <p>🎬 Summarise the counts for each gene and save the result as <code>s30_summary_gene</code>. Include the same columns as we had in the by sample summary (<code>s30_summary_samp</code>) <em>and</em> an additional column, <code>total</code> for the total number of counts for each gene.</p>
@@ -634,7 +634,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <li>some very very low counts.</li>
 </ul>
 <p>Genes with very low counts should be filtered out because they are unreliable - or, at the least, uninformative. The goal of our downstream analysis will be to see if there is a significant difference in gene expression between the control and FGF-treated sibling. Since we have only three replicates in each group, having one or two unreliable, missing or zero values, makes such a determination impossible for a particular gene. We will use the total counts (<code>total</code>) and the number of samples with non-zero values (<code>n_above_zero</code>) in this dataframe to filter our genes later.</p>
-<p>As we have a lot of genes, it is again helpful to plot the mean counts with <code><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_pointrange()</a></code> to get an overview of the distributions. We will again plot the log of the mean counts. We will also order the genes from lowest to highest mean count.</p>
+<p>As we have a lot of genes, it is helpful to plot the mean counts with <code><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_pointrange()</a></code> to get an overview of the distributions. We will again plot the log of the mean counts. We will also order the genes from lowest to highest mean count.</p>
 <p>🎬 Plot the logged mean counts for each gene in order of size using <code><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_pointrange()</a></code>:</p>
 <div class="cell">
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_summary_gene</span> <span class="op">|&gt;</span> </span>
@@ -696,10 +696,10 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <p>You need only do the section for your own project data but <strong>completing this step is important</strong>.</p>
 <section id="frogs-and-future-you" class="level2"><h2 class="anchored" data-anchor-id="frogs-and-future-you">🐸 Frogs and future you</h2>
 <p>🎬 Create a new Project, <code>frogs-88H</code>, populated with folders and your data. Make a script file called <code>cont-fgf-s30.R</code>. This will a be commented analysis of the control vs FGF at S30 comparison. You will build on this each workshop and be able to use it as a template to examine other comparisons. Copy in the appropriate code and comments from <code>workshop-1.R</code>. Edit to improve your comments where your understanding has developed since you made them. Make sure you can close down RStudio, reopen it and run your whole script again.</p>
-</section><section id="mice-and-future-you" class="level2"><h2 class="anchored" data-anchor-id="mice-and-future-you">🐭 Mice and future you</h2>
-<p>🎬 Create a new Project, <code>mice-88H</code>, populated with folders and your data. Make a script file called <code>hspc-prog.R</code>. This will a be commented analysis of the hspc cells vs the prog cells. At this point you will have only code for the hspc cells. You will build on this each workshop and be able to use it as a template to examine other comparisons. Copy in the appropriate code and comments from <code>workshop-1.R</code>. Edit to improve your comments where your understanding has developed since you made them. Make sure you can close down RStudio, reopen it and run your whole script again.</p>
 </section><section id="arabidopsis-and-future-you" class="level2"><h2 class="anchored" data-anchor-id="arabidopsis-and-future-you">🎄 Arabidopsis and future you</h2>
 </section><section id="leishmania-and-future-you" class="level2"><h2 class="anchored" data-anchor-id="leishmania-and-future-you">💉 Leishmania and future you</h2>
+</section><section id="mice-and-future-you" class="level2"><h2 class="anchored" data-anchor-id="mice-and-future-you">🐭 Mice and future you</h2>
+<p>🎬 Create a new Project, <code>mice-88H</code>, populated with folders and your data. Make a script file called <code>hspc-prog.R</code>. This will a be commented analysis of the hspc cells vs the prog cells. At this point you will have only code for the hspc cells. You will build on this each workshop and be able to use it as a template to examine other comparisons. Copy in the appropriate code and comments from <code>workshop-1.R</code>. Edit to improve your comments where your understanding has developed since you made them. Make sure you can close down RStudio, reopen it and run your whole script again.</p>
 </section></section><section id="finished" class="level1"><h1>🥳 Finished</h1>
 <p>Well Done!</p>
 </section><section id="independent-study-following-the-workshop" class="level1"><h1>Independent study following the workshop</h1>
