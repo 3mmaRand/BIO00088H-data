@@ -88,8 +88,8 @@ I recommend you set the **`dplyr`** versions of `filter()` and `select()` to use
 🎬 Use the **`dplyr`** version of `filter()` by default:
 
 ```{r}
-conflict_prefer("filter", "dplyr")
-conflict_prefer("select", "dplyr")
+conflicts_prefer(dplyr::filter)
+conflicts_prefer(dplyr::select)
 ```
 
 
