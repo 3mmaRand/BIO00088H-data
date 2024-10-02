@@ -216,11 +216,12 @@ Notice that:
    be quite a lot of zeros 
 -  `S30_F_3` does have a somewhat lower maximum count
 
-We want to know how many zeros there are in each a column. A useful trick to determine this is to make use we can make use of the fact that `TRUE` 
-evaluates to 1 and `FALSE` evaluates to 0. This means you can sum a column 
-of TRUE/FALSE values to get the number of TRUE values. For example,
+We want to know how many zeros there are in each a column. To achieve this, 
+we can make use of the fact that `TRUE` evaluates to 1 and `FALSE` 
+evaluates to 0. Consequently, summing a column of TRUE/FALSE values will 
+give you the number of TRUE values. For example,
 `sum(S30_C_1 > 0)` gives the number of values above zero in the `S30_C_1` 
-column. If you wanted the number of zeros, you would use `sum(S30_C_1 == 0)`.
+column. If you wanted the number of zeros, you could use `sum(S30_C_1 == 0)`.
 
 🎬 Find the number values above zero in all six columns:
 
@@ -271,9 +272,8 @@ s30 |>
             n_above_zero = sum(count > 0))
 ```
 
-The mean count ranges from 260 to 426. `S30_F_3` does stand out a little but not by too much. If we had more replicates we might consider analysing with and with out this replicate. Since we have just 3, we will leave it in. The potential effect of 
-an odd replicate is slightly statistical power. The major differences in gene expression will still be uncovered. Differences between genes with lower average expression and or more variable expression might be missed. Whether this matters depends on the biological question you are asking. In this case, it does not matter
-because the major differences in gene expression will be enough.
+The mean count ranges from 260 to 426. `S30_F_3` does stand out a little but not by too much. If we had more replicates we might consider conducting our analysis both with and without this  replicate to determine whether its oddness was influencing our conclusions. Since we have just 3 replicates, we will leave it in. The potential effect of 
+an odd replicate is reduced statistical power. Major differences in gene expression will still be uncovered. Differences between genes with lower average expression and or more variable expression might be missed. Whether this matters depends on the biological question you are asking. In this case, it does not matter because the major differences in gene expression will be enough.
 
 🎬 Save the summary as a dataframe, `s30_summary_samp` (using assignment).
 
@@ -313,14 +313,14 @@ s30 |>
 
 The key information to take from these plots is:
 
--   the distributions are roughly similar with `S30_F_3` does stand out a little
+-   the distributions are roughly similar though `S30_F_3` does stand out a little
 -   the peak at zero suggests quite a few counts of 1.
--   since we would expect the distribution of counts in each sample to
+-   we would expect the distribution of counts in each sample to
     be roughly log normal so that the small rise near the low end, even
     before the peak at zero, suggests that these lower counts might be
     anomalies.
 
-We have found the distribution across samples to be like that to the distribution over all. This is good because it means that the samples are fairly consistent with each other. We can now move on to the next step.
+We have found the distribution across samples to be similar to that over all. This is good because it means that the samples are fairly consistent with each other. We can now move on to the next step.
 
 
 ### Distribution of values across the genes
@@ -367,7 +367,7 @@ values, makes such a determination impossible for a particular gene.
 We will use the total counts (`total`) and the number of samples with 
 non-zero values (`n_above_zero`) in this dataframe to filter our genes later.
 
-As we have a lot of genes, it is again helpful to plot the mean counts
+As we have a lot of genes, it is helpful to plot the mean counts
 with `geom_pointrange()` to get an overview of the distributions. We will 
 again plot the log of the mean counts. We will also order the
 genes from lowest to highest mean count.
@@ -509,6 +509,11 @@ from `workshop-1.R`. Edit to improve your comments where your
 understanding has developed since you made them. Make sure you can close
 down RStudio, reopen it and run your whole script again.
 
+## 🎄 Arabidopsis and future you
+
+
+## 💉 Leishmania and future you
+
 ## 🐭 Mice and future you
 
 🎬 Create a new Project, `mice-88H`, populated with folders and your
@@ -520,13 +525,6 @@ in the appropriate code and comments from `workshop-1.R`. Edit to
 improve your comments where your understanding has developed since you
 made them. Make sure you can close down RStudio, reopen it and run your
 whole script again.
-
-## 🎄 Arabidopsis and future you
-
-
-## 💉 Leishmania and future you
-
-
 
 # 🥳 Finished
 
