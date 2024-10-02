@@ -255,7 +255,7 @@ some counts of 0 we will add a tiny amount to avoid `-Inf` values.
 log~2~ transformation would be applied to one column like this:
 
 ```{r}
-#| eval:false
+#| eval: false
 # DO NOT DO
 # log2 transform the counts plus a tiny amount to avoid log(0)
 dataframe <- dataframe |>
@@ -278,7 +278,7 @@ where:
 The general form of the code you need is:
 
 ```{r}
-#| eval:false
+#| eval: false
 # DO NOT DO
 # log2 transform the counts plus a tiny amount to avoid log(0)
 xxxx_results <- xxxx_results |>
@@ -369,7 +369,7 @@ examine and select genes of interest.
 The general form of the code you need is:
 
 ```{r}
-#| eval:false
+#| eval: false
 # DO NOT DO
 # create a dataframe of genes significant at 0.05 level
 xxxx_results_sig0.05 <- xxxx_results |> 
