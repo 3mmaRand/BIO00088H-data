@@ -56,9 +56,9 @@ width="200"}
 ::: incremental
 -   3 fertilisations
 
--   two siblings from each fertilisation one control, one FGF treated
+-   2 siblings from each fertilisation one control, one FGF treated
 
--   sequenced at three time points
+-   sequenced at 3 time points
 
 -   3 x 2 x 3 = 18 samples
 :::
@@ -73,10 +73,10 @@ width="200"}
 -   3 fertilisations. [These are the replicates, `1`, `2`,
     `3`]{style="color:#009900"}
 
--   two siblings from each fertilisation one control, one FGF treated.
+-   2 siblings from each fertilisation one control, one FGF treated.
     [The treatments are paired]{style="color:#009900"}
 
--   sequenced at three time points. [S14, S20,
+-   sequenced at 3 time points. [S14, S20,
     S30]{style="color:#009900"}
 
 -   3 x 2 x 3 = 18 samples
@@ -137,8 +137,7 @@ width="200"}
 
 -   2 copper conditions: sufficient and deficient. [This is the Cu treatment]{style="color:#009900"}
 
--   2 plants. [These are the
-    replicates]{style="color:#009900"}
+-   2 plants. [These are the replicates]{style="color:#009900"}
 
 -   2 x 2 x 3 = 8 samples
 :::
@@ -169,6 +168,64 @@ width="200"}
 :::
 
 
+## 💉  Experimental design {auto-animate="true"}
+
+![Schematic of leishmania experiment](images/88H-exp-design-pegine.png){fig-align="center"
+width="700"}
+
+## 💉 Experimental design {auto-animate="true"}
+
+![Schematic of leishmania experiment](images/88H-exp-design-pegine.png){fig-align="left"
+width="200"}
+
+::: incremental
+
+-   3 stages
+
+-   3 samples
+
+-   3 x 3 = 9 samples
+:::
+
+## 💉 Experimental design {auto-animate="true"}
+
+![Schematic of leishmania experiment](images/88H-exp-design-pegine.png){fig-align="left"
+width="200"}
+
+::: incremental
+
+-   three stages: procyclic promastigotes, metacyclic promastigotes 
+    and amastigotes. [This is the stage treatment]{style="color:#009900"}
+
+-   three samples. [These are the replicates]{style="color:#009900"}
+
+-   3 x 3 = 9 samples
+:::
+
+## 💉 Aim
+
+::: incremental
+-   Find genes that are "differentially expressed" between
+    stages e.g., procyclic promastigotes and the metacyclic 
+    promastigotes
+
+-   Differentially expressed means the expression in one group is
+    significantly higher than in the other
+:::
+
+## 💉 Guided analysis
+
+::: incremental
+-   The workshops will take you through comparing the procyclic 
+    promastigotes and the metacyclic promastigotes
+    
+-   You will make other comparisons independently
+
+-   You will be guided to carefully document your work so you can apply
+    the same methods to other comparisons
+    
+-   Do the independent study before and after the workshop!
+:::
 
 
 
@@ -188,7 +245,7 @@ width="200"}
 -   Cells were sorted using flow cytometry on the basis of cell surface
     markers
 
--   There are three cell types: LT-HSCs, HSPCs, Progs
+-   There are 3 cell types
 
 -   Many cells of each cell type were sequenced
 :::
@@ -200,11 +257,10 @@ experiment](images/88H-exp-design-jillian.png){fig-align="left"
 width="200"}
 
 ::: incremental
--   There are three cell types: LT-HSCs, HSPCs, Progs [These are the
-    "treaments"]{style="color:#009900"}
+-   There are three cell types: LT-HSCs, HSPCs, Progs [This is the cell
+    "treatment"]{style="color:#009900"}
 
--   Many cells of each type were sequenced: [These are the
-    replicates]{style="color:#009900"}
+-   Many cells of each type were sequenced: [These are the replicates]{style="color:#009900"}
 
 -   [155 LT-HSCs, 701 HSPCs, 798 Progs]{style="color:#009900"}
 :::
@@ -290,14 +346,24 @@ width="200"}
 
 -   Based on [PRJNA132271](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA132271)[@bernal_transcriptome_2012]
 
--   -   Expression for the whole transcriptome [ENSEMBL *Arabidopsis* TAIR10](https://plants.ensembl.org/Arabidopsis_thaliana/Info/Index)[@yates_ensembl_2022]
+-   Expression for the whole transcriptome [ENSEMBL *Arabidopsis* TAIR10](https://plants.ensembl.org/Arabidopsis_thaliana/Info/Index)[@yates_ensembl_2022]
 
 -   Values are raw counts
 
 -   The statistical analysis method we will use `DESeq2` [@DESeq2]
     requires raw counts and performs the normalisation itself    
     
-    
+## 💉  Data
+
+-   Brand spanking new!
+
+-   Expression for the whole transcriptome Ref??
+
+-   Values are raw counts
+
+-   The statistical analysis method we will use `DESeq2` [@DESeq2]
+    requires raw counts and performs the normalisation itself    
+
 
 ## 🐭 Data
 
@@ -325,7 +391,8 @@ width="200"}
     cell data.
 
 -   Transcriptomics 3: Visualising. Principal Component 
-    Analysis (PCA) volcano plots to visualise the results of the 
+    Analysis (PCA) volcano plots to visualise the results of the
+    analysis
 
 
 ## References
