@@ -803,14 +803,27 @@ You need only do the section for your own project data but **completing this ste
 
 🎬 Create a new Project, `frogs-88H`, populated with folders and your
 data. Make a script file called `cont-fgf-s30.R`. This will a be
-commented analysis of the control vs FGF at S30 comparison. You will
-build on this each workshop and be able to use it as a template to
-examine other comparisons. Copy in the appropriate code and comments
-from `workshop-1.R`. Edit to improve your comments where your
-understanding has developed since you made them. Make sure you can close
+commented analysis of the comparison between the control and FGF-treated 
+embroys at S30 comparison. You will build on this each workshop and be 
+able to use it as a template to examine other comparisons. 
+Copy in the *appropriate code and comments* from `workshop-1.R`. 
+Edit to improve your comments where your understanding has developed 
+since you made them. Make sure you can close
 down RStudio, reopen it and run your whole script again.
 
 ## 🎄 Arabidopsis and future you
+
+🎬 Create a new Project, `arab-88H`, populated with folders and your
+data. Make a script file called `suff-def-wild.R`. This will a be
+commented analysis of comparison between copper sufficient and 
+copper deficient wildtype plants. You will
+build on this each workshop and be able to use it as a template to
+examine other comparisons. Copy in the *appropriate code and comments* 
+from `workshop-1.R`. 
+Edit to improve your comments where your understanding has developed 
+since you made them. Make sure you can close
+down RStudio, reopen it and run your whole script again.
+
 
 
 ## 💉 Leishmania and future you
