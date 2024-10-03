@@ -1,6 +1,6 @@
 ---
 title: "Workshop"
-subtitle: "Supporting Information 1 Organising Reproducible Data Analyse"
+subtitle: "Supporting Information 1 Organising Reproducible Data Analyses"
 author: "Emma Rand"
 format: 
   revealjs:
@@ -48,7 +48,7 @@ research](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Colum
 
 [![The Turing Way's definitions of reproducible
 research](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"
-width="400"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
+width="350"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
 
 **Reproducible: Same data + same analysis = identical results**. *"...
 obtaining consistent results using the same input data; computational
@@ -61,7 +61,7 @@ in the Supporting Information.
 
 [![The Turing Way's definitions of reproducible
 research](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"
-width="400"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
+width="350"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
 
 Replicable: Different data + same analysis = qualitatively similar
 results. The work is not dependent on the specificities of the data.
@@ -70,7 +70,7 @@ results. The work is not dependent on the specificities of the data.
 
 [![The Turing Way's definitions of reproducible
 research](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"
-width="400"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
+width="350"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
 
 Robust: Same data + different analysis = qualitatively similar or
 identical results. The work is not dependent on the specificities of the
@@ -79,7 +79,8 @@ analysis.
 ## Definitions
 
 [![The Turing Way's definitions of reproducible
-research](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
+research](images/reproducible-matrix.jpg){fig-alt="Two by Two cell matrix. Columns are Data, either same or different. Rows are Analysis either same or different. Each of cells contain one of the definitions for reproducibility"
+width="350"}](https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions#rr-overview-definitions)
 
 Generalisable: Different data + different analysis = qualitatively
 similar results and same conclusions.
