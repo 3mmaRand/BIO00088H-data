@@ -328,7 +328,8 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
   <li>
 <a href="#leishmania" id="toc-leishmania" class="nav-link" data-scroll-target="#leishmania">💉 Leishmania</a>
   <ul class="collapse">
-<li><a href="#distribution-of-values-across-all-the-data-in-the-file-2" id="toc-distribution-of-values-across-all-the-data-in-the-file-2" class="nav-link" data-scroll-target="#distribution-of-values-across-all-the-data-in-the-file-2">Distribution of values across all the data in the file</a></li>
+<li><a href="#import-2" id="toc-import-2" class="nav-link" data-scroll-target="#import-2">Import</a></li>
+  <li><a href="#distribution-of-values-across-all-the-data-in-the-file-2" id="toc-distribution-of-values-across-all-the-data-in-the-file-2" class="nav-link" data-scroll-target="#distribution-of-values-across-all-the-data-in-the-file-2">Distribution of values across all the data in the file</a></li>
   <li><a href="#distribution-of-values-across-the-samples-2" id="toc-distribution-of-values-across-the-samples-2" class="nav-link" data-scroll-target="#distribution-of-values-across-the-samples-2">Distribution of values across the samples</a></li>
   <li><a href="#distribution-of-values-across-the-genes-2" id="toc-distribution-of-values-across-the-genes-2" class="nav-link" data-scroll-target="#distribution-of-values-across-the-genes-2">Distribution of values across the genes</a></li>
   </ul>
@@ -418,12 +419,6 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <li><a href="data-raw/xlaevis_counts_S20.csv">xlaevis_counts_S20.csv</a></li>
 <li><a href="data-raw/xlaevis_counts_S30.csv">xlaevis_counts_S30.csv</a></li>
 </ul>
-<p>🐭 Stem cells:</p>
-<ul>
-<li><a href="data-raw/surfaceome_hspc.csv">surfaceome_hspc.csv</a></li>
-<li><a href="data-raw/surfaceome_prog.csv">surfaceome_prog.csv</a></li>
-<li><a href="data-raw/surfaceome_lthsc.csv">surfaceome_lthsc.csv</a></li>
-</ul>
 <p>🎄 Arabidopsis:</p>
 <ul>
 <li><a href="data-raw/arabidopsis-wild.csv">arabidopsis-wild.csv</a></li>
@@ -431,7 +426,15 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 </ul>
 <p>💉 Leishmania:</p>
 <ul>
-<li>xxx</li>
+<li><a href="data-raw/leishmania-mex-ama.csv">leishmania-mex-ama.csv</a></li>
+<li><a href="data-raw/leishmania-mex-pro.csv">leishmania-mex-pro.csv</a></li>
+<li><a href="data-raw/leishmania-mex-meta.csv">leishmania-mex-meta.csv</a></li>
+</ul>
+<p>🐭 Stem cells:</p>
+<ul>
+<li><a href="data-raw/surfaceome_hspc.csv">surfaceome_hspc.csv</a></li>
+<li><a href="data-raw/surfaceome_prog.csv">surfaceome_prog.csv</a></li>
+<li><a href="data-raw/surfaceome_lthsc.csv">surfaceome_lthsc.csv</a></li>
 </ul>
 <p>🎬 Save the files to <code>data-raw</code> and open them in Excel</p>
 <p>🎬 Answer the following questions:</p>
@@ -841,9 +844,207 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <p>(Note the warning is expected since we have zero means).</p>
 <p>You can see we also have quite a few genes with means less than 1 (log below zero). Note that the variability between genes (average counts between 0 and 43348) is far greater than between samples (average counts from 70 to 296) which is exactly what we would expect to see.</p>
 </section></section><section id="leishmania" class="level2"><h2 class="anchored" data-anchor-id="leishmania">💉 Leishmania</h2>
-<section id="distribution-of-values-across-all-the-data-in-the-file-2" class="level3"><h3 class="anchored" data-anchor-id="distribution-of-values-across-all-the-data-in-the-file-2">Distribution of values across all the data in the file</h3>
+<section id="import-2" class="level3"><h3 class="anchored" data-anchor-id="import-2">Import</h3>
+<p>Import the data for <em>L.mexicana</em> procyclic promastigote (pro) and the metacyclic promastigotes (meta)</p>
+<p>🎬 Import <a href="data-raw/leishmania-mex-pro.csv">leishmania-mex-pro.csv</a> and <a href="data-raw/leishmania-mex-meta.csv">leishmania-mex-meta.csv</a></p>
+<div class="cell">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 💉 import the pro and meta leish data</span></span>
+<span><span class="va">pro</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data-raw/leishmania-mex-pro.csv"</span><span class="op">)</span></span>
+<span><span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data-raw/leishmania-mex-meta.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We will need to combine the two sets of columns (datasets) so we can compare the two stages. We will join them using <code>gene_id</code> to match the rows. The column names differ so we don’t need to worry about renaming any of them.</p>
+<p>🎬 Combine the two datasets by <code>gene_id</code> and save the result as <code>pro_meta</code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#  combine the two datasets</span></span>
+<span><span class="va">pro_meta</span> <span class="op">&lt;-</span> <span class="va">pro</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">meta</span>, </span>
+<span>            by <span class="op">=</span> <span class="st">"gene_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>🎬 Check the dataframe has the number of rows and columns you were expecting and that column types and names are as expected.</p>
+</section><section id="distribution-of-values-across-all-the-data-in-the-file-2" class="level3"><h3 class="anchored" data-anchor-id="distribution-of-values-across-all-the-data-in-the-file-2">Distribution of values across all the data in the file</h3>
+<p>The values are spread over multiple columns so in order to plot the distribution as a whole, we will need to first use <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> to put the data in <a href="https://3mmarand.github.io/R4BABS/r4babs1/week-9/workshop.html#tidying-data">‘tidy’ format</a> <span class="citation" data-cites="wickham2014">(<a href="#ref-wickham2014" role="doc-biblioref">Wickham 2014</a>)</span> by stacking the columns. We <em>could</em> save a copy of the stacked data and then plot it, but here, I have just piped the stacked data straight into <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>. This helps me avoid cluttering my R environment with temporary objects.</p>
+<p>🎬 Pivot the counts (stack the columns) so all the counts are in a single column (<code>count</code>) labelled in <code>sample</code> by the column it came from and pipe into <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> to create a histogram:</p>
+<div class="cell">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="op">-</span><span class="va">gene_id</span>,</span>
+<span>               names_to <span class="op">=</span> <span class="st">"sample"</span>,</span>
+<span>               values_to <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">count</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This data is very skewed - there are very many low counts and a very few higher numbers. It is hard to see the very low bars for the higher values. Logging the counts is a way to make the distribution more visible. You cannot take the log of 0 so we add 1 to the count before logging. The log of 1 is zero so we will be able to see how many zeros we had.</p>
+<p>🎬 Repeat the plot of log of the counts.</p>
+<div class="cell">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="op">-</span><span class="va">gene_id</span>,</span>
+<span>               names_to <span class="op">=</span> <span class="st">"sample"</span>,</span>
+<span>               values_to <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">count</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>I’ve used base 10 only because it easy to convert to the original scale (1 is 10, 2 is 100, 3 is 1000 etc). Notice we have a peak at zero indicating there are many zeros. We would expect the distribution of counts to be roughly log normal because this is expression of <em>all</em> the genes in the genome<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. The number of low counts is inflated (small peak near the low end). This suggests that these lower counts might be false positives. The removal of low counts is a common processing step in ’omic data. We will revisit this after we have considered the distribution of counts across samples and genes.</p>
 </section><section id="distribution-of-values-across-the-samples-2" class="level3"><h3 class="anchored" data-anchor-id="distribution-of-values-across-the-samples-2">Distribution of values across the samples</h3>
+<p>Summary statistics including the the number of NAs can be seen using the <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code>. It is most helpful which you have up to about 25 columns. There is nothing special about the number 25, it is just that summaries of a larger number of columns are difficult to grasp.</p>
+<p>🎬 Get a quick overview of the 7 columns:</p>
+<div class="cell">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># examine all the columns quickly</span></span>
+<span><span class="co"># works well with smaller numbers of column</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">pro_meta</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   gene_id             lm_pro_1           lm_pro_2           lm_pro_3       
+ Length:8677        Min.   :     0.0   Min.   :     0.0   Min.   :     0.0  
+ Class :character   1st Qu.:    77.0   1st Qu.:    53.0   1st Qu.:    59.0  
+ Mode  :character   Median :   191.0   Median :   135.0   Median :   145.0  
+                    Mean   :   364.5   Mean   :   255.7   Mean   :   281.4  
+                    3rd Qu.:   332.0   3rd Qu.:   238.0   3rd Qu.:   256.0  
+                    Max.   :442477.0   Max.   :295423.0   Max.   :411663.0  
+   lm_meta_1          lm_meta_2          lm_meta_3       
+ Min.   :     0.0   Min.   :     0.0   Min.   :     0.0  
+ 1st Qu.:    48.0   1st Qu.:    51.0   1st Qu.:    78.0  
+ Median :   110.0   Median :   120.0   Median :   187.0  
+ Mean   :   220.3   Mean   :   221.9   Mean   :   355.9  
+ 3rd Qu.:   197.0   3rd Qu.:   215.0   3rd Qu.:   341.0  
+ Max.   :244569.0   Max.   :205203.0   Max.   :498303.0  </code></pre>
+</div>
+</div>
+<p>Notice that:</p>
+<ul>
+<li>the minimum count is 0 and the maximums are very high in all the columns</li>
+<li>the medians are quite a lot lower than the means so the data are skewed (hump to the left, tail to the right) and there must be quite a lot of zeros</li>
+</ul>
+<p>We want to know how many zeros there are in each a column. To achieve this, we can make use of the fact that <code>TRUE</code> evaluates to 1 and <code>FALSE</code> evaluates to 0. Consequently, summing a column of TRUE/FALSE values will give you the number of TRUE values. For example, <code>sum(lm_pro_1 &gt; 0)</code> gives the number of values above zero in the <code>lm_pro_1</code> column. If you wanted the number of zeros, you could use <code>sum(lm_pro_1 == 0)</code>.</p>
+<p>🎬 Find the number values above zero in all six columns:</p>
+<div class="cell">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">lm_pro_1</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span>,</span>
+<span>            <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">lm_pro_2</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span>,</span>
+<span>            <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">lm_pro_3</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span>,</span>
+<span>            <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">lm_meta_1</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span>,</span>
+<span>            <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">lm_meta_2</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span>,</span>
+<span>            <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">lm_meta_3</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 6
+  `sum(lm_pro_1 &gt; 0)` `sum(lm_pro_2 &gt; 0)` `sum(lm_pro_3 &gt; 0)`
+                &lt;int&gt;               &lt;int&gt;               &lt;int&gt;
+1                8549                8522                8509
+# ℹ 3 more variables: `sum(lm_meta_1 &gt; 0)` &lt;int&gt;, `sum(lm_meta_2 &gt; 0)` &lt;int&gt;,
+#   `sum(lm_meta_3 &gt; 0)` &lt;int&gt;</code></pre>
+</div>
+</div>
+<p>There is a better way of doing this that saves you having to repeat so much code - very useful if you have a lot more than 6 columns! We can use <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> to put the data in tidy format and then use the <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> approach we have used extensively before.</p>
+<p>🎬 Find the number of zeros in all columns:</p>
+<div class="cell">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="op">-</span><span class="va">gene_id</span>,</span>
+<span>               names_to <span class="op">=</span> <span class="st">"sample"</span>,</span>
+<span>               values_to <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">sample</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>n_above_zero <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">count</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  sample    n_above_zero
+  &lt;chr&gt;            &lt;int&gt;
+1 lm_meta_1         8535
+2 lm_meta_2         8535
+3 lm_meta_3         8530
+4 lm_pro_1          8549
+5 lm_pro_2          8522
+6 lm_pro_3          8509</code></pre>
+</div>
+</div>
+<p>You could expand this code to get get other useful summary information</p>
+<p>🎬 Summarise all the samples:</p>
+<div class="cell">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="op">-</span><span class="va">gene_id</span>,</span>
+<span>               names_to <span class="op">=</span> <span class="st">"sample"</span>,</span>
+<span>               values_to <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">sample</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>min <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">count</span><span class="op">)</span>,</span>
+<span>            lowerq <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">count</span>, <span class="fl">0.25</span><span class="op">)</span>,</span>
+<span>            mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">count</span><span class="op">)</span>,</span>
+<span>            median <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">count</span><span class="op">)</span>,</span>
+<span>            upperq <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">count</span>, <span class="fl">0.75</span><span class="op">)</span>,</span>
+<span>            max <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">count</span><span class="op">)</span>,</span>
+<span>            n_above_zero <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">count</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 8
+  sample      min lowerq  mean median upperq    max n_above_zero
+  &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;        &lt;int&gt;
+1 lm_meta_1     0     48  220.    110    197 244569         8535
+2 lm_meta_2     0     51  222.    120    215 205203         8535
+3 lm_meta_3     0     78  356.    187    341 498303         8530
+4 lm_pro_1      0     77  364.    191    332 442477         8549
+5 lm_pro_2      0     53  256.    135    238 295423         8522
+6 lm_pro_3      0     59  281.    145    256 411663         8509</code></pre>
+</div>
+</div>
+<p>The mean count ranges from 220 to 364. We do not appear to have any outlying (odd) replicates. The potential effect of an odd replicate is reduced statistical power. Major differences in gene expression will still be uncovered. Differences between genes with lower average expression and or more variable expression might be missed. Whether this matters depends on the biological question you are asking.</p>
+<p>🎬 Save the summary as a dataframe, <code>pro_meta_summary_samp</code> (using assignment).</p>
+<p>We can also plot the distribution of counts across samples. We have many values (8677) so we are not limited to using <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a></code>. <code><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density()</a></code> gives us a smooth distribution.</p>
+<p>🎬 Plot the log10 of the counts + 1 again but this time facet by the sample:</p>
+<div class="cell">
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="op">-</span><span class="va">gene_id</span>,</span>
+<span>               names_to <span class="op">=</span> <span class="st">"sample"</span>,</span>
+<span>               values_to <span class="op">=</span> <span class="st">"count"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">count</span> <span class="op">+</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="va">.</span> <span class="op">~</span> <span class="va">sample</span>, nrow <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The key information to take from these plots is:</p>
+<ul>
+<li>the distributions are roughly similar</li>
+<li>the peak at zero suggests quite a few counts of 1.</li>
+<li>we would expect the distribution of counts in each sample to be roughly log normal so that the small rise near the low end, even before the peak at zero, suggests that these lower counts might be anomalies.</li>
+</ul>
+<p>We have found the distribution across samples to be similar to that over all. This is good because it means that the samples are fairly consistent with each other. We can now move on to the next step.</p>
 </section><section id="distribution-of-values-across-the-genes-2" class="level3"><h3 class="anchored" data-anchor-id="distribution-of-values-across-the-genes-2">Distribution of values across the genes</h3>
+<p>There are lots of genes in this dataset therefore we will take a slightly different approach. We would not want to use plot a distribution for each gene in the same way. Will pivot the data to tidy and then summarise the counts for each gene.</p>
+<p>🎬 Summarise the counts for each gene and save the result as <code>pro_meta_summary_gene</code>. Include the same columns as we had in the by sample summary (<code>pro_meta_summary_samp</code>) <em>and</em> an additional column, <code>total</code> for the total number of counts for each gene.</p>
+<p>🎬 View the <code>pro_meta_summary_gene</code> dataframe.</p>
+<p>Notice that we have:</p>
+<ul>
+<li>a lot of genes with counts of zero in every sample</li>
+<li>a lot of genes with zero counts in several of the samples</li>
+<li>some very very low counts.</li>
+</ul>
+<p>Genes with very low counts should be filtered out because they are unreliable - or, at the least, uninformative. The goal of our downstream analysis will be to see if there is a significant difference in gene expression between the stages. Since we have only three replicates in each group, having one or two unreliable, missing or zero values, makes such a determination impossible for a particular gene. We will use the total counts (<code>total</code>) and the number of samples with non-zero values (<code>n_above_zero</code>) in this dataframe to filter our genes later.</p>
+<p>As we have a lot of genes, it is helpful to plot the mean counts with <code><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_pointrange()</a></code> to get an overview of the distributions. We will again plot the log of the mean counts. We will also order the genes from lowest to highest mean count.</p>
+<p>🎬 Plot the logged mean counts for each gene in order of size using <code><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_pointrange()</a></code>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta_summary_gene</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span><span class="op">(</span><span class="va">gene_id</span>, <span class="va">mean</span><span class="op">)</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">mean</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_pointrange</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>ymin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">mean</span> <span class="op">-</span> <span class="va">sd</span><span class="op">)</span>, </span>
+<span>                      ymax <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">mean</span> <span class="op">+</span> <span class="va">sd</span> <span class="op">)</span><span class="op">)</span>,</span>
+<span>                  size <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>(Note the warning is expected since we have zero means).</p>
+<p>You can see we also have quite a few genes with means less than 1 (log below zero). Note that the variability between genes (average counts between 0 and 349606) is far greater than between samples (average counts from 220 to 364) which is exactly what we would expect to see.</p>
 </section></section><section id="stem-cells" class="level2"><h2 class="anchored" data-anchor-id="stem-cells">🐭 Stem cells</h2>
 <section id="distribution-of-values-across-all-the-data-in-the-file-3" class="level3"><h3 class="anchored" data-anchor-id="distribution-of-values-across-all-the-data-in-the-file-3">Distribution of values across all the data in the file</h3>
 </section><section id="distribution-of-values-across-the-samples-3" class="level3"><h3 class="anchored" data-anchor-id="distribution-of-values-across-the-samples-3">Distribution of values across the samples</h3>
@@ -854,7 +1055,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <p>My suggestion is to include only the genes with counts in at least 3 samples and those with total counts above 20. I chose 3 because that would keep genes expressed only in one treatment: [0, 0, 0] [#,#,#]. This is a difference we cannot test statistically, but which matters biologically.</p>
 <p>🎬 Filter the summary by gene dataframe:</p>
 <div class="cell">
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_summary_gene_filtered</span> <span class="op">&lt;-</span> <span class="va">s30_summary_gene</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_summary_gene_filtered</span> <span class="op">&lt;-</span> <span class="va">s30_summary_gene</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">total</span> <span class="op">&gt;</span> <span class="fl">20</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">n_above_zero</span> <span class="op">&gt;=</span> <span class="fl">3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -864,12 +1065,12 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <!-- have counts in fewer the 3 samples. -->
 <p>🎬 Use the list of <code>xenbase_gene_id</code> in the filtered summary to filter the original dataset:</p>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_filtered</span> <span class="op">&lt;-</span> <span class="va">s30</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_filtered</span> <span class="op">&lt;-</span> <span class="va">s30</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">xenbase_gene_id</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span>  <span class="va">s30_summary_gene_filtered</span><span class="op">$</span><span class="va">xenbase_gene_id</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Write the filtered data to file:</p>
 <div class="cell">
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">s30_filtered</span>, </span>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">s30_filtered</span>, </span>
 <span>          file <span class="op">=</span> <span class="st">"data-processed/s30_filtered.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="arabidopsis-1" class="level2"><h2 class="anchored" data-anchor-id="arabidopsis-1">🎄 Arabidopsis</h2>
@@ -877,7 +1078,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <p>My suggestion is to include only the genes with counts in at least 2 samples, and those with total counts above 20. I chose 2 because that would keep genes expressed only in one treatment: [0, 0] [#,#]. This is a difference we cannot test statistically, but which matters biologically.</p>
 <p>🎬 Filter the summary by gene dataframe:</p>
 <div class="cell">
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wild_summary_gene_filtered</span> <span class="op">&lt;-</span> <span class="va">wild_summary_gene</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wild_summary_gene_filtered</span> <span class="op">&lt;-</span> <span class="va">wild_summary_gene</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">total</span> <span class="op">&gt;</span> <span class="fl">20</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">n_above_zero</span> <span class="op">&gt;=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -887,15 +1088,37 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <!-- have counts in fewer the 2 samples. -->
 <p>🎬 Use the list of <code>gene_id</code> in the filtered summary to filter the original dataset:</p>
 <div class="cell">
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wild_filtered</span> <span class="op">&lt;-</span> <span class="va">wild</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wild_filtered</span> <span class="op">&lt;-</span> <span class="va">wild</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">gene_id</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span>  <span class="va">wild_summary_gene_filtered</span><span class="op">$</span><span class="va">gene_id</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Write the filtered data to file:</p>
 <div class="cell">
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">wild_filtered</span>, </span>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">wild_filtered</span>, </span>
 <span>          file <span class="op">=</span> <span class="st">"data-processed/wild_filtered.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="leishmania-1" class="level2"><h2 class="anchored" data-anchor-id="leishmania-1">💉 Leishmania</h2>
+<p>Our samples look to be similarly well sequenced. There are no samples we should remove. However, some genes are not expressed or the expression values are so low in for a gene that they are uninformative. We will filter the <code>pro_meta_summary_gene</code> dataframe to obtain a list of <code>gene_id</code> we can use to filter <code>pro_meta</code>.</p>
+<p>My suggestion is to include only the genes with counts in at least 3 samples and those with total counts above 20. I chose 3 because that would keep genes expressed only in one treatment: [0, 0, 0] [#,#,#]. This is a difference we cannot test statistically, but which matters biologically.</p>
+<p>🎬 Filter the summary by gene dataframe:</p>
+<div class="cell">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta_summary_gene_filtered</span> <span class="op">&lt;-</span> <span class="va">pro_meta_summary_gene</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">total</span> <span class="op">&gt;</span> <span class="fl">20</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">n_above_zero</span> <span class="op">&gt;=</span> <span class="fl">3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>❓ How many genes do you have left</p>
+<!-- #---THINKING ANSWER--- -->
+<!-- there are 8437 genes left. 240 have total counts less than 20 and or -->
+<!-- have counts in fewer than 3 samples. -->
+<p>🎬 Use the list of <code>gene_id</code> in the filtered summary to filter the original dataset:</p>
+<div class="cell">
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta_filtered</span> <span class="op">&lt;-</span> <span class="va">pro_meta</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">gene_id</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span>  <span class="va">pro_meta_summary_gene_filtered</span><span class="op">$</span><span class="va">gene_id</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>🎬 Write the filtered data to file:</p>
+<div class="cell">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">pro_meta_filtered</span>, </span>
+<span>          file <span class="op">=</span> <span class="st">"data-processed/pro_meta_filtered.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section><section id="stem-cells-1" class="level2"><h2 class="anchored" data-anchor-id="stem-cells-1">🐭 Stem cells</h2>
 <p>We will take a different approach to filtering the single cell data. For the Frog samples we are examining the control and the FGF treated samples. This means have a low number of counts overall means the gene is not really expressed (detected) in any condition, and filtering out those genes is removing things that definitely are not interesting. For the mice, we have examined only one cell type but will be making comparisons between cells types. It may be that low expression of a gene in this cell type tells us something if that gene is highly expressed in another cell type. Instead, we will make statistical comparisons between the cell types and then filter based on overall expression, the difference in expression between cell types and whether that difference is significant.</p>
 <p>The number of “replicates” is also important. When you have only three in each group it is not possible to make statistical comparisons when several replicates are zero. This is less of an issue with single cell data.</p>
@@ -906,6 +1129,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 </section><section id="arabidopsis-and-future-you" class="level2"><h2 class="anchored" data-anchor-id="arabidopsis-and-future-you">🎄 Arabidopsis and future you</h2>
 <p>🎬 Create a new Project, <code>arab-88H</code>, populated with folders and your data. Make a script file called <code>suff-def-wild.R</code>. This will a be commented analysis of comparison between copper sufficient and copper deficient wildtype plants. You will build on this each workshop and be able to use it as a template to examine other comparisons. Copy in the <em>appropriate code and comments</em> from <code>workshop-1.R</code>. Edit to improve your comments where your understanding has developed since you made them. Make sure you can close down RStudio, reopen it and run your whole script again.</p>
 </section><section id="leishmania-and-future-you" class="level2"><h2 class="anchored" data-anchor-id="leishmania-and-future-you">💉 Leishmania and future you</h2>
+<p>🎬 Create a new Project, <code>leish-88H</code>, populated with folders and your data. Make a script file called <code>pro_meta.R</code>. This will a be commented analysis of comparison procyclic promastigote and metacyclic promastigotes. You will build on this each workshop and be able to use it as a template to examine other comparisons. Copy in the <em>appropriate code and comments</em> from <code>workshop-1.R</code>. Edit to improve your comments where your understanding has developed since you made them. Make sure you can close down RStudio, reopen it and run your whole script again.</p>
 </section><section id="mice-and-future-you" class="level2"><h2 class="anchored" data-anchor-id="mice-and-future-you">🐭 Mice and future you</h2>
 <p>🎬 Create a new Project, <code>mice-88H</code>, populated with folders and your data. Make a script file called <code>hspc-prog.R</code>. This will a be commented analysis of the hspc cells vs the prog cells. At this point you will have only code for the hspc cells. You will build on this each workshop and be able to use it as a template to examine other comparisons. Copy in the appropriate code and comments from <code>workshop-1.R</code>. Edit to improve your comments where your understanding has developed since you made them. Make sure you can close down RStudio, reopen it and run your whole script again.</p>
 </section></section><section id="finished" class="level1"><h1>🥳 Finished</h1>
@@ -949,6 +1173,7 @@ Zhu, Hao. 2021. <span>“kableExtra: Construct Complex Table with ’Kable’ an
 <ol>
 <li id="fn1"><p>This a result of the <a href="https://en.wikipedia.org/wiki/Central_limit_theorem">Central limit theorem</a>,one consequence of which is that adding together lots of distributions - whatever distributions they are - will tend to a normal distribution.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>This a result of the <a href="https://en.wikipedia.org/wiki/Central_limit_theorem">Central limit theorem</a>,one consequence of which is that adding together lots of distributions - whatever distributions they are - will tend to a normal distribution.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>This a result of the <a href="https://en.wikipedia.org/wiki/Central_limit_theorem">Central limit theorem</a>,one consequence of which is that adding together lots of distributions - whatever distributions they are - will tend to a normal distribution.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
