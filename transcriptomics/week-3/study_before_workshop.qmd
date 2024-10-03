@@ -33,11 +33,11 @@ There are 4 transcriptomic datasets
 
 -   🐸 bulk RNA-seq from *Xenopus laevis* embryos.
 
--   🐭 single cell RNA-seq from mouse stemcells
-
 -   🎄 bulk RNA-seq from *Arabidopsis thaliana*
 
 -   💉 bulk RNA-seq from *Leishmania mexicana*
+
+-   🐭 single cell RNA-seq from mouse stemcells
 
 # Experimental design
 
@@ -60,7 +60,7 @@ width="200"}
 
 -   sequenced at three time points
 
--   3 x 2 x 3 = 18 groups
+-   3 x 2 x 3 = 18 samples
 :::
 
 ## 🐸 Experimental design {auto-animate="true"}
@@ -79,7 +79,7 @@ width="200"}
 -   sequenced at three time points. [S14, S20,
     S30]{style="color:#009900"}
 
--   3 x 2 x 3 = 18 groups
+-   3 x 2 x 3 = 18 samples
 :::
 
 ## 🐸 Aim
@@ -105,6 +105,72 @@ width="200"}
     
 -   Do the independent study before and after the workshop!
 :::
+
+
+## 🎄 Experimental design {auto-animate="true"}
+
+![Schematic of arabidopsis experiment](images/88H-exp-design-liz.png){fig-align="center"
+width="700"}
+
+## 🎄 Experimental design {auto-animate="true"}
+
+![Schematic of arabidopsis experiment](images/88H-exp-design-liz.png){fig-align="left"
+width="200"}
+
+::: incremental
+-   2 plant genotypes
+
+-   2 copper conditions
+
+-   2 plants
+
+-   2 x 2 x 3 = 8 samples
+:::
+
+## 🎄 Experimental design {auto-animate="true"}
+
+![Schematic of arabidopsis experiment](images/88H-exp-design-liz.png){fig-align="left"
+width="200"}
+
+::: incremental
+-   2 plant genotypes: wildtype and spl7 mutant. [This is the genotype treatment]{style="color:#009900"}
+
+-   2 copper conditions: sufficient and deficient. [This is the Cu treatment]{style="color:#009900"}
+
+-   2 plants. [These are the
+    replicates]{style="color:#009900"}
+
+-   2 x 2 x 3 = 8 samples
+:::
+
+## 🎄 Aim
+
+::: incremental
+-   Find genes that are "differentially expressed" between
+    plant types and copper conditions e.g. wildtype plants grown under
+    copper sufficient and copper deficient conditions
+
+-   Differentially expressed means the expression in one group is
+    significantly higher than in the other
+:::
+
+## 🎄 Guided analysis
+
+::: incremental
+-   The workshops will take you through comparing the wildtype plants 
+    grown under copper sufficient and copper deficient conditions
+    
+-   You will make other comparisons independently
+
+-   You will be guided to carefully document your work so you can apply
+    the same methods to other comparisons
+    
+-   Do the independent study before and after the workshop!
+:::
+
+
+
+
 
 ## 🐭 Experimental design {auto-animate="true"}
 
@@ -198,7 +264,7 @@ width="200"}
 -   Reads are filtered and trimmed on the basis of a quality score
 
 -   They are then aligned/pseudo-aligned to a reference
-    genome/transcriptome 
+    genome/transcriptome (or assembled *de novo*)
 
 -   And then counted to quantify the expression 
 
@@ -212,12 +278,26 @@ width="200"}
 -   Unpublished (so far!)
 
 -   Expression for the whole transcriptome [*X. laevis* v10.1 genome
-    assembly](https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp)
+    assembly](https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp)[@fisher2023]
 
 -   Values are raw counts
 
 -   The statistical analysis method we will use `DESeq2` [@DESeq2]
     requires raw counts and performs the normalisation itself
+    
+    
+## 🎄 Data
+
+-   Based on [PRJNA132271](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA132271)[@bernal_transcriptome_2012]
+
+-   -   Expression for the whole transcriptome [ENSEMBL *Arabidopsis* TAIR10](https://plants.ensembl.org/Arabidopsis_thaliana/Info/Index)[@yates_ensembl_2022]
+
+-   Values are raw counts
+
+-   The statistical analysis method we will use `DESeq2` [@DESeq2]
+    requires raw counts and performs the normalisation itself    
+    
+    
 
 ## 🐭 Data
 
