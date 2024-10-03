@@ -15,8 +15,7 @@ You need only do the section for your own project data
 ## 🐸 Frog development
 
 🎬 Open your `frogs-88H` Project. Make a new script and, using 
-`cont-fgf-s30.R` as a template, repeat the analysis on one of 
-the other comparisons. It does not matter which one you choose. I recommend
+`cont-fgf-s30.R` as a template, repeat the analysis stage 20. I recommend 
 making a new script.
 
 ## 🎄 Arabidopisis
@@ -28,6 +27,10 @@ I recommend making a new script.
 
 ## 💉 Leishmania
 
+🎬 Open your `leish-88H` Project. Make a new script and, using 
+`pro_meta.R` as a template, repeat the analysis on the 
+procyclic promastigotes (pro) and amastigotes (ama) 
+I recommend making a new script.
 
 ## 🐭 Stem cells
 
