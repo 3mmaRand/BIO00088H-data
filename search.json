@@ -336,7 +336,7 @@
     "href": "core/week-2-old/workshop.html#rstudio-terminal",
     "title": "Workshop",
     "section": "RStudio terminal",
-    "text": "RStudio terminal\nThe RStudio terminal is a convenient interface to the shell without leaving RStudio. It is useful for running commands that are not available in R. For example, you can use it to run other programs like fasqc, git, ftp, ssh\nNavigating your file system\nSeveral commands are frequently used to create, inspect, rename, and delete files and directories.\n$\nThe dollar sign is the prompt (like &gt; on the R console), which shows us that the shell is waiting for input.\nYou can find out where you are using the pwd command, which stands for “print working directory”.\n\npwd\n\n/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2-old\n\n\nYou can find out what you can see with ls which stands for “list”.\n\nls\n\ndata\nimages\noverview.html\noverview.qmd\nstudy_after_workshop.qmd\nstudy_before_workshop.ipynb\nstudy_before_workshop.qmd\nworkshop.html\nworkshop.qmd\nworkshop.rmarkdown\nworkshop_files\n\n\nYou might have noticed that unlike R, the commands do not have brackets after them. Instead, options (or switches) are given after the command. For example, we can modify the ls command to give us more information with the -l option, which stands for “long”.\n\nls -l\n\ntotal 156\ndrwxr-xr-x 2 runner docker  4096 Oct  3 11:46 data\ndrwxr-xr-x 2 runner docker  4096 Oct  3 11:46 images\n-rw-r--r-- 1 runner docker 24690 Oct  3 11:49 overview.html\n-rw-r--r-- 1 runner docker  1597 Oct  3 11:46 overview.qmd\n-rw-r--r-- 1 runner docker   184 Oct  3 11:46 study_after_workshop.qmd\n-rw-r--r-- 1 runner docker  4807 Oct  3 11:46 study_before_workshop.ipynb\n-rw-r--r-- 1 runner docker 13029 Oct  3 11:46 study_before_workshop.qmd\n-rw-r--r-- 1 runner docker 58063 Oct  3 11:46 workshop.html\n-rw-r--r-- 1 runner docker  8550 Oct  3 11:46 workshop.qmd\n-rw-r--r-- 1 runner docker  8590 Oct  3 11:49 workshop.rmarkdown\ndrwxr-xr-x 3 runner docker  4096 Oct  3 11:46 workshop_files\n\n\nYou can use more than one option at once. The -h option stands for “human readable” and makes the file sizes easier to understand for humans:\n\nls -hl\n\ntotal 156K\ndrwxr-xr-x 2 runner docker 4.0K Oct  3 11:46 data\ndrwxr-xr-x 2 runner docker 4.0K Oct  3 11:46 images\n-rw-r--r-- 1 runner docker  25K Oct  3 11:49 overview.html\n-rw-r--r-- 1 runner docker 1.6K Oct  3 11:46 overview.qmd\n-rw-r--r-- 1 runner docker  184 Oct  3 11:46 study_after_workshop.qmd\n-rw-r--r-- 1 runner docker 4.7K Oct  3 11:46 study_before_workshop.ipynb\n-rw-r--r-- 1 runner docker  13K Oct  3 11:46 study_before_workshop.qmd\n-rw-r--r-- 1 runner docker  57K Oct  3 11:46 workshop.html\n-rw-r--r-- 1 runner docker 8.4K Oct  3 11:46 workshop.qmd\n-rw-r--r-- 1 runner docker 8.4K Oct  3 11:49 workshop.rmarkdown\ndrwxr-xr-x 3 runner docker 4.0K Oct  3 11:46 workshop_files\n\n\nThe -a option stands for “all” and shows us all the files, including hidden files.\n\nls -alh\n\ntotal 164K\ndrwxr-xr-x 5 runner docker 4.0K Oct  3 11:49 .\ndrwxr-xr-x 8 runner docker 4.0K Oct  3 11:46 ..\ndrwxr-xr-x 2 runner docker 4.0K Oct  3 11:46 data\ndrwxr-xr-x 2 runner docker 4.0K Oct  3 11:46 images\n-rw-r--r-- 1 runner docker  25K Oct  3 11:49 overview.html\n-rw-r--r-- 1 runner docker 1.6K Oct  3 11:46 overview.qmd\n-rw-r--r-- 1 runner docker  184 Oct  3 11:46 study_after_workshop.qmd\n-rw-r--r-- 1 runner docker 4.7K Oct  3 11:46 study_before_workshop.ipynb\n-rw-r--r-- 1 runner docker  13K Oct  3 11:46 study_before_workshop.qmd\n-rw-r--r-- 1 runner docker  57K Oct  3 11:46 workshop.html\n-rw-r--r-- 1 runner docker 8.4K Oct  3 11:46 workshop.qmd\n-rw-r--r-- 1 runner docker 8.4K Oct  3 11:49 workshop.rmarkdown\ndrwxr-xr-x 3 runner docker 4.0K Oct  3 11:46 workshop_files\n\n\nYou can move about with the cd command, which stands for “change directory”. You can use it to move into a directory by specifying the path to the directory:\n\ncd data\npwd\ncd ..\npwd\ncd data\npwd\n\n/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2-old/data\n/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2-old\n/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2-old/data\n\n\nhead 1cq2.pdb\nHEADER    OXYGEN STORAGE/TRANSPORT                04-AUG-99   1CQ2              \nTITLE     NEUTRON STRUCTURE OF FULLY DEUTERATED SPERM WHALE MYOGLOBIN AT 2.0    \nTITLE    2 ANGSTROM                                                             \nCOMPND    MOL_ID: 1;                                                            \nCOMPND   2 MOLECULE: MYOGLOBIN;                                                 \nCOMPND   3 CHAIN: A;                                                            \nCOMPND   4 ENGINEERED: YES;                                                     \nCOMPND   5 OTHER_DETAILS: PROTEIN IS FULLY DEUTERATED                           \nSOURCE    MOL_ID: 1;                                                            \nSOURCE   2 ORGANISM_SCIENTIFIC: PHYSETER CATODON;      \nhead -20 data/1cq2.pdb\nHEADER    OXYGEN STORAGE/TRANSPORT                04-AUG-99   1CQ2              \nTITLE     NEUTRON STRUCTURE OF FULLY DEUTERATED SPERM WHALE MYOGLOBIN AT 2.0    \nTITLE    2 ANGSTROM                                                             \nCOMPND    MOL_ID: 1;                                                            \nCOMPND   2 MOLECULE: MYOGLOBIN;                                                 \nCOMPND   3 CHAIN: A;                                                            \nCOMPND   4 ENGINEERED: YES;                                                     \nCOMPND   5 OTHER_DETAILS: PROTEIN IS FULLY DEUTERATED                           \nSOURCE    MOL_ID: 1;                                                            \nSOURCE   2 ORGANISM_SCIENTIFIC: PHYSETER CATODON;                               \nSOURCE   3 ORGANISM_COMMON: SPERM WHALE;                                        \nSOURCE   4 ORGANISM_TAXID: 9755;                                                \nSOURCE   5 EXPRESSION_SYSTEM: ESCHERICHIA COLI;                                 \nSOURCE   6 EXPRESSION_SYSTEM_TAXID: 562;                                        \nSOURCE   7 EXPRESSION_SYSTEM_VECTOR_TYPE: PLASMID;                              \nSOURCE   8 EXPRESSION_SYSTEM_PLASMID: PET15A                                    \nKEYWDS    HELICAL, GLOBULAR, ALL-HYDROGEN CONTAINING STRUCTURE, OXYGEN STORAGE- \nKEYWDS   2 TRANSPORT COMPLEX                                                    \nEXPDTA    NEUTRON DIFFRACTION                                                   \nAUTHOR    F.SHU,V.RAMAKRISHNAN,B.P.SCHOENBORN   \nless 1cq2.pdb\nless is a program that displays the contents of a file, one page at a time. It is useful for viewing large files because it does not load the whole file into memory before displaying it. Instead, it reads and displays a few lines at a time. You can navigate forward through the file with the spacebar, and backwards with the b key. Press q to quit.\nA wildcard is a character that can be used as a substitute for any of a class of characters in a search, The most common wildcard characters are the asterisk (*) and the question mark (?).\nls *.csv\ncp stands for “copy”. You can copy a file from one directory to another by giving cp the path to the file you want to copy and the path to the destination directory.\ncp 1cq2.pdb copy_of_1cq2.pdb\ncp 1cq2.pdb ../copy_of_1cq2.pdb\ncp 1cq2.pdb ../bob.txt\nTo delete a file use the rm command, which stands for “remove”.\nrm ../bob.txt\nbut be careful because the file will be gone forever. There is no “are you sure?” or undo.\nTo move a file from one directory to another, use the mv command. mv works like cp except that it also deletes the original file.\nmv ../copy_of_1cq2.pdb .\nMake a directory\nmkdir mynewdir"
+    "text": "RStudio terminal\nThe RStudio terminal is a convenient interface to the shell without leaving RStudio. It is useful for running commands that are not available in R. For example, you can use it to run other programs like fasqc, git, ftp, ssh\nNavigating your file system\nSeveral commands are frequently used to create, inspect, rename, and delete files and directories.\n$\nThe dollar sign is the prompt (like &gt; on the R console), which shows us that the shell is waiting for input.\nYou can find out where you are using the pwd command, which stands for “print working directory”.\n\npwd\n\n/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2-old\n\n\nYou can find out what you can see with ls which stands for “list”.\n\nls\n\ndata\nimages\noverview.html\noverview.qmd\nstudy_after_workshop.qmd\nstudy_before_workshop.ipynb\nstudy_before_workshop.qmd\nworkshop.html\nworkshop.qmd\nworkshop.rmarkdown\nworkshop_files\n\n\nYou might have noticed that unlike R, the commands do not have brackets after them. Instead, options (or switches) are given after the command. For example, we can modify the ls command to give us more information with the -l option, which stands for “long”.\n\nls -l\n\ntotal 156\ndrwxr-xr-x 2 runner docker  4096 Oct  3 14:15 data\ndrwxr-xr-x 2 runner docker  4096 Oct  3 14:15 images\n-rw-r--r-- 1 runner docker 24690 Oct  3 14:18 overview.html\n-rw-r--r-- 1 runner docker  1597 Oct  3 14:15 overview.qmd\n-rw-r--r-- 1 runner docker   184 Oct  3 14:15 study_after_workshop.qmd\n-rw-r--r-- 1 runner docker  4807 Oct  3 14:15 study_before_workshop.ipynb\n-rw-r--r-- 1 runner docker 13029 Oct  3 14:15 study_before_workshop.qmd\n-rw-r--r-- 1 runner docker 58063 Oct  3 14:15 workshop.html\n-rw-r--r-- 1 runner docker  8550 Oct  3 14:15 workshop.qmd\n-rw-r--r-- 1 runner docker  8590 Oct  3 14:18 workshop.rmarkdown\ndrwxr-xr-x 3 runner docker  4096 Oct  3 14:15 workshop_files\n\n\nYou can use more than one option at once. The -h option stands for “human readable” and makes the file sizes easier to understand for humans:\n\nls -hl\n\ntotal 156K\ndrwxr-xr-x 2 runner docker 4.0K Oct  3 14:15 data\ndrwxr-xr-x 2 runner docker 4.0K Oct  3 14:15 images\n-rw-r--r-- 1 runner docker  25K Oct  3 14:18 overview.html\n-rw-r--r-- 1 runner docker 1.6K Oct  3 14:15 overview.qmd\n-rw-r--r-- 1 runner docker  184 Oct  3 14:15 study_after_workshop.qmd\n-rw-r--r-- 1 runner docker 4.7K Oct  3 14:15 study_before_workshop.ipynb\n-rw-r--r-- 1 runner docker  13K Oct  3 14:15 study_before_workshop.qmd\n-rw-r--r-- 1 runner docker  57K Oct  3 14:15 workshop.html\n-rw-r--r-- 1 runner docker 8.4K Oct  3 14:15 workshop.qmd\n-rw-r--r-- 1 runner docker 8.4K Oct  3 14:18 workshop.rmarkdown\ndrwxr-xr-x 3 runner docker 4.0K Oct  3 14:15 workshop_files\n\n\nThe -a option stands for “all” and shows us all the files, including hidden files.\n\nls -alh\n\ntotal 164K\ndrwxr-xr-x 5 runner docker 4.0K Oct  3 14:18 .\ndrwxr-xr-x 8 runner docker 4.0K Oct  3 14:15 ..\ndrwxr-xr-x 2 runner docker 4.0K Oct  3 14:15 data\ndrwxr-xr-x 2 runner docker 4.0K Oct  3 14:15 images\n-rw-r--r-- 1 runner docker  25K Oct  3 14:18 overview.html\n-rw-r--r-- 1 runner docker 1.6K Oct  3 14:15 overview.qmd\n-rw-r--r-- 1 runner docker  184 Oct  3 14:15 study_after_workshop.qmd\n-rw-r--r-- 1 runner docker 4.7K Oct  3 14:15 study_before_workshop.ipynb\n-rw-r--r-- 1 runner docker  13K Oct  3 14:15 study_before_workshop.qmd\n-rw-r--r-- 1 runner docker  57K Oct  3 14:15 workshop.html\n-rw-r--r-- 1 runner docker 8.4K Oct  3 14:15 workshop.qmd\n-rw-r--r-- 1 runner docker 8.4K Oct  3 14:18 workshop.rmarkdown\ndrwxr-xr-x 3 runner docker 4.0K Oct  3 14:15 workshop_files\n\n\nYou can move about with the cd command, which stands for “change directory”. You can use it to move into a directory by specifying the path to the directory:\n\ncd data\npwd\ncd ..\npwd\ncd data\npwd\n\n/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2-old/data\n/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2-old\n/home/runner/work/BIO00088H-data/BIO00088H-data/core/week-2-old/data\n\n\nhead 1cq2.pdb\nHEADER    OXYGEN STORAGE/TRANSPORT                04-AUG-99   1CQ2              \nTITLE     NEUTRON STRUCTURE OF FULLY DEUTERATED SPERM WHALE MYOGLOBIN AT 2.0    \nTITLE    2 ANGSTROM                                                             \nCOMPND    MOL_ID: 1;                                                            \nCOMPND   2 MOLECULE: MYOGLOBIN;                                                 \nCOMPND   3 CHAIN: A;                                                            \nCOMPND   4 ENGINEERED: YES;                                                     \nCOMPND   5 OTHER_DETAILS: PROTEIN IS FULLY DEUTERATED                           \nSOURCE    MOL_ID: 1;                                                            \nSOURCE   2 ORGANISM_SCIENTIFIC: PHYSETER CATODON;      \nhead -20 data/1cq2.pdb\nHEADER    OXYGEN STORAGE/TRANSPORT                04-AUG-99   1CQ2              \nTITLE     NEUTRON STRUCTURE OF FULLY DEUTERATED SPERM WHALE MYOGLOBIN AT 2.0    \nTITLE    2 ANGSTROM                                                             \nCOMPND    MOL_ID: 1;                                                            \nCOMPND   2 MOLECULE: MYOGLOBIN;                                                 \nCOMPND   3 CHAIN: A;                                                            \nCOMPND   4 ENGINEERED: YES;                                                     \nCOMPND   5 OTHER_DETAILS: PROTEIN IS FULLY DEUTERATED                           \nSOURCE    MOL_ID: 1;                                                            \nSOURCE   2 ORGANISM_SCIENTIFIC: PHYSETER CATODON;                               \nSOURCE   3 ORGANISM_COMMON: SPERM WHALE;                                        \nSOURCE   4 ORGANISM_TAXID: 9755;                                                \nSOURCE   5 EXPRESSION_SYSTEM: ESCHERICHIA COLI;                                 \nSOURCE   6 EXPRESSION_SYSTEM_TAXID: 562;                                        \nSOURCE   7 EXPRESSION_SYSTEM_VECTOR_TYPE: PLASMID;                              \nSOURCE   8 EXPRESSION_SYSTEM_PLASMID: PET15A                                    \nKEYWDS    HELICAL, GLOBULAR, ALL-HYDROGEN CONTAINING STRUCTURE, OXYGEN STORAGE- \nKEYWDS   2 TRANSPORT COMPLEX                                                    \nEXPDTA    NEUTRON DIFFRACTION                                                   \nAUTHOR    F.SHU,V.RAMAKRISHNAN,B.P.SCHOENBORN   \nless 1cq2.pdb\nless is a program that displays the contents of a file, one page at a time. It is useful for viewing large files because it does not load the whole file into memory before displaying it. Instead, it reads and displays a few lines at a time. You can navigate forward through the file with the spacebar, and backwards with the b key. Press q to quit.\nA wildcard is a character that can be used as a substitute for any of a class of characters in a search, The most common wildcard characters are the asterisk (*) and the question mark (?).\nls *.csv\ncp stands for “copy”. You can copy a file from one directory to another by giving cp the path to the file you want to copy and the path to the destination directory.\ncp 1cq2.pdb copy_of_1cq2.pdb\ncp 1cq2.pdb ../copy_of_1cq2.pdb\ncp 1cq2.pdb ../bob.txt\nTo delete a file use the rm command, which stands for “remove”.\nrm ../bob.txt\nbut be careful because the file will be gone forever. There is no “are you sure?” or undo.\nTo move a file from one directory to another, use the mv command. mv works like cp except that it also deletes the original file.\nmv ../copy_of_1cq2.pdb .\nMake a directory\nmkdir mynewdir"
   },
   {
     "objectID": "core/week-2-old/workshop.html#differences-between-r-and-python",
@@ -1114,7 +1114,7 @@
     "href": "transcriptomics/week-3/study_before_workshop.html#the-data",
     "title": "Independent Study to prepare for workshop",
     "section": "The Data",
-    "text": "The Data\nThere are 4 transcriptomic datasets\n\n🐸 bulk RNA-seq from Xenopus laevis embryos.\n🐭 single cell RNA-seq from mouse stemcells\n🎄 bulk RNA-seq from Arabidopsis thaliana\n💉 bulk RNA-seq from Leishmania mexicana",
+    "text": "The Data\nThere are 4 transcriptomic datasets\n\n🐸 bulk RNA-seq from Xenopus laevis embryos.\n🎄 bulk RNA-seq from Arabidopsis thaliana\n💉 bulk RNA-seq from Leishmania mexicana\n🐭 single cell RNA-seq from mouse stemcells",
     "crumbs": [
       "Transcriptomics",
       "Week 3: Hello data!",
@@ -1138,7 +1138,7 @@
     "href": "transcriptomics/week-3/study_before_workshop.html#experimental-design-2",
     "title": "Independent Study to prepare for workshop",
     "section": "🐸 Experimental design",
-    "text": "🐸 Experimental design\n\nSchematic of frog development experiment\n\n3 fertilisations\ntwo siblings from each fertilisation one control, one FGF treated\nsequenced at three time points\n3 x 2 x 3 = 18 groups",
+    "text": "🐸 Experimental design\n\nSchematic of frog development experiment\n\n3 fertilisations\ntwo siblings from each fertilisation one control, one FGF treated\nsequenced at three time points\n3 x 2 x 3 = 18 samples",
     "crumbs": [
       "Transcriptomics",
       "Week 3: Hello data!",
@@ -1150,7 +1150,7 @@
     "href": "transcriptomics/week-3/study_before_workshop.html#experimental-design-3",
     "title": "Independent Study to prepare for workshop",
     "section": "🐸 Experimental design",
-    "text": "🐸 Experimental design\n\nSchematic of frog development experiment\n\n3 fertilisations. These are the replicates, 1, 2, 3\ntwo siblings from each fertilisation one control, one FGF treated. The treatments are paired\nsequenced at three time points. S14, S20, S30\n3 x 2 x 3 = 18 groups",
+    "text": "🐸 Experimental design\n\nSchematic of frog development experiment\n\n3 fertilisations. These are the replicates, 1, 2, 3\ntwo siblings from each fertilisation one control, one FGF treated. The treatments are paired\nsequenced at three time points. S14, S20, S30\n3 x 2 x 3 = 18 samples",
     "crumbs": [
       "Transcriptomics",
       "Week 3: Hello data!",
@@ -1185,8 +1185,8 @@
     "objectID": "transcriptomics/week-3/study_before_workshop.html#experimental-design-4",
     "href": "transcriptomics/week-3/study_before_workshop.html#experimental-design-4",
     "title": "Independent Study to prepare for workshop",
-    "section": "🐭 Experimental design",
-    "text": "🐭 Experimental design\n\nSchematic of stem cell experiment",
+    "section": "🎄 Experimental design",
+    "text": "🎄 Experimental design\n\nSchematic of arabidopsis experiment",
     "crumbs": [
       "Transcriptomics",
       "Week 3: Hello data!",
@@ -1197,8 +1197,8 @@
     "objectID": "transcriptomics/week-3/study_before_workshop.html#experimental-design-5",
     "href": "transcriptomics/week-3/study_before_workshop.html#experimental-design-5",
     "title": "Independent Study to prepare for workshop",
-    "section": "🐭 Experimental design",
-    "text": "🐭 Experimental design\n\nSchematic of stem cell experiment\n\nCells were sorted using flow cytometry on the basis of cell surface markers\nThere are three cell types: LT-HSCs, HSPCs, Progs\nMany cells of each cell type were sequenced",
+    "section": "🎄 Experimental design",
+    "text": "🎄 Experimental design\n\nSchematic of arabidopsis experiment\n\n2 plant genotypes\n2 copper conditions\n2 plants\n2 x 2 x 3 = 8 samples",
     "crumbs": [
       "Transcriptomics",
       "Week 3: Hello data!",
@@ -1209,8 +1209,8 @@
     "objectID": "transcriptomics/week-3/study_before_workshop.html#experimental-design-6",
     "href": "transcriptomics/week-3/study_before_workshop.html#experimental-design-6",
     "title": "Independent Study to prepare for workshop",
-    "section": "🐭 Experimental design",
-    "text": "🐭 Experimental design\n\nSchematic of stem cell experiment\n\nThere are three cell types: LT-HSCs, HSPCs, Progs These are the “treaments”\nMany cells of each type were sequenced: These are the replicates\n155 LT-HSCs, 701 HSPCs, 798 Progs",
+    "section": "🎄 Experimental design",
+    "text": "🎄 Experimental design\n\nSchematic of arabidopsis experiment\n\n2 plant genotypes: wildtype and spl7 mutant. This is the genotype treatment\n2 copper conditions: sufficient and deficient. This is the Cu treatment\n2 plants. These are the replicates\n2 x 2 x 3 = 8 samples",
     "crumbs": [
       "Transcriptomics",
       "Week 3: Hello data!",
@@ -1221,8 +1221,8 @@
     "objectID": "transcriptomics/week-3/study_before_workshop.html#aim-1",
     "href": "transcriptomics/week-3/study_before_workshop.html#aim-1",
     "title": "Independent Study to prepare for workshop",
-    "section": "🐭 Aim",
-    "text": "🐭 Aim\n\n\nfind genes that are “differentially expressed” between at least two cell types\nDifferentially expressed means the expression in one group is significantly higher than in the other",
+    "section": "🎄 Aim",
+    "text": "🎄 Aim\n\n\nFind genes that are “differentially expressed” between plant types and copper conditions e.g. wildtype plants grown under copper sufficient and copper deficient conditions\nDifferentially expressed means the expression in one group is significantly higher than in the other",
     "crumbs": [
       "Transcriptomics",
       "Week 3: Hello data!",
@@ -1232,6 +1232,66 @@
   {
     "objectID": "transcriptomics/week-3/study_before_workshop.html#guided-analysis-1",
     "href": "transcriptomics/week-3/study_before_workshop.html#guided-analysis-1",
+    "title": "Independent Study to prepare for workshop",
+    "section": "🎄 Guided analysis",
+    "text": "🎄 Guided analysis\n\n\nThe workshops will take you through comparing the wildtype plants grown under copper sufficient and copper deficient conditions\nYou will make other comparisons independently\nYou will be guided to carefully document your work so you can apply the same methods to other comparisons\nDo the independent study before and after the workshop!",
+    "crumbs": [
+      "Transcriptomics",
+      "Week 3: Hello data!",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "transcriptomics/week-3/study_before_workshop.html#experimental-design-7",
+    "href": "transcriptomics/week-3/study_before_workshop.html#experimental-design-7",
+    "title": "Independent Study to prepare for workshop",
+    "section": "🐭 Experimental design",
+    "text": "🐭 Experimental design\n\nSchematic of stem cell experiment",
+    "crumbs": [
+      "Transcriptomics",
+      "Week 3: Hello data!",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "transcriptomics/week-3/study_before_workshop.html#experimental-design-8",
+    "href": "transcriptomics/week-3/study_before_workshop.html#experimental-design-8",
+    "title": "Independent Study to prepare for workshop",
+    "section": "🐭 Experimental design",
+    "text": "🐭 Experimental design\n\nSchematic of stem cell experiment\n\nCells were sorted using flow cytometry on the basis of cell surface markers\nThere are three cell types: LT-HSCs, HSPCs, Progs\nMany cells of each cell type were sequenced",
+    "crumbs": [
+      "Transcriptomics",
+      "Week 3: Hello data!",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "transcriptomics/week-3/study_before_workshop.html#experimental-design-9",
+    "href": "transcriptomics/week-3/study_before_workshop.html#experimental-design-9",
+    "title": "Independent Study to prepare for workshop",
+    "section": "🐭 Experimental design",
+    "text": "🐭 Experimental design\n\nSchematic of stem cell experiment\n\nThere are three cell types: LT-HSCs, HSPCs, Progs These are the “treaments”\nMany cells of each type were sequenced: These are the replicates\n155 LT-HSCs, 701 HSPCs, 798 Progs",
+    "crumbs": [
+      "Transcriptomics",
+      "Week 3: Hello data!",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "transcriptomics/week-3/study_before_workshop.html#aim-2",
+    "href": "transcriptomics/week-3/study_before_workshop.html#aim-2",
+    "title": "Independent Study to prepare for workshop",
+    "section": "🐭 Aim",
+    "text": "🐭 Aim\n\n\nfind genes that are “differentially expressed” between at least two cell types\nDifferentially expressed means the expression in one group is significantly higher than in the other",
+    "crumbs": [
+      "Transcriptomics",
+      "Week 3: Hello data!",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "transcriptomics/week-3/study_before_workshop.html#guided-analysis-2",
+    "href": "transcriptomics/week-3/study_before_workshop.html#guided-analysis-2",
     "title": "Independent Study to prepare for workshop",
     "section": "🐭 Guided analysis",
     "text": "🐭 Guided analysis\n\n\nThe workshops will take you through comparing the HSPC and Prog cells\nYou will make other comparisons independently\nYou will be guided to carefully document your work so you can apply the same methods to other comparisons\nDo the independent study before and after the workshop!",
@@ -1258,7 +1318,7 @@
     "href": "transcriptomics/week-3/study_before_workshop.html#general-steps",
     "title": "Independent Study to prepare for workshop",
     "section": "General steps",
-    "text": "General steps\n\n\nReads are filtered and trimmed on the basis of a quality score\nThey are then aligned/pseudo-aligned to a reference genome/transcriptome\nAnd then counted to quantify the expression\nCounts need to be normalised to account for differences in sequencing depth and transcript length before, or as part of, statistical analysis.",
+    "text": "General steps\n\n\nReads are filtered and trimmed on the basis of a quality score\nThey are then aligned/pseudo-aligned to a reference genome/transcriptome (or assembled de novo)\nAnd then counted to quantify the expression\nCounts need to be normalised to account for differences in sequencing depth and transcript length before, or as part of, statistical analysis.",
     "crumbs": [
       "Transcriptomics",
       "Week 3: Hello data!",
@@ -1270,7 +1330,7 @@
     "href": "transcriptomics/week-3/study_before_workshop.html#data",
     "title": "Independent Study to prepare for workshop",
     "section": "🐸 Data",
-    "text": "🐸 Data\n\nUnpublished (so far!)\nExpression for the whole transcriptome X. laevis v10.1 genome assembly\nValues are raw counts\nThe statistical analysis method we will use DESeq2 (Love, Huber, and Anders 2014) requires raw counts and performs the normalisation itself",
+    "text": "🐸 Data\n\nUnpublished (so far!)\nExpression for the whole transcriptome X. laevis v10.1 genome assembly(Fisher et al. 2023)\nValues are raw counts\nThe statistical analysis method we will use DESeq2 (Love, Huber, and Anders 2014) requires raw counts and performs the normalisation itself",
     "crumbs": [
       "Transcriptomics",
       "Week 3: Hello data!",
@@ -1280,6 +1340,18 @@
   {
     "objectID": "transcriptomics/week-3/study_before_workshop.html#data-1",
     "href": "transcriptomics/week-3/study_before_workshop.html#data-1",
+    "title": "Independent Study to prepare for workshop",
+    "section": "🎄 Data",
+    "text": "🎄 Data\n\nBased on PRJNA132271(Bernal et al. 2012)\n\nExpression for the whole transcriptome ENSEMBL Arabidopsis TAIR10(Yates et al. 2022)\n\nValues are raw counts\nThe statistical analysis method we will use DESeq2 (Love, Huber, and Anders 2014) requires raw counts and performs the normalisation itself",
+    "crumbs": [
+      "Transcriptomics",
+      "Week 3: Hello data!",
+      "Prepare!"
+    ]
+  },
+  {
+    "objectID": "transcriptomics/week-3/study_before_workshop.html#data-2",
+    "href": "transcriptomics/week-3/study_before_workshop.html#data-2",
     "title": "Independent Study to prepare for workshop",
     "section": "🐭 Data",
     "text": "🐭 Data\n\nPublished in Nestorowa et al. (2016)\nExpression for a subset of genes, the surfaceome\nValues are log2 normalised values\nThe statistical analysis method we will use scran (Lun, McCarthy, and Marioni 2016) requires normalised values",
@@ -1306,7 +1378,7 @@
     "href": "transcriptomics/week-3/study_before_workshop.html#references",
     "title": "Independent Study to prepare for workshop",
     "section": "References",
-    "text": "References\nPages made with R (R Core Team 2024), Quarto (Allaire et al. 2024), knitr (Xie 2024, 2015, 2014), kableExtra (Zhu 2021)\n\n\n\n🔗 About Transcriptomics 1: Hello data!\n\n\n\n\nAllaire, J. J., Charles Teague, Carlos Scheidegger, Yihui Xie, and Christophe Dervieux. 2024. “Quarto.” https://doi.org/10.5281/zenodo.5960048.\n\n\nLove, Michael I., Wolfgang Huber, and Simon Anders. 2014. “Moderated Estimation of Fold Change and Dispersion for RNA-Seq Data with DESeq2.” Genome Biology 15: 550. https://doi.org/10.1186/s13059-014-0550-8.\n\n\nLun, Aaron T. L., Davis J. McCarthy, and John C. Marioni. 2016. “A Step-by-Step Workflow for Low-Level Analysis of Single-Cell RNA-Seq Data with Bioconductor.” F1000Res. 5: 2122. https://doi.org/10.12688/f1000research.9501.2.\n\n\nNestorowa, Sonia, Fiona K. Hamey, Blanca Pijuan Sala, Evangelia Diamanti, Mairi Shepherd, Elisa Laurenti, Nicola K. Wilson, David G. Kent, and Berthold Göttgens. 2016. “A Single-Cell Resolution Map of Mouse Hematopoietic Stem and Progenitor Cell Differentiation.” Blood 128 (8): e20–31. https://doi.org/10.1182/blood-2016-05-716480.\n\n\nR Core Team. 2024. R: A Language and Environment for Statistical Computing. Vienna, Austria: R Foundation for Statistical Computing. https://www.R-project.org/.\n\n\nRand, Emma, and Sarah Forrester. 2022. “Statistically Useful Experimental Design.” https://cloud-span.github.io/experimental_design00-overview/.\n\n\nXie, Yihui. 2014. “Knitr: A Comprehensive Tool for Reproducible Research in R.” In Implementing Reproducible Computational Research, edited by Victoria Stodden, Friedrich Leisch, and Roger D. Peng. Chapman; Hall/CRC.\n\n\n———. 2015. Dynamic Documents with R and Knitr. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. https://yihui.org/knitr/.\n\n\n———. 2024. Knitr: A General-Purpose Package for Dynamic Report Generation in r. https://yihui.org/knitr/.\n\n\nZhu, Hao. 2021. “kableExtra: Construct Complex Table with ’Kable’ and Pipe Syntax.” https://CRAN.R-project.org/package=kableExtra.",
+    "text": "References\nPages made with R (R Core Team 2024), Quarto (Allaire et al. 2024), knitr (Xie 2024, 2015, 2014), kableExtra (Zhu 2021)\n\n\n\n🔗 About Transcriptomics 1: Hello data!\n\n\n\n\nAllaire, J. J., Charles Teague, Carlos Scheidegger, Yihui Xie, and Christophe Dervieux. 2024. “Quarto.” https://doi.org/10.5281/zenodo.5960048.\n\n\nBernal, María, David Casero, Vasantika Singh, Grandon T. Wilson, Arne Grande, Huijun Yang, Sheel C. Dodani, et al. 2012. “Transcriptome Sequencing Identifies SPL7-Regulated Copper Acquisition Genes FRO4/FRO5 and the Copper Dependence of Iron Homeostasis in Arabidopsis.” The Plant Cell 24 (2): 738–61. https://doi.org/10.1105/tpc.111.090431.\n\n\nFisher, Malcolm, Christina James-Zorn, Virgilio Ponferrada, Andrew J Bell, Nivitha Sundararaj, Erik Segerdell, Praneet Chaturvedi, et al. 2023. “Xenbase: Key Features and Resources of the Xenopus Model Organism Knowledgebase.” Genetics 224 (1): iyad018. https://doi.org/10.1093/genetics/iyad018.\n\n\nLove, Michael I., Wolfgang Huber, and Simon Anders. 2014. “Moderated Estimation of Fold Change and Dispersion for RNA-Seq Data with DESeq2.” Genome Biology 15: 550. https://doi.org/10.1186/s13059-014-0550-8.\n\n\nLun, Aaron T. L., Davis J. McCarthy, and John C. Marioni. 2016. “A Step-by-Step Workflow for Low-Level Analysis of Single-Cell RNA-Seq Data with Bioconductor.” F1000Res. 5: 2122. https://doi.org/10.12688/f1000research.9501.2.\n\n\nNestorowa, Sonia, Fiona K. Hamey, Blanca Pijuan Sala, Evangelia Diamanti, Mairi Shepherd, Elisa Laurenti, Nicola K. Wilson, David G. Kent, and Berthold Göttgens. 2016. “A Single-Cell Resolution Map of Mouse Hematopoietic Stem and Progenitor Cell Differentiation.” Blood 128 (8): e20–31. https://doi.org/10.1182/blood-2016-05-716480.\n\n\nR Core Team. 2024. R: A Language and Environment for Statistical Computing. Vienna, Austria: R Foundation for Statistical Computing. https://www.R-project.org/.\n\n\nRand, Emma, and Sarah Forrester. 2022. “Statistically Useful Experimental Design.” https://cloud-span.github.io/experimental_design00-overview/.\n\n\nXie, Yihui. 2014. “Knitr: A Comprehensive Tool for Reproducible Research in R.” In Implementing Reproducible Computational Research, edited by Victoria Stodden, Friedrich Leisch, and Roger D. Peng. Chapman; Hall/CRC.\n\n\n———. 2015. Dynamic Documents with R and Knitr. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. https://yihui.org/knitr/.\n\n\n———. 2024. Knitr: A General-Purpose Package for Dynamic Report Generation in r. https://yihui.org/knitr/.\n\n\nYates, Andrew D, James Allen, Ridwan M Amode, Andrey G Azov, Matthieu Barba, Andrés Becerra, Jyothish Bhai, et al. 2022. “Ensembl Genomes 2022: An Expanding Genome Resource for Non-Vertebrates.” Nucleic Acids Research 50 (D1): D996–1003. https://doi.org/10.1093/nar/gkab1007.\n\n\nZhu, Hao. 2021. “kableExtra: Construct Complex Table with ’Kable’ and Pipe Syntax.” https://CRAN.R-project.org/package=kableExtra.",
     "crumbs": [
       "Transcriptomics",
       "Week 3: Hello data!",
@@ -2048,23 +2120,11 @@
     ]
   },
   {
-    "objectID": "transcriptomics/week-3/workshop.html#stem-cells",
-    "href": "transcriptomics/week-3/workshop.html#stem-cells",
-    "title": "Workshop",
-    "section": "🐭 Stem cells",
-    "text": "🐭 Stem cells\nDistribution of values across all the data in the file\nDistribution of values across the samples\nDistribution of values across the genes",
-    "crumbs": [
-      "Transcriptomics",
-      "Week 3: Hello data!",
-      "Workshop"
-    ]
-  },
-  {
     "objectID": "transcriptomics/week-3/workshop.html#arabidopsis",
     "href": "transcriptomics/week-3/workshop.html#arabidopsis",
     "title": "Workshop",
     "section": "🎄 Arabidopsis",
-    "text": "🎄 Arabidopsis\nDistribution of values across all the data in the file\nDistribution of values across the samples\nDistribution of values across the genes",
+    "text": "🎄 Arabidopsis\nImport\nImport the data for wildtype plants.\n🎬 Import arabidopsis-wild.csv\n\n# 🎄 import the wild data\nwild &lt;- read_csv(\"data-raw/arabidopsis-wild.csv\")\n\n🎬 Check the dataframe has the number of rows and columns you were expecting and that column types and names are as expected.\nDistribution of values across all the data in the file\nThe values are spread over multiple columns so in order to plot the distribution as a whole, we will need to first use pivot_longer() to put the data in ‘tidy’ format (Wickham 2014) by stacking the columns. We could save a copy of the stacked data and then plot it, but here, I have just piped the stacked data straight into ggplot(). This helps me avoid cluttering my R environment with temporary objects.\n🎬 Pivot the counts (stack the columns) so all the counts are in a single column (count) labelled in sample by the column it came from and pipe into ggplot() to create a histogram:\n\nwild |&gt;\n  pivot_longer(cols = -gene_id,\n               names_to = \"sample\",\n               values_to = \"count\") |&gt;\n  ggplot(aes(x = count)) +\n  geom_histogram()\n\n\n\n\n\n\n\nThis data is very skewed - there are very many low counts and a very few higher numbers. It is hard to see the very low bars for the higher values. Logging the counts is a way to make the distribution more visible. You cannot take the log of 0 so we add 1 to the count before logging. The log of 1 is zero so we will be able to see how many zeros we had.\n🎬 Repeat the plot of log of the counts.\n\nwild |&gt;\n  pivot_longer(cols = -gene_id,\n               names_to = \"sample\",\n               values_to = \"count\") |&gt;\n  ggplot(aes(x = log10(count + 1))) +\n  geom_histogram()\n\n\n\n\n\n\n\nI’ve used base 10 only because it easy to convert to the original scale (1 is 10, 2 is 100, 3 is 1000 etc). Notice we have a peak at zero indicating there are many zeros. We would expect the distribution of counts to be roughly log normal because this is expression of all the genes in the genome2. The number of low counts is inflated (small peak near the low end). This suggests that these lower counts might be false positives. The removal of low counts is a common processing step in ’omic data. We will revisit this after we have considered the distribution of counts across samples and genes.\nDistribution of values across the samples\nSummary statistics including the the number of NAs can be seen using the summary(). It is most helpful which you have up to about 25 columns. There is nothing special about the number 25, it is just that summaries of a larger number of columns are difficult to grasp.\n🎬 Get a quick overview of the 5 columns:\n\n# examine all the columns quickly\n# works well with smaller numbers of column\nsummary(wild)\n\n   gene_id          SRX028956_wild_suf SRX028957_wild_def SRX028960_wild_suf\n Length:32833       Min.   :    0.0    Min.   :    0.00   Min.   :    0.0   \n Class :character   1st Qu.:    6.0    1st Qu.:    2.00   1st Qu.:   15.0   \n Mode  :character   Median :   29.0    Median :   15.00   Median :   76.0   \n                    Mean   :  112.3    Mean   :   70.27   Mean   :  295.5   \n                    3rd Qu.:   99.0    3rd Qu.:   63.00   3rd Qu.:  263.0   \n                    Max.   :38287.0    Max.   :24439.00   Max.   :80527.0   \n SRX028961_wild_def\n Min.   :    0.0   \n 1st Qu.:    6.0   \n Median :   37.0   \n Mean   :  173.4   \n 3rd Qu.:  151.0   \n Max.   :58548.0   \n\n\nNotice that:\n\nthe minimum count is 0 and the maximums are very high in all the columns\nthe medians are quite a lot lower than the means so the data are skewed (hump to the left, tail to the right) and there must be quite a lot of zeros\n\nWe want to know how many zeros there are in each a column. To achieve this, we can make use of the fact that TRUE evaluates to 1 and FALSE evaluates to 0. Consequently, summing a column of TRUE/FALSE values will give you the number of TRUE values. For example, sum(SRX028961_wild_def &gt; 0) gives the number of values above zero in the SRX028961_wild_def column. If you wanted the number of zeros, you could use sum(SRX028961_wild_def == 0).\n🎬 Find the number values above zero in all six columns:\n\nwild |&gt;\n  summarise(sum(SRX028961_wild_def &gt; 0),\n            sum(SRX028957_wild_def &gt; 0),\n            sum(SRX028960_wild_suf &gt; 0),\n            sum(SRX028956_wild_suf &gt; 0))\n\n# A tibble: 1 × 4\n  `sum(SRX028961_wild_def &gt; 0)` sum(SRX028957_wild_def …¹ sum(SRX028960_wild_s…²\n                          &lt;int&gt;                     &lt;int&gt;                  &lt;int&gt;\n1                         29712                     28015                  30946\n# ℹ abbreviated names: ¹​`sum(SRX028957_wild_def &gt; 0)`,\n#   ²​`sum(SRX028960_wild_suf &gt; 0)`\n# ℹ 1 more variable: `sum(SRX028956_wild_suf &gt; 0)` &lt;int&gt;\n\n\nThere is a better way of doing this that saves you having to repeat so much code - very useful if you have a lot more than 6 columns! We can use pivot_longer() to put the data in tidy format and then use the group_by() and summarise() approach we have used extensively before.\n🎬 Find the number of zeros in all columns:\n\nwild |&gt;\n  pivot_longer(cols = -gene_id,\n               names_to = \"sample\",\n               values_to = \"count\") |&gt;\n  group_by(sample) |&gt;\n  summarise(n_above_zero = sum(count &gt; 0))\n\n# A tibble: 4 × 2\n  sample             n_above_zero\n  &lt;chr&gt;                     &lt;int&gt;\n1 SRX028956_wild_suf        29997\n2 SRX028957_wild_def        28015\n3 SRX028960_wild_suf        30946\n4 SRX028961_wild_def        29712\n\n\nYou could expand this code to get get other useful summary information\n🎬 Summarise all the samples:\n\nwild |&gt;\n  pivot_longer(cols = -gene_id,\n               names_to = \"sample\",\n               values_to = \"count\") |&gt;\n  group_by(sample) |&gt;\n  summarise(min = min(count),\n            lowerq = quantile(count, 0.25),\n            mean = mean(count),\n            median = median(count),\n            upperq = quantile(count, 0.75),\n            max = max(count),\n            n_above_zero = sum(count &gt; 0))\n\n# A tibble: 4 × 8\n  sample               min lowerq  mean median upperq   max n_above_zero\n  &lt;chr&gt;              &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;        &lt;int&gt;\n1 SRX028956_wild_suf     0      6 112.      29     99 38287        29997\n2 SRX028957_wild_def     0      2  70.3     15     63 24439        28015\n3 SRX028960_wild_suf     0     15 296.      76    263 80527        30946\n4 SRX028961_wild_def     0      6 173.      37    151 58548        29712\n\n\nThe mean count ranges from 70 to 296. It is difficult to determine whether any replicates are “unusual” when there are only two replicates. The potential effect of only two replicates, or of an an odd replicate when you have more replicates, is reduced statistical power. Major differences in gene expression will still be uncovered. Differences between genes with lower average expression and or more variable expression might be missed. Whether this matters depends on the biological question you are asking. In this case, it does not matter because the major differences in gene expression will be enough.\n🎬 Save the summary as a dataframe, wild_summary_samp (using assignment).\nWe can also plot the distribution of counts across samples. We have many values (32833) so we are not limited to using geom_histogram(). geom_density() gives us a smooth distribution.\n🎬 Plot the log10 of the counts + 1 again but this time facet by the sample:\n\nwild |&gt;\n  pivot_longer(cols = -gene_id,\n               names_to = \"sample\",\n               values_to = \"count\") |&gt;\n  ggplot(aes(log10(count + 1))) +\n  geom_density() +\n  facet_wrap(. ~ sample, nrow = 3)\n\n\n\n\n\n\n\nThe key information to take from these plots is:\n\ndifficult to say was is usual/unusual with 2 replicates\nthe peak at zero suggests quite a few counts of 1.\nwe would expect the distribution of counts in each sample to be roughly log normal so that the rise near the low end, even before the peak at zero, suggests that these lower counts might be anomalies.\n\nWe have found the distribution across samples to be similar to that over all. This is good because it means that the samples are fairly consistent with each other. We can now move on to the next step.\nDistribution of values across the genes\nThere are lots of genes in this dataset therefore we will take a slightly different approach. We would not want to use plot a distribution for each gene in the same way. Will pivot the data to tidy and then summarise the counts for each gene.\n🎬 Summarise the counts for each gene and save the result as wild_summary_gene. Include the same columns as we had in the by sample summary (wild_summary_samp) and an additional column, total for the total number of counts for each gene.\n🎬 View the wild_summary_gene dataframe.\nNotice that we have:\n\na lot of genes with counts of zero in every sample\na lot of genes with zero counts in several of the samples\nsome very very low counts.\n\nGenes with very low counts should be filtered out because they are unreliable - or, at the least, uninformative. The goal of our downstream analysis will be to see if there is a significant difference in gene expression between the control and FGF-treated sibling. Since we have only three replicates in each group, having one or two unreliable, missing or zero values, makes such a determination impossible for a particular gene. We will use the total counts (total) and the number of samples with non-zero values (n_above_zero) in this dataframe to filter our genes later.\nAs we have a lot of genes, it is helpful to plot the mean counts with geom_pointrange() to get an overview of the distributions. We will again plot the log of the mean counts. We will also order the genes from lowest to highest mean count.\n🎬 Plot the logged mean counts for each gene in order of size using geom_pointrange():\n\nwild_summary_gene |&gt; \n  ggplot(aes(x = reorder(gene_id, mean), y = log10(mean))) +\n  geom_pointrange(aes(ymin = log10(mean - sd), \n                      ymax = log10(mean + sd )),\n                  size = 0.1)\n\n\n\n\n\n\n\n(Note the warning is expected since we have zero means).\nYou can see we also have quite a few genes with means less than 1 (log below zero). Note that the variability between genes (average counts between 0 and 43348) is far greater than between samples (average counts from 70 to 296) which is exactly what we would expect to see.",
     "crumbs": [
       "Transcriptomics",
       "Week 3: Hello data!",
@@ -2084,11 +2144,11 @@
     ]
   },
   {
-    "objectID": "transcriptomics/week-3/workshop.html#frog-development-1",
-    "href": "transcriptomics/week-3/workshop.html#frog-development-1",
+    "objectID": "transcriptomics/week-3/workshop.html#stem-cells",
+    "href": "transcriptomics/week-3/workshop.html#stem-cells",
     "title": "Workshop",
-    "section": "🐸 Frog development",
-    "text": "🐸 Frog development\nOur samples look to be similarly well sequenced. There are no samples we should remove. However, some genes are not expressed or the expression values are so low in for a gene that they are uninformative. We will filter the s30_summary_gene dataframe to obtain a list of xenbase_gene_id we can use to filter s30.\nMy suggestion is to include only the genes with counts in at least 3 samples. and those with total counts above 20. I chose 3 because that would keep genes expressed only in one sample: [0, 0, 0] [#,#,#]. This is a difference we cannot test statistically, but which matters biologically.\n🎬 Filter the summary by gene dataframe:\n\ns30_summary_gene_filtered &lt;- s30_summary_gene |&gt; \n  filter(total &gt; 20) |&gt; \n  filter(n_above_zero &gt;= 3)\n\n❓ How many genes do you have left\n\n\n\n🎬 Use the list of xenbase_gene_id in the filtered summary to filter the original dataset:\n\ns30_filtered &lt;- s30 |&gt; \n  filter(xenbase_gene_id %in%  s30_summary_gene_filtered$xenbase_gene_id)\n\n🎬 Write the filtered original to file:\n\nwrite_csv(s30_filtered, \n          file = \"data-processed/s30_filtered.csv\")",
+    "section": "🐭 Stem cells",
+    "text": "🐭 Stem cells\nDistribution of values across all the data in the file\nDistribution of values across the samples\nDistribution of values across the genes",
     "crumbs": [
       "Transcriptomics",
       "Week 3: Hello data!",
@@ -2096,11 +2156,11 @@
     ]
   },
   {
-    "objectID": "transcriptomics/week-3/workshop.html#stem-cells-1",
-    "href": "transcriptomics/week-3/workshop.html#stem-cells-1",
+    "objectID": "transcriptomics/week-3/workshop.html#frog-development-1",
+    "href": "transcriptomics/week-3/workshop.html#frog-development-1",
     "title": "Workshop",
-    "section": "🐭 Stem cells",
-    "text": "🐭 Stem cells\nWe will take a different approach to filtering the single cell data. For the Frog samples we are examining the control and the FGF treated samples. This means have a low number of counts overall means the gene is not really expressed (detected) in any condition, and filtering out those genes is removing things that definitely are not interesting. For the mice, we have examined only one cell type but will be making comparisons between cells types. It may be that low expression of a gene in this cell type tells us something if that gene is highly expressed in another cell type. Instead, we will make statistical comparisons between the cell types and then filter based on overall expression, the difference in expression between cell types and whether that difference is significant.\nThe number of “replicates” is also important. When you have only three in each group it is not possible to make statistical comparisons when several replicates are zero. This is less of an issue with single cell data.",
+    "section": "🐸 Frog development",
+    "text": "🐸 Frog development\nOur samples look to be similarly well sequenced. There are no samples we should remove. However, some genes are not expressed or the expression values are so low in for a gene that they are uninformative. We will filter the s30_summary_gene dataframe to obtain a list of xenbase_gene_id we can use to filter s30.\nMy suggestion is to include only the genes with counts in at least 3 samples and those with total counts above 20. I chose 3 because that would keep genes expressed only in one treatment: [0, 0, 0] [#,#,#]. This is a difference we cannot test statistically, but which matters biologically.\n🎬 Filter the summary by gene dataframe:\n\ns30_summary_gene_filtered &lt;- s30_summary_gene |&gt; \n  filter(total &gt; 20) |&gt; \n  filter(n_above_zero &gt;= 3)\n\n❓ How many genes do you have left\n\n\n\n🎬 Use the list of xenbase_gene_id in the filtered summary to filter the original dataset:\n\ns30_filtered &lt;- s30 |&gt; \n  filter(xenbase_gene_id %in%  s30_summary_gene_filtered$xenbase_gene_id)\n\n🎬 Write the filtered data to file:\n\nwrite_csv(s30_filtered, \n          file = \"data-processed/s30_filtered.csv\")",
     "crumbs": [
       "Transcriptomics",
       "Week 3: Hello data!",
@@ -2112,7 +2172,7 @@
     "href": "transcriptomics/week-3/workshop.html#arabidopsis-1",
     "title": "Workshop",
     "section": "🎄 Arabidopsis",
-    "text": "🎄 Arabidopsis",
+    "text": "🎄 Arabidopsis\nOur samples look to be similarly well sequenced although this is difficult to determine with only two replicates. However, some genes are not expressed or the expression values are so low in for a gene that they are uninformative. We will filter the wild_summary_gene dataframe to obtain a list of gene_id we can use to filter wild.\nMy suggestion is to include only the genes with counts in at least 2 samples, and those with total counts above 20. I chose 2 because that would keep genes expressed only in one treatment: [0, 0] [#,#]. This is a difference we cannot test statistically, but which matters biologically.\n🎬 Filter the summary by gene dataframe:\n\nwild_summary_gene_filtered &lt;- wild_summary_gene |&gt; \n  filter(total &gt; 20) |&gt; \n  filter(n_above_zero &gt;= 2)\n\n❓ How many genes do you have left\n\n\n\n🎬 Use the list of gene_id in the filtered summary to filter the original dataset:\n\nwild_filtered &lt;- wild |&gt; \n  filter(gene_id %in%  wild_summary_gene_filtered$gene_id)\n\n🎬 Write the filtered data to file:\n\nwrite_csv(wild_filtered, \n          file = \"data-processed/wild_filtered.csv\")",
     "crumbs": [
       "Transcriptomics",
       "Week 3: Hello data!",
@@ -2132,11 +2192,23 @@
     ]
   },
   {
+    "objectID": "transcriptomics/week-3/workshop.html#stem-cells-1",
+    "href": "transcriptomics/week-3/workshop.html#stem-cells-1",
+    "title": "Workshop",
+    "section": "🐭 Stem cells",
+    "text": "🐭 Stem cells\nWe will take a different approach to filtering the single cell data. For the Frog samples we are examining the control and the FGF treated samples. This means have a low number of counts overall means the gene is not really expressed (detected) in any condition, and filtering out those genes is removing things that definitely are not interesting. For the mice, we have examined only one cell type but will be making comparisons between cells types. It may be that low expression of a gene in this cell type tells us something if that gene is highly expressed in another cell type. Instead, we will make statistical comparisons between the cell types and then filter based on overall expression, the difference in expression between cell types and whether that difference is significant.\nThe number of “replicates” is also important. When you have only three in each group it is not possible to make statistical comparisons when several replicates are zero. This is less of an issue with single cell data.",
+    "crumbs": [
+      "Transcriptomics",
+      "Week 3: Hello data!",
+      "Workshop"
+    ]
+  },
+  {
     "objectID": "transcriptomics/week-3/workshop.html#frogs-and-future-you",
     "href": "transcriptomics/week-3/workshop.html#frogs-and-future-you",
     "title": "Workshop",
     "section": "🐸 Frogs and future you",
-    "text": "🐸 Frogs and future you\n🎬 Create a new Project, frogs-88H, populated with folders and your data. Make a script file called cont-fgf-s30.R. This will a be commented analysis of the control vs FGF at S30 comparison. You will build on this each workshop and be able to use it as a template to examine other comparisons. Copy in the appropriate code and comments from workshop-1.R. Edit to improve your comments where your understanding has developed since you made them. Make sure you can close down RStudio, reopen it and run your whole script again.",
+    "text": "🐸 Frogs and future you\n🎬 Create a new Project, frogs-88H, populated with folders and your data. Make a script file called cont-fgf-s30.R. This will a be commented analysis of the comparison between the control and FGF-treated embroys at S30 comparison. You will build on this each workshop and be able to use it as a template to examine other comparisons. Copy in the appropriate code and comments from workshop-1.R. Edit to improve your comments where your understanding has developed since you made them. Make sure you can close down RStudio, reopen it and run your whole script again.",
     "crumbs": [
       "Transcriptomics",
       "Week 3: Hello data!",
@@ -2148,7 +2220,7 @@
     "href": "transcriptomics/week-3/workshop.html#arabidopsis-and-future-you",
     "title": "Workshop",
     "section": "🎄 Arabidopsis and future you",
-    "text": "🎄 Arabidopsis and future you",
+    "text": "🎄 Arabidopsis and future you\n🎬 Create a new Project, arab-88H, populated with folders and your data. Make a script file called suff-def-wild.R. This will a be commented analysis of comparison between copper sufficient and copper deficient wildtype plants. You will build on this each workshop and be able to use it as a template to examine other comparisons. Copy in the appropriate code and comments from workshop-1.R. Edit to improve your comments where your understanding has developed since you made them. Make sure you can close down RStudio, reopen it and run your whole script again.",
     "crumbs": [
       "Transcriptomics",
       "Week 3: Hello data!",
@@ -2184,7 +2256,7 @@
     "href": "transcriptomics/week-3/workshop.html#footnotes",
     "title": "Workshop",
     "section": "Footnotes",
-    "text": "Footnotes\n\nThis a result of the Central limit theorem,one consequence of which is that adding together lots of distributions - whatever distributions they are - will tend to a normal distribution.↩︎",
+    "text": "Footnotes\n\nThis a result of the Central limit theorem,one consequence of which is that adding together lots of distributions - whatever distributions they are - will tend to a normal distribution.↩︎\nThis a result of the Central limit theorem,one consequence of which is that adding together lots of distributions - whatever distributions they are - will tend to a normal distribution.↩︎",
     "crumbs": [
       "Transcriptomics",
       "Week 3: Hello data!",
@@ -2196,7 +2268,55 @@
     "href": "transcriptomics/week-3/study_after_workshop.html",
     "title": "Independent Study to consolidate this week",
     "section": "",
-    "text": "You need only do the section for your own project data\n🐸 Frog development\n🎬 Open your frogs-88H Project. Make a new script and, using cont-fgf-s30.R as a template, repeat the analysis on one of the other comparisons. It does not matter which one you choose. I recommend making a new script.\n🎄 Arabidopisis\n💉 Leishmania\n🐭 Stem cells\n🎬 Open your mice-88H Project. Open your hspc-prog.R script and, using your code working with the hspc cells as a template, repeat the analysis on the prog cells. Add the code to hspc-prog.R as you will later add the statistical comparison between these cell types.",
+    "text": "You need only do the section for your own project data",
+    "crumbs": [
+      "Transcriptomics",
+      "Week 3: Hello data!",
+      "Consolidate!"
+    ]
+  },
+  {
+    "objectID": "transcriptomics/week-3/study_after_workshop.html#frog-development",
+    "href": "transcriptomics/week-3/study_after_workshop.html#frog-development",
+    "title": "Independent Study to consolidate this week",
+    "section": "🐸 Frog development",
+    "text": "🐸 Frog development\n🎬 Open your frogs-88H Project. Make a new script and, using cont-fgf-s30.R as a template, repeat the analysis on one of the other comparisons. It does not matter which one you choose. I recommend making a new script.",
+    "crumbs": [
+      "Transcriptomics",
+      "Week 3: Hello data!",
+      "Consolidate!"
+    ]
+  },
+  {
+    "objectID": "transcriptomics/week-3/study_after_workshop.html#arabidopisis",
+    "href": "transcriptomics/week-3/study_after_workshop.html#arabidopisis",
+    "title": "Independent Study to consolidate this week",
+    "section": "🎄 Arabidopisis",
+    "text": "🎄 Arabidopisis\n🎬 Open your arab-88H Project. Make a new script and, using suff-def-wild.R as a template, repeat the analysis on the spl7 mutants. I recommend making a new script.",
+    "crumbs": [
+      "Transcriptomics",
+      "Week 3: Hello data!",
+      "Consolidate!"
+    ]
+  },
+  {
+    "objectID": "transcriptomics/week-3/study_after_workshop.html#leishmania",
+    "href": "transcriptomics/week-3/study_after_workshop.html#leishmania",
+    "title": "Independent Study to consolidate this week",
+    "section": "💉 Leishmania",
+    "text": "💉 Leishmania",
+    "crumbs": [
+      "Transcriptomics",
+      "Week 3: Hello data!",
+      "Consolidate!"
+    ]
+  },
+  {
+    "objectID": "transcriptomics/week-3/study_after_workshop.html#stem-cells",
+    "href": "transcriptomics/week-3/study_after_workshop.html#stem-cells",
+    "title": "Independent Study to consolidate this week",
+    "section": "🐭 Stem cells",
+    "text": "🐭 Stem cells\n🎬 Open your mice-88H Project. Open your hspc-prog.R script and, using your code working with the hspc cells as a template, repeat the analysis on the prog cells. Add the code to hspc-prog.R as you will later add the statistical comparison between these cell types.",
     "crumbs": [
       "Transcriptomics",
       "Week 3: Hello data!",

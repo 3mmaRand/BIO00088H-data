@@ -386,9 +386,9 @@ Emma Rand
 <p>There are 4 transcriptomic datasets</p>
 <ul>
 <li><p>🐸 bulk RNA-seq from <em>Xenopus laevis</em> embryos.</p></li>
-<li><p>🐭 single cell RNA-seq from mouse stemcells</p></li>
 <li><p>🎄 bulk RNA-seq from <em>Arabidopsis thaliana</em></p></li>
 <li><p>💉 bulk RNA-seq from <em>Leishmania mexicana</em></p></li>
+<li><p>🐭 single cell RNA-seq from mouse stemcells</p></li>
 </ul>
 </section>
 <section>
@@ -408,7 +408,7 @@ Emma Rand
 <li class="fragment"><p>3 fertilisations</p></li>
 <li class="fragment"><p>two siblings from each fertilisation one control, one FGF treated</p></li>
 <li class="fragment"><p>sequenced at three time points</p></li>
-<li class="fragment"><p>3 x 2 x 3 = 18 groups</p></li>
+<li class="fragment"><p>3 x 2 x 3 = 18 samples</p></li>
 </ul>
 </div>
 </section>
@@ -420,7 +420,7 @@ Emma Rand
 <li class="fragment"><p>3 fertilisations. <span style="color:#009900">These are the replicates, <code>1</code>, <code>2</code>, <code>3</code></span></p></li>
 <li class="fragment"><p>two siblings from each fertilisation one control, one FGF treated. <span style="color:#009900">The treatments are paired</span></p></li>
 <li class="fragment"><p>sequenced at three time points. <span style="color:#009900">S14, S20, S30</span></p></li>
-<li class="fragment"><p>3 x 2 x 3 = 18 groups</p></li>
+<li class="fragment"><p>3 x 2 x 3 = 18 samples</p></li>
 </ul>
 </div>
 </section>
@@ -445,10 +445,58 @@ Emma Rand
 </div>
 </section>
 <section id="experimental-design-4" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">🎄 Experimental design</h2>
+
+<img data-src="images/88H-exp-design-liz.png" width="700" class="r-stretch quarto-figure-center"><p class="caption">Schematic of arabidopsis experiment</p></section>
+<section id="experimental-design-5" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">🎄 Experimental design</h2>
+
+<img data-src="images/88H-exp-design-liz.png" width="200" class="r-stretch quarto-figure-left"><p class="caption">Schematic of arabidopsis experiment</p><div>
+<ul>
+<li class="fragment"><p>2 plant genotypes</p></li>
+<li class="fragment"><p>2 copper conditions</p></li>
+<li class="fragment"><p>2 plants</p></li>
+<li class="fragment"><p>2 x 2 x 3 = 8 samples</p></li>
+</ul>
+</div>
+</section>
+<section id="experimental-design-6" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">🎄 Experimental design</h2>
+
+<img data-src="images/88H-exp-design-liz.png" width="200" class="r-stretch quarto-figure-left"><p class="caption">Schematic of arabidopsis experiment</p><div>
+<ul>
+<li class="fragment"><p>2 plant genotypes: wildtype and spl7 mutant. <span style="color:#009900">This is the genotype treatment</span></p></li>
+<li class="fragment"><p>2 copper conditions: sufficient and deficient. <span style="color:#009900">This is the Cu treatment</span></p></li>
+<li class="fragment"><p>2 plants. <span style="color:#009900">These are the replicates</span></p></li>
+<li class="fragment"><p>2 x 2 x 3 = 8 samples</p></li>
+</ul>
+</div>
+</section>
+<section id="aim-1" class="slide level2">
+<h2>🎄 Aim</h2>
+<div>
+<ul>
+<li class="fragment"><p>Find genes that are “differentially expressed” between plant types and copper conditions e.g.&nbsp;wildtype plants grown under copper sufficient and copper deficient conditions</p></li>
+<li class="fragment"><p>Differentially expressed means the expression in one group is significantly higher than in the other</p></li>
+</ul>
+</div>
+</section>
+<section id="guided-analysis-1" class="slide level2">
+<h2>🎄 Guided analysis</h2>
+<div>
+<ul>
+<li class="fragment"><p>The workshops will take you through comparing the wildtype plants grown under copper sufficient and copper deficient conditions</p></li>
+<li class="fragment"><p>You will make other comparisons independently</p></li>
+<li class="fragment"><p>You will be guided to carefully document your work so you can apply the same methods to other comparisons</p></li>
+<li class="fragment"><p>Do the independent study before and after the workshop!</p></li>
+</ul>
+</div>
+</section>
+<section id="experimental-design-7" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">🐭 Experimental design</h2>
 
 <img data-src="images/88H-exp-design-jillian.png" width="700" class="r-stretch quarto-figure-center"><p class="caption">Schematic of stem cell experiment</p></section>
-<section id="experimental-design-5" class="slide level2" data-auto-animate="true">
+<section id="experimental-design-8" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">🐭 Experimental design</h2>
 
 <img data-src="images/88H-exp-design-jillian.png" width="200" class="r-stretch quarto-figure-left"><p class="caption">Schematic of stem cell experiment</p><div>
@@ -459,7 +507,7 @@ Emma Rand
 </ul>
 </div>
 </section>
-<section id="experimental-design-6" class="slide level2" data-auto-animate="true">
+<section id="experimental-design-9" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">🐭 Experimental design</h2>
 
 <img data-src="images/88H-exp-design-jillian.png" width="200" class="r-stretch quarto-figure-left"><p class="caption">Schematic of stem cell experiment</p><div>
@@ -470,7 +518,7 @@ Emma Rand
 </ul>
 </div>
 </section>
-<section id="aim-1" class="slide level2">
+<section id="aim-2" class="slide level2">
 <h2>🐭 Aim</h2>
 <div>
 <ul>
@@ -479,7 +527,7 @@ Emma Rand
 </ul>
 </div>
 </section>
-<section id="guided-analysis-1" class="slide level2">
+<section id="guided-analysis-2" class="slide level2">
 <h2>🐭 Guided analysis</h2>
 <div>
 <ul>
@@ -523,7 +571,7 @@ Emma Rand
 <div>
 <ul>
 <li class="fragment"><p>Reads are filtered and trimmed on the basis of a quality score</p></li>
-<li class="fragment"><p>They are then aligned/pseudo-aligned to a reference genome/transcriptome</p></li>
+<li class="fragment"><p>They are then aligned/pseudo-aligned to a reference genome/transcriptome (or assembled <em>de novo</em>)</p></li>
 <li class="fragment"><p>And then counted to quantify the expression</p></li>
 <li class="fragment"><p>Counts need to be normalised to account for differences in sequencing depth and transcript length before, or as part of, statistical analysis.</p></li>
 </ul>
@@ -533,12 +581,23 @@ Emma Rand
 <h2>🐸 Data</h2>
 <ul>
 <li><p>Unpublished (so far!)</p></li>
-<li><p>Expression for the whole transcriptome <a href="https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp"><em>X. laevis</em> v10.1 genome assembly</a></p></li>
+<li><p>Expression for the whole transcriptome <a href="https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp"><em>X. laevis</em> v10.1 genome assembly</a><span class="citation" data-cites="fisher2023">(<a href="#/references" role="doc-biblioref" onclick="">Fisher et al. 2023</a>)</span></p></li>
 <li><p>Values are raw counts</p></li>
 <li><p>The statistical analysis method we will use <code>DESeq2</code> <span class="citation" data-cites="DESeq2">(<a href="#/references" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span> requires raw counts and performs the normalisation itself</p></li>
 </ul>
 </section>
 <section id="data-1" class="slide level2">
+<h2>🎄 Data</h2>
+<ul>
+<li><p>Based on <a href="https://www.ncbi.nlm.nih.gov/bioproject/PRJNA132271">PRJNA132271</a><span class="citation" data-cites="bernal_transcriptome_2012">(<a href="#/references" role="doc-biblioref" onclick="">Bernal et al. 2012</a>)</span></p></li>
+<li><ul>
+<li>Expression for the whole transcriptome <a href="https://plants.ensembl.org/Arabidopsis_thaliana/Info/Index">ENSEMBL <em>Arabidopsis</em> TAIR10</a><span class="citation" data-cites="yates_ensembl_2022">(<a href="#/references" role="doc-biblioref" onclick="">Yates et al. 2022</a>)</span></li>
+</ul></li>
+<li><p>Values are raw counts</p></li>
+<li><p>The statistical analysis method we will use <code>DESeq2</code> <span class="citation" data-cites="DESeq2">(<a href="#/references" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span> requires raw counts and performs the normalisation itself</p></li>
+</ul>
+</section>
+<section id="data-2" class="slide level2">
 <h2>🐭 Data</h2>
 <ul>
 <li><p>Published in <span class="citation" data-cites="nestorowa2016">Nestorowa et al. (<a href="#/references" role="doc-biblioref" onclick="">2016</a>)</span></p></li>
@@ -573,6 +632,12 @@ Emma Rand
 <div id="ref-Allaire_Quarto_2024" class="csl-entry" role="listitem">
 Allaire, J. J., Charles Teague, Carlos Scheidegger, Yihui Xie, and Christophe Dervieux. 2024. <span>“<span>Quarto</span>.”</span> <a href="https://doi.org/10.5281/zenodo.5960048">https://doi.org/10.5281/zenodo.5960048</a>.
 </div>
+<div id="ref-bernal_transcriptome_2012" class="csl-entry" role="listitem">
+Bernal, María, David Casero, Vasantika Singh, Grandon T. Wilson, Arne Grande, Huijun Yang, Sheel C. Dodani, et al. 2012. <span>“Transcriptome Sequencing Identifies <span>SPL7</span>-Regulated Copper Acquisition Genes <span>FRO4</span>/<span>FRO5</span> and the Copper Dependence of Iron Homeostasis in <span>Arabidopsis</span>.”</span> <em>The Plant Cell</em> 24 (2): 738–61. <a href="https://doi.org/10.1105/tpc.111.090431">https://doi.org/10.1105/tpc.111.090431</a>.
+</div>
+<div id="ref-fisher2023" class="csl-entry" role="listitem">
+Fisher, Malcolm, Christina James-Zorn, Virgilio Ponferrada, Andrew J Bell, Nivitha Sundararaj, Erik Segerdell, Praneet Chaturvedi, et al. 2023. <span>“Xenbase: Key Features and Resources of the Xenopus Model Organism Knowledgebase.”</span> <em>Genetics</em> 224 (1): iyad018. <a href="https://doi.org/10.1093/genetics/iyad018">https://doi.org/10.1093/genetics/iyad018</a>.
+</div>
 <div id="ref-DESeq2" class="csl-entry" role="listitem">
 Love, Michael I., Wolfgang Huber, and Simon Anders. 2014. <span>“Moderated Estimation of Fold Change and Dispersion for RNA-Seq Data with DESeq2.”</span> <em>Genome Biology</em> 15: 550. <a href="https://doi.org/10.1186/s13059-014-0550-8">https://doi.org/10.1186/s13059-014-0550-8</a>.
 </div>
@@ -596,6 +661,9 @@ Xie, Yihui. 2014. <span>“Knitr: A Comprehensive Tool for Reproducible Research
 </div>
 <div id="ref-knitr1" class="csl-entry" role="listitem">
 ———. 2024. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in r</em>. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
+</div>
+<div id="ref-yates_ensembl_2022" class="csl-entry" role="listitem">
+Yates, Andrew D, James Allen, Ridwan M Amode, Andrey G Azov, Matthieu Barba, Andrés Becerra, Jyothish Bhai, et al. 2022. <span>“Ensembl <span>Genomes</span> 2022: An Expanding Genome Resource for Non-Vertebrates.”</span> <em>Nucleic Acids Research</em> 50 (D1): D996–1003. <a href="https://doi.org/10.1093/nar/gkab1007">https://doi.org/10.1093/nar/gkab1007</a>.
 </div>
 <div id="ref-kableExtra" class="csl-entry" role="listitem">
 Zhu, Hao. 2021. <span>“kableExtra: Construct Complex Table with ’Kable’ and Pipe Syntax.”</span> <a href="https://CRAN.R-project.org/package=kableExtra">https://CRAN.R-project.org/package=kableExtra</a>.
