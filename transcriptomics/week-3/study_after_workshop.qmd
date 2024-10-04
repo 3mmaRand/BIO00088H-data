@@ -34,10 +34,9 @@ I recommend making a new script.
 
 ## 🐭 Stem cells
 
-🎬 Open your `mice-88H` Project. Open your `hspc-prog.R` script and, 
-using your code working with the hspc cells as a template, repeat 
-the analysis on the prog cells. Add the code to `hspc-prog.R` as you will
-later add the statistical comparison between these cell types.
+🎬 Open your `mice-88H` Project. Make a new script and, using 
+`hspc-prog.R` as a template, repeat the analysis on the 
+HSPC and LT-HSC cells. I recommend making a new script. 
 
 
 
