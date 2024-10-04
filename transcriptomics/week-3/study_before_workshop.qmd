@@ -300,17 +300,19 @@ width="200"}
     transcriptome
 
 -   The length of the reads depends on the type of sequencing machine
-::: {style="font-size: 70%;"}
+
     -   Short-read technologies (e.g. Illumina) have higher base accuracy
         but are harder to align
     -   Long-read technologies (e.g. Nanopore) have lower base accuracy
         but are easier to align
 :::
--   Optional: You can read more about Sequencing technologies in
-    [Statistically useful experimental
-    design](https://cloud-span.github.io/experimental_design00-overview/)
-    [@rand_statistically_2022]        
-:::
+
+## Raw Sequence data
+
+### Optional
+
+You can read more about Sequencing technologies in [Statistically useful experimental design](https://cloud-span.github.io/experimental_design00-overview/)[@rand_statistically_2022]        
+
 
 # What has been done to the data so far
 
@@ -338,8 +340,8 @@ width="200"}
 
 -   Values are raw counts
 
--   The statistical analysis method we will use `DESeq2` [@DESeq2]
-    requires raw counts and performs the normalisation itself
+-   The statistical analysis method we will use is `DESeq2` [@DESeq2].
+    It requires raw counts and performs the normalisation itself.
     
     
 ## 🎄 Data
@@ -350,8 +352,8 @@ width="200"}
 
 -   Values are raw counts
 
--   The statistical analysis method we will use `DESeq2` [@DESeq2]
-    requires raw counts and performs the normalisation itself    
+-   The statistical analysis method we will use is `DESeq2` [@DESeq2].
+    It requires raw counts and performs the normalisation itself.  
     
 ## 💉  Data
 
@@ -361,8 +363,8 @@ width="200"}
 
 -   Values are raw counts
 
--   The statistical analysis method we will use `DESeq2` [@DESeq2]
-    requires raw counts and performs the normalisation itself    
+-   The statistical analysis method we will use is `DESeq2` [@DESeq2].
+    It requires raw counts and performs the normalisation itself. 
 
 
 ## 🐭 Data
@@ -371,10 +373,10 @@ width="200"}
 
 -   Expression for a **subset of genes**, the surfaceome
 
--   Values are log2 normalised values
+-   Values are log~2~ normalised values
 
--   The statistical analysis method we will use `scran` [@scran]
-    requires normalised values
+-   The statistical analysis method we will use is `scran` [@scran]
+    and it requires normalised values
 
 # Workshops
 
@@ -391,8 +393,8 @@ width="200"}
     cell data.
 
 -   Transcriptomics 3: Visualising. Principal Component 
-    Analysis (PCA) volcano plots to visualise the results of the
-    analysis
+    Analysis (PCA) and volcano plots to visualise the results of the
+    analysis.
 
 
 ## References
