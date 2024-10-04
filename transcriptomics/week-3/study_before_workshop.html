@@ -368,7 +368,7 @@ Emma Rand
 </div>
 </div>
 
-  <p class="date">3 October, 2024</p>
+  <p class="date">4 October, 2024</p>
 </section>
 <section id="overview" class="slide level2">
 <h2>Overview</h2>
@@ -595,17 +595,18 @@ Emma Rand
 <ul>
 <li class="fragment"><p>The raw data are “reads” from a sequencing machine in FASTQ files</p></li>
 <li class="fragment"><p>A read is sequence of RNA which is shorter than the whole transcriptome</p></li>
-<li class="fragment"><p>The length of the reads depends on the type of sequencing machine ::: {style=“font-size: 70%;”}</p>
+<li class="fragment"><p>The length of the reads depends on the type of sequencing machine</p>
 <ul>
 <li class="fragment">Short-read technologies (e.g.&nbsp;Illumina) have higher base accuracy but are harder to align</li>
 <li class="fragment">Long-read technologies (e.g.&nbsp;Nanopore) have lower base accuracy but are easier to align</li>
 </ul></li>
 </ul>
 </div>
-<ul>
-<li>Optional: You can read more about Sequencing technologies in <a href="https://cloud-span.github.io/experimental_design00-overview/">Statistically useful experimental design</a> <span class="citation" data-cites="rand_statistically_2022">(<a href="#/references" role="doc-biblioref" onclick="">Rand and Forrester 2022</a>)</span><br>
-:::</li>
-</ul>
+</section>
+<section id="raw-sequence-data-1" class="slide level2">
+<h2>Raw Sequence data</h2>
+<h3 id="optional">Optional</h3>
+<p>You can read more about Sequencing technologies in <a href="https://cloud-span.github.io/experimental_design00-overview/">Statistically useful experimental design</a><span class="citation" data-cites="rand_statistically_2022">(<a href="#/references" role="doc-biblioref" onclick="">Rand and Forrester 2022</a>)</span></p>
 </section></section>
 <section>
 <section id="what-has-been-done-to-the-data-so-far" class="title-slide slide level1 center">
@@ -629,7 +630,7 @@ Emma Rand
 <li><p>Unpublished (so far!)</p></li>
 <li><p>Expression for the whole transcriptome <a href="https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp"><em>X. laevis</em> v10.1 genome assembly</a><span class="citation" data-cites="fisher2023">(<a href="#/references" role="doc-biblioref" onclick="">Fisher et al. 2023</a>)</span></p></li>
 <li><p>Values are raw counts</p></li>
-<li><p>The statistical analysis method we will use <code>DESeq2</code> <span class="citation" data-cites="DESeq2">(<a href="#/references" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span> requires raw counts and performs the normalisation itself</p></li>
+<li><p>The statistical analysis method we will use is <code>DESeq2</code> <span class="citation" data-cites="DESeq2">(<a href="#/references" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span>. It requires raw counts and performs the normalisation itself.</p></li>
 </ul>
 </section>
 <section id="data-1" class="slide level2">
@@ -638,7 +639,7 @@ Emma Rand
 <li><p>Based on <a href="https://www.ncbi.nlm.nih.gov/bioproject/PRJNA132271">PRJNA132271</a><span class="citation" data-cites="bernal_transcriptome_2012">(<a href="#/references" role="doc-biblioref" onclick="">Bernal et al. 2012</a>)</span></p></li>
 <li><p>Expression for the whole transcriptome <a href="https://plants.ensembl.org/Arabidopsis_thaliana/Info/Index">ENSEMBL <em>Arabidopsis</em> TAIR10</a><span class="citation" data-cites="yates_ensembl_2022">(<a href="#/references" role="doc-biblioref" onclick="">Yates et al. 2022</a>)</span></p></li>
 <li><p>Values are raw counts</p></li>
-<li><p>The statistical analysis method we will use <code>DESeq2</code> <span class="citation" data-cites="DESeq2">(<a href="#/references" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span> requires raw counts and performs the normalisation itself</p></li>
+<li><p>The statistical analysis method we will use is <code>DESeq2</code> <span class="citation" data-cites="DESeq2">(<a href="#/references" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span>. It requires raw counts and performs the normalisation itself.</p></li>
 </ul>
 </section>
 <section id="data-2" class="slide level2">
@@ -647,7 +648,7 @@ Emma Rand
 <li><p>Brand spanking new!</p></li>
 <li><p>Expression for the whole transcriptome Ref??</p></li>
 <li><p>Values are raw counts</p></li>
-<li><p>The statistical analysis method we will use <code>DESeq2</code> <span class="citation" data-cites="DESeq2">(<a href="#/references" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span> requires raw counts and performs the normalisation itself</p></li>
+<li><p>The statistical analysis method we will use is <code>DESeq2</code> <span class="citation" data-cites="DESeq2">(<a href="#/references" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span>. It requires raw counts and performs the normalisation itself.</p></li>
 </ul>
 </section>
 <section id="data-3" class="slide level2">
@@ -655,8 +656,8 @@ Emma Rand
 <ul>
 <li><p>Published in <span class="citation" data-cites="nestorowa2016">Nestorowa et al. (<a href="#/references" role="doc-biblioref" onclick="">2016</a>)</span></p></li>
 <li><p>Expression for a <strong>subset of genes</strong>, the surfaceome</p></li>
-<li><p>Values are log2 normalised values</p></li>
-<li><p>The statistical analysis method we will use <code>scran</code> <span class="citation" data-cites="scran">(<a href="#/references" role="doc-biblioref" onclick="">Lun, McCarthy, and Marioni 2016</a>)</span> requires normalised values</p></li>
+<li><p>Values are log<sub>2</sub> normalised values</p></li>
+<li><p>The statistical analysis method we will use is <code>scran</code> <span class="citation" data-cites="scran">(<a href="#/references" role="doc-biblioref" onclick="">Lun, McCarthy, and Marioni 2016</a>)</span> and it requires normalised values</p></li>
 </ul>
 </section></section>
 <section>
@@ -669,7 +670,7 @@ Emma Rand
 <ul>
 <li><p>Transcriptomics 1: Hello data Getting to know the data. Checking the distributions of values overall, across rows and columns to check things are as we expect and detect rows/columns that need to be removed</p></li>
 <li><p>Transcriptomics 2: Statistical Analysis. Identifying which genes are differentially expressed between treatments. This is the main analysis step. We will use different methods for bulk and single cell data.</p></li>
-<li><p>Transcriptomics 3: Visualising. Principal Component Analysis (PCA) volcano plots to visualise the results of the analysis</p></li>
+<li><p>Transcriptomics 3: Visualising. Principal Component Analysis (PCA) and volcano plots to visualise the results of the analysis.</p></li>
 </ul>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
