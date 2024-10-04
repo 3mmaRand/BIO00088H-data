@@ -115,23 +115,23 @@ We need to import the S30 data that were filtered to remove genes with
 #---CODING ANSWER---
 s30_filtered <- read_csv("data-processed/s30_filtered.csv")
 ```
-Now go to [Differential Expression Analysis](#differential-expression-analysis).
+Now go to [Differential Expression Analysis](#frog-development-2).
 
 ## 🎄 Arabidopisis
 Import
 
-Now go to [Differential Expression Analysis](#differential-expression-analysis).
+Now go to [Differential Expression Analysis](#arabidopisis-2).
 
 
 ## 💉 Leishmania mexicana
 Import
 
-Now go to [Differential Expression Analysis](#differential-expression-analysis).
+Now go to [Differential Expression Analysis](#leishmania-mexicana-2).
 
 ## 🐭 Stem cells
 Import
 
-Now go to [Differential Expression Analysis](#differential-expression-analysis).
+Now go to [Differential Expression Analysis](#stem-cells-2).
 
 
 # Differential Expression Analysis
@@ -474,24 +474,24 @@ s30_results <- s30_normalised_counts |>
 ```
 
 
-Now go to [Add gene information](#add-gene-information).
+Now go to [Add gene information](#frog-development-3).
 
 
 
 ## 🎄 Arabidopisis
 DE instructions
 
-Now go to [Add gene information](#add-gene-information).
+Now go to [Add gene information](#arabidopisis-3).
 
 ## 💉 Leishmania mexicana
 DE instructions
 
-Now go to [Add gene information](#add-gene-information).
+Now go to [Add gene information](#leishmania-mexicana-3).
 
 ## 🐭 Stem cells
 DE instructions
 
-Now go to [Add gene information](#add-gene-information).
+Now go to [Add gene information](#stem-cells-3).
 
 
 # Add gene information
@@ -579,8 +579,7 @@ write_csv(s30_results, file = "results/s30_results.csv")
 
 # 🤗 Look after future you!
 
-🎬 Go through you script and tidy
-up. You might need to :
+🎬 Go through you script and tidy up. You might need to :
 
 -   collect together library statements at the top of the script
 -   remove code that you needed to start today but which wouldn't be

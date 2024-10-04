@@ -85,3 +85,21 @@ if you want to generate a bib file, you can use bibtex::write.bib for uplaoding 
 deps <- renv::dependencies()
 pkgs <- setdiff(unique(deps$Package), "R")
 bibtex::write.bib(entry = pkgs, file = "references_libs.bib", append = FALSE)
+
+Now go to [Differential Expression Analysis](#frog-development-2).
+
+## 🎄 Arabidopisis
+Import
+
+Now go to [Differential Expression Analysis](#arabidopisis-2).
+
+
+## 💉 Leishmania mexicana
+Import
+
+Now go to [Differential Expression Analysis](#leishmania-mexicana-2).
+
+## 🐭 Stem cells
+Import
+
+Now go to [Differential Expression Analysis](#stem-cells-2).

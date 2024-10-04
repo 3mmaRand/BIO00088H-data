@@ -64,12 +64,12 @@ These are the four datasets. Each set compromises several files.
 -   [xlaevis_counts_S20.csv](data-raw/xlaevis_counts_S20.csv)
 -   [xlaevis_counts_S30.csv](data-raw/xlaevis_counts_S30.csv)
 
-🎄 Arabidopsis:
+🎄 *Arabidopsis*:
 
 -   [arabidopsis-wild.csv](data-raw/arabidopsis-wild.csv)
--   [data-arabidopsis-spl7.csv](data-arabidopsis-spl7.csv)
+-   [arabidopsis-spl7.csv](data-raw/arabidopsis-spl7.csv)
 
-💉 Leishmania:
+💉 *Leishmania*:
 
 -   [leishmania-mex-ama.csv](data-raw/leishmania-mex-ama.csv)
 -   [leishmania-mex-pro.csv](data-raw/leishmania-mex-pro.csv)
@@ -393,8 +393,10 @@ below zero). Note that the variability between genes (average counts
 between 0 and 102586) is far greater than between samples (average
 counts from 260 to 426) which is exactly what we would expect to see.
 
+Now go to [Filtering for QC](#frog-development-2).
 
-## 🎄 Arabidopsis
+
+## 🎄 *Arabidopsis*
 
 ### Import
 
@@ -654,9 +656,9 @@ below zero). Note that the variability between genes (average counts
 between 0 and 43348) is far greater than between samples (average
 counts from 70 to 296) which is exactly what we would expect to see.
 
+Now go to [Filtering for QC](#arabidopisis-2).
 
-
-## 💉 Leishmania
+## 💉 *Leishmania*
 
 ### Import
 
@@ -930,15 +932,241 @@ below zero). Note that the variability between genes (average counts
 between 0 and 349606) is far greater than between samples (average
 counts from 220 to 364) which is exactly what we would expect to see.
 
-
+Now go to [Filtering for QC](#leishmania-mexicana-2).
 
 ## 🐭 Stem cells
 
+### Import
+
+Import the data for the HSPC and the Progenitor cells. 
+
+🎬 Import [surfaceome_hspc.csv](data-raw/surfaceome_hspc.csv) and [surfaceome_hspc.csv](data-raw/surfaceome_prog.csv)
+
+```{r}
+# 🐭 import the hspc and prog data
+hspc <- read_csv("data-raw/surfaceome_hspc.csv")
+prog <- read_csv("data-raw/surfaceome_prog.csv")
+```
+
+We will need to combine the two sets of columns (datasets) so we can compare the two stages. We will join them using `ensembl_gene_id` to match the rows. The column names differ so we don't need to worry about renaming any of them.
+
+🎬 Combine the two datasets by `ensembl_gene_id` and save the result as `hspc_prog`.
+```{r}
+#  combine the two datasets
+hspc_prog <- hspc |>
+  left_join(prog, 
+            by = "ensembl_gene_id")
+```
+
+
+
+🎬 Check the dataframe has the number of rows and columns you were expecting and that column types and names are as expected.
+
+
 ### Distribution of values across all the data in the file
+
+The values are spread over multiple columns so in
+order to plot the distribution as a whole, we will need to first use
+`pivot_longer()` to put the data in ['tidy'
+format](https://3mmarand.github.io/R4BABS/r4babs1/week-9/workshop.html#tidying-data)
+[@wickham2014] by stacking the columns. We *could* save a copy of the
+stacked data and then plot it, but here, I have just piped the stacked
+data straight into `ggplot()`. This helps me avoid cluttering my R environment with
+temporary objects.
+
+🎬 Pivot the counts (stack the columns) so all the counts are in a
+single column (`expr`) labelled in `cell` by the column it came from 
+and pipe into `ggplot()` to create a histogram:
+
+```{r}
+hspc_prog |>
+  pivot_longer(cols = -ensembl_gene_id,
+               names_to = "cell",
+               values_to = "expr") |> 
+  ggplot(aes(x = expr)) +
+  geom_histogram()
+```
+
+This is a very striking distribution. Is it what we are expecting?
+Notice we have a peak at zero indicating there are low values zeros. 
+This inflation of low values suggests some are anomalous - they will 
+have been derived from low counts which are likely false positives. 
+As inaccurate measures, we will want to exclude expression values 
+below (about) 1. 
+We will revisit this after we have considered the distribution of 
+expression across cells and genes.
+
+What about the bimodal appearance of the the 'real' values? If we had
+the whole transcriptome we would *not* expect to see such a pattern 
+- we'd expect to see a roughly normal distribution[^1].
+However, this is a *subset* of the genome and the nature of 
+the subsetting has had an influence here. These are a subset of 
+cell surface proteins that show a significant
+difference between at least two of twelve cell subtypes. 
+That is, all of these genes are either "high" or "low" leading 
+to a bimodal distribution.
+
+Unlike the other three datasets, which count raw counts, these data
+are normalised and log~2~ transformed. We do not need to plot the log 
+of the values to see the distribution - they are already logged.
+
 
 ### Distribution of values across the samples
 
+For the other three datasets, we used the `summary()` function to 
+get an overview of the columns. This works well when you have upto 
+about 25 columns but it is not helpful here because we have a lot of cells!
+Feel free to try it!
+
+In this data set, there is even more of an advantage of using the
+`pivot_longer()`, `group_by()` and `summarise()` approach. We will be
+able to open the dataframe in the Viewer and make plots to examine
+whether the distributions are similar across cells. The mean and the 
+standard deviation are useful to see the distributions across cells 
+in a plot but we will also examine the interquartile values, maximums 
+and the number of non-zero values.
+
+🎬 Summarise all the cells:
+
+```{r}
+hspc_prog_summary_cell <- hspc_prog |>
+  pivot_longer(cols = -ensembl_gene_id,
+               names_to = "cell",
+               values_to = "expr") |>
+  group_by(cell) |>
+  summarise(min = min(expr),
+            lowerq = quantile(expr, 0.25),
+            sd = sd(expr),
+            mean = mean(expr),
+            median = median(expr),
+            upperq = quantile(expr, 0.75),
+            max = max(expr),
+            total = sum(expr),
+            n_above_zero = sum(expr > 0))
+```
+
+🎬 View the `hspc_prog_summary_cell` dataframe (click on it in the
+environment).
+
+Notice that:
+-   a minimum value of 0 appears in all 1499 cells 
+-   the lower quartiles are all zero and so are many of the medians
+-   there are no cells with above 0 expression in all 280 of the 
+    gene subset
+-   the highest number of genes expressed is 208, the lowest is 94  
+
+In short, there are quite a lot of zeros.
+
+To get a better understanding of the distribution of expressions in
+cells we can create a ggplot using the pointrange geom. Pointrange puts
+a dot at the mean and a line between a minimum and a maximum such as +/-
+one standard deviation. Not unlike a boxplot, but when you need the boxes 
+too be very narrow!
+
+🎬 Create a pointrange plot.
+
+```{r}
+hspc_prog_summary_cell |> 
+  ggplot(aes(x = cell, y = mean)) +
+  geom_pointrange(aes(ymin = mean - sd, 
+                      ymax = mean + sd ),
+                  size = 0.1)
+```
+
+You will need to use the Zoom button to pop the plot window out so you
+can make it as wide as possible
+
+The things to notice are:
+
+-   the average expression in cells is similar for all cells. This is
+    good to know - if some cells had much lower expression perhaps there
+    is something wrong with them, or their sequencing, and they should
+    be excluded.
+-   the distributions are roughly similar in width too
+
+The default order of `cell` is alphabetical. It can be easier to judge if 
+there are unusual cells if we order the lines by the size of the mean.
+
+🎬 Order a pointrange plot with `reorder(variable_to_order, order_by)`.
+
+```{r}
+hspc_prog_summary_cell |> 
+  ggplot(aes(x = reorder(cell, mean), y = mean)) +
+  geom_pointrange(aes(ymin = mean - sd, 
+                      ymax = mean + sd ),
+                  size = 0.1)
+```
+
+`reorder()` arranges `cell` in increasing size of `mean`
+
+As we thought, the distributions are similar across cells - there are not
+any cells that are obviously different from the others (only incrementally).
+
+
+
 ### Distribution of values across the genes
+
+We will use the same approach to summarise the genes. 
+
+
+🎬 Summarise the expression for each gene and save the result as 
+`hspc_prog_summary_gene`. Include the same columns as we had in the 
+by cell summary (`hspc_prog_summary_cell`) and an additional column, 
+`total` for the total expression for each gene.
+
+```{r}
+#| echo: false
+#---CODING ANSWER---
+# you need to group by `ensembl_gene_id` rather than `cell`
+# sum(expr) will find the total expression in a gene
+hspc_prog_summary_gene <- hspc_prog |>
+  pivot_longer(cols = -ensembl_gene_id,
+               names_to = "cell",
+               values_to = "expr") |>
+  group_by(ensembl_gene_id) |>
+  summarise(min = min(expr),
+            lowerq = quantile(expr, 0.25),
+            sd = sd(expr),
+            mean = mean(expr),
+            median = median(expr),
+            upperq = quantile(expr, 0.75),
+            max = max(expr),
+            total = sum(expr),
+            n_above_zero = sum(expr > 0))
+```
+
+🎬 View the `hspc_prog_summary_gene` dataframe. Remember these are normalised
+and logged (base 2) so we should not see very large values.
+
+Notice that we have:
+
+-   some genes (7) expressed in every cell, and many expressed in 
+    most cells
+-   quite a few genes with zero in many cells but this matters 
+    less when we have many cells (samples) than when we have few samples.
+-   no genes with zeros in every cell - the lowest number of cells is 15.    
+
+It is again helpful to plot the ordered mean expression with 
+pointrange to get an overview. 
+
+🎬 Plot the logged mean counts for each gene in order of size using
+`geom_pointrange()`:
+
+```{r}
+hspc_prog_summary_gene |> 
+  ggplot(aes(x = reorder(ensembl_gene_id, mean), y = mean)) +
+  geom_pointrange(aes(ymin = mean - sd, 
+                      ymax = mean + sd),
+                  size = 0.1)
+
+
+```
+
+Note that the variability between genes (average expression
+between 0.020 and and 9.567) is far greater than between cells (average
+expression from 1.319 to 9.567) which is just what we would expect.
+
+Now go to [Filtering for QC](#stem-cells-2).
 
 # Filtering for QC
 
@@ -1080,24 +1308,10 @@ write_csv(pro_meta_filtered,
 
 ## 🐭 Stem cells
 
-We will take a different approach to filtering the single cell data. For
-the Frog samples we are examining the control and the FGF treated
-samples. This means have a low number of counts overall means the gene
-is not really expressed (detected) in any condition, and filtering out
-those genes is removing things that definitely are not interesting. For
-the mice, we have examined only one cell type but will be making
-comparisons between cells types. It may be that low expression of a gene
-in this cell type tells us something if that gene is highly expressed in
-another cell type. Instead, we will make statistical comparisons between
-the cell types and then filter based on overall expression, the
-difference in expression between cell types and whether that difference
-is significant.
-
-The number of "replicates" is also important. When you have only three
-in each group it is not possible to make statistical comparisons when
-several replicates are zero. This is less of an issue with single cell
-data.
-
+In this dataset, we will not see and genes that are not expressed in any
+of the cells because we are using a specific subset of the transcriptome
+that was deliberately selected. This means we do not need to filter for
+unexpressed genes. 
 
 
 
@@ -1143,16 +1357,13 @@ since you made them. Make sure you can close down RStudio, reopen it
 and run your whole script again.
 
 
-
-
 ## 🐭 Mice and future you
 
 🎬 Create a new Project, `mice-88H`, populated with folders and your
 data. Make a script file called `hspc-prog.R`. This will a be commented
-analysis of the hspc cells vs the prog cells. At this point you will
-have only code for the hspc cells. You will build on this each workshop
-and be able to use it as a template to examine other comparisons. Copy
-in the appropriate code and comments from `workshop-1.R`. Edit to
+analysis of the hspc cells vs the prog cells. You will build on this each 
+workshop and be able to use it as a template to examine other comparisons. 
+Copy in the *appropriate code and comments* from `workshop-1.R`. Edit to
 improve your comments where your understanding has developed since you
 made them. Make sure you can close down RStudio, reopen it and run your
 whole script again.
