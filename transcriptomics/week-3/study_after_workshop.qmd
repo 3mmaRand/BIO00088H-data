@@ -18,14 +18,14 @@ You need only do the section for your own project data
 `cont-fgf-s30.R` as a template, repeat the analysis stage 20. I recommend 
 making a new script.
 
-## 🎄 Arabidopisis
+## 🎄 *Arabidopisis*
 
 🎬 Open your `arab-88H` Project. Make a new script and, using 
 `suff-def-wild.R` as a template, repeat the analysis on the *spl7* mutants. 
 I recommend making a new script.
 
 
-## 💉 Leishmania
+## 💉 *Leishmania*
 
 🎬 Open your `leish-88H` Project. Make a new script and, using 
 `pro_meta.R` as a template, repeat the analysis on the 

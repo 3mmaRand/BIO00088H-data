@@ -359,7 +359,7 @@ You can read more about Sequencing technologies in [Statistically useful experim
 
 -   Brand spanking new!
 
--   Expression for the whole transcriptome Ref??
+-   Expression for the whole transcriptome [*L. mexicana* MHOM/GT/2001/U1103](https://tritrypdb.org/tritrypdb/app/record/dataset/DS_e318592c8e)[@rogers_chromosome_2011]
 
 -   Values are raw counts
 

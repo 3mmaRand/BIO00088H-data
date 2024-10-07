@@ -1215,7 +1215,7 @@ write_csv(s30_filtered,
           file = "data-processed/s30_filtered.csv")
 ```
 
-## 🎄 Arabidopsis
+## 🎄 *Arabidopsis*
 
 Our samples look to be similarly well sequenced although this is 
 difficult to determine with only two replicates. However, some genes 
@@ -1261,7 +1261,7 @@ write_csv(wild_filtered,
 ```
 
 
-## 💉 Leishmania
+## 💉 *Leishmania*
 
 Our samples look to be similarly well sequenced. There are no samples we
 should remove. However, some genes are not expressed or the expression
@@ -1331,7 +1331,7 @@ Edit to improve your comments where your understanding has developed
 since you made them. Make sure you can close
 down RStudio, reopen it and run your whole script again.
 
-## 🎄 Arabidopsis and future you
+## 🎄 *Arabidopsis* and future you
 
 🎬 Create a new Project, `arab-88H`, populated with folders and your
 data. Make a script file called `suff-def-wild.R`. This will a be
@@ -1345,7 +1345,7 @@ since you made them. Make sure you can close
 down RStudio, reopen it and run your whole script again.
 
 
-## 💉 Leishmania and future you
+## 💉 *Leishmania* and future you
 
 🎬 Create a new Project, `leish-88H`, populated with folders and your
 data. Make a script file called `pro_meta.R`. This will a be
@@ -1357,7 +1357,7 @@ since you made them. Make sure you can close down RStudio, reopen it
 and run your whole script again.
 
 
-## 🐭 Mice and future you
+## 🐭 Stem cells and future you
 
 🎬 Create a new Project, `mice-88H`, populated with folders and your
 data. Make a script file called `hspc-prog.R`. This will a be commented
