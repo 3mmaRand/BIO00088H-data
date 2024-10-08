@@ -65,6 +65,7 @@ including:
 
 
 -   An RStudio Project called `frogs-88H` which contains:
+
     -   Raw data: `xlaevis_counts_S14.csv`, `xlaevis_counts_S20.csv`,
         `xlaevis_counts_S30.csv` 
     -   Processed data: `s30_filtered.csv`, `s20_filtered.csv`)
@@ -76,7 +77,8 @@ easy to read.
 ## 🎄 *Arabidopsis*
 
 -   An RStudio Project called `arab-88H` which contains:
-    -   Raw data: `arabidopsis-wild.csv`,`arabidopsis-spl7.csv`, 
+
+    -   Raw data: `arabidopsis-wild.csv`,`arabidopsis-spl7.csv` 
     -   Processed data: `wild_filtered.csv`,  `spl7_filtered.csv`)
     -   Two scripts: `suff-def-wild.R`, `suff-def-spl7.R`
 
@@ -84,13 +86,21 @@ easy to read.
 
 ## 💉 *Leishmania* 
 
+-   An RStudio Project called `leish-88H` which contains:
+
+    -   Raw data: `leishmania-mex-ama.csv`,`leishmania-mex-pro.csv`, 
+        `leishmania-mex-meta.csv`
+    -   Processed data: `pro_meta_filtered.csv`, `pro_ama_filtered.csv`
+    -   Two scripts: `pro_meta.R`, `pro_ama.R`
+
 
 ## 🐭 Stem cells
 
 -   An RStudio Project called `mice-88H` which contains
-    -   Raw data: `.csv`,`.csv`, `.csv`
+
+    -   Raw data: `surfaceome_hspc.csv`,`surfaceome_prog.csv`, `surfaceome_lthsc.csv`
     -   Processed data: `_filtered.csv`,  `_filtered.csv`)
-    -   Two scripts: `.R`, `.R`
+    -   Two scripts: `hspc-prog.R`, hspc-lthsc.R`
 
 Files should be organised into folders. Code should well commented and
 easy to read.
@@ -303,7 +313,6 @@ Like familiar tests:
 ## 💉 *Leishmania*
 
 -   Expression for the whole transcriptome [*L. mexicana* MHOM/GT/2001/U1103](https://tritrypdb.org/tritrypdb/app/record/dataset/DS_e318592c8e)[@rogers_chromosome_2011]
-
 
 -   Values are raw counts
 
