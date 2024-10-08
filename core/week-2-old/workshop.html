@@ -306,8 +306,8 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <div class="cell-output cell-output-stdout">
 <pre><code>data
 images
-overview.html
 overview.qmd
+study_after_workshop.html
 study_after_workshop.qmd
 study_before_workshop.ipynb
 study_before_workshop.qmd
@@ -321,56 +321,56 @@ workshop_files</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>total 156
-drwxr-xr-x 2 runner docker  4096 Oct  8 14:05 data
-drwxr-xr-x 2 runner docker  4096 Oct  8 14:05 images
--rw-r--r-- 1 runner docker 24690 Oct  8 14:10 overview.html
--rw-r--r-- 1 runner docker  1597 Oct  8 14:05 overview.qmd
--rw-r--r-- 1 runner docker   184 Oct  8 14:05 study_after_workshop.qmd
--rw-r--r-- 1 runner docker  4807 Oct  8 14:05 study_before_workshop.ipynb
--rw-r--r-- 1 runner docker 13029 Oct  8 14:05 study_before_workshop.qmd
--rw-r--r-- 1 runner docker 58063 Oct  8 14:05 workshop.html
--rw-r--r-- 1 runner docker  8550 Oct  8 14:05 workshop.qmd
--rw-r--r-- 1 runner docker  8590 Oct  8 14:10 workshop.rmarkdown
-drwxr-xr-x 3 runner docker  4096 Oct  8 14:05 workshop_files</code></pre>
+<pre><code>total 152
+drwxr-xr-x 2 runner docker  4096 Oct  8 14:58 data
+drwxr-xr-x 2 runner docker  4096 Oct  8 14:58 images
+-rw-r--r-- 1 runner docker  1597 Oct  8 14:58 overview.qmd
+-rw-r--r-- 1 runner docker 22716 Oct  8 15:03 study_after_workshop.html
+-rw-r--r-- 1 runner docker   184 Oct  8 14:58 study_after_workshop.qmd
+-rw-r--r-- 1 runner docker  4807 Oct  8 14:58 study_before_workshop.ipynb
+-rw-r--r-- 1 runner docker 13029 Oct  8 14:58 study_before_workshop.qmd
+-rw-r--r-- 1 runner docker 58063 Oct  8 14:58 workshop.html
+-rw-r--r-- 1 runner docker  8550 Oct  8 14:58 workshop.qmd
+-rw-r--r-- 1 runner docker  8577 Oct  8 15:03 workshop.rmarkdown
+drwxr-xr-x 3 runner docker  4096 Oct  8 14:58 workshop_files</code></pre>
 </div>
 </div>
 <p>You can use more than one option at once. The <code>-h</code> option stands for “human readable” and makes the file sizes easier to understand for humans:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-hl</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>total 156K
-drwxr-xr-x 2 runner docker 4.0K Oct  8 14:05 data
-drwxr-xr-x 2 runner docker 4.0K Oct  8 14:05 images
--rw-r--r-- 1 runner docker  25K Oct  8 14:10 overview.html
--rw-r--r-- 1 runner docker 1.6K Oct  8 14:05 overview.qmd
--rw-r--r-- 1 runner docker  184 Oct  8 14:05 study_after_workshop.qmd
--rw-r--r-- 1 runner docker 4.7K Oct  8 14:05 study_before_workshop.ipynb
--rw-r--r-- 1 runner docker  13K Oct  8 14:05 study_before_workshop.qmd
--rw-r--r-- 1 runner docker  57K Oct  8 14:05 workshop.html
--rw-r--r-- 1 runner docker 8.4K Oct  8 14:05 workshop.qmd
--rw-r--r-- 1 runner docker 8.4K Oct  8 14:10 workshop.rmarkdown
-drwxr-xr-x 3 runner docker 4.0K Oct  8 14:05 workshop_files</code></pre>
+<pre><code>total 152K
+drwxr-xr-x 2 runner docker 4.0K Oct  8 14:58 data
+drwxr-xr-x 2 runner docker 4.0K Oct  8 14:58 images
+-rw-r--r-- 1 runner docker 1.6K Oct  8 14:58 overview.qmd
+-rw-r--r-- 1 runner docker  23K Oct  8 15:03 study_after_workshop.html
+-rw-r--r-- 1 runner docker  184 Oct  8 14:58 study_after_workshop.qmd
+-rw-r--r-- 1 runner docker 4.7K Oct  8 14:58 study_before_workshop.ipynb
+-rw-r--r-- 1 runner docker  13K Oct  8 14:58 study_before_workshop.qmd
+-rw-r--r-- 1 runner docker  57K Oct  8 14:58 workshop.html
+-rw-r--r-- 1 runner docker 8.4K Oct  8 14:58 workshop.qmd
+-rw-r--r-- 1 runner docker 8.4K Oct  8 15:03 workshop.rmarkdown
+drwxr-xr-x 3 runner docker 4.0K Oct  8 14:58 workshop_files</code></pre>
 </div>
 </div>
 <p>The <code>-a</code> option stands for “all” and shows us all the files, including hidden files.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-alh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>total 164K
-drwxr-xr-x 5 runner docker 4.0K Oct  8 14:10 .
-drwxr-xr-x 8 runner docker 4.0K Oct  8 14:05 ..
-drwxr-xr-x 2 runner docker 4.0K Oct  8 14:05 data
-drwxr-xr-x 2 runner docker 4.0K Oct  8 14:05 images
--rw-r--r-- 1 runner docker  25K Oct  8 14:10 overview.html
--rw-r--r-- 1 runner docker 1.6K Oct  8 14:05 overview.qmd
--rw-r--r-- 1 runner docker  184 Oct  8 14:05 study_after_workshop.qmd
--rw-r--r-- 1 runner docker 4.7K Oct  8 14:05 study_before_workshop.ipynb
--rw-r--r-- 1 runner docker  13K Oct  8 14:05 study_before_workshop.qmd
--rw-r--r-- 1 runner docker  57K Oct  8 14:05 workshop.html
--rw-r--r-- 1 runner docker 8.4K Oct  8 14:05 workshop.qmd
--rw-r--r-- 1 runner docker 8.4K Oct  8 14:10 workshop.rmarkdown
-drwxr-xr-x 3 runner docker 4.0K Oct  8 14:05 workshop_files</code></pre>
+<pre><code>total 160K
+drwxr-xr-x 5 runner docker 4.0K Oct  8 15:03 .
+drwxr-xr-x 8 runner docker 4.0K Oct  8 15:03 ..
+drwxr-xr-x 2 runner docker 4.0K Oct  8 14:58 data
+drwxr-xr-x 2 runner docker 4.0K Oct  8 14:58 images
+-rw-r--r-- 1 runner docker 1.6K Oct  8 14:58 overview.qmd
+-rw-r--r-- 1 runner docker  23K Oct  8 15:03 study_after_workshop.html
+-rw-r--r-- 1 runner docker  184 Oct  8 14:58 study_after_workshop.qmd
+-rw-r--r-- 1 runner docker 4.7K Oct  8 14:58 study_before_workshop.ipynb
+-rw-r--r-- 1 runner docker  13K Oct  8 14:58 study_before_workshop.qmd
+-rw-r--r-- 1 runner docker  57K Oct  8 14:58 workshop.html
+-rw-r--r-- 1 runner docker 8.4K Oct  8 14:58 workshop.qmd
+-rw-r--r-- 1 runner docker 8.4K Oct  8 15:03 workshop.rmarkdown
+drwxr-xr-x 3 runner docker 4.0K Oct  8 14:58 workshop_files</code></pre>
 </div>
 </div>
 <p>You can move about with the <code>cd</code> command, which stands for “change directory”. You can use it to move into a directory by specifying the path to the directory:</p>

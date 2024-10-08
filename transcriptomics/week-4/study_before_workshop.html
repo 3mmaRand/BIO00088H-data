@@ -477,7 +477,8 @@ Emma Rand
 <ul>
 <li>Raw data: <code>xlaevis_counts_S14.csv</code>, <code>xlaevis_counts_S20.csv</code>, <code>xlaevis_counts_S30.csv</code>
 </li>
-<li>Processed data: <code>s30_filtered.csv</code>, <code>s20_filtered.csv</code>)</li>
+<li>Processed data: <code>s30_filtered.csv</code>, <code>s20_filtered.csv</code>
+</li>
 <li>Two scripts: <code>cont-fgf-s30.R</code>, <code>cont-fgf-s20.R</code>
 </li>
 </ul>
@@ -490,7 +491,7 @@ Emma Rand
 <li>
 <p>An RStudio Project called <code>arab-88H</code> which contains:</p>
 <ul>
-<li>Raw data: <code>arabidopsis-wild.csv</code>,<code>arabidopsis-spl7.csv</code>
+<li>Raw data: <code>arabidopsis-wild.csv</code>, <code>arabidopsis-spl7.csv</code>
 </li>
 <li>Processed data: <code>wild_filtered.csv</code>, <code>spl7_filtered.csv</code>)</li>
 <li>Two scripts: <code>suff-def-wild.R</code>, <code>suff-def-spl7.R</code>
@@ -503,7 +504,7 @@ Emma Rand
 <li>
 <p>An RStudio Project called <code>leish-88H</code> which contains:</p>
 <ul>
-<li>Raw data: <code>leishmania-mex-ama.csv</code>,<code>leishmania-mex-pro.csv</code>, <code>leishmania-mex-meta.csv</code>
+<li>Raw data: <code>leishmania-mex-ama.csv</code>, <code>leishmania-mex-pro.csv</code>, <code>leishmania-mex-meta.csv</code>
 </li>
 <li>Processed data: <code>pro_meta_filtered.csv</code>, <code>pro_ama_filtered.csv</code>
 </li>
@@ -516,10 +517,11 @@ Emma Rand
 <li>
 <p>An RStudio Project called <code>mice-88H</code> which contains</p>
 <ul>
-<li>Raw data: <code>surfaceome_hspc.csv</code>,<code>surfaceome_prog.csv</code>, <code>surfaceome_lthsc.csv</code>
+<li>Raw data: <code>surfaceome_hspc.csv</code>, <code>surfaceome_prog.csv</code>, <code>surfaceome_lthsc.csv</code>
 </li>
 <li>Processed data: <code>_filtered.csv</code>, <code>_filtered.csv</code>)</li>
-<li>Two scripts: <code>hspc-prog.R</code>, hspc-lthsc.R`</li>
+<li>Two scripts: <code>hspc-prog.R</code>, <code>hspc-lthsc.R</code>
+</li>
 </ul>
 </li>
 </ul>
@@ -563,7 +565,7 @@ Emma Rand
 <div>
 <ul>
 <li class="fragment"><p>The difference between groups is given as the log<sub>2</sub> fold change in expression between groups</p></li>
-<li class="fragment"><p>A fold change is the expression in one group divided by the expression in the other group</p></li>
+<li class="fragment"><p>A fold change is the expression in one group divided by the expression in the other group: <span class="math inline">\(\frac{A}{B}\)</span></p></li>
 <li class="fragment"><p>we use fold changes because the absolute expression values may not be accurate and relative changes are what matters</p></li>
 <li class="fragment"><p>we use log<sub>2</sub> fold changes because they are symmetrical around 0</p></li>
 </ul>
@@ -672,11 +674,15 @@ Emma Rand
 <ul>
 <li class="fragment"><p>The gene id is difficult to interpret</p></li>
 <li class="fragment"><p>Therefore we need to add information such as the gene name and a description to the results</p></li>
+</ul>
+<div style="font-size: 70%;">
+<ul>
 <li class="fragment"><p>🐸 Frog data information comes from Xenbase <span class="citation" data-cites="fisher2023">(<a href="#/references" role="doc-biblioref" onclick="">Fisher et al. 2023</a>)</span></p></li>
 <li class="fragment"><p>🎄 <em>Arabidopisis</em> information comes from TAIR10 <span class="citation" data-cites="yates_ensembl_2022">(<a href="#/references" role="doc-biblioref" onclick="">Yates et al. 2022</a>)</span></p></li>
 <li class="fragment"><p>💉 <em>Leishmania</em> information comes TriTrypDB <span class="citation" data-cites="rogers_chromosome_2011">(<a href="#/references" role="doc-biblioref" onclick="">Rogers et al. 2011</a>)</span></p></li>
 <li class="fragment"><p>🐭 Stem cell information comes from Ensembl <span class="citation" data-cites="birney2004">(<a href="#/references" role="doc-biblioref" onclick="">Birney et al. 2004</a>)</span></p></li>
 </ul>
+</div>
 </div>
 </section><section id="xenbase" class="slide level2"><h2>🐸 Xenbase</h2>
 
@@ -717,7 +723,8 @@ Emma Rand
 </div>
 </section><section id="packages" class="slide level2"><h2>Packages</h2>
 <p>These packages are all on the University computers which you can access on campus or <a href="https://www.york.ac.uk/it-services/tools/vds/">remotely using the VDS</a></p>
-<p>If you want to use your own machine you will need to install the packages. ::: {style=“font-size: 60%;”}</p>
+<p>If you want to use your own machine you will need to install the packages.</p>
+<div style="font-size: 60%;">
 <p>Install <strong><code>BiocManager</code></strong> from CRAN in the the normal way and set the version of Bioconductor packages to install:</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
@@ -735,7 +742,7 @@ Emma Rand
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html">install</a></span><span class="op">(</span><span class="st">"biomaRt"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>:::</p>
+</div>
 </section></section><section><section id="workshops" class="title-slide slide level1 center"><h1>Workshops</h1>
 
 </section><section id="workshops-1" class="slide level2"><h2>Workshops</h2>

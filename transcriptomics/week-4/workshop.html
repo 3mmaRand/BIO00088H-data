@@ -458,7 +458,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 </h2>
 <p>We need to import the procyclic- and metacyclic-promastigote data that were filtered to remove genes with 4, 5 or 6 zeros and those where the total counts was less than 20.</p>
 <p>🎬 Import the data from the <code>data-processed</code> folder.</p>
-<p>Now go to <a href="#leishmania-mexicana-2">Differential Expression Analysis</a>.</p>
+<p>Now go to <a href="#leishmania-2">Differential Expression Analysis</a>.</p>
 </section><section id="stem-cells-1" class="level2"><h2 class="anchored" data-anchor-id="stem-cells-1">🐭 Stem cells</h2>
 <p>Import</p>
 <p>Now go to <a href="#stem-cells-2">Differential Expression Analysis</a>.</p>
@@ -577,7 +577,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">s30_count_mat</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">s30_filtered</span><span class="op">$</span><span class="va">xenbase_gene_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You might want to view the matrix (click on it in your environment pane).</p>
-<p>The metadata are in a file, <a href="meta/frog_meta_data.txt">frog_meta_data.txt</a>. This is a tab-delimited file. The first column is the sample name and the other # columns give the “treatments”. In this case, the treatments stage (with three levels) and treatment (with two levels).</p>
+<p>The metadata are in a file, <a href="meta/frog_meta_data.txt">frog_meta_data.txt</a>. This is a tab-delimited file. The first column is the sample name and the other columns give the “treatments”. In this case, the treatments stage (with three levels) and treatment (with two levels).</p>
 <p>🎬 Make a folder called <code>meta</code> and save the file to it.</p>
 <p>🎬 Read the metadata into a dataframe:</p>
 <div class="cell">
@@ -614,13 +614,11 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <p>🎬 View the counts:</p>
 <div class="cell">
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">counts</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in .External2(C_dataviewer, x, title): unable to start data viewer</code></pre>
-</div>
 </div>
 <p>You should be able to see that this is the same as in <code>s30_count_mat</code>.</p>
+<p>🎬 View the column information:</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">colData</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">colData</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>DataFrame with 6 rows and 4 columns
           sample_id       stage treatment sibling_rep
@@ -633,15 +631,16 @@ S30_F_2     S30_F_2    stage_30   FGF           two
 S30_F_3     S30_F_3    stage_30   FGF           three</code></pre>
 </div>
 </div>
+<p>You should be able to see this is the same as in <code>meta_s30</code>.</p>
 </section><section id="prepare-the-normalised-counts" class="level3"><h3 class="anchored" data-anchor-id="prepare-the-normalised-counts">3. Prepare the normalised counts</h3>
 <p>The normalised counts are the counts that have been transformed to account for the library size (i.e., the total number of reads in a sample) and the gene length. We have to first estimate the normalisation factors and store them in the DESeqDataSet object and then we can get the normalised counts.</p>
 <p>🎬 Estimate the factors for normalisation and store them in the DESeqDataSet object:</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu">estimateSizeFactors</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu">estimateSizeFactors</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Look at the factors (just for information):</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">sizeFactors</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">sizeFactors</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  S30_C_1   S30_C_2   S30_C_3   S30_F_1   S30_F_2   S30_F_3 
 0.8812200 0.9454600 1.2989886 1.0881870 1.0518961 0.8322894 </code></pre>
@@ -650,24 +649,24 @@ S30_F_3     S30_F_3    stage_30   FGF           three</code></pre>
 <p>The normalised counts will be useful to use later. To get the normalised counts we again used the <code>counts()</code> function but this time we use the <code>normalized=TRUE</code> argument.</p>
 <p>🎬 Save the normalised to a matrix:</p>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">normalised_counts</span> <span class="op">&lt;-</span> <span class="fu">counts</span><span class="op">(</span><span class="va">dds</span>, normalized <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">normalised_counts</span> <span class="op">&lt;-</span> <span class="fu">counts</span><span class="op">(</span><span class="va">dds</span>, normalized <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Make a dataframe of the normalised counts, adding a column for the gene ids at the same time:</p>
 <div class="cell">
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_normalised_counts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">normalised_counts</span>,</span>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_normalised_counts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">normalised_counts</span>,</span>
 <span>                                    xenbase_gene_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">normalised_counts</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="differential-expression-analysis-1" class="level3"><h3 class="anchored" data-anchor-id="differential-expression-analysis-1">4. Differential expression analysis</h3>
 <p>We use the <code>DESeq()</code> function to do the differential expression analysis. This function fits the statistical model to the data and then uses the model to calculate the significance of the difference between the treatments. It again stores the results in the DESseqDataSet object. Note that the differential expression needs the raw (unnormalised counts) as it does its own normalisation as part of the process.</p>
 <p>🎬 Run the differential expression analysis and store the results in the same object:</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu">DESeq</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu">DESeq</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The function will take only a few moments to run on this data but can take longer for bigger datasets.</p>
 <p>We need to define the contrasts we want to test. We want to test the difference between the treatments so we will define the contrast as <code>FGF</code> and <code>control</code>.</p>
 <p>🎬 Define the contrast:</p>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">contrast_fgf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"treatment"</span>, <span class="st">"FGF"</span>, <span class="st">"control"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">contrast_fgf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"treatment"</span>, <span class="st">"FGF"</span>, <span class="st">"control"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note that <code>treatment</code> is the name of the column in the metadata dataframe and <code>FGF</code> and <code>control</code> are the names of the levels in the <code>treatment</code> column. By putting them in the order <code>FGF</code> , <code>control</code> we are saying the fold change will be FGF / control. This means:</p>
 <ul>
@@ -677,19 +676,19 @@ S30_F_3     S30_F_3    stage_30   FGF           three</code></pre>
 <p>If we had put them in the order <code>control</code>, <code>FGF</code> we would have the reverse.</p>
 <p>🎬 Extract the results from the DESseqDataSet object:</p>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results_fgf</span> <span class="op">&lt;-</span> <span class="fu">results</span><span class="op">(</span><span class="va">dds</span>,</span>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results_fgf</span> <span class="op">&lt;-</span> <span class="fu">results</span><span class="op">(</span><span class="va">dds</span>,</span>
 <span>                       contrast <span class="op">=</span> <span class="va">contrast_fgf</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>TThis will give us the log<sub>2</sub> fold change, the <em>p</em>-value and the adjusted <em>p</em>-value for the comparison between the control and the FGF-treatment for each gene.</p>
+<p>This will give us the log<sub>2</sub> fold change, the <em>p</em>-value and the adjusted <em>p</em>-value for the comparison between the control and the FGF-treatment for each gene.</p>
 <p>🎬 Put the results in a dataframe and add the gene ids as a column:</p>
 <div class="cell">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">results_fgf</span>,</span>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">results_fgf</span>,</span>
 <span>                          xenbase_gene_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">results_fgf</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>It is useful to have the normalised counts and the statistical results in one dataframe.</p>
 <p>🎬 Merge the two dataframes:</p>
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># merge the results with the normalised counts</span></span>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># merge the results with the normalised counts</span></span>
 <span><span class="va">s30_results</span> <span class="op">&lt;-</span> <span class="va">s30_normalised_counts</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">s30_results</span>, by <span class="op">=</span> <span class="st">"xenbase_gene_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -766,7 +765,7 @@ S30_F_3     S30_F_3    stage_30   FGF           three</code></pre>
 <p>We will use <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> to find these genes.</p>
 <p>🎬 Find the genes that are expressed only in the sufficient copper group:</p>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wild_suf_only</span> <span class="op">&lt;-</span> <span class="va">wild_filtered</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wild_suf_only</span> <span class="op">&lt;-</span> <span class="va">wild_filtered</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">SRX028961_wild_def</span> <span class="op">==</span> <span class="fl">0</span>,</span>
 <span>         <span class="va">SRX028957_wild_def</span> <span class="op">==</span> <span class="fl">0</span>,</span>
 <span>         <span class="va">SRX028960_wild_suf</span> <span class="op">&gt;</span> <span class="fl">0</span>,</span>
@@ -800,13 +799,13 @@ S30_F_3     S30_F_3    stage_30   FGF           three</code></pre>
 <p>The counts must in a <em>matrix</em> rather than a dataframe. Unlike a dataframe, a matrix has columns of all the same type. That is, it will contain only the counts. The gene ids are given as row names rather than a column. The <code><a href="https://rdrr.io/r/base/matrix.html">matrix()</a></code> function will create a matrix from a dataframe of columns of the same type and the <code><a href="https://rdrr.io/pkg/AnnotationDbi/man/AnnotationDb-class.html">select()</a></code> function can be used to remove the gene ids column.</p>
 <p>🎬 Create a matrix of the counts:</p>
 <div class="cell">
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wild_count_mat</span> <span class="op">&lt;-</span> <span class="va">wild_filtered</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wild_count_mat</span> <span class="op">&lt;-</span> <span class="va">wild_filtered</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">gene_id</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Add the gene ids as row names to the matrix:</p>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># add the row names to the matrix</span></span>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># add the row names to the matrix</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">wild_count_mat</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">wild_filtered</span><span class="op">$</span><span class="va">gene_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You might want to view the matrix (click on it in your environment pane).</p>
@@ -814,19 +813,19 @@ S30_F_3     S30_F_3    stage_30   FGF           three</code></pre>
 <p>🎬 Make a folder called <code>meta</code> and save the file to it.</p>
 <p>🎬 Read the metadata into a dataframe:</p>
 <div class="cell">
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_table.html">read_table</a></span><span class="op">(</span><span class="st">"meta/arab_meta_data.txt"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_table.html">read_table</a></span><span class="op">(</span><span class="st">"meta/arab_meta_data.txt"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Examine the resulting dataframe.</p>
 <p>We need to add the sample names as row names to the metadata dataframe. This is because the DESeqDataSet object will use the row names to match the samples in the metadata to the samples in the counts matrix.</p>
 <p>🎬 Add the sample names as row names to the metadata dataframe:</p>
 <div class="cell">
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">meta</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">meta</span><span class="op">$</span><span class="va">sample_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">meta</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">meta</span><span class="op">$</span><span class="va">sample_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>(you will get a warning message but you can ignore it)</p>
 <p>We are dealing only with the wild data so we need to remove the samples that are not in the wild data.</p>
 <p>🎬 Filter the metadata to keep only the wild information:</p>
 <div class="cell">
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">meta_wild</span> <span class="op">&lt;-</span> <span class="va">meta</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">meta_wild</span> <span class="op">&lt;-</span> <span class="va">meta</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">genotype</span> <span class="op">==</span> <span class="st">"wt"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can now create the DESeqDataSet object. The design formula describes the statistical model. You should recognise the form from previous work. The <code>~</code> can be read as “explain by” and on its right hand side are the explanatory variables. That is, the model is counts explained by copper status.</p>
@@ -837,7 +836,7 @@ S30_F_3     S30_F_3    stage_30   FGF           three</code></pre>
 </ul>
 <p>🎬 Create the DESeqDataSet object:</p>
 <div class="cell">
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu">DESeqDataSetFromMatrix</span><span class="op">(</span><span class="va">wild_count_mat</span>,</span>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu">DESeqDataSetFromMatrix</span><span class="op">(</span><span class="va">wild_count_mat</span>,</span>
 <span>                              colData <span class="op">=</span> <span class="va">meta_wild</span>,</span>
 <span>                              design <span class="op">=</span> <span class="op">~</span> <span class="va">copper</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -846,14 +845,12 @@ S30_F_3     S30_F_3    stage_30   FGF           three</code></pre>
 <p>The counts are in <code>dds@assays@data@listData[["counts"]]</code> and the metadata are in <code>dds@colData</code> but the easiest way to see them is to use the <code>counts()</code> and <code>colData()</code> functions from the <strong><code>DESeq2</code></strong> package.</p>
 <p>🎬 View the counts:</p>
 <div class="cell">
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">counts</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in .External2(C_dataviewer, x, title): unable to start data viewer</code></pre>
-</div>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">counts</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You should be able to see that this is the same as in <code>wild_count_mat</code>.</p>
+<p>🎬 View the column information:</p>
 <div class="cell">
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">colData</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">colData</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>DataFrame with 4 rows and 3 columns
                             sample_id    genotype     copper
@@ -864,15 +861,16 @@ SRX028960_wild_suf SRX028960_wild_suf          wt sufficient
 SRX028961_wild_def SRX028961_wild_def          wt deficient </code></pre>
 </div>
 </div>
+<p>You should be able to see this is the same as in <code>meta_wild</code>.</p>
 </section><section id="prepare-the-normalised-counts-1" class="level3"><h3 class="anchored" data-anchor-id="prepare-the-normalised-counts-1">3. Prepare the normalised counts</h3>
 <p>The normalised counts are the counts that have been transformed to account for the library size (i.e., the total number of reads in a sample) and the gene length. We have to first estimate the normalisation factors and store them in the DESeqDataSet object and then we can get the normalised counts.</p>
 <p>🎬 Estimate the factors for normalisation and store them in the DESeqDataSet object:</p>
 <div class="cell">
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu">estimateSizeFactors</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu">estimateSizeFactors</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Look at the factors (just for information):</p>
 <div class="cell">
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">sizeFactors</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">sizeFactors</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>SRX028956_wild_suf SRX028957_wild_def SRX028960_wild_suf SRX028961_wild_def 
          0.8200020          0.4653024          2.3002428          1.1965924 </code></pre>
@@ -881,24 +879,24 @@ SRX028961_wild_def SRX028961_wild_def          wt deficient </code></pre>
 <p>The normalised counts will be useful to use later. To get the normalised counts we again used the <code>counts()</code> function but this time we use the <code>normalized=TRUE</code> argument.</p>
 <p>🎬 Save the normalised to a matrix:</p>
 <div class="cell">
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">normalised_counts</span> <span class="op">&lt;-</span> <span class="fu">counts</span><span class="op">(</span><span class="va">dds</span>, normalized <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">normalised_counts</span> <span class="op">&lt;-</span> <span class="fu">counts</span><span class="op">(</span><span class="va">dds</span>, normalized <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Make a dataframe of the normalised counts, adding a column for the gene ids at the same time:</p>
 <div class="cell">
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wild_normalised_counts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">normalised_counts</span>,</span>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wild_normalised_counts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">normalised_counts</span>,</span>
 <span>                                    gene_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">normalised_counts</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="differential-expression-analysis-2" class="level3"><h3 class="anchored" data-anchor-id="differential-expression-analysis-2">4. Differential expression analysis</h3>
 <p>We use the <code>DESeq()</code> function to do the differential expression analysis. This function fits the statistical model to the data and then uses the model to calculate the significance of the difference between the treatments. It again stores the results in the DESseqDataSet object. Note that the differential expression needs the raw (unnormalised counts) as it does its own normalisation as part of the process.</p>
 <p>🎬 Run the differential expression analysis and store the results in the same object:</p>
 <div class="cell">
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu">DESeq</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu">DESeq</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The function will take only a few moments to run on this data but can take longer for bigger datasets.</p>
 <p>We need to define the contrasts we want to test. We want to test the difference between the treatments so we will define the contrast as <code>sufficient</code> and <code>deficient</code>.</p>
 <p>🎬 Define the contrast:</p>
 <div class="cell">
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">contrast_suf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"copper"</span>, <span class="st">"sufficient"</span>, <span class="st">"deficient"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">contrast_suf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"copper"</span>, <span class="st">"sufficient"</span>, <span class="st">"deficient"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note that <code>copper</code> is the name of the column in the metadata dataframe and <code>sufficient</code> and <code>deficient</code> are the names of the levels in the <code>copper</code> column. By putting them in the order <code>sufficient</code> , <code>deficient</code> we are saying the fold change will be sufficient / deficient. This means:</p>
 <ul>
@@ -908,20 +906,20 @@ SRX028961_wild_def SRX028961_wild_def          wt deficient </code></pre>
 <p>If we had put them in the order <code>deficient</code>, <code>sufficient</code> we would have the reverse.</p>
 <p>🎬 Extract the results from the DESseqDataSet object:</p>
 <div class="cell">
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results_suf</span> <span class="op">&lt;-</span> <span class="fu">results</span><span class="op">(</span><span class="va">dds</span>,</span>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results_suf</span> <span class="op">&lt;-</span> <span class="fu">results</span><span class="op">(</span><span class="va">dds</span>,</span>
 <span>                       contrast <span class="op">=</span> <span class="va">contrast_suf</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This will give us the log<sub>2</sub> fold change, the <em>p</em>-value and the adjusted <em>p</em>-value for the comparison between the sufficient- and<br>
 deficient-copper for each gene.</p>
 <p>🎬 Put the results in a dataframe and add the gene ids as a column:</p>
 <div class="cell">
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wild_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">results_suf</span>,</span>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wild_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">results_suf</span>,</span>
 <span>                          gene_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">results_suf</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>It is useful to have the normalised counts and the statistical results in one dataframe.</p>
 <p>🎬 Merge the two dataframes:</p>
 <div class="cell">
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># merge the results with the normalised counts</span></span>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># merge the results with the normalised counts</span></span>
 <span><span class="va">wild_results</span> <span class="op">&lt;-</span> <span class="va">wild_normalised_counts</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">wild_results</span>, by <span class="op">=</span> <span class="st">"gene_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -941,7 +939,7 @@ deficient-copper for each gene.</p>
 <p>We will use <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> to find these genes.</p>
 <p>🎬 Find the genes that are expressed only at the procyclic-promastigote stage:</p>
 <div class="cell">
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta_pro_only</span> <span class="op">&lt;-</span> <span class="va">pro_meta_filtered</span>  <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta_pro_only</span> <span class="op">&lt;-</span> <span class="va">pro_meta_filtered</span>  <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">lm_pro_1</span> <span class="op">&gt;</span> <span class="fl">0</span>,</span>
 <span>         <span class="va">lm_pro_2</span> <span class="op">&gt;</span> <span class="fl">0</span>,</span>
 <span>         <span class="va">lm_pro_3</span> <span class="op">&gt;</span> <span class="fl">0</span>,</span>
@@ -975,13 +973,13 @@ deficient-copper for each gene.</p>
 <p>The counts must in a <em>matrix</em> rather than a dataframe. Unlike a dataframe, a matrix has columns of all the same type. That is, it will contain only the counts. The gene ids are given as row names rather than a column. The <code><a href="https://rdrr.io/r/base/matrix.html">matrix()</a></code> function will create a matrix from a dataframe of columns of the same type and the <code><a href="https://rdrr.io/pkg/AnnotationDbi/man/AnnotationDb-class.html">select()</a></code> function can be used to remove the gene ids column.</p>
 <p>🎬 Create a matrix of the counts:</p>
 <div class="cell">
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta_count_mat</span> <span class="op">&lt;-</span> <span class="va">pro_meta_filtered</span>  <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta_count_mat</span> <span class="op">&lt;-</span> <span class="va">pro_meta_filtered</span>  <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">gene_id</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Add the gene ids as row names to the matrix:</p>
 <div class="cell">
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># add the row names to the matrix</span></span>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># add the row names to the matrix</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">pro_meta_count_mat</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">pro_meta_filtered</span><span class="op">$</span><span class="va">gene_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You might want to view the matrix (click on it in your environment pane).</p>
@@ -989,19 +987,19 @@ deficient-copper for each gene.</p>
 <p>🎬 Make a folder called <code>meta</code> and save the file to it.</p>
 <p>🎬 Read the metadata into a dataframe:</p>
 <div class="cell">
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_table.html">read_table</a></span><span class="op">(</span><span class="st">"meta/leish_meta_data.txt"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_table.html">read_table</a></span><span class="op">(</span><span class="st">"meta/leish_meta_data.txt"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Examine the resulting dataframe.</p>
 <p>We need to add the sample names as row names to the metadata dataframe. This is because the DESeqDataSet object will use the row names to match the samples in the metadata to the samples in the counts matrix.</p>
 <p>🎬 Add the sample names as row names to the metadata dataframe:</p>
 <div class="cell">
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">meta</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">meta</span><span class="op">$</span><span class="va">sample_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">meta</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">meta</span><span class="op">$</span><span class="va">sample_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>(you will get a warning message but you can ignore it)</p>
 <p>We are dealing only with the wild data so we need to remove the samples that are not in the wild data.</p>
 <p>🎬 Filter the metadata to keep only the procyclic and metacyclic information:</p>
 <div class="cell">
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">meta_pro_meta</span> <span class="op">&lt;-</span> <span class="va">meta</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">meta_pro_meta</span> <span class="op">&lt;-</span> <span class="va">meta</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">stage</span> <span class="op">!=</span> <span class="st">"amastigotes"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can now create the DESeqDataSet object. The design formula describes the statistical model. You should recognise the form from previous work. The <code>~</code> can be read as “explain by” and on its right hand side are the explanatory variables. That is, the model is counts explained by stage status.</p>
@@ -1012,7 +1010,7 @@ deficient-copper for each gene.</p>
 </ul>
 <p>🎬 Create the DESeqDataSet object:</p>
 <div class="cell">
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu">DESeqDataSetFromMatrix</span><span class="op">(</span><span class="va">pro_meta_count_mat</span>,</span>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu">DESeqDataSetFromMatrix</span><span class="op">(</span><span class="va">pro_meta_count_mat</span>,</span>
 <span>                              colData <span class="op">=</span> <span class="va">meta_pro_meta</span>,</span>
 <span>                              design <span class="op">=</span> <span class="op">~</span> <span class="va">stage</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1021,14 +1019,12 @@ deficient-copper for each gene.</p>
 <p>The counts are in <code>dds@assays@data@listData[["counts"]]</code> and the metadata are in <code>dds@colData</code> but the easiest way to see them is to use the <code>counts()</code> and <code>colData()</code> functions from the <strong><code>DESeq2</code></strong> package.</p>
 <p>🎬 View the counts:</p>
 <div class="cell">
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">counts</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in .External2(C_dataviewer, x, title): unable to start data viewer</code></pre>
-</div>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">counts</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You should be able to see that this is the same as in <code>pro_meta_count_mat</code>.</p>
+<p>🎬 View the column information:</p>
 <div class="cell">
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">colData</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">colData</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>DataFrame with 6 rows and 3 columns
             sample_id      stage replicate
@@ -1041,15 +1037,16 @@ lm_meta_2   lm_meta_2 metacyclic         2
 lm_meta_3   lm_meta_3 metacyclic         3</code></pre>
 </div>
 </div>
+<p>You should be able to see this is the same as in <code>meta_pro_meta</code>.</p>
 </section><section id="prepare-the-normalised-counts-2" class="level3"><h3 class="anchored" data-anchor-id="prepare-the-normalised-counts-2">3. Prepare the normalised counts</h3>
 <p>The normalised counts are the counts that have been transformed to account for the library size (i.e., the total number of reads in a sample) and the gene length. We have to first estimate the normalisation factors and store them in the DESeqDataSet object and then we can get the normalised counts.</p>
 <p>🎬 Estimate the factors for normalisation and store them in the DESeqDataSet object:</p>
 <div class="cell">
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu">estimateSizeFactors</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu">estimateSizeFactors</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Look at the factors (just for information):</p>
 <div class="cell">
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">sizeFactors</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">sizeFactors</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> lm_pro_1  lm_pro_2  lm_pro_3 lm_meta_1 lm_meta_2 lm_meta_3 
 1.3029351 0.9158157 0.9943186 0.7849299 0.8443586 1.3250409 </code></pre>
@@ -1058,24 +1055,24 @@ lm_meta_3   lm_meta_3 metacyclic         3</code></pre>
 <p>The normalised counts will be useful to use later. To get the normalised counts we again used the <code>counts()</code> function but this time we use the <code>normalized=TRUE</code> argument.</p>
 <p>🎬 Save the normalised to a matrix:</p>
 <div class="cell">
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">normalised_counts</span> <span class="op">&lt;-</span> <span class="fu">counts</span><span class="op">(</span><span class="va">dds</span>, normalized <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">normalised_counts</span> <span class="op">&lt;-</span> <span class="fu">counts</span><span class="op">(</span><span class="va">dds</span>, normalized <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Make a dataframe of the normalised counts, adding a column for the gene ids at the same time:</p>
 <div class="cell">
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta_normalised_counts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">normalised_counts</span>,</span>
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta_normalised_counts</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">normalised_counts</span>,</span>
 <span>                                    gene_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">normalised_counts</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="differential-expression-analysis-3" class="level3"><h3 class="anchored" data-anchor-id="differential-expression-analysis-3">4. Differential expression analysis</h3>
 <p>We use the <code>DESeq()</code> function to do the differential expression analysis. This function fits the statistical model to the data and then uses the model to calculate the significance of the difference between the treatments. It again stores the results in the DESseqDataSet object. Note that the differential expression needs the raw (unnormalised counts) as it does its own normalisation as part of the process.</p>
 <p>🎬 Run the differential expression analysis and store the results in the same object:</p>
 <div class="cell">
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu">DESeq</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu">DESeq</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The function will take only a few moments to run on this data but can take longer for bigger datasets.</p>
 <p>We need to define the contrasts we want to test. We want to test the difference between the treatments so we will define the contrast as <code>procyclic</code> and <code>metacyclic</code>.</p>
 <p>🎬 Define the contrast:</p>
 <div class="cell">
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">contrast_pro_meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"stage"</span>, <span class="st">"procyclic"</span>, <span class="st">"metacyclic"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">contrast_pro_meta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"stage"</span>, <span class="st">"procyclic"</span>, <span class="st">"metacyclic"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Note that <code>stage</code> is the name of the column in the metadata dataframe and <code>procyclic</code> and <code>metacyclic</code> are the names of the levels in the <code>stage</code> column. By putting them in the order <code>procyclic</code> , <code>metacyclic</code> we are saying the fold change will be procyclic / metacyclic. This means:</p>
 <ul>
@@ -1085,23 +1082,23 @@ lm_meta_3   lm_meta_3 metacyclic         3</code></pre>
 <p>If we had put them in the order <code>metacyclic</code>, <code>procyclic</code> we would have the reverse.</p>
 <p>🎬 Extract the results from the DESseqDataSet object:</p>
 <div class="cell">
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results_pro_meta</span> <span class="op">&lt;-</span> <span class="fu">results</span><span class="op">(</span><span class="va">dds</span>,</span>
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results_pro_meta</span> <span class="op">&lt;-</span> <span class="fu">results</span><span class="op">(</span><span class="va">dds</span>,</span>
 <span>                       contrast <span class="op">=</span> <span class="va">contrast_pro_meta</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This will give us the log<sub>2</sub> fold change, the <em>p</em>-value and the adjusted <em>p</em>-value for the comparison between procyclic and metacyclic stage for each gene</p>
 <p>🎬 Put the results in a dataframe and add the gene ids as a column:</p>
 <div class="cell">
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">results_pro_meta</span>,</span>
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">results_pro_meta</span>,</span>
 <span>                          gene_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">results_pro_meta</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>It is useful to have the normalised counts and the statistical results in one dataframe.</p>
 <p>🎬 Merge the two dataframes:</p>
 <div class="cell">
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># merge the results with the normalised counts</span></span>
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># merge the results with the normalised counts</span></span>
 <span><span class="va">pro_meta_results</span> <span class="op">&lt;-</span> <span class="va">pro_meta_normalised_counts</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">pro_meta_results</span>, by <span class="op">=</span> <span class="st">"gene_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Now go to <a href="#leishmania-mexicana-3">Add gene information</a>.</p>
+<p>Now go to <a href="#leishmania-3">Add gene information</a>.</p>
 </section></section><section id="stem-cells-2" class="level2"><h2 class="anchored" data-anchor-id="stem-cells-2">🐭 Stem cells</h2>
 <p>DE instructions</p>
 <p>Now go to <a href="#stem-cells-3">Add gene information</a>.</p>
@@ -1114,41 +1111,41 @@ lm_meta_3   lm_meta_3 metacyclic         3</code></pre>
 <li><p>I downloaded <a href="https://download.xenbase.org/xenbase/GenePageReports/xenbase.gpi.gz">xenbase.gpi.gz</a>, unzipped it, removed header lines and the <em>Xenopus tropicalis</em> (taxon:8364) entries and saved it as <a href="meta/xenbase_info.xlsx">xenbase_info.xlsx</a></p></li>
 </ul>
 <p>If you want to emulate what I did you can use the following commands in the terminal after downloading the file:</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> xenbase.gpi.gz</span>
-<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> xenbase.gpi</span>
-<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="ex">q</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> xenbase.gpi.gz</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> xenbase.gpi</span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="ex">q</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>gunzip</code> unzips the file and <code>less</code> allows you to view the file. <code>q</code> quits the viewer. You will see the header lines and that the file contains both <em>Xenopus tropicalis</em> and <em>Xenopus laevis</em>. I read the file in with <code>read_tsv</code> (skipping the first header lines) then filtered out the <em>Xenopus tropicalis</em> entries, dropped some columns and saved the file as an excel file.</p>
 <p>However, I have already done this for you and saved the file as <a href="meta/xenbase_info.xlsx">xenbase_info.xlsx</a> in the <code>meta</code> folder. We will import this file and join it to the results dataframe.</p>
 <p>🎬 Load the <strong><code>readxl</code></strong> <span class="citation" data-cites="readxl">(<a href="#ref-readxl" role="doc-biblioref">Wickham and Bryan 2023</a>)</span> package:</p>
 <div class="cell">
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Import the Xenbase gene information file:</p>
 <div class="cell">
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gene_info</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"meta/xenbase_info.xlsx"</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gene_info</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"meta/xenbase_info.xlsx"</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You should view the resulting dataframe to see what information is available. You can use <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> or <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code>.</p>
 <p>🎬 Merge the gene information with the results:</p>
 <div class="cell">
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># join the gene info with the results</span></span>
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># join the gene info with the results</span></span>
 <span><span class="va">s30_results</span> <span class="op">&lt;-</span> <span class="va">s30_results</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">gene_info</span>, by <span class="op">=</span> <span class="st">"xenbase_gene_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Save the results to a file:</p>
 <div class="cell">
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">s30_results</span>, file <span class="op">=</span> <span class="st">"results/s30_results.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">s30_results</span>, file <span class="op">=</span> <span class="st">"results/s30_results.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="arabidopisis-3" class="level2"><h2 class="anchored" data-anchor-id="arabidopisis-3">🎄 <em>Arabidopisis</em>
 </h2>
-<p><a href="https://www.ensembl.org/index.html">Ensembl</a> <span class="citation" data-cites="martin2023 birney2004">(<a href="#ref-martin2023" role="doc-biblioref">Martin et al. 2023</a>; <a href="#ref-birney2004" role="doc-biblioref">Birney et al. 2004</a>)</span>is a bioinformatics project to organise all the biological information around the sequences of large genomes. The are a large number of databases but <a href="https://www.ensembl.org/info/data/biomart/index.html">BioMart</a> <span class="citation" data-cites="smedley2009">(<a href="#ref-smedley2009" role="doc-biblioref">Smedley et al. 2009</a>)</span> provides a consistent interface to the material. There are web-based tools to use these but the R package <strong><code>biomaRt</code></strong> <span class="citation" data-cites="biomaRt1 biomaRt2">(<a href="#ref-biomaRt1" role="doc-biblioref">Durinck et al. 2009</a>, <a href="#ref-biomaRt2" role="doc-biblioref">2005</a>)</span> gives you programmatic access making it easier to integrate information into R dataframes</p>
+<p><a href="https://www.ensembl.org/index.html">Ensembl</a> <span class="citation" data-cites="martin2023 birney2004">(<a href="#ref-martin2023" role="doc-biblioref">Martin et al. 2023</a>; <a href="#ref-birney2004" role="doc-biblioref">Birney et al. 2004</a>)</span>is a bioinformatics project to organise all the biological information around the sequences of large genomes. The are a large number of databases and <a href="https://www.ensembl.org/info/data/biomart/index.html">BioMart</a> <span class="citation" data-cites="smedley2009">(<a href="#ref-smedley2009" role="doc-biblioref">Smedley et al. 2009</a>)</span> provides a consistent interface to the material. There are web-based tools to use these but the R package <strong><code>biomaRt</code></strong> <span class="citation" data-cites="biomaRt1 biomaRt2">(<a href="#ref-biomaRt1" role="doc-biblioref">Durinck et al. 2009</a>, <a href="#ref-biomaRt2" role="doc-biblioref">2005</a>)</span> gives you programmatic access making it easier to integrate information into R dataframes.</p>
 <p>🎬 Load the <strong><code>biomaRt</code></strong> <span class="citation" data-cites="biomaRt1 biomaRt2">(<a href="#ref-biomaRt1" role="doc-biblioref">Durinck et al. 2009</a>, <a href="#ref-biomaRt2" role="doc-biblioref">2005</a>)</span> package:</p>
 <div class="cell">
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/grimbough/biomaRt">biomaRt</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/grimbough/biomaRt">biomaRt</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The <strong><code>biomaRt</code></strong> package includes a function to list all the available datasets</p>
 <p>🎬 List the Ensembl “marts” available:</p>
 <div class="cell">
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/listEnsembl.html">listEnsemblGenomes</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/listEnsembl.html">listEnsemblGenomes</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              biomart                        version
 1       protists_mart      Ensembl Protists Genes 59
@@ -1164,7 +1161,7 @@ lm_meta_3   lm_meta_3 metacyclic         3</code></pre>
 <p><code>plants_mart</code> looks like the one we want. We can see what genomes are available with names like “Arabidopsis” in this mart using the <code><a href="https://rdrr.io/pkg/biomaRt/man/listDatasets.html">searchDatasets()</a></code> function.</p>
 <p>🎬</p>
 <div class="cell">
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/listDatasets.html">searchDatasets</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/useEnsembl.html">useEnsemblGenomes</a></span><span class="op">(</span>biomart <span class="op">=</span> <span class="st">"plants_mart"</span><span class="op">)</span>, </span>
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/listDatasets.html">searchDatasets</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/useEnsembl.html">useEnsemblGenomes</a></span><span class="op">(</span>biomart <span class="op">=</span> <span class="st">"plants_mart"</span><span class="op">)</span>, </span>
 <span>               pattern <span class="op">=</span> <span class="st">"Arabidopsis"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             dataset                         description version
@@ -1176,21 +1173,18 @@ lm_meta_3   lm_meta_3 metacyclic         3</code></pre>
 <p><code>athaliana_eg_gene</code> is the Arabidopsis thaliana genes (TAIR10) dataset we want.</p>
 <p>🎬 Connect to the <code>athaliana_eg_gene</code> database in <code>plants_mart</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ensembl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/useEnsembl.html">useEnsemblGenomes</a></span><span class="op">(</span>biomart <span class="op">=</span> <span class="st">"plants_mart"</span>,</span>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ensembl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/useEnsembl.html">useEnsemblGenomes</a></span><span class="op">(</span>biomart <span class="op">=</span> <span class="st">"plants_mart"</span>,</span>
 <span>                             dataset <span class="op">=</span> <span class="st">"athaliana_eg_gene"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 See the the types of information we can retrieve:</p>
 <div class="cell">
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/listAttributes.html">listAttributes</a></span><span class="op">(</span>mart <span class="op">=</span> <span class="va">ensembl</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in .External2(C_dataviewer, x, title): unable to start data viewer</code></pre>
-</div>
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/listAttributes.html">listAttributes</a></span><span class="op">(</span>mart <span class="op">=</span> <span class="va">ensembl</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>There are many (1,714!) possible bits of information (attributes) that can be obtained.</p>
 <p>We use the <code><a href="https://rdrr.io/pkg/biomaRt/man/getBM.html">getBM()</a></code> function to retrieve information from the database. The <code>filters</code> argument is used to specified what kind of identifier we are supplying in <code>values</code> to retrieve information. The <code>attributes</code> argument is used to select the information we want to retrieve. The <code>values</code> argument is used to specify the identifiers. The mart argument is used to specify the connection we created.</p>
 <p>🎬 Get the the gene name and a description. We also retreive the gene id so we can later join the information with the results:</p>
 <div class="cell">
-<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gene_info</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/getBM.html">getBM</a></span><span class="op">(</span>filters <span class="op">=</span> <span class="st">"ensembl_gene_id"</span>,</span>
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gene_info</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/getBM.html">getBM</a></span><span class="op">(</span>filters <span class="op">=</span> <span class="st">"ensembl_gene_id"</span>,</span>
 <span>                   attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ensembl_gene_id"</span>,</span>
 <span>                                  <span class="st">"external_gene_name"</span>,</span>
 <span>                                  <span class="st">"description"</span><span class="op">)</span>,</span>
@@ -1200,18 +1194,22 @@ lm_meta_3   lm_meta_3 metacyclic         3</code></pre>
 <p>You should view the resulting dataframe to see what information is available. You can use <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> or <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code>.</p>
 <p>🎬 Merge the gene information with the results:</p>
 <div class="cell">
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># join the gene info with the results</span></span>
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># join the gene info with the results</span></span>
 <span><span class="va">wild_results</span> <span class="op">&lt;-</span> <span class="va">wild_results</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">gene_info</span>,</span>
 <span>            by <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/join_by.html">join_by</a></span><span class="op">(</span><span class="va">gene_id</span> <span class="op">==</span> <span class="va">ensembl_gene_id</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Save the results to a file:</p>
 <div class="cell">
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">wild_results</span>, file <span class="op">=</span> <span class="st">"results/wild_results.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">wild_results</span>, file <span class="op">=</span> <span class="st">"results/wild_results.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="leishmania-3" class="level2"><h2 class="anchored" data-anchor-id="leishmania-3">💉 <em>Leishmania</em>
 </h2>
 <p>???</p>
+<p>🎬 Save the results to a file:</p>
+<div class="cell">
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">pro_meta_results</span>, file <span class="op">=</span> <span class="st">"results/pro_meta_results .csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section><section id="stem-cells-3" class="level2"><h2 class="anchored" data-anchor-id="stem-cells-3">🐭 Stem cells</h2>
 </section></section><section id="look-after-future-you" class="level1"><h1>🤗 Look after future you!</h1>
 <p>🎬 Go through you script and tidy up. You might need to :</p>
