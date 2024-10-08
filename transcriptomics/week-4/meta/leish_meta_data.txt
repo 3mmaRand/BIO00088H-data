@@ -1,0 +1,10 @@
+sample_id	stage	replicate
+lm_ama_1 amastigotes 1
+lm_ama_2 amastigotes 2
+lm_ama_3 amastigotes 3
+lm_pro_1 procyclic 1
+lm_pro_2 procyclic 2
+lm_pro_3 procyclic 3
+lm_meta_1 metacyclic 1
+lm_meta_2 metacyclic 2
+lm_meta_3 metacyclic 3

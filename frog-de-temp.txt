@@ -1,4 +1,4 @@
-## 🎄 *Arabidopisis*
+## 💉 *Leishmania* 
 
 These are the steps we will take
 
@@ -19,10 +19,10 @@ replicates in the other group. For example, those shown here:
 
 ```{r}
 #| echo: false
-# sort the data by the values in the control column
-wild_filtered |>  
-  filter(SRX028957_wild_def == 0) |> 
-  filter(SRX028961_wild_def == 0) |>
+pro_meta_filtered  |>  
+  filter(meta1 == 0) |> 
+  filter(meta2 == 0) |>
+  filter(meta3 == 0) |>
   head(5) |>
   knitr::kable()
 
@@ -30,41 +30,45 @@ wild_filtered |>
 
 We will use `filter()` to find these genes.
 
-🎬 Find the genes that are expressed only in the sufficient copper group:
+🎬 Find the genes that are expressed only in the procyclic-promastigote stage group:
 
 ```{r}
-wild_suf_only <- wild_filtered |>
-  filter(SRX028961_wild_def == 0,
-         SRX028957_wild_def == 0,
-         SRX028960_wild_suf > 0,
-         SRX028956_wild_suf > 0)
+pro_meta_pro_only <- pro_meta_filtered  |>
+  filter(pro1 > 0,
+         pro2 > 0,
+         pro3 > 0,
+         meta1 == 0,
+         meta2 == 0,
+         meta2 == 0)
 ```
 
-❓ How many genes are expressed only in the sufficient copper group?
+❓ How many genes are expressed only in the procyclic-promastigote stage group?
 
 <!-- #---THINKING ANSWER--- -->
 
-<!-- There are 19 genes expressed only in the sufficient copper group. -->
+<!-- There are 19 genes expressed only in the procyclic-promastigote stage group. -->
 
-🎬 Now you find any genes that are expressed only in the deficient 
-   copper group.
+🎬 Now you find any genes that are expressed only in the meta 
+   stage group.
 
 ```{r}
 #| echo: false
 #---CODING ANSWER---
-wild_def_only <- wild_filtered |>
-  filter(SRX028961_wild_def > 0,
-         SRX028957_wild_def > 0,
-         SRX028960_wild_suf == 0,
-         SRX028956_wild_suf == 0)
+pro_meta_meta_only <- pro_meta_filtered  |>
+  filter(pro1 == 0,
+         pro2 == 0,
+         pro3 == 0,
+         meta1 > 0,
+         meta2 > 0,
+         meta2 > 0)
 
 ```
 
-❓ How many genes are expressed only in the deficient copper group?
+❓ How many genes are expressed only in the meta stage group?
 
 <!-- #---THINKING ANSWER--- -->
 
-<!-- There are 3 genes expressed only in the deficient copper group. -->
+<!-- There are 3 genes expressed only in the meta stage group. -->
 
 ❓ Do the results make sense to you in light of what you know about the
 biology?
@@ -72,8 +76,8 @@ biology?
 <!-- #---THINKING ANSWER--- -->
 
 <!-- This is wildtype plant so perhaps normal processes do not happen  -->
-<!-- when copper is deficient and because the plant does not have 
-<!-- adaptations for deficient copper, no compensatory processes kick in. <!-- <!-- However, I'm not an expert in Arabidopsis, or plants! -->
+<!-- when stage is meta and because the plant does not have 
+<!-- adaptations for meta stage, no compensatory processes kick in. <!-- <!-- However, I'm not an expert in Arabidopsis, or plants! -->
 <!-- Domain expertise is important when analysing data so  -->
 <!-- discuss your results with Liz and your group. -->
 
@@ -83,8 +87,8 @@ biology?
 ```{r}
 #| echo: false
 #---CODING ANSWER---
-write_csv(wild_suf_only, "results/wild_suf_only.csv")
-write_csv(wild_def_only, "results/wild_def_only.csv")
+write_csv(pro_meta_pro_only, "results/pro_meta_pro_only.csv")
+write_csv(pro_meta_meta_only, "results/pro_meta_meta_only.csv")
 ```
 
 ### 2. Create DESeqDataSet object
@@ -111,7 +115,7 @@ metadata and experimental designs within them.
 
 To create a DESeqDataSet object, we need to provide three things:
 
--  The raw counts - these are in `wild_filtered`
+-  The raw counts - these are in `pro_meta_filtered `
 -  The meta data which gives information about the samples and which
     treatment groups they belong to
 -  A design matrix which captures the design of the statistical model.
@@ -126,7 +130,7 @@ gene ids column.
 🎬 Create a matrix of the counts:
 
 ```{r}
-wild_count_mat <- wild_filtered |>
+pro_meta_count_mat <- pro_meta_filtered  |>
   select(-gene_id) |>
   as.matrix()
 ```
@@ -135,7 +139,7 @@ wild_count_mat <- wild_filtered |>
 
 ```{r}
 # add the row names to the matrix
-rownames(wild_count_mat) <- wild_filtered$gene_id
+rownames(pro_meta_count_mat) <- pro_meta_filtered $gene_id
 
 ```
 
@@ -145,7 +149,7 @@ The metadata are in a file,
 [arab_meta_data.txt](meta/arab_meta_data.txt). This is a
 tab-delimited file. The first column is the sample name and the other 
 columns give the "treatments". In this case, the treatments genotype (with
-two levels) and copper (with two levels).
+two levels) and stage (with two levels).
 
 🎬 Make a folder called `meta` and save the file to it.
 
@@ -184,7 +188,7 @@ We can now create the DESeqDataSet object. The design formula describes
 the statistical model. You should recognise the form from previous work. 
 The `~` can be read as "explain by" and on its right hand side are 
 the explanatory variables. That is, the model is counts explained by
-copper status.
+stage status.
 
 Note that:
 
@@ -197,13 +201,13 @@ Note that:
 🎬 Create the DESeqDataSet object:
 
 ```{r}
-dds <- DESeqDataSetFromMatrix(wild_count_mat,
+dds <- DESeqDataSetFromMatrix(pro_meta_count_mat,
                               colData = meta_wild,
-                              design = ~ copper)
+                              design = ~ stage)
 ```
 
 The warning "Warning: some variables in design formula are characters,
-converting to factors" just means that the variable type of copper in the metadata dataframe is "char" and it has been
+converting to factors" just means that the variable type of stage in the metadata dataframe is "char" and it has been
 converted into a factor type.
 
 To help you understand what the `DESeqDataSet` object we have called 
@@ -219,7 +223,7 @@ the `counts()` and `colData()` functions from the **`DESeq2`** package.
 counts(dds) |> View()
 ```
 
-You should be able to see that this is the same as in `wild_count_mat`.
+You should be able to see that this is the same as in `pro_meta_count_mat`.
 
 ```{r}
 colData(dds)
@@ -262,7 +266,7 @@ normalised_counts <- counts(dds, normalized = TRUE)
 ids at the same time:
 
 ```{r}
-wild_normalised_counts <- data.frame(normalised_counts,
+pro_meta_normalised_counts <- data.frame(normalised_counts,
                                     gene_id = row.names(normalised_counts))
 
 ```
@@ -288,41 +292,41 @@ take longer for bigger datasets.
 
 We need to define the contrasts we want to test. We want to test the
 difference between the treatments so we will define the contrast as
-`sufficient` and `deficient`.
+`pro` and `meta`.
 
 🎬 Define the contrast:
 
 ```{r}
-contrast_suf <- c("copper", "sufficient", "deficient")
+contrast_suf <- c("stage", "pro", "meta")
 ```
 
-Note that `copper` is the name of the column in the metadata
-dataframe and `sufficient` and `deficient` are the names of the levels in the
-`copper` column. By putting them in the order `sufficient` , `deficient` we
-are saying the fold change will be sufficient / deficient.  This means:
+Note that `stage` is the name of the column in the metadata
+dataframe and `pro` and `meta` are the names of the levels in the
+`stage` column. By putting them in the order `pro` , `meta` we
+are saying the fold change will be pro / meta.  This means:
 
--   positive log fold changes indicate sufficient \> deficient and
--   negative log fold changes indicates deficient \> sufficient.
+-   positive log fold changes indicate pro \> meta and
+-   negative log fold changes indicates meta \> pro.
 
-If we had put them in the order `deficient`, `sufficient` we would have 
+If we had put them in the order `meta`, `pro` we would have 
 the reverse.
 
 🎬 Extract the results from the DESseqDataSet object:
 
 ```{r}
-results_suf <- results(dds,
-                       contrast = contrast_suf)
+results_pro <- results(dds,
+                       contrast = contrast_pro)
 ```
 
 This will give us the log~2~ fold change, the  *p*-value and the 
-adjusted  *p*-value for the comparison between the sufficient- and  
-deficient-copper for each gene.
+adjusted  *p*-value for the comparison between the pro- and  
+meta-stage for each gene.
 
 🎬 Put the results in a dataframe and add the gene ids as a column:
 
 ```{r}
-wild_results <- data.frame(results_suf,
-                          gene_id = row.names(results_suf))
+pro_meta_results <- data.frame(results_pro,
+                          gene_id = row.names(results_pro))
 ```
 
 It is useful to have the normalised counts and the statistical results in 
@@ -331,8 +335,8 @@ one dataframe.
 🎬 Merge the two dataframes:
 ```{r}
 # merge the results with the normalised counts
-wild_results <- wild_normalised_counts |>
-  left_join(wild_results, by = "gene_id")
+pro_meta_results <- pro_meta_normalised_counts |>
+  left_join(pro_meta_results, by = "gene_id")
 ```
 
 Now go to [Add gene information](#arabidopisis-4).
@@ -340,7 +344,7 @@ Now go to [Add gene information](#arabidopisis-4).
 
 # Add gene information
 
-## 🎄 *Arabidopisis*
+## 💉 *Leishmania* 
 
 [Ensembl](https://www.ensembl.org/index.html) [@martin2023;
 @birney2004]is a bioinformatics project to organise all the biological
@@ -403,7 +407,7 @@ gene_info <- getBM(filters = "ensembl_gene_id",
                    attributes = c("ensembl_gene_id",
                                   "external_gene_name",
                                   "description"),
-                   values = wild_results$gene_id,
+                   values = pro_meta_results$gene_id,
                    mart = ensembl)
 ```
 
@@ -415,7 +419,7 @@ available. You can use `glimpse()` or `View()`.
 
 ```{r}
 # join the gene info with the results
-wild_results <- wild_results |>
+pro_meta_results <- pro_meta_results |>
   left_join(gene_info,
             by = join_by(gene_id == ensembl_gene_id))
 ```
@@ -423,7 +427,7 @@ wild_results <- wild_results |>
 🎬 Save the results to a file:
 
 ```{r}
-write_csv(wild_results, file = "results/wild_results.csv")
+write_csv(pro_meta_results, file = "results/pro_meta_results.csv")
 ```
 
 ```
