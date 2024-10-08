@@ -656,7 +656,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 </div>
 <p>(Note the warning is expected since we have zero means).</p>
 <p>You can see we also have quite a few genes with means less than 1 (log below zero). Note that the variability between genes (average counts between 0 and 102586) is far greater than between samples (average counts from 260 to 426) which is exactly what we would expect to see.</p>
-<p>Now go to <a href="#frog-development-2">Filtering for QC</a>.</p>
+<p>Now go to <a href="#frog-development-1">Filtering for QC</a>.</p>
 </section></section><section id="arabidopsis" class="level2"><h2 class="anchored" data-anchor-id="arabidopsis">🎄 <em>Arabidopsis</em>
 </h2>
 <section id="import-1" class="level3"><h3 class="anchored" data-anchor-id="import-1">Import</h3>
@@ -846,7 +846,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 </div>
 <p>(Note the warning is expected since we have zero means).</p>
 <p>You can see we also have quite a few genes with means less than 1 (log below zero). Note that the variability between genes (average counts between 0 and 43348) is far greater than between samples (average counts from 70 to 296) which is exactly what we would expect to see.</p>
-<p>Now go to <a href="#arabidopisis-2">Filtering for QC</a>.</p>
+<p>Now go to <a href="#arabidopisis-1">Filtering for QC</a>.</p>
 </section></section><section id="leishmania" class="level2"><h2 class="anchored" data-anchor-id="leishmania">💉 <em>Leishmania</em>
 </h2>
 <section id="import-2" class="level3"><h3 class="anchored" data-anchor-id="import-2">Import</h3>
@@ -1050,7 +1050,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 </div>
 <p>(Note the warning is expected since we have zero means).</p>
 <p>You can see we also have quite a few genes with means less than 1 (log below zero). Note that the variability between genes (average counts between 0 and 349606) is far greater than between samples (average counts from 220 to 364) which is exactly what we would expect to see.</p>
-<p>Now go to <a href="#leishmania-mexicana-2">Filtering for QC</a>.</p>
+<p>Now go to <a href="#leishmania-mexicana-1">Filtering for QC</a>.</p>
 </section></section><section id="stem-cells" class="level2"><h2 class="anchored" data-anchor-id="stem-cells">🐭 Stem cells</h2>
 <section id="import-3" class="level3"><h3 class="anchored" data-anchor-id="import-3">Import</h3>
 <p>Import the data for the HSPC and the Progenitor cells.</p>
@@ -1176,7 +1176,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 </div>
 </div>
 <p>Note that the variability between genes (average expression between 0.020 and and 9.567) is far greater than between cells (average expression from 1.319 to 9.567) which is just what we would expect.</p>
-<p>Now go to <a href="#stem-cells-2">Filtering for QC</a>.</p>
+<p>Now go to <a href="#stem-cells-1">Filtering for QC</a>.</p>
 </section></section></section><section id="filtering-for-qc" class="level1"><h1>Filtering for QC</h1>
 <section id="frog-development-1" class="level2"><h2 class="anchored" data-anchor-id="frog-development-1">🐸 Frog development</h2>
 <p>Our samples look to be similarly well sequenced. There are no samples we should remove. However, some genes are not expressed or the expression values are so low in for a gene that they are uninformative. We will filter the <code>s30_summary_gene</code> dataframe to obtain a list of <code>xenbase_gene_id</code> we can use to filter <code>s30</code>.</p>
@@ -1201,6 +1201,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <div class="sourceCode" id="cb51"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">s30_filtered</span>, </span>
 <span>          file <span class="op">=</span> <span class="st">"data-processed/s30_filtered.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Now go to <a href="#frogs-and-future-you">Look after future you</a></p>
 </section><section id="arabidopsis-1" class="level2"><h2 class="anchored" data-anchor-id="arabidopsis-1">🎄 <em>Arabidopsis</em>
 </h2>
 <p>Our samples look to be similarly well sequenced although this is difficult to determine with only two replicates. However, some genes are not expressed or the expression values are so low in for a gene that they are uninformative. We will filter the <code>wild_summary_gene</code> dataframe to obtain a list of <code>gene_id</code> we can use to filter <code>wild</code>.</p>
@@ -1225,6 +1226,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">wild_filtered</span>, </span>
 <span>          file <span class="op">=</span> <span class="st">"data-processed/wild_filtered.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Now go to <a href="#arabidopsis-and-future-you">Look after future you</a></p>
 </section><section id="leishmania-1" class="level2"><h2 class="anchored" data-anchor-id="leishmania-1">💉 <em>Leishmania</em>
 </h2>
 <p>Our samples look to be similarly well sequenced. There are no samples we should remove. However, some genes are not expressed or the expression values are so low in for a gene that they are uninformative. We will filter the <code>pro_meta_summary_gene</code> dataframe to obtain a list of <code>gene_id</code> we can use to filter <code>pro_meta</code>.</p>
@@ -1249,8 +1251,10 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <div class="sourceCode" id="cb57"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">pro_meta_filtered</span>, </span>
 <span>          file <span class="op">=</span> <span class="st">"data-processed/pro_meta_filtered.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Now go to <a href="#leishmania-and-future-you">Look after future you</a></p>
 </section><section id="stem-cells-1" class="level2"><h2 class="anchored" data-anchor-id="stem-cells-1">🐭 Stem cells</h2>
 <p>In this dataset, we will not see and genes that are not expressed in any of the cells because we are using a specific subset of the transcriptome that was deliberately selected. This means we do not need to filter for unexpressed genes.</p>
+<p>Now go to <a href="#stem-cells-and-future-you">Look after future you</a></p>
 </section></section><section id="look-after-future-you" class="level1"><h1>🤗 Look after future you!</h1>
 <p>You need only do the section for your own project data but <strong>completing this step is important</strong>.</p>
 <section id="frogs-and-future-you" class="level2"><h2 class="anchored" data-anchor-id="frogs-and-future-you">🐸 Frogs and future you</h2>
