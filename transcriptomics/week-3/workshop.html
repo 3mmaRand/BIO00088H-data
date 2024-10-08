@@ -349,8 +349,8 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <a href="#filtering-for-qc" id="toc-filtering-for-qc" class="nav-link" data-scroll-target="#filtering-for-qc">Filtering for QC</a>
   <ul>
 <li><a href="#frog-development-1" id="toc-frog-development-1" class="nav-link" data-scroll-target="#frog-development-1">🐸 Frog development</a></li>
-  <li><a href="#arabidopsis-1" id="toc-arabidopsis-1" class="nav-link" data-scroll-target="#arabidopsis-1">🎄 Arabidopsis</a></li>
-  <li><a href="#leishmania-1" id="toc-leishmania-1" class="nav-link" data-scroll-target="#leishmania-1">💉 Leishmania</a></li>
+  <li><a href="#arabidopsis-1" id="toc-arabidopsis-1" class="nav-link" data-scroll-target="#arabidopsis-1">🎄 <em>Arabidopsis</em></a></li>
+  <li><a href="#leishmania-1" id="toc-leishmania-1" class="nav-link" data-scroll-target="#leishmania-1">💉 <em>Leishmania</em></a></li>
   <li><a href="#stem-cells-1" id="toc-stem-cells-1" class="nav-link" data-scroll-target="#stem-cells-1">🐭 Stem cells</a></li>
   </ul>
 </li>
@@ -358,9 +358,9 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <a href="#look-after-future-you" id="toc-look-after-future-you" class="nav-link" data-scroll-target="#look-after-future-you">🤗 Look after future you!</a>
   <ul>
 <li><a href="#frogs-and-future-you" id="toc-frogs-and-future-you" class="nav-link" data-scroll-target="#frogs-and-future-you">🐸 Frogs and future you</a></li>
-  <li><a href="#arabidopsis-and-future-you" id="toc-arabidopsis-and-future-you" class="nav-link" data-scroll-target="#arabidopsis-and-future-you">🎄 Arabidopsis and future you</a></li>
-  <li><a href="#leishmania-and-future-you" id="toc-leishmania-and-future-you" class="nav-link" data-scroll-target="#leishmania-and-future-you">💉 Leishmania and future you</a></li>
-  <li><a href="#mice-and-future-you" id="toc-mice-and-future-you" class="nav-link" data-scroll-target="#mice-and-future-you">🐭 Mice and future you</a></li>
+  <li><a href="#arabidopsis-and-future-you" id="toc-arabidopsis-and-future-you" class="nav-link" data-scroll-target="#arabidopsis-and-future-you">🎄 <em>Arabidopsis</em> and future you</a></li>
+  <li><a href="#leishmania-and-future-you" id="toc-leishmania-and-future-you" class="nav-link" data-scroll-target="#leishmania-and-future-you">💉 <em>Leishmania</em> and future you</a></li>
+  <li><a href="#stem-cells-and-future-you" id="toc-stem-cells-and-future-you" class="nav-link" data-scroll-target="#stem-cells-and-future-you">🐭 Stem cells and future you</a></li>
   </ul>
 </li>
   <li><a href="#finished" id="toc-finished" class="nav-link" data-scroll-target="#finished">🥳 Finished</a></li>
@@ -389,7 +389,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">4 October, 2024</p>
+      <p class="date">8 October, 2024</p>
     </div>
   </div>
   
@@ -1201,7 +1201,8 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <div class="sourceCode" id="cb51"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">s30_filtered</span>, </span>
 <span>          file <span class="op">=</span> <span class="st">"data-processed/s30_filtered.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="arabidopsis-1" class="level2"><h2 class="anchored" data-anchor-id="arabidopsis-1">🎄 Arabidopsis</h2>
+</section><section id="arabidopsis-1" class="level2"><h2 class="anchored" data-anchor-id="arabidopsis-1">🎄 <em>Arabidopsis</em>
+</h2>
 <p>Our samples look to be similarly well sequenced although this is difficult to determine with only two replicates. However, some genes are not expressed or the expression values are so low in for a gene that they are uninformative. We will filter the <code>wild_summary_gene</code> dataframe to obtain a list of <code>gene_id</code> we can use to filter <code>wild</code>.</p>
 <p>My suggestion is to include only the genes with counts in at least 2 samples, and those with total counts above 20. I chose 2 because that would keep genes expressed only in one treatment: [0, 0] [#,#]. This is a difference we cannot test statistically, but which matters biologically.</p>
 <p>🎬 Filter the summary by gene dataframe:</p>
@@ -1224,7 +1225,8 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">wild_filtered</span>, </span>
 <span>          file <span class="op">=</span> <span class="st">"data-processed/wild_filtered.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="leishmania-1" class="level2"><h2 class="anchored" data-anchor-id="leishmania-1">💉 Leishmania</h2>
+</section><section id="leishmania-1" class="level2"><h2 class="anchored" data-anchor-id="leishmania-1">💉 <em>Leishmania</em>
+</h2>
 <p>Our samples look to be similarly well sequenced. There are no samples we should remove. However, some genes are not expressed or the expression values are so low in for a gene that they are uninformative. We will filter the <code>pro_meta_summary_gene</code> dataframe to obtain a list of <code>gene_id</code> we can use to filter <code>pro_meta</code>.</p>
 <p>My suggestion is to include only the genes with counts in at least 3 samples and those with total counts above 20. I chose 3 because that would keep genes expressed only in one treatment: [0, 0, 0] [#,#,#]. This is a difference we cannot test statistically, but which matters biologically.</p>
 <p>🎬 Filter the summary by gene dataframe:</p>
@@ -1253,11 +1255,11 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <p>You need only do the section for your own project data but <strong>completing this step is important</strong>.</p>
 <section id="frogs-and-future-you" class="level2"><h2 class="anchored" data-anchor-id="frogs-and-future-you">🐸 Frogs and future you</h2>
 <p>🎬 Create a new Project, <code>frogs-88H</code>, populated with folders and your data. Make a script file called <code>cont-fgf-s30.R</code>. This will a be commented analysis of the comparison between the control and FGF-treated embroys at S30 comparison. You will build on this each workshop and be able to use it as a template to examine other comparisons. Copy in the <em>appropriate code and comments</em> from <code>workshop-1.R</code>. Edit to improve your comments where your understanding has developed since you made them. Make sure you can close down RStudio, reopen it and run your whole script again.</p>
-</section><section id="arabidopsis-and-future-you" class="level2"><h2 class="anchored" data-anchor-id="arabidopsis-and-future-you">🎄 Arabidopsis and future you</h2>
+</section><section id="arabidopsis-and-future-you" class="level2"><h2 class="anchored" data-anchor-id="arabidopsis-and-future-you">🎄 <em>Arabidopsis</em> and future you</h2>
 <p>🎬 Create a new Project, <code>arab-88H</code>, populated with folders and your data. Make a script file called <code>suff-def-wild.R</code>. This will a be commented analysis of comparison between copper sufficient and copper deficient wildtype plants. You will build on this each workshop and be able to use it as a template to examine other comparisons. Copy in the <em>appropriate code and comments</em> from <code>workshop-1.R</code>. Edit to improve your comments where your understanding has developed since you made them. Make sure you can close down RStudio, reopen it and run your whole script again.</p>
-</section><section id="leishmania-and-future-you" class="level2"><h2 class="anchored" data-anchor-id="leishmania-and-future-you">💉 Leishmania and future you</h2>
+</section><section id="leishmania-and-future-you" class="level2"><h2 class="anchored" data-anchor-id="leishmania-and-future-you">💉 <em>Leishmania</em> and future you</h2>
 <p>🎬 Create a new Project, <code>leish-88H</code>, populated with folders and your data. Make a script file called <code>pro_meta.R</code>. This will a be commented analysis of comparison procyclic promastigote and metacyclic promastigotes. You will build on this each workshop and be able to use it as a template to examine other comparisons. Copy in the <em>appropriate code and comments</em> from <code>workshop-1.R</code>. Edit to improve your comments where your understanding has developed since you made them. Make sure you can close down RStudio, reopen it and run your whole script again.</p>
-</section><section id="mice-and-future-you" class="level2"><h2 class="anchored" data-anchor-id="mice-and-future-you">🐭 Mice and future you</h2>
+</section><section id="stem-cells-and-future-you" class="level2"><h2 class="anchored" data-anchor-id="stem-cells-and-future-you">🐭 Stem cells and future you</h2>
 <p>🎬 Create a new Project, <code>mice-88H</code>, populated with folders and your data. Make a script file called <code>hspc-prog.R</code>. This will a be commented analysis of the hspc cells vs the prog cells. You will build on this each workshop and be able to use it as a template to examine other comparisons. Copy in the <em>appropriate code and comments</em> from <code>workshop-1.R</code>. Edit to improve your comments where your understanding has developed since you made them. Make sure you can close down RStudio, reopen it and run your whole script again.</p>
 </section></section><section id="finished" class="level1"><h1>🥳 Finished</h1>
 <p>Well Done!</p>

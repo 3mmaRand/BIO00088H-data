@@ -429,7 +429,7 @@ Emma Rand
 </div>
 </div>
 
-  <p class="date">4 October, 2024</p>
+  <p class="date">8 October, 2024</p>
 </section><section id="overview" class="slide level2"><h2>Overview</h2>
 <p>In these slides we will:</p>
 <div>
@@ -461,7 +461,7 @@ Emma Rand
 <li class="fragment">across the genes (i.e., averaged over samples/cells) to see variation between genes</li>
 </ul>
 </li>
-<li class="fragment">Saved files of filtered data.</li>
+<li class="fragment">Filtered data for quality control and wrote to file (except 🐭)</li>
 </ul>
 </div>
 </div>
@@ -470,32 +470,45 @@ Emma Rand
 <ul>
 <li><p><a href="../week-3/workshop.html#look-after-future-you">🤗 Look after future you!</a> and</p></li>
 <li><p>the <a href="../week-3/study_after_workshop.html">Independent Study to consolidate</a>, you should have:</p></li>
-</ul></section><section id="frogs" class="slide level2"><h2>🐸 Frogs</h2>
+</ul></section><section id="frog-development" class="slide level2"><h2>🐸 Frog development</h2>
 <ul>
 <li>An RStudio Project called <code>frogs-88H</code> which contains:
 <ul>
-<li>Raw data (S14, S20 and S30)</li>
-<li>Processed data: <code>s30_filtered.csv</code> and equivalent for S14 <em>OR</em> S20)</li>
-<li>Two scripts called <code>cont-fgf-s30.R</code> and either <code>cont-fgf-s20.R</code> <em>OR</em> <code>cont-fgf-s14.R</code>
+<li>Raw data: <code>xlaevis_counts_S14.csv</code>, <code>xlaevis_counts_S20.csv</code>, <code>xlaevis_counts_S30.csv</code>
+</li>
+<li>Processed data: <code>s30_filtered.csv</code>, <code>s20_filtered.csv</code>)</li>
+<li>Two scripts: <code>cont-fgf-s30.R</code>, <code>cont-fgf-s20.R</code>
 </li>
 </ul>
 </li>
 </ul>
 <p>Files should be organised into folders. Code should well commented and easy to read.</p>
-</section><section id="mice" class="slide level2"><h2>🐭 Mice</h2>
+</section><section id="arabidopsis" class="slide level2"><h2>🎄 <em>Arabidopsis</em>
+</h2>
+<ul>
+<li>An RStudio Project called <code>arab-88H</code> which contains:
+<ul>
+<li>Raw data: <code>arabidopsis-wild.csv</code>,<code>arabidopsis-spl7.csv</code>,</li>
+<li>Processed data: <code>wild_filtered.csv</code>, <code>spl7_filtered.csv</code>)</li>
+<li>Two scripts: <code>suff-def-wild.R</code>, <code>suff-def-spl7.R</code>
+</li>
+</ul>
+</li>
+</ul></section><section id="leishmania" class="slide level2"><h2>💉 <em>Leishmania</em>
+</h2>
+</section><section id="stem-cells" class="slide level2"><h2>🐭 Stem cells</h2>
 <ul>
 <li>An RStudio Project called <code>mice-88H</code> which contains
 <ul>
-<li>Raw data (hspc, prog, lthsc)</li>
-<li>Processed data (<code>hspc_summary_gene.csv</code>, <code>hspc_summary_samp.csv</code>, <code>prog_summary_gene.csv</code>, <code>prog_summary_samp.csv</code>)</li>
-</ul>
+<li>Raw data: <code>.csv</code>,<code>.csv</code>, <code>.csv</code>
 </li>
-<li>One script called <code>hspc-prog.R</code>
+<li>Processed data: <code>_filtered.csv</code>, <code>_filtered.csv</code>)</li>
+<li>Two scripts: <code>.R</code>, <code>.R</code>
+</li>
+</ul>
 </li>
 </ul>
 <p>Files should be organised into folders. Code should well commented and easy to read.</p>
-</section><section id="arabidopisis" class="slide level2"><h2>🎄 Arabidopisis</h2>
-</section><section id="leishmania" class="slide level2"><h2>💉 Leishmania</h2>
 </section><section id="if-you-do-not-have-those" class="slide level2"><h2>If you do not have those</h2>
 <p>Go through:</p>
 <ul>
@@ -566,12 +579,14 @@ Emma Rand
 <li class="fragment"><p>Normalisation adjusts raw counts to account for factors that prevent direct comparisons</p></li>
 <li class="fragment"><p>Normalisation usually influences the experimental design as well as the analysis</p></li>
 </ul>
-<section id="normalisation-1" class="slide level2"><h2>Normalisation</h2>
+</div>
+</section><section id="normalisation-1" class="slide level2"><h2>Normalisation</h2>
+<div>
 <ul>
 <li class="fragment"><p>🐭 mice data are normalised</p></li>
 <li class="fragment"><p>🐸 frog, 🎄 Arabidopisis and 💉 Leishmania data are raw counts (not normalised) because the differential expression method will do this.</p></li>
 <li class="fragment"><p>Normalisation is a big topic. See <span class="citation" data-cites="düren2022">Düren, Lederer, and Qin (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>; <span class="citation" data-cites="bullard2010">Bullard et al. (<a href="#/references" role="doc-biblioref" onclick="">2010</a>)</span>; <span class="citation" data-cites="lytal2020">Lytal, Ran, and An (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span>; <span class="citation" data-cites="abrams2019">Abrams et al. (<a href="#/references" role="doc-biblioref" onclick="">2019</a>)</span>; <span class="citation" data-cites="vallejos2017">Vallejos et al. (<a href="#/references" role="doc-biblioref" onclick="">2017</a>)</span>; <span class="citation" data-cites="evans2017">Evans, Hardin, and Stoebel (<a href="#/references" role="doc-biblioref" onclick="">2017</a>)</span></p></li>
-</ul></section>
+</ul>
 </div>
 </section><section id="type-of-de-tests" class="slide level2"><h2>Type of DE tests</h2>
 <div>
@@ -609,24 +624,30 @@ Emma Rand
 <ul>
 <li class="fragment"><p>DE methods require two types of data: the expression data and the meta data</p></li>
 <li class="fragment"><p>The meta data gives the information about the samples</p></li>
-<li class="fragment"><p>It says which samples (columns of data) are in which treatment group (s)</p></li>
-<li class="fragment"><p>It is usually stored in a separate file</p></li>
+<li class="fragment"><p>It says which samples (which columns of data) are in which treatment group (s)</p></li>
+<li class="fragment"><p>Meta data is usually stored in a separate file</p></li>
 </ul>
 </div>
-</section><section id="data" class="slide level2"><h2>🐸 Data</h2>
+</section><section id="frog-development-1" class="slide level2"><h2>🐸 Frog development</h2>
 <ul>
 <li><p>Expression for the whole transcriptome <a href="https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp"><em>X. laevis</em> v10.1 genome assembly</a></p></li>
 <li><p>Values are raw counts</p></li>
 <li><p>The statistical analysis method we will use <strong><code>DESeq2</code></strong> <span class="citation" data-cites="DESeq2">(<a href="#/references" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span> requires raw counts and performs the normalisation itself</p></li>
-</ul></section><section id="arabidopisis-1" class="slide level2"><h2>🎄 Arabidopisis</h2>
+</ul></section><section id="arabidopisis" class="slide level2"><h2>🎄 <em>Arabidopisis</em>
+</h2>
 <ul>
-<li>The statistical analysis method we will use <strong><code>DESeq2</code></strong> <span class="citation" data-cites="DESeq2">(<a href="#/references" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span> requires raw counts and performs the normalisation itself</li>
-</ul></section><section id="leishmania-1" class="slide level2"><h2>💉 Leishmania</h2>
+<li><p>Expression for the whole transcriptome <a href="https://plants.ensembl.org/Arabidopsis_thaliana/Info/Index">ENSEMBL <em>Arabidopsis</em> TAIR10</a><span class="citation" data-cites="yates_ensembl_2022">(<a href="#/references" role="doc-biblioref" onclick="">Yates et al. 2022</a>)</span></p></li>
+<li><p>Values are raw counts</p></li>
+<li><p>The statistical analysis method we will use <strong><code>DESeq2</code></strong> <span class="citation" data-cites="DESeq2">(<a href="#/references" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span> requires raw counts and performs the normalisation itself</p></li>
+</ul></section><section id="leishmania-1" class="slide level2"><h2>💉 <em>Leishmania</em>
+</h2>
 <ul>
-<li>The statistical analysis method we will use <strong><code>DESeq2</code></strong> <span class="citation" data-cites="DESeq2">(<a href="#/references" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span> requires raw counts and performs the normalisation itself</li>
-</ul></section><section id="data-1" class="slide level2"><h2>🐭 Data</h2>
+<li><p>Expression for the whole transcriptome <a href="https://tritrypdb.org/tritrypdb/app/record/dataset/DS_e318592c8e"><em>L. mexicana</em> MHOM/GT/2001/U1103</a><span class="citation" data-cites="rogers_chromosome_2011">(<a href="#/references" role="doc-biblioref" onclick="">Rogers et al. 2011</a>)</span></p></li>
+<li><p>Values are raw counts</p></li>
+<li><p>The statistical analysis method we will use <strong><code>DESeq2</code></strong> <span class="citation" data-cites="DESeq2">(<a href="#/references" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span> requires raw counts and performs the normalisation itself</p></li>
+</ul></section><section id="stem-cells-1" class="slide level2"><h2>🐭 Stem cells</h2>
 <ul>
-<li><p>Expression for a <em>subset</em> of genes, the surfaceome</p></li>
+<li><p>Expression for a <em>subset</em> of the transcriptome, the surfaceome</p></li>
 <li><p>Values are log2 normalised values</p></li>
 <li><p>The statistical analysis method we will use <strong><code>scran</code></strong> <span class="citation" data-cites="scran">(<a href="#/references" role="doc-biblioref" onclick="">Lun, McCarthy, and Marioni 2016</a>)</span> requires normalised values</p></li>
 </ul></section></section><section><section id="adding-gene-information" class="title-slide slide level1 center"><h1>Adding gene information</h1>
@@ -637,7 +658,9 @@ Emma Rand
 <li class="fragment"><p>The gene id is difficult to interpret</p></li>
 <li class="fragment"><p>Therefore we need to add information such as the gene name and a description to the results</p></li>
 <li class="fragment"><p>🐸 Frog data information comes from Xenbase <span class="citation" data-cites="fisher2023">(<a href="#/references" role="doc-biblioref" onclick="">Fisher et al. 2023</a>)</span></p></li>
-<li class="fragment"><p>🐭 Mice data information comes from Ensembl <span class="citation" data-cites="birney2004">(<a href="#/references" role="doc-biblioref" onclick="">Birney et al. 2004</a>)</span></p></li>
+<li class="fragment"><p>🎄 <em>Arabidopisis</em> information comes from TAIR10 <span class="citation" data-cites="yates_ensembl_2022">(<a href="#/references" role="doc-biblioref" onclick="">Yates et al. 2022</a>)</span></p></li>
+<li class="fragment"><p>💉 <em>Leishmania</em> information comes TriTrypDB <span class="citation" data-cites="rogers_chromosome_2011">(<a href="#/references" role="doc-biblioref" onclick="">Rogers et al. 2011</a>)</span></p></li>
+<li class="fragment"><p>🐭 Stem cell information comes from Ensembl <span class="citation" data-cites="birney2004">(<a href="#/references" role="doc-biblioref" onclick="">Birney et al. 2004</a>)</span></p></li>
 </ul>
 </div>
 </section><section id="xenbase" class="slide level2"><h2>🐸 Xenbase</h2>
@@ -648,6 +671,7 @@ Emma Rand
 </div>
 </section><section id="xenbase-1" class="slide level2"><h2>🐸 Xenbase</h2>
 <div>
+<div style="font-size: 80%;">
 <ul>
 <li class="fragment"><p>I got the information from the <a href="https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp">Xenbase information pages</a> under Data Reports | Gene Information</p></li>
 <li class="fragment"><p>This is listed: Xenbase Gene Product Information [readme] <a href="https://download.xenbase.org/xenbase/GenePageReports/xenbase.gpi.gz">gzipped gpi (tab separated)</a></p></li>
@@ -656,6 +680,17 @@ Emma Rand
 <li class="fragment"><p>In the workshop you will import this file and merge the information with the results file</p></li>
 </ul>
 </div>
+</div>
+</section><section id="tair10-through-ensembl" class="slide level2"><h2>🎄 TAIR10 through Ensembl</h2>
+<div>
+<ul>
+<li class="fragment"><p><a href="https://www.ensembl.org/index.html">Ensembl</a> creates, integrates and distributes reference datasets and analysis tools that enable genomics</p></li>
+<li class="fragment"><p><a href="https://grch37.ensembl.org/info/data/biomart/index.html">BioMart</a> <span class="citation" data-cites="smedley2009">(<a href="#/references" role="doc-biblioref" onclick="">Smedley et al. 2009</a>)</span> provides uniform access to these large datasets</p></li>
+<li class="fragment"><p><strong><code>biomaRt</code></strong> <span class="citation" data-cites="biomaRt1 biomaRt2">(<a href="#/references" role="doc-biblioref" onclick="">Durinck et al. 2009</a>, <a href="#/references" role="doc-biblioref" onclick="">2005</a>)</span> is a Bioconductor package gives you programmatic access to BioMart.</p></li>
+<li class="fragment"><p>In the workshop you use this package to get information you can merge with the results file</p></li>
+</ul>
+</div>
+</section><section id="tritrypdb" class="slide level2"><h2>💉 TriTrypDB</h2>
 </section><section id="ensembl" class="slide level2"><h2>🐭 Ensembl</h2>
 <div>
 <ul>
@@ -756,6 +791,9 @@ Ritchie, Matthew E., Belinda Phipson, Di Wu, Yifang Hu, Charity W. Law, Wei Shi,
 <div id="ref-robinson2010" class="csl-entry" role="listitem">
 Robinson, Mark D., Davis J. McCarthy, and Gordon K. Smyth. 2010. <span>“edgeR: A Bioconductor Package for Differential Expression Analysis of Digital Gene Expression Data.”</span> <em>Bioinformatics</em> 26 (1): 139–40. <a href="https://doi.org/10.1093/bioinformatics/btp616">https://doi.org/10.1093/bioinformatics/btp616</a>.
 </div>
+<div id="ref-rogers_chromosome_2011" class="csl-entry" role="listitem">
+Rogers, Matthew B., James D. Hilley, Nicholas J. Dickens, Jon Wilkes, Paul A. Bates, Daniel P. Depledge, David Harris, et al. 2011. <span>“Chromosome and Gene Copy Number Variation Allow Major Structural Change Between Species and Strains of <span>Leishmania</span>.”</span> <em>Genome Research</em> 21 (12): 2129–42. <a href="https://doi.org/10.1101/gr.122945.111">https://doi.org/10.1101/gr.122945.111</a>.
+</div>
 <div id="ref-smedley2009" class="csl-entry" role="listitem">
 Smedley, Damian, Syed Haider, Benoit Ballester, Richard Holland, Darin London, Gudmundur Thorisson, and Arek Kasprzyk. 2009. <span>“BioMart <span></span> Biological Queries Made Easy.”</span> <em>BMC Genomics</em> 10 (1): 22. <a href="https://doi.org/10.1186/1471-2164-10-22">https://doi.org/10.1186/1471-2164-10-22</a>.
 </div>
@@ -770,6 +808,9 @@ Xie, Yihui. 2014. <span>“Knitr: A Comprehensive Tool for Reproducible Research
 </div>
 <div id="ref-knitr1" class="csl-entry" role="listitem">
 ———. 2024. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in r</em>. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
+</div>
+<div id="ref-yates_ensembl_2022" class="csl-entry" role="listitem">
+Yates, Andrew D, James Allen, Ridwan M Amode, Andrey G Azov, Matthieu Barba, Andrés Becerra, Jyothish Bhai, et al. 2022. <span>“Ensembl <span>Genomes</span> 2022: An Expanding Genome Resource for Non-Vertebrates.”</span> <em>Nucleic Acids Research</em> 50 (D1): D996–1003. <a href="https://doi.org/10.1093/nar/gkab1007">https://doi.org/10.1093/nar/gkab1007</a>.
 </div>
 <div id="ref-kableExtra" class="csl-entry" role="listitem">
 Zhu, Hao. 2021. <span>“kableExtra: Construct Complex Table with ’Kable’ and Pipe Syntax.”</span> <a href="https://CRAN.R-project.org/package=kableExtra">https://CRAN.R-project.org/package=kableExtra</a>.
