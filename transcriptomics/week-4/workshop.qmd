@@ -149,7 +149,7 @@ total counts was less than 20.
 pro_meta_filtered <- read_csv("data-processed/pro_meta_filtered.csv")
 ```
 
-Now go to [Differential Expression Analysis](#leishmania-mexicana-2).
+Now go to [Differential Expression Analysis](#leishmania-2).
 
 ## 🐭 Stem cells
 Import
@@ -306,7 +306,7 @@ You might want to view the matrix (click on it in your environment pane).
 
 The metadata are in a file,
 [frog_meta_data.txt](meta/frog_meta_data.txt). This is a
-tab-delimited file. The first column is the sample name and the other #
+tab-delimited file. The first column is the sample name and the other 
 columns give the "treatments". In this case, the treatments stage (with
 three levels) and treatment (with two levels).
 
@@ -382,15 +382,20 @@ the `counts()` and `colData()` functions from the **`DESeq2`** package.
 🎬 View the counts:
 
 ```{r}
+#| eval: false
 counts(dds) |> View()
 ```
 
 You should be able to see that this is the same as in `s30_count_mat`.
 
+🎬 View the column information:
+
 ```{r}
 colData(dds)
 
 ```
+
+You should be able to see this is the same as in `meta_s30`.
 
 ### 3. Prepare the normalised counts
 
@@ -478,7 +483,7 @@ results_fgf <- results(dds,
                        contrast = contrast_fgf)
 ```
 
-TThis will give us the log~2~ fold change, the  *p*-value and the 
+This will give us the log~2~ fold change, the  *p*-value and the 
 adjusted  *p*-value for the comparison between the control and the 
 FGF-treatment for each gene.
 
@@ -722,15 +727,20 @@ the `counts()` and `colData()` functions from the **`DESeq2`** package.
 🎬 View the counts:
 
 ```{r}
+#| eval: false
 counts(dds) |> View()
 ```
 
 You should be able to see that this is the same as in `wild_count_mat`.
 
+🎬 View the column information:
+
 ```{r}
 colData(dds)
 
 ```
+
+You should be able to see this is the same as in `meta_wild`.
 
 ### 3. Prepare the normalised counts
 
@@ -1057,15 +1067,20 @@ the `counts()` and `colData()` functions from the **`DESeq2`** package.
 🎬 View the counts:
 
 ```{r}
+#| eval: false
 counts(dds) |> View()
 ```
 
 You should be able to see that this is the same as in `pro_meta_count_mat`.
 
+🎬 View the column information:
+
 ```{r}
 colData(dds)
 
 ```
+
+You should be able to see this is the same as in `meta_pro_meta`.
 
 ### 3. Prepare the normalised counts
 
@@ -1176,7 +1191,7 @@ pro_meta_results <- pro_meta_normalised_counts |>
   left_join(pro_meta_results, by = "gene_id")
 ```
 
-Now go to [Add gene information](#leishmania-mexicana-3).
+Now go to [Add gene information](#leishmania-3).
 
 ## 🐭 Stem cells
 DE instructions
@@ -1257,11 +1272,11 @@ write_csv(s30_results, file = "results/s30_results.csv")
 [Ensembl](https://www.ensembl.org/index.html) [@martin2023;
 @birney2004]is a bioinformatics project to organise all the biological
 information around the sequences of large genomes. The are a large
-number of databases but [BioMart](https://www.ensembl.org/info/data/biomart/index.html)
+number of databases and [BioMart](https://www.ensembl.org/info/data/biomart/index.html)
 [@smedley2009] provides a consistent interface to the material. There
 are web-based tools to use these but the R package **`biomaRt`**
 [@biomaRt1; @biomaRt2] gives you programmatic access making it easier to 
-integrate information into R dataframes
+integrate information into R dataframes.
 
 🎬 Load the **`biomaRt`** [@biomaRt1; @biomaRt2] package:
 
@@ -1294,6 +1309,7 @@ ensembl <- useEnsemblGenomes(biomart = "plants_mart",
 
 🎬 See the the types of information we can retrieve:
 ```{r}                             
+#| eval: false
 listAttributes(mart = ensembl) |> View()
 ```
 
@@ -1342,6 +1358,12 @@ write_csv(wild_results, file = "results/wild_results.csv")
 ## 💉 *Leishmania* 
 
 ???
+
+🎬 Save the results to a file:
+
+```{r}
+write_csv(pro_meta_results, file = "results/pro_meta_results .csv")
+```
 
 
 ## 🐭 Stem cells
