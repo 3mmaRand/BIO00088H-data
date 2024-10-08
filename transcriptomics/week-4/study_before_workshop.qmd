@@ -88,11 +88,9 @@ easy to read.
 ## 🐭 Stem cells
 
 -   An RStudio Project called `mice-88H` which contains
-    -   Raw data (hspc, prog, lthsc)
-    -   Processed data (`hspc_summary_gene.csv`,
-        `hspc_summary_samp.csv`, `prog_summary_gene.csv`,
-        `prog_summary_samp.csv`)
--   One script called `hspc-prog.R`
+    -   Raw data: `.csv`,`.csv`, `.csv`
+    -   Processed data: `_filtered.csv`,  `_filtered.csv`)
+    -   Two scripts: `.R`, `.R`
 
 Files should be organised into folders. Code should well commented and
 easy to read.

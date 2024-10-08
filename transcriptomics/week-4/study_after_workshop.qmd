@@ -14,10 +14,17 @@ You need only do the section for your own project data
 
 🐸 Frog development
 
-🎬 Open your `frogs-88H` RStudio Project and the script you began in the Consolidation study last week. This will be `cont-fgf-s20.R` or `cont-fgf-s14.R` depending on which stage you moved to. Use the differential expression analysis you did in the workshop (in `cont-fgf-s30.R`) as a template to continue your script. 
+🎬 Open your `frogs-88H` RStudio Project and the `cont-fgf-s20.R` script 
+you began in the Consolidation study last week. Use the differential 
+expression analysis you did in the workshop (in `cont-fgf-s30.R`) as 
+a template to continue your script. 
 
 🎄 Arabidopisis
 
+🎬 Open your `arab-88H` RStudio Project and the `suff-def-spl7.R` script 
+you began in the Consolidation study last week. Use the differential 
+expression analysis you did in the workshop (in `suff-def-wild.R`) as 
+a template to continue your script. 
 
 💉 Leishmania
 
@@ -25,7 +32,6 @@ You need only do the section for your own project data
 
 🐭 Stem cells
 
-🎬 Open your `mice-88H` RStudio Project. Make a new script and, using `hspc-prog.R` as a template, repeat the analysis on a different comparisons. You new script be called `hspc-lthsc.R` or `lthsc-prog-3.R` depending on which comparison you choose.
-
+🎬 Open your `mice-88H` RStudio Project. 
 
 
