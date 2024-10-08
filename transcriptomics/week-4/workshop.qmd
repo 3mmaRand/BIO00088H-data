@@ -117,7 +117,7 @@ We need to import the S30 data that were filtered to remove genes with
 #---CODING ANSWER---
 s30_filtered <- read_csv("data-processed/s30_filtered.csv")
 ```
-Now go to [Differential Expression Analysis](#frog-development-3).
+Now go to [Differential Expression Analysis](#frog-development-2).
 
 ## 🎄 *Arabidopisis*
 
@@ -132,18 +132,29 @@ We need to import the wildtype data that were filtered to remove genes with
 wild_filtered <- read_csv("data-processed/wild_filtered.csv")
 ```
 
-Now go to [Differential Expression Analysis](#arabidopisis-3).
+Now go to [Differential Expression Analysis](#arabidopisis-2).
 
 
 ## 💉 *Leishmania* 
-Import
 
-Now go to [Differential Expression Analysis](#leishmania-mexicana-3).
+We need to import the procyclic- and metacyclic-promastigote data that 
+were filtered to remove genes with 4, 5 or 6 zeros and those where the 
+total counts was less than 20.
+
+🎬 Import the data from the `data-processed` folder.
+
+```{r}
+#| echo: false
+#---CODING ANSWER---
+pro_meta_filtered <- read_csv("data-processed/pro_meta_filtered.csv")
+```
+
+Now go to [Differential Expression Analysis](#leishmania-mexicana-2).
 
 ## 🐭 Stem cells
 Import
 
-Now go to [Differential Expression Analysis](#stem-cells-3).
+Now go to [Differential Expression Analysis](#stem-cells-2).
 
 
 # Differential Expression Analysis
@@ -489,7 +500,7 @@ s30_results <- s30_normalised_counts |>
 ```
 
 
-Now go to [Add gene information](#frog-development-4).
+Now go to [Add gene information](#frog-development-3).
 
 
 
@@ -830,17 +841,347 @@ wild_results <- wild_normalised_counts |>
   left_join(wild_results, by = "gene_id")
 ```
 
-Now go to [Add gene information](#arabidopisis-4).
+Now go to [Add gene information](#arabidopisis-3).
 
 ## 💉 *Leishmania*
-DE instructions
 
-Now go to [Add gene information](#leishmania-mexicana-4).
+These are the steps we will take
+
+1.  Find the genes that are expressed in only one treatment group.
+2.  Create a DESeqDataSet object. This is a special object that is used
+    by the **`DESeq2`** package
+3.  Prepare the normalised counts from the DESeqDataSet object.
+4.  Do differential expression analysis on the genes. This needs to be
+    done on the raw counts.
+
+All but the first step are done with the **`DESeq2`** package
+
+### 1. Genes expressed in one treatment
+
+The genes expressed in only one treatment group are those with zeros in
+all replicates in one group and non-zero values in all 
+replicates in the other group. 
+
+We will use `filter()` to find these genes.
+
+🎬 Find the genes that are expressed only at the procyclic-promastigote 
+stage:
+
+```{r}
+pro_meta_pro_only <- pro_meta_filtered  |>
+  filter(lm_pro_1 > 0,
+         lm_pro_2 > 0,
+         lm_pro_3 > 0,
+         lm_meta_1 == 0,
+         lm_meta_2 == 0,
+         lm_meta_2 == 0)
+```
+
+❓ How many genes are expressed only in the procyclic-promastigote stage group?
+
+<!-- #---THINKING ANSWER--- -->
+
+<!-- There are 0 genes expressed only in the procyclic-promastigote stage -->
+
+🎬 Now you find any genes that are expressed only at the metacyclic stage
+
+```{r}
+#| echo: false
+#---CODING ANSWER---
+pro_meta_meta_only <- pro_meta_filtered  |>
+  filter(lm_pro_1 == 0,
+         lm_pro_2 == 0,
+         lm_pro_3 == 0,
+         lm_meta_1 > 0,
+         lm_meta_2 > 0,
+         lm_meta_2 > 0)
+
+```
+
+❓ How many genes are expressed only at the metacyclic stage?
+
+<!-- #---THINKING ANSWER--- -->
+
+<!-- There are 0 genes expressed only in the meta stage group. -->
+
+❓ Do the results make sense to you in light of what you know about the
+biology?
+
+<!-- #---THINKING ANSWER--- -->
+
+<!-- I have no clue here! -->
+
+<!-- Domain expertise is important when analysing data so  -->
+<!-- discuss your results with Pegine and your group. -->
+
+🎬 Write all the genes that are expressed one group only to file 
+(saved in `results`)
+
+```{r}
+#| echo: false
+#| eval: false
+#---CODING ANSWER---
+# If we had any genes expressed in only one group we would write 
+# them to a file like this. 
+write_csv(pro_meta_pro_only, "results/pro_meta_pro_only.csv")
+write_csv(pro_meta_meta_only, "results/pro_meta_meta_only.csv")
+```
+
+### 2. Create DESeqDataSet object
+
+🎬 Load the DESeq2 package:
+
+```{r}
+#| echo: false
+#| eval: false
+#---CODING ANSWER---
+library(DESeq2)
+```
+
+
+
+A DEseqDataSet object is a custom data type that is used by
+**`DESeq2`**. Custom data types are common in the Bioconductor[^1]
+packages. They are used to store data in a way that is useful for the
+analysis. These data types typically have data, transformed data,
+metadata and experimental designs within them.
+
+[^1]: [Bioconductor](https://www.bioconductor.org/) is a project that
+    develops and supports R packages for bioinformatics.
+
+To create a DESeqDataSet object, we need to provide three things:
+
+-  The raw counts - these are in `pro_meta_filtered `
+-  The meta data which gives information about the samples and which
+    treatment groups they belong to
+-  A design matrix which captures the design of the statistical model.
+
+The counts must in a *matrix* rather than a dataframe. Unlike a dataframe,
+a matrix has columns of all the same type. That is, it will contain only
+the counts. The gene ids are given as row names rather than a column.
+The `matrix()` function will create a matrix from a dataframe of columns
+of the same type and the `select()` function can be used to remove the
+gene ids column.
+
+🎬 Create a matrix of the counts:
+
+```{r}
+pro_meta_count_mat <- pro_meta_filtered  |>
+  select(-gene_id) |>
+  as.matrix()
+```
+
+🎬 Add the gene ids as row names to the matrix:
+
+```{r}
+# add the row names to the matrix
+rownames(pro_meta_count_mat) <- pro_meta_filtered$gene_id
+
+```
+
+You might want to view the matrix (click on it in your environment pane).
+
+The metadata are in a file,
+[leish_meta_data.txt](meta/leish_meta_data.txt). This is a
+tab-delimited file. The first column is the sample name and the other 
+columns give the "treatments". In this case, the treatment is stage
+(with three levels).
+
+🎬 Make a folder called `meta` and save the file to it.
+
+🎬 Read the metadata into a dataframe:
+
+```{r}
+meta <- read_table("meta/leish_meta_data.txt")
+```
+
+🎬 Examine the resulting dataframe.
+
+We need to add the sample names as row names to the metadata dataframe.
+This is because the DESeqDataSet object will use the row names to match
+the samples in the metadata to the samples in the counts matrix.
+
+🎬 Add the sample names as row names to the metadata dataframe:
+
+```{r}
+row.names(meta) <- meta$sample_id
+```
+
+(you will get a warning message but you can ignore it)
+
+We are dealing only with the wild data so we need to remove the samples
+that are not in the wild data.
+
+🎬 Filter the metadata to keep only the procyclic and metacyclic 
+information:
+
+```{r}
+meta_pro_meta <- meta |>
+  filter(stage != "amastigotes")
+```
+
+
+We can now create the DESeqDataSet object. The design formula describes
+the statistical model. You should recognise the form from previous work. 
+The `~` can be read as "explain by" and on its right hand side are 
+the explanatory variables. That is, the model is counts explained by
+stage status.
+
+Note that:
+
+-   The names of the columns in the count matrix have to exactly match 
+    the names of the rows in the metadata dataframe. They also need 
+    to be in the same order.
+-   The names of the explanatory variables in the design formula have 
+    to match the names of columns in the metadata.
+
+🎬 Create the DESeqDataSet object:
+
+```{r}
+dds <- DESeqDataSetFromMatrix(pro_meta_count_mat,
+                              colData = meta_pro_meta,
+                              design = ~ stage)
+```
+
+The warning "Warning: some variables in design formula are characters,
+converting to factors" just means that the variable type of stage in the metadata dataframe is "char" and it has been
+converted into a factor type.
+
+To help you understand what the `DESeqDataSet` object we have called 
+`dds` contains, we can look its contents
+
+The counts are in `dds@assays@data@listData[["counts"]]` and the
+metadata are in `dds@colData` but the easiest way to see them is to use
+the `counts()` and `colData()` functions from the **`DESeq2`** package.
+
+🎬 View the counts:
+
+```{r}
+counts(dds) |> View()
+```
+
+You should be able to see that this is the same as in `pro_meta_count_mat`.
+
+```{r}
+colData(dds)
+
+```
+
+### 3. Prepare the normalised counts
+
+The normalised counts are the counts that have been transformed to
+account for the library size (i.e., the total number of reads in a
+sample) and the gene length. We have to first estimate the normalisation
+factors and store them in the DESeqDataSet object and then we can get
+the normalised counts.
+
+🎬 Estimate the factors for normalisation and store them in the
+DESeqDataSet object:
+
+```{r}
+dds <- estimateSizeFactors(dds)
+```
+
+🎬 Look at the factors (just for information):
+
+```{r}
+sizeFactors(dds)
+```
+
+The normalised counts will be useful to use later. To get the normalised 
+counts we again used the `counts()` function but this time we use the 
+`normalized=TRUE` argument.
+
+🎬 Save the normalised to a matrix:
+
+```{r}
+normalised_counts <- counts(dds, normalized = TRUE)
+```
+
+
+🎬 Make a dataframe of the normalised counts, adding a column for the gene
+ids at the same time:
+
+```{r}
+pro_meta_normalised_counts <- data.frame(normalised_counts,
+                                    gene_id = row.names(normalised_counts))
+
+```
+
+### 4. Differential expression analysis
+
+We use the `DESeq()` function to do the differential expression
+analysis. This function fits the statistical model to the data and then
+uses the model to calculate the significance of the difference between
+the treatments. It again stores the results in the DESseqDataSet object.
+Note that the differential expression needs the raw (unnormalised
+counts) as it does its own normalisation as part of the process.
+
+🎬 Run the differential expression analysis and store the results in 
+   the same object:
+
+```{r}
+dds <- DESeq(dds)
+```
+
+The function will take only a few moments to run on this data but can
+take longer for bigger datasets.
+
+We need to define the contrasts we want to test. We want to test the
+difference between the treatments so we will define the contrast as
+`procyclic` and `metacyclic`.
+
+🎬 Define the contrast:
+
+```{r}
+contrast_pro_meta <- c("stage", "procyclic", "metacyclic")
+```
+
+Note that `stage` is the name of the column in the metadata
+dataframe and `procyclic` and `metacyclic` are the names of the levels in the
+`stage` column. By putting them in the order `procyclic` , `metacyclic` we
+are saying the fold change will be procyclic / metacyclic.  This means:
+
+-   positive log fold changes indicate procyclic \> metacyclic and
+-   negative log fold changes indicates metacyclic \> procyclic.
+
+If we had put them in the order `metacyclic`, `procyclic` we would have 
+the reverse.
+
+🎬 Extract the results from the DESseqDataSet object:
+
+```{r}
+results_pro_meta <- results(dds,
+                       contrast = contrast_pro_meta)
+```
+
+This will give us the log~2~ fold change, the  *p*-value and the 
+adjusted  *p*-value for the comparison between procyclic and metacyclic
+stage for each gene
+
+🎬 Put the results in a dataframe and add the gene ids as a column:
+
+```{r}
+pro_meta_results <- data.frame(results_pro_meta,
+                          gene_id = row.names(results_pro_meta))
+```
+
+It is useful to have the normalised counts and the statistical results in 
+one dataframe. 
+
+🎬 Merge the two dataframes:
+```{r}
+# merge the results with the normalised counts
+pro_meta_results <- pro_meta_normalised_counts |>
+  left_join(pro_meta_results, by = "gene_id")
+```
+
+Now go to [Add gene information](#leishmania-mexicana-3).
 
 ## 🐭 Stem cells
 DE instructions
 
-Now go to [Add gene information](#stem-cells-4).
+Now go to [Add gene information](#stem-cells-3).
 
 
 # Add gene information
@@ -999,6 +1340,8 @@ write_csv(wild_results, file = "results/wild_results.csv")
 
 
 ## 💉 *Leishmania* 
+
+???
 
 
 ## 🐭 Stem cells
