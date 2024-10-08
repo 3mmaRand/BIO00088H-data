@@ -28,7 +28,10 @@ a template to continue your script.
 
 💉 Leishmania
 
-
+🎬 Open your `leish-88H` RStudio Project and the `pro_ama.R` script 
+you began in the Consolidation study last week. Use the differential 
+expression analysis you did in the workshop (in `pro_meta.R`) as 
+a template to continue your script.
 
 🐭 Stem cells
 
