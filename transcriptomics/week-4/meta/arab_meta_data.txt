@@ -1,0 +1,9 @@
+sample_id	genotype	copper
+SRX028956_wild_suf	wt	sufficient
+SRX028957_wild_def	wt	deficient
+SRX028958_spl7_suf	spl7	sufficient
+SRX028959_spl7_def	spl7	deficient
+SRX028960_wild_suf	wt	sufficient
+SRX028961_wild_def	wt	deficient
+SRX028962_spl7_suf	spl7	sufficient
+SRX028963_spl7_def	spl7	deficient

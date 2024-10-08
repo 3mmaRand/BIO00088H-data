@@ -29,13 +29,13 @@ normalised expression values using **`scran`** [@scran] or both.
 
 🎬 Open the `frogs-88H` RStudio Project and the `cont-fgf-s30.R` script.
 
-## 🎄 Arabidopisis
+## 🎄 *Arabidopisis*
 
-🎬 Open the `arabi-88H` RStudio Project and the `wildsuf-wilddef-s30.R` script.
+🎬 Open the `arab-88H` RStudio Project and the `suff-def-wild.R` script.
 
-## 💉 Leishmania mexicana
+## 💉 *Leishmania* 
 
-🎬 Open the `leish-88H` RStudio Project and the `pro-meta-s30.R` script.
+🎬 Open the `leish-88H` RStudio Project and the `pro-meta.R` script.
 
 ## 🐭 Stem cells
 
@@ -91,12 +91,14 @@ preference for one function over another. This is useful for the
 functions you use a lot or ones where you are certain you always want to
 use a particular function.
 
-For example, to always use the **`dplyr`** version of `filter()` by default you can add this to the top of your script:
+For example, to always use the **`dplyr`** version of `filter()` by 
+default you can add this to the top of your script:
 
 ```{r}
 conflicts_prefer(dplyr::filter)
 ```
-We will also want to ensure that we are using the `setdiff()` function from the `GenomicRanges` package.
+We will also want to ensure that we are using the `setdiff()` function 
+from the `GenomicRanges` package.
 
 ```{r}
 conflicts_prefer(GenomicRanges::setdiff)
@@ -115,23 +117,33 @@ We need to import the S30 data that were filtered to remove genes with
 #---CODING ANSWER---
 s30_filtered <- read_csv("data-processed/s30_filtered.csv")
 ```
-Now go to [Differential Expression Analysis](#frog-development-2).
+Now go to [Differential Expression Analysis](#frog-development-3).
 
-## 🎄 Arabidopisis
+## 🎄 *Arabidopisis*
+
+We need to import the wildtype data that were filtered to remove genes with
+3 or 4 zeros and those where the total counts was less than 20.
+
+🎬 Import the data from the `data-processed` folder.
+
+```{r}
+#| echo: false
+#---CODING ANSWER---
+wild_filtered <- read_csv("data-processed/wild_filtered.csv")
+```
+
+Now go to [Differential Expression Analysis](#arabidopisis-3).
+
+
+## 💉 *Leishmania* 
 Import
 
-Now go to [Differential Expression Analysis](#arabidopisis-2).
-
-
-## 💉 Leishmania mexicana
-Import
-
-Now go to [Differential Expression Analysis](#leishmania-mexicana-2).
+Now go to [Differential Expression Analysis](#leishmania-mexicana-3).
 
 ## 🐭 Stem cells
 Import
 
-Now go to [Differential Expression Analysis](#stem-cells-2).
+Now go to [Differential Expression Analysis](#stem-cells-3).
 
 
 # Differential Expression Analysis
@@ -147,7 +159,7 @@ These are the steps we will take
 4.  Do differential expression analysis on the genes. This needs to be
     done on the raw counts.
 
-The all but the first step are done with the **`DESeq2`** package
+All but the first step are done with the **`DESeq2`** package
 
 ### 1. Genes expressed in one treatment
 
@@ -283,8 +295,9 @@ You might want to view the matrix (click on it in your environment pane).
 
 The metadata are in a file,
 [frog_meta_data.txt](meta/frog_meta_data.txt). This is a
-tab-delimited file. The first column is the sample name and the second
-column is the treatment group.
+tab-delimited file. The first column is the sample name and the other #
+columns give the "treatments". In this case, the treatments stage (with
+three levels) and treatment (with two levels).
 
 🎬 Make a folder called `meta` and save the file to it.
 
@@ -320,10 +333,12 @@ meta_s30 <- meta |>
 
 
 We can now create the DESeqDataSet object. The design formula describes
-the statistical model. You should the form from previous work. The `~` 
-indicates that the left hand side is the response variable (in this case
-the counts) and the right hand side are the explanatory variables. 
-We are interested in the difference between the treatments but we include `sibling_rep` to account for the fact that the data are paired. 
+the statistical model. You should recognise the form from previous work. 
+The `~` can be read as "explain by" and on its right hand side are 
+the explanatory variables. That is, the model is counts explained by
+treatment and sibling_rep.
+We are interested in the difference between the treatments but we 
+include `sibling_rep` to account for the fact that the data are paired. 
 
 Note that:
 
@@ -388,16 +403,14 @@ sizeFactors(dds)
 ```
 
 The normalised counts will be useful to use later. To get the normalised 
-counts we again used the `counts()` function but this time we use the `normalized=TRUE` argument.
+counts we again used the `counts()` function but this time we use 
+the `normalized=TRUE` argument.
 
 🎬 Save the normalised to a matrix:
 
 ```{r}
 normalised_counts <- counts(dds, normalized = TRUE)
 ```
-
-We will write the normalised counts to a file so that we can use them in
-the future.
 
 🎬 Make a dataframe of the normalised counts, adding a column for the gene
 ids at the same time:
@@ -454,8 +467,9 @@ results_fgf <- results(dds,
                        contrast = contrast_fgf)
 ```
 
-This will give us the log~2~ fold change, the  *p*-value and the 
-adjusted  *p*-value between the control and the FGF-treatment for each gene.
+TThis will give us the log~2~ fold change, the  *p*-value and the 
+adjusted  *p*-value for the comparison between the control and the 
+FGF-treatment for each gene.
 
 🎬 Put the results in a dataframe and add the gene ids as a column:
 
@@ -464,7 +478,8 @@ s30_results <- data.frame(results_fgf,
                           xenbase_gene_id = row.names(results_fgf))
 ```
 
-It is useful to have the normalised counts and the statistical results in one dataframe. 
+It is useful to have the normalised counts and the statistical 
+results in one dataframe. 
 
 🎬 Merge the two dataframes:
 ```{r}
@@ -474,24 +489,358 @@ s30_results <- s30_normalised_counts |>
 ```
 
 
-Now go to [Add gene information](#frog-development-3).
+Now go to [Add gene information](#frog-development-4).
 
 
 
-## 🎄 Arabidopisis
+## 🎄 *Arabidopisis*
+
+These are the steps we will take
+
+1.  Find the genes that are expressed in only one treatment group.
+2.  Create a DESeqDataSet object. This is a special object that is used
+    by the **`DESeq2`** package
+3.  Prepare the normalised counts from the DESeqDataSet object.
+4.  Do differential expression analysis on the genes. This needs to be
+    done on the raw counts.
+
+All but the first step are done with the **`DESeq2`** package
+
+### 1. Genes expressed in one treatment
+
+The genes expressed in only one treatment group are those with zeros in
+both replicates in one group and non-zero values in both 
+replicates in the other group. For example, those shown here:
+
+```{r}
+#| echo: false
+# sort the data by the values in the control column
+wild_filtered |>  
+  filter(SRX028957_wild_def == 0) |> 
+  filter(SRX028961_wild_def == 0) |>
+  head(5) |>
+  knitr::kable()
+
+```
+
+We will use `filter()` to find these genes.
+
+🎬 Find the genes that are expressed only in the sufficient copper group:
+
+```{r}
+wild_suf_only <- wild_filtered |>
+  filter(SRX028961_wild_def == 0,
+         SRX028957_wild_def == 0,
+         SRX028960_wild_suf > 0,
+         SRX028956_wild_suf > 0)
+```
+
+❓ How many genes are expressed only in the sufficient copper group?
+
+<!-- #---THINKING ANSWER--- -->
+
+<!-- There are 19 genes expressed only in the sufficient copper group. -->
+
+🎬 Now you find any genes that are expressed only in the deficient 
+   copper group.
+
+```{r}
+#| echo: false
+#---CODING ANSWER---
+wild_def_only <- wild_filtered |>
+  filter(SRX028961_wild_def > 0,
+         SRX028957_wild_def > 0,
+         SRX028960_wild_suf == 0,
+         SRX028956_wild_suf == 0)
+
+```
+
+❓ How many genes are expressed only in the deficient copper group?
+
+<!-- #---THINKING ANSWER--- -->
+
+<!-- There are 3 genes expressed only in the deficient copper group. -->
+
+❓ Do the results make sense to you in light of what you know about the
+biology?
+
+<!-- #---THINKING ANSWER--- -->
+
+<!-- This is wildtype plant so perhaps normal processes do not happen  -->
+<!-- when copper is deficient and because the plant does not have 
+<!-- adaptations for deficient copper, no compensatory processes kick in. <!-- <!-- However, I'm not an expert in Arabidopsis, or plants! -->
+<!-- Domain expertise is important when analysing data so  -->
+<!-- discuss your results with Liz and your group. -->
+
+🎬 Write all the genes that are expressed one group only to file 
+(saved in `results`)
+
+```{r}
+#| echo: false
+#---CODING ANSWER---
+write_csv(wild_suf_only, "results/wild_suf_only.csv")
+write_csv(wild_def_only, "results/wild_def_only.csv")
+```
+
+### 2. Create DESeqDataSet object
+
+🎬 Load the DESeq2 package:
+
+```{r}
+#| echo: false
+#| eval: false
+#---CODING ANSWER---
+library(DESeq2)
+```
+
+
+
+A DEseqDataSet object is a custom data type that is used by
+**`DESeq2`**. Custom data types are common in the Bioconductor[^1]
+packages. They are used to store data in a way that is useful for the
+analysis. These data types typically have data, transformed data,
+metadata and experimental designs within them.
+
+[^1]: [Bioconductor](https://www.bioconductor.org/) is a project that
+    develops and supports R packages for bioinformatics.
+
+To create a DESeqDataSet object, we need to provide three things:
+
+-  The raw counts - these are in `wild_filtered`
+-  The meta data which gives information about the samples and which
+    treatment groups they belong to
+-  A design matrix which captures the design of the statistical model.
+
+The counts must in a *matrix* rather than a dataframe. Unlike a dataframe,
+a matrix has columns of all the same type. That is, it will contain only
+the counts. The gene ids are given as row names rather than a column.
+The `matrix()` function will create a matrix from a dataframe of columns
+of the same type and the `select()` function can be used to remove the
+gene ids column.
+
+🎬 Create a matrix of the counts:
+
+```{r}
+wild_count_mat <- wild_filtered |>
+  select(-gene_id) |>
+  as.matrix()
+```
+
+🎬 Add the gene ids as row names to the matrix:
+
+```{r}
+# add the row names to the matrix
+rownames(wild_count_mat) <- wild_filtered$gene_id
+
+```
+
+You might want to view the matrix (click on it in your environment pane).
+
+The metadata are in a file,
+[arab_meta_data.txt](meta/arab_meta_data.txt). This is a
+tab-delimited file. The first column is the sample name and the other 
+columns give the "treatments". In this case, the treatments genotype (with
+two levels) and copper (with two levels).
+
+🎬 Make a folder called `meta` and save the file to it.
+
+🎬 Read the metadata into a dataframe:
+
+```{r}
+meta <- read_table("meta/arab_meta_data.txt")
+```
+
+🎬 Examine the resulting dataframe.
+
+We need to add the sample names as row names to the metadata dataframe.
+This is because the DESeqDataSet object will use the row names to match
+the samples in the metadata to the samples in the counts matrix.
+
+🎬 Add the sample names as row names to the metadata dataframe:
+
+```{r}
+row.names(meta) <- meta$sample_id
+```
+
+(you will get a warning message but you can ignore it)
+
+We are dealing only with the wild data so we need to remove the samples
+that are not in the wild data.
+
+🎬 Filter the metadata to keep only the wild information:
+
+```{r}
+meta_wild <- meta |>
+  filter(genotype == "wt")
+```
+
+
+We can now create the DESeqDataSet object. The design formula describes
+the statistical model. You should recognise the form from previous work. 
+The `~` can be read as "explain by" and on its right hand side are 
+the explanatory variables. That is, the model is counts explained by
+copper status.
+
+Note that:
+
+-   The names of the columns in the count matrix have to exactly match 
+    the names of the rows in the metadata dataframe. They also need 
+    to be in the same order.
+-   The names of the explanatory variables in the design formula have 
+    to match the names of columns in the metadata.
+
+🎬 Create the DESeqDataSet object:
+
+```{r}
+dds <- DESeqDataSetFromMatrix(wild_count_mat,
+                              colData = meta_wild,
+                              design = ~ copper)
+```
+
+The warning "Warning: some variables in design formula are characters,
+converting to factors" just means that the variable type of copper in the metadata dataframe is "char" and it has been
+converted into a factor type.
+
+To help you understand what the `DESeqDataSet` object we have called 
+`dds` contains, we can look its contents
+
+The counts are in `dds@assays@data@listData[["counts"]]` and the
+metadata are in `dds@colData` but the easiest way to see them is to use
+the `counts()` and `colData()` functions from the **`DESeq2`** package.
+
+🎬 View the counts:
+
+```{r}
+counts(dds) |> View()
+```
+
+You should be able to see that this is the same as in `wild_count_mat`.
+
+```{r}
+colData(dds)
+
+```
+
+### 3. Prepare the normalised counts
+
+The normalised counts are the counts that have been transformed to
+account for the library size (i.e., the total number of reads in a
+sample) and the gene length. We have to first estimate the normalisation
+factors and store them in the DESeqDataSet object and then we can get
+the normalised counts.
+
+🎬 Estimate the factors for normalisation and store them in the
+DESeqDataSet object:
+
+```{r}
+dds <- estimateSizeFactors(dds)
+```
+
+🎬 Look at the factors (just for information):
+
+```{r}
+sizeFactors(dds)
+```
+
+The normalised counts will be useful to use later. To get the normalised 
+counts we again used the `counts()` function but this time we use the 
+`normalized=TRUE` argument.
+
+🎬 Save the normalised to a matrix:
+
+```{r}
+normalised_counts <- counts(dds, normalized = TRUE)
+```
+
+
+🎬 Make a dataframe of the normalised counts, adding a column for the gene
+ids at the same time:
+
+```{r}
+wild_normalised_counts <- data.frame(normalised_counts,
+                                    gene_id = row.names(normalised_counts))
+
+```
+
+### 4. Differential expression analysis
+
+We use the `DESeq()` function to do the differential expression
+analysis. This function fits the statistical model to the data and then
+uses the model to calculate the significance of the difference between
+the treatments. It again stores the results in the DESseqDataSet object.
+Note that the differential expression needs the raw (unnormalised
+counts) as it does its own normalisation as part of the process.
+
+🎬 Run the differential expression analysis and store the results in 
+   the same object:
+
+```{r}
+dds <- DESeq(dds)
+```
+
+The function will take only a few moments to run on this data but can
+take longer for bigger datasets.
+
+We need to define the contrasts we want to test. We want to test the
+difference between the treatments so we will define the contrast as
+`sufficient` and `deficient`.
+
+🎬 Define the contrast:
+
+```{r}
+contrast_suf <- c("copper", "sufficient", "deficient")
+```
+
+Note that `copper` is the name of the column in the metadata
+dataframe and `sufficient` and `deficient` are the names of the levels in the
+`copper` column. By putting them in the order `sufficient` , `deficient` we
+are saying the fold change will be sufficient / deficient.  This means:
+
+-   positive log fold changes indicate sufficient \> deficient and
+-   negative log fold changes indicates deficient \> sufficient.
+
+If we had put them in the order `deficient`, `sufficient` we would have 
+the reverse.
+
+🎬 Extract the results from the DESseqDataSet object:
+
+```{r}
+results_suf <- results(dds,
+                       contrast = contrast_suf)
+```
+
+This will give us the log~2~ fold change, the  *p*-value and the 
+adjusted  *p*-value for the comparison between the sufficient- and  
+deficient-copper for each gene.
+
+🎬 Put the results in a dataframe and add the gene ids as a column:
+
+```{r}
+wild_results <- data.frame(results_suf,
+                          gene_id = row.names(results_suf))
+```
+
+It is useful to have the normalised counts and the statistical results in 
+one dataframe. 
+
+🎬 Merge the two dataframes:
+```{r}
+# merge the results with the normalised counts
+wild_results <- wild_normalised_counts |>
+  left_join(wild_results, by = "gene_id")
+```
+
+Now go to [Add gene information](#arabidopisis-4).
+
+## 💉 *Leishmania*
 DE instructions
 
-Now go to [Add gene information](#arabidopisis-3).
-
-## 💉 Leishmania mexicana
-DE instructions
-
-Now go to [Add gene information](#leishmania-mexicana-3).
+Now go to [Add gene information](#leishmania-mexicana-4).
 
 ## 🐭 Stem cells
 DE instructions
 
-Now go to [Add gene information](#stem-cells-3).
+Now go to [Add gene information](#stem-cells-4).
 
 
 # Add gene information
@@ -562,16 +911,97 @@ write_csv(s30_results, file = "results/s30_results.csv")
 ```
 
 
-## 🎄 Arabidopisis
+## 🎄 *Arabidopisis*
+
+[Ensembl](https://www.ensembl.org/index.html) [@martin2023;
+@birney2004]is a bioinformatics project to organise all the biological
+information around the sequences of large genomes. The are a large
+number of databases but [BioMart](https://www.ensembl.org/info/data/biomart/index.html)
+[@smedley2009] provides a consistent interface to the material. There
+are web-based tools to use these but the R package **`biomaRt`**
+[@biomaRt1; @biomaRt2] gives you programmatic access making it easier to 
+integrate information into R dataframes
+
+🎬 Load the **`biomaRt`** [@biomaRt1; @biomaRt2] package:
+
+```{r}
+library(biomaRt)
+```
+The **`biomaRt`** package includes a function to list all the available
+datasets
+
+🎬 List the Ensembl "marts" available:
+```{r}
+listEnsemblGenomes()
+```
+
+`plants_mart` looks like the one we want. We can see what genomes are
+available with names like "Arabidopsis" in this mart using the `searchDatasets()` function.
+
+🎬  
+```{r}
+searchDatasets(useEnsemblGenomes(biomart = "plants_mart"), 
+               pattern = "Arabidopsis")
+```
+`athaliana_eg_gene` is the Arabidopsis thaliana genes (TAIR10)	 dataset we want.
+
+🎬 Connect to the `athaliana_eg_gene` database in `plants_mart`:
+```{r}
+ensembl <- useEnsemblGenomes(biomart = "plants_mart",
+                             dataset = "athaliana_eg_gene")
+```
+
+🎬 See the the types of information we can retrieve:
+```{r}                             
+listAttributes(mart = ensembl) |> View()
+```
+
+There are many (1,714!) possible bits of information (attributes) that 
+can be obtained. 
+
+We use the `getBM()` function to retrieve information from the database. 
+The `filters` argument is used to specified what kind of identifier 
+we are supplying in `values` to retrieve information. The `attributes` 
+argument is used to select the information we want to retrieve. 
+The `values` argument is used to specify the identifiers. 
+The mart argument is used to specify the connection we created.
+
+🎬 Get the the gene name and a description. We also retreive the gene id 
+   so we can later join the information with the results:
+
+```{r}
+gene_info <- getBM(filters = "ensembl_gene_id",
+                   attributes = c("ensembl_gene_id",
+                                  "external_gene_name",
+                                  "description"),
+                   values = wild_results$gene_id,
+                   mart = ensembl)
+```
 
 
+You should view the resulting dataframe to see what information is
+available. You can use `glimpse()` or `View()`.
 
-## 💉 Leishmania mexicana
+🎬 Merge the gene information with the results:
+
+```{r}
+# join the gene info with the results
+wild_results <- wild_results |>
+  left_join(gene_info,
+            by = join_by(gene_id == ensembl_gene_id))
+```
+
+🎬 Save the results to a file:
+
+```{r}
+write_csv(wild_results, file = "results/wild_results.csv")
+```
+
+
+## 💉 *Leishmania* 
 
 
 ## 🐭 Stem cells
-
-
 
 
 
