@@ -68,7 +68,7 @@ including:
 
     -   Raw data: `xlaevis_counts_S14.csv`, `xlaevis_counts_S20.csv`,
         `xlaevis_counts_S30.csv` 
-    -   Processed data: `s30_filtered.csv`, `s20_filtered.csv`)
+    -   Processed data: `s30_filtered.csv`, `s20_filtered.csv`
     -   Two scripts: `cont-fgf-s30.R`, `cont-fgf-s20.R`
 
 Files should be organised into folders. Code should well commented and
@@ -78,7 +78,7 @@ easy to read.
 
 -   An RStudio Project called `arab-88H` which contains:
 
-    -   Raw data: `arabidopsis-wild.csv`,`arabidopsis-spl7.csv` 
+    -   Raw data: `arabidopsis-wild.csv`, `arabidopsis-spl7.csv` 
     -   Processed data: `wild_filtered.csv`,  `spl7_filtered.csv`)
     -   Two scripts: `suff-def-wild.R`, `suff-def-spl7.R`
 
@@ -88,7 +88,7 @@ easy to read.
 
 -   An RStudio Project called `leish-88H` which contains:
 
-    -   Raw data: `leishmania-mex-ama.csv`,`leishmania-mex-pro.csv`, 
+    -   Raw data: `leishmania-mex-ama.csv`, `leishmania-mex-pro.csv`, 
         `leishmania-mex-meta.csv`
     -   Processed data: `pro_meta_filtered.csv`, `pro_ama_filtered.csv`
     -   Two scripts: `pro_meta.R`, `pro_ama.R`
@@ -98,9 +98,9 @@ easy to read.
 
 -   An RStudio Project called `mice-88H` which contains
 
-    -   Raw data: `surfaceome_hspc.csv`,`surfaceome_prog.csv`, `surfaceome_lthsc.csv`
+    -   Raw data: `surfaceome_hspc.csv`, `surfaceome_prog.csv`, `surfaceome_lthsc.csv`
     -   Processed data: `_filtered.csv`,  `_filtered.csv`)
-    -   Two scripts: `hspc-prog.R`, hspc-lthsc.R`
+    -   Two scripts: `hspc-prog.R`, `hspc-lthsc.R`
 
 Files should be organised into folders. Code should well commented and
 easy to read.
@@ -171,7 +171,7 @@ Like familiar tests:
     expression between groups
 
 -   A fold change is the expression in one group divided by the
-    expression in the other group
+    expression in the other group: $\frac{A}{B}$
 
 -   we use fold changes because the absolute expression values may not
     be accurate and relative changes are what matters
@@ -339,6 +339,8 @@ Like familiar tests:
 -   Therefore we need to add information such as the gene name and a
     description to the results
 
+::: {style="font-size: 70%;"}
+
 -   🐸 Frog data information comes from Xenbase [@fisher2023]
 
 -   🎄 *Arabidopisis* information comes from TAIR10 [@yates_ensembl_2022]
@@ -346,6 +348,8 @@ Like familiar tests:
 -   💉 *Leishmania* information comes TriTrypDB [@rogers_chromosome_2011]
 
 -   🐭 Stem cell information comes from Ensembl [@birney2004]
+
+:::
 :::
 
 ## 🐸 Xenbase
@@ -431,6 +435,7 @@ These packages are all on the University computers which you can access on
 campus or [remotely using the VDS](https://www.york.ac.uk/it-services/tools/vds/)
 
 If you want to use your own machine you will need to install the packages.
+
 ::: {style="font-size: 60%;"}
 
 Install **`BiocManager`** from CRAN in the the normal way and set the version of Bioconductor packages to install:
