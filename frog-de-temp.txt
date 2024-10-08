@@ -339,7 +339,7 @@ pro_meta_results <- pro_meta_normalised_counts |>
   left_join(pro_meta_results, by = "gene_id")
 ```
 
-Now go to [Add gene information](#arabidopisis-4).
+
 
 
 # Add gene information
