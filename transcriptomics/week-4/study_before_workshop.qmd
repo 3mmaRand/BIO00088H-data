@@ -71,8 +71,6 @@ including:
     -   Processed data: `s30_filtered.csv`, `s20_filtered.csv`
     -   Two scripts: `cont-fgf-s30.R`, `cont-fgf-s20.R`
 
-Files should be organised into folders. Code should well commented and
-easy to read.
 
 ## 🎄 *Arabidopsis*
 
@@ -99,16 +97,19 @@ easy to read.
 -   An RStudio Project called `mice-88H` which contains
 
     -   Raw data: `surfaceome_hspc.csv`, `surfaceome_prog.csv`, `surfaceome_lthsc.csv`
-    -   Processed data: `_filtered.csv`,  `_filtered.csv`)
+    -   Processed data: `hspc_prog.csv`, `hspc_lthsc.csv`
     -   Two scripts: `hspc-prog.R`, `hspc-lthsc.R`
 
-Files should be organised into folders. Code should well commented and
-easy to read.
 
+## Additionally...
 
-## If you do not have those
+Files should be organised into folders. Code should well 
+commented and easy to read. You should have curated your code to remove
+unnecessary commands that were useful to troubleshoot or understand
+objects in your environment but which are not needed for the final
+analysis.
 
-Go through:
+If you are missing files, go through:
 
 -   [Transcriptomics 1: 👋 Hello data! Workshop](../week-3/workshop.html)
     including:
@@ -368,7 +369,7 @@ It took me some time to find the information you need.
 
 ::: incremental
 
-::: {style="font-size: 80%;"}
+
 -   I got the information from the [Xenbase information
     pages](https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp)
     under Data Reports \| Gene Information
@@ -387,7 +388,7 @@ It took me some time to find the information you need.
 
 -   In the workshop you will import this file and merge the information
     with the results file
-:::
+
 :::
 
 ##  🎄 TAIR10 through Ensembl
@@ -471,7 +472,7 @@ BiocManager::install("biomaRt")
 
 ## Workshops
 
--   Transcriptomics 1: Hello data Getting to know the data. Checking the
+-   Transcriptomics 1: Hello data. Getting to know the data. Checking the
     distributions of values overall, across rows and columns to
     check things are as we expect and detect rows/columns that need to
     be removed
