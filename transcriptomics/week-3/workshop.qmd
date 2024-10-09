@@ -110,7 +110,8 @@ The first task is to get an overview. We want to know
 
 Genes which are zero in *every* cell/sample, i.e., genes that are not 
 expressed at all give us no information. We will want to to filter those out. 
-We will also want to filter out genes with very low counts for quality control. These are mostly likely false positives.
+We will also want to filter out genes with very low counts for quality 
+control. These are mostly likely false positives.
 If our data collection has gone well we would hope to see approximately
 the same average expression in each sample/cell of the same type.
 That is, replicates should be similar. In contrast, we would expect to 
@@ -128,7 +129,8 @@ We get this overview by looking at:
     samples/cells). This allows us to see variation between genes.
 
 The next sections will guide you through each of these for each of the 
-data sets. Start with your own data set then move on to at least one of the others.
+data sets. Start with your own data set then move on to at least one of 
+the others.
 
 ## 🐸 Frog development
 
@@ -143,7 +145,8 @@ Import the data for stage 30.
 s30 <- read_csv("data-raw/xlaevis_counts_S30.csv")
 ```
 
-🎬 Check the dataframe has the number of rows and columns you were expecting and that column types and names are as expected.
+🎬 Check the dataframe has the number of rows and columns you were expecting
+   and that column types and names are as expected.
 
 
 ### Distribution of values across all the data in the file
@@ -154,8 +157,8 @@ order to plot the distribution as a whole, we will need to first use
 format](https://3mmarand.github.io/R4BABS/r4babs1/week-9/workshop.html#tidying-data)
 [@wickham2014] by stacking the columns. We *could* save a copy of the
 stacked data and then plot it, but here, I have just piped the stacked
-data straight into `ggplot()`. This helps me avoid cluttering my R environment with
-temporary objects.
+data straight into `ggplot()`. This helps me avoid cluttering my R environment 
+with temporary objects.
 
 🎬 Pivot the counts (stack the columns) so all the counts are in a
 single column (`count`) labelled in `sample` by the column it came from 
@@ -170,8 +173,11 @@ s30 |>
   geom_histogram()
 ```
 
-This data is very skewed - there are very many low counts and a very few higher numbers. It is hard to see the very low bars for the higher values. Logging the counts is a way to make the distribution more visible. You cannot take the log of 0 so we add 1 to the count before logging. The log of 1 is zero so we will be 
-able to see how many zeros we had.
+This data is very skewed - there are very many low counts and a very few higher
+numbers. It is hard to see the very low bars for the higher values. Logging 
+the counts is a way to make the distribution more visible. You cannot take 
+the log of 0 so we add 1 to the count before logging. The log of 1 is zero 
+so we will be able to see how many zeros we had.
 
 🎬 Repeat the plot of log of the counts.
 
@@ -189,7 +195,8 @@ I've used base 10 only because it easy to convert to the original scale
 Notice we have a peak at zero indicating there are many zeros. We would 
 expect the distribution of counts to be roughly log normal because
 this is expression of *all* the genes in the genome[^1]. The number of low
-counts is inflated (small peak near the low end). This suggests that these lower counts might be false positives. The removal of low counts is a common
+counts is inflated (small peak near the low end). This suggests that these 
+lower counts might be false positives. The removal of low counts is a common
 processing step in 'omic data. We will revisit this after we have
 considered the distribution of counts across samples and genes.
 
@@ -273,8 +280,16 @@ s30 |>
             n_above_zero = sum(count > 0))
 ```
 
-The mean count ranges from 260 to 426. `S30_F_3` does stand out a little but not by too much. If we had more replicates we might consider conducting our analysis both with and without this  replicate to determine whether its oddness was influencing our conclusions. Since we have just 3 replicates, we will leave it in. The potential effect of 
-an odd replicate is reduced statistical power. Major differences in gene expression will still be uncovered. Differences between genes with lower average expression and or more variable expression might be missed. Whether this matters depends on the biological question you are asking. In this case, it does not matter because the major differences in gene expression will be enough.
+The mean count ranges from 260 to 426. `S30_F_3` does stand out a little but 
+not by too much. If we had more replicates we might consider conducting our 
+analysis both with and without this  replicate to determine whether its oddness
+was influencing our conclusions. Since we have just 3 replicates, we will 
+leave it in. The potential effect of an odd replicate is reduced statistical 
+power. Major differences in gene expression will still be uncovered. 
+Differences between genes with lower average expression and or more variable 
+expression might be missed. Whether this matters depends on the biological 
+question you are asking. In this case, it does not matter because the major
+differences in gene expression will be enough.
 
 🎬 Save the summary as a dataframe, `s30_summary_samp` (using assignment).
 
@@ -297,7 +312,9 @@ s30_summary_samp <- s30 |>
 
 
 
-We can also plot the distribution of counts across samples. We have many values (`r length(s30$xenbase_gene_id)`) so we are not limited to using 
+We can also plot the distribution of counts across samples. We have many 
+
+values (`r length(s30$xenbase_gene_id)`) so we are not limited to using 
 `geom_histogram()`. `geom_density()` gives us a smooth distribution.
 
 🎬 Plot the log10 of the counts + 1 again but this time facet by the sample:
@@ -314,21 +331,30 @@ s30 |>
 
 The key information to take from these plots is:
 
--   the distributions are roughly similar though `S30_F_3` does stand out a little
+-   the distributions are roughly similar though `S30_F_3` does stand out a 
+    little
 -   the peak at zero suggests quite a few counts of 1.
 -   we would expect the distribution of counts in each sample to
     be roughly log normal so that the small rise near the low end, even
     before the peak at zero, suggests that these lower counts might be
     anomalies.
 
-We have found the distribution across samples to be similar to that over all. This is good because it means that the samples are fairly consistent with each other. We can now move on to the next step.
+We have found the distribution across samples to be similar to that over all. 
+This is good because it means that the samples are fairly consistent with each 
+other. We can now move on to the next step.
 
 
 ### Distribution of values across the genes
 
-There are lots of genes in this dataset therefore we will take a slightly different approach. We would not want to use plot a distribution for each gene in the same way. Will pivot the data to tidy and then summarise the counts for each gene.
+There are lots of genes in this dataset therefore we will take a slightly 
+different approach. We would not want to use plot a distribution for each 
+gene in the same way. Will pivot the data to tidy and then summarise the 
+counts for each gene.
 
-🎬 Summarise the counts for each gene and save the result as `s30_summary_gene`. Include the same columns as we had in the by sample summary (`s30_summary_samp`) *and* an additional column, `total` for the total number of counts for each gene.
+🎬 Summarise the counts for each gene and save the result as `s30_summary_gene`.
+  Include the same columns as we had in the by sample summary
+  (`s30_summary_samp`) *and* an additional column, `total` for the total 
+  number of counts for each gene.
 
 
 
@@ -363,7 +389,9 @@ Notice that we have:
 
 Genes with very low counts should be filtered out because they are 
 unreliable - or, at the least, uninformative. The goal of our 
-downstream analysis will be to see if there is a significant difference in gene expression between the control and FGF-treated sibling. Since we have only three replicates in each group, having one or two unreliable, missing or zero 
+downstream analysis will be to see if there is a significant difference in gene
+expression between the control and FGF-treated sibling. Since we have only three
+replicates in each group, having one or two unreliable, missing or zero 
 values, makes such a determination impossible for a particular gene.
 We will use the total counts (`total`) and the number of samples with 
 non-zero values (`n_above_zero`) in this dataframe to filter our genes later.
@@ -409,7 +437,8 @@ Import the data for wildtype plants.
 wild <- read_csv("data-raw/arabidopsis-wild.csv")
 ```
 
-🎬 Check the dataframe has the number of rows and columns you were expecting and that column types and names are as expected.
+🎬 Check the dataframe has the number of rows and columns you were expecting 
+   and that column types and names are as expected.
 
 
 ### Distribution of values across all the data in the file
@@ -420,8 +449,8 @@ order to plot the distribution as a whole, we will need to first use
 format](https://3mmarand.github.io/R4BABS/r4babs1/week-9/workshop.html#tidying-data)
 [@wickham2014] by stacking the columns. We *could* save a copy of the
 stacked data and then plot it, but here, I have just piped the stacked
-data straight into `ggplot()`. This helps me avoid cluttering my R environment with
-temporary objects.
+data straight into `ggplot()`. This helps me avoid cluttering my R environment
+with temporary objects.
 
 🎬 Pivot the counts (stack the columns) so all the counts are in a
 single column (`count`) labelled in `sample` by the column it came from 
@@ -436,7 +465,10 @@ wild |>
   geom_histogram()
 ```
 
-This data is very skewed - there are very many low counts and a very few higher numbers. It is hard to see the very low bars for the higher values. Logging the counts is a way to make the distribution more visible. You cannot take the log of 0 so we add 1 to the count before logging. The log of 1 is zero so we will be 
+This data is very skewed - there are very many low counts and a very few higher
+numbers. It is hard to see the very low bars for the higher values. Logging the
+counts is a way to make the distribution more visible. You cannot take the log 
+of 0 so we add 1 to the count before logging. The log of 1 is zero so we will be 
 able to see how many zeros we had.
 
 🎬 Repeat the plot of log of the counts.
@@ -455,7 +487,8 @@ I've used base 10 only because it easy to convert to the original scale
 Notice we have a peak at zero indicating there are many zeros. We would 
 expect the distribution of counts to be roughly log normal because
 this is expression of *all* the genes in the genome[^1]. The number of low
-counts is inflated (small peak near the low end). This suggests that these lower counts might be false positives. The removal of low counts is a common
+counts is inflated (small peak near the low end). This suggests that these 
+lower counts might be false positives. The removal of low counts is a common
 processing step in 'omic data. We will revisit this after we have
 considered the distribution of counts across samples and genes.
 
@@ -487,8 +520,9 @@ We want to know how many zeros there are in each a column. To achieve this,
 we can make use of the fact that `TRUE` evaluates to 1 and `FALSE` 
 evaluates to 0. Consequently, summing a column of TRUE/FALSE values will 
 give you the number of TRUE values. For example,
-`sum(SRX028961_wild_def > 0)` gives the number of values above zero in the `SRX028961_wild_def` 
-column. If you wanted the number of zeros, you could use `sum(SRX028961_wild_def == 0)`.
+`sum(SRX028961_wild_def > 0)` gives the number of values above zero in the 
+`SRX028961_wild_def` column. If you wanted the number of zeros, you could 
+use `sum(SRX028961_wild_def == 0)`.
 
 🎬 Find the number values above zero in all six columns:
 
@@ -537,7 +571,14 @@ wild |>
             n_above_zero = sum(count > 0))
 ```
 
-The mean count ranges from 70 to 296. It is difficult to determine whether any replicates are "unusual" when there are only two replicates. The potential effect of only two replicates, or of an an odd replicate when you have more replicates, is reduced statistical power. Major differences in gene expression will still be uncovered. Differences between genes with lower average expression and or more variable expression might be missed. Whether this matters depends on the biological question you are asking. In this case, it does not matter because the major differences in gene expression will be enough.
+The mean count ranges from 70 to 296. It is difficult to determine whether 
+any replicates are "unusual" when there are only two replicates. The potential 
+effect of only two replicates, or of an an odd replicate when you have more
+replicates, is reduced statistical power. Major differences in gene expression 
+will still be uncovered. Differences between genes with lower average expression
+and or more variable expression might be missed. Whether this matters depends 
+on the biological question you are asking. In this case, it does not matter 
+because the major differences in gene expression will be enough.
 
 🎬 Save the summary as a dataframe, `wild_summary_samp` (using assignment).
 
@@ -560,7 +601,8 @@ wild_summary_samp <- wild |>
 
 
 
-We can also plot the distribution of counts across samples. We have many values (`r length(wild$gene_id)`) so we are not limited to using 
+We can also plot the distribution of counts across samples. We have many 
+values (`r length(wild$gene_id)`) so we are not limited to using 
 `geom_histogram()`. `geom_density()` gives us a smooth distribution.
 
 🎬 Plot the log10 of the counts + 1 again but this time facet by the sample:
@@ -584,14 +626,22 @@ The key information to take from these plots is:
     before the peak at zero, suggests that these lower counts might be
     anomalies.
 
-We have found the distribution across samples to be similar to that over all. This is good because it means that the samples are fairly consistent with each other. We can now move on to the next step.
+We have found the distribution across samples to be similar to that over all. 
+This is good because it means that the samples are fairly consistent with each 
+other. We can now move on to the next step.
 
 
 ### Distribution of values across the genes
 
-There are lots of genes in this dataset therefore we will take a slightly different approach. We would not want to use plot a distribution for each gene in the same way. Will pivot the data to tidy and then summarise the counts for each gene.
+There are lots of genes in this dataset therefore we will take a slightly 
+different approach. We would not want to use plot a distribution for each 
+gene in the same way. Will pivot the data to tidy and then summarise the 
+counts for each gene.
 
-🎬 Summarise the counts for each gene and save the result as `wild_summary_gene`. Include the same columns as we had in the by sample summary (`wild_summary_samp`) *and* an additional column, `total` for the total number of counts for each gene.
+🎬 Summarise the counts for each gene and save the result as 
+   `wild_summary_gene`. Include the same columns as we had in the by sample 
+   summary (`wild_summary_samp`) *and* an additional column, `total` for the 
+   total number of counts for each gene.
 
 
 
@@ -626,7 +676,9 @@ Notice that we have:
 
 Genes with very low counts should be filtered out because they are 
 unreliable - or, at the least, uninformative. The goal of our 
-downstream analysis will be to see if there is a significant difference in gene expression between the control and FGF-treated sibling. Since we have only three replicates in each group, having one or two unreliable, missing or zero 
+downstream analysis will be to see if there is a significant difference in 
+gene expression between the control and FGF-treated sibling. Since we have only
+three replicates in each group, having one or two unreliable, missing or zero 
 values, makes such a determination impossible for a particular gene.
 We will use the total counts (`total`) and the number of samples with 
 non-zero values (`n_above_zero`) in this dataframe to filter our genes later.
@@ -662,7 +714,8 @@ Now go to [Filtering for QC](#arabidopisis-1).
 
 ### Import
 
-Import the data for *L.mexicana* procyclic promastigote (pro) and the metacyclic promastigotes (meta)
+Import the data for *L.mexicana* procyclic promastigote (pro) and the metacyclic
+promastigotes (meta)
 
 🎬 Import [leishmania-mex-pro.csv](data-raw/leishmania-mex-pro.csv) and [leishmania-mex-meta.csv](data-raw/leishmania-mex-meta.csv)
 
@@ -672,7 +725,9 @@ pro <- read_csv("data-raw/leishmania-mex-pro.csv")
 meta <- read_csv("data-raw/leishmania-mex-meta.csv")
 ```
 
-We will need to combine the two sets of columns (datasets) so we can compare the two stages. We will join them using `gene_id` to match the rows. The column names differ so we don't need to worry about renaming any of them.
+We will need to combine the two sets of columns (datasets) so we can compare 
+the two stages. We will join them using `gene_id` to match the rows. The column
+names differ so we don't need to worry about renaming any of them.
 
 🎬 Combine the two datasets by `gene_id` and save the result as `pro_meta`.
 ```{r}
@@ -684,7 +739,8 @@ pro_meta <- pro |>
 
 
 
-🎬 Check the dataframe has the number of rows and columns you were expecting and that column types and names are as expected.
+🎬 Check the dataframe has the number of rows and columns you were expecting 
+and that column types and names are as expected.
 
 
 ### Distribution of values across all the data in the file
@@ -695,8 +751,8 @@ order to plot the distribution as a whole, we will need to first use
 format](https://3mmarand.github.io/R4BABS/r4babs1/week-9/workshop.html#tidying-data)
 [@wickham2014] by stacking the columns. We *could* save a copy of the
 stacked data and then plot it, but here, I have just piped the stacked
-data straight into `ggplot()`. This helps me avoid cluttering my R environment with
-temporary objects.
+data straight into `ggplot()`. This helps me avoid cluttering my R environment 
+with temporary objects.
 
 🎬 Pivot the counts (stack the columns) so all the counts are in a
 single column (`count`) labelled in `sample` by the column it came from 
@@ -711,8 +767,11 @@ pro_meta |>
   geom_histogram()
 ```
 
-This data is very skewed - there are very many low counts and a very few higher numbers. It is hard to see the very low bars for the higher values. Logging the counts is a way to make the distribution more visible. You cannot take the log of 0 so we add 1 to the count before logging. The log of 1 is zero so we will be 
-able to see how many zeros we had.
+This data is very skewed - there are very many low counts and a very few 
+higher numbers. It is hard to see the very low bars for the higher values. 
+Logging the counts is a way to make the distribution more visible. You cannot 
+take the log of 0 so we add 1 to the count before logging. The log of 1 is 
+zero so we will be able to see how many zeros we had.
 
 🎬 Repeat the plot of log of the counts.
 
@@ -730,7 +789,8 @@ I've used base 10 only because it easy to convert to the original scale
 Notice we have a peak at zero indicating there are many zeros. We would 
 expect the distribution of counts to be roughly log normal because
 this is expression of *all* the genes in the genome[^1]. The number of low
-counts is inflated (small peak near the low end). This suggests that these lower counts might be false positives. The removal of low counts is a common
+counts is inflated (small peak near the low end). This suggests that these 
+lower counts might be false positives. The removal of low counts is a common
 processing step in 'omic data. We will revisit this after we have
 considered the distribution of counts across samples and genes.
 
@@ -813,8 +873,12 @@ pro_meta |>
             n_above_zero = sum(count > 0))
 ```
 
-The mean count ranges from 220 to 364. We do not appear to have any outlying (odd) replicates. The potential effect of 
-an odd replicate is reduced statistical power. Major differences in gene expression will still be uncovered. Differences between genes with lower average expression and or more variable expression might be missed. Whether this matters depends on the biological question you are asking. 
+The mean count ranges from 220 to 364. We do not appear to have any outlying 
+(odd) replicates. The potential effect of an odd replicate is reduced 
+statistical power. Major differences in gene expression will still be uncovered.
+Differences between genes with lower average expression and or more variable 
+expression might be missed. Whether this matters depends on the biological 
+question you are asking. 
 
 🎬 Save the summary as a dataframe, `pro_meta_summary_samp` (using assignment).
 
@@ -836,7 +900,8 @@ pro_meta_summary_samp <- pro_meta |>
 ```
 
 
-We can also plot the distribution of counts across samples. We have many values (`r length(pro_meta$gene_id)`) so we are not limited to using 
+We can also plot the distribution of counts across samples. We have many 
+values (`r length(pro_meta$gene_id)`) so we are not limited to using 
 `geom_histogram()`. `geom_density()` gives us a smooth distribution.
 
 🎬 Plot the log10 of the counts + 1 again but this time facet by the sample:
@@ -860,14 +925,22 @@ The key information to take from these plots is:
     before the peak at zero, suggests that these lower counts might be
     anomalies.
 
-We have found the distribution across samples to be similar to that over all. This is good because it means that the samples are fairly consistent with each other. We can now move on to the next step.
+We have found the distribution across samples to be similar to that over all.
+This is good because it means that the samples are fairly consistent with 
+each other. We can now move on to the next step.
 
 
 ### Distribution of values across the genes
 
-There are lots of genes in this dataset therefore we will take a slightly different approach. We would not want to use plot a distribution for each gene in the same way. Will pivot the data to tidy and then summarise the counts for each gene.
+There are lots of genes in this dataset therefore we will take a slightly 
+different approach. We would not want to use plot a distribution for each
+gene in the same way. Will pivot the data to tidy and then summarise the 
+counts for each gene.
 
-🎬 Summarise the counts for each gene and save the result as `pro_meta_summary_gene`. Include the same columns as we had in the by sample summary (`pro_meta_summary_samp`) *and* an additional column, `total` for the total number of counts for each gene.
+🎬 Summarise the counts for each gene and save the result as 
+   `pro_meta_summary_gene`. Include the same columns as we had in the by 
+   sample summary (`pro_meta_summary_samp`) *and* an additional column, 
+   `total` for the total number of counts for each gene.
 
 
 
@@ -902,7 +975,9 @@ Notice that we have:
 
 Genes with very low counts should be filtered out because they are 
 unreliable - or, at the least, uninformative. The goal of our 
-downstream analysis will be to see if there is a significant difference in gene expression between the stages. Since we have only three replicates in each group, having one or two unreliable, missing or zero 
+downstream analysis will be to see if there is a significant difference
+in gene expression between the stages. Since we have only three replicates
+in each group, having one or two unreliable, missing or zero 
 values, makes such a determination impossible for a particular gene.
 We will use the total counts (`total`) and the number of samples with 
 non-zero values (`n_above_zero`) in this dataframe to filter our genes later.
@@ -960,7 +1035,8 @@ hspc_prog <- hspc |>
 
 
 
-🎬 Check the dataframe has the number of rows and columns you were expecting and that column types and names are as expected.
+🎬 Check the dataframe has the number of rows and columns you were expecting
+  and that column types and names are as expected.
 
 
 ### Distribution of values across all the data in the file
@@ -971,8 +1047,8 @@ order to plot the distribution as a whole, we will need to first use
 format](https://3mmarand.github.io/R4BABS/r4babs1/week-9/workshop.html#tidying-data)
 [@wickham2014] by stacking the columns. We *could* save a copy of the
 stacked data and then plot it, but here, I have just piped the stacked
-data straight into `ggplot()`. This helps me avoid cluttering my R environment with
-temporary objects.
+data straight into `ggplot()`. This helps me avoid cluttering my R environment 
+with temporary objects.
 
 🎬 Pivot the counts (stack the columns) so all the counts are in a
 single column (`expr`) labelled in `cell` by the column it came from 
@@ -1316,14 +1392,54 @@ Now go to [Look after future you](#leishmania-and-future-you)
 
 In this dataset, we will not see and genes that are not expressed in any
 of the cells because we are using a specific subset of the transcriptome
-that was deliberately selected. This means we do not need to filter for
-unexpressed genes. 
+that was deliberately selected. In other words unexpressed genes have already
+been filtered out.
+However, it is good practices to verify there are no unexpressed genes before
+we embark on our analysis.
+
+Where the sum of all the values in the rows is zero, all the entries
+must be zero. We can use this to find any the genes that are not
+expressed in any of the cells. To do row wise aggregates such as the sum
+across rows we can use the `rowwise()` function. `c_across()` allows us
+to use the colon notation to select columns. This is very useful
+when you have a lot of columns because it would be annoying to have 
+to list all of them `Prog_001:HSPC_852` means all the columns from 
+`Prog_001` to `HSPC_852`.
+
+
+🎬 Find the genes that are 0 in every column of the prog_hspc dataframe:
+
+```{r}
+prog_hspc |> 
+  rowwise() |> 
+  filter(sum(c_across(Prog_001:HSPC_852)) == 0)
+
+```
+
+Notice that we have summed across all the columns.
+
+❓ What do you conclude?
+
+<!-- #---THINKING ANSWER--- -->
+
+<!-- The are no genes that are completely unexpressed in this set of 280 genes -->
+
+
+
+🎬 Write combined data to file:
+
+```{r}
+write_csv(hspc_prog, 
+          file = "data-processed/hspc_prog.csv")
+```
+
 
 Now go to [Look after future you](#stem-cells-and-future-you)
 
 # 🤗 Look after future you!
 
-You need only do the section for your own project data but **completing this step is important**.
+You need only do the section for your own project data but **completing this 
+step is important**.
 
 ## 🐸 Frogs and future you
 
@@ -1355,7 +1471,8 @@ down RStudio, reopen it and run your whole script again.
 
 🎬 Create a new Project, `leish-88H`, populated with folders and your
 data. Make a script file called `pro_meta.R`. This will a be
-commented analysis of comparison procyclic promastigote and metacyclic promastigotes. You will build on this each workshop and be able to 
+commented analysis of comparison procyclic promastigote and metacyclic 
+promastigotes. You will build on this each workshop and be able to 
 use it as a template to examine other comparisons. 
 Copy in the *appropriate code and comments* from `workshop-1.R`. 
 Edit to improve your comments where your understanding has developed 
