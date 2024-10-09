@@ -1403,7 +1403,7 @@ expressed in any of the cells. To do row wise aggregates such as the sum
 across rows we can use the `rowwise()` function. `c_across()` allows us
 to use the colon notation to select columns. This is very useful
 when you have a lot of columns because it would be annoying to have 
-to list al of them `Prog_001:HSPC_852` means all the columns from 
+to list all of them `Prog_001:HSPC_852` means all the columns from 
 `Prog_001` to `HSPC_852`.
 
 
