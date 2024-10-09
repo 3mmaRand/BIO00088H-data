@@ -429,7 +429,7 @@ Emma Rand
 </div>
 </div>
 
-  <p class="date">8 October, 2024</p>
+  <p class="date">9 October, 2024</p>
 </section><section id="overview" class="slide level2"><h2>Overview</h2>
 <p>In these slides we will:</p>
 <div>
@@ -483,9 +483,7 @@ Emma Rand
 </li>
 </ul>
 </li>
-</ul>
-<p>Files should be organised into folders. Code should well commented and easy to read.</p>
-</section><section id="arabidopsis" class="slide level2"><h2>🎄 <em>Arabidopsis</em>
+</ul></section><section id="arabidopsis" class="slide level2"><h2>🎄 <em>Arabidopsis</em>
 </h2>
 <ul>
 <li>
@@ -519,15 +517,15 @@ Emma Rand
 <ul>
 <li>Raw data: <code>surfaceome_hspc.csv</code>, <code>surfaceome_prog.csv</code>, <code>surfaceome_lthsc.csv</code>
 </li>
-<li>Processed data: <code>_filtered.csv</code>, <code>_filtered.csv</code>)</li>
+<li>Processed data: <code>hspc_prog.csv</code>, <code>hspc_lthsc.csv</code>
+</li>
 <li>Two scripts: <code>hspc-prog.R</code>, <code>hspc-lthsc.R</code>
 </li>
 </ul>
 </li>
-</ul>
-<p>Files should be organised into folders. Code should well commented and easy to read.</p>
-</section><section id="if-you-do-not-have-those" class="slide level2"><h2>If you do not have those</h2>
-<p>Go through:</p>
+</ul></section><section id="additionally" class="slide level2"><h2>Additionally…</h2>
+<p>Files should be organised into folders. Code should well commented and easy to read. You should have curated your code to remove unnecessary commands that were useful to troubleshoot or understand objects in your environment but which are not needed for the final analysis.</p>
+<p>If you are missing files, go through:</p>
 <ul>
 <li><p><a href="../week-3/workshop.html">Transcriptomics 1: 👋 Hello data! Workshop</a> including:</p></li>
 <li><p><a href="../week-3/workshop.html#look-after-future-you">🤗 Look after future you!</a> and</p></li>
@@ -692,7 +690,6 @@ Emma Rand
 </div>
 </section><section id="xenbase-1" class="slide level2"><h2>🐸 Xenbase</h2>
 <div>
-<div style="font-size: 80%;">
 <ul>
 <li class="fragment"><p>I got the information from the <a href="https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp">Xenbase information pages</a> under Data Reports | Gene Information</p></li>
 <li class="fragment"><p>This is listed: Xenbase Gene Product Information [readme] <a href="https://download.xenbase.org/xenbase/GenePageReports/xenbase.gpi.gz">gzipped gpi (tab separated)</a></p></li>
@@ -700,7 +697,6 @@ Emma Rand
 <li class="fragment"><p>I downloaded <a href="https://download.xenbase.org/xenbase/GenePageReports/xenbase.gpi.gz">xenbase.gpi.gz</a>, unzipped it, removed header lines and the <em>Xenopus tropicalis</em> (taxon:8364) entries and saved it as <a href="meta/xenbase_info.xlsx">xenbase_info.xlsx</a></p></li>
 <li class="fragment"><p>In the workshop you will import this file and merge the information with the results file</p></li>
 </ul>
-</div>
 </div>
 </section><section id="tair10-through-ensembl" class="slide level2"><h2>🎄 TAIR10 through Ensembl</h2>
 <div>
@@ -747,7 +743,7 @@ Emma Rand
 
 </section><section id="workshops-1" class="slide level2"><h2>Workshops</h2>
 <ul>
-<li><p>Transcriptomics 1: Hello data Getting to know the data. Checking the distributions of values overall, across rows and columns to check things are as we expect and detect rows/columns that need to be removed</p></li>
+<li><p>Transcriptomics 1: Hello data. Getting to know the data. Checking the distributions of values overall, across rows and columns to check things are as we expect and detect rows/columns that need to be removed</p></li>
 <li><p>Transcriptomics 2: Statistical Analysis. Identifying which genes are differentially expressed between treatments. This is the main analysis step. We will use different methods for bulk and single cell data.</p></li>
 <li><p>Transcriptomics 3: Visualising. Principal Component Analysis (PCA) volcano plots to visualise the results of the</p></li>
 </ul></section><section id="references" class="slide level2 smaller scrollable"><h2>References</h2>

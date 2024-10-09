@@ -351,7 +351,14 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
   <li><a href="#differential-expression-analysis-3" id="toc-differential-expression-analysis-3" class="nav-link" data-scroll-target="#differential-expression-analysis-3">4. Differential expression analysis</a></li>
   </ul>
 </li>
-  <li><a href="#stem-cells-2" id="toc-stem-cells-2" class="nav-link" data-scroll-target="#stem-cells-2">🐭 Stem cells</a></li>
+  <li>
+<a href="#stem-cells-2" id="toc-stem-cells-2" class="nav-link" data-scroll-target="#stem-cells-2">🐭 Stem cells</a>
+  <ul class="collapse">
+<li><a href="#genes-expressed-in-one-cell-type" id="toc-genes-expressed-in-one-cell-type" class="nav-link" data-scroll-target="#genes-expressed-in-one-cell-type">1. Genes expressed in one cell type</a></li>
+  <li><a href="#prepare-the-data-for-analysis-with-scran" id="toc-prepare-the-data-for-analysis-with-scran" class="nav-link" data-scroll-target="#prepare-the-data-for-analysis-with-scran">2. Prepare the data for analysis with <strong><code>scran</code></strong></a></li>
+  <li><a href="#differential-expression-analysis-4" id="toc-differential-expression-analysis-4" class="nav-link" data-scroll-target="#differential-expression-analysis-4">3. Differential expression analysis</a></li>
+  </ul>
+</li>
   </ul>
 </li>
   <li>
@@ -390,7 +397,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">8 October, 2024</p>
+      <p class="date">9 October, 2024</p>
     </div>
   </div>
   
@@ -460,7 +467,8 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <p>🎬 Import the data from the <code>data-processed</code> folder.</p>
 <p>Now go to <a href="#leishmania-2">Differential Expression Analysis</a>.</p>
 </section><section id="stem-cells-1" class="level2"><h2 class="anchored" data-anchor-id="stem-cells-1">🐭 Stem cells</h2>
-<p>Import</p>
+<p>We need to import the progenitor and HSPC cell data that were combined.</p>
+<p>🎬 Import the data from the <code>data-processed</code> folder..</p>
 <p>Now go to <a href="#stem-cells-2">Differential Expression Analysis</a>.</p>
 </section></section><section id="differential-expression-analysis" class="level1"><h1>Differential Expression Analysis</h1>
 <section id="frog-development-2" class="level2"><h2 class="anchored" data-anchor-id="frog-development-2">🐸 Frog development</h2>
@@ -1100,9 +1108,138 @@ lm_meta_3   lm_meta_3 metacyclic         3</code></pre>
 </div>
 <p>Now go to <a href="#leishmania-3">Add gene information</a>.</p>
 </section></section><section id="stem-cells-2" class="level2"><h2 class="anchored" data-anchor-id="stem-cells-2">🐭 Stem cells</h2>
-<p>DE instructions</p>
+<p>These are the steps we will take</p>
+<ol type="1">
+<li>Find the genes that are expressed in only one cell type (the prog or the hspc).</li>
+<li>Prepare the data for differential expression analysis with the <strong><code>scran</code></strong> package.</li>
+<li>Do differential expression analysis on the genes using the <strong><code>scran</code></strong> package. This needs to be done on the logged normalised counts.</li>
+</ol>
+<section id="genes-expressed-in-one-cell-type" class="level3"><h3 class="anchored" data-anchor-id="genes-expressed-in-one-cell-type">1. Genes expressed in one cell type</h3>
+<p>The genes expressed in only cell type are those with zeros in all the cells of the other type. We can find these by summing the expression values for each gene across the cells of one type and filtering for those that are zero.</p>
+<p>To do row wise aggregates such as the sum across rows we can use the <code><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise()</a></code> function. <code><a href="https://dplyr.tidyverse.org/reference/c_across.html">c_across()</a></code> allows us to use the colon notation to select columns. This is very useful when you have a lot of columns because it would be annoying to have to list all of them. <code>HSPC_001:HSPC_852</code> means all the columns from <code>HSPC_001</code> to <code>HSPC_852</code>.</p>
+<p>🎬 Find the genes expressed only in progenitor cells (<em>i.e.</em>, those that are 0 in every HSPC cell):</p>
+<div class="cell">
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_prog</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/c_across.html">c_across</a></span><span class="op">(</span><span class="va">HSPC_001</span><span class="op">:</span><span class="va">HSPC_852</span><span class="op">)</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 0 × 1,500
+# Rowwise: 
+# ℹ 1,500 variables: ensembl_gene_id &lt;chr&gt;, HSPC_001 &lt;dbl&gt;, HSPC_002 &lt;dbl&gt;,
+#   HSPC_003 &lt;dbl&gt;, HSPC_004 &lt;dbl&gt;, HSPC_006 &lt;dbl&gt;, HSPC_008 &lt;dbl&gt;,
+#   HSPC_009 &lt;dbl&gt;, HSPC_011 &lt;dbl&gt;, HSPC_012 &lt;dbl&gt;, HSPC_014 &lt;dbl&gt;,
+#   HSPC_015 &lt;dbl&gt;, HSPC_016 &lt;dbl&gt;, HSPC_017 &lt;dbl&gt;, HSPC_018 &lt;dbl&gt;,
+#   HSPC_020 &lt;dbl&gt;, HSPC_021 &lt;dbl&gt;, HSPC_022 &lt;dbl&gt;, HSPC_023 &lt;dbl&gt;,
+#   HSPC_024 &lt;dbl&gt;, HSPC_025 &lt;dbl&gt;, HSPC_026 &lt;dbl&gt;, HSPC_027 &lt;dbl&gt;,
+#   HSPC_028 &lt;dbl&gt;, HSPC_030 &lt;dbl&gt;, HSPC_031 &lt;dbl&gt;, HSPC_033 &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+<p>We already know from last week’s work that there are no genes that are zero across all the cells (both types). If we did not know that, we would need to add <code>|&gt; filter(sum(c_across(Prog_001:Prog_852)) != 0)</code></p>
+<p>meaning zero in all the HSPC but not zero in all the Prog</p>
+<p>❓ How many genes are expressed only in the progenitor cells only</p>
+<!-- #---THINKING ANSWER--- -->
+<!-- No genes are expressed only in the progenitor cells. -->
+<p>🎬 Now you find any genes that are expressed only in the HSPC cells.</p>
+<p>❓ How many genes are expressed only in the HSPC cells?</p>
+<!-- #---THINKING ANSWER--- -->
+<!-- No genes genes are expressed only in the HSPC cells? -->
+<p>❓ Do the results make sense to you in light of what you know about the biology?</p>
+<!-- #---THINKING ANSWER--- -->
+<!-- I'm not sure what to expect here. However, when there are many  -->
+<!-- "replicates" it is less likely that a gene will be expressed  -->
+<!-- in only one group. It's more likely that a gene will be -->
+<!-- expressed in both groups but at different levels. -->
+<!-- Domain expertise is important when analysing data so  -->
+<!-- discuss your results with Jillian and your group. -->
+<p>🎬 Write all the genes that are expressed one cell type only to file (saved in <code>results</code>)</p>
+</section><section id="prepare-the-data-for-analysis-with-scran" class="level3"><h3 class="anchored" data-anchor-id="prepare-the-data-for-analysis-with-scran">2. Prepare the data for analysis with <strong><code>scran</code></strong>
+</h3>
+<p><strong><code>scran</code></strong> can use a matrix or a dataframe of counts but these must be log normalised counts. If using a dataframe, the columns must only contain the expression values (not the gene ids). The rows can be named to retain the gene ids.</p>
+<p><code>hspc_prog</code> is a dataframe so we will use the ensembl gene ids to name the rows and remove the gene ids from the dataframe.</p>
+<p>🎬 Add the gene ids as the row names:</p>
+<div class="cell">
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_prog</span> <span class="op">&lt;-</span> <span class="va">hspc_prog</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">column_to_rownames</a></span><span class="op">(</span><span class="st">"ensembl_gene_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Like <strong><code>DESeq2</code></strong>, <strong><code>scran</code></strong> needs metadata to define which columns were in which group. Instead of having this is a file, we will create a vector that indicates which column belongs to which cell type.</p>
+<p>🎬 Create a vector that indicates which column belongs to which cell type:</p>
+<div class="cell">
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n_hspc</span> <span class="op">&lt;-</span> <span class="fl">701</span></span>
+<span><span class="va">n_prog</span> <span class="op">&lt;-</span> <span class="fl">798</span></span>
+<span></span>
+<span><span class="va">cell_type</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"hspc"</span>,<span class="st">"prog"</span><span class="op">)</span>, </span>
+<span>                 times <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">n_hspc</span>, <span class="va">n_prog</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The number of times each cell type is repeated is the number of cells of that type. Do check that the length of the <code>cell_type</code> vector is the same as the number of columns in the <code>hspc_prog</code> dataframe.</p>
+</section><section id="differential-expression-analysis-4" class="level3"><h3 class="anchored" data-anchor-id="differential-expression-analysis-4">3. Differential expression analysis</h3>
+<p>🎬 Load the <strong><code>scran</code></strong> package:</p>
+<div class="cell">
+<div class="cell-output cell-output-error">
+<pre><code>Error in library(package, pos = pos, lib.loc = lib.loc, character.only = TRUE, : there is no package called 'scran'</code></pre>
+</div>
+</div>
+<p>Differential expression is carried out with the <code>findMarkers()</code> function. It takes two arguments. The first argument is the dataframe containing the data and the second argument is the vector indicating which columns are in which cell type. Make sure that the order of the cell types in the vector is appropriate for the order of the columns in the dataframe.</p>
+<p>🎬 Run the differential expression analysis:</p>
+<div class="cell">
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results_hspc_prog</span> <span class="op">&lt;-</span> <span class="fu">findMarkers</span><span class="op">(</span><span class="va">hspc_prog</span>, </span>
+<span>                             <span class="va">cell_type</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in findMarkers(hspc_prog, cell_type): could not find function "findMarkers"</code></pre>
+</div>
+</div>
+<p>The output is a list object which, rather unnecessarily, includes two dataframes. This is not really necessary as the results are the same except for the fold change having a different sign.</p>
+<ul>
+<li>
+<p>The dataframe <code>results_hspc_prog$hspc</code> is log hspc - log prog (<em>i.e.</em>, HSPC/Prog). This means:</p>
+<ul>
+<li>Positive fold change: hspc is higher than prog</li>
+<li>Negative fold change: prog is higher than hspc</li>
+</ul>
+</li>
+<li>
+<p>The dataframe <code>results_hspc_prog$prog</code> is log prog - log hspc (<em>i.e.</em>,Prog/HSPC). This means:</p>
+<ul>
+<li>Positive fold change: prog is higher than hspc</li>
+<li>Negative fold change: hspc is higher than prog</li>
+</ul>
+</li>
+</ul>
+<div class="cell">
+<div class="cell-output cell-output-error">
+<pre><code>Error in h(simpleError(msg, call)): error in evaluating the argument 'x' in selecting a method for function 'head': object 'results_hspc_prog' not found</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-error">
+<pre><code>Error in h(simpleError(msg, call)): error in evaluating the argument 'x' in selecting a method for function 'head': object 'results_hspc_prog' not found</code></pre>
+</div>
+</div>
+<p>Notice that the dataframes are ordered by significance rather than the original gene order. We only need one of these results dataframes. We will use the <code>prog</code> one.</p>
+<p>It is useful to have the normalised counts and the statistical results in one dataframe to which we will add the gene information from Ensembl. Having all the information together will make it easier to interpret the results and select genes of interest. We will need to extract the results from the list object, add the gene ids and then join with the normalised counts.</p>
+<p>🎬 Extract the results dataframe from the list object and add the gene ids as a column:</p>
+<div class="cell">
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_prog_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">results_hspc_prog</span><span class="op">$</span><span class="va">prog</span>, </span>
+<span>                                ensembl_gene_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">results_hspc_prog</span><span class="op">$</span><span class="va">prog</span><span class="op">)</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'results_hspc_prog' not found</code></pre>
+</div>
+</div>
+<p>🎬 Return the ensembl gene ids as a column to the normalised counts:</p>
+<div class="cell">
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_prog</span> <span class="op">&lt;-</span> <span class="va">hspc_prog</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">rownames_to_column</a></span><span class="op">(</span>var <span class="op">=</span> <span class="st">"ensembl_gene_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>🎬 Merge the results dataframe with the normalised counts:</p>
+<div class="cell">
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># merge the results with the normalised counts</span></span>
+<span><span class="va">hspc_prog_results</span> <span class="op">&lt;-</span> <span class="va">hspc_prog</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">hspc_prog_results</span>, by <span class="op">=</span> <span class="st">"ensembl_gene_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'hspc_prog_results' not found</code></pre>
+</div>
+</div>
 <p>Now go to <a href="#stem-cells-3">Add gene information</a>.</p>
-</section></section><section id="add-gene-information" class="level1"><h1>Add gene information</h1>
+</section></section></section><section id="add-gene-information" class="level1"><h1>Add gene information</h1>
 <section id="frog-development-3" class="level2"><h2 class="anchored" data-anchor-id="frog-development-3">🐸 Frog development</h2>
 <ul>
 <li><p>I got the information from the <a href="https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp">Xenbase information pages</a> under Data Reports | Gene Information</p></li>
@@ -1111,41 +1248,41 @@ lm_meta_3   lm_meta_3 metacyclic         3</code></pre>
 <li><p>I downloaded <a href="https://download.xenbase.org/xenbase/GenePageReports/xenbase.gpi.gz">xenbase.gpi.gz</a>, unzipped it, removed header lines and the <em>Xenopus tropicalis</em> (taxon:8364) entries and saved it as <a href="meta/xenbase_info.xlsx">xenbase_info.xlsx</a></p></li>
 </ul>
 <p>If you want to emulate what I did you can use the following commands in the terminal after downloading the file:</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> xenbase.gpi.gz</span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> xenbase.gpi</span>
-<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="ex">q</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> xenbase.gpi.gz</span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> xenbase.gpi</span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a><span class="ex">q</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>gunzip</code> unzips the file and <code>less</code> allows you to view the file. <code>q</code> quits the viewer. You will see the header lines and that the file contains both <em>Xenopus tropicalis</em> and <em>Xenopus laevis</em>. I read the file in with <code>read_tsv</code> (skipping the first header lines) then filtered out the <em>Xenopus tropicalis</em> entries, dropped some columns and saved the file as an excel file.</p>
 <p>However, I have already done this for you and saved the file as <a href="meta/xenbase_info.xlsx">xenbase_info.xlsx</a> in the <code>meta</code> folder. We will import this file and join it to the results dataframe.</p>
 <p>🎬 Load the <strong><code>readxl</code></strong> <span class="citation" data-cites="readxl">(<a href="#ref-readxl" role="doc-biblioref">Wickham and Bryan 2023</a>)</span> package:</p>
 <div class="cell">
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Import the Xenbase gene information file:</p>
 <div class="cell">
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gene_info</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"meta/xenbase_info.xlsx"</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gene_info</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"meta/xenbase_info.xlsx"</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You should view the resulting dataframe to see what information is available. You can use <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> or <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code>.</p>
 <p>🎬 Merge the gene information with the results:</p>
 <div class="cell">
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># join the gene info with the results</span></span>
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># join the gene info with the results</span></span>
 <span><span class="va">s30_results</span> <span class="op">&lt;-</span> <span class="va">s30_results</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">gene_info</span>, by <span class="op">=</span> <span class="st">"xenbase_gene_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Save the results to a file:</p>
 <div class="cell">
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">s30_results</span>, file <span class="op">=</span> <span class="st">"results/s30_results.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">s30_results</span>, file <span class="op">=</span> <span class="st">"results/s30_results.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="arabidopisis-3" class="level2"><h2 class="anchored" data-anchor-id="arabidopisis-3">🎄 <em>Arabidopisis</em>
 </h2>
 <p><a href="https://www.ensembl.org/index.html">Ensembl</a> <span class="citation" data-cites="martin2023 birney2004">(<a href="#ref-martin2023" role="doc-biblioref">Martin et al. 2023</a>; <a href="#ref-birney2004" role="doc-biblioref">Birney et al. 2004</a>)</span>is a bioinformatics project to organise all the biological information around the sequences of large genomes. The are a large number of databases and <a href="https://www.ensembl.org/info/data/biomart/index.html">BioMart</a> <span class="citation" data-cites="smedley2009">(<a href="#ref-smedley2009" role="doc-biblioref">Smedley et al. 2009</a>)</span> provides a consistent interface to the material. There are web-based tools to use these but the R package <strong><code>biomaRt</code></strong> <span class="citation" data-cites="biomaRt1 biomaRt2">(<a href="#ref-biomaRt1" role="doc-biblioref">Durinck et al. 2009</a>, <a href="#ref-biomaRt2" role="doc-biblioref">2005</a>)</span> gives you programmatic access making it easier to integrate information into R dataframes.</p>
 <p>🎬 Load the <strong><code>biomaRt</code></strong> <span class="citation" data-cites="biomaRt1 biomaRt2">(<a href="#ref-biomaRt1" role="doc-biblioref">Durinck et al. 2009</a>, <a href="#ref-biomaRt2" role="doc-biblioref">2005</a>)</span> package:</p>
 <div class="cell">
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/grimbough/biomaRt">biomaRt</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/grimbough/biomaRt">biomaRt</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The <strong><code>biomaRt</code></strong> package includes a function to list all the available datasets</p>
 <p>🎬 List the Ensembl “marts” available:</p>
 <div class="cell">
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/listEnsembl.html">listEnsemblGenomes</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/listEnsembl.html">listEnsemblGenomes</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              biomart                        version
 1       protists_mart      Ensembl Protists Genes 59
@@ -1161,7 +1298,7 @@ lm_meta_3   lm_meta_3 metacyclic         3</code></pre>
 <p><code>plants_mart</code> looks like the one we want. We can see what genomes are available with names like “Arabidopsis” in this mart using the <code><a href="https://rdrr.io/pkg/biomaRt/man/listDatasets.html">searchDatasets()</a></code> function.</p>
 <p>🎬</p>
 <div class="cell">
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/listDatasets.html">searchDatasets</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/useEnsembl.html">useEnsemblGenomes</a></span><span class="op">(</span>biomart <span class="op">=</span> <span class="st">"plants_mart"</span><span class="op">)</span>, </span>
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/listDatasets.html">searchDatasets</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/useEnsembl.html">useEnsemblGenomes</a></span><span class="op">(</span>biomart <span class="op">=</span> <span class="st">"plants_mart"</span><span class="op">)</span>, </span>
 <span>               pattern <span class="op">=</span> <span class="st">"Arabidopsis"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             dataset                         description version
@@ -1173,18 +1310,18 @@ lm_meta_3   lm_meta_3 metacyclic         3</code></pre>
 <p><code>athaliana_eg_gene</code> is the Arabidopsis thaliana genes (TAIR10) dataset we want.</p>
 <p>🎬 Connect to the <code>athaliana_eg_gene</code> database in <code>plants_mart</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ensembl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/useEnsembl.html">useEnsemblGenomes</a></span><span class="op">(</span>biomart <span class="op">=</span> <span class="st">"plants_mart"</span>,</span>
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ensembl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/useEnsembl.html">useEnsemblGenomes</a></span><span class="op">(</span>biomart <span class="op">=</span> <span class="st">"plants_mart"</span>,</span>
 <span>                             dataset <span class="op">=</span> <span class="st">"athaliana_eg_gene"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 See the the types of information we can retrieve:</p>
 <div class="cell">
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/listAttributes.html">listAttributes</a></span><span class="op">(</span>mart <span class="op">=</span> <span class="va">ensembl</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/listAttributes.html">listAttributes</a></span><span class="op">(</span>mart <span class="op">=</span> <span class="va">ensembl</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>There are many (1,714!) possible bits of information (attributes) that can be obtained.</p>
 <p>We use the <code><a href="https://rdrr.io/pkg/biomaRt/man/getBM.html">getBM()</a></code> function to retrieve information from the database. The <code>filters</code> argument is used to specified what kind of identifier we are supplying in <code>values</code> to retrieve information. The <code>attributes</code> argument is used to select the information we want to retrieve. The <code>values</code> argument is used to specify the identifiers. The mart argument is used to specify the connection we created.</p>
 <p>🎬 Get the the gene name and a description. We also retreive the gene id so we can later join the information with the results:</p>
 <div class="cell">
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gene_info</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/getBM.html">getBM</a></span><span class="op">(</span>filters <span class="op">=</span> <span class="st">"ensembl_gene_id"</span>,</span>
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gene_info</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/getBM.html">getBM</a></span><span class="op">(</span>filters <span class="op">=</span> <span class="st">"ensembl_gene_id"</span>,</span>
 <span>                   attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ensembl_gene_id"</span>,</span>
 <span>                                  <span class="st">"external_gene_name"</span>,</span>
 <span>                                  <span class="st">"description"</span><span class="op">)</span>,</span>
@@ -1194,23 +1331,70 @@ lm_meta_3   lm_meta_3 metacyclic         3</code></pre>
 <p>You should view the resulting dataframe to see what information is available. You can use <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> or <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code>.</p>
 <p>🎬 Merge the gene information with the results:</p>
 <div class="cell">
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># join the gene info with the results</span></span>
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># join the gene info with the results</span></span>
 <span><span class="va">wild_results</span> <span class="op">&lt;-</span> <span class="va">wild_results</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">gene_info</span>,</span>
 <span>            by <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/join_by.html">join_by</a></span><span class="op">(</span><span class="va">gene_id</span> <span class="op">==</span> <span class="va">ensembl_gene_id</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Save the results to a file:</p>
 <div class="cell">
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">wild_results</span>, file <span class="op">=</span> <span class="st">"results/wild_results.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">wild_results</span>, file <span class="op">=</span> <span class="st">"results/wild_results.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="leishmania-3" class="level2"><h2 class="anchored" data-anchor-id="leishmania-3">💉 <em>Leishmania</em>
 </h2>
 <p>???</p>
 <p>🎬 Save the results to a file:</p>
 <div class="cell">
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">pro_meta_results</span>, file <span class="op">=</span> <span class="st">"results/pro_meta_results .csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">pro_meta_results</span>, file <span class="op">=</span> <span class="st">"results/pro_meta_results .csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="stem-cells-3" class="level2"><h2 class="anchored" data-anchor-id="stem-cells-3">🐭 Stem cells</h2>
+<p><a href="https://www.ensembl.org/index.html">Ensembl</a> <span class="citation" data-cites="martin2023 birney2004">(<a href="#ref-martin2023" role="doc-biblioref">Martin et al. 2023</a>; <a href="#ref-birney2004" role="doc-biblioref">Birney et al. 2004</a>)</span>is a bioinformatics project to organise all the biological information around the sequences of large genomes. The are a large number of databases but <a href="https://www.ensembl.org/info/data/biomart/index.html">BioMart</a> <span class="citation" data-cites="smedley2009">(<a href="#ref-smedley2009" role="doc-biblioref">Smedley et al. 2009</a>)</span> provides a consistent interface to the material. There are web-based tools to use these but the R package <strong><code>biomaRt</code></strong> <span class="citation" data-cites="biomaRt1 biomaRt2">(<a href="#ref-biomaRt1" role="doc-biblioref">Durinck et al. 2009</a>, <a href="#ref-biomaRt2" role="doc-biblioref">2005</a>)</span> gives you programmatic access making it easier to integrate information into R dataframes</p>
+<p>🎬 Load the <strong><code>biomaRt</code></strong> <span class="citation" data-cites="biomaRt1 biomaRt2">(<a href="#ref-biomaRt1" role="doc-biblioref">Durinck et al. 2009</a>, <a href="#ref-biomaRt2" role="doc-biblioref">2005</a>)</span> package:</p>
+<div class="cell">
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/grimbough/biomaRt">biomaRt</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>🎬 Connect to the mouse database</p>
+<div class="cell">
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Connect to the mouse database</span></span>
+<span><span class="va">ensembl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/useMart.html">useMart</a></span><span class="op">(</span>biomart <span class="op">=</span> <span class="st">"ensembl"</span>, </span>
+<span>                   dataset <span class="op">=</span> <span class="st">"mmusculus_gene_ensembl"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>🎬 See information we can retrieve:</p>
+<div class="cell">
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># See what information we can retrieve</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/listAttributes.html">listAttributes</a></span><span class="op">(</span>mart <span class="op">=</span> <span class="va">ensembl</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>There are many (2,988!) possible bits of information (attributes) that can be obtained.</p>
+<p>We use the <code><a href="https://rdrr.io/pkg/biomaRt/man/getBM.html">getBM()</a></code> function to retrieve information from the database. The <code>filters</code> argument is used to specified what kind of identifier we are supplying in <code>values</code> to retrieve information. The <code>attributes</code> argument is used to select the information we want to retrieve. The <code>values</code> argument is used to specify the identifiers. The mart argument is used to specify the connection we created.</p>
+<p>🎬 Get the the gene name and a description. We also retrieve the gene id so we can later join the information with the results:</p>
+<div class="cell">
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gene_info</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/getBM.html">getBM</a></span><span class="op">(</span>filters <span class="op">=</span> <span class="st">"ensembl_gene_id"</span>,</span>
+<span>                   attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ensembl_gene_id"</span>,</span>
+<span>                                  <span class="st">"external_gene_name"</span>,</span>
+<span>                                  <span class="st">"description"</span><span class="op">)</span>,</span>
+<span>                   values <span class="op">=</span> <span class="va">hspc_prog_results</span><span class="op">$</span><span class="va">ensembl_gene_id</span>,</span>
+<span>                   mart <span class="op">=</span> <span class="va">ensembl</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'hspc_prog_results' not found</code></pre>
+</div>
+</div>
+<p>You should view the resulting dataframe to see what information is available. You can use <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> or <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code>. Notice the dataframe returned only has 279 rows - one of the ids does not have information.</p>
+<p>🎬 Merge the gene information with the results:</p>
+<div class="cell">
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># join the gene info with the results</span></span>
+<span><span class="va">hspc_prog_results</span> <span class="op">&lt;-</span> <span class="va">hspc_prog_results</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">gene_info</span>, by <span class="op">=</span> <span class="st">"ensembl_gene_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'hspc_prog_results' not found</code></pre>
+</div>
+</div>
+<p>🎬 Save the results to a file:</p>
+<div class="cell">
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">hspc_prog_results</span>, file <span class="op">=</span> <span class="st">"results/hspc_prog_results.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object 'hspc_prog_results' not found</code></pre>
+</div>
+</div>
 </section></section><section id="look-after-future-you" class="level1"><h1>🤗 Look after future you!</h1>
 <p>🎬 Go through you script and tidy up. You might need to :</p>
 <ul>
