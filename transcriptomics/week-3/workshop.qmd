@@ -1407,10 +1407,10 @@ to list all of them `Prog_001:HSPC_852` means all the columns from
 `Prog_001` to `HSPC_852`.
 
 
-🎬 Find the genes that are 0 in every column of the prog_hspc dataframe:
+🎬 Find the genes that are 0 in every column of the hspc_prog dataframe:
 
 ```{r}
-prog_hspc |> 
+hspc_prog |> 
   rowwise() |> 
   filter(sum(c_across(Prog_001:HSPC_852)) == 0)
 
