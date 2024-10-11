@@ -1255,34 +1255,22 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <p>Now go to <a href="#leishmania-and-future-you">Look after future you</a></p>
 </section><section id="stem-cells-1" class="level2"><h2 class="anchored" data-anchor-id="stem-cells-1">🐭 Stem cells</h2>
 <p>In this dataset, we will not see and genes that are not expressed in any of the cells because we are using a specific subset of the transcriptome that was deliberately selected. In other words unexpressed genes have already been filtered out. However, it is good practices to verify there are no unexpressed genes before we embark on our analysis.</p>
-<p>Where the sum of all the values in the rows is zero, all the entries must be zero. We can use this to find any the genes that are not expressed in any of the cells. To do row wise aggregates such as the sum across rows we can use the <code><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise()</a></code> function. <code><a href="https://dplyr.tidyverse.org/reference/c_across.html">c_across()</a></code> allows us to use the colon notation to select columns. This is very useful when you have a lot of columns because it would be annoying to have to list all of them <code>Prog_001:HSPC_852</code> means all the columns from <code>Prog_001</code> to <code>HSPC_852</code>.</p>
+<p>Where the sum of all the values in the rows is zero, all the entries must be zero. We can use this to find any the genes that are not expressed in any of the cells. To do row wise aggregates such as the sum across rows we can use the <code><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise()</a></code> function. <code><a href="https://dplyr.tidyverse.org/reference/c_across.html">c_across()</a></code> allows us to use the colon notation to select columns. This is very useful when you have a lot of columns because it would be annoying to have to list all of them <code>HSPC_001:Prog_852</code> means all the columns from <code>HSPC_001</code> to <code>Prog_852</code>.</p>
 <p>🎬 Find the genes that are 0 in every column of the hspc_prog dataframe:</p>
 <div class="cell">
 <div class="sourceCode" id="cb58"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_prog</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/c_across.html">c_across</a></span><span class="op">(</span><span class="va">Prog_001</span><span class="op">:</span><span class="va">HSPC_852</span><span class="op">)</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/c_across.html">c_across</a></span><span class="op">(</span><span class="va">HSPC_001</span><span class="op">:</span><span class="va">Prog_852</span><span class="op">)</span><span class="op">)</span> <span class="op">==</span> <span class="fl">0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 80 × 1,500
+<pre><code># A tibble: 0 × 1,500
 # Rowwise: 
-   ensembl_gene_id    HSPC_001 HSPC_002 HSPC_003 HSPC_004 HSPC_006 HSPC_008
-   &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
- 1 ENSMUSG00000004730     0           0    0         0        0        0   
- 2 ENSMUSG00000040605     0           0    0         0        0        0   
- 3 ENSMUSG00000026012     0           0    0         0        0        0   
- 4 ENSMUSG00000045394     9.44        0    0         0        0        2.09
- 5 ENSMUSG00000030054     8.26        0    0         1.33     0        0   
- 6 ENSMUSG00000012428     0           0    0         0        0        0   
- 7 ENSMUSG00000005540     0           0    0         0        0        0   
- 8 ENSMUSG00000023274     0           0    0         0        6.69     0   
- 9 ENSMUSG00000062593     0           0    0         0        5.45     0   
-10 ENSMUSG00000034881     9.40        0    0.993     0        8.54     2.91
-# ℹ 70 more rows
-# ℹ 1,493 more variables: HSPC_009 &lt;dbl&gt;, HSPC_011 &lt;dbl&gt;, HSPC_012 &lt;dbl&gt;,
-#   HSPC_014 &lt;dbl&gt;, HSPC_015 &lt;dbl&gt;, HSPC_016 &lt;dbl&gt;, HSPC_017 &lt;dbl&gt;,
-#   HSPC_018 &lt;dbl&gt;, HSPC_020 &lt;dbl&gt;, HSPC_021 &lt;dbl&gt;, HSPC_022 &lt;dbl&gt;,
-#   HSPC_023 &lt;dbl&gt;, HSPC_024 &lt;dbl&gt;, HSPC_025 &lt;dbl&gt;, HSPC_026 &lt;dbl&gt;,
-#   HSPC_027 &lt;dbl&gt;, HSPC_028 &lt;dbl&gt;, HSPC_030 &lt;dbl&gt;, HSPC_031 &lt;dbl&gt;,
-#   HSPC_033 &lt;dbl&gt;, HSPC_034 &lt;dbl&gt;, HSPC_035 &lt;dbl&gt;, HSPC_036 &lt;dbl&gt;, …</code></pre>
+# ℹ 1,500 variables: ensembl_gene_id &lt;chr&gt;, HSPC_001 &lt;dbl&gt;, HSPC_002 &lt;dbl&gt;,
+#   HSPC_003 &lt;dbl&gt;, HSPC_004 &lt;dbl&gt;, HSPC_006 &lt;dbl&gt;, HSPC_008 &lt;dbl&gt;,
+#   HSPC_009 &lt;dbl&gt;, HSPC_011 &lt;dbl&gt;, HSPC_012 &lt;dbl&gt;, HSPC_014 &lt;dbl&gt;,
+#   HSPC_015 &lt;dbl&gt;, HSPC_016 &lt;dbl&gt;, HSPC_017 &lt;dbl&gt;, HSPC_018 &lt;dbl&gt;,
+#   HSPC_020 &lt;dbl&gt;, HSPC_021 &lt;dbl&gt;, HSPC_022 &lt;dbl&gt;, HSPC_023 &lt;dbl&gt;,
+#   HSPC_024 &lt;dbl&gt;, HSPC_025 &lt;dbl&gt;, HSPC_026 &lt;dbl&gt;, HSPC_027 &lt;dbl&gt;,
+#   HSPC_028 &lt;dbl&gt;, HSPC_030 &lt;dbl&gt;, HSPC_031 &lt;dbl&gt;, HSPC_033 &lt;dbl&gt;, …</code></pre>
 </div>
 </div>
 <p>Notice that we have summed across all the columns.</p>
