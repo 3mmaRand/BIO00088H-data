@@ -429,7 +429,7 @@ Emma Rand
 </div>
 </div>
 
-  <p class="date">11 October, 2024</p>
+  <p class="date">12 October, 2024</p>
 </section><section id="overview" class="slide level2"><h2>Overview</h2>
 <p>In these slides we will:</p>
 <div>
@@ -440,7 +440,6 @@ Emma Rand
 <ul>
 <li class="fragment">Principle Component Analysis (PCA)</li>
 <li class="fragment">Volcano plots</li>
-<li class="fragment">Heatmaps</li>
 </ul>
 </li>
 <li class="fragment"><p>Find out what packages to install before the workshop</p></li>
@@ -462,40 +461,54 @@ Emma Rand
 <li><p><a href="../week-4/workshop.html#look-after-future-you">🤗 Look after future you!</a> and</p></li>
 <li><p>the <a href="../week-4/study_after_workshop.html">Independent Study to consolidate</a>, you should have:</p></li>
 </ul></section><section id="frog-development" class="slide level2"><h2>🐸 Frog development</h2>
-<div style="font-size: 70%;">
 <ul>
-<li>An RStudio Project called <code>frogs-88H</code> which contains:
-<ul>
-<li>data-raw/ with <code>xlaevis_counts_S14.csv</code>, <code>xlaevis_counts_S20.csv</code>, <code>xlaevis_counts_S30.csv</code>
-</li>
-<li>data-processed with <code>s30_filtered.csv</code> and equivalent for S14 <em>OR</em> S20</li>
-<li>results/ with <code>s30_fgf_only.csv</code> (there were no control only genes in s30), <code>s30_results.csv</code> and equivalent for S14 <em>OR</em> S20)<br>
-</li>
-<li>Two scripts called <code>cont-fgf-s30.R</code> and either <code>cont-fgf-s20.R</code> <em>OR</em> <code>cont-fgf-s14.R</code>
-</li>
+<li>An RStudio Project called <code>frogs-88H</code> which contains:</li>
 </ul>
-</li>
-</ul>
+<div style="font-size: 80%;">
+<pre><code>-   data-raw: `xlaevis_counts_S14.csv`, `xlaevis_counts_S20.csv`, 
+    `xlaevis_counts_S30.csv` 
+-   data-processed: `s30_filtered.csv`, `s20_filtered.csv` 
+-   results: `s30_fgf_only.csv` (there were no control only 
+    genes in s30), `s30_results.csv`, and equivalent for S20   
+-   Two scripts: `cont-fgf-s30.R`, `cont-fgf-s20.R`</code></pre>
 </div>
-<p>Files should be organised into folders. Code should well commented and easy to read.</p>
-</section><section id="arabidopisis" class="slide level2"><h2>🎄 Arabidopisis</h2>
-</section><section id="leishmania-mexicana" class="slide level2"><h2>💉 Leishmania mexicana</h2>
+</section><section id="arabidopisis" class="slide level2"><h2>🎄 <em>Arabidopisis</em>
+</h2>
+<ul>
+<li>An RStudio Project called <code>arab-88H</code> which contains:</li>
+</ul>
+<div style="font-size: 80%;">
+<pre><code>-   data-raw: `arabidopsis-wild.csv`, `arabidopsis-spl7.csv` 
+-   data-processed: `wild_filtered.csv`,  `spl7_filtered.csv`
+-   results: `wild_suf_only.csv`,  wild-_def_only.csv, `wild_results.csv`, 
+    and equivalents for spl7 
+-   Two scripts: `suff-def-wild.R`, `suff-def-spl7.R`</code></pre>
+</div>
+</section><section id="leishmania" class="slide level2"><h2>💉 <em>Leishmania</em>
+</h2>
+<ul>
+<li>An RStudio Project called <code>leish-88H</code> which contains:</li>
+</ul>
+<div style="font-size: 80%;">
+<pre><code>-   data-raw: `leishmania-mex-ama.csv`, `leishmania-mex-pro.csv`, 
+    `leishmania-mex-meta.csv`
+-   data-processed: `pro_meta_filtered.csv`, `pro_ama_filtered.csv`
+-   results: `pro_meta_results.csv`, `pro_ama_results.csv`
+-   Two scripts: `pro_meta.R`, `pro_ama.R`</code></pre>
+</div>
 </section><section id="stem-cells" class="slide level2"><h2>🐭 Stem cells</h2>
-<div style="font-size: 70%;">
 <ul>
-<li>An RStudio Project called <code>mice-88H</code> which contains
-<ul>
-<li>Raw data (hspc, prog, lthsc)</li>
-<li>Processed data (<code>hspc_summary_gene.csv</code>, <code>hspc_summary_samp.csv</code>, <code>prog_summary_gene.csv</code>, <code>prog_summary_samp.csv</code>, <code>lthsc_summary_gene.csv</code>, <code>lthsc_summary_samp.csv</code>)</li>
+<li>An RStudio Project called <code>mice-88H</code> which contains:</li>
 </ul>
-</li>
-<li>Results files (<code>prog_hspc_results.csv</code> and an equivalent for lthsc vs prog or hspc vs lthsc)</li>
-<li>Two scripts called <code>hspc-prog.R</code> and either <code>hspc-lthsc.R</code> <em>OR</em> <code>prog-lthsc.R</code>
-</li>
-</ul>
+<div style="font-size: 80%;">
+<pre><code>-   data-raw: `surfaceome_hspc.csv`, `surfaceome_prog.csv`, `surfaceome_lthsc.csv`
+-   data-processed: `hspc_prog.csv`, `hspc_lthsc.csv`
+-   results: `hspc_prog_results.csv`, `hspc-lthsc_results.csv`,
+-   Two scripts: `hspc-prog.R`, `hspc-lthsc.R`</code></pre>
 </div>
-<p>Files should be organised into folders. Code should well commented and easy to read.</p>
-</section><section id="if-you-do-not-have-those" class="slide level2"><h2>If you do not have those</h2>
+</section><section id="additionally" class="slide level2"><h2>Additionally…</h2>
+<p>Files should be organised into folders. Code should well commented and easy to read. You should have curated your code to remove unnecessary commands that were useful to troubleshoot or understand objects in your environment but which are not needed for the final analysis.</p>
+<p>If you are missing files, go through:</p>
 <p>Go through:</p>
 <ul>
 <li><p><a href="../week-4/workshop.html">Transcriptomics 2: Statistical Analysis</a> including:</p></li>
@@ -555,7 +568,7 @@ Emma Rand
 </section><section id="pca-2" class="slide level2"><h2>PCA</h2>
 <div style="font-size: 70%;">
 <ul>
-<li>To understand the logic of PCA, imagine we might plotting the expression of one gene against that of another</li>
+<li>To understand the logic of PCA, imagine we might plot the expression of one gene against that of another</li>
 </ul>
 <div>
 
@@ -576,7 +589,7 @@ Emma Rand
 </div>
 </div>
 </div>
-<p>This gives us some in insight in how the sample/cells cluster. But we have a lot of genes (even for the stem cells) to consider. How do we know if the pair we use is typical? How can we consider al the genes at once?</p>
+<p>This gives us some in insight in how the sample/cells cluster. But we have a lot of genes (even for the stem cells) to consider. How do we know if the pair we use is typical? How can we consider all the genes at once?</p>
 </div>
 </section><section id="pca-3" class="slide level2"><h2>PCA</h2>
 <div style="font-size: 70%;">
@@ -612,13 +625,13 @@ Emma Rand
 <ul>
 <li class="fragment"><p>Volcano plots often used to visualise the results of differential expression analysis</p></li>
 <li class="fragment"><p>They are just a scatter of the adjusted <em>p</em> value against the fold change….</p></li>
-<li class="fragment"><p>almost - the we actually plot the negative log of the adjusted <em>p</em> value against the log fold change</p></li>
+<li class="fragment"><p>almost - in fact we plot the negative log of the adjusted <em>p</em> value against the log fold change</p></li>
 </ul>
 </div>
 </section><section id="volcano-plots-2" class="slide level2"><h2>Volcano plots</h2>
 <div style="font-size: 70%;">
 <ul>
-<li><p>This is because small probabilities are important, large ones are not so the axis is counter intuitive because Small <em>p</em>-values (i.e., significant values) are at the bottom of the axis)</p></li>
+<li><p>This is because small probabilities are important, large ones are not so the axis is counter intuitive because small <em>p</em>-values (<em>i.e.</em>, significant values) are at the bottom of the axis)</p></li>
 <li><p>And since <em>p</em>-values range from 1 to very tiny the important points are all squashed at the bottom of the axis</p></li>
 </ul>
 </div>
@@ -626,7 +639,7 @@ Emma Rand
 <img data-src="images/volcano-why-1.png" class="r-stretch quarto-figure-center"><p class="caption">Volcano plot padj against fold change</p></section><section id="volcano-plots-3" class="slide level2"><h2>Volcano plots</h2>
 <div style="font-size: 70%;">
 <ul>
-<li>Plotting the negative log of the adjusted <em>p</em>-value means that the values are spread out, <em>and</em> most significant are at the top of the axis</li>
+<li>By plotting the negative log of the adjusted <em>p</em>-value the values are spread out, <em>and</em> the most significant are at the top of the axis</li>
 </ul>
 </div>
 
@@ -636,11 +649,13 @@ Emma Rand
 <li><p>The 🐭 stem cell data were already log<sub>2</sub>normalised</p></li>
 <li><p>The other datasets were normalised by the DE method and we saved the values to the results files. We will log transform them in the workshop</p></li>
 </ul></section><section id="packages" class="slide level2"><h2>Packages</h2>
-<p>This packages is on the University computers which you can access on campus or <a href="https://www.york.ac.uk/it-services/tools/vds/">remotely using the VDS</a></p>
-<p>If you want to use your own machine you will need to install the package. ::: {style=“font-size: 60%;”}</p>
+<p>This package is on the University computers which you can access on campus or <a href="https://www.york.ac.uk/it-services/tools/vds/">remotely using the VDS</a></p>
+<p>If you want to use your own machine you will need to install the package.</p>
+<div style="font-size: 60%;">
 <p>Install <strong><code>ggrepel</code></strong> from CRAN in the the normal way:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggrepel"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggrepel"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 <p>This package allows you to label points on a plot without them overlapping.</p>
 </section></section><section><section id="workshops" class="title-slide slide level1 center"><h1>Workshops</h1>
