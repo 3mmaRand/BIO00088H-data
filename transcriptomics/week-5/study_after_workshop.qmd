@@ -12,16 +12,33 @@ format:
 
 You need only do the section for one of the examples.
 
-🐸 Frogs
 
-🎬 Open your `frogs-88H` Project and script you began in the Consolidation study of Transcriptomics 1 and continued to work on in Transcriptomics 2. This is likely to be `cont-fgf-s20.R` or `cont-fgf-s14.R`. Use the code you used in the workshop (in `cont-fgf-s30.R`) as a template to visualise the s20/s14 results. 
+You need only do the section for your own project data
 
-🐭 Mice
+🐸 Frog development
 
-🎬 Open your `mice-88H` Project and the script you began in the Consolidation study of Transcriptomics 2. This is likely to be `hspc-lthsc.R` or `lthsc-prog.R`. Use the code you used in the workshop (in `hspc-prog.R`) as a template to visualise the hspc-lthsc/lthsc-prog results.
-
-🍂 xxxx
-
-🎬 Follow one of the other examples
+🎬 Open your `frogs-88H` Project and the `cont-fgf-s20.R` script you began 
+in the Consolidation study of Transcriptomics 1 and continued to work on in 
+Transcriptomics 2. Use the code you used in the workshop 
+(in `cont-fgf-s30.R`) as a template to visualise the s20 results. 
 
 
+🎄 *Arabidopisis*
+
+🎬 Open your `arab-88H` RStudio Project and the `suff-def-spl7.R` script you began 
+in the Consolidation study of Transcriptomics 1 and continued to work on in 
+Transcriptomics 2. Use the code you used in the workshop (in `suff-def-wild.R`) 
+as a template to visualise the results for the comparison between the 
+copper sufficient and deficient conditions in *spl7*.  
+
+💉 *Leishmania*
+
+🎬 Open your `leish-88H` RStudio Project and the `pro_ama.R` script you began 
+in the Consolidation study of Transcriptomics 1 and continued to work on in 
+Transcriptomics 2. Use the code you used in the workshop (in `pro_meta.R`) 
+as a template to visualise the results for the comparison between the 
+procyclic promastigotes and amastigotes. 
+
+🐭 Stem cells
+
+🎬 Open your `mice-88H` RStudio Project. 

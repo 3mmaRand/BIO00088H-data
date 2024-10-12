@@ -32,7 +32,6 @@ In these slides we will:
 
     -   Principle Component Analysis (PCA)
     -   Volcano plots
-    -   Heatmaps
 
 -   Find out what packages to install before the workshop
 :::
@@ -62,47 +61,73 @@ Workshop](../week-4/workshop.html) including:
 
 ## 🐸 Frog development
 
-::: {style="font-size: 70%;"}
+
 -   An RStudio Project called `frogs-88H` which contains:
-    -   data-raw/ with `xlaevis_counts_S14.csv`, `xlaevis_counts_S20.csv`, 
+
+::: {style="font-size: 80%;"}
+
+    -   data-raw: `xlaevis_counts_S14.csv`, `xlaevis_counts_S20.csv`, 
         `xlaevis_counts_S30.csv` 
-    -   data-processed with `s30_filtered.csv` and equivalent for S14 
-        *OR* S20
-    -   results/ with `s30_fgf_only.csv` (there were no control only 
-        genes in s30), `s30_results.csv` and equivalent for S14 *OR* S20)   
-    -   Two scripts called `cont-fgf-s30.R` and either `cont-fgf-s20.R`
-        *OR* `cont-fgf-s14.R`
+    -   data-processed: `s30_filtered.csv`, `s20_filtered.csv` 
+    -   results: `s30_fgf_only.csv` (there were no control only 
+        genes in s30), `s30_results.csv`, and equivalent for S20   
+    -   Two scripts: `cont-fgf-s30.R`, `cont-fgf-s20.R`
 :::
 
-Files should be organised into folders. Code should well commented and
-easy to read.
 
 
-## 🎄 Arabidopisis
+## 🎄 *Arabidopisis*
 
-## 💉 Leishmania mexicana
+-   An RStudio Project called `arab-88H` which contains:
 
+::: {style="font-size: 80%;"}
+
+    -   data-raw: `arabidopsis-wild.csv`, `arabidopsis-spl7.csv` 
+    -   data-processed: `wild_filtered.csv`,  `spl7_filtered.csv`
+    -   results: `wild_suf_only.csv`,  wild-_def_only.csv, `wild_results.csv`, 
+        and equivalents for spl7 
+    -   Two scripts: `suff-def-wild.R`, `suff-def-spl7.R`
+
+:::
+
+## 💉 *Leishmania*
+
+-   An RStudio Project called `leish-88H` which contains:
+
+::: {style="font-size: 80%;"}
+
+    -   data-raw: `leishmania-mex-ama.csv`, `leishmania-mex-pro.csv`, 
+        `leishmania-mex-meta.csv`
+    -   data-processed: `pro_meta_filtered.csv`, `pro_ama_filtered.csv`
+    -   results: `pro_meta_results.csv`, `pro_ama_results.csv`
+    -   Two scripts: `pro_meta.R`, `pro_ama.R`
+
+
+:::
 
 ## 🐭 Stem cells
 
-::: {style="font-size: 70%;"}
--   An RStudio Project called `mice-88H` which contains
-    -   Raw data (hspc, prog, lthsc)
-    -   Processed data (`hspc_summary_gene.csv`,
-        `hspc_summary_samp.csv`, `prog_summary_gene.csv`,
-        `prog_summary_samp.csv`, `lthsc_summary_gene.csv`,
-        `lthsc_summary_samp.csv`)
--   Results files (`prog_hspc_results.csv` and an equivalent for lthsc
-    vs prog or hspc vs lthsc)
--   Two scripts called `hspc-prog.R` and either `hspc-lthsc.R` *OR*
-    `prog-lthsc.R`
+
+-   An RStudio Project called `mice-88H` which contains:
+
+::: {style="font-size: 80%;"}
+
+    -   data-raw: `surfaceome_hspc.csv`, `surfaceome_prog.csv`, `surfaceome_lthsc.csv`
+    -   data-processed: `hspc_prog.csv`, `hspc_lthsc.csv`
+    -   results: `hspc_prog_results.csv`, `hspc-lthsc_results.csv`,
+    -   Two scripts: `hspc-prog.R`, `hspc-lthsc.R`
+
 :::
 
-Files should be organised into folders. Code should well commented and
-easy to read.
+## Additionally...
 
+Files should be organised into folders. Code should well 
+commented and easy to read. You should have curated your code to remove
+unnecessary commands that were useful to troubleshoot or understand
+objects in your environment but which are not needed for the final
+analysis.
 
-## If you do not have those
+If you are missing files, go through:
 
 Go through:
 
@@ -196,7 +221,7 @@ Remind yourself of the key columns in any of the results files:
 
 ## PCA
 ::: {style="font-size: 70%;"}
--   To understand the logic of PCA, imagine we might plotting the
+-   To understand the logic of PCA, imagine we might plot the
     expression of one gene against that of another
 
 ::: {layout-ncol="2"}
@@ -207,7 +232,7 @@ Remind yourself of the key columns in any of the results files:
 
 This gives us some in insight in how the sample/cells cluster. But we have 
 a lot of genes (even for the stem cells) to consider. How do we know if 
-the pair we use is typical? How can we consider al the genes at once?
+the pair we use is typical? How can we consider all the genes at once?
 
 :::
 
@@ -247,7 +272,7 @@ groups.
 -   They are just a scatter of the adjusted *p* value against the fold
     change....
 
--   almost - the we actually plot the negative log of the adjusted *p*
+-   almost - in fact we plot the negative log of the adjusted *p*
     value against the log fold change
 :::
 
@@ -255,8 +280,8 @@ groups.
 
 ::: {style="font-size: 70%;"}
 -   This is because small probabilities are important, large ones are 
-    not so the axis is counter intuitive because Small *p*-values 
-    (i.e., significant values) are at the bottom of the axis)
+    not so the axis is counter intuitive because small *p*-values 
+    (*i.e.*, significant values) are at the bottom of the axis)
 
 -   And since *p*-values range from 1 to very tiny the important
     points are all squashed at the bottom of the axis
@@ -267,8 +292,8 @@ groups.
 ## Volcano plots
 
 ::: {style="font-size: 70%;"}
--   Plotting the negative log of the adjusted *p*-value means that the
-    values are spread out, *and* most significant are at the top of 
+-   By plotting the negative log of the adjusted *p*-value the
+    values are spread out, *and* the most significant are at the top of 
     the axis
 :::
 
@@ -287,10 +312,11 @@ groups.
 
 ## Packages
 
-This packages is on the University computers which you can access on 
+This package is on the University computers which you can access on 
 campus or [remotely using the VDS](https://www.york.ac.uk/it-services/tools/vds/)
 
 If you want to use your own machine you will need to install the package.
+
 ::: {style="font-size: 60%;"}
 
 Install **`ggrepel`** from CRAN in the the normal way:
@@ -300,6 +326,8 @@ Install **`ggrepel`** from CRAN in the the normal way:
 install.packages("ggrepel")
 
 ```
+
+:::
 
 This package allows you to label points on a plot without them overlapping.
 

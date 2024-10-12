@@ -1,0 +1,140 @@
+
+
+🎬 Transpose the log~2~ transformed normalised counts:
+
+```{r}
+wild_log2_trans <- wild_results |> 
+  select(starts_with("log2_")) |>
+  t() |> 
+  data.frame()
+```
+
+We have used the `select()` function to select all the columns that
+start with `log2_`. We then use the `t()` function to transpose the
+dataframe. We then convert the resulting matrix to a dataframe using
+`data.frame()`. If you view that dataframe you'll see it has default
+column name which we can fix using `colnames()` to set the column names
+to the Xenbase gene ids.
+
+🎬 Set the column names to the gene ids:
+
+```{r}
+colnames(wild_log2_trans) <- wild_results$gene_id
+```
+
+🎬 Perform PCA on the log~2~ transformed normalised counts:
+
+```{r}
+pca <- wild_log2_trans |>
+  prcomp(rank. = 4) 
+```
+
+The `rank.` argument tells `prcomp()` to only calculate the first 4
+principal components. This is useful for visualisation as we can only
+plot in 2 or 3 dimensions. We can see the results of the PCA by viewing
+the `summary()` of the `pca` object.
+
+```{r}
+summary(pca)
+```
+
+The Proportion of Variance tells us how much of the variance is
+explained by each component. We can see that the first component
+explains 0.4243 of the variance, the second 0.2320, and the third
+0.1532. Together the first three components explain nearly 81% of the
+total variance in the data. Plotting PC1 against PC2 will capture about
+66% of the variance which is likely very much better than we would get
+plotting any two genes against each other. To plot the PC1 against PC2
+we will need to extract the PC1 and PC2 "scores" from the PCA object and
+add labels for the samples. Those labels will come from the row names of 
+the transformed data which has the sample ids and from the metadata.
+
+🎬 Create a vector of the sample ids from the row names. These include 
+the `log2` prefix which we can removed for labelling:
+
+```{r}
+sample_id <- row.names(wild_log2_trans) |> str_remove("log2_")
+```
+
+You might want to check the result.
+
+Now we will extract the PC1 and PC2 scores from the PCA object and add. 
+Our PCA object is called `pca` and the scores are in pca$x. We will 
+create a dataframe of the scores and add the sample ids.
+
+🎬 Create a dataframe of PC1 and PC2 scores and add the sample ids:
+
+```{r}
+pca_labelled <- data.frame(pca$x,
+                           sample_id)
+```
+
+🎬 Merge with the metadata so we can label points by treatment and
+sibling pair:
+
+```{r}
+pca_labelled <- pca_labelled |> 
+  left_join(meta_wild, 
+            by = "sample_id")
+```
+
+Since the metadata contained the sample ids, it was especially important
+to remove the `log2_` from the row names so that the join would work.
+
+The dataframe should look like this:
+
+```{r}
+#| echo: false
+knitr::kable(pca_labelled)
+```
+
+The next task is to plot PC2 against PC1 and colour by sibling pair. This 
+is just a scatterplot so we can use `geom_point()`. We will use colour
+to indicate the sibling pair and shape to indicate the treatment. 
+
+🎬 Plot PC2 against PC1 and colour by copper conditions:
+
+```{r}
+pca_labelled |> 
+  ggplot(aes(x = PC1, y = PC2, 
+             colour = copper)) +
+  geom_point(size = 3) +
+  theme_classic()
+
+```
+
+There is a good separation between treatments on PCA1. The sibling pairs
+do not seem to cluster together. You can also try plotting PC3 or PC4.
+
+I prefer to customise the colours and shapes. I especially like the  
+viridis colour scales which provide colour scales that are perceptually 
+uniform in both colour and black-and-white. They are also designed to 
+be perceived by viewers with common forms of colour blindness. See 
+[Introduction to viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html#introduction) for more information.
+
+`ggplot` provides functions to access the viridis scales. Here I use
+`scale_fill_viridis_d()`. The d stands for discrete. The 
+function `scale_fill_viridis_c()` would be used for continuous data. 
+I’ve used the default “viridis” (or “D”) option (do ?scale_fill_viridis_d for all the options) and used the `begin` and `end` arguments to control the range of 
+colour - I have set the range to be from 0.15 to 0.95 the avoid the 
+strongest contrast. I have also set the `name` argument to provide a
+label for the legend.
+
+
+🎬 Plot PC2 against PC1 and colour by copper conditions:
+
+```{r}
+pca_labelled |> 
+  ggplot(aes(x = PC1, y = PC2, 
+             colour = sibling_rep,
+             shape = treatment)) +
+  geom_point(size = 3) +
+  scale_colour_viridis_d(end = 0.95, begin = 0.15,
+                         name = "Sibling pair") +
+  scale_shape_manual(values = c(21, 19),
+                     name = NULL,
+                     labels = c("Control", "FGF-Treated")) +
+  theme_classic()
+
+```
+
