@@ -1,0 +1,180 @@
+We will add a column to the results dataframe that contains the 
+-log~10~(padj). You could perform this transformation within the 
+plot command without adding a column to the data if you prefer.
+
+🎬  Add a column to the results dataframe that contains the -log~10~(padj):
+```{r}
+wild_results <- wild_results |> 
+  mutate(log10_padj = -log10(padj)) 
+```
+
+🎬  Create a volcano plot of the results:
+```{r}
+wild_results |> 
+  ggplot(aes(x = log2FoldChange, 
+             y = log10_padj)) +
+  geom_point() +
+  geom_hline(yintercept = -log10(0.05), 
+             linetype = "dashed") +
+  geom_vline(xintercept = 2, 
+             linetype = "dashed") +
+  geom_vline(xintercept = -2, 
+             linetype = "dashed") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  theme_classic() +
+  theme(legend.position = "none")
+
+```
+
+Our dashed lines are at -log~10~(0.05) and log~2~(2) and log~2~(-2) to make
+more clear which genes (points) are significantly different between the 
+copper sufficient and deficient conditions samples and have a fold change of 
+at least 2.
+
+In most cases, people colour the points to show that the quadrants. I 
+like to add columns to the dataframe to indicate if the gene is significant
+and if the fold change is large and use those variables in the plot.
+
+🎬  Add columns to the results dataframe to indicate if the gene is 
+significant and if the fold change is large:
+```{r}
+wild_results <- wild_results |> 
+  mutate(sig = padj <= 0.05,
+         bigfc = abs(log2FoldChange) >= 2) 
+```
+
+The use of `abs()` (absolute) means genes with a fold change of at least 2 
+in either direction will be considered to have a large fold change.
+
+Now we can colour the points by these new columns. I use `interaction()` 
+to create four categories: 
+
+-   not significant and not large fold change (FF)
+-   significant and not large fold change (TF)
+-   not significant and large fold (FT)
+-   significant and large fold change (TT)
+
+And I use `scale_colour_manual()` to set the colours for these categories.
+
+🎬  Create a volcano plot of the results with the points coloured by
+significance and fold change:
+
+```{r}
+wild_results |> 
+  ggplot(aes(x = log2FoldChange, 
+             y = log10_padj, 
+             colour = interaction(sig, bigfc))) +
+  geom_point() +
+  geom_hline(yintercept = -log10(0.05), 
+             linetype = "dashed") +
+  geom_vline(xintercept = 2, 
+             linetype = "dashed") +
+  geom_vline(xintercept = -2, 
+             linetype = "dashed") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_colour_manual(values = c("gray", 
+                                 "pink",
+                                 "gray30",
+                                 "deeppink")) +
+  theme_classic() +
+  theme(legend.position = "none")
+
+```
+
+For exploring the data, I like add labels to all the significant 
+genes with a large fold change so I can very quickly identity them. The
+`ggrepel` package has a function `geom_text_repel()` that is useful for 
+adding labels so that they don't overlap.
+
+🎬  Load the package:
+```{r}
+library(ggrepel)
+```
+
+🎬  Add labels to the significant genes with a large fold change:
+
+```{r}
+
+wild_results |> 
+  ggplot(aes(x = log2FoldChange, 
+             y = log10_padj, 
+             colour = interaction(sig, bigfc))) +
+  geom_point() +
+  geom_hline(yintercept = -log10(0.05), 
+             linetype = "dashed") +
+  geom_vline(xintercept = 2, 
+             linetype = "dashed") +
+  geom_vline(xintercept = -2, 
+             linetype = "dashed") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_colour_manual(values = c("gray", 
+                                 "pink",
+                                 "gray30",
+                                 "deeppink")) +
+  geom_text_repel(data = wild_results |> 
+                    filter(bigfc == TRUE, sig == TRUE),
+                  aes(label = xenbase_gene_symbol),
+                  size = 3,
+                  max.overlaps = 50) +
+  theme_classic() +
+  theme(legend.position = "none")
+
+```
+Notice that I have used `filter()` label only the genes that are both 
+significant and have a large fold change. In systems you are familiar with, 
+this labelling is very informative and can help you quickly identify common
+themes.
+Key to interpreting the volcano plot is to remember that positive fold 
+changes means the gene is up-regulated in the sufficient conditions and 
+negative fold changes means the gene is down-regulated (i.e., higher 
+in the deficient). This was determined by the order of the treatments in the
+[contrast used in the DESeq2 analysis](../week-4/workshop.html#differential-expression-analysis-2)
+
+If you do forget which way round you did the comparison, you can always 
+examine the results dataframe to see which of the treatments seem to be
+higher for the positive fold changes.
+
+When you have a gene of interest, you may wish to label it on the plot. 
+This is done in the same way except that you filter the data to only
+include the gene of interest. I have used and then use `geom_label_repel()` 
+rather than `geom_text_repel()` to put the label in a box and nudged it's 
+position to get a line connecting the point and the label. I have also 
+increased the size of the point.
+
+
+🎬 Add a label to one gene of interest (hoxb9.S) and :
+
+```{r}
+wild_results |> 
+  ggplot(aes(x = log2FoldChange, 
+             y = log10_padj, 
+             colour = interaction(sig, bigfc))) +
+  geom_point() +
+  geom_hline(yintercept = -log10(0.05), 
+             linetype = "dashed") +
+  geom_vline(xintercept = 2, 
+             linetype = "dashed") +
+  geom_vline(xintercept = -2, 
+             linetype = "dashed") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_colour_manual(values = c("gray", 
+                                 "pink",
+                                 "gray30",
+                                 "deeppink")) +
+  geom_label_repel(data = wild_results |> 
+                    filter(xenbase_gene_symbol == "hoxb9.S"),
+                  aes(label = xenbase_gene_symbol),
+                  size = 4,
+                  nudge_x = .5,
+                  nudge_y = 1.5) +
+  geom_point(data = wild_results |> 
+                    filter(xenbase_gene_symbol == "hoxb9.S"),
+                size = 3) +
+  theme_classic() +
+  theme(legend.position = "none")
+
+```
