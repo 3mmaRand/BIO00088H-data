@@ -19,14 +19,14 @@ you began in the Consolidation study last week. Use the differential
 expression analysis you did in the workshop (in `cont-fgf-s30.R`) as 
 a template to continue your script. 
 
-🎄 Arabidopisis
+🎄 *Arabidopsis*
 
 🎬 Open your `arab-88H` RStudio Project and the `suff-def-spl7.R` script 
 you began in the Consolidation study last week. Use the differential 
 expression analysis you did in the workshop (in `suff-def-wild.R`) as 
 a template to continue your script. 
 
-💉 Leishmania
+💉 *Leishmania*
 
 🎬 Open your `leish-88H` RStudio Project and the `pro_ama.R` script 
 you began in the Consolidation study last week. Use the differential 
