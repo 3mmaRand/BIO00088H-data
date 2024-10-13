@@ -1517,17 +1517,23 @@ which is a functional genomic resource for the Trypanosomatidae and Plasmodidae<
 <div class="sourceCode" id="cb94"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Connect to the mouse database</span></span>
 <span><span class="va">ensembl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/useMart.html">useMart</a></span><span class="op">(</span>biomart <span class="op">=</span> <span class="st">"ensembl"</span>, </span>
 <span>                   dataset <span class="op">=</span> <span class="st">"mmusculus_gene_ensembl"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `req_perform()` at biomaRt/R/biomaRt.R:49:5:
+! Failed to perform HTTP request.
+Caused by error in `curl::curl_fetch_memory()`:
+! Timeout was reached: [www.ensembl.org:443] Operation timed out after 60001 milliseconds with 0 bytes received</code></pre>
+</div>
 </div>
 <p>🎬 See information we can retrieve:</p>
 <div class="cell">
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># See what information we can retrieve</span></span>
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># See what information we can retrieve</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/listAttributes.html">listAttributes</a></span><span class="op">(</span>mart <span class="op">=</span> <span class="va">ensembl</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>There are many (2,988!) possible bits of information (attributes) that can be obtained.</p>
 <p>We use the <code><a href="https://rdrr.io/pkg/biomaRt/man/getBM.html">getBM()</a></code> function to retrieve information from the database. The <code>filters</code> argument is used to specified what kind of identifier we are supplying in <code>values</code> to retrieve information. The <code>attributes</code> argument is used to select the information we want to retrieve. The <code>values</code> argument is used to specify the identifiers. The mart argument is used to specify the connection we created.</p>
 <p>🎬 Get the the gene name and a description. We also retrieve the gene id so we can later join the information with the results:</p>
 <div class="cell">
-<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gene_info</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/getBM.html">getBM</a></span><span class="op">(</span>filters <span class="op">=</span> <span class="st">"ensembl_gene_id"</span>,</span>
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gene_info</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/getBM.html">getBM</a></span><span class="op">(</span>filters <span class="op">=</span> <span class="st">"ensembl_gene_id"</span>,</span>
 <span>                   attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ensembl_gene_id"</span>,</span>
 <span>                                  <span class="st">"external_gene_name"</span>,</span>
 <span>                                  <span class="st">"description"</span><span class="op">)</span>,</span>
@@ -1537,13 +1543,20 @@ which is a functional genomic resource for the Trypanosomatidae and Plasmodidae<
 <p>You should view the resulting dataframe to see what information is available. You can use <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> or <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code>. Notice the dataframe returned only has 279 rows - one of the ids does not have information.</p>
 <p>🎬 Merge the gene information with the results:</p>
 <div class="cell">
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># join the gene info with the results</span></span>
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># join the gene info with the results</span></span>
 <span><span class="va">hspc_prog_results</span> <span class="op">&lt;-</span> <span class="va">hspc_prog_results</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">gene_info</span>, by <span class="op">=</span> <span class="st">"ensembl_gene_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `left_join()`:
+! Can't join `x$ensembl_gene_id` with `y$ensembl_gene_id` due to
+  incompatible types.
+ℹ `x$ensembl_gene_id` is a &lt;character&gt;.
+ℹ `y$ensembl_gene_id` is a &lt;logical&gt;.</code></pre>
+</div>
 </div>
 <p>🎬 Save the results to a file:</p>
 <div class="cell">
-<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">hspc_prog_results</span>, file <span class="op">=</span> <span class="st">"results/hspc_prog_results.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">hspc_prog_results</span>, file <span class="op">=</span> <span class="st">"results/hspc_prog_results.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section><section id="look-after-future-you" class="level1"><h1>🤗 Look after future you!</h1>
 <p>🎬 Go through you script and tidy up. You might need to :</p>
