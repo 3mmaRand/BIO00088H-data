@@ -410,6 +410,25 @@ It took me some time to find the information you need.
 
 ## 💉 TriTrypDB
 
+::: incremental
+
+::: {style="font-size: 80%;"}
+
+-   I got the information from [TriTrypDB](https://tritrypdb.org/tritrypdb/app/)  
+    which is a functional genomic resource for the 
+    Trypanosomatidae and Plasmodidae
+
+-   [https://tritrypdb.org/tritrypdb/app/downloads](https://tritrypdb.org/tritrypdb/app/downloads) section
+
+-   I downloaded the [*L. mexicana* MHOM/GT/2001/U1103 Full GFF](https://tritrypdb.org/common/downloads/release-68/LmexicanaMHOMGT2001U1103/gff/data/TriTrypDB-68_LmexicanaMHOMGT2001U1103.gff)
+    and extracted the gene information and saved it as
+    [leishmania_mex.xlsx](meta/leishmania_mex.xlsx)
+    
+-   In the workshop you will import this file and merge the information
+    with the results file
+
+:::
+:::
 
 ## 🐭 Ensembl
 

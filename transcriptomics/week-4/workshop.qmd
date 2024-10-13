@@ -98,7 +98,8 @@ default you can add this to the top of your script:
 conflicts_prefer(dplyr::filter)
 ```
 We will also want to ensure that we are using the `setdiff()` function 
-from the `GenomicRanges` package.
+from the **`GenomicRanges`** package which is used by
+**`DESeq2`**.
 
 ```{r}
 conflicts_prefer(GenomicRanges::setdiff)
@@ -336,10 +337,9 @@ the samples in the metadata to the samples in the counts matrix.
 🎬 Add the sample names as row names to the metadata dataframe:
 
 ```{r}
-row.names(meta) <- meta$sample_id
+meta <- meta |>
+  column_to_rownames("sample_id")
 ```
-
-(you will get a warning message but you can ignore it)
 
 We are dealing only with the S30 data so we need to remove the samples
 that are not in the S30 data.
@@ -684,10 +684,10 @@ the samples in the metadata to the samples in the counts matrix.
 🎬 Add the sample names as row names to the metadata dataframe:
 
 ```{r}
-row.names(meta) <- meta$sample_id
+meta <- meta |>
+  column_to_rownames("sample_id")
 ```
 
-(you will get a warning message but you can ignore it)
 
 We are dealing only with the wild data so we need to remove the samples
 that are not in the wild data.
@@ -1023,10 +1023,11 @@ the samples in the metadata to the samples in the counts matrix.
 🎬 Add the sample names as row names to the metadata dataframe:
 
 ```{r}
-row.names(meta) <- meta$sample_id
+meta <- meta |>
+  column_to_rownames("sample_id")
 ```
 
-(you will get a warning message but you can ignore it)
+
 
 We are dealing only with the wild data so we need to remove the samples
 that are not in the wild data.
@@ -1063,7 +1064,8 @@ dds <- DESeqDataSetFromMatrix(pro_meta_count_mat,
 ```
 
 The warning "Warning: some variables in design formula are characters,
-converting to factors" just means that the variable type of stage in the metadata dataframe is "char" and it has been
+converting to factors" just means that the variable type of stage in the
+metadata dataframe is "char" and it has been
 converted into a factor type.
 
 To help you understand what the `DESeqDataSet` object we have called 
@@ -1591,12 +1593,48 @@ write_csv(wild_results, file = "results/wild_results.csv")
 
 ## 💉 *Leishmania* 
 
-???
+
+-   I got the information from [TriTrypDB](https://tritrypdb.org/tritrypdb/app/)  
+    which is a functional genomic resource for the 
+    Trypanosomatidae and Plasmodidae
+
+-   [https://tritrypdb.org/tritrypdb/app/downloads](https://tritrypdb.org/tritrypdb/app/downloads) section
+
+-   I downloaded the [*L. mexicana* MHOM/GT/2001/U1103 Full GFF](https://tritrypdb.org/common/downloads/release-68/LmexicanaMHOMGT2001U1103/gff/data/TriTrypDB-68_LmexicanaMHOMGT2001U1103.gff)
+    and extracted the gene information and saved it as
+    [leishmania_mex.xlsx](meta/leishmania_mex.xlsx)
+    
+
+ We will import this file and join it to the results dataframe.
+
+🎬 Load the **`readxl`** [@readxl] package:
+
+```{r}
+#| eval: false
+library(readxl)
+```
+
+🎬 Import the Xenbase gene information file:
+
+```{r}
+gene_info <- read_excel("meta/leishmania_mex.xlsx") 
+```
+
+You should view the resulting dataframe to see what information is
+available. You can use `glimpse()` or `View()`.
+
+🎬 Merge the gene information with the results:
+
+```{r}
+# join the gene info with the results
+pro_meta_results <- pro_meta_results |>
+  left_join(gene_info, by = "gene_id")
+```
 
 🎬 Save the results to a file:
 
 ```{r}
-write_csv(pro_meta_results, file = "results/pro_meta_results .csv")
+write_csv(pro_meta_results, file = "results/pro_meta_results.csv")
 ```
 
 
