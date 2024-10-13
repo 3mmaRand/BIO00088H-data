@@ -37,8 +37,12 @@ copper sufficient and deficient conditions in *spl7*.
 in the Consolidation study of Transcriptomics 1 and continued to work on in 
 Transcriptomics 2. Use the code you used in the workshop (in `pro_meta.R`) 
 as a template to visualise the results for the comparison between the 
-procyclic promastigotes and amastigotes. 
+procyclic promastigote and amastigote stages. 
 
 🐭 Stem cells
 
-🎬 Open your `mice-88H` RStudio Project. 
+🎬 Open your `mice-88H` RStudio Project and the `hspc-lthsc.R` script you began 
+in the Consolidation study of Transcriptomics 1 and continued to work on in 
+Transcriptomics 2. Use the code you used in the workshop (in `hspc-prog.R`) 
+as a template to visualise the results for the comparison between HSPC and 
+LT-HSPC cells

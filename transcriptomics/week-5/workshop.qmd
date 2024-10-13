@@ -124,7 +124,7 @@ wild_results <- read_csv("results/wild_results.csv")
 #---CODING ANSWER---
 # 💉 leihsmania
 # import results data
- # <- read_csv("results/")
+pro_meta_results <- read_csv("results/pro_meta_results.csv")
 
 ```
 
@@ -160,7 +160,7 @@ glimpse(s30_results)
 
 
 ```{r}
-#| echo: false
+#| include: false
 #---CODING ANSWER---
 # 🎄  Arabidopisis
 glimpse(wild_results)
@@ -178,16 +178,25 @@ glimpse(wild_results)
 
 
 ```{r}
-#| echo: false
+#| include: false
 #---CODING ANSWER---
 # 💉 Leishmania
-
+glimpse(pro_meta_results)
 ```
 
 <!-- #---THINKING ANSWER--- -->
 
+<!-- You have data with 14 columns and 8437 rows. The rows are the genes. -->
+<!-- The columns are the normalised counts for for each of the 6 -->
+<!-- samples, the mean of the normalised counts, the gene id, -->
+<!-- and a description. -->
+<!-- You also have the results of a statistical comparison between -->
+<!-- the procyclic and metacyclic promastigote stages, the log  -->
+<!-- fold change, the test statistic, the p-value and the  -->
+<!-- adjusted p-value -->
+
 ```{r}
-#| echo: false
+#| include: false
 #---CODING ANSWER---
 # 🐭 stem cells
 
@@ -212,9 +221,10 @@ select the metadata you need
 #| echo: false
 #---CODING ANSWER---
 # 🐸 frog development 
+
 # Import metadata that maps the sample names to treatments
 meta <- read_table("meta/frog_meta_data.txt")
-row.names(meta) <- meta$sample_id
+
 # We only need the s30
 meta_s30 <- meta |>
   filter(stage == "stage_30")
@@ -228,7 +238,7 @@ meta_s30 <- meta |>
 # 🎄  Arabidopisis
 # Import metadata that maps the sample names to treatments
 meta <- read_table("meta/arab_meta_data.txt")
-row.names(meta) <- meta$sample_id
+
 # We only need the wild
 meta_wild <- meta |>
   filter(genotype == "wt")
@@ -239,11 +249,11 @@ meta_wild <- meta |>
 #---CODING ANSWER---
 # 💉 Leishmania
 # Import metadata that maps the sample names to treatments
-# meta <- read_table("meta/frog_meta_data.txt")
-# row.names(meta) <- meta$sample_id
-# # We only need the s30
-# meta_s30 <- meta |>
-#   filter(stage == "stage_30")
+meta <- read_table("meta/leish_meta_data.txt")
+
+# We only need the procyclic and metacyclic promastigote stages
+meta_pro_meta <- meta |>
+  filter(stage != "amastigotes")
 ```
 
 
@@ -252,8 +262,9 @@ meta_wild <- meta |>
 #---CODING ANSWER---
 # 🐭 stem cells
 # Import metadata that maps the sample names to treatments
+
 # meta <- read_table("meta/frog_meta_data.txt")
-# row.names(meta) <- meta$sample_id
+
 # # We only need the s30
 # meta_s30 <- meta |>
 #   filter(stage == "stage_30")
@@ -355,10 +366,10 @@ wild_results <- wild_results |>
 #---CODING ANSWER---
 # 💉 Leishmania
 # log2 transform the counts plus a tiny amount to avoid log(0)
-# s30_results <- s30_results |>
-#   mutate(across(starts_with("lm_"), 
-#                 \(x) log2(x + 0.001),
-#                 .names = "log2_{.col}"))
+pro_meta_results <- pro_meta_results |>
+  mutate(across(starts_with("lm_"), 
+                \(x) log2(x + 0.001),
+                .names = "log2_{.col}"))
 ```
 
 
@@ -427,8 +438,8 @@ wild_results_sig0.05 <- wild_results |>
 #---CODING ANSWER---
 # 💉 Leishmania
 # create a dataframe of genes significant at 0.05 level
-# s30_results_sig0.05 <- s30_results |> 
-#   filter(padj <= 0.05)
+pro_meta_results_sig0.05 <- pro_meta_results |> 
+   filter(padj <= 0.05)
 
 ```
 
@@ -454,14 +465,28 @@ wild_results_sig0.05 <- wild_results |>
 
 
 <!-- 💉 leishmania  -->
-<!-- ## genes are significant at the 0.05 level. -->
-
+<!-- 3252 genes are significant at the 0.05 level. -->
+<!-- I recommend using a more stringent cut-off such as 0.01  -->
 
 <!-- 🐭 stemcells -->
 <!-- ## genes are significant at the 0.05 level. -->
 
 If you have a very large number of genes significant at the 0.05 level, you may
 want to consider a more stringent cut-off such as 0.01.
+
+```{r}
+#| include: false
+#---CODING ANSWER---
+# 💉 Leishmania
+# create a dataframe of genes significant at 0.01 level
+pro_meta_results_sig0.01 <- pro_meta_results |> 
+   filter(padj <= 0.01)
+
+# there are still 2370 genes significant at the 0.01 level
+
+
+```
+
 
 
 🎬 Write the dataframe to a csv file. I recommend using the same file name as 
@@ -492,6 +517,11 @@ write_csv(wild_results_sig0.05,
 #---CODING ANSWER---
 # 💉 Leishmania
 # write to csv file
+write_csv(pro_meta_results_sig0.05, 
+          file = "results/wild_results_sig0.05.csv")
+
+write_csv(pro_meta_results_sig0.01, 
+          file = "results/wild_results_sig0.01.csv")
 
 ```
 
@@ -721,6 +751,8 @@ pca <- wild_log2_trans |>
   prcomp(rank. = 4, scale = TRUE)
 ```
 
+The `scale` argument tells `prcomp()` to scale the data before doing the
+PCA. This is important when the variables are on different scales to stop variables with large values dominating the PCA.
 The `rank.` argument tells `prcomp()` to only calculate the first 4
 principal components. This is useful for visualisation as we can only
 plot in 2 or 3 dimensions. We can see the results of the PCA by viewing
@@ -732,8 +764,8 @@ summary(pca)
 
 The Proportion of Variance tells us how much of the variance is
 explained by each component. We can see that the first component
-explains 0.6733 of the variance, the second 0.2442, and the third
-0.08278. Together the first three components explain nearly 100% of the
+explains 0.5742 of the variance, the second 0.2786, and the third
+0.1472. Together the first three components explain nearly 100% of the
 total variance in the data. Plotting PC1 against PC2 will capture about
 92% of the variance which is very likely very much better than we would get
 plotting any two genes against each other. To plot the PC1 against PC2
@@ -831,6 +863,144 @@ pca_labelled |>
 
 
 ## 💉 *Leishmainia* 
+
+
+
+🎬 Transpose the log~2~ transformed normalised counts:
+
+```{r}
+pro_meta_log2_trans <- pro_meta_results |> 
+  select(starts_with("log2_")) |>
+  t() |> 
+  data.frame()
+```
+
+We have used the `select()` function to select all the columns that
+start with `log2_`. We then use the `t()` function to transpose the
+dataframe. We then convert the resulting matrix to a dataframe using
+`data.frame()`. If you view that dataframe you'll see it has default
+column name which we can fix using `colnames()` to set the column names
+to the Xenbase gene ids.
+
+🎬 Set the column names to the gene ids:
+
+```{r}
+colnames(pro_meta_log2_trans) <- pro_meta_results$gene_id
+```
+
+🎬 Perform PCA on the log~2~ transformed normalised counts:
+
+```{r}
+pca <- pro_meta_log2_trans |>
+  prcomp(rank. = 4, scale = TRUE) 
+```
+
+The `scale` argument tells `prcomp()` to scale the data before doing the
+PCA. This is important when the variables are on different scales to stop variables with large values dominating the PCA.
+The `rank.` argument tells `prcomp()` to only calculate the first 4
+principal components. This is useful for visualisation as we can only
+plot in 2 or 3 dimensions. We can see the results of the PCA by viewing
+the `summary()` of the `pca` object.
+
+```{r}
+summary(pca)
+```
+
+The Proportion of Variance tells us how much of the variance is
+explained by each component. We can see that the first component
+explains 0.5175 of the variance, the second 0.2088, and the third
+0.1025. Together the first three components explain nearly 92% of the
+total variance in the data. Plotting PC1 against PC2 will capture about
+66% of the variance which is likely very much better than we would get
+plotting any two genes against each other. To plot the PC1 against PC2
+we will need to extract the PC1 and PC2 "scores" from the PCA object and
+add labels for the samples. Those labels will come from the row names of 
+the transformed data which has the sample ids and from the metadata.
+
+🎬 Create a vector of the sample ids from the row names. These include 
+the `log2` prefix which we can removed for labelling:
+
+```{r}
+sample_id <- row.names(pro_meta_log2_trans) |> str_remove("log2_")
+```
+
+You might want to check the result.
+
+Now we will extract the PC1 and PC2 scores from the PCA object and add. 
+Our PCA object is called `pca` and the scores are in pca$x. We will 
+create a dataframe of the scores and add the sample ids.
+
+🎬 Create a dataframe of PC1 and PC2 scores and add the sample ids:
+
+```{r}
+pca_labelled <- data.frame(pca$x,
+                           sample_id)
+```
+
+🎬 Merge with the metadata so we can label points by life cycle stage:
+
+```{r}
+pca_labelled <- pca_labelled |> 
+  left_join(meta_pro_meta, 
+            by = "sample_id")
+```
+
+Since the metadata contained the sample ids, it was especially important
+to remove the `log2_` from the row names so that the join would work.
+
+The dataframe should look like this:
+
+```{r}
+#| echo: false
+knitr::kable(pca_labelled)
+```
+
+The next task is to plot PC2 against PC1 and colour by sibling pair. This 
+is just a scatterplot so we can use `geom_point()`. We will use colour
+to indicate the life cycle stage. 
+
+🎬 Plot PC2 against PC1 and colour by copper conditions:
+
+```{r}
+pca_labelled |> 
+  ggplot(aes(x = PC1, y = PC2, 
+             colour = stage)) +
+  geom_point(size = 3) +
+  theme_classic()
+
+```
+
+There is a good separation between treatments on PCA1. The replicates
+do seem to cluster together. You can also try plotting PC3 or PC4.
+
+I prefer to customise the colours. I especially like the  
+viridis colour scales which provide colour scales that are perceptually 
+uniform in both colour and black-and-white. They are also designed to 
+be perceived by viewers with common forms of colour blindness. See 
+[Introduction to viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html#introduction) for more information.
+
+`ggplot` provides functions to access the viridis scales. Here I use
+`scale_fill_viridis_d()`. The d stands for discrete. The 
+function `scale_fill_viridis_c()` would be used for continuous data. 
+I’ve used the default “viridis” (or “D”) option (do ?scale_fill_viridis_d for all the options) and used the `begin` and `end` arguments to control the range of 
+colour - I have set the range to be from 0.15 to 0.95 the avoid the 
+strongest contrast. I have also set the `name` argument to provide a
+label for the legend.
+
+
+🎬 Plot PC2 against PC1 and colour by life stage:
+
+```{r}
+pca_labelled |> 
+  ggplot(aes(x = PC1, y = PC2, 
+             colour = stage)) +
+  geom_point(size = 3) +
+  scale_colour_viridis_d(end = 0.95, begin = 0.15,
+                         name = "Stage") +
+  theme_classic()
+
+```
+
 
 
 
@@ -989,7 +1159,8 @@ higher for the positive fold changes.
 
 Please note that Betsy doesn't like graphs like this in the report!
 
-When you have a gene of interest, you may wish to label it on the plot. 
+When you have a gene of interest, you may wish to label it, and only it,
+on the plot.  
 This is done in the same way except that you filter the data to only
 include the gene of interest. I have used and then use `geom_label_repel()` 
 rather than `geom_text_repel()` to put the label in a box and nudged it's 
@@ -1095,11 +1266,200 @@ to create four categories:
 
 And I use `scale_colour_manual()` to set the colours for these categories.
 
+NOTE: there are no "significant and not large fold change (TF)" in this case.This means we do not need four colours. I have put the "pink" colour in the code but commented it out.
+
+
 🎬  Create a volcano plot of the results with the points coloured by
 significance and fold change:
 
 ```{r}
 wild_results |> 
+  ggplot(aes(x = log2FoldChange, 
+             y = log10_padj, 
+             colour = interaction(sig, bigfc))) +
+  geom_point() +
+  geom_hline(yintercept = -log10(0.05), 
+             linetype = "dashed") +
+  geom_vline(xintercept = 2, 
+             linetype = "dashed") +
+  geom_vline(xintercept = -2, 
+             linetype = "dashed") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_colour_manual(values = c("gray", 
+                                # "pink",
+                                 "gray30",
+                                 "deeppink")) +
+  theme_classic() +
+  theme(legend.position = "none")
+
+```
+
+For exploring the data, I like add labels to all the significant 
+genes with a large fold change so I can very quickly identity them. The
+`ggrepel` package has a function `geom_text_repel()` that is useful for 
+adding labels so that they don't overlap.
+
+🎬  Load the package:
+```{r}
+#| eval: false
+library(ggrepel)
+```
+
+🎬  Add labels to the significant genes with a large fold change:
+
+```{r}
+
+wild_results |> 
+  ggplot(aes(x = log2FoldChange, 
+             y = log10_padj, 
+             colour = interaction(sig, bigfc))) +
+  geom_point() +
+  geom_hline(yintercept = -log10(0.05), 
+             linetype = "dashed") +
+  geom_vline(xintercept = 2, 
+             linetype = "dashed") +
+  geom_vline(xintercept = -2, 
+             linetype = "dashed") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_colour_manual(values = c("gray", 
+                               #  "pink",
+                                 "gray30",
+                                 "deeppink")) +
+  geom_text_repel(data = wild_results |> 
+                    filter(bigfc == TRUE, sig == TRUE),
+                  aes(label = external_gene_name),
+                  size = 3,
+                  max.overlaps = 50) +
+  theme_classic() +
+  theme(legend.position = "none")
+
+```
+Notice that I have used `filter()` label only the genes that are both 
+significant and have a large fold change. In systems you are familiar with, 
+this labelling is very informative and can help you quickly identify common
+themes.
+Key to interpreting the volcano plot is to remember that positive fold 
+changes means the gene is up-regulated in the sufficient conditions and 
+negative fold changes means the gene is down-regulated (i.e., higher 
+in the deficient). This was determined by the order of the treatments in the
+[contrast used in the DESeq2 analysis](../week-4/workshop.html#differential-expression-analysis-2)
+
+If you do forget which way round you did the comparison, you can always 
+examine the results dataframe to see which of the treatments seem to be
+higher for the positive fold changes.
+
+When you have a gene of interest, you may wish to label it, and only it,
+on the plot. 
+This is done in the same way except that you filter the data to only
+include the gene of interest. I have used and then use `geom_label_repel()` 
+rather than `geom_text_repel()` to put the label in a box and nudged it's 
+position to get a line connecting the point and the label. I have also 
+increased the size of the point.
+
+
+🎬 Add a label to one gene of interest (hoxb9.S) and :
+
+```{r}
+wild_results |> 
+  ggplot(aes(x = log2FoldChange, 
+             y = log10_padj, 
+             colour = interaction(sig, bigfc))) +
+  geom_point() +
+  geom_hline(yintercept = -log10(0.05), 
+             linetype = "dashed") +
+  geom_vline(xintercept = 2, 
+             linetype = "dashed") +
+  geom_vline(xintercept = -2, 
+             linetype = "dashed") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_colour_manual(values = c("gray", 
+                               #  "pink",
+                                 "gray30",
+                                 "deeppink")) +
+  geom_label_repel(data = wild_results |> 
+                    filter(external_gene_name == "FRO4"),
+                  aes(label = external_gene_name),
+                  size = 4,
+                  nudge_x = .5,
+                  nudge_y = 1.5) +
+  geom_point(data = wild_results |> 
+                    filter(external_gene_name == "FRO4"),
+                size = 3) +
+  theme_classic() +
+  theme(legend.position = "none")
+
+```
+
+## 💉 *Leishmania*
+
+We will add a column to the results dataframe that contains the 
+-log~10~(padj). You could perform this transformation within the 
+plot command without adding a column to the data if you prefer.
+
+🎬  Add a column to the results dataframe that contains the -log~10~(padj):
+```{r}
+pro_meta_results <- pro_meta_results |> 
+  mutate(log10_padj = -log10(padj)) 
+```
+
+🎬  Create a volcano plot of the results:
+```{r}
+pro_meta_results |> 
+  ggplot(aes(x = log2FoldChange, 
+             y = log10_padj)) +
+  geom_point() +
+  geom_hline(yintercept = -log10(0.05), 
+             linetype = "dashed") +
+  geom_vline(xintercept = 2, 
+             linetype = "dashed") +
+  geom_vline(xintercept = -2, 
+             linetype = "dashed") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  theme_classic() +
+  theme(legend.position = "none")
+
+```
+
+Our dashed lines are at -log~10~(0.05) and log~2~(2) and log~2~(-2) to make
+more clear which genes (points) are significantly different between the 
+life stages and have a fold change of at least 2. Whilst we have very many genes
+that are significant, we have fewer that are significant and have a large 
+fold change.
+
+In most cases, people colour the points to show that the quadrants. I 
+like to add columns to the dataframe to indicate if the gene is significant
+and if the fold change is large and use those variables in the plot.
+
+🎬  Add columns to the results dataframe to indicate if the gene is 
+significant and if the fold change is large:
+```{r}
+pro_meta_results <- pro_meta_results |> 
+  mutate(sig = padj <= 0.05,
+         bigfc = abs(log2FoldChange) >= 2) 
+```
+
+The use of `abs()` (absolute) means genes with a fold change of at least 2 
+in either direction will be considered to have a large fold change.
+
+Now we can colour the points by these new columns. I use `interaction()` 
+to create four categories: 
+
+-   not significant and not large fold change (FF)
+-   significant and not large fold change (TF)
+-   not significant and large fold (FT)
+-   significant and large fold change (TT)
+
+And I use `scale_colour_manual()` to set the colours for these categories.
+
+🎬  Create a volcano plot of the results with the points coloured by
+significance and fold change:
+
+```{r}
+pro_meta_results |> 
   ggplot(aes(x = log2FoldChange, 
              y = log10_padj, 
              colour = interaction(sig, bigfc))) +
@@ -1128,6 +1488,7 @@ adding labels so that they don't overlap.
 
 🎬  Load the package:
 ```{r}
+#| eval: false
 library(ggrepel)
 ```
 
@@ -1135,7 +1496,7 @@ library(ggrepel)
 
 ```{r}
 
-wild_results |> 
+pro_meta_results |> 
   ggplot(aes(x = log2FoldChange, 
              y = log10_padj, 
              colour = interaction(sig, bigfc))) +
@@ -1152,9 +1513,9 @@ wild_results |>
                                  "pink",
                                  "gray30",
                                  "deeppink")) +
-  geom_text_repel(data = wild_results |> 
+  geom_text_repel(data = pro_meta_results |> 
                     filter(bigfc == TRUE, sig == TRUE),
-                  aes(label = xenbase_gene_symbol),
+                  aes(label = description),
                   size = 3,
                   max.overlaps = 50) +
   theme_classic() +
@@ -1164,29 +1525,14 @@ wild_results |>
 Notice that I have used `filter()` label only the genes that are both 
 significant and have a large fold change. In systems you are familiar with, 
 this labelling is very informative and can help you quickly identify common
-themes.
-Key to interpreting the volcano plot is to remember that positive fold 
-changes means the gene is up-regulated in the sufficient conditions and 
-negative fold changes means the gene is down-regulated (i.e., higher 
-in the deficient). This was determined by the order of the treatments in the
-[contrast used in the DESeq2 analysis](../week-4/workshop.html#differential-expression-analysis-2)
+themes. However, in this case, we do not have good annotation for the genes. 
+We can label only with the gene id or the description. Many of the descriptions are 
 
-If you do forget which way round you did the comparison, you can always 
-examine the results dataframe to see which of the treatments seem to be
-higher for the positive fold changes.
-
-When you have a gene of interest, you may wish to label it on the plot. 
-This is done in the same way except that you filter the data to only
-include the gene of interest. I have used and then use `geom_label_repel()` 
-rather than `geom_text_repel()` to put the label in a box and nudged it's 
-position to get a line connecting the point and the label. I have also 
-increased the size of the point.
-
-
-🎬 Add a label to one gene of interest (hoxb9.S) and :
+🎬  Add labels to the significant genes with a large fold change only where description doesn't contain "hypothetical" or "unspecified :
 
 ```{r}
-wild_results |> 
+
+pro_meta_results |> 
   ggplot(aes(x = log2FoldChange, 
              y = log10_padj, 
              colour = interaction(sig, bigfc))) +
@@ -1203,21 +1549,69 @@ wild_results |>
                                  "pink",
                                  "gray30",
                                  "deeppink")) +
-  geom_label_repel(data = wild_results |> 
-                    filter(xenbase_gene_symbol == "hoxb9.S"),
-                  aes(label = xenbase_gene_symbol),
-                  size = 4,
-                  nudge_x = .5,
-                  nudge_y = 1.5) +
-  geom_point(data = wild_results |> 
-                    filter(xenbase_gene_symbol == "hoxb9.S"),
-                size = 3) +
+  geom_text_repel(data = pro_meta_results |> 
+                    filter(bigfc == TRUE, sig == TRUE,
+                           !str_detect(description, "hypothetical|unspecified")),
+                  aes(label = description),
+                  size = 3,
+                  max.overlaps = 50) +
   theme_classic() +
   theme(legend.position = "none")
 
 ```
 
-## 💉 *Leishmania*
+Key to interpreting the volcano plot is to remember that positive fold 
+changes means the gene is up-regulated in the procyclic stage and 
+negative fold changes means the gene is down-regulated (i.e., higher 
+in the metacyclic). This was determined by the order of the treatments in the
+[contrast used in the DESeq2 analysis](../week-4/workshop.html#differential-expression-analysis-3)
+
+If you do forget which way round you did the comparison, you can always 
+examine the results dataframe to see which of the treatments seem to be
+higher for the positive fold changes.
+
+When you have a gene of interest, you may wish to label it, and only it,
+on the plot. 
+This is done in the same way except that you filter the data to only
+include the gene of interest. I have used and then use `geom_label_repel()` 
+rather than `geom_text_repel()` to put the label in a box and nudged it's 
+position to get a line connecting the point and the label. I have also 
+increased the size of the point.
+
+
+🎬 Add a label to one gene of interest (elongation factor 1-alpha) and :
+
+```{r}
+pro_meta_results |> 
+  ggplot(aes(x = log2FoldChange, 
+             y = log10_padj, 
+             colour = interaction(sig, bigfc))) +
+  geom_point() +
+  geom_hline(yintercept = -log10(0.05), 
+             linetype = "dashed") +
+  geom_vline(xintercept = 2, 
+             linetype = "dashed") +
+  geom_vline(xintercept = -2, 
+             linetype = "dashed") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_colour_manual(values = c("gray", 
+                                 "pink",
+                                 "gray30",
+                                 "deeppink")) +
+  geom_label_repel(data = pro_meta_results |> 
+                    filter(description == "elongation factor 1-alpha"),
+                  aes(label = description),
+                  size = 4,
+                  nudge_x = .5,
+                  nudge_y = 1.5) +
+  geom_point(data = pro_meta_results |> 
+                    filter(description == "elongation factor 1-alpha"),
+                size = 3) +
+  theme_classic() +
+  theme(legend.position = "none")
+
+```
 
 
 ## 🐭 Stem cells
