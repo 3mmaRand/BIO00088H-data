@@ -4,13 +4,13 @@ plot command without adding a column to the data if you prefer.
 
 🎬  Add a column to the results dataframe that contains the -log~10~(padj):
 ```{r}
-wild_results <- wild_results |> 
+pro_meta_results <- pro_meta_results |> 
   mutate(log10_padj = -log10(padj)) 
 ```
 
 🎬  Create a volcano plot of the results:
 ```{r}
-wild_results |> 
+pro_meta_results |> 
   ggplot(aes(x = log2FoldChange, 
              y = log10_padj)) +
   geom_point() +
@@ -39,7 +39,7 @@ and if the fold change is large and use those variables in the plot.
 🎬  Add columns to the results dataframe to indicate if the gene is 
 significant and if the fold change is large:
 ```{r}
-wild_results <- wild_results |> 
+pro_meta_results <- pro_meta_results |> 
   mutate(sig = padj <= 0.05,
          bigfc = abs(log2FoldChange) >= 2) 
 ```
@@ -61,7 +61,7 @@ And I use `scale_colour_manual()` to set the colours for these categories.
 significance and fold change:
 
 ```{r}
-wild_results |> 
+pro_meta_results |> 
   ggplot(aes(x = log2FoldChange, 
              y = log10_padj, 
              colour = interaction(sig, bigfc))) +
@@ -97,7 +97,7 @@ library(ggrepel)
 
 ```{r}
 
-wild_results |> 
+pro_meta_results |> 
   ggplot(aes(x = log2FoldChange, 
              y = log10_padj, 
              colour = interaction(sig, bigfc))) +
@@ -114,9 +114,9 @@ wild_results |>
                                  "pink",
                                  "gray30",
                                  "deeppink")) +
-  geom_text_repel(data = wild_results |> 
+  geom_text_repel(data = pro_meta_results |> 
                     filter(bigfc == TRUE, sig == TRUE),
-                  aes(label = xenbase_gene_symbol),
+                  aes(label = gene_id),
                   size = 3,
                   max.overlaps = 50) +
   theme_classic() +
@@ -148,7 +148,7 @@ increased the size of the point.
 🎬 Add a label to one gene of interest (hoxb9.S) and :
 
 ```{r}
-wild_results |> 
+pro_meta_results |> 
   ggplot(aes(x = log2FoldChange, 
              y = log10_padj, 
              colour = interaction(sig, bigfc))) +
@@ -165,14 +165,14 @@ wild_results |>
                                  "pink",
                                  "gray30",
                                  "deeppink")) +
-  geom_label_repel(data = wild_results |> 
-                    filter(xenbase_gene_symbol == "hoxb9.S"),
-                  aes(label = xenbase_gene_symbol),
+  geom_label_repel(data = pro_meta_results |> 
+                    filter(gene_id == "hoxb9.S"),
+                  aes(label = gene_id),
                   size = 4,
                   nudge_x = .5,
                   nudge_y = 1.5) +
-  geom_point(data = wild_results |> 
-                    filter(xenbase_gene_symbol == "hoxb9.S"),
+  geom_point(data = pro_meta_results |> 
+                    filter(gene_id == "hoxb9.S"),
                 size = 3) +
   theme_classic() +
   theme(legend.position = "none")

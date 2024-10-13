@@ -3,7 +3,7 @@
 🎬 Transpose the log~2~ transformed normalised counts:
 
 ```{r}
-wild_log2_trans <- wild_results |> 
+pro_meta_log2_trans <- pro_meta_results |> 
   select(starts_with("log2_")) |>
   t() |> 
   data.frame()
@@ -19,13 +19,13 @@ to the Xenbase gene ids.
 🎬 Set the column names to the gene ids:
 
 ```{r}
-colnames(wild_log2_trans) <- wild_results$gene_id
+colnames(pro_meta_log2_trans) <- pro_meta_results$gene_id
 ```
 
 🎬 Perform PCA on the log~2~ transformed normalised counts:
 
 ```{r}
-pca <- wild_log2_trans |>
+pca <- pro_meta_log2_trans |>
   prcomp(rank. = 4) 
 ```
 
@@ -53,7 +53,7 @@ the transformed data which has the sample ids and from the metadata.
 the `log2` prefix which we can removed for labelling:
 
 ```{r}
-sample_id <- row.names(wild_log2_trans) |> str_remove("log2_")
+sample_id <- row.names(pro_meta_log2_trans) |> str_remove("log2_")
 ```
 
 You might want to check the result.
@@ -74,7 +74,7 @@ sibling pair:
 
 ```{r}
 pca_labelled <- pca_labelled |> 
-  left_join(meta_wild, 
+  left_join(meta_pro_meta, 
             by = "sample_id")
 ```
 
@@ -121,7 +121,7 @@ strongest contrast. I have also set the `name` argument to provide a
 label for the legend.
 
 
-🎬 Plot PC2 against PC1 and colour by copper conditions:
+🎬 Plot PC2 against PC1 and colour by life stage:
 
 ```{r}
 pca_labelled |> 

@@ -64,15 +64,12 @@ Workshop](../week-4/workshop.html) including:
 
 -   An RStudio Project called `frogs-88H` which contains:
 
-::: {style="font-size: 80%;"}
-
     -   data-raw: `xlaevis_counts_S14.csv`, `xlaevis_counts_S20.csv`, 
         `xlaevis_counts_S30.csv` 
     -   data-processed: `s30_filtered.csv`, `s20_filtered.csv` 
     -   results: `s30_fgf_only.csv` (there were no control only 
         genes in s30), `s30_results.csv`, and equivalent for S20   
     -   Two scripts: `cont-fgf-s30.R`, `cont-fgf-s20.R`
-:::
 
 
 
@@ -80,21 +77,16 @@ Workshop](../week-4/workshop.html) including:
 
 -   An RStudio Project called `arab-88H` which contains:
 
-::: {style="font-size: 80%;"}
-
     -   data-raw: `arabidopsis-wild.csv`, `arabidopsis-spl7.csv` 
     -   data-processed: `wild_filtered.csv`,  `spl7_filtered.csv`
     -   results: `wild_suf_only.csv`,  wild-_def_only.csv, `wild_results.csv`, 
         and equivalents for spl7 
     -   Two scripts: `suff-def-wild.R`, `suff-def-spl7.R`
 
-:::
 
 ## 💉 *Leishmania*
 
 -   An RStudio Project called `leish-88H` which contains:
-
-::: {style="font-size: 80%;"}
 
     -   data-raw: `leishmania-mex-ama.csv`, `leishmania-mex-pro.csv`, 
         `leishmania-mex-meta.csv`
@@ -103,21 +95,16 @@ Workshop](../week-4/workshop.html) including:
     -   Two scripts: `pro_meta.R`, `pro_ama.R`
 
 
-:::
-
 ## 🐭 Stem cells
 
 
 -   An RStudio Project called `mice-88H` which contains:
-
-::: {style="font-size: 80%;"}
 
     -   data-raw: `surfaceome_hspc.csv`, `surfaceome_prog.csv`, `surfaceome_lthsc.csv`
     -   data-processed: `hspc_prog.csv`, `hspc_lthsc.csv`
     -   results: `hspc_prog_results.csv`, `hspc-lthsc_results.csv`,
     -   Two scripts: `hspc-prog.R`, `hspc-lthsc.R`
 
-:::
 
 ## Additionally...
 
