@@ -397,7 +397,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">12 October, 2024</p>
+      <p class="date">13 October, 2024</p>
     </div>
   </div>
   
@@ -447,7 +447,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://conflicted.r-lib.org/reference/conflicts_prefer.html">conflicts_prefer</a></span><span class="op">(</span><span class="fu">dplyr</span><span class="fu">::</span><span class="va"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We will also want to ensure that we are using the <code><a href="https://generics.r-lib.org/reference/setops.html">setdiff()</a></code> function from the <code>GenomicRanges</code> package.</p>
+<p>We will also want to ensure that we are using the <code><a href="https://generics.r-lib.org/reference/setops.html">setdiff()</a></code> function from the <strong><code>GenomicRanges</code></strong> package which is used by <strong><code>DESeq2</code></strong>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://conflicted.r-lib.org/reference/conflicts_prefer.html">conflicts_prefer</a></span><span class="op">(</span><span class="fu">GenomicRanges</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/BiocGenerics/man/sets.html">setdiff</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -595,9 +595,9 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <p>We need to add the sample names as row names to the metadata dataframe. This is because the DESeqDataSet object will use the row names to match the samples in the metadata to the samples in the counts matrix.</p>
 <p>🎬 Add the sample names as row names to the metadata dataframe:</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">meta</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">meta</span><span class="op">$</span><span class="va">sample_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">meta</span> <span class="op">&lt;-</span> <span class="va">meta</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">column_to_rownames</a></span><span class="op">(</span><span class="st">"sample_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>(you will get a warning message but you can ignore it)</p>
 <p>We are dealing only with the S30 data so we need to remove the samples that are not in the S30 data.</p>
 <p>🎬 Filter the metadata to keep only the S30 information:</p>
 <div class="cell">
@@ -628,15 +628,15 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <div class="cell">
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">colData</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>DataFrame with 6 rows and 4 columns
-          sample_id       stage treatment sibling_rep
-        &lt;character&gt; &lt;character&gt;  &lt;factor&gt;    &lt;factor&gt;
-S30_C_1     S30_C_1    stage_30   control       one  
-S30_C_2     S30_C_2    stage_30   control       two  
-S30_C_3     S30_C_3    stage_30   control       three
-S30_F_1     S30_F_1    stage_30   FGF           one  
-S30_F_2     S30_F_2    stage_30   FGF           two  
-S30_F_3     S30_F_3    stage_30   FGF           three</code></pre>
+<pre><code>DataFrame with 6 rows and 3 columns
+              stage treatment sibling_rep
+        &lt;character&gt;  &lt;factor&gt;    &lt;factor&gt;
+S30_C_1    stage_30   control       one  
+S30_C_2    stage_30   control       two  
+S30_C_3    stage_30   control       three
+S30_F_1    stage_30   FGF           one  
+S30_F_2    stage_30   FGF           two  
+S30_F_3    stage_30   FGF           three</code></pre>
 </div>
 </div>
 <p>You should be able to see this is the same as in <code>meta_s30</code>.</p>
@@ -827,9 +827,9 @@ S30_F_3     S30_F_3    stage_30   FGF           three</code></pre>
 <p>We need to add the sample names as row names to the metadata dataframe. This is because the DESeqDataSet object will use the row names to match the samples in the metadata to the samples in the counts matrix.</p>
 <p>🎬 Add the sample names as row names to the metadata dataframe:</p>
 <div class="cell">
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">meta</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">meta</span><span class="op">$</span><span class="va">sample_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">meta</span> <span class="op">&lt;-</span> <span class="va">meta</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">column_to_rownames</a></span><span class="op">(</span><span class="st">"sample_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>(you will get a warning message but you can ignore it)</p>
 <p>We are dealing only with the wild data so we need to remove the samples that are not in the wild data.</p>
 <p>🎬 Filter the metadata to keep only the wild information:</p>
 <div class="cell">
@@ -860,13 +860,13 @@ S30_F_3     S30_F_3    stage_30   FGF           three</code></pre>
 <div class="cell">
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">colData</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>DataFrame with 4 rows and 3 columns
-                            sample_id    genotype     copper
-                          &lt;character&gt; &lt;character&gt;   &lt;factor&gt;
-SRX028956_wild_suf SRX028956_wild_suf          wt sufficient
-SRX028957_wild_def SRX028957_wild_def          wt deficient 
-SRX028960_wild_suf SRX028960_wild_suf          wt sufficient
-SRX028961_wild_def SRX028961_wild_def          wt deficient </code></pre>
+<pre><code>DataFrame with 4 rows and 2 columns
+                      genotype     copper
+                   &lt;character&gt;   &lt;factor&gt;
+SRX028956_wild_suf          wt sufficient
+SRX028957_wild_def          wt deficient 
+SRX028960_wild_suf          wt sufficient
+SRX028961_wild_def          wt deficient </code></pre>
 </div>
 </div>
 <p>You should be able to see this is the same as in <code>meta_wild</code>.</p>
@@ -1001,9 +1001,9 @@ deficient-copper for each gene.</p>
 <p>We need to add the sample names as row names to the metadata dataframe. This is because the DESeqDataSet object will use the row names to match the samples in the metadata to the samples in the counts matrix.</p>
 <p>🎬 Add the sample names as row names to the metadata dataframe:</p>
 <div class="cell">
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">meta</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">meta</span><span class="op">$</span><span class="va">sample_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">meta</span> <span class="op">&lt;-</span> <span class="va">meta</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">column_to_rownames</a></span><span class="op">(</span><span class="st">"sample_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>(you will get a warning message but you can ignore it)</p>
 <p>We are dealing only with the wild data so we need to remove the samples that are not in the wild data.</p>
 <p>🎬 Filter the metadata to keep only the procyclic and metacyclic information:</p>
 <div class="cell">
@@ -1034,15 +1034,15 @@ deficient-copper for each gene.</p>
 <div class="cell">
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">colData</span><span class="op">(</span><span class="va">dds</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>DataFrame with 6 rows and 3 columns
-            sample_id      stage replicate
-          &lt;character&gt;   &lt;factor&gt; &lt;numeric&gt;
-lm_pro_1     lm_pro_1 procyclic          1
-lm_pro_2     lm_pro_2 procyclic          2
-lm_pro_3     lm_pro_3 procyclic          3
-lm_meta_1   lm_meta_1 metacyclic         1
-lm_meta_2   lm_meta_2 metacyclic         2
-lm_meta_3   lm_meta_3 metacyclic         3</code></pre>
+<pre><code>DataFrame with 6 rows and 2 columns
+               stage replicate
+            &lt;factor&gt; &lt;numeric&gt;
+lm_pro_1  procyclic          1
+lm_pro_2  procyclic          2
+lm_pro_3  procyclic          3
+lm_meta_1 metacyclic         1
+lm_meta_2 metacyclic         2
+lm_meta_3 metacyclic         3</code></pre>
 </div>
 </div>
 <p>You should be able to see this is the same as in <code>meta_pro_meta</code>.</p>
@@ -1480,33 +1480,54 @@ lm_meta_3   lm_meta_3 metacyclic         3</code></pre>
 </div>
 </section><section id="leishmania-3" class="level2"><h2 class="anchored" data-anchor-id="leishmania-3">💉 <em>Leishmania</em>
 </h2>
-<p>???</p>
+<ul>
+<li><p>I got the information from <a href="https://tritrypdb.org/tritrypdb/app/">TriTrypDB</a><br>
+which is a functional genomic resource for the Trypanosomatidae and Plasmodidae</p></li>
+<li><p><a href="https://tritrypdb.org/tritrypdb/app/downloads">https://tritrypdb.org/tritrypdb/app/downloads</a> section</p></li>
+<li><p>I downloaded the <a href="https://tritrypdb.org/common/downloads/release-68/LmexicanaMHOMGT2001U1103/gff/data/TriTrypDB-68_LmexicanaMHOMGT2001U1103.gff"><em>L. mexicana</em> MHOM/GT/2001/U1103 Full GFF</a> and extracted the gene information and saved it as <a href="meta/leishmania_mex.xlsx">leishmania_mex.xlsx</a></p></li>
+</ul>
+<p>We will import this file and join it to the results dataframe.</p>
+<p>🎬 Load the <strong><code>readxl</code></strong> <span class="citation" data-cites="readxl">(<a href="#ref-readxl" role="doc-biblioref">Wickham and Bryan 2023</a>)</span> package:</p>
+<div class="cell">
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>🎬 Import the Xenbase gene information file:</p>
+<div class="cell">
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gene_info</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"meta/leishmania_mex.xlsx"</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You should view the resulting dataframe to see what information is available. You can use <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> or <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code>.</p>
+<p>🎬 Merge the gene information with the results:</p>
+<div class="cell">
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># join the gene info with the results</span></span>
+<span><span class="va">pro_meta_results</span> <span class="op">&lt;-</span> <span class="va">pro_meta_results</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">gene_info</span>, by <span class="op">=</span> <span class="st">"gene_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>🎬 Save the results to a file:</p>
 <div class="cell">
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">pro_meta_results</span>, file <span class="op">=</span> <span class="st">"results/pro_meta_results .csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">pro_meta_results</span>, file <span class="op">=</span> <span class="st">"results/pro_meta_results.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section><section id="stem-cells-3" class="level2"><h2 class="anchored" data-anchor-id="stem-cells-3">🐭 Stem cells</h2>
 <p><a href="https://www.ensembl.org/index.html">Ensembl</a> <span class="citation" data-cites="martin2023 birney2004">(<a href="#ref-martin2023" role="doc-biblioref">Martin et al. 2023</a>; <a href="#ref-birney2004" role="doc-biblioref">Birney et al. 2004</a>)</span>is a bioinformatics project to organise all the biological information around the sequences of large genomes. The are a large number of databases but <a href="https://www.ensembl.org/info/data/biomart/index.html">BioMart</a> <span class="citation" data-cites="smedley2009">(<a href="#ref-smedley2009" role="doc-biblioref">Smedley et al. 2009</a>)</span> provides a consistent interface to the material. There are web-based tools to use these but the R package <strong><code>biomaRt</code></strong> <span class="citation" data-cites="biomaRt1 biomaRt2">(<a href="#ref-biomaRt1" role="doc-biblioref">Durinck et al. 2009</a>, <a href="#ref-biomaRt2" role="doc-biblioref">2005</a>)</span> gives you programmatic access making it easier to integrate information into R dataframes</p>
 <p>🎬 Load the <strong><code>biomaRt</code></strong> <span class="citation" data-cites="biomaRt1 biomaRt2">(<a href="#ref-biomaRt1" role="doc-biblioref">Durinck et al. 2009</a>, <a href="#ref-biomaRt2" role="doc-biblioref">2005</a>)</span> package:</p>
 <div class="cell">
-<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/grimbough/biomaRt">biomaRt</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/grimbough/biomaRt">biomaRt</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Connect to the mouse database</p>
 <div class="cell">
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Connect to the mouse database</span></span>
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Connect to the mouse database</span></span>
 <span><span class="va">ensembl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/useMart.html">useMart</a></span><span class="op">(</span>biomart <span class="op">=</span> <span class="st">"ensembl"</span>, </span>
 <span>                   dataset <span class="op">=</span> <span class="st">"mmusculus_gene_ensembl"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 See information we can retrieve:</p>
 <div class="cell">
-<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># See what information we can retrieve</span></span>
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># See what information we can retrieve</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/listAttributes.html">listAttributes</a></span><span class="op">(</span>mart <span class="op">=</span> <span class="va">ensembl</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>There are many (2,988!) possible bits of information (attributes) that can be obtained.</p>
 <p>We use the <code><a href="https://rdrr.io/pkg/biomaRt/man/getBM.html">getBM()</a></code> function to retrieve information from the database. The <code>filters</code> argument is used to specified what kind of identifier we are supplying in <code>values</code> to retrieve information. The <code>attributes</code> argument is used to select the information we want to retrieve. The <code>values</code> argument is used to specify the identifiers. The mart argument is used to specify the connection we created.</p>
 <p>🎬 Get the the gene name and a description. We also retrieve the gene id so we can later join the information with the results:</p>
 <div class="cell">
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gene_info</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/getBM.html">getBM</a></span><span class="op">(</span>filters <span class="op">=</span> <span class="st">"ensembl_gene_id"</span>,</span>
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gene_info</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/getBM.html">getBM</a></span><span class="op">(</span>filters <span class="op">=</span> <span class="st">"ensembl_gene_id"</span>,</span>
 <span>                   attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ensembl_gene_id"</span>,</span>
 <span>                                  <span class="st">"external_gene_name"</span>,</span>
 <span>                                  <span class="st">"description"</span><span class="op">)</span>,</span>
@@ -1516,13 +1537,13 @@ lm_meta_3   lm_meta_3 metacyclic         3</code></pre>
 <p>You should view the resulting dataframe to see what information is available. You can use <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> or <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code>. Notice the dataframe returned only has 279 rows - one of the ids does not have information.</p>
 <p>🎬 Merge the gene information with the results:</p>
 <div class="cell">
-<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># join the gene info with the results</span></span>
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># join the gene info with the results</span></span>
 <span><span class="va">hspc_prog_results</span> <span class="op">&lt;-</span> <span class="va">hspc_prog_results</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">gene_info</span>, by <span class="op">=</span> <span class="st">"ensembl_gene_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Save the results to a file:</p>
 <div class="cell">
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">hspc_prog_results</span>, file <span class="op">=</span> <span class="st">"results/hspc_prog_results.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">hspc_prog_results</span>, file <span class="op">=</span> <span class="st">"results/hspc_prog_results.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section><section id="look-after-future-you" class="level1"><h1>🤗 Look after future you!</h1>
 <p>🎬 Go through you script and tidy up. You might need to :</p>
