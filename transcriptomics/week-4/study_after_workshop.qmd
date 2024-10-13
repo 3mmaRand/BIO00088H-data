@@ -35,6 +35,8 @@ a template to continue your script.
 
 🐭 Stem cells
 
-🎬 Open your `mice-88H` RStudio Project. 
-
+🎬 Open your `mice-88H` RStudio Project and the `hspc-lthsc.R` script
+you began in the Consolidation study last week. Use the differential 
+expression analysis you did in the workshop (in `hspc-prog.R`) as 
+a template to continue your script.
 
