@@ -42,7 +42,7 @@ go term enrichment
 
 🎬 Open the `frogs-88H` RStudio Project and the `cont-fgf-s30.R` script.
 
-## 🎄 *Arabidopisis*
+## 🎄 *Arabidopsis*
 
 🎬 Open the `arabi-88H` RStudio Project and the `wildsuf-wilddef-s30.R` script.
 
@@ -471,8 +471,8 @@ pro_meta_results_sig0.05 <- pro_meta_results |>
 <!-- 🐭 stemcells -->
 <!-- ## genes are significant at the 0.05 level. -->
 
-If you have a very large number of genes significant at the 0.05 level, you may
-want to consider a more stringent cut-off such as 0.01.
+If you have a very large number of genes significant at the 0.05 level, 
+you may want to consider a more stringent cut-off such as 0.01.
 
 ```{r}
 #| include: false
@@ -489,8 +489,8 @@ pro_meta_results_sig0.01 <- pro_meta_results |>
 
 
 
-🎬 Write the dataframe to a csv file. I recommend using the same file name as 
-   you used for the dataframe.
+🎬 Write the dataframe to a csv file. I recommend using the same file name
+   as you used for the dataframe.
 
 
 ```{r}
@@ -533,6 +533,12 @@ write_csv(pro_meta_results_sig0.01,
 
 ```
 
+Now go to PCA for:
+
+-   [🐸 Frog development](#frog-development-1)
+-   [🎄 Arabidopsis](#arabidopsis-1)
+-   [💉 Leishmania](#leishmania-1)
+-   [🐭 Stem cells](#stem-cells-2)
 
 
 # Principal Component Analysis (PCA)
@@ -717,6 +723,7 @@ pca_labelled |>
 
 ```
 
+Now go to Volcano plots for [🐸 Frog development](#frog-development-2)
 
 
 ## 🎄 *Arabidopsis* 
@@ -861,8 +868,12 @@ pca_labelled |>
 
 ```
 
+Now go to Volcano plots for [🎄 Arabidopsis](#arabidopsis-2)
+-   [💉 Leishmania](#leishmania-1)
+-   [🐭 Stem cells](#stem-cells-2)
 
-## 💉 *Leishmainia* 
+
+## 💉 *Leishmania* 
 
 
 
@@ -1002,10 +1013,15 @@ pca_labelled |>
 ```
 
 
+Now go to Volcano plots for [💉 Leishmania](#leishmania-2)
 
 
 ## 🐭 Stem cells 
 
+
+
+
+Now go to Volcano plots for [🐭 Stem cells](#stem-cells-3)
 
 # Visualise all the results with a volcano plot
 

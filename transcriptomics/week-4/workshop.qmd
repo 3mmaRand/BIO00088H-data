@@ -359,6 +359,7 @@ the explanatory variables. That is, the model is counts explained by
 treatment and sibling_rep.
 We are interested in the difference between the treatments but we 
 include `sibling_rep` to account for the fact that the data are paired. 
+The condition of interest should go at the end of the design formula.
 
 Note that:
 
@@ -373,7 +374,7 @@ Note that:
 ```{r}
 dds <- DESeqDataSetFromMatrix(countData = s30_count_mat,
                               colData = meta_s30,
-                              design = ~ treatment + sibling_rep)
+                              design = ~ sibling_rep + treatment)
 ```
 
 The warning "Warning: some variables in design formula are characters,
