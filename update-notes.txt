@@ -27,15 +27,6 @@ Independent Study to do after the workshop
 Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr` [@knitr1; @knitr2; @knitr3], `kableExtra` [@kableExtra]
 
 
-Place holders:
-
-
-
-
-rename
-_5 -> 1
-_6 -> 2
-_A -> 3
 🐸 Frog development
 
 🎄 Arabidopisis
@@ -45,39 +36,10 @@ _A -> 3
 🐭 Stem cells
 
 
-
-transcriptomics hello data
-
 usethis::create_project("undergrad-teaching-york/BIO00088H/hello-data")
 usethis::use_r("workshop-1")
 fs::dir_create("data-raw")
 fs::dir_create("data-processed")
-
-#---THINKING ANSWER---
-week 3
-
-<!-- MAY BE FOR NEXT WEEK -->
-<!-- ## Principle Components Analysis (PCA) -->
-
-<!-- explore data further - at the sample and gene level check reps cluster -->
-<!-- together -->
-Further explore the data with Principle Components Analysis (PCA) on the normalised counts. 
-6.  
-
-
-for workshop 2 they willneed
-Version!!
-
-biocmanager
-
-scran BiocManager::install("scran")
-
-DESeq2 BiocManager::install("DESeq2")
-
-
-which genes matters: first do venn diagram, present absent
-then to differential expressions
-
 
 Helper code:
 if you want to generate a bib file, you can use bibtex::write.bib for uplaoding to your ref manager
@@ -86,20 +48,8 @@ deps <- renv::dependencies()
 pkgs <- setdiff(unique(deps$Package), "R")
 bibtex::write.bib(entry = pkgs, file = "references_libs.bib", append = FALSE)
 
-Now go to [Differential Expression Analysis](#frog-development-2).
-
-## 🎄 Arabidopisis
-Import
-
-Now go to [Differential Expression Analysis](#arabidopisis-2).
 
 
-## 💉 Leishmania mexicana
-Import
-
-Now go to [Differential Expression Analysis](#leishmania-mexicana-2).
-
-## 🐭 Stem cells
-Import
-
-Now go to [Differential Expression Analysis](#stem-cells-2).
+labelling several particular genes
+You need to do external_gene_name %in% ....
+where ... is a list of the gene names

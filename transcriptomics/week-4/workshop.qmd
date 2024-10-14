@@ -1427,8 +1427,8 @@ hspc_prog <- hspc_prog |>
 
 ```{r}
 # merge the results with the normalised counts
-hspc_prog_results <- hspc_prog |>
-  left_join(hspc_prog_results, by = "ensembl_gene_id")
+hspc_prog_results <- hspc_prog_results |>
+  left_join(hspc_prog, by = "ensembl_gene_id")
 
 ```
 
@@ -1660,7 +1660,7 @@ library(biomaRt)
 ```{r}
 # Connect to the mouse database
 ensembl <- useMart(biomart = "ensembl", 
-                   dataset = "mmusculus_gene_ensembl")
+                   dataset = "musculus_gene_ensembl")
 ```
 
 🎬 See information we can retrieve:

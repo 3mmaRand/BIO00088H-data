@@ -134,7 +134,7 @@ pro_meta_results <- read_csv("results/pro_meta_results.csv")
 #---CODING ANSWER---
 # 🐭 stem cells
 # import results data
- # <- read_csv("results/")
+hspc_prog_results <- read_csv("results/hspc_prog_results.csv")
 
 ```
 
@@ -199,22 +199,33 @@ glimpse(pro_meta_results)
 #| include: false
 #---CODING ANSWER---
 # 🐭 stem cells
-
+glimpse(hspc_prog_results)
 ```
 
 
 <!-- #---THINKING ANSWER--- -->
 
-
+<!-- You have data with 1507 columns and 280 rows. The rows are the genes. -->
+<!-- The columns are the normalised counts for each of the cell -->
+<!-- (1499 HPSC and and Prog cells), the ensembl_gene_id, a gene name and a -->
+<!-- description. -->
+<!-- You also have the results of a statistical comparison between -->
+<!-- the HSPC and progenitor cell types, the log fold change (twice!), -->
+<!-- the p-value and the adjusted p-value (FDR) -->
 
 When we do PCA we will want to label the samples with their treatment for 
-figures. This labelling information is most easily added using the metadata. 
-You will need to select only the samples for the comparison that was made 
-in the results file.
-You may need to refer back to the [Week 4 Statistical Analysis workshop](../week-4/workshop.html) to remind yourself how to import and 
-select the metadata you need
+figures. For 🐸 Frog development, 🎄 *Arabidopsis* and 💉 *Leishmania*, this 
+labelling information is most easily added using the metadata. You will 
+need to filter for only the samples in the comparison that was made in 
+the results file.
 
-🎬 Import the metadata that maps the sample names to treatments. Remember to select only the samples for comparison that was made. 
+You may need to refer back to the 
+[Week 4 Statistical Analysis workshop](../week-4/workshop.html) 
+(in section 2. Create DESeqDataSet object) 
+to remind yourself how to import and filter the metadata you need.
+
+🎬 Import the metadata that maps the sample names to treatments. 
+   Remember to select only the samples for comparison that was made. 
 
 
 ```{r}
@@ -256,20 +267,9 @@ meta_pro_meta <- meta |>
   filter(stage != "amastigotes")
 ```
 
-
-```{r}
-#| echo: false
-#---CODING ANSWER---
-# 🐭 stem cells
-# Import metadata that maps the sample names to treatments
-
-# meta <- read_table("meta/frog_meta_data.txt")
-
-# # We only need the s30
-# meta_s30 <- meta |>
-#   filter(stage == "stage_30")
-```
-
+For 🐭 Stem cells, cell types are encoded in the column names. We will do some
+[regular expression](https://en.wikipedia.org/wiki/Regular_expression) magic 
+to extract the cell type from the column names.
 
 
 # log~2~ transform the normalised counts
@@ -291,7 +291,8 @@ dataframe <- dataframe |>
 ```
 
 
-We are going to use a wonderful bit of R wizardry to apply a transformation to multiple columns. This is the `across()` function which has three arguments:
+We are going to use a wonderful bit of R wizardry to apply a transformation 
+to multiple columns. This is the `across()` function which has three arguments:
 
 ```
 across(.cols, .fns, .names)
@@ -403,15 +404,18 @@ The general form of the code you need is:
 # DO NOT DO
 # create a dataframe of genes significant at 0.05 level
 xxxx_results_sig0.05 <- xxxx_results |> 
-  filter(padj <= 0.05)
+  filter(pvalue <= 0.05)
 
 ```
 
 Note that you determine the significance level using the adjusted *p*-values
-(named `padj` or `FDR`) rather than the uncorrected *p*-values.
+ rather than the uncorrected *p*-values. This column is name `padj` in
+ **`DESeq2`** output and `FDR` in **`scran`** output.
 
 
-🎬 Create a dataframe of the genes significant at the 0.05 level.
+🎬 Create a dataframe of the genes significant at the 0.05 level using 
+   `filter()`. You will need to know the name of column with the adjusted
+   *p*-values. 
 
 ```{r}
 #| include: false
@@ -448,8 +452,8 @@ pro_meta_results_sig0.05 <- pro_meta_results |>
 #---CODING ANSWER---
 # 🐭 Stem cells
 # create a dataframe of genes significant at 0.05 level
-# s30_results_sig0.05 <- s30_results |> 
-#   filter(padj <= 0.05)
+ hspc_prog_results_sig0.05 <- hspc_prog_results |> 
+   filter(FDR <= 0.05)
 
 ```
 
@@ -469,7 +473,7 @@ pro_meta_results_sig0.05 <- pro_meta_results |>
 <!-- I recommend using a more stringent cut-off such as 0.01  -->
 
 <!-- 🐭 stemcells -->
-<!-- ## genes are significant at the 0.05 level. -->
+<!-- 182 genes are significant at the 0.05 level. -->
 
 If you have a very large number of genes significant at the 0.05 level, 
 you may want to consider a more stringent cut-off such as 0.01.
@@ -518,10 +522,10 @@ write_csv(wild_results_sig0.05,
 # 💉 Leishmania
 # write to csv file
 write_csv(pro_meta_results_sig0.05, 
-          file = "results/wild_results_sig0.05.csv")
+          file = "results/pro_meta_results_sig0.05.csv")
 
 write_csv(pro_meta_results_sig0.01, 
-          file = "results/wild_results_sig0.01.csv")
+          file = "results/pro_meta_results_sig0.01.csv")
 
 ```
 
@@ -530,15 +534,9 @@ write_csv(pro_meta_results_sig0.01,
 #---CODING ANSWER---
 # 🐭 Stem cells
 # write to csv file
-
+write_csv(hspc_prog_results_sig0.05, 
+          file = "results/hspc_prog_results_sig0.05.csv")
 ```
-
-Now go to PCA for:
-
--   [🐸 Frog development](#frog-development-1)
--   [🎄 Arabidopsis](#arabidopsis-1)
--   [💉 Leishmania](#leishmania-1)
--   [🐭 Stem cells](#stem-cells-2)
 
 
 # Principal Component Analysis (PCA)
@@ -572,6 +570,14 @@ In each case we will use only the samples for the comparison that was made
 in the PCA. However, it would be informative to do PCA on all the 
 samples you have and that is something you may want to consider in your
 independent study.
+
+Now go to PCA for:
+
+-   [🐸 Frog development](#frog-development-1)
+-   [🎄 Arabidopsis](#arabidopsis-1)
+-   [💉 Leishmania](#leishmania-1)
+-   [🐭 Stem cells](#stem-cells-2)
+
 
 ## 🐸 Frog development
 
@@ -688,14 +694,16 @@ I prefer to customise the colours and shapes. I especially like the
 viridis colour scales which provide colour scales that are perceptually 
 uniform in both colour and black-and-white. They are also designed to 
 be perceived by viewers with common forms of colour blindness. See 
-[Introduction to viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html#introduction) for more information.
+[Introduction to viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html#introduction) 
+for more information.
 
 `ggplot` provides functions to access the viridis scales. Here I use
 `scale_fill_viridis_d()`. The d stands for discrete. The 
 function `scale_fill_viridis_c()` would be used for continuous data. 
-I’ve used the default “viridis” (or “D”) option (do ?scale_fill_viridis_d for all the options) and used the `begin` and `end` arguments to control the range of 
-colour - I have set the range to be from 0.15 to 0.95 the avoid the 
-strongest contrast. I have also set the `name` argument to provide a
+I’ve used the default “viridis” (or “D”) option (do ?scale_fill_viridis_d 
+for all the options) and used the `begin` and `end` arguments to control 
+the range of colour - I have set the range to be from 0.15 to 0.95 the avoid 
+the strongest contrast. I have also set the `name` argument to provide a
 label for the legend.
 
 I have used `scale_shape_manual()` to set the shapes for the treatments.
@@ -743,7 +751,7 @@ start with `log2_`. We then use the `t()` function to transpose the
 dataframe. We then convert the resulting matrix to a dataframe using
 `data.frame()`. If you view that dataframe you'll see it has default
 column name which we can fix using `colnames()` to set the column names
-to the Xenbase gene ids.
+to the gene ids.
 
 🎬 Set the column names to the gene ids:
 
@@ -759,7 +767,8 @@ pca <- wild_log2_trans |>
 ```
 
 The `scale` argument tells `prcomp()` to scale the data before doing the
-PCA. This is important when the variables are on different scales to stop variables with large values dominating the PCA.
+PCA. This is important when the variables are on different scales to 
+stop variables with large values dominating the PCA.
 The `rank.` argument tells `prcomp()` to only calculate the first 4
 principal components. This is useful for visualisation as we can only
 plot in 2 or 3 dimensions. We can see the results of the PCA by viewing
@@ -849,9 +858,10 @@ be perceived by viewers with common forms of colour blindness. See
 `ggplot` provides functions to access the viridis scales. Here I use
 `scale_fill_viridis_d()`. The d stands for discrete. The 
 function `scale_fill_viridis_c()` would be used for continuous data. 
-I’ve used the default “viridis” (or “D”) option (do ?scale_fill_viridis_d for all the options) and used the `begin` and `end` arguments to control the range of 
-colour - I have set the range to be from 0.15 to 0.95 the avoid the 
-strongest contrast. I have also set the `name` argument to provide a
+I’ve used the default “viridis” (or “D”) option (do ?scale_fill_viridis_d 
+for all the options) and used the `begin` and `end` arguments to control
+the range of colour - I have set the range to be from 0.15 to 0.95 the 
+avoid the strongest contrast. I have also set the `name` argument to provide a
 label for the legend.
 
 
@@ -869,8 +879,6 @@ pca_labelled |>
 ```
 
 Now go to Volcano plots for [🎄 Arabidopsis](#arabidopsis-2)
--   [💉 Leishmania](#leishmania-1)
--   [🐭 Stem cells](#stem-cells-2)
 
 
 ## 💉 *Leishmania* 
@@ -891,7 +899,7 @@ start with `log2_`. We then use the `t()` function to transpose the
 dataframe. We then convert the resulting matrix to a dataframe using
 `data.frame()`. If you view that dataframe you'll see it has default
 column name which we can fix using `colnames()` to set the column names
-to the Xenbase gene ids.
+to the gene ids.
 
 🎬 Set the column names to the gene ids:
 
@@ -907,7 +915,8 @@ pca <- pro_meta_log2_trans |>
 ```
 
 The `scale` argument tells `prcomp()` to scale the data before doing the
-PCA. This is important when the variables are on different scales to stop variables with large values dominating the PCA.
+PCA. This is important when the variables are on different scales to 
+stop variables with large values dominating the PCA.
 The `rank.` argument tells `prcomp()` to only calculate the first 4
 principal components. This is useful for visualisation as we can only
 plot in 2 or 3 dimensions. We can see the results of the PCA by viewing
@@ -988,14 +997,16 @@ I prefer to customise the colours. I especially like the
 viridis colour scales which provide colour scales that are perceptually 
 uniform in both colour and black-and-white. They are also designed to 
 be perceived by viewers with common forms of colour blindness. See 
-[Introduction to viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html#introduction) for more information.
+[Introduction to viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html#introduction) 
+for more information.
 
 `ggplot` provides functions to access the viridis scales. Here I use
 `scale_fill_viridis_d()`. The d stands for discrete. The 
 function `scale_fill_viridis_c()` would be used for continuous data. 
-I’ve used the default “viridis” (or “D”) option (do ?scale_fill_viridis_d for all the options) and used the `begin` and `end` arguments to control the range of 
-colour - I have set the range to be from 0.15 to 0.95 the avoid the 
-strongest contrast. I have also set the `name` argument to provide a
+I’ve used the default “viridis” (or “D”) option (do ?scale_fill_viridis_d 
+for all the options) and used the `begin` and `end` arguments to control 
+the range of colour - I have set the range to be from 0.15 to 0.95 the 
+avoid the strongest contrast. I have also set the `name` argument to provide a
 label for the legend.
 
 
@@ -1019,6 +1030,171 @@ Now go to Volcano plots for [💉 Leishmania](#leishmania-2)
 ## 🐭 Stem cells 
 
 
+
+🎬 Transpose the log~2~ transformed normalised counts:
+
+```{r}
+hspc_prog_trans <- hspc_prog_results |> 
+  dplyr::select(starts_with(c("HSPC_", "Prog_"))) |>
+  t() |> 
+  data.frame()
+```
+
+We have used the `select()` function to select all the columns that
+start with `Prog_` or  `HSPC_`. We then use the `t()` function to 
+transpose the dataframe. We then convert the resulting matrix 
+to a dataframe using `data.frame()`. If you view that dataframe 
+you'll see it has default column name which we can fix using 
+`colnames()` to set the column names to the gene ids.
+
+🎬 Set the column names to the gene ids:
+
+```{r}
+colnames(hspc_prog_trans) <- hspc_prog_results$ensembl_gene_id
+```
+
+🎬 Perform PCA on the log~2~ transformed normalised counts:
+
+```{r}
+pca <- hspc_prog_trans |>
+  prcomp(rank. = 8)
+```
+
+The `rank.` argument tells `prcomp()` to only calculate the first 8
+principal components. This is useful for visualisation as we can only
+plot in 2 or 3 dimensions. We can see the results of the PCA by viewing
+the `summary()` of the `pca` object.
+
+```{r}
+summary(pca)
+```
+
+The Proportion of Variance tells us how much of the variance is
+explained by each component. We can see that the first 
+component explains 0.1099 of the variance, the second 0.04874, 
+and the third 0.02498. Together the first three components 
+explain 18% of the total variance in the data. This is not *that* 
+high but it is also quite a lot better than than we would get 
+plotting any two genes randomly chosen against each other. 
+
+To plot the PC1 against PC2 we will need to extract the PC1 
+and PC2 "scores" from the PCA object and add labels for the 
+cells. Our PCA object is called `pca` and the scores are in 
+pca$x. The cells labels will come from the row names of the 
+transformed data.
+
+🎬 Create a dataframe of the PC1 and PC2 scores (in `pca$x`) and 
+  add the cell ids:
+
+```{r}
+pca_labelled <- data.frame(pca$x,
+                           cell_id = row.names(hspc_prog_trans))
+```
+
+It will be helpful to add a column for the cell type so we can 
+label points. One way to do this is to extract the information 
+in the cell_id column into two columns: one with the complete cell id 
+and one with just the cell type. This extraction is done with 
+[Regular Expression](https://en.wikipedia.org/wiki/Regular_expression) 
+magic.
+
+🎬 Extract the cell type and cell number from the `cell_id` 
+   column (keeping the `cell_id` column):
+```{r}
+pca_labelled <- pca_labelled |> 
+  extract(cell_id, 
+          remove = FALSE,
+          c("cell_type", "cell_number"),
+          "([a-zA-Z]{4})_([0-9]{3})")
+```
+
+What this code does is take what is in the cell_id column (something like 
+Prog_001 and HSPC_001) and split it into two columns ("cell_type" and 
+"cell_number"). The reason why we want to do that is to colour the points by 
+cell type (we don't want to colour by cell number because that would be 
+1000+ colours). How it does that is by matching the pattern before 
+the `_` and matching the pattern after `_`. Each pattern is inside a 
+set of ().  Patterns are matched with 
+[regular expression](https://en.wikipedia.org/wiki/Regular_expression)
+
+`"([a-zA-Z]{4})_([0-9]{3})"` is a 
+[regular expression](https://en.wikipedia.org/wiki/Regular_expression) - 
+or regex. 
+
+-   `[a-zA-Z]` means any lower (a-z) or upper case letter (A-Z). 
+-   The square brackets means any of the characters in the square brackets 
+    will be matched 
+-   {4} means 4 of them. 
+-   So the first pattern inside the first () will match exactly 4 
+    upper or lower case letters (like Prog or HSPC)
+-   [0-9] means any number,
+-   {3} means 3 of them. 
+-   So the second pattern inside the second () will match exactly 3 numbers 
+    (like 001 or 851)
+-    The _ between the two patterns matches the underscore and the 
+     fact it isn’t in a set of () means we do not want to keep it.
+
+**Important**: Prog and HPSC have 4 letters. The column names,
+LT.HSPC_ have 6 characters and includes a dot. You will need to 
+adjust the regex when make comparison between LT-HSPC and other cell types.
+The pattern to match the LT.HSPC as well as the Prog and HSPC is 
+`([a-zA-Z.]{4, 6})`. The pattern to match the underscore and the cell number 
+is the same.
+
+The dataframe should look like this (but with more decimal places)
+
+```{r}
+#| echo: false
+knitr::kable(pca_labelled, digits = 2)
+```
+
+The next task is to plot PC2 against PC1 and colour by cell type. This 
+is just a scatterplot so we can use `geom_point()`. We will use colour
+to indicate the sibling pair and shape to indicate the treatment. 
+
+🎬 Plot PC2 against PC1 and colour by copper conditions:
+
+```{r}
+pca_labelled |> 
+  ggplot(aes(x = PC1, y = PC2, 
+             colour = cell_type)) +
+  geom_point(alpha = 0.4) +
+  theme_classic()
+
+```
+
+There is a good clustering of cell types but plenty of overlap. 
+You can also try plotting PC3 or PC4 (or others).
+
+I prefer to customise the colours. I especially like the  
+viridis colour scales which provide colour scales that are perceptually 
+uniform in both colour and black-and-white. They are also designed to 
+be perceived by viewers with common forms of colour blindness. See 
+[Introduction to viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html#introduction) for more information.
+
+`ggplot` provides functions to access the viridis scales. Here I use
+`scale_fill_viridis_d()`. The d stands for discrete. The 
+function `scale_fill_viridis_c()` would be used for continuous data. 
+I’ve used the default “viridis” (or “D”) option 
+(do ?scale_fill_viridis_d for all the options) and used the 
+`begin` and `end` arguments to control the range of 
+colour - I have set the range to be from 0.15 to 0.95 the avoid the 
+strongest contrast. I have also set the `name` argument to NULL
+because that the legend referes to cell types is obvious.
+
+
+🎬 Plot PC2 against PC1 and colour by life stage:
+
+```{r}
+pca_labelled |> 
+  ggplot(aes(x = PC1, y = PC2, 
+             colour = cell_type)) +
+  geom_point(alpha = 0.4) +
+  scale_colour_viridis_d(end = 0.95, begin = 0.15,
+                         name = NULL) +
+  theme_classic()
+
+```
 
 
 Now go to Volcano plots for [🐭 Stem cells](#stem-cells-3)
@@ -1063,6 +1239,9 @@ s30_results |>
   theme(legend.position = "none")
 
 ```
+
+
+
 
 Our dashed lines are at -log~10~(0.05) and log~2~(2) and log~2~(-2) to make
 more clear which genes (points) are significantly different between the 
@@ -1218,7 +1397,7 @@ s30_results |>
 
 ```
 
-
+Now go to [Save your plots](#save-your-plots)
 
 
 ## 🎄 *Arabidopsis*
@@ -1408,6 +1587,8 @@ wild_results |>
   theme(legend.position = "none")
 
 ```
+
+Now go to [Save your plots](#save-your-plots)
 
 ## 💉 *Leishmania*
 
@@ -1629,8 +1810,13 @@ pro_meta_results |>
 
 ```
 
+Now go to [Save your plots](#save-your-plots)
 
 ## 🐭 Stem cells
+
+
+
+Now go to [Save your plots](#save-your-plots)
 
 # Save your plots
 
