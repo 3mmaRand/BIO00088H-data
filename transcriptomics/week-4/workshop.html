@@ -397,7 +397,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">13 October, 2024</p>
+      <p class="date">14 October, 2024</p>
     </div>
   </div>
   
@@ -604,7 +604,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">meta_s30</span> <span class="op">&lt;-</span> <span class="va">meta</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">stage</span> <span class="op">==</span> <span class="st">"stage_30"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We can now create the DESeqDataSet object. The design formula describes the statistical model. You should recognise the form from previous work. The <code>~</code> can be read as “explain by” and on its right hand side are the explanatory variables. That is, the model is counts explained by treatment and sibling_rep. We are interested in the difference between the treatments but we include <code>sibling_rep</code> to account for the fact that the data are paired.</p>
+<p>We can now create the DESeqDataSet object. The design formula describes the statistical model. You should recognise the form from previous work. The <code>~</code> can be read as “explain by” and on its right hand side are the explanatory variables. That is, the model is counts explained by treatment and sibling_rep. We are interested in the difference between the treatments but we include <code>sibling_rep</code> to account for the fact that the data are paired. The condition of interest should go at the end of the design formula.</p>
 <p>Note that:</p>
 <ul>
 <li>The names of the columns in the count matrix have to exactly match the names of the rows in the metadata dataframe. They also need to be in the same order.</li>
@@ -614,7 +614,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <div class="cell">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dds</span> <span class="op">&lt;-</span> <span class="fu">DESeqDataSetFromMatrix</span><span class="op">(</span>countData <span class="op">=</span> <span class="va">s30_count_mat</span>,</span>
 <span>                              colData <span class="op">=</span> <span class="va">meta_s30</span>,</span>
-<span>                              design <span class="op">=</span> <span class="op">~</span> <span class="va">treatment</span> <span class="op">+</span> <span class="va">sibling_rep</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>                              design <span class="op">=</span> <span class="op">~</span> <span class="va">sibling_rep</span> <span class="op">+</span> <span class="va">treatment</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The warning “Warning: some variables in design formula are characters, converting to factors” just means that the variable type of treatment and sibling_rep in the metadata dataframe are “char” and they have been converted into the factors.</p>
 <p>To help you understand what the <code>DESeqDataSet</code> object we have called <code>dds</code> contains, we can look its contents</p>
@@ -1517,28 +1517,26 @@ which is a functional genomic resource for the Trypanosomatidae and Plasmodidae<
 <div class="sourceCode" id="cb94"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Connect to the mouse database</span></span>
 <span><span class="va">ensembl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/useMart.html">useMart</a></span><span class="op">(</span>biomart <span class="op">=</span> <span class="st">"ensembl"</span>, </span>
 <span>                   dataset <span class="op">=</span> <span class="st">"mmusculus_gene_ensembl"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in `req_perform()` at biomaRt/R/biomaRt.R:49:5:
-! Failed to perform HTTP request.
-Caused by error in `curl::curl_fetch_memory()`:
-! Timeout was reached: [www.ensembl.org:443] Operation timed out after 60001 milliseconds with 0 bytes received</code></pre>
-</div>
 </div>
 <p>🎬 See information we can retrieve:</p>
 <div class="cell">
-<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># See what information we can retrieve</span></span>
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># See what information we can retrieve</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/listAttributes.html">listAttributes</a></span><span class="op">(</span>mart <span class="op">=</span> <span class="va">ensembl</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/View.html">View</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>There are many (2,988!) possible bits of information (attributes) that can be obtained.</p>
 <p>We use the <code><a href="https://rdrr.io/pkg/biomaRt/man/getBM.html">getBM()</a></code> function to retrieve information from the database. The <code>filters</code> argument is used to specified what kind of identifier we are supplying in <code>values</code> to retrieve information. The <code>attributes</code> argument is used to select the information we want to retrieve. The <code>values</code> argument is used to specify the identifiers. The mart argument is used to specify the connection we created.</p>
 <p>🎬 Get the the gene name and a description. We also retrieve the gene id so we can later join the information with the results:</p>
 <div class="cell">
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gene_info</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/getBM.html">getBM</a></span><span class="op">(</span>filters <span class="op">=</span> <span class="st">"ensembl_gene_id"</span>,</span>
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">gene_info</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/getBM.html">getBM</a></span><span class="op">(</span>filters <span class="op">=</span> <span class="st">"ensembl_gene_id"</span>,</span>
 <span>                   attributes <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ensembl_gene_id"</span>,</span>
 <span>                                  <span class="st">"external_gene_name"</span>,</span>
 <span>                                  <span class="st">"description"</span><span class="op">)</span>,</span>
 <span>                   values <span class="op">=</span> <span class="va">hspc_prog_results</span><span class="op">$</span><span class="va">ensembl_gene_id</span>,</span>
 <span>                   mart <span class="op">=</span> <span class="va">ensembl</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `httr2::req_perform()` at biomaRt/R/utilityFunctions.R:211:5:
+! HTTP 405 Method Not Allowed.</code></pre>
+</div>
 </div>
 <p>You should view the resulting dataframe to see what information is available. You can use <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> or <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code>. Notice the dataframe returned only has 279 rows - one of the ids does not have information.</p>
 <p>🎬 Merge the gene information with the results:</p>
@@ -1548,10 +1546,8 @@ Caused by error in `curl::curl_fetch_memory()`:
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">gene_info</span>, by <span class="op">=</span> <span class="st">"ensembl_gene_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `left_join()`:
-! Can't join `x$ensembl_gene_id` with `y$ensembl_gene_id` due to
-  incompatible types.
-ℹ `x$ensembl_gene_id` is a &lt;character&gt;.
-ℹ `y$ensembl_gene_id` is a &lt;logical&gt;.</code></pre>
+! Join columns in `y` must be present in the data.
+✖ Problem with `ensembl_gene_id`.</code></pre>
 </div>
 </div>
 <p>🎬 Save the results to a file:</p>
