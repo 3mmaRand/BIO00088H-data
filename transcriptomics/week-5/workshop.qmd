@@ -1814,6 +1814,190 @@ Now go to [Save your plots](#save-your-plots)
 
 ## 🐭 Stem cells
 
+We will add a column to the results dataframe that contains the 
+-log~10~(FDR). You could perform this transformation within the 
+plot command without adding a column to the data if you prefer.
+
+🎬  Add a column to the results dataframe that contains the -log~10~(FDR):
+```{r}
+hspc_prog_results <- hspc_prog_results |> 
+  mutate(log10_FDR = -log10(FDR)) 
+```
+
+🎬  Create a volcano plot of the results:
+```{r}
+hspc_prog_results |> 
+  ggplot(aes(x = summary.logFC, 
+             y = log10_FDR)) +
+  geom_point() +
+  geom_hline(yintercept = -log10(0.05), 
+             linetype = "dashed") +
+  geom_vline(xintercept = 2, 
+             linetype = "dashed") +
+  geom_vline(xintercept = -2, 
+             linetype = "dashed") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  theme_classic() +
+  theme(legend.position = "none")
+
+```
+
+Our dashed lines are at -log~10~(0.05) and log~2~(2) and log~2~(-2) to make
+more clear which genes (points) are significantly different between the 
+cell types and have a fold change of at least 2.
+
+In most cases, people colour the points to show that the quadrants. I 
+like to add columns to the dataframe to indicate if the gene is significant
+and if the fold change is large and use those variables in the plot.
+
+🎬  Add columns to the results dataframe to indicate if the gene is 
+    significant and if the fold change is large:
+```{r}
+hspc_prog_results <- hspc_prog_results |> 
+  mutate(sig = FDR <= 0.05,
+         bigfc = abs(summary.logFC) >= 2) 
+```
+
+The use of `abs()` (absolute) means genes with a fold change of at least 2 
+in either direction will be considered to have a large fold change.
+
+Now we can colour the points by these new columns. I use `interaction()` 
+to create four categories: 
+
+-   not significant and not large fold change (FF)
+-   significant and not large fold change (TF)
+-   not significant and large fold (FT)
+-   significant and large fold change (TT)
+
+And I use `scale_colour_manual()` to set the colours for these categories.
+
+
+NOTE: there are no "not significant and large fold change (FT)" in this case.
+This means we do not need four colours. I have put the "gray30" colour in 
+the code but commented it out.
+
+🎬  Create a volcano plot of the results with the points coloured by
+significance and fold change:
+
+```{r}
+hspc_prog_results |> 
+  ggplot(aes(x = summary.logFC, 
+             y = log10_FDR, 
+             colour = interaction(sig, bigfc))) +
+  geom_point() +
+  geom_hline(yintercept = -log10(0.05), 
+             linetype = "dashed") +
+  geom_vline(xintercept = 2, 
+             linetype = "dashed") +
+  geom_vline(xintercept = -2, 
+             linetype = "dashed") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_colour_manual(values = c("gray", 
+                                 "pink",
+                                # "gray30",
+                                 "deeppink")) +
+  theme_classic() +
+  theme(legend.position = "none")
+
+```
+
+For exploring the data, I like add labels to all the significant 
+genes with a large fold change so I can very quickly identity them. The
+`ggrepel` package has a function `geom_text_repel()` that is useful for 
+adding labels so that they don't overlap.
+
+🎬  Load the package:
+```{r}
+library(ggrepel)
+```
+
+🎬  Add labels to the significant genes with a large fold change:
+
+```{r}
+
+hspc_prog_results |> 
+  ggplot(aes(x = summary.logFC, 
+             y = log10_FDR, 
+             colour = interaction(sig, bigfc))) +
+  geom_point() +
+  geom_hline(yintercept = -log10(0.05), 
+             linetype = "dashed") +
+  geom_vline(xintercept = 2, 
+             linetype = "dashed") +
+  geom_vline(xintercept = -2, 
+             linetype = "dashed") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_colour_manual(values = c("gray", 
+                                 "pink",
+                              #   "gray30",
+                                 "deeppink")) +
+  geom_text_repel(data = hspc_prog_results |> 
+                    filter(bigfc == TRUE, sig == TRUE),
+                  aes(label = external_gene_name),
+                  size = 3,
+                  max.overlaps = 50) +
+  theme_classic() +
+  theme(legend.position = "none")
+
+```
+Notice that I have used `filter()` label only the genes that are both 
+significant and have a large fold change. In systems you are familiar with, 
+this labelling is very informative and can help you quickly identify common
+themes.
+Key to interpreting the volcano plot is to remember that positive fold 
+changes means the gene is up-regulated in the Prog and 
+negative fold changes means the gene is down-regulated (i.e., higher 
+HSPC). This was determined by us choosing 
+[the results_hspc_prog$prog dataframe from the list object](../week-4/workshop.html#differential-expression-analysis-4)
+
+If you do forget which way round you did the comparison, you can always 
+examine the gene summary dataframe to see which of the treatments 
+seem to be higher for the positive fold changes.
+
+When you have a gene of interest, you may wish to label it on the plot. 
+This is done in the same way except that you filter the data to only
+include the gene of interest. I have used and then use `geom_label_repel()` 
+rather than `geom_text_repel()` to put the label in a box and nudged it's 
+position to get a line connecting the point and the label. I have also 
+increased the size of the point.
+
+
+🎬 Add a label to one gene of interest (Procr) and :
+
+```{r}
+hspc_prog_results |> 
+  ggplot(aes(x = summary.logFC, 
+             y = log10_FDR, 
+             colour = interaction(sig, bigfc))) +
+  geom_point() +
+  geom_hline(yintercept = -log10(0.05), 
+             linetype = "dashed") +
+  geom_vline(xintercept = 2, 
+             linetype = "dashed") +
+  geom_vline(xintercept = -2, 
+             linetype = "dashed") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_colour_manual(values = c("gray", 
+                                 "pink",
+                                # "gray30",
+                                 "deeppink")) +
+  geom_label_repel(data = hspc_prog_results |> 
+                    filter(external_gene_name == "Procr"),
+                  aes(label = external_gene_name),
+                  size = 4,
+                  nudge_x = .5,
+                  nudge_y = 1.5) +
+  geom_point(data = hspc_prog_results |> 
+                    filter(external_gene_name == "Procr"),
+                size = 3) +
+  theme_classic() +
+  theme(legend.position = "none")
+
+```
 
 
 Now go to [Save your plots](#save-your-plots)
