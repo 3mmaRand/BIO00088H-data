@@ -1366,19 +1366,11 @@ The output is a list object which, rather unnecessarily, includes two
 dataframes. This is not really necessary as the results are the same 
 except for the fold change having a different sign. 
 
--   The dataframe `results_hspc_prog$hspc` is log hspc - log prog (*i.e.*,
-    HSPC/Prog). This means:
-
-    -   Positive fold change: hspc is higher than prog 
-    -   Negative fold change: prog is higher than hspc
-
 -   The dataframe `results_hspc_prog$prog` is log prog - log hspc
     (*i.e.*,Prog/HSPC). This means:
 
     -   Positive fold change: prog is higher than hspc 
     -   Negative fold change: hspc is higher than prog
-
-
 
 ```{r}
 #| echo: false
@@ -1388,6 +1380,13 @@ data.frame(results_hspc_prog$prog,
   knitr::kable(cap = "The results_hspc_prog$prog dataframe")
 ```
 
+
+-   The dataframe `results_hspc_prog$hspc` is log hspc - log prog (*i.e.*,
+    HSPC/Prog). This means:
+
+    -   Positive fold change: hspc is higher than prog 
+    -   Negative fold change: prog is higher than hspc
+
 ```{r}
 #| echo: false
 data.frame(results_hspc_prog$hspc, 
@@ -1396,15 +1395,18 @@ data.frame(results_hspc_prog$hspc,
   knitr::kable(cap = "The results_hspc_prog$hspc dataframe. Notice the sign of the fold change is the other way")
 ```
 
-Notice that the dataframes are ordered by significance rather than the original 
-gene order. We only need one of these results dataframes. We will use the `prog` 
-one.
+We only need one of these results dataframes and we will use the `prog` one. 
+It does not matter which one you use but you do need keep the direction 
+of the foldchange in mind when interpreting the results.
 
+Notice that the dataframes are ordered by significance rather than the original 
+gene order. 
 
 It is useful to have the normalised counts and the statistical results in 
 one dataframe to which we will add the gene information from Ensembl.
 Having all the information together will make it easier to interpret the 
-results and select genes of interest. We will need to extract the results from the list object, add the gene ids and then join with the normalised counts.
+results and select genes of interest. We will need to extract the results from 
+the list object, add the gene ids and then join with the normalised counts.
 
 🎬 Extract the results dataframe from the list object and add the 
 gene ids as a column:
@@ -1427,8 +1429,8 @@ hspc_prog <- hspc_prog |>
 
 ```{r}
 # merge the results with the normalised counts
-hspc_prog_results <- hspc_prog |>
-  left_join(hspc_prog_results, by = "ensembl_gene_id")
+hspc_prog_results <- hspc_prog_results |>
+  left_join(hspc_prog, by = "ensembl_gene_id")
 
 ```
 
@@ -1660,7 +1662,7 @@ library(biomaRt)
 ```{r}
 # Connect to the mouse database
 ensembl <- useMart(biomart = "ensembl", 
-                   dataset = "mmusculus_gene_ensembl")
+                   dataset = "musculus_gene_ensembl")
 ```
 
 🎬 See information we can retrieve:
