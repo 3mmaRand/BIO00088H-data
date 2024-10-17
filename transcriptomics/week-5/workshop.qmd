@@ -294,9 +294,7 @@ dataframe <- dataframe |>
 We are going to use a wonderful bit of R wizardry to apply a transformation 
 to multiple columns. This is the `across()` function which has three arguments:
 
-```
-across(.cols, .fns, .names)
-```
+`across(.cols, .fns, .names)`
 
 where:
 
@@ -1108,51 +1106,57 @@ pca_labelled <- pca_labelled |>
           "([a-zA-Z]{4})_([0-9]{3})")
 ```
 
-What this code does is take what is in the cell_id column (something like 
-Prog_001 and HSPC_001) and split it into two columns ("cell_type" and 
+What this code does is take what is in the `cell_id` column (something like 
+`Prog_001` or `HSPC_001`) and split it into two columns ("cell_type" and 
 "cell_number"). The reason why we want to do that is to colour the points by 
-cell type (we don't want to colour by cell number because that would be 
-1000+ colours). How it does that is by matching the pattern before 
-the `_` and matching the pattern after `_`. Each pattern is inside a 
-set of ().  Patterns are matched with 
-[regular expression](https://en.wikipedia.org/wiki/Regular_expression)
+cell type. We would not want to use `cell_id` to colour the points because each cell id is unique and that would be 1000+ colours. The last argument in the `extract()` function is the pattern to match described with a [regular expression](https://en.wikipedia.org/wiki/Regular_expression). Three 
+patterns are being matched, and two of those are in brackets meaning they 
+are kept to fill the two new columns.
 
-`"([a-zA-Z]{4})_([0-9]{3})"` is a 
-[regular expression](https://en.wikipedia.org/wiki/Regular_expression) - 
-or regex. 
+The first pattern is `([a-zA-Z]{4})`
 
--   `[a-zA-Z]` means any lower (a-z) or upper case letter (A-Z). 
+-   it is brackets because we want to keep it and put it in `cell_type`
+-   `[a-zA-Z]` means any lower (`a-z`) or upper case letter (`A-Z`). 
 -   The square brackets means any of the characters in the square brackets 
     will be matched 
--   {4} means 4 of them. 
--   So the first pattern inside the first () will match exactly 4 
-    upper or lower case letters (like Prog or HSPC)
--   [0-9] means any number,
--   {3} means 3 of them. 
--   So the second pattern inside the second () will match exactly 3 numbers 
-    (like 001 or 851)
--    The _ between the two patterns matches the underscore and the 
-     fact it isn’t in a set of () means we do not want to keep it.
+-   `{4}` means 4 of them. 
+
+So the first pattern inside the first (...) will match exactly 4 upper or lower case letters (like Prog or HSPC)
+
+The second pattern is `_` to match the underscore in every cell id that 
+separates the cell type from the number. It is not in brackets
+because we do not want to keep it.
+
+The third pattern is `([0-9]{3})`
+
+-   `[0-9]` means any number
+-   `{3}` means 3 of them. 
+
+So the second pattern inside the second (...) will match exactly 3 
+numbers (like 001 or 851). 
+
 
 **Important**: Prog and HPSC have 4 letters. The column names,
 LT.HSPC_ have 6 characters and includes a dot. You will need to 
-adjust the regex when make comparison between LT-HSPC and other cell types.
-The pattern to match the LT.HSPC as well as the Prog and HSPC is 
-`([a-zA-Z.]{4, 6})`. The pattern to match the underscore and the cell number 
+adjust the regex when make comparison between LT-HSC and other cell types.
+The pattern to match the `LT.HSC` as well as the `Prog` and `HSPC` is 
+`([a-zA-Z.]{4, 6})`. Note the dot inside the square brackets and 
+numbers meaning 4 or 6 of.
+The pattern to match the underscore and the cell number 
 is the same.
 
-The dataframe should look like this (but with more decimal places)
+The top of the dataframe should look like this (but with more decimal places)
 
 ```{r}
 #| echo: false
-knitr::kable(pca_labelled, digits = 2)
+knitr::kable(head(pca_labelled), digits = 2)
 ```
 
 The next task is to plot PC2 against PC1 and colour by cell type. This 
 is just a scatterplot so we can use `geom_point()`. We will use colour
-to indicate the sibling pair and shape to indicate the treatment. 
+to indicate the cell type. 
 
-🎬 Plot PC2 against PC1 and colour by copper conditions:
+🎬 Plot PC2 against PC1 and colour by cell type:
 
 ```{r}
 pca_labelled |> 
@@ -1166,24 +1170,25 @@ pca_labelled |>
 There is a good clustering of cell types but plenty of overlap. 
 You can also try plotting PC3 or PC4 (or others).
 
-I prefer to customise the colours. I especially like the  
-viridis colour scales which provide colour scales that are perceptually 
+I prefer to customise the colours. I especially like the viridis colour 
+scales which provide colour scales that are perceptually 
 uniform in both colour and black-and-white. They are also designed to 
 be perceived by viewers with common forms of colour blindness. See 
 [Introduction to viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html#introduction) for more information.
 
 `ggplot` provides functions to access the viridis scales. Here I use
-`scale_fill_viridis_d()`. The d stands for discrete. The 
-function `scale_fill_viridis_c()` would be used for continuous data. 
+`scale_fill_viridis_d()`. The d stands for discrete used because cell type 
+is a discrete variable. The function `scale_fill_viridis_c()` 
+would be used for continuous data. 
 I’ve used the default “viridis” (or “D”) option 
 (do ?scale_fill_viridis_d for all the options) and used the 
 `begin` and `end` arguments to control the range of 
 colour - I have set the range to be from 0.15 to 0.95 the avoid the 
 strongest contrast. I have also set the `name` argument to NULL
-because that the legend referes to cell types is obvious.
+because that the legend refers to cell types is obvious.
 
 
-🎬 Plot PC2 against PC1 and colour by life stage:
+🎬 Plot PC2 against PC1 and colour by cell type:
 
 ```{r}
 pca_labelled |> 
@@ -1397,6 +1402,11 @@ s30_results |>
 
 ```
 
+
+Should you want to label more than one gene, you will need to use (for example):
+`filter(xenbase_gene_symbol %in% c("hoxb9.S", "fzd7.S"))`
+
+
 Now go to [Save your plots](#save-your-plots)
 
 
@@ -1587,6 +1597,11 @@ wild_results |>
   theme(legend.position = "none")
 
 ```
+
+
+
+Should you want to label more than one gene, you will need to use (for example):
+`filter(external_gene_name %in% c("FRO4", "FRO5"))`
 
 Now go to [Save your plots](#save-your-plots)
 
@@ -1810,6 +1825,12 @@ pro_meta_results |>
 
 ```
 
+
+
+Should you want to label more than one gene, you will need to use (for example):
+`filter(description %in% c("elongation factor 1-alpha", "ADP/ATP translocase 1 putative"))`
+
+
 Now go to [Save your plots](#save-your-plots)
 
 ## 🐭 Stem cells
@@ -1998,6 +2019,10 @@ hspc_prog_results |>
   theme(legend.position = "none")
 
 ```
+
+
+Should you want to label more than one gene, you will need to use (for example):
+`filter(external_gene_name %in% c("Procr", "Emb"))`
 
 
 Now go to [Save your plots](#save-your-plots)
