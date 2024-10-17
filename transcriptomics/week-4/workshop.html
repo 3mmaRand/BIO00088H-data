@@ -397,7 +397,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">15 October, 2024</p>
+      <p class="date">17 October, 2024</p>
     </div>
   </div>
   
@@ -1426,14 +1426,14 @@ lm_meta_3 metacyclic         3</code></pre>
 <div class="sourceCode" id="cb80"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/biomaRt/man/listEnsembl.html">listEnsemblGenomes</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              biomart                        version
-1       protists_mart      Ensembl Protists Genes 59
-2 protists_variations Ensembl Protists Variations 59
-3          fungi_mart         Ensembl Fungi Genes 59
-4    fungi_variations    Ensembl Fungi Variations 59
-5        metazoa_mart       Ensembl Metazoa Genes 59
-6  metazoa_variations  Ensembl Metazoa Variations 59
-7         plants_mart        Ensembl Plants Genes 59
-8   plants_variations   Ensembl Plants Variations 59</code></pre>
+1       protists_mart      Ensembl Protists Genes 60
+2 protists_variations Ensembl Protists Variations 60
+3          fungi_mart         Ensembl Fungi Genes 60
+4    fungi_variations    Ensembl Fungi Variations 60
+5        metazoa_mart       Ensembl Metazoa Genes 60
+6  metazoa_variations  Ensembl Metazoa Variations 60
+7         plants_mart        Ensembl Plants Genes 60
+8   plants_variations   Ensembl Plants Variations 60</code></pre>
 </div>
 </div>
 <p><code>plants_mart</code> looks like the one we want. We can see what genomes are available with names like “Arabidopsis” in this mart using the <code><a href="https://rdrr.io/pkg/biomaRt/man/listDatasets.html">searchDatasets()</a></code> function.</p>
@@ -1444,8 +1444,8 @@ lm_meta_3 metacyclic         3</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>             dataset                         description version
 4   ahalleri_eg_gene Arabidopsis halleri genes (Ahal2.2) Ahal2.2
-5    alyrata_eg_gene    Arabidopsis lyrata genes (v.1.0)   v.1.0
-10 athaliana_eg_gene Arabidopsis thaliana genes (TAIR10)  TAIR10</code></pre>
+6    alyrata_eg_gene    Arabidopsis lyrata genes (v.1.0)   v.1.0
+11 athaliana_eg_gene Arabidopsis thaliana genes (TAIR10)  TAIR10</code></pre>
 </div>
 </div>
 <p><code>athaliana_eg_gene</code> is the Arabidopsis thaliana genes (TAIR10) dataset we want.</p>
