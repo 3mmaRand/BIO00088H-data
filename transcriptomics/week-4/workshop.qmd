@@ -1661,8 +1661,9 @@ library(biomaRt)
 🎬 Connect to the mouse database 
 ```{r}
 # Connect to the mouse database
+
 ensembl <- useMart(biomart = "ensembl", 
-                   dataset = "musculus_gene_ensembl")
+                   dataset = "mmusculus_gene_ensembl")
 ```
 
 🎬 See information we can retrieve:
