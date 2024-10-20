@@ -9,21 +9,18 @@ format:
     code-summary: "Answer - don't look until you have tried!"
 ---
 
-These are suggestions
+Before starting work on your strand specific data analysis. Ensure you have 
+EITHER:
+
+-   🎬 Set up the [Virtual Desktop Service](https://www.york.ac.uk/it-services/tools/vds/) 
+    and been able to use it
 
 
--   Want github co-pilot?
+OR
 
-    🎬 Create a [GitHub account](https://github.com/)
+-   🎬 [Updated R](https://www.r-project.org/)
 
-    🎬 Apply for [student
-    benefits](https://education.github.com/discount_requests/application)
-
--   Update R and RStudio
-
-    🎬 [Update R](https://www.r-project.org/)
-
-    🎬 [Update RStudio](https://posit.co/download/rstudio-desktop/). 
+-   🎬 [Updated RStudio](https://posit.co/download/rstudio-desktop/). 
 
 -   Install package building tools
 
@@ -33,7 +30,22 @@ These are suggestions
     🎬 Mac install [Xcode from Mac App
     Store](https://apps.apple.com/ca/app/xcode/id497799835?mt=12)
 
--   Update packages:
+-   🎬 Installed packages: **`devtools`**, **`tidyverse`**, **`BiocManager`**, 
+     **`readxl`**
 
-    🎬 devtools, tidyverse, BiocManager, readxl
 
+
+You might want to consider getting a GitHub account and applying for 
+student benefits so that you can use GitHub co-pilot. GitHub copilot is an 
+“AI pair programmer that offers autocomplete-style suggestions as you code”. 
+GitHub Copilot is available as an opt-in integration with RStudio.
+
+-    Read more about [GitHub Copilot integration 
+     with RStudio](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html)
+
+-   🎬 Create a [GitHub account](https://github.com/)
+
+-   🎬 Apply for [student
+    benefits](https://education.github.com/discount_requests/application). 
+    You will need to upload an image of your student id, use your institutional 
+    email address and you will be required to use two factor authentication.

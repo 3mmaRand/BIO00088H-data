@@ -5,21 +5,30 @@ toc: true
 toc-location: right
 ---
 
-This week you will revise some essential concepts for scientific computing: file system organisation, file types, working directories and paths. The workshop will cover a rationale for working reproducibly, project oriented workflow, naming things and documenting your work. 
+This week you will revise some essential concepts for scientific computing: 
+file system organisation, file types, working directories and paths. You will
+also ensure you know how to use the virtual desktop service (VDS) to access
+the software you need for your work.
+The workshop will cover a rationale for working reproducibly, 
+project oriented workflow, naming things and documenting your work. 
 
 
 ### Learning objectives
 
 The successful student will be able to:
 
--   explain the organisation of files and directories in a file systems including root, home and working directories
+-   explain the organisation of files and directories in a file 
+    systems including root, home and working directories
 -   explain absolute and relative file paths
 -   explain why working reproducibly is important
 -   know how to use a project-oriented workflow to organise work
 -   be able to give files human- and machine-readable names
 -   write cool 😎 code not 😩 ugly code
--   explain the value of code which expresses the structure of the problem/solution.
+-   explain the value of code which expresses the structure of the 
+    problem/solution.
 -   use some useful shortcuts to help write cool 😎 code
+-   ensure they can use the VDS to access files and software
+    required for the work
 
 ### Instructions
 
@@ -27,6 +36,7 @@ The successful student will be able to:
 
     i.  📖 Read Understanding file systems
     ii.  📖 Read Workflow in RStudio
+    iii.  🖥️Set up the VDS and know how to use it.
 
 2.  [Workshop](workshop.qmd)
 
