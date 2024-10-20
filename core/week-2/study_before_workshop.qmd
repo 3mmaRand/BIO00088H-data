@@ -8,3 +8,42 @@ toc-location: right
 1.  📖 Read  [Understanding file systems](https://3mmarand.github.io/comp4biosci/file_systems.html). This is an approximately 15 - 20 minute read revising file types and file systems. It covers concepts of working directories and paths. We learned these ideas in stage 1 and you may feel completely confident with them but many students will benefit from a refresher. For BIO00070M students, this is part of the work you will also be asked to complete for BIO00052M Data Analysis in R.
 
 2.  📖 Read [Workflow in RStudio](https://3mmarand.github.io/comp4biosci/workflow_rstudio.html). You may find it helpful to remind yourself about RStudio Projects. In previous years, you have submitted an "RStudio Project" as part of your BABS work. In this module, you will submit "Supporting Information" for your Project Report. The Supporting Information is a documented and organised collection of all the digital parts of your research project. This includes data (or instructions for accessing data), code and/or non-coded processing, instructions for use, computational requirements and outputs. The Supporting Information could be a single RStudio Project (like you have done previously but with better documentation) or a folder that includes an RStudio Project and other material/scripts.
+
+3.💻 Set up the Virtual Desktop. I very strongly recommend working on 
+the University computers for this work. You will be using more specialised R 
+packages than you might be used to. This is especially important if you often 
+have difficulty updating and or installing software on your own machine,
+wouldn't know what what version of R you are using or don't realise 
+there is a difference between R and RStudio. The uni machines always
+have up-to-date R and R packages and all the packages that appear in 
+teaching materials. It is my responsibility to ensure everything works on here.
+
+You can still work from home by using the [Virtual Desktop Service](https://www.york.ac.uk/it-services/tools/vds/). The VDS allows you 
+to log on to a university computer from your own computer. It means you can 
+access all software and filestores. When using the VDS for R and RStudio, 
+it usually makes sense to use other software - such as a browser or file
+explorer - also through the VDS.  
+
+If you are confident in your ability to set up your own machine, you need:
+
+-   to know the difference between R and RStudio
+-   to use R 4.4 and RStudio 2024.09.0 Build 375 ("Cranberry Hibiscus")
+-   be certain you are actually using R 4.4 - it is written in the top edge
+    of the console window. By default RStudio uses the latest version on 
+    R on your machine. However, windows users are able to change this 
+    to a "specific version". You might have done that previously. Change it 
+    back using Tools | Global Options R version "Use your machine's default 
+    64-bit version of R"
+- to make sure you do the independent study where it tells you what steps 
+  you need to take to get packages (and versions that are unlikely to 
+  cause issues) used in the workshop
+
+It is possible to access all your files on your university account without 
+using the VDS. For example, if you want to work on uni machines at uni 
+and your machine at home. You can best do this by mapping a drive: https://support.york.ac.uk/s/topic/0TO4K000000lA5ZWAU/filestores.
+If you store everything on google drive you can also read/write to that 
+like any other drive using google drive app.
+
+
+Even if you plan to use your own machine I really recommend you take 
+the time to set the VDS up now while you're not time pressured so you always have that option ready.
