@@ -19,22 +19,11 @@ editor:
 
 ## Session overview
 
-In the workshop, you will learn how to conduct and plot a Principle 
-Component Analysis (PCA) as well as how to create a nicely formatted 
-Volcano plot. You will also save significant genes to file to make it 
-easier to identify genes of interest and perform Gene Ontology (GO) term 
-enrichment analysis.
-
-import
-log where needed
-write sig to file
-add go terms
-prep data for pca
-do pca and plot
-volcano
-go term enrichment
-
-
+In the workshop, you will learn how to conduct and plot a Principle
+Component Analysis (PCA) as well as how to create a nicely formatted
+Volcano plot. You will also save significant genes to file to make it
+easier to identify genes of interest. ~~and perform Gene Ontology (GO)
+term enrichment analysis.~~
 
 # Set up
 
@@ -44,7 +33,8 @@ go term enrichment
 
 ## 🎄 *Arabidopsis*
 
-🎬 Open the `arabi-88H` RStudio Project and the `wildsuf-wilddef-s30.R` script.
+🎬 Open the `arabi-88H` RStudio Project and the `wildsuf-wilddef-s30.R`
+script.
 
 ## 💉 *Leishmania*
 
@@ -54,13 +44,11 @@ go term enrichment
 
 🎬 Open the `mice-88H` RStudio Project and the `hspc-prog.R` script.
 
-
 ## Everyone
 
-🎬 Make a new folder `figures` in the project directory. 
+🎬 Make a new folder `figures` in the project directory.
 
 This is where we will save our figure files
-
 
 🎬 Load **`tidyverse`** [@tidyverse] and **`conflicted`** [@conflicted].
 You most likely have this code at the top of your script already.
@@ -83,7 +71,8 @@ library(conflicted)
 ℹ Use the conflicted package to force all conflicts to become errors
 ```
 
-I recommend you set the **`dplyr`** versions of `filter()` and `select()` to use by default
+I recommend you set the **`dplyr`** versions of `filter()` and
+`select()` to use by default
 
 🎬 Use the **`dplyr`** version of `filter()` by default:
 
@@ -92,13 +81,13 @@ conflicts_prefer(dplyr::filter)
 conflicts_prefer(dplyr::select)
 ```
 
-
 # Import
 
 ## Everyone
 
-🎬 Import your results data. This should be a file in the `results` folder 
-called `xxxx_results.csv` where xxxx indicates the comparison you made.
+🎬 Import your results data. This should be a file in the `results`
+folder called `xxxx_results.csv` where xxxx indicates the comparison you
+made.
 
 ```{r}
 #| echo: false
@@ -108,7 +97,6 @@ called `xxxx_results.csv` where xxxx indicates the comparison you made.
 s30_results <- read_csv("results/S30_results.csv")
 
 ```
-
 
 ```{r}
 #| echo: false
@@ -127,7 +115,6 @@ wild_results <- read_csv("results/wild_results.csv")
 pro_meta_results <- read_csv("results/pro_meta_results.csv")
 
 ```
-
 
 ```{r}
 #| echo: false
@@ -151,13 +138,18 @@ glimpse(s30_results)
 <!-- #---THINKING ANSWER--- -->
 
 <!-- You have data with 17 columns and 10136 rows. The rows are the genes. -->
-<!-- The columns are the normalised counts for for each of the 6  -->
-<!-- samples, the mean of the normalised counts, the xenbase gene id, -->
-<!-- the gene name and some data base references.  -->
-<!-- You also have the results of a statistical comparison between -->
-<!-- the treatments for stage 30: the log fold change, the  -->
-<!-- test statistic, the p-value and the adjusted p-value -->
 
+<!-- The columns are the normalised counts for for each of the 6  -->
+
+<!-- samples, the mean of the normalised counts, the xenbase gene id, -->
+
+<!-- the gene name and some data base references.  -->
+
+<!-- You also have the results of a statistical comparison between -->
+
+<!-- the treatments for stage 30: the log fold change, the  -->
+
+<!-- test statistic, the p-value and the adjusted p-value -->
 
 ```{r}
 #| include: false
@@ -169,13 +161,18 @@ glimpse(wild_results)
 <!-- #---THINKING ANSWER--- -->
 
 <!-- You have data with 13 columns and 26355 rows. The rows are the genes. -->
-<!-- The columns are the normalised counts for for each of the 4 -->
-<!-- samples, the mean of the normalised counts, the gene id, -->
-<!-- the gene name and a description. -->
-<!-- You also have the results of a statistical comparison between -->
-<!-- the Cu sufficient and Cu deficient conditions, the log fold change,  -->
-<!-- the test statistic, the p-value and the adjusted p-value -->
 
+<!-- The columns are the normalised counts for for each of the 4 -->
+
+<!-- samples, the mean of the normalised counts, the gene id, -->
+
+<!-- the gene name and a description. -->
+
+<!-- You also have the results of a statistical comparison between -->
+
+<!-- the Cu sufficient and Cu deficient conditions, the log fold change,  -->
+
+<!-- the test statistic, the p-value and the adjusted p-value -->
 
 ```{r}
 #| include: false
@@ -187,12 +184,19 @@ glimpse(pro_meta_results)
 <!-- #---THINKING ANSWER--- -->
 
 <!-- You have data with 14 columns and 8437 rows. The rows are the genes. -->
+
 <!-- The columns are the normalised counts for for each of the 6 -->
+
 <!-- samples, the mean of the normalised counts, the gene id, -->
+
 <!-- and a description. -->
+
 <!-- You also have the results of a statistical comparison between -->
+
 <!-- the procyclic and metacyclic promastigote stages, the log  -->
+
 <!-- fold change, the test statistic, the p-value and the  -->
+
 <!-- adjusted p-value -->
 
 ```{r}
@@ -202,31 +206,35 @@ glimpse(pro_meta_results)
 glimpse(hspc_prog_results)
 ```
 
-
 <!-- #---THINKING ANSWER--- -->
 
 <!-- You have data with 1507 columns and 280 rows. The rows are the genes. -->
+
 <!-- The columns are the normalised counts for each of the cell -->
+
 <!-- (1499 HPSC and and Prog cells), the ensembl_gene_id, a gene name and a -->
+
 <!-- description. -->
+
 <!-- You also have the results of a statistical comparison between -->
+
 <!-- the HSPC and progenitor cell types, the log fold change (twice!), -->
+
 <!-- the p-value and the adjusted p-value (FDR) -->
 
-When we do PCA we will want to label the samples with their treatment for 
-figures. For 🐸 Frog development, 🎄 *Arabidopsis* and 💉 *Leishmania*, this 
-labelling information is most easily added using the metadata. You will 
-need to filter for only the samples in the comparison that was made in 
-the results file.
+When we do PCA we will want to label the samples with their treatment
+for figures. For 🐸 Frog development, 🎄 *Arabidopsis* and 💉
+*Leishmania*, this labelling information is most easily added using the
+metadata. You will need to filter for only the samples in the comparison
+that was made in the results file.
 
-You may need to refer back to the 
-[Week 4 Statistical Analysis workshop](../week-4/workshop.html) 
-(in section 2. Create DESeqDataSet object) 
-to remind yourself how to import and filter the metadata you need.
+You may need to refer back to the [Week 4 Statistical Analysis
+workshop](../week-4/workshop.html) (in section 2. Create DESeqDataSet
+object) to remind yourself how to import and filter the metadata you
+need.
 
-🎬 Import the metadata that maps the sample names to treatments. 
-   Remember to select only the samples for comparison that was made. 
-
+🎬 Import the metadata that maps the sample names to treatments.
+Remember to select only the samples for comparison that was made.
 
 ```{r}
 #| echo: false
@@ -241,7 +249,6 @@ meta_s30 <- meta |>
   filter(stage == "stage_30")
 
 ```
-
 
 ```{r}
 #| echo: false
@@ -267,10 +274,10 @@ meta_pro_meta <- meta |>
   filter(stage != "amastigotes")
 ```
 
-For 🐭 Stem cells, cell types are encoded in the column names. We will do some
-[regular expression](https://en.wikipedia.org/wiki/Regular_expression) magic 
-to extract the cell type from the column names.
-
+For 🐭 Stem cells, cell types are encoded in the column names. We will
+do some [regular
+expression](https://en.wikipedia.org/wiki/Regular_expression) magic to
+extract the cell type from the column names.
 
 # log~2~ transform the normalised counts
 
@@ -290,17 +297,17 @@ dataframe <- dataframe |>
   mutate(log2_mycolumn = log2(mycolumn + 0.001))
 ```
 
-
-We are going to use a wonderful bit of R wizardry to apply a transformation 
-to multiple columns. This is the `across()` function which has three arguments:
+We are going to use a wonderful bit of R wizardry to apply a
+transformation to multiple columns. This is the `across()` function
+which has three arguments:
 
 `across(.cols, .fns, .names)`
 
 where:
 
-- `.cols` is the selection of columns to transform
-- `.fns` is the function we want to apply to the selected columns
-- `.names` is the naming convention for the new columns
+-   `.cols` is the selection of columns to transform
+-   `.fns` is the function we want to apply to the selected columns
+-   `.names` is the naming convention for the new columns
 
 The general form of the code you need is:
 
@@ -317,24 +324,24 @@ xxxx_results <- xxxx_results |>
 where:
 
 -   `xxxx_results` is the name of the dataframe of results
--   `pattern` matches the starting letters for all of the normalised 
-     counts so that `starts_with("pattern")` gives the selection 
-     of columns to transform
--    the bit after the `\(x)` is the function we want to apply to
-     the selected columns
--    the `\(x)` means it is an "anonymous" function which means we don't
-     have to define a function name. 
--    `"log2_{.col}"`  means the columns will have the same name 
-     (in the `.col`) but with the prefix `log2_` added.
+-   `pattern` matches the starting letters for all of the normalised
+    counts so that `starts_with("pattern")` gives the selection of
+    columns to transform
+-   the bit after the `\(x)` is the function we want to apply to the
+    selected columns
+-   the `\(x)` means it is an "anonymous" function which means we don't
+    have to define a function name.
+-   `"log2_{.col}"` means the columns will have the same name (in the
+    `.col`) but with the prefix `log2_` added.
 
-You can read more about `across()` and anonymous functions from my 
-[posit::conf(2024) workshop](https://posit-conf-2024.github.io/programming-r/)
-
+You can read more about `across()` and anonymous functions from my
+[posit::conf(2024)
+workshop](https://posit-conf-2024.github.io/programming-r/)
 
 ## 🐸 Frog development, 🎄 *Arabidopsis* and 💉 *Leishmania*
 
-🎬 Design the code to log~2~ transform the normalised counts using the 
-   template given
+🎬 Design the code to log~2~ transform the normalised counts using the
+template given
 
 ```{r}
 #| include: false
@@ -347,7 +354,6 @@ s30_results <- s30_results |>
                 .names = "log2_{.col}"))
 ```
 
-
 ```{r}
 #| include: false
 #---CODING ANSWER---
@@ -358,7 +364,6 @@ wild_results <- wild_results |>
                 \(x) log2(x + 0.001),
                 .names = "log2_{.col}"))
 ```
-
 
 ```{r}
 #| include: false
@@ -371,15 +376,13 @@ pro_meta_results <- pro_meta_results |>
                 .names = "log2_{.col}"))
 ```
 
+I recommend viewing the dataframe to see the new columns. Check you have
+the expected number of columns.
 
-I recommend viewing the dataframe to see the new columns. Check you have the 
-expected number of columns.
+## 🐭 Stem cells
 
-## 🐭 Stem cells 
-
-You do not need to apply this transformation because the data is already log~2~ 
-transformed.
-
+You do not need to apply this transformation because the data is already
+log~2~ transformed.
 
 ## Everyone
 
@@ -391,9 +394,9 @@ changes and *p*-values, and information about the gene.
 
 ## Everyone
 
-We will create dataframe of the significant genes and write them to file.
-This is subset from the results file but will make it a little easier to 
-examine and select genes of interest.
+We will create dataframe of the significant genes and write them to
+file. This is subset from the results file but will make it a little
+easier to examine and select genes of interest.
 
 The general form of the code you need is:
 
@@ -406,14 +409,13 @@ xxxx_results_sig0.05 <- xxxx_results |>
 
 ```
 
-Note that you determine the significance level using the adjusted *p*-values
- rather than the uncorrected *p*-values. This column is name `padj` in
- **`DESeq2`** output and `FDR` in **`scran`** output.
+Note that you determine the significance level using the adjusted
+*p*-values rather than the uncorrected *p*-values. This column is name
+`padj` in **`DESeq2`** output and `FDR` in **`scran`** output.
 
-
-🎬 Create a dataframe of the genes significant at the 0.05 level using 
-   `filter()`. You will need to know the name of column with the adjusted
-   *p*-values. 
+🎬 Create a dataframe of the genes significant at the 0.05 level using
+`filter()`. You will need to know the name of column with the adjusted
+*p*-values.
 
 ```{r}
 #| include: false
@@ -460,20 +462,24 @@ pro_meta_results_sig0.05 <- pro_meta_results |>
 <!-- #---THINKING ANSWER--- -->
 
 <!-- 🐸 frog development  -->
+
 <!-- 117 genes are significant at the 0.05 level. -->
 
 <!-- 🎄 Arabidopsis  -->
+
 <!-- 12 genes are significant at the 0.05 level. -->
 
-
 <!-- 💉 leishmania  -->
+
 <!-- 3252 genes are significant at the 0.05 level. -->
+
 <!-- I recommend using a more stringent cut-off such as 0.01  -->
 
 <!-- 🐭 stemcells -->
+
 <!-- 182 genes are significant at the 0.05 level. -->
 
-If you have a very large number of genes significant at the 0.05 level, 
+If you have a very large number of genes significant at the 0.05 level,
 you may want to consider a more stringent cut-off such as 0.01.
 
 ```{r}
@@ -489,11 +495,8 @@ pro_meta_results_sig0.01 <- pro_meta_results |>
 
 ```
 
-
-
-🎬 Write the dataframe to a csv file. I recommend using the same file name
-   as you used for the dataframe.
-
+🎬 Write the dataframe to a csv file. I recommend using the same file
+name as you used for the dataframe.
 
 ```{r}
 #| include: false
@@ -503,7 +506,6 @@ pro_meta_results_sig0.01 <- pro_meta_results |>
 write_csv(s30_results_sig0.05, 
           file = "results/s30_results_sig0.05.csv")
 ```
-
 
 ```{r}
 #| include: false
@@ -536,36 +538,36 @@ write_csv(hspc_prog_results_sig0.05,
           file = "results/hspc_prog_results_sig0.05.csv")
 ```
 
-
 # Principal Component Analysis (PCA)
 
 We have many genes in our datasets. PCA will allow us to plot our
-samples in the "gene expression" space so we can see if replicates with the
-same treatment cluster together as we would expect. PCA is a dimension
-reduction technique that finds the directions of maximum variance in the
-data. We are doing PCA after our statistical analysis but often it is one 
-of the first techniques used to explore the data. If we do not see treatment
-effects in a PCA plot then we are not likely to see them in the statistical
-analysis. PCA can also help you identify any outlier replicates. The PCA 
-is best conducted on the normalised counts or the log~2~ transformed 
-normalised counts. We will use the log~2~ transformed normalised counts.
+samples in the "gene expression" space so we can see if replicates with
+the same treatment cluster together as we would expect. PCA is a
+dimension reduction technique that finds the directions of maximum
+variance in the data. We are doing PCA after our statistical analysis
+but often it is one of the first techniques used to explore the data. If
+we do not see treatment effects in a PCA plot then we are not likely to
+see them in the statistical analysis. PCA can also help you identify any
+outlier replicates. The PCA is best conducted on the normalised counts
+or the log~2~ transformed normalised counts. We will use the log~2~
+transformed normalised counts.
 
 We will carry out the following steps to do the PCA:
 
--   Select the log~2~ transformed normalised counts. You can only use 
-    numerical data in PCA. 
--   Transpose our data. We have genes in rows and samples in 
-    columns (this is common for gene expression data). However, 
-    to treatment the genes as variables, PCA expects samples in rows and 
-    genes in columns. 
+-   Select the log~2~ transformed normalised counts. You can only use
+    numerical data in PCA.
+-   Transpose our data. We have genes in rows and samples in columns
+    (this is common for gene expression data). However, to treatment the
+    genes as variables, PCA expects samples in rows and genes in
+    columns.
 -   Add the gene names as column names in the transposed data
 -   Perform the PCA
 -   Extract the scores on the first two principal components and label
     the data
 -   Plot the the first two principal components as a scatter plot
 
-In each case we will use only the samples for the comparison that was made
-in the PCA. However, it would be informative to do PCA on all the 
+In each case we will use only the samples for the comparison that was
+made in the PCA. However, it would be informative to do PCA on all the
 samples you have and that is something you may want to consider in your
 independent study.
 
@@ -576,10 +578,7 @@ Now go to PCA for:
 -   [💉 Leishmania](#leishmania-1)
 -   [🐭 Stem cells](#stem-cells-2)
 
-
-## 🐸 Frog development
-
-
+## 🐸 Frog development {#frog-development-1}
 
 🎬 Transpose the log~2~ transformed normalised counts:
 
@@ -627,10 +626,10 @@ total variance in the data. Plotting PC1 against PC2 will capture about
 66% of the variance which is likely very much better than we would get
 plotting any two genes against each other. To plot the PC1 against PC2
 we will need to extract the PC1 and PC2 "scores" from the PCA object and
-add labels for the samples. Those labels will come from the row names of 
+add labels for the samples. Those labels will come from the row names of
 the transformed data which has the sample ids and from the metadata.
 
-🎬 Create a vector of the sample ids from the row names. These include 
+🎬 Create a vector of the sample ids from the row names. These include
 the `log2` prefix which we can removed for labelling:
 
 ```{r}
@@ -639,8 +638,8 @@ sample_id <- row.names(s30_log2_trans) |> str_remove("log2_")
 
 You might want to check the result.
 
-Now we will extract the PC1 and PC2 scores from the PCA object and add. 
-Our PCA object is called `pca` and the scores are in pca$x. We will 
+Now we will extract the PC1 and PC2 scores from the PCA object and add.
+Our PCA object is called `pca` and the scores are in pca\$x. We will
 create a dataframe of the scores and add the sample ids.
 
 🎬 Create a dataframe of PC1 and PC2 scores and add the sample ids:
@@ -669,9 +668,9 @@ The dataframe should look like this:
 knitr::kable(pca_labelled)
 ```
 
-The next task is to plot PC2 against PC1 and colour by sibling pair. This 
-is just a scatterplot so we can use `geom_point()`. We will use colour
-to indicate the sibling pair and shape to indicate the treatment. 
+The next task is to plot PC2 against PC1 and colour by sibling pair.
+This is just a scatterplot so we can use `geom_point()`. We will use
+colour to indicate the sibling pair and shape to indicate the treatment.
 
 🎬 Customise the PC2 against PC1 plot:
 
@@ -688,28 +687,28 @@ pca_labelled |>
 There is a good separation between treatments on PCA1. The sibling pairs
 do not seem to cluster together. You can also try plotting PC3 or PC4.
 
-I prefer to customise the colours and shapes. I especially like the  
-viridis colour scales which provide colour scales that are perceptually 
-uniform in both colour and black-and-white. They are also designed to 
-be perceived by viewers with common forms of colour blindness. See 
-[Introduction to viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html#introduction) 
+I prefer to customise the colours and shapes. I especially like the\
+viridis colour scales which provide colour scales that are perceptually
+uniform in both colour and black-and-white. They are also designed to be
+perceived by viewers with common forms of colour blindness. See
+[Introduction to
+viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html#introduction)
 for more information.
 
 `ggplot` provides functions to access the viridis scales. Here I use
-`scale_fill_viridis_d()`. The d stands for discrete. The 
-function `scale_fill_viridis_c()` would be used for continuous data. 
-I’ve used the default “viridis” (or “D”) option (do ?scale_fill_viridis_d 
-for all the options) and used the `begin` and `end` arguments to control 
-the range of colour - I have set the range to be from 0.15 to 0.95 the avoid 
+`scale_fill_viridis_d()`. The d stands for discrete. The function
+`scale_fill_viridis_c()` would be used for continuous data. I’ve used
+the default “viridis” (or “D”) option (do ?scale_fill_viridis_d for all
+the options) and used the `begin` and `end` arguments to control the
+range of colour - I have set the range to be from 0.15 to 0.95 the avoid
 the strongest contrast. I have also set the `name` argument to provide a
 label for the legend.
 
 I have used `scale_shape_manual()` to set the shapes for the treatments.
 I have used the values 21 and 19 which are the codes for filled and open
-circles and filled triangles. I have set the `name` argument to `NULL` 
-to remove the label (it's obvious what that categories are treatments) 
+circles and filled triangles. I have set the `name` argument to `NULL`
+to remove the label (it's obvious what that categories are treatments)
 and the `labels` argument to improve the legend.
-
 
 🎬 Plot PC2 against PC1 and colour by sibling pair and shape by
 treatment:
@@ -731,9 +730,7 @@ pca_labelled |>
 
 Now go to Volcano plots for [🐸 Frog development](#frog-development-2)
 
-
-## 🎄 *Arabidopsis* 
-
+## 🎄 *Arabidopsis* {#arabidopsis-1}
 
 🎬 Transpose the log~2~ transformed normalised counts:
 
@@ -765,12 +762,12 @@ pca <- wild_log2_trans |>
 ```
 
 The `scale` argument tells `prcomp()` to scale the data before doing the
-PCA. This is important when the variables are on different scales to 
-stop variables with large values dominating the PCA.
-The `rank.` argument tells `prcomp()` to only calculate the first 4
-principal components. This is useful for visualisation as we can only
-plot in 2 or 3 dimensions. We can see the results of the PCA by viewing
-the `summary()` of the `pca` object.
+PCA. This is important when the variables are on different scales to
+stop variables with large values dominating the PCA. The `rank.`
+argument tells `prcomp()` to only calculate the first 4 principal
+components. This is useful for visualisation as we can only plot in 2 or
+3 dimensions. We can see the results of the PCA by viewing the
+`summary()` of the `pca` object.
 
 ```{r}
 summary(pca)
@@ -781,13 +778,14 @@ explained by each component. We can see that the first component
 explains 0.5742 of the variance, the second 0.2786, and the third
 0.1472. Together the first three components explain nearly 100% of the
 total variance in the data. Plotting PC1 against PC2 will capture about
-92% of the variance which is very likely very much better than we would get
-plotting any two genes against each other. To plot the PC1 against PC2
-we will need to extract the PC1 and PC2 "scores" from the PCA object and
-add labels for the samples. Those labels will come from the row names of 
-the transformed data which has the sample ids and from the metadata.
+92% of the variance which is very likely very much better than we would
+get plotting any two genes against each other. To plot the PC1 against
+PC2 we will need to extract the PC1 and PC2 "scores" from the PCA object
+and add labels for the samples. Those labels will come from the row
+names of the transformed data which has the sample ids and from the
+metadata.
 
-🎬 Create a vector of the sample ids from the row names. These include 
+🎬 Create a vector of the sample ids from the row names. These include
 the `log2` prefix which we can removed for labelling:
 
 ```{r}
@@ -796,8 +794,8 @@ sample_id <- row.names(wild_log2_trans) |> str_remove("log2_")
 
 You might want to check the result.
 
-Now we will extract the PC1 and PC2 scores from the PCA object and add. 
-Our PCA object is called `pca` and the scores are in pca$x. We will 
+Now we will extract the PC1 and PC2 scores from the PCA object and add.
+Our PCA object is called `pca` and the scores are in pca\$x. We will
 create a dataframe of the scores and add the sample ids.
 
 🎬 Create a dataframe of PC1 and PC2 scores and add the sample ids:
@@ -826,9 +824,9 @@ The dataframe should look like this:
 knitr::kable(pca_labelled)
 ```
 
-The next task is to plot PC2 against PC1 and colour by copper conditions. This 
-is just a scatterplot so we can use `geom_point()`. We will use colour
-to indicate the copper conditions. 
+The next task is to plot PC2 against PC1 and colour by copper
+conditions. This is just a scatterplot so we can use `geom_point()`. We
+will use colour to indicate the copper conditions.
 
 🎬 Plot PC2 against PC1 and colour by copper conditions:
 
@@ -847,21 +845,22 @@ copper deficient on PC2. It is also difficult to see if the replicates
 cluster together (the treatments separate) when there are only two reps.
 You can also try plotting PC3 or PC4.
 
-I prefer to customise the colours and shapes. I especially like the  
-viridis colour scales which provide colour scales that are perceptually 
-uniform in both colour and black-and-white. They are also designed to 
-be perceived by viewers with common forms of colour blindness. See 
-[Introduction to viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html#introduction) for more information.
+I prefer to customise the colours and shapes. I especially like the\
+viridis colour scales which provide colour scales that are perceptually
+uniform in both colour and black-and-white. They are also designed to be
+perceived by viewers with common forms of colour blindness. See
+[Introduction to
+viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html#introduction)
+for more information.
 
 `ggplot` provides functions to access the viridis scales. Here I use
-`scale_fill_viridis_d()`. The d stands for discrete. The 
-function `scale_fill_viridis_c()` would be used for continuous data. 
-I’ve used the default “viridis” (or “D”) option (do ?scale_fill_viridis_d 
-for all the options) and used the `begin` and `end` arguments to control
-the range of colour - I have set the range to be from 0.15 to 0.95 the 
-avoid the strongest contrast. I have also set the `name` argument to provide a
+`scale_fill_viridis_d()`. The d stands for discrete. The function
+`scale_fill_viridis_c()` would be used for continuous data. I’ve used
+the default “viridis” (or “D”) option (do ?scale_fill_viridis_d for all
+the options) and used the `begin` and `end` arguments to control the
+range of colour - I have set the range to be from 0.15 to 0.95 the avoid
+the strongest contrast. I have also set the `name` argument to provide a
 label for the legend.
-
 
 🎬 Customise the PC2 against PC1 plot:
 
@@ -878,10 +877,7 @@ pca_labelled |>
 
 Now go to Volcano plots for [🎄 Arabidopsis](#arabidopsis-2)
 
-
-## 💉 *Leishmania* 
-
-
+## 💉 *Leishmania* {#leishmania-1}
 
 🎬 Transpose the log~2~ transformed normalised counts:
 
@@ -913,12 +909,12 @@ pca <- pro_meta_log2_trans |>
 ```
 
 The `scale` argument tells `prcomp()` to scale the data before doing the
-PCA. This is important when the variables are on different scales to 
-stop variables with large values dominating the PCA.
-The `rank.` argument tells `prcomp()` to only calculate the first 4
-principal components. This is useful for visualisation as we can only
-plot in 2 or 3 dimensions. We can see the results of the PCA by viewing
-the `summary()` of the `pca` object.
+PCA. This is important when the variables are on different scales to
+stop variables with large values dominating the PCA. The `rank.`
+argument tells `prcomp()` to only calculate the first 4 principal
+components. This is useful for visualisation as we can only plot in 2 or
+3 dimensions. We can see the results of the PCA by viewing the
+`summary()` of the `pca` object.
 
 ```{r}
 summary(pca)
@@ -932,10 +928,10 @@ total variance in the data. Plotting PC1 against PC2 will capture about
 66% of the variance which is likely very much better than we would get
 plotting any two genes against each other. To plot the PC1 against PC2
 we will need to extract the PC1 and PC2 "scores" from the PCA object and
-add labels for the samples. Those labels will come from the row names of 
+add labels for the samples. Those labels will come from the row names of
 the transformed data which has the sample ids and from the metadata.
 
-🎬 Create a vector of the sample ids from the row names. These include 
+🎬 Create a vector of the sample ids from the row names. These include
 the `log2` prefix which we can removed for labelling:
 
 ```{r}
@@ -944,8 +940,8 @@ sample_id <- row.names(pro_meta_log2_trans) |> str_remove("log2_")
 
 You might want to check the result.
 
-Now we will extract the PC1 and PC2 scores from the PCA object and add. 
-Our PCA object is called `pca` and the scores are in pca$x. We will 
+Now we will extract the PC1 and PC2 scores from the PCA object and add.
+Our PCA object is called `pca` and the scores are in pca\$x. We will
 create a dataframe of the scores and add the sample ids.
 
 🎬 Create a dataframe of PC1 and PC2 scores and add the sample ids:
@@ -973,9 +969,9 @@ The dataframe should look like this:
 knitr::kable(pca_labelled)
 ```
 
-The next task is to plot PC2 against PC1 and colour by sibling pair. This 
-is just a scatterplot so we can use `geom_point()`. We will use colour
-to indicate the life cycle stage. 
+The next task is to plot PC2 against PC1 and colour by sibling pair.
+This is just a scatterplot so we can use `geom_point()`. We will use
+colour to indicate the life cycle stage.
 
 🎬 Plot PC2 against PC1 and colour by copper conditions:
 
@@ -988,25 +984,25 @@ pca_labelled |>
 
 ```
 
-There is a good separation between treatments on PCA1. The replicates
-do seem to cluster together. You can also try plotting PC3 or PC4.
+There is a good separation between treatments on PCA1. The replicates do
+seem to cluster together. You can also try plotting PC3 or PC4.
 
-I prefer to customise the colours. I especially like the  
-viridis colour scales which provide colour scales that are perceptually 
-uniform in both colour and black-and-white. They are also designed to 
-be perceived by viewers with common forms of colour blindness. See 
-[Introduction to viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html#introduction) 
+I prefer to customise the colours. I especially like the\
+viridis colour scales which provide colour scales that are perceptually
+uniform in both colour and black-and-white. They are also designed to be
+perceived by viewers with common forms of colour blindness. See
+[Introduction to
+viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html#introduction)
 for more information.
 
 `ggplot` provides functions to access the viridis scales. Here I use
-`scale_fill_viridis_d()`. The d stands for discrete. The 
-function `scale_fill_viridis_c()` would be used for continuous data. 
-I’ve used the default “viridis” (or “D”) option (do ?scale_fill_viridis_d 
-for all the options) and used the `begin` and `end` arguments to control 
-the range of colour - I have set the range to be from 0.15 to 0.95 the 
-avoid the strongest contrast. I have also set the `name` argument to provide a
+`scale_fill_viridis_d()`. The d stands for discrete. The function
+`scale_fill_viridis_c()` would be used for continuous data. I’ve used
+the default “viridis” (or “D”) option (do ?scale_fill_viridis_d for all
+the options) and used the `begin` and `end` arguments to control the
+range of colour - I have set the range to be from 0.15 to 0.95 the avoid
+the strongest contrast. I have also set the `name` argument to provide a
 label for the legend.
-
 
 🎬 Plot PC2 against PC1 and colour by life stage:
 
@@ -1021,13 +1017,9 @@ pca_labelled |>
 
 ```
 
-
 Now go to Volcano plots for [💉 Leishmania](#leishmania-2)
 
-
-## 🐭 Stem cells 
-
-
+## 🐭 Stem cells {#stem-cells-2}
 
 🎬 Transpose the log~2~ transformed normalised counts:
 
@@ -1039,11 +1031,11 @@ hspc_prog_trans <- hspc_prog_results |>
 ```
 
 We have used the `select()` function to select all the columns that
-start with `Prog_` or  `HSPC_`. We then use the `t()` function to 
-transpose the dataframe. We then convert the resulting matrix 
-to a dataframe using `data.frame()`. If you view that dataframe 
-you'll see it has default column name which we can fix using 
-`colnames()` to set the column names to the gene ids.
+start with `Prog_` or `HSPC_`. We then use the `t()` function to
+transpose the dataframe. We then convert the resulting matrix to a
+dataframe using `data.frame()`. If you view that dataframe you'll see it
+has default column name which we can fix using `colnames()` to set the
+column names to the gene ids.
 
 🎬 Set the column names to the gene ids:
 
@@ -1068,36 +1060,35 @@ summary(pca)
 ```
 
 The Proportion of Variance tells us how much of the variance is
-explained by each component. We can see that the first 
-component explains 0.1099 of the variance, the second 0.04874, 
-and the third 0.02498. Together the first three components 
-explain 18% of the total variance in the data. This is not *that* 
-high but it is also quite a lot better than than we would get 
-plotting any two genes randomly chosen against each other. 
+explained by each component. We can see that the first component
+explains 0.1099 of the variance, the second 0.04874, and the third
+0.02498. Together the first three components explain 18% of the total
+variance in the data. This is not *that* high but it is also quite a lot
+better than than we would get plotting any two genes randomly chosen
+against each other.
 
-To plot the PC1 against PC2 we will need to extract the PC1 
-and PC2 "scores" from the PCA object and add labels for the 
-cells. Our PCA object is called `pca` and the scores are in 
-pca$x. The cells labels will come from the row names of the 
-transformed data.
+To plot the PC1 against PC2 we will need to extract the PC1 and PC2
+"scores" from the PCA object and add labels for the cells. Our PCA
+object is called `pca` and the scores are in pca\$x. The cells labels
+will come from the row names of the transformed data.
 
-🎬 Create a dataframe of the PC1 and PC2 scores (in `pca$x`) and 
-  add the cell ids:
+🎬 Create a dataframe of the PC1 and PC2 scores (in `pca$x`) and add the
+cell ids:
 
 ```{r}
 pca_labelled <- data.frame(pca$x,
                            cell_id = row.names(hspc_prog_trans))
 ```
 
-It will be helpful to add a column for the cell type so we can 
-label points. One way to do this is to extract the information 
-in the cell_id column into two columns: one with the complete cell id 
-and one with just the cell type. This extraction is done with 
-[Regular Expression](https://en.wikipedia.org/wiki/Regular_expression) 
-magic.
+It will be helpful to add a column for the cell type so we can label
+points. One way to do this is to extract the information in the cell_id
+column into two columns: one with the complete cell id and one with just
+the cell type. This extraction is done with [Regular
+Expression](https://en.wikipedia.org/wiki/Regular_expression) magic.
 
-🎬 Extract the cell type and cell number from the `cell_id` 
-   column (keeping the `cell_id` column):
+🎬 Extract the cell type and cell number from the `cell_id` column
+(keeping the `cell_id` column):
+
 ```{r}
 pca_labelled <- pca_labelled |> 
   extract(cell_id, 
@@ -1106,55 +1097,59 @@ pca_labelled <- pca_labelled |>
           "([a-zA-Z]{4})_([0-9]{3})")
 ```
 
-What this code does is take what is in the `cell_id` column (something like 
-`Prog_001` or `HSPC_001`) and split it into two columns ("cell_type" and 
-"cell_number"). The reason why we want to do that is to colour the points by 
-cell type. We would not want to use `cell_id` to colour the points because each cell id is unique and that would be 1000+ colours. The last argument in the `extract()` function is the pattern to match described with a [regular expression](https://en.wikipedia.org/wiki/Regular_expression). Three 
-patterns are being matched, and two of those are in brackets meaning they 
-are kept to fill the two new columns.
+What this code does is take what is in the `cell_id` column (something
+like `Prog_001` or `HSPC_001`) and split it into two columns
+("cell_type" and "cell_number"). The reason why we want to do that is to
+colour the points by cell type. We would not want to use `cell_id` to
+colour the points because each cell id is unique and that would be 1000+
+colours. The last argument in the `extract()` function is the pattern to
+match described with a [regular
+expression](https://en.wikipedia.org/wiki/Regular_expression). Three
+patterns are being matched, and two of those are in brackets meaning
+they are kept to fill the two new columns.
 
 The first pattern is `([a-zA-Z]{4})`
 
 -   it is brackets because we want to keep it and put it in `cell_type`
--   `[a-zA-Z]` means any lower (`a-z`) or upper case letter (`A-Z`). 
--   The square brackets means any of the characters in the square brackets 
-    will be matched 
--   `{4}` means 4 of them. 
+-   `[a-zA-Z]` means any lower (`a-z`) or upper case letter (`A-Z`).
+-   The square brackets means any of the characters in the square
+    brackets will be matched
+-   `{4}` means 4 of them.
 
-So the first pattern inside the first (...) will match exactly 4 upper or lower case letters (like Prog or HSPC)
+So the first pattern inside the first (...) will match exactly 4 upper
+or lower case letters (like Prog or HSPC)
 
-The second pattern is `_` to match the underscore in every cell id that 
-separates the cell type from the number. It is not in brackets
-because we do not want to keep it.
+The second pattern is `_` to match the underscore in every cell id that
+separates the cell type from the number. It is not in brackets because
+we do not want to keep it.
 
 The third pattern is `([0-9]{3})`
 
 -   `[0-9]` means any number
--   `{3}` means 3 of them. 
+-   `{3}` means 3 of them.
 
-So the second pattern inside the second (...) will match exactly 3 
-numbers (like 001 or 851). 
+So the second pattern inside the second (...) will match exactly 3
+numbers (like 001 or 851).
 
+**Important**: Prog and HPSC have 4 letters. The column names, LT.HSPC\_
+have 6 characters and includes a dot. You will need to adjust the regex
+when make comparison between LT-HSC and other cell types. The pattern to
+match the `LT.HSC` as well as the `Prog` and `HSPC` is
+`([a-zA-Z.]{4, 6})`. Note the dot inside the square brackets and numbers
+meaning 4 or 6 of. The pattern to match the underscore and the cell
+number is the same.
 
-**Important**: Prog and HPSC have 4 letters. The column names,
-LT.HSPC_ have 6 characters and includes a dot. You will need to 
-adjust the regex when make comparison between LT-HSC and other cell types.
-The pattern to match the `LT.HSC` as well as the `Prog` and `HSPC` is 
-`([a-zA-Z.]{4, 6})`. Note the dot inside the square brackets and 
-numbers meaning 4 or 6 of.
-The pattern to match the underscore and the cell number 
-is the same.
-
-The top of the dataframe should look like this (but with more decimal places)
+The top of the dataframe should look like this (but with more decimal
+places)
 
 ```{r}
 #| echo: false
 knitr::kable(head(pca_labelled), digits = 2)
 ```
 
-The next task is to plot PC2 against PC1 and colour by cell type. This 
+The next task is to plot PC2 against PC1 and colour by cell type. This
 is just a scatterplot so we can use `geom_point()`. We will use colour
-to indicate the cell type. 
+to indicate the cell type.
 
 🎬 Plot PC2 against PC1 and colour by cell type:
 
@@ -1167,26 +1162,25 @@ pca_labelled |>
 
 ```
 
-There is a good clustering of cell types but plenty of overlap. 
-You can also try plotting PC3 or PC4 (or others).
+There is a good clustering of cell types but plenty of overlap. You can
+also try plotting PC3 or PC4 (or others).
 
-I prefer to customise the colours. I especially like the viridis colour 
-scales which provide colour scales that are perceptually 
-uniform in both colour and black-and-white. They are also designed to 
-be perceived by viewers with common forms of colour blindness. See 
-[Introduction to viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html#introduction) for more information.
+I prefer to customise the colours. I especially like the viridis colour
+scales which provide colour scales that are perceptually uniform in both
+colour and black-and-white. They are also designed to be perceived by
+viewers with common forms of colour blindness. See [Introduction to
+viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html#introduction)
+for more information.
 
 `ggplot` provides functions to access the viridis scales. Here I use
-`scale_fill_viridis_d()`. The d stands for discrete used because cell type 
-is a discrete variable. The function `scale_fill_viridis_c()` 
-would be used for continuous data. 
-I’ve used the default “viridis” (or “D”) option 
-(do ?scale_fill_viridis_d for all the options) and used the 
-`begin` and `end` arguments to control the range of 
-colour - I have set the range to be from 0.15 to 0.95 the avoid the 
-strongest contrast. I have also set the `name` argument to NULL
-because that the legend refers to cell types is obvious.
-
+`scale_fill_viridis_d()`. The d stands for discrete used because cell
+type is a discrete variable. The function `scale_fill_viridis_c()` would
+be used for continuous data. I’ve used the default “viridis” (or “D”)
+option (do ?scale_fill_viridis_d for all the options) and used the
+`begin` and `end` arguments to control the range of colour - I have set
+the range to be from 0.15 to 0.95 the avoid the strongest contrast. I
+have also set the `name` argument to NULL because that the legend refers
+to cell types is obvious.
 
 🎬 Plot PC2 against PC1 and colour by cell type:
 
@@ -1201,32 +1195,32 @@ pca_labelled |>
 
 ```
 
-
 Now go to Volcano plots for [🐭 Stem cells](#stem-cells-3)
 
 # Visualise all the results with a volcano plot
 
 A volcano plot is a scatterplot that shows statistical significance
-(p-value) versus magnitude of change (fold change). As the 
-[independent study](study_before_workshop.html) explained, we plot
--log~10~(adjusted *p*-value) on the *y*-axis so that the most significant 
-genes are uppermost.
+(p-value) versus magnitude of change (fold change). As the [independent
+study](study_before_workshop.html) explained, we plot -log~10~(adjusted
+*p*-value) on the *y*-axis so that the most significant genes are
+uppermost.
 
+## 🐸 Frog development {#frog-development-2}
 
+We will add a column to the results dataframe that contains the
+-log~10~(padj). You could perform this transformation within the plot
+command without adding a column to the data if you prefer.
 
-## 🐸 Frog development
+🎬 Add a column to the results dataframe that contains the
+-log~10~(padj):
 
-We will add a column to the results dataframe that contains the 
--log~10~(padj). You could perform this transformation within the 
-plot command without adding a column to the data if you prefer.
-
-🎬  Add a column to the results dataframe that contains the -log~10~(padj):
 ```{r}
 s30_results <- s30_results |> 
   mutate(log10_padj = -log10(padj)) 
 ```
 
-🎬  Create a volcano plot of the results:
+🎬 Create a volcano plot of the results:
+
 ```{r}
 s30_results |> 
   ggplot(aes(x = log2FoldChange, 
@@ -1245,39 +1239,40 @@ s30_results |>
 
 ```
 
+Our dashed lines are at -log~10~(0.05) and log~2~(2) and log~2~(-2) to
+make more clear which genes (points) are significantly different between
+the control and the FGF-treated samples and have a fold change of at
+least 2.
 
+In most cases, people colour the points to show that the quadrants. I
+like to add columns to the dataframe to indicate if the gene is
+significant and if the fold change is large and use those variables in
+the plot.
 
-
-Our dashed lines are at -log~10~(0.05) and log~2~(2) and log~2~(-2) to make
-more clear which genes (points) are significantly different between the 
-control and the FGF-treated samples and have a fold change of at least 2.
-
-In most cases, people colour the points to show that the quadrants. I 
-like to add columns to the dataframe to indicate if the gene is significant
-and if the fold change is large and use those variables in the plot.
-
-🎬  Add columns to the results dataframe to indicate if the gene is 
+🎬 Add columns to the results dataframe to indicate if the gene is
 significant and if the fold change is large:
+
 ```{r}
 s30_results <- s30_results |> 
   mutate(sig = padj <= 0.05,
          bigfc = abs(log2FoldChange) >= 2) 
 ```
 
-The use of `abs()` (absolute) means genes with a fold change of at least 2 
-in either direction will be considered to have a large fold change.
+The use of `abs()` (absolute) means genes with a fold change of at least
+2 in either direction will be considered to have a large fold change.
 
-Now we can colour the points by these new columns. I use `interaction()` 
-to create four categories: 
+Now we can colour the points by these new columns. I use `interaction()`
+to create four categories:
 
 -   not significant and not large fold change (FF)
 -   significant and not large fold change (TF)
 -   not significant and large fold (FT)
 -   significant and large fold change (TT)
 
-And I use `scale_colour_manual()` to set the colours for these categories.
+And I use `scale_colour_manual()` to set the colours for these
+categories.
 
-🎬  Create a volcano plot of the results with the points coloured by
+🎬 Create a volcano plot of the results with the points coloured by
 significance and fold change:
 
 ```{r}
@@ -1303,17 +1298,18 @@ s30_results |>
 
 ```
 
-For exploring the data, I like add labels to all the significant 
-genes with a large fold change so I can very quickly identity them. The
-`ggrepel` package has a function `geom_text_repel()` that is useful for 
+For exploring the data, I like add labels to all the significant genes
+with a large fold change so I can very quickly identity them. The
+`ggrepel` package has a function `geom_text_repel()` that is useful for
 adding labels so that they don't overlap.
 
-🎬  Load the package:
+🎬 Load the package:
+
 ```{r}
 library(ggrepel)
 ```
 
-🎬  Add labels to the significant genes with a large fold change:
+🎬 Add labels to the significant genes with a large fold change:
 
 ```{r}
 
@@ -1343,30 +1339,30 @@ s30_results |>
   theme(legend.position = "none")
 
 ```
-Notice that I have used `filter()` label only the genes that are both 
-significant and have a large fold change. In systems you are familiar with, 
-this labelling is very informative and can help you quickly identify common
-themes.
-Key to interpreting the volcano plot is to remember that positive fold 
-changes means the gene is up-regulated in the FGF-treated samples and 
-negative fold changes means the gene is down-regulated (i.e., higher 
-in the control). This was determined by the order of the treatments in the
-[contrast used in the DESeq2 analysis](../week-4/workshop.html#differential-expression-analysis-1)
 
-If you do forget which way round you did the comparison, you can always 
+Notice that I have used `filter()` label only the genes that are both
+significant and have a large fold change. In systems you are familiar
+with, this labelling is very informative and can help you quickly
+identify common themes. Key to interpreting the volcano plot is to
+remember that positive fold changes means the gene is up-regulated in
+the FGF-treated samples and negative fold changes means the gene is
+down-regulated (i.e., higher in the control). This was determined by the
+order of the treatments in the [contrast used in the DESeq2
+analysis](../week-4/workshop.html#differential-expression-analysis-1)
+
+If you do forget which way round you did the comparison, you can always
 examine the results dataframe to see which of the treatments seem to be
 higher for the positive fold changes.
 
 Please note that Betsy doesn't like graphs like this in the report!
 
 When you have a gene of interest, you may wish to label it, and only it,
-on the plot.  
+on the plot.\
 This is done in the same way except that you filter the data to only
-include the gene of interest. I have used and then use `geom_label_repel()` 
-rather than `geom_text_repel()` to put the label in a box and nudged it's 
-position to get a line connecting the point and the label. I have also 
-increased the size of the point.
-
+include the gene of interest. I have used and then use
+`geom_label_repel()` rather than `geom_text_repel()` to put the label in
+a box and nudged it's position to get a line connecting the point and
+the label. I have also increased the size of the point.
 
 🎬 Add a label to one gene of interest (hoxb9.S) and :
 
@@ -1402,27 +1398,27 @@ s30_results |>
 
 ```
 
-
-Should you want to label more than one gene, you will need to use (for example):
-`filter(xenbase_gene_symbol %in% c("hoxb9.S", "fzd7.S"))`
-
+Should you want to label more than one gene, you will need to use (for
+example): `filter(xenbase_gene_symbol %in% c("hoxb9.S", "fzd7.S"))`
 
 Now go to [Save your plots](#save-your-plots)
 
+## 🎄 *Arabidopsis* {#arabidopsis-2}
 
-## 🎄 *Arabidopsis*
+We will add a column to the results dataframe that contains the
+-log~10~(padj). You could perform this transformation within the plot
+command without adding a column to the data if you prefer.
 
-We will add a column to the results dataframe that contains the 
--log~10~(padj). You could perform this transformation within the 
-plot command without adding a column to the data if you prefer.
+🎬 Add a column to the results dataframe that contains the
+-log~10~(padj):
 
-🎬  Add a column to the results dataframe that contains the -log~10~(padj):
 ```{r}
 wild_results <- wild_results |> 
   mutate(log10_padj = -log10(padj)) 
 ```
 
-🎬  Create a volcano plot of the results:
+🎬 Create a volcano plot of the results:
+
 ```{r}
 wild_results |> 
   ggplot(aes(x = log2FoldChange, 
@@ -1441,40 +1437,44 @@ wild_results |>
 
 ```
 
-Our dashed lines are at -log~10~(0.05) and log~2~(2) and log~2~(-2) to make
-more clear which genes (points) are significantly different between the 
-copper sufficient and deficient conditions samples and have a fold change of 
-at least 2.
+Our dashed lines are at -log~10~(0.05) and log~2~(2) and log~2~(-2) to
+make more clear which genes (points) are significantly different between
+the copper sufficient and deficient conditions samples and have a fold
+change of at least 2.
 
-In most cases, people colour the points to show that the quadrants. I 
-like to add columns to the dataframe to indicate if the gene is significant
-and if the fold change is large and use those variables in the plot.
+In most cases, people colour the points to show that the quadrants. I
+like to add columns to the dataframe to indicate if the gene is
+significant and if the fold change is large and use those variables in
+the plot.
 
-🎬  Add columns to the results dataframe to indicate if the gene is 
+🎬 Add columns to the results dataframe to indicate if the gene is
 significant and if the fold change is large:
+
 ```{r}
 wild_results <- wild_results |> 
   mutate(sig = padj <= 0.05,
          bigfc = abs(log2FoldChange) >= 2) 
 ```
 
-The use of `abs()` (absolute) means genes with a fold change of at least 2 
-in either direction will be considered to have a large fold change.
+The use of `abs()` (absolute) means genes with a fold change of at least
+2 in either direction will be considered to have a large fold change.
 
-Now we can colour the points by these new columns. I use `interaction()` 
-to create four categories: 
+Now we can colour the points by these new columns. I use `interaction()`
+to create four categories:
 
 -   not significant and not large fold change (FF)
 -   significant and not large fold change (TF)
 -   not significant and large fold (FT)
 -   significant and large fold change (TT)
 
-And I use `scale_colour_manual()` to set the colours for these categories.
+And I use `scale_colour_manual()` to set the colours for these
+categories.
 
-NOTE: there are no "significant and not large fold change (TF)" in this case.This means we do not need four colours. I have put the "pink" colour in the code but commented it out.
+NOTE: there are no "significant and not large fold change (TF)" in this
+case.This means we do not need four colours. I have put the "pink"
+colour in the code but commented it out.
 
-
-🎬  Create a volcano plot of the results with the points coloured by
+🎬 Create a volcano plot of the results with the points coloured by
 significance and fold change:
 
 ```{r}
@@ -1500,18 +1500,19 @@ wild_results |>
 
 ```
 
-For exploring the data, I like add labels to all the significant 
-genes with a large fold change so I can very quickly identity them. The
-`ggrepel` package has a function `geom_text_repel()` that is useful for 
+For exploring the data, I like add labels to all the significant genes
+with a large fold change so I can very quickly identity them. The
+`ggrepel` package has a function `geom_text_repel()` that is useful for
 adding labels so that they don't overlap.
 
-🎬  Load the package:
+🎬 Load the package:
+
 ```{r}
 #| eval: false
 library(ggrepel)
 ```
 
-🎬  Add labels to the significant genes with a large fold change:
+🎬 Add labels to the significant genes with a large fold change:
 
 ```{r}
 
@@ -1541,28 +1542,27 @@ wild_results |>
   theme(legend.position = "none")
 
 ```
-Notice that I have used `filter()` label only the genes that are both 
-significant and have a large fold change. In systems you are familiar with, 
-this labelling is very informative and can help you quickly identify common
-themes.
-Key to interpreting the volcano plot is to remember that positive fold 
-changes means the gene is up-regulated in the sufficient conditions and 
-negative fold changes means the gene is down-regulated (i.e., higher 
-in the deficient). This was determined by the order of the treatments in the
-[contrast used in the DESeq2 analysis](../week-4/workshop.html#differential-expression-analysis-2)
 
-If you do forget which way round you did the comparison, you can always 
+Notice that I have used `filter()` label only the genes that are both
+significant and have a large fold change. In systems you are familiar
+with, this labelling is very informative and can help you quickly
+identify common themes. Key to interpreting the volcano plot is to
+remember that positive fold changes means the gene is up-regulated in
+the sufficient conditions and negative fold changes means the gene is
+down-regulated (i.e., higher in the deficient). This was determined by
+the order of the treatments in the [contrast used in the DESeq2
+analysis](../week-4/workshop.html#differential-expression-analysis-2)
+
+If you do forget which way round you did the comparison, you can always
 examine the results dataframe to see which of the treatments seem to be
 higher for the positive fold changes.
 
 When you have a gene of interest, you may wish to label it, and only it,
-on the plot. 
-This is done in the same way except that you filter the data to only
-include the gene of interest. I have used and then use `geom_label_repel()` 
-rather than `geom_text_repel()` to put the label in a box and nudged it's 
-position to get a line connecting the point and the label. I have also 
-increased the size of the point.
-
+on the plot. This is done in the same way except that you filter the
+data to only include the gene of interest. I have used and then use
+`geom_label_repel()` rather than `geom_text_repel()` to put the label in
+a box and nudged it's position to get a line connecting the point and
+the label. I have also increased the size of the point.
 
 🎬 Add a label to one gene of interest (hoxb9.S) and :
 
@@ -1598,26 +1598,27 @@ wild_results |>
 
 ```
 
-
-
-Should you want to label more than one gene, you will need to use (for example):
-`filter(external_gene_name %in% c("FRO4", "FRO5"))`
+Should you want to label more than one gene, you will need to use (for
+example): `filter(external_gene_name %in% c("FRO4", "FRO5"))`
 
 Now go to [Save your plots](#save-your-plots)
 
-## 💉 *Leishmania*
+## 💉 *Leishmania* {#leishmania-2}
 
-We will add a column to the results dataframe that contains the 
--log~10~(padj). You could perform this transformation within the 
-plot command without adding a column to the data if you prefer.
+We will add a column to the results dataframe that contains the
+-log~10~(padj). You could perform this transformation within the plot
+command without adding a column to the data if you prefer.
 
-🎬  Add a column to the results dataframe that contains the -log~10~(padj):
+🎬 Add a column to the results dataframe that contains the
+-log~10~(padj):
+
 ```{r}
 pro_meta_results <- pro_meta_results |> 
   mutate(log10_padj = -log10(padj)) 
 ```
 
-🎬  Create a volcano plot of the results:
+🎬 Create a volcano plot of the results:
+
 ```{r}
 pro_meta_results |> 
   ggplot(aes(x = log2FoldChange, 
@@ -1636,38 +1637,41 @@ pro_meta_results |>
 
 ```
 
-Our dashed lines are at -log~10~(0.05) and log~2~(2) and log~2~(-2) to make
-more clear which genes (points) are significantly different between the 
-life stages and have a fold change of at least 2. Whilst we have very many genes
-that are significant, we have fewer that are significant and have a large 
-fold change.
+Our dashed lines are at -log~10~(0.05) and log~2~(2) and log~2~(-2) to
+make more clear which genes (points) are significantly different between
+the life stages and have a fold change of at least 2. Whilst we have
+very many genes that are significant, we have fewer that are significant
+and have a large fold change.
 
-In most cases, people colour the points to show that the quadrants. I 
-like to add columns to the dataframe to indicate if the gene is significant
-and if the fold change is large and use those variables in the plot.
+In most cases, people colour the points to show that the quadrants. I
+like to add columns to the dataframe to indicate if the gene is
+significant and if the fold change is large and use those variables in
+the plot.
 
-🎬  Add columns to the results dataframe to indicate if the gene is 
+🎬 Add columns to the results dataframe to indicate if the gene is
 significant and if the fold change is large:
+
 ```{r}
 pro_meta_results <- pro_meta_results |> 
   mutate(sig = padj <= 0.05,
          bigfc = abs(log2FoldChange) >= 2) 
 ```
 
-The use of `abs()` (absolute) means genes with a fold change of at least 2 
-in either direction will be considered to have a large fold change.
+The use of `abs()` (absolute) means genes with a fold change of at least
+2 in either direction will be considered to have a large fold change.
 
-Now we can colour the points by these new columns. I use `interaction()` 
-to create four categories: 
+Now we can colour the points by these new columns. I use `interaction()`
+to create four categories:
 
 -   not significant and not large fold change (FF)
 -   significant and not large fold change (TF)
 -   not significant and large fold (FT)
 -   significant and large fold change (TT)
 
-And I use `scale_colour_manual()` to set the colours for these categories.
+And I use `scale_colour_manual()` to set the colours for these
+categories.
 
-🎬  Create a volcano plot of the results with the points coloured by
+🎬 Create a volcano plot of the results with the points coloured by
 significance and fold change:
 
 ```{r}
@@ -1693,18 +1697,19 @@ pro_meta_results |>
 
 ```
 
-For exploring the data, I like add labels to all the significant 
-genes with a large fold change so I can very quickly identity them. The
-`ggrepel` package has a function `geom_text_repel()` that is useful for 
+For exploring the data, I like add labels to all the significant genes
+with a large fold change so I can very quickly identity them. The
+`ggrepel` package has a function `geom_text_repel()` that is useful for
 adding labels so that they don't overlap.
 
-🎬  Load the package:
+🎬 Load the package:
+
 ```{r}
 #| eval: false
 library(ggrepel)
 ```
 
-🎬  Add labels to the significant genes with a large fold change:
+🎬 Add labels to the significant genes with a large fold change:
 
 ```{r}
 
@@ -1734,13 +1739,16 @@ pro_meta_results |>
   theme(legend.position = "none")
 
 ```
-Notice that I have used `filter()` label only the genes that are both 
-significant and have a large fold change. In systems you are familiar with, 
-this labelling is very informative and can help you quickly identify common
-themes. However, in this case, we do not have good annotation for the genes. 
-We can label only with the gene id or the description. Many of the descriptions are 
 
-🎬  Add labels to the significant genes with a large fold change only where description doesn't contain "hypothetical" or "unspecified :
+Notice that I have used `filter()` label only the genes that are both
+significant and have a large fold change. In systems you are familiar
+with, this labelling is very informative and can help you quickly
+identify common themes. However, in this case, we do not have good
+annotation for the genes. We can label only with the gene id or the
+description. Many of the descriptions are
+
+🎬 Add labels to the significant genes with a large fold change only
+where description doesn't contain "hypothetical" or "unspecified :
 
 ```{r}
 
@@ -1772,24 +1780,23 @@ pro_meta_results |>
 
 ```
 
-Key to interpreting the volcano plot is to remember that positive fold 
-changes means the gene is up-regulated in the procyclic stage and 
-negative fold changes means the gene is down-regulated (i.e., higher 
-in the metacyclic). This was determined by the order of the treatments in the
-[contrast used in the DESeq2 analysis](../week-4/workshop.html#differential-expression-analysis-3)
+Key to interpreting the volcano plot is to remember that positive fold
+changes means the gene is up-regulated in the procyclic stage and
+negative fold changes means the gene is down-regulated (i.e., higher in
+the metacyclic). This was determined by the order of the treatments in
+the [contrast used in the DESeq2
+analysis](../week-4/workshop.html#differential-expression-analysis-3)
 
-If you do forget which way round you did the comparison, you can always 
+If you do forget which way round you did the comparison, you can always
 examine the results dataframe to see which of the treatments seem to be
 higher for the positive fold changes.
 
 When you have a gene of interest, you may wish to label it, and only it,
-on the plot. 
-This is done in the same way except that you filter the data to only
-include the gene of interest. I have used and then use `geom_label_repel()` 
-rather than `geom_text_repel()` to put the label in a box and nudged it's 
-position to get a line connecting the point and the label. I have also 
-increased the size of the point.
-
+on the plot. This is done in the same way except that you filter the
+data to only include the gene of interest. I have used and then use
+`geom_label_repel()` rather than `geom_text_repel()` to put the label in
+a box and nudged it's position to get a line connecting the point and
+the label. I have also increased the size of the point.
 
 🎬 Add a label to one gene of interest (elongation factor 1-alpha) and :
 
@@ -1825,27 +1832,28 @@ pro_meta_results |>
 
 ```
 
-
-
-Should you want to label more than one gene, you will need to use (for example):
+Should you want to label more than one gene, you will need to use (for
+example):
 `filter(description %in% c("elongation factor 1-alpha", "ADP/ATP translocase 1 putative"))`
-
 
 Now go to [Save your plots](#save-your-plots)
 
-## 🐭 Stem cells
+## 🐭 Stem cells {#stem-cells-3}
 
-We will add a column to the results dataframe that contains the 
--log~10~(FDR). You could perform this transformation within the 
-plot command without adding a column to the data if you prefer.
+We will add a column to the results dataframe that contains the
+-log~10~(FDR). You could perform this transformation within the plot
+command without adding a column to the data if you prefer.
 
-🎬  Add a column to the results dataframe that contains the -log~10~(FDR):
+🎬 Add a column to the results dataframe that contains the
+-log~10~(FDR):
+
 ```{r}
 hspc_prog_results <- hspc_prog_results |> 
   mutate(log10_FDR = -log10(FDR)) 
 ```
 
-🎬  Create a volcano plot of the results:
+🎬 Create a volcano plot of the results:
+
 ```{r}
 hspc_prog_results |> 
   ggplot(aes(x = summary.logFC, 
@@ -1864,41 +1872,43 @@ hspc_prog_results |>
 
 ```
 
-Our dashed lines are at -log~10~(0.05) and log~2~(2) and log~2~(-2) to make
-more clear which genes (points) are significantly different between the 
-cell types and have a fold change of at least 2.
+Our dashed lines are at -log~10~(0.05) and log~2~(2) and log~2~(-2) to
+make more clear which genes (points) are significantly different between
+the cell types and have a fold change of at least 2.
 
-In most cases, people colour the points to show that the quadrants. I 
-like to add columns to the dataframe to indicate if the gene is significant
-and if the fold change is large and use those variables in the plot.
+In most cases, people colour the points to show that the quadrants. I
+like to add columns to the dataframe to indicate if the gene is
+significant and if the fold change is large and use those variables in
+the plot.
 
-🎬  Add columns to the results dataframe to indicate if the gene is 
-    significant and if the fold change is large:
+🎬 Add columns to the results dataframe to indicate if the gene is
+significant and if the fold change is large:
+
 ```{r}
 hspc_prog_results <- hspc_prog_results |> 
   mutate(sig = FDR <= 0.05,
          bigfc = abs(summary.logFC) >= 2) 
 ```
 
-The use of `abs()` (absolute) means genes with a fold change of at least 2 
-in either direction will be considered to have a large fold change.
+The use of `abs()` (absolute) means genes with a fold change of at least
+2 in either direction will be considered to have a large fold change.
 
-Now we can colour the points by these new columns. I use `interaction()` 
-to create four categories: 
+Now we can colour the points by these new columns. I use `interaction()`
+to create four categories:
 
 -   not significant and not large fold change (FF)
 -   significant and not large fold change (TF)
 -   not significant and large fold (FT)
 -   significant and large fold change (TT)
 
-And I use `scale_colour_manual()` to set the colours for these categories.
+And I use `scale_colour_manual()` to set the colours for these
+categories.
 
+NOTE: there are no "not significant and large fold change (FT)" in this
+case. This means we do not need four colours. I have put the "gray30"
+colour in the code but commented it out.
 
-NOTE: there are no "not significant and large fold change (FT)" in this case.
-This means we do not need four colours. I have put the "gray30" colour in 
-the code but commented it out.
-
-🎬  Create a volcano plot of the results with the points coloured by
+🎬 Create a volcano plot of the results with the points coloured by
 significance and fold change:
 
 ```{r}
@@ -1924,17 +1934,18 @@ hspc_prog_results |>
 
 ```
 
-For exploring the data, I like add labels to all the significant 
-genes with a large fold change so I can very quickly identity them. The
-`ggrepel` package has a function `geom_text_repel()` that is useful for 
+For exploring the data, I like add labels to all the significant genes
+with a large fold change so I can very quickly identity them. The
+`ggrepel` package has a function `geom_text_repel()` that is useful for
 adding labels so that they don't overlap.
 
-🎬  Load the package:
+🎬 Load the package:
+
 ```{r}
 library(ggrepel)
 ```
 
-🎬  Add labels to the significant genes with a large fold change:
+🎬 Add labels to the significant genes with a large fold change:
 
 ```{r}
 
@@ -1964,27 +1975,27 @@ hspc_prog_results |>
   theme(legend.position = "none")
 
 ```
-Notice that I have used `filter()` label only the genes that are both 
-significant and have a large fold change. In systems you are familiar with, 
-this labelling is very informative and can help you quickly identify common
-themes.
-Key to interpreting the volcano plot is to remember that positive fold 
-changes means the gene is up-regulated in the Prog and 
-negative fold changes means the gene is down-regulated (i.e., higher 
-HSPC). This was determined by us choosing 
-[the results_hspc_prog$prog dataframe from the list object](../week-4/workshop.html#differential-expression-analysis-4)
 
-If you do forget which way round you did the comparison, you can always 
-examine the gene summary dataframe to see which of the treatments 
-seem to be higher for the positive fold changes.
+Notice that I have used `filter()` label only the genes that are both
+significant and have a large fold change. In systems you are familiar
+with, this labelling is very informative and can help you quickly
+identify common themes. Key to interpreting the volcano plot is to
+remember that positive fold changes means the gene is up-regulated in
+the Prog and negative fold changes means the gene is down-regulated
+(i.e., higher HSPC). This was determined by us choosing [the
+results_hspc_prog\$prog dataframe from the list
+object](../week-4/workshop.html#differential-expression-analysis-4)
 
-When you have a gene of interest, you may wish to label it on the plot. 
+If you do forget which way round you did the comparison, you can always
+examine the gene summary dataframe to see which of the treatments seem
+to be higher for the positive fold changes.
+
+When you have a gene of interest, you may wish to label it on the plot.
 This is done in the same way except that you filter the data to only
-include the gene of interest. I have used and then use `geom_label_repel()` 
-rather than `geom_text_repel()` to put the label in a box and nudged it's 
-position to get a line connecting the point and the label. I have also 
-increased the size of the point.
-
+include the gene of interest. I have used and then use
+`geom_label_repel()` rather than `geom_text_repel()` to put the label in
+a box and nudged it's position to get a line connecting the point and
+the label. I have also increased the size of the point.
 
 🎬 Add a label to one gene of interest (Procr) and :
 
@@ -2020,19 +2031,16 @@ hspc_prog_results |>
 
 ```
 
-
-Should you want to label more than one gene, you will need to use (for example):
-`filter(external_gene_name %in% c("Procr", "Emb"))`
-
+Should you want to label more than one gene, you will need to use (for
+example): `filter(external_gene_name %in% c("Procr", "Emb"))`
 
 Now go to [Save your plots](#save-your-plots)
 
-# Save your plots
+# Save your plots {#save-your-plots}
 
-Once you have finished designing your plots, you should save them 
-using `ggsave()`. You will want to assign the plot to a variable and 
-use code similar to this:	
-
+Once you have finished designing your plots, you should save them using
+`ggsave()`. You will want to assign the plot to a variable and use code
+similar to this:
 
 ```{r}
 #| eval: false
@@ -2044,18 +2052,18 @@ ggsave("figures/my-informative-file-name.png",
        device = "png")
 ```
 
-I recommend saving your figure in the approximate size it will appear in 
-your report, that is, don't resize it in word/google docs. This because the 
-font will then be an appropriate size for the report. For journals, we 
-often have to creat figure files of very high resolution. You can do this
-by increasing the `height` and `width` and then resizing the figure in
-the document. however, this requires resizing the all font and lines in 
-the figure.
-I also recommend saving it as a png file as this is a lossless format. 
+I recommend saving your figure in the approximate size it will appear in
+your report, that is, don't resize it in word/google docs. This because
+the font will then be an appropriate size for the report. For journals,
+we often have to creat figure files of very high resolution. You can do
+this by increasing the `height` and `width` and then resizing the figure
+in the document. however, this requires resizing the all font and lines
+in the figure. I also recommend saving it as a png file as this is a
+lossless format.
 
 # 🤗 Look after future you!
 
-🎬 Go through your script and tidy up. I would suggest restarting R and 
+🎬 Go through your script and tidy up. I would suggest restarting R and
 trying to run the full pipeline from start to finish. You might need to:
 
 -   collect together library statements at the top of the script
@@ -2088,6 +2096,7 @@ Browser](https://github.com/3mmaRand/BIO00088H-data/blob/main/transcriptomics/we
 Coding and thinking answers are marked with `#---CODING ANSWER---` and
 `#---THINKING ANSWER---`
 
-Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr` [@knitr1; @knitr2; @knitr3], `kableExtra` [@kableExtra]
+Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr`
+[@knitr1; @knitr2; @knitr3], `kableExtra` [@kableExtra]
 
 # References
