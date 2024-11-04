@@ -5,25 +5,34 @@ toc: true
 toc-location: right
 ---
 
-This week you will revise some essential concepts for scientific computing: file system organisation, file types, working directories and paths. The workshop will cover a rationale for working reproducibly, project oriented workflow, naming things and documenting your work. We will also examine some file types and the concept of tidy data.
+We considered how to organise reproducible data analyses in 
+[Core: Supporting Information 1](../week-2/overview.qmd). This week we will 
+consider how to document and curate reproducible data analyses. You will 
+add a README to your project and discover all the software you are using in R. 
+The workshop will also include a questions and answers section.
 
 
 ### Learning objectives
 
 The successful student will be able to:
 
--   explain the organisation of files and directories in a file systems including root, home and working directories
--   explain absolute and relative file paths
--   explain why working reproducibly is important
--   know how to use a project-oriented workflow to organise work
--   be able to give files human- and machine-readable names
--   outline some common biological data file formats
+-   Describe the purpose of a README file
+
+-   List the key components of a README file
+
+-   Use `sessioninfo` to document the software used in an R project
+
+-   Write a README file for a project
+
+
+
 
 ### Instructions
 
 1.  [Prepare](study_before_workshop.qmd)
 
-    i.  📖 Read Understanding file systems
+    i.  Revise [Core: Supporting Information 1](../week-2/overview.qmd)
+        and make a note of queries you have
 
 2.  [Workshop](workshop.qmd)
 

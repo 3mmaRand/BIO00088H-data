@@ -1,6 +1,6 @@
 ---
 title: "Independent Study to consolidate this week"
-subtitle: "Core 1"
+subtitle: "Core: Supporting Information 2"
 toc: true
 toc-location: right
 format:
@@ -9,12 +9,4 @@ format:
     code-summary: "Answer - don't look until you have tried!"
 ---
 
-These are suggestions
 
-## BIO00088H Group Research Project students
-
-1.  Revise previous Data Analysis materials. You can find the version you took on the VLE site for 17C / 08C. However, my latest versions (in development) are here: [Data Analysis in R](https://3mmarand.github.io/R4BABS/). The Becoming a Bioscientist (BABS) modules replace the Laboratory and Professional Skills modules. BABS1 and BABS2 are stage one, and I've tried to improve them over 17C / 08C. The site is also searchable (icon top right)
-
-## MSc Bioinformatics students doing BIO00070M
-
-1.  Make sure you carry out the [preparatory work for week 2 of 52M](https://3mmarand.github.io/R4BABS/pgt52m/week-2/overview.html)

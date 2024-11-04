@@ -9,7 +9,7 @@ toc-location: right
 
 2.  📖 Read [Workflow in RStudio](https://3mmarand.github.io/comp4biosci/workflow_rstudio.html). You may find it helpful to remind yourself about RStudio Projects. In previous years, you have submitted an "RStudio Project" as part of your BABS work. In this module, you will submit "Supporting Information" for your Project Report. The Supporting Information is a documented and organised collection of all the digital parts of your research project. This includes data (or instructions for accessing data), code and/or non-coded processing, instructions for use, computational requirements and outputs. The Supporting Information could be a single RStudio Project (like you have done previously but with better documentation) or a folder that includes an RStudio Project and other material/scripts.
 
-3.💻 Set up the Virtual Desktop. I very strongly recommend working on 
+3.  Set up the Virtual Desktop. I very strongly recommend working on 
 the University computers for this work. You will be using more specialised R 
 packages than you might be used to. This is especially important if you often 
 have difficulty updating and or installing software on your own machine,
