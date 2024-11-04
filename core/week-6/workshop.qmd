@@ -1,6 +1,6 @@
 ---
 title: "Workshop"
-subtitle: "Organising Reproducible Data Analyses"
+subtitle: "Supporting Information 2 Documenting and curating Reproducible Data Analyses"
 author: "Emma Rand"
 toc: true
 toc-depth: 4

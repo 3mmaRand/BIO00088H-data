@@ -1,6 +1,6 @@
 ---
 title: "Independent Study to consolidate this week"
-subtitle: "Core 2"
+subtitle: "Core: Supporting Information 2"
 toc: true
 toc-location: right
 format:

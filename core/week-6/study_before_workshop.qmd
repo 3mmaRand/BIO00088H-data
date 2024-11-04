@@ -1,8 +1,25 @@
 ---
 title: "Independent Study to prepare for workshop"
-subtitle: "Core 2"
+subtitle: "Core: Supporting Information 2"
 toc: true
 toc-location: right
 ---
 
-1. 
+1.  Revise [Core: Supporting Information 1 Organising Reproducible Data
+    Analyses](../week-2/overview.qmd).
+
+    i.  Do you know your Supporting information will most likely be be a
+        structured folder which *is* either an RStudio Project or
+        contains an RStudio Project?
+    ii. Are you following the best practices code formatting and style?
+        If not, go through your scripts and edit.
+    iii. Do you have numbers hard coded where they could be variables?
+    iv. Are you using a sensible naming convention for files and
+        variables? Have you written it down?
+    v.  Make a note of queries you have. Take some time to formulate and
+        write down your questions. The more specific and clear your
+        question is, the better answer I will be able to provide.
+    vi. Post your questions here:
+        [Menti](https://www.menti.com/m86rqcbb88) Code: 3306 3222. QR:
+        ![mentimeter qr
+        code](images/mentimeter_qr_code.png){width="400"}

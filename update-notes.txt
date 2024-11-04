@@ -86,7 +86,7 @@ Curate your and reorganise your code
 restart R to try. exchange projects with a friend. Do they understand?
 
 Readme
-- how to make
+- how to make: create a new text file in the top level of your project
 - what goes in
 - software including versions
 - session info

@@ -5,20 +5,34 @@ toc: true
 toc-location: right
 ---
 
-This week 
+We considered how to organise reproducible data analyses in 
+[Core: Supporting Information 1](../week-2/overview.qmd). This week we will 
+consider how to document and curate reproducible data analyses. You will 
+add a README to your project and discover all the software you are using in R. 
+The workshop will also include a questions and answers section.
 
 
 ### Learning objectives
 
 The successful student will be able to:
 
--   
+-   Describe the purpose of a README file
+
+-   List the key components of a README file
+
+-   Use `sessioninfo` to document the software used in an R project
+
+-   Write a README file for a project
+
+
+
 
 ### Instructions
 
 1.  [Prepare](study_before_workshop.qmd)
 
-    i.  
+    i.  Revise [Core: Supporting Information 1](../week-2/overview.qmd)
+        and make a note of queries you have
 
 2.  [Workshop](workshop.qmd)
 
