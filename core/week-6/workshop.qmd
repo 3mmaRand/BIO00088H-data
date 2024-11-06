@@ -59,8 +59,11 @@ For example, in using Fiji to analyse images:
 
         
 Images were converted to:
+
 Manual cropping:
+
 Projection type used:
+
 etc
 
 :::

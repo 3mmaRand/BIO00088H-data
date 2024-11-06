@@ -20,7 +20,7 @@ The successful student will be able to:
 
 -   List the key components of a README file
 
--   Use `sessioninfo` to document the software used in an R project
+-   Use packages to discover the packages used in a project
 
 -   Write a README file for a project
 

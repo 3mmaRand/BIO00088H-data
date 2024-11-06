@@ -1,5 +1,3 @@
-ADD WEBSITE LINK TO ALL SLIDES /MATERAILS
-
 VLE iframe
 
 <h2 style="color:MediumSeaGreen;">Read an Overview of the Core material (below) <a href="https://3mmarand.github.io/BIO00088H-data/core/core.html" target="_blank">or open page on external site</a></h2>
@@ -27,9 +25,6 @@ Workshop material
 Independent Study to do after the workshop
 
 
-Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr` [@knitr1; @knitr2; @knitr3], `kableExtra` [@kableExtra]
-
-
 🐸 Frog development
 
 🎄 Arabidopisis
@@ -37,12 +32,6 @@ Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr` [@knitr1; @k
 💉 Leishmania mexicana
 
 🐭 Stem cells
-
-
-usethis::create_project("undergrad-teaching-york/BIO00088H/hello-data")
-usethis::use_r("workshop-1")
-fs::dir_create("data-raw")
-fs::dir_create("data-processed")
 
 Helper code:
 if you want to generate a bib file, you can use bibtex::write.bib for uplaoding to your ref manager
@@ -53,47 +42,5 @@ bibtex::write.bib(entry = pkgs, file = "references_libs.bib", append = FALSE)
 
 
 
-labelling several particular genes
-You need to do external_gene_name %in% ....
-where ... is a list of the gene names
 
-WEEK 6
-
-reminder on organising work
-folders for different types of data
-make inuts and outputs clear
-include all inputs and outputs
-you will be submitting either:
--  an RStudio project (i.e., a folder structure 
-containing an .RProj in the top folder
-
--  a folderstructure which includes an RStudio Project
-
-not one correct organisationbut should be as self-explanatory 
-as possible
-
-self explanatory does not mean youdon't explain. it means you
-save people mental load
-
-Curate your and reorganise your code
-- does it make sense to use more than one script
-- do any of your files need renaming and reorganising
-- do any variables need renaming for consistency
-- remember you want to be systematic
-- write down conventions you decide to follow
-- go through week 2 and apply
-
-restart R to try. exchange projects with a friend. Do they understand?
-
-Readme
-- how to make: create a new text file in the top level of your project
-- what goes in
-- software including versions
-- session info
-- instructions for use
-- issues, problems
-- what the project is about
-- data and data provenence
-- description o the project organisation
-- description of the files
 
