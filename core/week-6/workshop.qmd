@@ -19,59 +19,61 @@ editor:
 
 ## Session overview
 
-In this workshop 
-
+In this workshop we will consider how to document and curate
+reproducible data analyses. You will add a README to your project and
+start to populate it. This will include finding out how to find the
+software you are using.
 
 # Documentation
 
 ## Code comments
 
-Comments are notes in the code which are not executed. They are
-ignored by the computer but are read by humans. They are used to
-explain what the code is doing and why. You do not need to teach a 
-person to program in the comments, but you should explain the logic
-of the code and the decisions you make based on what you see in your 
-analysis. If you remove the code, the comments should still make
-sense. Good commenting can be a solid basis for your methods section. 
-You need not interpret the results in any depth, but you should comment on
-interpretation where it impacts what you do in the code.
-
+Comments are notes in the code which are not executed. They are ignored
+by the computer but are read by humans. They are used to explain what
+the code is doing and why. You do not need to teach a person to program
+in the comments, but you should explain the logic of the code and the
+decisions you make based on what you see in your analysis. If you remove
+the code, the comments should still make sense. Good commenting can be a
+solid basis for your methods section. You need not interpret the results
+in any depth, but you should comment on interpretation where it impacts
+what you do in the code.
 
 ## Non-scripted parts of the analysis
 
-Non-scripted parts of the analysis such as manual data cleaning or
-using software that does not have a script to analyse data presented
-in the report should be documented. This includes the steps taken,
-parameter settings and the decisions made. It need not be written 
-as a narrative - you can use bullet points and be concise. 
-
+Non-scripted parts of the analysis such as manual data cleaning or using
+software that does not have a script to analyse data presented in the
+report should be documented. This includes the steps taken, parameter
+settings and the decisions made. It need not be written as a narrative -
+you can use bullet points and be concise.
 
 🎬 Go through any code you have written and edit your comments.
 
 🎬 Make a text file for each non-scripted part of the analysis and
-    document the steps taken, parameter settings and decisions made.
-    You likely will not be able to complete now where you will be
-    analysing data in semester 2, but you can write down "place holders"
-    where possible. For example, in using Fiji to analyse images:
-    
-    ```
-    Images were converted to:
-    Manual cropping:
-    Projection type used:
-    etc
-   
-    ```
+document the steps taken, parameter settings and decisions made. You
+likely will not be able to complete now where you will be analysing data
+in semester 2, but you can write down "place holders" where possible.
+For example, in using Fiji to analyse images:
+
+::: {.callout-note appearance="minimal" icon="false"}
+## image_processing_in_fiji.txt
+
+        
+Images were converted to:
+Manual cropping:
+Projection type used:
+etc
+
+:::
 
 ## README files
 
 READMEs are a form of documentation which have been widely used for a
 long time. They contain all the information about the other files in a
 Project. They are the first thing that someone will see when they open a
-project. They are written in plain text and are usually called `README.md` or
-`README.txt`. `.md` stands for markdown, a lightweight markup
-language which is human readable (plain text) and can be converted to HTML.
-
-
+project. They are written in plain text and are usually called
+`README.md` or `README.txt`. `.md` stands for markdown, a lightweight
+markup language which is human readable (plain text) and can be
+converted to HTML.
 
 ## What should be in a README?
 
@@ -83,36 +85,57 @@ language which is human readable (plain text) and can be converted to HTML.
 
 -   Software requirements
 
--   Data provenance
+-   Data description
 
 -   Instructions for use
-    
 
-###   Project title and description
+### Project title and description
 
+The title should be descriptive and concise. It does not have to match
+the title of the report but why give yourself more thinking!
 
-###   Start date, last updated date, contact information
+The description should be a brief summary of the project. It should
+include the aim of the project and the methods used. It should be
+written in plain language so that someone who is not familiar with the
+field can understand it. It is likely to be similar to a report abstract
+but with less emphasis on introduction/background and discussion and
+more detail on the the methods.
 
-*TODO*
+### Start date, last updated date, contact information
 
-Ideally, a summary of changes with the date
+We date our work so others know how old it is and when it was last
+updated. The very best READMEs are updated every time the project is
+updated so there is a "change log" at the top of the file. This is a
+list of changes made to the project with the date they were made. This
+especially useful in collaborative projects when you are not using a
+version control system. Sometimes, the change log is in a separate file
+called `CHANGELOG.md`. or similar.
 
-###   Description of Project organisation
+### Description of Project organisation
 
-*TODO*
+Your aim is to organise your project and name files and files so that
+the organisation is clear to someone who has never seen it before. You
+are are aiming for "speaks for itself" organisation. However, you still
+need to give an overview of the organisation in the README. This should
+include the names of the folders and what is in them. You can also
+include a diagram of the project organisation if you like. Make sure it
+is easy for readers to distinguish between code, data, and outputs. Also
+explain your file naming convention along with any abbreviations or
+codes you have used.
 
-###   Software requirements
+### Software requirements
 
-*TODO*
+You should list the software you used in your project. This should
+include the version of the software you used. This is important for
+reproducibility.
 
-There are packages that give session information in R **`sessioninfo`**
-    [@sessioninfo] and Python [@ostblomjoel2019]
+There are packages that give session information in R and Python
 
-R: 
+R: **`sessioninfo`** [@sessioninfo]
 
 `sessioninfo::session_info()`
 
-Python:
+Python: **`session_info`** [@ostblomjoel2019]
 
 `import session_info`
 
@@ -122,61 +145,65 @@ Fiji:
 
 [Cite](https://imagej.net/contribute/citing)
 
+### Data description
 
-###   Data provenance
+You should describe all the data used in the project. This should
+include where the data came from, how it was collected, and any
+processing that was done to it. You may need to include links to the
+data sources. Include a "data dictionary" which describes the variables
+in the data and what they mean. This is especially important since most
+variable names are abbreviations or codes.
 
-*TODO*
+### Instructions for use
 
-###   Instructions for use
+The last part of the README should be instructions for how to use it.
+You want to describe to reader what they need to do to recreate the
+results you present in your report. This should include:
 
-*TODO*
+-   Brief description of the code structure especially if you have used
+    a a mix of languages and scripts
 
--   Instructions run the code, build reports, and reproduce the figures
-    etc
-
--   Where to find the data, outputs
+-   Instructions to run the code and reproduce the figures or other
+    outputs in the report
 
 -   Any other information that needed to understand and recreate the
     work
 
-🎬 Write a README file for your project. 
-
+🎬 Write a README file for your project.
 
 ## What should be in Supporting information
 
 All the inputs and outputs of the work
 
--   Original data or instructions/links to obtain the data. This includes
-    **all** data in the report such as images, not just the numerical
-    data
+-   Original data or instructions/links to obtain the data. This
+    includes **all** data in the report such as images, not just the
+    numerical data
 
--   Code.
+-   Code
 
 -   Instructions for non-scripted parts of the analysis.
 
 -   Anything generated from the code such as processed data and figures.
 
--   Anything generated from non-scripted parts of the analysis such 
-    as processed data and figures.
+-   Anything generated from non-scripted parts of the analysis such as
+    processed data and figures.
 
 -   A copy of the report it supports.
 
 -   a README file
 
-
-
 # Project organisation and Code curation
 
-Take time to reflect on how you organise your project, code
-and unscripted parts of the analysis every so often. Consider the
-following:
+Take time to reflect on how you organise your project, code and
+unscripted parts of the analysis every so often. Consider the following:
 
--   could the organisation of your project be improved with more/fewer folders?
-    
+-   could the organisation of your project be improved with more/fewer
+    folders?
+
 -   could the naming of your files or your variables be improved?
 
--   could the organisation of your project be improved with more/fewer code
-    files?
+-   could the organisation of your project be improved with more/fewer
+    code files?
 
 -   is any code no longer needed?
 
@@ -184,10 +211,8 @@ following:
 
 -   are there any non-scripted parts of the analysis that could be
     scripted?
-    
--   does your README need updating?
-    
 
+-   does your README need updating?
 
 You're finished!
 
@@ -197,6 +222,7 @@ You're finished!
 
 [Consolidate](study_after_workshop.qmd)
 
-Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr` [@knitr1; knitr2; knitr3], `kableExtra` [@kableExtra]
+Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr`
+[@knitr1; knitr2; knitr3], `kableExtra` [@kableExtra]
 
 # References
