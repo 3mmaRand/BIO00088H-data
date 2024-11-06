@@ -255,9 +255,21 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
   </ul></li>
   <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a>
   <ul>
-  <li><a href="#readme-files" id="toc-readme-files" class="nav-link" data-scroll-target="#readme-files">Readme files</a></li>
   <li><a href="#code-comments" id="toc-code-comments" class="nav-link" data-scroll-target="#code-comments">Code comments</a></li>
+  <li><a href="#non-scripted-parts-of-the-analysis" id="toc-non-scripted-parts-of-the-analysis" class="nav-link" data-scroll-target="#non-scripted-parts-of-the-analysis">Non-scripted parts of the analysis</a></li>
+  <li><a href="#readme-files" id="toc-readme-files" class="nav-link" data-scroll-target="#readme-files">README files</a></li>
+  <li><a href="#what-should-be-in-a-readme" id="toc-what-should-be-in-a-readme" class="nav-link" data-scroll-target="#what-should-be-in-a-readme">What should be in a README?</a>
+  <ul class="collapse">
+  <li><a href="#project-title-and-description" id="toc-project-title-and-description" class="nav-link" data-scroll-target="#project-title-and-description">Project title and description</a></li>
+  <li><a href="#start-date-last-updated-date-contact-information" id="toc-start-date-last-updated-date-contact-information" class="nav-link" data-scroll-target="#start-date-last-updated-date-contact-information">Start date, last updated date, contact information</a></li>
+  <li><a href="#description-of-project-organisation" id="toc-description-of-project-organisation" class="nav-link" data-scroll-target="#description-of-project-organisation">Description of Project organisation</a></li>
+  <li><a href="#software-requirements" id="toc-software-requirements" class="nav-link" data-scroll-target="#software-requirements">Software requirements</a></li>
+  <li><a href="#data-provenance" id="toc-data-provenance" class="nav-link" data-scroll-target="#data-provenance">Data provenance</a></li>
+  <li><a href="#instructions-for-use" id="toc-instructions-for-use" class="nav-link" data-scroll-target="#instructions-for-use">Instructions for use</a></li>
   </ul></li>
+  <li><a href="#what-should-be-in-supporting-information" id="toc-what-should-be-in-supporting-information" class="nav-link" data-scroll-target="#what-should-be-in-supporting-information">What should be in Supporting information</a></li>
+  </ul></li>
+  <li><a href="#project-organisation-and-code-curation" id="toc-project-organisation-and-code-curation" class="nav-link" data-scroll-target="#project-organisation-and-code-curation">Project organisation and Code curation</a></li>
   <li><a href="#well-done" id="toc-well-done" class="nav-link" data-scroll-target="#well-done">🥳 Well Done! 🎉</a></li>
   <li><a href="#independent-study-following-the-workshop" id="toc-independent-study-following-the-workshop" class="nav-link" data-scroll-target="#independent-study-following-the-workshop">Independent study following the workshop</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
@@ -287,7 +299,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">4 November, 2024</p>
+      <p class="date">6 November, 2024</p>
     </div>
   </div>
   
@@ -308,34 +320,103 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 </section>
 <section id="documentation" class="level1">
 <h1>Documentation</h1>
+<section id="code-comments" class="level2">
+<h2 class="anchored" data-anchor-id="code-comments">Code comments</h2>
+<p>Comments are notes in the code which are not executed. They are ignored by the computer but are read by humans. They are used to explain what the code is doing and why. You do not need to teach a person to program in the comments, but you should explain the logic of the code and the decisions you make based on what you see in your analysis. If you remove the code, the comments should still make sense. Good commenting can be a solid basis for your methods section. You need not interpret the results in any depth, but you should comment on interpretation where it impacts what you do in the code.</p>
+</section>
+<section id="non-scripted-parts-of-the-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="non-scripted-parts-of-the-analysis">Non-scripted parts of the analysis</h2>
+<p>Non-scripted parts of the analysis such as manual data cleaning or using software that does not have a script to analyse data presented in the report should be documented. This includes the steps taken, parameter settings and the decisions made. It need not be written as a narrative - you can use bullet points and be concise.</p>
+<p>🎬 Go through any code you have written and edit your comments.</p>
+<p>🎬 Make a text file for each non-scripted part of the analysis and document the steps taken, parameter settings and decisions made. You likely will not be able to complete now where you will be analysing data in semester 2, but you can write down “place holders” where possible. For example, in using Fiji to analyse images:</p>
+<pre><code>```
+Images were converted to:
+Manual cropping:
+Projection type used:
+etc
+
+```</code></pre>
+</section>
 <section id="readme-files" class="level2">
-<h2 class="anchored" data-anchor-id="readme-files">Readme files</h2>
-<p>READMEs are a form of documentation which have been widely used for a long time. They contain all the information about the other files in a directory. They can be extensive but need not be. Concise is good. Bullet points are good</p>
+<h2 class="anchored" data-anchor-id="readme-files">README files</h2>
+<p>READMEs are a form of documentation which have been widely used for a long time. They contain all the information about the other files in a Project. They are the first thing that someone will see when they open a project. They are written in plain text and are usually called <code>README.md</code> or <code>README.txt</code>. <code>.md</code> stands for markdown, a lightweight markup language which is human readable (plain text) and can be converted to HTML.</p>
+</section>
+<section id="what-should-be-in-a-readme" class="level2">
+<h2 class="anchored" data-anchor-id="what-should-be-in-a-readme">What should be in a README?</h2>
 <ul>
-<li><p>Give a project title and description, brief</p></li>
-<li><p>start date, last updated date and contact information</p></li>
-<li><p>Outline the folder structure</p></li>
-<li><p>Give software requirements: programs and versions used or required. There are packages that give session information in R <span class="citation" data-cites="sessioninfo">Wickham et al. (<a href="#ref-sessioninfo" role="doc-biblioref">2021</a>)</span> and Python <span class="citation" data-cites="ostblomjoel2019">Ostblom, Joel (<a href="#ref-ostblomjoel2019" role="doc-biblioref">2019</a>)</span></p></li>
+<li><p>Project title and description</p></li>
+<li><p>Start date, last updated date, contact information</p></li>
+<li><p>Description of Project organisation</p></li>
+<li><p>Software requirements</p></li>
+<li><p>Data provenance</p></li>
+<li><p>Instructions for use</p></li>
 </ul>
+<section id="project-title-and-description" class="level3">
+<h3 class="anchored" data-anchor-id="project-title-and-description">Project title and description</h3>
+</section>
+<section id="start-date-last-updated-date-contact-information" class="level3">
+<h3 class="anchored" data-anchor-id="start-date-last-updated-date-contact-information">Start date, last updated date, contact information</h3>
+<p><em>TODO</em></p>
+<p>Ideally, a summary of changes with the date</p>
+</section>
+<section id="description-of-project-organisation" class="level3">
+<h3 class="anchored" data-anchor-id="description-of-project-organisation">Description of Project organisation</h3>
+<p><em>TODO</em></p>
+</section>
+<section id="software-requirements" class="level3">
+<h3 class="anchored" data-anchor-id="software-requirements">Software requirements</h3>
+<p><em>TODO</em></p>
+<p>There are packages that give session information in R <strong><code>sessioninfo</code></strong> <span class="citation" data-cites="sessioninfo">(<a href="#ref-sessioninfo" role="doc-biblioref">Wickham et al. 2021</a>)</span> and Python <span class="citation" data-cites="ostblomjoel2019">(<a href="#ref-ostblomjoel2019" role="doc-biblioref">Ostblom, Joel 2019</a>)</span></p>
 <p>R:</p>
 <p><code>sessioninfo::session_info()</code></p>
 <p>Python:</p>
 <p><code>import session_info</code></p>
 <p><code>session_info.show()</code></p>
+<p>Fiji:</p>
+<p><a href="https://imagej.net/contribute/citing">Cite</a></p>
+</section>
+<section id="data-provenance" class="level3">
+<h3 class="anchored" data-anchor-id="data-provenance">Data provenance</h3>
+<p><em>TODO</em></p>
+</section>
+<section id="instructions-for-use" class="level3">
+<h3 class="anchored" data-anchor-id="instructions-for-use">Instructions for use</h3>
+<p><em>TODO</em></p>
 <ul>
 <li><p>Instructions run the code, build reports, and reproduce the figures etc</p></li>
 <li><p>Where to find the data, outputs</p></li>
 <li><p>Any other information that needed to understand and recreate the work</p></li>
-<li><p>Ideally, a summary of changes with the date</p></li>
+</ul>
+<p>🎬 Write a README file for your project.</p>
+</section>
+</section>
+<section id="what-should-be-in-supporting-information" class="level2">
+<h2 class="anchored" data-anchor-id="what-should-be-in-supporting-information">What should be in Supporting information</h2>
+<p>All the inputs and outputs of the work</p>
+<ul>
+<li><p>Original data or instructions/links to obtain the data. This includes <strong>all</strong> data in the report such as images, not just the numerical data</p></li>
+<li><p>Code.</p></li>
+<li><p>Instructions for non-scripted parts of the analysis.</p></li>
+<li><p>Anything generated from the code such as processed data and figures.</p></li>
+<li><p>Anything generated from non-scripted parts of the analysis such as processed data and figures.</p></li>
+<li><p>A copy of the report it supports.</p></li>
+<li><p>a README file</p></li>
 </ul>
 </section>
-<section id="code-comments" class="level2">
-<h2 class="anchored" data-anchor-id="code-comments">Code comments</h2>
+</section>
+<section id="project-organisation-and-code-curation" class="level1">
+<h1>Project organisation and Code curation</h1>
+<p>Take time to reflect on how you organise your project, code and unscripted parts of the analysis every so often. Consider the following:</p>
 <ul>
-<li>Comments are notes in the code which are not executed. They are ignored by the computer but are read by humans. They are used to explain what the code is doing and why. They are also used to temporarily remove code from execution.</li>
+<li><p>could the organisation of your project be improved with more/fewer folders?</p></li>
+<li><p>could the naming of your files or your variables be improved?</p></li>
+<li><p>could the organisation of your project be improved with more/fewer code files?</p></li>
+<li><p>is any code no longer needed?</p></li>
+<li><p>(advanced) can you write functions for repeated tasks?</p></li>
+<li><p>are there any non-scripted parts of the analysis that could be scripted?</p></li>
+<li><p>does your README need updating?</p></li>
 </ul>
 <p>You’re finished!</p>
-</section>
 </section>
 <section id="well-done" class="level1">
 <h1>🥳 Well Done! 🎉</h1>
