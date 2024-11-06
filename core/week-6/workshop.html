@@ -264,7 +264,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
   <li><a href="#start-date-last-updated-date-contact-information" id="toc-start-date-last-updated-date-contact-information" class="nav-link" data-scroll-target="#start-date-last-updated-date-contact-information">Start date, last updated date, contact information</a></li>
   <li><a href="#description-of-project-organisation" id="toc-description-of-project-organisation" class="nav-link" data-scroll-target="#description-of-project-organisation">Description of Project organisation</a></li>
   <li><a href="#software-requirements" id="toc-software-requirements" class="nav-link" data-scroll-target="#software-requirements">Software requirements</a></li>
-  <li><a href="#data-provenance" id="toc-data-provenance" class="nav-link" data-scroll-target="#data-provenance">Data provenance</a></li>
+  <li><a href="#data-description" id="toc-data-description" class="nav-link" data-scroll-target="#data-description">Data description</a></li>
   <li><a href="#instructions-for-use" id="toc-instructions-for-use" class="nav-link" data-scroll-target="#instructions-for-use">Instructions for use</a></li>
   </ul></li>
   <li><a href="#what-should-be-in-supporting-information" id="toc-what-should-be-in-supporting-information" class="nav-link" data-scroll-target="#what-should-be-in-supporting-information">What should be in Supporting information</a></li>
@@ -315,7 +315,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <h1>Introduction</h1>
 <section id="session-overview" class="level2">
 <h2 class="anchored" data-anchor-id="session-overview">Session overview</h2>
-<p>In this workshop</p>
+<p>In this workshop we will consider how to document and curate reproducible data analyses. You will add a README to your project and start to populate it. This will include finding out how to find the software you are using.</p>
 </section>
 </section>
 <section id="documentation" class="level1">
@@ -329,13 +329,19 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <p>Non-scripted parts of the analysis such as manual data cleaning or using software that does not have a script to analyse data presented in the report should be documented. This includes the steps taken, parameter settings and the decisions made. It need not be written as a narrative - you can use bullet points and be concise.</p>
 <p>🎬 Go through any code you have written and edit your comments.</p>
 <p>🎬 Make a text file for each non-scripted part of the analysis and document the steps taken, parameter settings and decisions made. You likely will not be able to complete now where you will be analysing data in semester 2, but you can write down “place holders” where possible. For example, in using Fiji to analyse images:</p>
-<pre><code>```
-Images were converted to:
-Manual cropping:
-Projection type used:
-etc
-
-```</code></pre>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+image_processing_in_fiji.txt
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Images were converted to: Manual cropping: Projection type used: etc</p>
+</div>
+</div>
 </section>
 <section id="readme-files" class="level2">
 <h2 class="anchored" data-anchor-id="readme-files">README files</h2>
@@ -348,43 +354,44 @@ etc
 <li><p>Start date, last updated date, contact information</p></li>
 <li><p>Description of Project organisation</p></li>
 <li><p>Software requirements</p></li>
-<li><p>Data provenance</p></li>
+<li><p>Data description</p></li>
 <li><p>Instructions for use</p></li>
 </ul>
 <section id="project-title-and-description" class="level3">
 <h3 class="anchored" data-anchor-id="project-title-and-description">Project title and description</h3>
+<p>The title should be descriptive and concise. It does not have to match the title of the report but why give yourself more thinking!</p>
+<p>The description should be a brief summary of the project. It should include the aim of the project and the methods used. It should be written in plain language so that someone who is not familiar with the field can understand it. It is likely to be similar to a report abstract but with less emphasis on introduction/background and discussion and more detail on the the methods.</p>
 </section>
 <section id="start-date-last-updated-date-contact-information" class="level3">
 <h3 class="anchored" data-anchor-id="start-date-last-updated-date-contact-information">Start date, last updated date, contact information</h3>
-<p><em>TODO</em></p>
-<p>Ideally, a summary of changes with the date</p>
+<p>We date our work so others know how old it is and when it was last updated. The very best READMEs are updated every time the project is updated so there is a “change log” at the top of the file. This is a list of changes made to the project with the date they were made. This especially useful in collaborative projects when you are not using a version control system. Sometimes, the change log is in a separate file called <code>CHANGELOG.md</code>. or similar.</p>
 </section>
 <section id="description-of-project-organisation" class="level3">
 <h3 class="anchored" data-anchor-id="description-of-project-organisation">Description of Project organisation</h3>
-<p><em>TODO</em></p>
+<p>Your aim is to organise your project and name files and files so that the organisation is clear to someone who has never seen it before. You are are aiming for “speaks for itself” organisation. However, you still need to give an overview of the organisation in the README. This should include the names of the folders and what is in them. You can also include a diagram of the project organisation if you like. Make sure it is easy for readers to distinguish between code, data, and outputs. Also explain your file naming convention along with any abbreviations or codes you have used.</p>
 </section>
 <section id="software-requirements" class="level3">
 <h3 class="anchored" data-anchor-id="software-requirements">Software requirements</h3>
-<p><em>TODO</em></p>
-<p>There are packages that give session information in R <strong><code>sessioninfo</code></strong> <span class="citation" data-cites="sessioninfo">(<a href="#ref-sessioninfo" role="doc-biblioref">Wickham et al. 2021</a>)</span> and Python <span class="citation" data-cites="ostblomjoel2019">(<a href="#ref-ostblomjoel2019" role="doc-biblioref">Ostblom, Joel 2019</a>)</span></p>
-<p>R:</p>
+<p>You should list the software you used in your project. This should include the version of the software you used. This is important for reproducibility.</p>
+<p>There are packages that give session information in R and Python</p>
+<p>R: <strong><code>sessioninfo</code></strong> <span class="citation" data-cites="sessioninfo">(<a href="#ref-sessioninfo" role="doc-biblioref">Wickham et al. 2021</a>)</span></p>
 <p><code>sessioninfo::session_info()</code></p>
-<p>Python:</p>
+<p>Python: <strong><code>session_info</code></strong> <span class="citation" data-cites="ostblomjoel2019">(<a href="#ref-ostblomjoel2019" role="doc-biblioref">Ostblom, Joel 2019</a>)</span></p>
 <p><code>import session_info</code></p>
 <p><code>session_info.show()</code></p>
 <p>Fiji:</p>
 <p><a href="https://imagej.net/contribute/citing">Cite</a></p>
 </section>
-<section id="data-provenance" class="level3">
-<h3 class="anchored" data-anchor-id="data-provenance">Data provenance</h3>
-<p><em>TODO</em></p>
+<section id="data-description" class="level3">
+<h3 class="anchored" data-anchor-id="data-description">Data description</h3>
+<p>You should describe all the data used in the project. This should include where the data came from, how it was collected, and any processing that was done to it. You may need to include links to the data sources. Include a “data dictionary” which describes the variables in the data and what they mean. This is especially important since most variable names are abbreviations or codes.</p>
 </section>
 <section id="instructions-for-use" class="level3">
 <h3 class="anchored" data-anchor-id="instructions-for-use">Instructions for use</h3>
-<p><em>TODO</em></p>
+<p>The last part of the README should be instructions for how to use it. You want to describe to reader what they need to do to recreate the results you present in your report. This should include:</p>
 <ul>
-<li><p>Instructions run the code, build reports, and reproduce the figures etc</p></li>
-<li><p>Where to find the data, outputs</p></li>
+<li><p>Brief description of the code structure especially if you have used a a mix of languages and scripts</p></li>
+<li><p>Instructions to run the code and reproduce the figures or other outputs in the report</p></li>
 <li><p>Any other information that needed to understand and recreate the work</p></li>
 </ul>
 <p>🎬 Write a README file for your project.</p>
@@ -395,7 +402,7 @@ etc
 <p>All the inputs and outputs of the work</p>
 <ul>
 <li><p>Original data or instructions/links to obtain the data. This includes <strong>all</strong> data in the report such as images, not just the numerical data</p></li>
-<li><p>Code.</p></li>
+<li><p>Code</p></li>
 <li><p>Instructions for non-scripted parts of the analysis.</p></li>
 <li><p>Anything generated from the code such as processed data and figures.</p></li>
 <li><p>Anything generated from non-scripted parts of the analysis such as processed data and figures.</p></li>
