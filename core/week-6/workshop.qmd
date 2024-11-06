@@ -22,27 +22,93 @@ editor:
 In this workshop 
 
 
-
 # Documentation
 
-## Readme files
+## Code comments
+
+Comments are notes in the code which are not executed. They are
+ignored by the computer but are read by humans. They are used to
+explain what the code is doing and why. You do not need to teach a 
+person to program in the comments, but you should explain the logic
+of the code and the decisions you make based on what you see in your 
+analysis. If you remove the code, the comments should still make
+sense. Good commenting can be a solid basis for your methods section. 
+You need not interpret the results in any depth, but you should comment on
+interpretation where it impacts what you do in the code.
+
+
+## Non-scripted parts of the analysis
+
+Non-scripted parts of the analysis such as manual data cleaning or
+using software that does not have a script to analyse data presented
+in the report should be documented. This includes the steps taken,
+parameter settings and the decisions made. It need not be written 
+as a narrative - you can use bullet points and be concise. 
+
+
+🎬 Go through any code you have written and edit your comments.
+
+🎬 Make a text file for each non-scripted part of the analysis and
+    document the steps taken, parameter settings and decisions made.
+    You likely will not be able to complete now where you will be
+    analysing data in semester 2, but you can write down "place holders"
+    where possible. For example, in using Fiji to analyse images:
+    
+    ```
+    Images were converted to:
+    Manual cropping:
+    Projection type used:
+    etc
+   
+    ```
+
+## README files
 
 READMEs are a form of documentation which have been widely used for a
 long time. They contain all the information about the other files in a
-directory. They can be extensive but need not be. Concise is good.
-Bullet points are good
+Project. They are the first thing that someone will see when they open a
+project. They are written in plain text and are usually called `README.md` or
+`README.txt`. `.md` stands for markdown, a lightweight markup
+language which is human readable (plain text) and can be converted to HTML.
 
--   Give a project title and description, brief
 
--   start date, last updated date and contact information
 
--   Outline the folder structure
+## What should be in a README?
 
--   Give software requirements: programs and versions used or required.
-    There are packages that give session information in R @sessioninfo
-    and Python @ostblomjoel2019
+-   Project title and description
 
-R:
+-   Start date, last updated date, contact information
+
+-   Description of Project organisation
+
+-   Software requirements
+
+-   Data provenance
+
+-   Instructions for use
+    
+
+###   Project title and description
+
+
+###   Start date, last updated date, contact information
+
+*TODO*
+
+Ideally, a summary of changes with the date
+
+###   Description of Project organisation
+
+*TODO*
+
+###   Software requirements
+
+*TODO*
+
+There are packages that give session information in R **`sessioninfo`**
+    [@sessioninfo] and Python [@ostblomjoel2019]
+
+R: 
 
 `sessioninfo::session_info()`
 
@@ -52,6 +118,19 @@ Python:
 
 `session_info.show()`
 
+Fiji:
+
+[Cite](https://imagej.net/contribute/citing)
+
+
+###   Data provenance
+
+*TODO*
+
+###   Instructions for use
+
+*TODO*
+
 -   Instructions run the code, build reports, and reproduce the figures
     etc
 
@@ -60,17 +139,54 @@ Python:
 -   Any other information that needed to understand and recreate the
     work
 
--   Ideally, a summary of changes with the date
+🎬 Write a README file for your project. 
+
+
+## What should be in Supporting information
+
+All the inputs and outputs of the work
+
+-   Original data or instructions/links to obtain the data. This includes
+    **all** data in the report such as images, not just the numerical
+    data
+
+-   Code.
+
+-   Instructions for non-scripted parts of the analysis.
+
+-   Anything generated from the code such as processed data and figures.
+
+-   Anything generated from non-scripted parts of the analysis such 
+    as processed data and figures.
+
+-   A copy of the report it supports.
+
+-   a README file
 
 
 
-## Code comments
+# Project organisation and Code curation
 
--   Comments are notes in the code which are not executed. They are
-    ignored by the computer but are read by humans. They are used to
-    explain what the code is doing and why. They are also used to
-    temporarily remove code from execution.
+Take time to reflect on how you organise your project, code
+and unscripted parts of the analysis every so often. Consider the
+following:
 
+-   could the organisation of your project be improved with more/fewer folders?
+    
+-   could the naming of your files or your variables be improved?
+
+-   could the organisation of your project be improved with more/fewer code
+    files?
+
+-   is any code no longer needed?
+
+-   (advanced) can you write functions for repeated tasks?
+
+-   are there any non-scripted parts of the analysis that could be
+    scripted?
+    
+-   does your README need updating?
+    
 
 
 You're finished!
