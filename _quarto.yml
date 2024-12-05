@@ -105,6 +105,12 @@ website:
                text: Workshop
              - href: transcriptomics/week-5/study_after_workshop.qmd
                text: Consolidate!  
+          - section: "Semester 2: Extras"
+            contents: 
+             - href: transcriptomics/semester-2/stem_cell_variant.qmd
+               text: Additional 🐭 stem cell labels  
+             - href: transcriptomics/semester-2/venn_diagrams.qmd
+               text: Venn diagrams 
     - title: "Images"
       style: "floating"
       contents: 
