@@ -145,7 +145,7 @@ cell |>
 ```
 
 
-## Expression of a specific gene in each cell type
+# Expression of a specific gene in each cell type
 `
 The `cell_expr` data has the expression of each gene in each cell. The 
 `cell_ids` are in columns and the gene are in rows. 
@@ -193,7 +193,7 @@ cell_expr_long <- cell_expr_long |>
             by = "cell_id")
 ```
 
-### Gene expression under 3-type categorisation
+## Gene expression under 3-type categorisation
 
 I have chosen the gene `Emb` to plot the expression in each cell type. I 
 prefer the use of violin plots and points because multimodal distributions
@@ -213,7 +213,7 @@ cell_expr_long |>
 ```
 
 
-### Gene expression under 12-type categorisation
+## Gene expression under 12-type categorisation
 
 ```{r}
 # 🐭 plot the expression of Emb in each cell type
@@ -223,6 +223,153 @@ cell_expr_long |>
   geom_jitter(width = 0.2, alpha = 0.2, pch = 16) +
   geom_violin(fill = NA, linewidth = 1) +
   theme_classic()
+```
+
+# PCA
+
+We will carry out the the same steps to do the PCA:
+
+-   Select the log~2~ transformed normalised counts. You can only use
+    numerical data in PCA.
+-   Transpose our data. We have genes in rows and samples in columns
+    (this is common for gene expression data). However, to treat the
+    genes as variables, PCA expects samples in rows and genes in
+    columns.
+-   Add the gene names as column names in the transposed data
+-   Perform the PCA
+-   Extract the scores on the first two principal components and label
+    the data
+-   Plot the the first two principal components as a scatter plot
+
+Refer to the 
+[workshop for more explanation on PCA](../week-5/workshop.html#stem-cells-2).
+
+🎬 Transpose the log~2~ transformed normalised counts:
+
+```{r}
+cell_expr_trans <- cell_expr_trans |> 
+  dplyr::select(starts_with(c("HSPC_", "Prog_", "LT.HSC_"))) |>
+  t() |> 
+  data.frame()
+```
+
+
+🎬 Set the column names to the gene ids:
+
+```{r}
+colnames(cell_expr_trans) <- cell_expr_trans$ensembl_gene_id
+```
+
+🎬 Perform PCA on the log~2~ transformed normalised counts:
+
+```{r}
+pca <- cell_expr_trans |>
+  prcomp(rank. = 8)
+```
+
+
+To plot the PC1 against PC2 we will need to extract the PC1 and PC2
+"scores" from the PCA object and add labels for the cells. Our PCA
+object is called `pca` and the scores are in pca\$x. The cells labels
+will come from the row names of the transformed data.
+
+🎬 Create a dataframe of the PC1 and PC2 scores (in `pca$x`) and add the
+cell ids:
+
+```{r}
+pca_labelled <- data.frame(pca$x,
+                           cell_id = row.names(cell_expr_trans))
+```
+
+🎬 Extract the cell type and cell number from the `cell_id` column
+(keeping the `cell_id` column):
+
+```{r}
+pca_labelled <- pca_labelled |> 
+  extract(cell_id, 
+          remove = FALSE,
+          c("cell_type_3", "cell_number"),
+          "([a-zA-Z.]{4, 6})_([0-9]{3})")
+```
+
+🎬 Add the 12-type categorisation to the `pca_labelled` data.
+
+```{r}
+pca_labelled <- pca_labelled |> 
+  left_join(cell |> select(cell_id, type), 
+            by = "cell_id")
+```
+
+🎬 Add the expression of `Emb` to `pca_labelled` data. I've also renamed the
+   expression column from the filtered `cell_expr_long` so it is `Emb_expr` in
+   the `pca_labelled` data.
+
+```{r}
+pca_labelled <- pca_labelled |> 
+  left_join(cell_expr_long |> 
+              filter(external_gene_name == "Emb") |> 
+              select(cell_id, "Emb_expr" = expression), 
+            by = "cell_id")
+```
+
+🎬 Plot PC2 against PC1 and colour by cell_type_3 type:
+
+
+```{r}
+pca_labelled |> 
+  ggplot(aes(x = PC1, y = PC2, 
+             colour = cell_type_3)) +
+  geom_point(alpha = 0.4) +
+  scale_colour_viridis_d(end = 0.95, begin = 0.15,
+                         name = NULL) +
+  theme_classic()
+
+```
+
+🎬 Plot PC2 against PC1 and colour by cell_type_3 type:
+
+
+```{r}
+pca_labelled |> 
+  ggplot(aes(x = PC1, y = PC2, 
+             colour = type)) +
+  geom_point(alpha = 0.5) +
+  scale_colour_viridis_d(name = NULL) +
+  theme_classic()
+
+```
+
+
+
+🎬 Plot PC2 against PC1 and colour by expression of Emb and shape by
+   cell_type_3 type:
+
+
+```{r}
+pca_labelled |> 
+  ggplot(aes(x = PC1, y = PC2, 
+             colour = Emb_expr,
+             shape = cell_type_3)) +
+  geom_point() +
+  scale_colour_viridis_c(end = 0.95, begin = 0.15,
+                         name = NULL) +
+  theme_classic()
+
+```
+
+🎬 Easier to see as facets?:
+
+
+```{r}
+pca_labelled |> 
+  ggplot(aes(x = PC1, y = PC2, 
+             colour = Emb_expr)) +
+  geom_point() +
+  scale_colour_viridis_c(end = 0.95, begin = 0.15,
+                         name = NULL) +
+  theme_classic() +
+  facet_wrap(~cell_type_3)
+
 ```
 
 
