@@ -25,6 +25,7 @@ unknown): `CMP`, `GMP`, `LMPP`, `LTHSC`, `LTHSC-ESLAM`, `MEP`,
 mutually exclusive, meaning that a cell can only be one of these types.
 
 In this self-study, you will:   
+
 -   import all the expression data and gene information for the three cell 
     types
 -   import the data that gives the additional labels
@@ -52,6 +53,9 @@ library(tidyverse)
 ```
 
 # Import and combine data
+
+## The raw data
+
 
 Import the data for the LT-HSC, HSPC and the Progenitor cells. 
 
@@ -90,6 +94,8 @@ cell_expr <- hspc |>
             by = "ensembl_gene_id")
 ```
 
+## Gene information
+
 You will likely want the gene information in the dataframe along with the 
 `ensembl_gene_id`. Rather the connecting again to 
 [Ensembl](https://www.ensembl.org/index.html) [@martin2023;
@@ -97,8 +103,9 @@ You will likely want the gene information in the dataframe along with the
 [@smedley2009] using the R package **`biomaRt`**
 [@biomaRt1; @biomaRt2], which means loading more packages, managing conflicts
 and using more compute, we can use the information we already have in the
-`results/hspc_prog_results.csv` file. This works because there are the same
-280 genes in all the raw data and results files.
+[results/hspc_prog_results.csv](results/hspc_prog_results.csv) file. This works 
+because the same 280 genes are in the three raw data files and this results 
+file.
 
 We need only the `ensembl_gene_id`, (to join the information), the `external_gene_name` and the `description`.
 
@@ -119,8 +126,11 @@ cell_expr <- cell_expr |>
             by = "ensembl_gene_id")
 ```
 
+## 12-type categorisation data
+
 The information in the [er_cell_types.csv](data-raw/er_cell_types.csv) has 14 
-columns. The first column gives the cell_id (e.g., HSPC_001) the next 12 columns
+columns. The first column gives the cell_id (e.g., `HSPC_001`) the next 12 
+columns
 are named with the cell type or unknown and contain a 0 or 1. These columns 
 are useful if you want to compare (plot or DE), for example, CMP vs not CMP. 
 The last column gives the cell type which is useful to include all the labels 
@@ -129,7 +139,6 @@ in a plot.
 🎬 Import [er_cell_types.csv](data-raw/er_cell_types.csv)
 
 ```{r}
-# 🐭 import 
 cell <- read_csv("data-raw/er_cell_types.csv")
 
 ```
@@ -146,7 +155,9 @@ cell |>
 
 
 # Expression of a specific gene in each cell type
-`
+
+## Pivot to long form
+
 The `cell_expr` data has the expression of each gene in each cell. The 
 `cell_ids` are in columns and the gene are in rows. 
 
@@ -164,8 +175,10 @@ cell_expr_long <- cell_expr |>
 ```
 
 
+## Add the two types of categorisation
+
 We also want to add the two types of categorisation (the 3-type and the 
-12-types)to the `cell_expr_long` data. To add the 3-type categorisation we
+12-types) to the `cell_expr_long` data. To add the 3-type categorisation we
 extract the information in the `cell_id` column into two columns: one with the
 cell type and one with the number. We did this before in making
 a [PCA plot](../week-5/workshop.html#stem-cells-2)
@@ -193,7 +206,7 @@ cell_expr_long <- cell_expr_long |>
             by = "cell_id")
 ```
 
-## Gene expression under 3-type categorisation
+### Plot gene expression under 3-type categorisation
 
 I have chosen the gene `Emb` to plot the expression in each cell type. I 
 prefer the use of violin plots and points because multimodal distributions
@@ -213,7 +226,7 @@ cell_expr_long |>
 ```
 
 
-## Gene expression under 12-type categorisation
+### Plot expression under 12-type categorisation
 
 ```{r}
 # 🐭 plot the expression of Emb in each cell type
@@ -247,7 +260,7 @@ Refer to the
 🎬 Transpose the log~2~ transformed normalised counts:
 
 ```{r}
-cell_expr_trans <- cell_expr_trans |> 
+cell_expr_trans <- cell_expr |> 
   dplyr::select(starts_with(c("HSPC_", "Prog_", "LT.HSC_"))) |>
   t() |> 
   data.frame()
@@ -257,7 +270,7 @@ cell_expr_trans <- cell_expr_trans |>
 🎬 Set the column names to the gene ids:
 
 ```{r}
-colnames(cell_expr_trans) <- cell_expr_trans$ensembl_gene_id
+colnames(cell_expr_trans) <- cell_expr$ensembl_gene_id
 ```
 
 🎬 Perform PCA on the log~2~ transformed normalised counts:
@@ -367,7 +380,6 @@ pca_labelled |>
   geom_point() +
   scale_colour_viridis_c(end = 0.95, begin = 0.15,
                          name = NULL) +
-  theme_classic() +
   facet_wrap(~cell_type_3)
 
 ```
