@@ -321,12 +321,25 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
   <ul>
 <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#set-up" id="toc-set-up" class="nav-link" data-scroll-target="#set-up">Set up</a></li>
-  <li><a href="#import-and-combine-data" id="toc-import-and-combine-data" class="nav-link" data-scroll-target="#import-and-combine-data">Import and combine data</a></li>
+  <li>
+<a href="#import-and-combine-data" id="toc-import-and-combine-data" class="nav-link" data-scroll-target="#import-and-combine-data">Import and combine data</a>
+  <ul>
+<li><a href="#the-raw-data" id="toc-the-raw-data" class="nav-link" data-scroll-target="#the-raw-data">The raw data</a></li>
+  <li><a href="#gene-information" id="toc-gene-information" class="nav-link" data-scroll-target="#gene-information">Gene information</a></li>
+  <li><a href="#type-categorisation-data" id="toc-type-categorisation-data" class="nav-link" data-scroll-target="#type-categorisation-data">12-type categorisation data</a></li>
+  </ul>
+</li>
   <li>
 <a href="#expression-of-a-specific-gene-in-each-cell-type" id="toc-expression-of-a-specific-gene-in-each-cell-type" class="nav-link" data-scroll-target="#expression-of-a-specific-gene-in-each-cell-type">Expression of a specific gene in each cell type</a>
   <ul>
-<li><a href="#gene-expression-under-3-type-categorisation" id="toc-gene-expression-under-3-type-categorisation" class="nav-link" data-scroll-target="#gene-expression-under-3-type-categorisation">Gene expression under 3-type categorisation</a></li>
-  <li><a href="#gene-expression-under-12-type-categorisation" id="toc-gene-expression-under-12-type-categorisation" class="nav-link" data-scroll-target="#gene-expression-under-12-type-categorisation">Gene expression under 12-type categorisation</a></li>
+<li><a href="#pivot-to-long-form" id="toc-pivot-to-long-form" class="nav-link" data-scroll-target="#pivot-to-long-form">Pivot to long form</a></li>
+  <li>
+<a href="#add-the-two-types-of-categorisation" id="toc-add-the-two-types-of-categorisation" class="nav-link" data-scroll-target="#add-the-two-types-of-categorisation">Add the two types of categorisation</a>
+  <ul class="collapse">
+<li><a href="#plot-gene-expression-under-3-type-categorisation" id="toc-plot-gene-expression-under-3-type-categorisation" class="nav-link" data-scroll-target="#plot-gene-expression-under-3-type-categorisation">Plot gene expression under 3-type categorisation</a></li>
+  <li><a href="#plot-expression-under-12-type-categorisation" id="toc-plot-expression-under-12-type-categorisation" class="nav-link" data-scroll-target="#plot-expression-under-12-type-categorisation">Plot expression under 12-type categorisation</a></li>
+  </ul>
+</li>
   </ul>
 </li>
   <li><a href="#pca" id="toc-pca" class="nav-link" data-scroll-target="#pca">PCA</a></li>
@@ -364,14 +377,20 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 
 </header><section id="introduction" class="level1"><h1>Introduction</h1>
 <p>We have analysed the <span class="citation" data-cites="nestorowa2016">Nestorowa et al. (<a href="#ref-nestorowa2016" role="doc-biblioref">2016</a>)</span> stem cells categorised as LTHSC, HSPC, or Prog. The cell types were determined from flowcytometry markers. Additional markers allow the cells to be categorised into 12 other types (including unknown): <code>CMP</code>, <code>GMP</code>, <code>LMPP</code>, <code>LTHSC</code>, <code>LTHSC-ESLAM</code>, <code>MEP</code>, <code>MPP_broad</code>, <code>MPP1</code>, <code>MPP2</code>, <code>MPP3</code>, <code>STHSC</code>, <code>unknown</code>. These cell types are mutually exclusive, meaning that a cell can only be one of these types.</p>
-<p>In this self-study, you will:<br>
-- import all the expression data and gene information for the three cell types - import the data that gives the additional labels - combine the data and pivot it to have the expression values in a single column - plot the expression of one gene, <code>Emb</code>, in each cell type for the 3-type categorisation and the 12-type categorisation - conduct a PCA on all the data and plot the first two components using colour/shapes for the 12-type categorisation, the 3-type categorisation and the expression of <code>Emb</code>.</p>
-</section><section id="set-up" class="level1"><h1>Set up</h1>
+<p>In this self-study, you will:</p>
+<ul>
+<li>import all the expression data and gene information for the three cell types</li>
+<li>import the data that gives the additional labels</li>
+<li>combine the data and pivot it to have the expression values in a single column</li>
+<li>plot the expression of one gene, <code>Emb</code>, in each cell type for the 3-type categorisation and the 12-type categorisation</li>
+<li>conduct a PCA on all the data and plot the first two components using colour/shapes for the 12-type categorisation, the 3-type categorisation and the expression of <code>Emb</code>.</li>
+</ul></section><section id="set-up" class="level1"><h1>Set up</h1>
 <p>🎬 Open your <code>mice-88H</code> RStudio Project.</p>
 <p>🎬 Save <a href="data-raw/er_cell_types.csv">er_cell_types.csv</a>.</p>
 <p>🎬 Open a new or existing script</p>
 <p>🎬 Load <code>tidyverse</code> <span class="citation" data-cites="tidyverse">(<a href="#ref-tidyverse" role="doc-biblioref">Wickham et al. 2019</a>)</span>.</p>
 </section><section id="import-and-combine-data" class="level1"><h1>Import and combine data</h1>
+<section id="the-raw-data" class="level2"><h2 class="anchored" data-anchor-id="the-raw-data">The raw data</h2>
 <p>Import the data for the LT-HSC, HSPC and the Progenitor cells.</p>
 <p>🎬 Import <a href="data-raw/surfaceome_lthsc.csv">surfaceome_lthsc.csv</a>, <a href="data-raw/surfaceome_hspc.csv">surfaceome_hspc.csv</a> and <a href="data-raw/surfaceome_prog.csv">surfaceome_hspc.csv</a></p>
 <div class="cell">
@@ -391,7 +410,8 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">lthsc</span>, </span>
 <span>            by <span class="op">=</span> <span class="st">"ensembl_gene_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>You will likely want the gene information in the dataframe along with the <code>ensembl_gene_id</code>. Rather the connecting again to <a href="https://www.ensembl.org/index.html">Ensembl</a> <span class="citation" data-cites="martin2023 birney2004">(<a href="#ref-martin2023" role="doc-biblioref">Martin et al. 2023</a>; <a href="#ref-birney2004" role="doc-biblioref">Birney et al. 2004</a>)</span> and <a href="https://www.ensembl.org/info/data/biomart/index.html">BioMart</a> <span class="citation" data-cites="smedley2009">(<a href="#ref-smedley2009" role="doc-biblioref">Smedley et al. 2009</a>)</span> using the R package <strong><code>biomaRt</code></strong> <span class="citation" data-cites="biomaRt1 biomaRt2">(<a href="#ref-biomaRt1" role="doc-biblioref">Durinck et al. 2009</a>, <a href="#ref-biomaRt2" role="doc-biblioref">2005</a>)</span>, which means loading more packages, managing conflicts and using more compute, we can use the information we already have in the <code>results/hspc_prog_results.csv</code> file. This works because there are the same 280 genes in all the raw data and results files.</p>
+</section><section id="gene-information" class="level2"><h2 class="anchored" data-anchor-id="gene-information">Gene information</h2>
+<p>You will likely want the gene information in the dataframe along with the <code>ensembl_gene_id</code>. Rather the connecting again to <a href="https://www.ensembl.org/index.html">Ensembl</a> <span class="citation" data-cites="martin2023 birney2004">(<a href="#ref-martin2023" role="doc-biblioref">Martin et al. 2023</a>; <a href="#ref-birney2004" role="doc-biblioref">Birney et al. 2004</a>)</span> and <a href="https://www.ensembl.org/info/data/biomart/index.html">BioMart</a> <span class="citation" data-cites="smedley2009">(<a href="#ref-smedley2009" role="doc-biblioref">Smedley et al. 2009</a>)</span> using the R package <strong><code>biomaRt</code></strong> <span class="citation" data-cites="biomaRt1 biomaRt2">(<a href="#ref-biomaRt1" role="doc-biblioref">Durinck et al. 2009</a>, <a href="#ref-biomaRt2" role="doc-biblioref">2005</a>)</span>, which means loading more packages, managing conflicts and using more compute, we can use the information we already have in the <a href="results/hspc_prog_results.csv">results/hspc_prog_results.csv</a> file. This works because the same 280 genes are in the three raw data files and this results file.</p>
 <p>We need only the <code>ensembl_gene_id</code>, (to join the information), the <code>external_gene_name</code> and the <code>description</code>.</p>
 <p>🎬 Import the gene information from <code>results/hspc_prog_results.csv</code> and save as <code>gene_info</code>.</p>
 <div class="cell">
@@ -406,11 +426,11 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">gene_info</span>, </span>
 <span>            by <span class="op">=</span> <span class="st">"ensembl_gene_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The information in the <a href="data-raw/er_cell_types.csv">er_cell_types.csv</a> has 14 columns. The first column gives the cell_id (e.g., HSPC_001) the next 12 columns are named with the cell type or unknown and contain a 0 or 1. These columns are useful if you want to compare (plot or DE), for example, CMP vs not CMP. The last column gives the cell type which is useful to include all the labels in a plot.</p>
+</section><section id="type-categorisation-data" class="level2"><h2 class="anchored" data-anchor-id="type-categorisation-data">12-type categorisation data</h2>
+<p>The information in the <a href="data-raw/er_cell_types.csv">er_cell_types.csv</a> has 14 columns. The first column gives the cell_id (e.g., <code>HSPC_001</code>) the next 12 columns are named with the cell type or unknown and contain a 0 or 1. These columns are useful if you want to compare (plot or DE), for example, CMP vs not CMP. The last column gives the cell type which is useful to include all the labels in a plot.</p>
 <p>🎬 Import <a href="data-raw/er_cell_types.csv">er_cell_types.csv</a></p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 🐭 import </span></span>
-<span><span class="va">cell</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"data-raw/er_cell_types.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cell</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"data-raw/er_cell_types.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Check the dataframe has the number of rows and columns you were expecting and that column types and names are as expected.</p>
 <p>🎬 Examine the number of cells of each type:</p>
@@ -437,8 +457,9 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 12 unknown        10</code></pre>
 </div>
 </div>
-</section><section id="expression-of-a-specific-gene-in-each-cell-type" class="level1"><h1>Expression of a specific gene in each cell type</h1>
-<p><code>The</code>cell_expr<code>data has the expression of each gene in each cell. The</code>cell_ids` are in columns and the gene are in rows.</p>
+</section></section><section id="expression-of-a-specific-gene-in-each-cell-type" class="level1"><h1>Expression of a specific gene in each cell type</h1>
+<section id="pivot-to-long-form" class="level2"><h2 class="anchored" data-anchor-id="pivot-to-long-form">Pivot to long form</h2>
+<p>The <code>cell_expr</code> data has the expression of each gene in each cell. The <code>cell_ids</code> are in columns and the gene are in rows.</p>
 <p>We will need to pivot the <code>cell_expr</code> data to have the expression values in a single column with additional columns giving the cell_id and gene.</p>
 <div class="cell">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 🐭 pivot the cell_expr data</span></span>
@@ -449,7 +470,8 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <span>               names_to <span class="op">=</span> <span class="st">"cell_id"</span>, </span>
 <span>               values_to <span class="op">=</span> <span class="st">"expression"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We also want to add the two types of categorisation (the 3-type and the 12-types)to the <code>cell_expr_long</code> data. To add the 3-type categorisation we extract the information in the <code>cell_id</code> column into two columns: one with the cell type and one with the number. We did this before in making a <a href="../week-5/workshop.html#stem-cells-2">PCA plot</a></p>
+</section><section id="add-the-two-types-of-categorisation" class="level2"><h2 class="anchored" data-anchor-id="add-the-two-types-of-categorisation">Add the two types of categorisation</h2>
+<p>We also want to add the two types of categorisation (the 3-type and the 12-types) to the <code>cell_expr_long</code> data. To add the 3-type categorisation we extract the information in the <code>cell_id</code> column into two columns: one with the cell type and one with the number. We did this before in making a <a href="../week-5/workshop.html#stem-cells-2">PCA plot</a></p>
 <p>🎬 Extract the cell type and cell number from the <code>cell_id</code> column (keeping the <code>cell_id</code> column):</p>
 <div class="cell">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cell_expr_long</span> <span class="op">&lt;-</span> <span class="va">cell_expr_long</span> <span class="op">|&gt;</span> </span>
@@ -465,7 +487,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">cell</span> <span class="op">|&gt;</span> <span class="fu">select</span><span class="op">(</span><span class="va">cell_id</span>, <span class="va">type</span><span class="op">)</span>, </span>
 <span>            by <span class="op">=</span> <span class="st">"cell_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="gene-expression-under-3-type-categorisation" class="level2"><h2 class="anchored" data-anchor-id="gene-expression-under-3-type-categorisation">Gene expression under 3-type categorisation</h2>
+<section id="plot-gene-expression-under-3-type-categorisation" class="level3"><h3 class="anchored" data-anchor-id="plot-gene-expression-under-3-type-categorisation">Plot gene expression under 3-type categorisation</h3>
 <p>I have chosen the gene <code>Emb</code> to plot the expression in each cell type. I prefer the use of violin plots and points because multimodal distributions are more obvious than in boxplots</p>
 <p>🎬 Plot the expression of <code>Emb</code> in each cell type for the 3-type categorisation.</p>
 <div class="cell">
@@ -483,7 +505,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-</section><section id="gene-expression-under-12-type-categorisation" class="level2"><h2 class="anchored" data-anchor-id="gene-expression-under-12-type-categorisation">Gene expression under 12-type categorisation</h2>
+</section><section id="plot-expression-under-12-type-categorisation" class="level3"><h3 class="anchored" data-anchor-id="plot-expression-under-12-type-categorisation">Plot expression under 12-type categorisation</h3>
 <div class="cell">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 🐭 plot the expression of Emb in each cell type</span></span>
 <span><span class="va">cell_expr_long</span> <span class="op">|&gt;</span> </span>
@@ -499,7 +521,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-</section></section><section id="pca" class="level1"><h1>PCA</h1>
+</section></section></section><section id="pca" class="level1"><h1>PCA</h1>
 <p>We will carry out the the same steps to do the PCA:</p>
 <ul>
 <li>Select the log<sub>2</sub> transformed normalised counts. You can only use numerical data in PCA.</li>
@@ -512,97 +534,82 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <p>Refer to the <a href="../week-5/workshop.html#stem-cells-2">workshop for more explanation on PCA</a>.</p>
 <p>🎬 Transpose the log<sub>2</sub> transformed normalised counts:</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cell_expr_trans</span> <span class="op">&lt;-</span> <span class="va">cell_expr_trans</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">cell_expr_trans</span> <span class="op">&lt;-</span> <span class="va">cell_expr</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu">starts_with</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"HSPC_"</span>, <span class="st">"Prog_"</span>, <span class="st">"LT.HSC_"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 'cell_expr_trans' not found</code></pre>
-</div>
 </div>
 <p>🎬 Set the column names to the gene ids:</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">cell_expr_trans</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">cell_expr_trans</span><span class="op">$</span><span class="va">ensembl_gene_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 'cell_expr_trans' not found</code></pre>
-</div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">cell_expr_trans</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">cell_expr</span><span class="op">$</span><span class="va">ensembl_gene_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Perform PCA on the log<sub>2</sub> transformed normalised counts:</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca</span> <span class="op">&lt;-</span> <span class="va">cell_expr_trans</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca</span> <span class="op">&lt;-</span> <span class="va">cell_expr_trans</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/prcomp.html">prcomp</a></span><span class="op">(</span>rank. <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 'cell_expr_trans' not found</code></pre>
-</div>
 </div>
 <p>To plot the PC1 against PC2 we will need to extract the PC1 and PC2 “scores” from the PCA object and add labels for the cells. Our PCA object is called <code>pca</code> and the scores are in pca$x. The cells labels will come from the row names of the transformed data.</p>
 <p>🎬 Create a dataframe of the PC1 and PC2 scores (in <code>pca$x</code>) and add the cell ids:</p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">pca</span><span class="op">$</span><span class="va">x</span>,</span>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">pca</span><span class="op">$</span><span class="va">x</span>,</span>
 <span>                           cell_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">cell_expr_trans</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 'pca' not found</code></pre>
-</div>
 </div>
 <p>🎬 Extract the cell type and cell number from the <code>cell_id</code> column (keeping the <code>cell_id</code> column):</p>
 <div class="cell">
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">&lt;-</span> <span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">&lt;-</span> <span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">extract</span><span class="op">(</span><span class="va">cell_id</span>, </span>
 <span>          remove <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>          <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cell_type_3"</span>, <span class="st">"cell_number"</span><span class="op">)</span>,</span>
 <span>          <span class="st">"([a-zA-Z.]{4, 6})_([0-9]{3})"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 'pca_labelled' not found</code></pre>
-</div>
 </div>
 <p>🎬 Add the 12-type categorisation to the <code>pca_labelled</code> data.</p>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">&lt;-</span> <span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">&lt;-</span> <span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">cell</span> <span class="op">|&gt;</span> <span class="fu">select</span><span class="op">(</span><span class="va">cell_id</span>, <span class="va">type</span><span class="op">)</span>, </span>
 <span>            by <span class="op">=</span> <span class="st">"cell_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 'pca_labelled' not found</code></pre>
-</div>
 </div>
 <p>🎬 Add the expression of <code>Emb</code> to <code>pca_labelled</code> data. I’ve also renamed the expression column from the filtered <code>cell_expr_long</code> so it is <code>Emb_expr</code> in the <code>pca_labelled</code> data.</p>
 <div class="cell">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">&lt;-</span> <span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">&lt;-</span> <span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">left_join</span><span class="op">(</span><span class="va">cell_expr_long</span> <span class="op">|&gt;</span> </span>
 <span>              <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">external_gene_name</span> <span class="op">==</span> <span class="st">"Emb"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>              <span class="fu">select</span><span class="op">(</span><span class="va">cell_id</span>, <span class="st">"Emb_expr"</span> <span class="op">=</span> <span class="va">expression</span><span class="op">)</span>, </span>
 <span>            by <span class="op">=</span> <span class="st">"cell_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 'pca_labelled' not found</code></pre>
-</div>
 </div>
 <p>🎬 Plot PC2 against PC1 and colour by cell_type_3 type:</p>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">PC1</span>, y <span class="op">=</span> <span class="va">PC2</span>, </span>
 <span>             colour <span class="op">=</span> <span class="va">cell_type_3</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_point</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_colour_viridis_d</span><span class="op">(</span>end <span class="op">=</span> <span class="fl">0.95</span>, begin <span class="op">=</span> <span class="fl">0.15</span>,</span>
 <span>                         name <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme_classic</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 'pca_labelled' not found</code></pre>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="stem_cell_variant_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>🎬 Plot PC2 against PC1 and colour by cell_type_3 type:</p>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">PC1</span>, y <span class="op">=</span> <span class="va">PC2</span>, </span>
 <span>             colour <span class="op">=</span> <span class="va">type</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_point</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_colour_viridis_d</span><span class="op">(</span>name <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme_classic</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 'pca_labelled' not found</code></pre>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="stem_cell_variant_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>🎬 Plot PC2 against PC1 and colour by expression of Emb and shape by cell_type_3 type:</p>
 <div class="cell">
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">PC1</span>, y <span class="op">=</span> <span class="va">PC2</span>, </span>
 <span>             colour <span class="op">=</span> <span class="va">Emb_expr</span>,</span>
 <span>             shape <span class="op">=</span> <span class="va">cell_type_3</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -610,22 +617,27 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <span>  <span class="fu">scale_colour_viridis_c</span><span class="op">(</span>end <span class="op">=</span> <span class="fl">0.95</span>, begin <span class="op">=</span> <span class="fl">0.15</span>,</span>
 <span>                         name <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme_classic</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 'pca_labelled' not found</code></pre>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="stem_cell_variant_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>🎬 Easier to see as facets?:</p>
 <div class="cell">
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">PC1</span>, y <span class="op">=</span> <span class="va">PC2</span>, </span>
 <span>             colour <span class="op">=</span> <span class="va">Emb_expr</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_colour_viridis_c</span><span class="op">(</span>end <span class="op">=</span> <span class="fl">0.95</span>, begin <span class="op">=</span> <span class="fl">0.15</span>,</span>
 <span>                         name <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">theme_classic</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span><span class="va">cell_type_3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<pre><code>Error in eval(expr, envir, enclos): object 'pca_labelled' not found</code></pre>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="stem_cell_variant_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Pages made with R <span class="citation" data-cites="R-core">(<a href="#ref-R-core" role="doc-biblioref">R Core Team 2024</a>)</span>, Quarto <span class="citation" data-cites="Allaire_Quarto_2024">(<a href="#ref-Allaire_Quarto_2024" role="doc-biblioref">Allaire et al. 2024</a>)</span>, <code>knitr</code> <span class="citation" data-cites="knitr1 knitr2 knitr3">(<a href="#ref-knitr1" role="doc-biblioref">Xie 2024</a>, <a href="#ref-knitr2" role="doc-biblioref">2015</a>, <a href="#ref-knitr3" role="doc-biblioref">2014</a>)</span>, <code>kableExtra</code> <span class="citation" data-cites="kableExtra">(<a href="#ref-kableExtra" role="doc-biblioref">Zhu 2021</a>)</span></p>

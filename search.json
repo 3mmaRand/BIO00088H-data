@@ -2121,7 +2121,7 @@
     "href": "transcriptomics/semester-2/stem_cell_variant.html",
     "title": "Self study",
     "section": "",
-    "text": "We have analysed the Nestorowa et al. (2016) stem cells categorised as LTHSC, HSPC, or Prog. The cell types were determined from flowcytometry markers. Additional markers allow the cells to be categorised into 12 other types (including unknown): CMP, GMP, LMPP, LTHSC, LTHSC-ESLAM, MEP, MPP_broad, MPP1, MPP2, MPP3, STHSC, unknown. These cell types are mutually exclusive, meaning that a cell can only be one of these types.\nIn this self-study, you will:\n- import all the expression data and gene information for the three cell types - import the data that gives the additional labels - combine the data and pivot it to have the expression values in a single column - plot the expression of one gene, Emb, in each cell type for the 3-type categorisation and the 12-type categorisation - conduct a PCA on all the data and plot the first two components using colour/shapes for the 12-type categorisation, the 3-type categorisation and the expression of Emb.",
+    "text": "We have analysed the Nestorowa et al. (2016) stem cells categorised as LTHSC, HSPC, or Prog. The cell types were determined from flowcytometry markers. Additional markers allow the cells to be categorised into 12 other types (including unknown): CMP, GMP, LMPP, LTHSC, LTHSC-ESLAM, MEP, MPP_broad, MPP1, MPP2, MPP3, STHSC, unknown. These cell types are mutually exclusive, meaning that a cell can only be one of these types.\nIn this self-study, you will:\n\nimport all the expression data and gene information for the three cell types\nimport the data that gives the additional labels\ncombine the data and pivot it to have the expression values in a single column\nplot the expression of one gene, Emb, in each cell type for the 3-type categorisation and the 12-type categorisation\nconduct a PCA on all the data and plot the first two components using colour/shapes for the 12-type categorisation, the 3-type categorisation and the expression of Emb.",
     "crumbs": [
       "Transcriptomics",
       "Semester 2: Extras",
@@ -2129,11 +2129,11 @@
     ]
   },
   {
-    "objectID": "transcriptomics/semester-2/stem_cell_variant.html#gene-expression-under-3-type-categorisation",
-    "href": "transcriptomics/semester-2/stem_cell_variant.html#gene-expression-under-3-type-categorisation",
+    "objectID": "transcriptomics/semester-2/stem_cell_variant.html#the-raw-data",
+    "href": "transcriptomics/semester-2/stem_cell_variant.html#the-raw-data",
     "title": "Self study",
-    "section": "Gene expression under 3-type categorisation",
-    "text": "Gene expression under 3-type categorisation\nI have chosen the gene Emb to plot the expression in each cell type. I prefer the use of violin plots and points because multimodal distributions are more obvious than in boxplots\n🎬 Plot the expression of Emb in each cell type for the 3-type categorisation.\n\n# 🐭 plot the expression of Emb in each cell type\ncell_expr_long |&gt; \n  filter(external_gene_name == \"Emb\") |&gt; \n  ggplot(aes(x = cell_type_3, y = expression)) +\n  geom_jitter(width = 0.4, alpha = 0.2, pch = 16) +\n  geom_violin(fill = NA, linewidth = 1) +\n  theme_classic()",
+    "section": "The raw data",
+    "text": "The raw data\nImport the data for the LT-HSC, HSPC and the Progenitor cells.\n🎬 Import surfaceome_lthsc.csv, surfaceome_hspc.csv and surfaceome_hspc.csv\n\n# 🐭 import the three datasets\nlthsc &lt;- read_csv(\"data-raw/surfaceome_lthsc.csv\")\nhspc &lt;- read_csv(\"data-raw/surfaceome_hspc.csv\")\nprog &lt;- read_csv(\"data-raw/surfaceome_prog.csv\")\n\nNote there are 155 LT-HSC + 701 HSPC + 798 Progenitor = 1654 total cells.\nWe will need to join the three datasets using ensembl_gene_id to match the rows.\n🎬 Combine the three datasets by ensembl_gene_id and save the result as cell_expr.\n\n#  combine the three datasets\ncell_expr &lt;- hspc |&gt;\n  left_join(prog, \n            by = \"ensembl_gene_id\") |&gt; \n  left_join(lthsc, \n            by = \"ensembl_gene_id\")",
     "crumbs": [
       "Transcriptomics",
       "Semester 2: Extras",
@@ -2141,11 +2141,47 @@
     ]
   },
   {
-    "objectID": "transcriptomics/semester-2/stem_cell_variant.html#gene-expression-under-12-type-categorisation",
-    "href": "transcriptomics/semester-2/stem_cell_variant.html#gene-expression-under-12-type-categorisation",
+    "objectID": "transcriptomics/semester-2/stem_cell_variant.html#gene-information",
+    "href": "transcriptomics/semester-2/stem_cell_variant.html#gene-information",
     "title": "Self study",
-    "section": "Gene expression under 12-type categorisation",
-    "text": "Gene expression under 12-type categorisation\n\n# 🐭 plot the expression of Emb in each cell type\ncell_expr_long |&gt; \n  filter(external_gene_name == \"Emb\") |&gt; \n  ggplot(aes(x = type, y = expression)) +\n  geom_jitter(width = 0.2, alpha = 0.2, pch = 16) +\n  geom_violin(fill = NA, linewidth = 1) +\n  theme_classic()",
+    "section": "Gene information",
+    "text": "Gene information\nYou will likely want the gene information in the dataframe along with the ensembl_gene_id. Rather the connecting again to Ensembl (Martin et al. 2023; Birney et al. 2004) and BioMart (Smedley et al. 2009) using the R package biomaRt (Durinck et al. 2009, 2005), which means loading more packages, managing conflicts and using more compute, we can use the information we already have in the results/hspc_prog_results.csv file. This works because the same 280 genes are in the three raw data files and this results file.\nWe need only the ensembl_gene_id, (to join the information), the external_gene_name and the description.\n🎬 Import the gene information from results/hspc_prog_results.csv and save as gene_info.\n\n# 🐭 import the gene information\ngene_info &lt;- read_csv(\"results/hspc_prog_results.csv\") |&gt; \n  select(ensembl_gene_id, external_gene_name, description)\n\n🎬 Join the gene_info to the cell_expr data.\n\n# 🐭 join the gene information to the cell_expr data\ncell_expr &lt;- cell_expr |&gt; \n  left_join(gene_info, \n            by = \"ensembl_gene_id\")",
+    "crumbs": [
+      "Transcriptomics",
+      "Semester 2: Extras",
+      "Additional 🐭 stem cell labels"
+    ]
+  },
+  {
+    "objectID": "transcriptomics/semester-2/stem_cell_variant.html#type-categorisation-data",
+    "href": "transcriptomics/semester-2/stem_cell_variant.html#type-categorisation-data",
+    "title": "Self study",
+    "section": "12-type categorisation data",
+    "text": "12-type categorisation data\nThe information in the er_cell_types.csv has 14 columns. The first column gives the cell_id (e.g., HSPC_001) the next 12 columns are named with the cell type or unknown and contain a 0 or 1. These columns are useful if you want to compare (plot or DE), for example, CMP vs not CMP. The last column gives the cell type which is useful to include all the labels in a plot.\n🎬 Import er_cell_types.csv\n\ncell &lt;- read_csv(\"data-raw/er_cell_types.csv\")\n\n🎬 Check the dataframe has the number of rows and columns you were expecting and that column types and names are as expected.\n🎬 Examine the number of cells of each type:\n\ncell |&gt; \n  group_by(type) |&gt;\n  count()\n\n# A tibble: 12 × 2\n# Groups:   type [12]\n   type            n\n   &lt;chr&gt;       &lt;int&gt;\n 1 CMP           317\n 2 GMP           120\n 3 LMPP          246\n 4 LTHSC         233\n 5 LTHSC-ESLAM    38\n 6 MEP           354\n 7 MPP1           27\n 8 MPP2           11\n 9 MPP3           60\n10 MPP_broad     202\n11 STHSC          36\n12 unknown        10",
+    "crumbs": [
+      "Transcriptomics",
+      "Semester 2: Extras",
+      "Additional 🐭 stem cell labels"
+    ]
+  },
+  {
+    "objectID": "transcriptomics/semester-2/stem_cell_variant.html#pivot-to-long-form",
+    "href": "transcriptomics/semester-2/stem_cell_variant.html#pivot-to-long-form",
+    "title": "Self study",
+    "section": "Pivot to long form",
+    "text": "Pivot to long form\nThe cell_expr data has the expression of each gene in each cell. The cell_ids are in columns and the gene are in rows.\nWe will need to pivot the cell_expr data to have the expression values in a single column with additional columns giving the cell_id and gene.\n\n# 🐭 pivot the cell_expr data\ncell_expr_long &lt;- cell_expr |&gt; \n  pivot_longer(cols = -c(ensembl_gene_id, \n                         external_gene_name, \n                         description),\n               names_to = \"cell_id\", \n               values_to = \"expression\")",
+    "crumbs": [
+      "Transcriptomics",
+      "Semester 2: Extras",
+      "Additional 🐭 stem cell labels"
+    ]
+  },
+  {
+    "objectID": "transcriptomics/semester-2/stem_cell_variant.html#add-the-two-types-of-categorisation",
+    "href": "transcriptomics/semester-2/stem_cell_variant.html#add-the-two-types-of-categorisation",
+    "title": "Self study",
+    "section": "Add the two types of categorisation",
+    "text": "Add the two types of categorisation\nWe also want to add the two types of categorisation (the 3-type and the 12-types) to the cell_expr_long data. To add the 3-type categorisation we extract the information in the cell_id column into two columns: one with the cell type and one with the number. We did this before in making a PCA plot\n🎬 Extract the cell type and cell number from the cell_id column (keeping the cell_id column):\n\ncell_expr_long &lt;- cell_expr_long |&gt; \n  extract(cell_id, \n          remove = FALSE,\n          c(\"cell_type_3\", \"cell_number\"),\n          \"([a-zA-Z.]{4, 6})_([0-9]{3})\")\n\nTo add the 12-type categorisation we need to join the cell_expr_long data to the cell data on the cell_id\n🎬 Add the 12-type categorisation to the cell_expr_long data.\n\ncell_expr_long &lt;- cell_expr_long |&gt; \n  left_join(cell |&gt; select(cell_id, type), \n            by = \"cell_id\")\n\nPlot gene expression under 3-type categorisation\nI have chosen the gene Emb to plot the expression in each cell type. I prefer the use of violin plots and points because multimodal distributions are more obvious than in boxplots\n🎬 Plot the expression of Emb in each cell type for the 3-type categorisation.\n\n# 🐭 plot the expression of Emb in each cell type\ncell_expr_long |&gt; \n  filter(external_gene_name == \"Emb\") |&gt; \n  ggplot(aes(x = cell_type_3, y = expression)) +\n  geom_jitter(width = 0.4, alpha = 0.2, pch = 16) +\n  geom_violin(fill = NA, linewidth = 1) +\n  theme_classic()\n\n\n\n\n\n\n\nPlot expression under 12-type categorisation\n\n# 🐭 plot the expression of Emb in each cell type\ncell_expr_long |&gt; \n  filter(external_gene_name == \"Emb\") |&gt; \n  ggplot(aes(x = type, y = expression)) +\n  geom_jitter(width = 0.2, alpha = 0.2, pch = 16) +\n  geom_violin(fill = NA, linewidth = 1) +\n  theme_classic()",
     "crumbs": [
       "Transcriptomics",
       "Semester 2: Extras",
