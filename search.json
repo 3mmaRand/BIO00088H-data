@@ -2117,25 +2117,40 @@
     ]
   },
   {
-    "objectID": "transcriptomics/semester-2/stem_cell-variant.html",
-    "href": "transcriptomics/semester-2/stem_cell-variant.html",
+    "objectID": "transcriptomics/semester-2/stem_cell_variant.html",
+    "href": "transcriptomics/semester-2/stem_cell_variant.html",
     "title": "Self study",
     "section": "",
-    "text": "We have analysed the Nestorowa et al. (2016) stem cells categorised as LTHSC, HSPC, or Prog. The cell types were determined from flowcytometry markers. Additional markers allow the cells to be categorised into 12 other types (including unknown): CMP, GMP, LMPP, LTHSC, LTHSC-ESLAM, MEP, MPP_broad, MPP1, MPP2, MPP3, STHSC, unknown. These cell types are mutually exclusive, meaning that a cell can only be one of these types.\nIn this self-study, you will:\n- import all the expression data and gene information for the three cell types - import the data that gives the additional labels - combine the data and pivot it to have the expression values in a single column - plot the expression of one gene, Emb, in each cell type for the 3-type categorisation and the 12-type categorisation - conduct a PCA on all the data and plot the first two components using colour/shapes for the 12-type categorisation, the 3-type categorisation and the expression of Emb."
+    "text": "We have analysed the Nestorowa et al. (2016) stem cells categorised as LTHSC, HSPC, or Prog. The cell types were determined from flowcytometry markers. Additional markers allow the cells to be categorised into 12 other types (including unknown): CMP, GMP, LMPP, LTHSC, LTHSC-ESLAM, MEP, MPP_broad, MPP1, MPP2, MPP3, STHSC, unknown. These cell types are mutually exclusive, meaning that a cell can only be one of these types.\nIn this self-study, you will:\n- import all the expression data and gene information for the three cell types - import the data that gives the additional labels - combine the data and pivot it to have the expression values in a single column - plot the expression of one gene, Emb, in each cell type for the 3-type categorisation and the 12-type categorisation - conduct a PCA on all the data and plot the first two components using colour/shapes for the 12-type categorisation, the 3-type categorisation and the expression of Emb.",
+    "crumbs": [
+      "Transcriptomics",
+      "Semester 2: Extras",
+      "Additional 🐭 stem cell labels"
+    ]
   },
   {
-    "objectID": "transcriptomics/semester-2/stem_cell-variant.html#gene-expression-under-3-type-categorisation",
-    "href": "transcriptomics/semester-2/stem_cell-variant.html#gene-expression-under-3-type-categorisation",
+    "objectID": "transcriptomics/semester-2/stem_cell_variant.html#gene-expression-under-3-type-categorisation",
+    "href": "transcriptomics/semester-2/stem_cell_variant.html#gene-expression-under-3-type-categorisation",
     "title": "Self study",
     "section": "Gene expression under 3-type categorisation",
-    "text": "Gene expression under 3-type categorisation\nI have chosen the gene Emb to plot the expression in each cell type. I prefer the use of violin plots and points because multimodal distributions are more obvious than in boxplots\n🎬 Plot the expression of Emb in each cell type for the 3-type categorisation.\n\n# 🐭 plot the expression of Emb in each cell type\ncell_expr_long |&gt; \n  filter(external_gene_name == \"Emb\") |&gt; \n  ggplot(aes(x = cell_type_3, y = expression)) +\n  geom_jitter(width = 0.4, alpha = 0.2, pch = 16) +\n  geom_violin(fill = NA, linewidth = 1) +\n  theme_classic()"
+    "text": "Gene expression under 3-type categorisation\nI have chosen the gene Emb to plot the expression in each cell type. I prefer the use of violin plots and points because multimodal distributions are more obvious than in boxplots\n🎬 Plot the expression of Emb in each cell type for the 3-type categorisation.\n\n# 🐭 plot the expression of Emb in each cell type\ncell_expr_long |&gt; \n  filter(external_gene_name == \"Emb\") |&gt; \n  ggplot(aes(x = cell_type_3, y = expression)) +\n  geom_jitter(width = 0.4, alpha = 0.2, pch = 16) +\n  geom_violin(fill = NA, linewidth = 1) +\n  theme_classic()",
+    "crumbs": [
+      "Transcriptomics",
+      "Semester 2: Extras",
+      "Additional 🐭 stem cell labels"
+    ]
   },
   {
-    "objectID": "transcriptomics/semester-2/stem_cell-variant.html#gene-expression-under-12-type-categorisation",
-    "href": "transcriptomics/semester-2/stem_cell-variant.html#gene-expression-under-12-type-categorisation",
+    "objectID": "transcriptomics/semester-2/stem_cell_variant.html#gene-expression-under-12-type-categorisation",
+    "href": "transcriptomics/semester-2/stem_cell_variant.html#gene-expression-under-12-type-categorisation",
     "title": "Self study",
     "section": "Gene expression under 12-type categorisation",
-    "text": "Gene expression under 12-type categorisation\n\n# 🐭 plot the expression of Emb in each cell type\ncell_expr_long |&gt; \n  filter(external_gene_name == \"Emb\") |&gt; \n  ggplot(aes(x = type, y = expression)) +\n  geom_jitter(width = 0.2, alpha = 0.2, pch = 16) +\n  geom_violin(fill = NA, linewidth = 1) +\n  theme_classic()"
+    "text": "Gene expression under 12-type categorisation\n\n# 🐭 plot the expression of Emb in each cell type\ncell_expr_long |&gt; \n  filter(external_gene_name == \"Emb\") |&gt; \n  ggplot(aes(x = type, y = expression)) +\n  geom_jitter(width = 0.2, alpha = 0.2, pch = 16) +\n  geom_violin(fill = NA, linewidth = 1) +\n  theme_classic()",
+    "crumbs": [
+      "Transcriptomics",
+      "Semester 2: Extras",
+      "Additional 🐭 stem cell labels"
+    ]
   },
   {
     "objectID": "transcriptomics/week-5/study_after_workshop.html",
