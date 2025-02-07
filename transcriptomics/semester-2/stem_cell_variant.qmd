@@ -17,31 +17,32 @@ editor:
 
 # Introduction
 
-We have analysed the @nestorowa2016 stem cells categorised as LTHSC, HSPC, or
-Prog. The cell types were determined from flowcytometry markers. Additional
-markers allow the cells to be categorised into 12 other types (including 
-unknown): `CMP`, `GMP`, `LMPP`, `LTHSC`, `LTHSC-ESLAM`, `MEP`, 
-`MPP_broad`, `MPP1`, `MPP2`, `MPP3`, `STHSC`, `unknown`. These cell types are 
-mutually exclusive, meaning that a cell can only be one of these types.
+We have analysed the @nestorowa2016 stem cells categorised as LTHSC,
+HSPC, or Prog. The cell types were determined from flowcytometry
+markers. Additional markers allow the cells to be categorised into 12
+other types (including unknown): `CMP`, `GMP`, `LMPP`, `LTHSC`,
+`LTHSC-ESLAM`, `MEP`, `MPP_broad`, `MPP1`, `MPP2`, `MPP3`, `STHSC`,
+`unknown`. These cell types are mutually exclusive, meaning that a cell
+can only be one of these types.
 
-In this self-study, you will:   
+In this self-study, you will:
 
--   import all the expression data and gene information for the three cell 
-    types
+-   import all the expression data and gene information for the three
+    cell types
 -   import the data that gives the additional labels
--   combine the data and pivot it to have the expression values in a single 
-    column
--   plot the expression of one gene, `Emb`, in each cell type for the 3-type 
-    categorisation and the 12-type categorisation
--   conduct a PCA on all the data and plot the first two components using 
-    colour/shapes for the 12-type categorisation, the 3-type categorisation 
-    and the expression of `Emb`.
+-   combine the data and pivot it to have the expression values in a
+    single column
+-   plot the expression of one gene, `Emb`, in each cell type for the
+    3-type categorisation and the 12-type categorisation
+-   conduct a PCA on all the data and plot the first two components
+    using colour/shapes for the 12-type categorisation, the 3-type
+    categorisation and the expression of `Emb`.
 
 # Set up
 
 🎬 Open your `mice-88H` RStudio Project.
 
-🎬 Save [er_cell_types.csv](data-raw/er_cell_types.csv). 
+🎬 Save [er_cell_types.csv](data-raw/er_cell_types.csv).
 
 🎬 Open a new or existing script
 
@@ -56,10 +57,11 @@ library(tidyverse)
 
 ## The raw data
 
+Import the data for the LT-HSC, HSPC and the Progenitor cells.
 
-Import the data for the LT-HSC, HSPC and the Progenitor cells. 
-
-🎬 Import [surfaceome_lthsc.csv](data-raw/surfaceome_lthsc.csv), [surfaceome_hspc.csv](data-raw/surfaceome_hspc.csv) and [surfaceome_hspc.csv](data-raw/surfaceome_prog.csv)
+🎬 Import [surfaceome_lthsc.csv](data-raw/surfaceome_lthsc.csv),
+[surfaceome_hspc.csv](data-raw/surfaceome_hspc.csv) and
+[surfaceome_hspc.csv](data-raw/surfaceome_prog.csv)
 
 ```{r}
 # 🐭 import the three datasets
@@ -67,6 +69,7 @@ lthsc <- read_csv("data-raw/surfaceome_lthsc.csv")
 hspc <- read_csv("data-raw/surfaceome_hspc.csv")
 prog <- read_csv("data-raw/surfaceome_prog.csv")
 ```
+
 ```{r}
 #| echo: false
 # number of columns in each dataset
@@ -76,15 +79,15 @@ nprog <- ncol(prog) - 1
 ntotal <- nlthsc + nhspc + nprog
 ```
 
+Note there are `r nlthsc` LT-HSC + `r nhspc` HSPC + `r nprog` Progenitor
+= `r ntotal` total cells.
 
-Note there are `r nlthsc` LT-HSC + `r nhspc` HSPC + `r nprog` Progenitor =
-`r ntotal` total cells.
+We will need to join the three datasets using `ensembl_gene_id` to match
+the rows.
 
-We will need to join the three datasets using `ensembl_gene_id` to match the 
-rows. 
+🎬 Combine the three datasets by `ensembl_gene_id` and save the result
+as `cell_expr`.
 
-🎬 Combine the three datasets by `ensembl_gene_id` and save the result as 
-   `cell_expr`.
 ```{r}
 #  combine the three datasets
 cell_expr <- hspc |>
@@ -96,28 +99,30 @@ cell_expr <- hspc |>
 
 ## Gene information
 
-You will likely want the gene information in the dataframe along with the 
-`ensembl_gene_id`. Rather the connecting again to 
-[Ensembl](https://www.ensembl.org/index.html) [@martin2023;
-@birney2004] and [BioMart](https://www.ensembl.org/info/data/biomart/index.html)
-[@smedley2009] using the R package **`biomaRt`**
-[@biomaRt1; @biomaRt2], which means loading more packages, managing conflicts
-and using more compute, we can use the information we already have in the
-[results/hspc_prog_results.csv](results/hspc_prog_results.csv) file. This works 
-because the same 280 genes are in the three raw data files and this results 
-file.
+You will likely want the gene information in the dataframe along with
+the `ensembl_gene_id`. Rather the connecting again to
+[Ensembl](https://www.ensembl.org/index.html) [@martin2023; @birney2004]
+and [BioMart](https://www.ensembl.org/info/data/biomart/index.html)
+[@smedley2009] using the R package **`biomaRt`** [@biomaRt1; @biomaRt2],
+which means loading more packages, managing conflicts and using more
+compute, we can use the information we already have in the
+[results/hspc_prog_results.csv](results/hspc_prog_results.csv) file.
+This works because the same 280 genes are in the three raw data files
+and this results file.
 
-We need only the `ensembl_gene_id`, (to join the information), the `external_gene_name` and the `description`.
+We need only the `ensembl_gene_id`, (to join the information), the
+`external_gene_name` and the `description`.
 
-🎬  Import the gene information from `results/hspc_prog_results.csv` and save as 
-   `gene_info`. 
+🎬 Import the gene information from `results/hspc_prog_results.csv` and
+save as `gene_info`.
 
 ```{r}
 # 🐭 import the gene information
 gene_info <- read_csv("results/hspc_prog_results.csv") |> 
   select(ensembl_gene_id, external_gene_name, description)
 ```
-🎬  Join the `gene_info` to the `cell_expr` data.
+
+🎬 Join the `gene_info` to the `cell_expr` data.
 
 ```{r}
 # 🐭 join the gene information to the cell_expr data
@@ -128,13 +133,12 @@ cell_expr <- cell_expr |>
 
 ## 12-type categorisation data
 
-The information in the [er_cell_types.csv](data-raw/er_cell_types.csv) has 14 
-columns. The first column gives the cell_id (e.g., `HSPC_001`) the next 12 
-columns
-are named with the cell type or unknown and contain a 0 or 1. These columns 
-are useful if you want to compare (plot or DE), for example, CMP vs not CMP. 
-The last column gives the cell type which is useful to include all the labels 
-in a plot.
+The information in the [er_cell_types.csv](data-raw/er_cell_types.csv)
+has 14 columns. The first column gives the cell_id (e.g., `HSPC_001`)
+the next 12 columns are named with the cell type or unknown and contain
+a 0 or 1. These columns are useful if you want to compare (plot or DE),
+for example, CMP vs not CMP. The last column gives the cell type which
+is useful to include all the labels in a plot.
 
 🎬 Import [er_cell_types.csv](data-raw/er_cell_types.csv)
 
@@ -143,26 +147,26 @@ cell <- read_csv("data-raw/er_cell_types.csv")
 
 ```
 
-🎬 Check the dataframe has the number of rows and columns you were expecting
-   and that column types and names are as expected.
+🎬 Check the dataframe has the number of rows and columns you were
+expecting and that column types and names are as expected.
 
 🎬 Examine the number of cells of each type:
+
 ```{r}
 cell |> 
   group_by(type) |>
   count()
 ```
 
-
 # Expression of a specific gene in each cell type
 
 ## Pivot to long form
 
-The `cell_expr` data has the expression of each gene in each cell. The 
-`cell_ids` are in columns and the gene are in rows. 
+The `cell_expr` data has the expression of each gene in each cell. The
+`cell_ids` are in columns and the gene are in rows.
 
-We will need to pivot the `cell_expr` data to have the expression values in a 
-single column with additional columns giving the cell_id and gene. 
+We will need to pivot the `cell_expr` data to have the expression values
+in a single column with additional columns giving the cell_id and gene.
 
 ```{r}
 # 🐭 pivot the cell_expr data
@@ -174,17 +178,16 @@ cell_expr_long <- cell_expr |>
                values_to = "expression")
 ```
 
-
 ## Add the two types of categorisation
 
-We also want to add the two types of categorisation (the 3-type and the 
-12-types) to the `cell_expr_long` data. To add the 3-type categorisation we
-extract the information in the `cell_id` column into two columns: one with the
-cell type and one with the number. We did this before in making
+We also want to add the two types of categorisation (the 3-type and the
+12-types) to the `cell_expr_long` data. To add the 3-type categorisation
+we extract the information in the `cell_id` column into two columns: one
+with the cell type and one with the number. We did this before in making
 a [PCA plot](../week-5/workshop.html#stem-cells-2)
 
-🎬 Extract the cell type and cell number from the `cell_id` column 
-   (keeping the `cell_id` column):
+🎬 Extract the cell type and cell number from the `cell_id` column
+(keeping the `cell_id` column):
 
 ```{r}
 cell_expr_long <- cell_expr_long |> 
@@ -194,9 +197,8 @@ cell_expr_long <- cell_expr_long |>
           "([a-zA-Z.]{4, 6})_([0-9]{3})")
 ```
 
-To add the 12-type categorisation we need to join the `cell_expr_long` data to
-the `cell` data on the `cell_id`
-
+To add the 12-type categorisation we need to join the `cell_expr_long`
+data to the `cell` data on the `cell_id`
 
 🎬 Add the 12-type categorisation to the `cell_expr_long` data.
 
@@ -208,12 +210,12 @@ cell_expr_long <- cell_expr_long |>
 
 ### Plot gene expression under 3-type categorisation
 
-I have chosen the gene `Emb` to plot the expression in each cell type. I 
-prefer the use of violin plots and points because multimodal distributions
-are more obvious than in boxplots
+I have chosen the gene `Emb` to plot the expression in each cell type. I
+prefer the use of violin plots and points because multimodal
+distributions are more obvious than in boxplots
 
-🎬 Plot the expression of `Emb` in each cell type for the 3-type 
-   categorisation.
+🎬 Plot the expression of `Emb` in each cell type for the 3-type
+categorisation.
 
 ```{r}
 # 🐭 plot the expression of Emb in each cell type
@@ -224,7 +226,6 @@ cell_expr_long |>
   geom_violin(fill = NA, linewidth = 1) +
   theme_classic()
 ```
-
 
 ### Plot expression under 12-type categorisation
 
@@ -254,8 +255,8 @@ We will carry out the the same steps to do the PCA:
     the data
 -   Plot the the first two principal components as a scatter plot
 
-Refer to the 
-[workshop for more explanation on PCA](../week-5/workshop.html#stem-cells-2).
+Refer to the [workshop for more explanation on
+PCA](../week-5/workshop.html#stem-cells-2).
 
 🎬 Transpose the log~2~ transformed normalised counts:
 
@@ -265,7 +266,6 @@ cell_expr_trans <- cell_expr |>
   t() |> 
   data.frame()
 ```
-
 
 🎬 Set the column names to the gene ids:
 
@@ -279,7 +279,6 @@ colnames(cell_expr_trans) <- cell_expr$ensembl_gene_id
 pca <- cell_expr_trans |>
   prcomp(rank. = 8)
 ```
-
 
 To plot the PC1 against PC2 we will need to extract the PC1 and PC2
 "scores" from the PCA object and add labels for the cells. Our PCA
@@ -313,9 +312,9 @@ pca_labelled <- pca_labelled |>
             by = "cell_id")
 ```
 
-🎬 Add the expression of `Emb` to `pca_labelled` data. I've also renamed the
-   expression column from the filtered `cell_expr_long` so it is `Emb_expr` in
-   the `pca_labelled` data.
+🎬 Add the expression of `Emb` to `pca_labelled` data. I've also renamed
+the expression column from the filtered `cell_expr_long` so it is
+`Emb_expr` in the `pca_labelled` data.
 
 ```{r}
 pca_labelled <- pca_labelled |> 
@@ -326,7 +325,6 @@ pca_labelled <- pca_labelled |>
 ```
 
 🎬 Plot PC2 against PC1 and colour by cell_type_3 type:
-
 
 ```{r}
 pca_labelled |> 
@@ -341,7 +339,6 @@ pca_labelled |>
 
 🎬 Plot PC2 against PC1 and colour by cell_type_3 type:
 
-
 ```{r}
 pca_labelled |> 
   ggplot(aes(x = PC1, y = PC2, 
@@ -352,11 +349,8 @@ pca_labelled |>
 
 ```
 
-
-
 🎬 Plot PC2 against PC1 and colour by expression of Emb and shape by
-   cell_type_3 type:
-
+cell_type_3 type:
 
 ```{r}
 pca_labelled |> 
@@ -372,7 +366,6 @@ pca_labelled |>
 
 🎬 Easier to see as facets?:
 
-
 ```{r}
 pca_labelled |> 
   ggplot(aes(x = PC1, y = PC2, 
@@ -384,8 +377,7 @@ pca_labelled |>
 
 ```
 
-
-Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr` [@knitr1; @knitr2; @knitr3], `kableExtra` [@kableExtra]
-
+Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr`
+[@knitr1; @knitr2; @knitr3], `kableExtra` [@kableExtra]
 
 # References
