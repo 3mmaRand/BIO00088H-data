@@ -89,7 +89,7 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-e65f9df155edbd4dca9343f86867ce9a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-1494da19e0ede0417f7785edde56b964.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -1145,7 +1145,7 @@ Cumulative Proportion  0.24982</code></pre>
 <code>{3}</code> means 3 of them.</li>
 </ul>
 <p>So the second pattern inside the second (…) will match exactly 3 numbers (like 001 or 851).</p>
-<p><strong>Important</strong>: Prog and HPSC have 4 letters. The column names, LT.HSPC_ have 6 characters and includes a dot. You will need to adjust the regex when make comparison between LT-HSC and other cell types. The pattern to match the <code>LT.HSC</code> as well as the <code>Prog</code> and <code>HSPC</code> is <code>([a-zA-Z.]{4, 6})</code>. Note the dot inside the square brackets and numbers meaning 4 or 6 of. The pattern to match the underscore and the cell number is the same.</p>
+<p><strong>Important</strong>: Prog and HPSC have 4 letters. The column names, LT.HSPC_ have 6 characters and includes a dot. You will need to adjust the regex when make comparison between LT-HSC and other cell types. The pattern to match the <code>LT.HSC</code> as well as the <code>Prog</code> and <code>HSPC</code> is <code>([a-zA-Z.]{4,6})</code>. Note the dot inside the square brackets and numbers meaning 4 or 6 of. The pattern to match the underscore and the cell number is the same.</p>
 <p>The top of the dataframe should look like this (but with more decimal places)</p>
 <div class="cell">
 <div class="cell-output-display">
