@@ -89,7 +89,7 @@ div.csl-indent {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-1494da19e0ede0417f7785edde56b964.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-e65f9df155edbd4dca9343f86867ce9a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -479,7 +479,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <span>  <span class="fu">extract</span><span class="op">(</span><span class="va">cell_id</span>, </span>
 <span>          remove <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>          <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cell_type_3"</span>, <span class="st">"cell_number"</span><span class="op">)</span>,</span>
-<span>          <span class="st">"([a-zA-Z.]{4, 6})_([0-9]{3})"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>          <span class="st">"([a-zA-Z.]{4,6})_([0-9]{3})"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s just check we have the right number of cells in each of the three groups:</p>
 <div class="cell">
@@ -487,10 +487,12 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">cell_type_3</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">summarise</span><span class="op">(</span><span class="fu">n</span><span class="op">(</span><span class="op">)</span><span class="op">/</span> <span class="fl">280</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 2
+<pre><code># A tibble: 3 × 2
   cell_type_3 `n()/280`
   &lt;chr&gt;           &lt;dbl&gt;
-1 &lt;NA&gt;             1654</code></pre>
+1 HSPC              701
+2 LT.HSC            155
+3 Prog              798</code></pre>
 </div>
 </div>
 <p>To add the 12-type categorisation we need to join the <code>cell_expr_long</code> data to the <code>cell</code> data on the <code>cell_id</code></p>
