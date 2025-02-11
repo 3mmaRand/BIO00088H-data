@@ -197,7 +197,7 @@ cell_expr_long <- cell_expr_long |>
   extract(cell_id, 
           remove = FALSE,
           c("cell_type_3", "cell_number"),
-          "([a-zA-Z.]{4, 6})_([0-9]{3})")
+          "([a-zA-Z.]{4,6})_([0-9]{3})")
 ```
 
 Let's just check we have the right number of cells in each of the three
