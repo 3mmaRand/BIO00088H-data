@@ -315,7 +315,7 @@ pca_labelled <- pca_labelled |>
   extract(cell_id, 
           remove = FALSE,
           c("cell_type_3", "cell_number"),
-          "([a-zA-Z.]{4, 6})_([0-9]{3})")
+          "([a-zA-Z.]{4,6})_([0-9]{3})")
 ```
 
 🎬 Add the 12-type categorisation to the `pca_labelled` data.
