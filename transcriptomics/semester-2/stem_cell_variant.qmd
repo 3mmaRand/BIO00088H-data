@@ -137,8 +137,8 @@ The information in the [er_cell_types.csv](data-raw/er_cell_types.csv)
 has 14 columns. The first column gives the cell_id (e.g., `HSPC_001`)
 the next 12 columns are named with the cell type or unknown and contain
 a 0 or 1. These columns are useful if you want to compare (plot or DE),
-for example, CMP vs not CMP. The last column gives the cell type which
-is useful to include all the labels in a plot.
+for example, CMP cells vs others. The last column gives the cell type 
+which is useful to include *all* the labels in a plot.
 
 🎬 Import [er_cell_types.csv](data-raw/er_cell_types.csv)
 
@@ -154,7 +154,7 @@ expecting and that column types and names are as expected.
 
 ```{r}
 cell |> 
-  group_by(type) |>
+  group_by(cell_type_12) |>
   count()
 ```
 
@@ -178,7 +178,10 @@ cell_expr_long <- cell_expr |>
                values_to = "expression")
 ```
 
-## Add the two types of categorisation
+Note that this data frame will have:
+[280 genes * 1654 cells =  463120] rows.
+
+## Add the two types of categorisation to the expression data
 
 We also want to add the two types of categorisation (the 3-type and the
 12-types) to the `cell_expr_long` data. To add the 3-type categorisation
@@ -197,6 +200,17 @@ cell_expr_long <- cell_expr_long |>
           "([a-zA-Z.]{4, 6})_([0-9]{3})")
 ```
 
+Let's just check we have the right number of cells in each of the three
+groups:
+
+```{r}
+cell_expr_long |> 
+  group_by(cell_type_3) |> 
+  summarise(n()/ 280)
+```
+
+
+
 To add the 12-type categorisation we need to join the `cell_expr_long`
 data to the `cell` data on the `cell_id`
 
@@ -204,7 +218,7 @@ data to the `cell` data on the `cell_id`
 
 ```{r}
 cell_expr_long <- cell_expr_long |> 
-  left_join(cell |> select(cell_id, type), 
+  left_join(cell |> select(cell_id, cell_type_12), 
             by = "cell_id")
 ```
 
@@ -222,8 +236,8 @@ categorisation.
 cell_expr_long |> 
   filter(external_gene_name == "Emb") |> 
   ggplot(aes(x = cell_type_3, y = expression)) +
+  geom_violin(linewidth = 1) +
   geom_jitter(width = 0.4, alpha = 0.2, pch = 16) +
-  geom_violin(fill = NA, linewidth = 1) +
   theme_classic()
 ```
 
@@ -233,9 +247,9 @@ cell_expr_long |>
 # 🐭 plot the expression of Emb in each cell type
 cell_expr_long |> 
   filter(external_gene_name == "Emb") |> 
-  ggplot(aes(x = type, y = expression)) +
+  ggplot(aes(x = cell_type_12, y = expression)) +
+  geom_violin(linewidth = 1) +
   geom_jitter(width = 0.2, alpha = 0.2, pch = 16) +
-  geom_violin(fill = NA, linewidth = 1) +
   theme_classic()
 ```
 
@@ -308,7 +322,7 @@ pca_labelled <- pca_labelled |>
 
 ```{r}
 pca_labelled <- pca_labelled |> 
-  left_join(cell |> select(cell_id, type), 
+  left_join(cell |> select(cell_id, cell_type_12), 
             by = "cell_id")
 ```
 
@@ -337,12 +351,12 @@ pca_labelled |>
 
 ```
 
-🎬 Plot PC2 against PC1 and colour by cell_type_3 type:
+🎬 Plot PC2 against PC1 and colour by cell_type_12 type:
 
 ```{r}
 pca_labelled |> 
   ggplot(aes(x = PC1, y = PC2, 
-             colour = type)) +
+             colour = cell_type_12)) +
   geom_point(alpha = 0.5) +
   scale_colour_viridis_d(name = NULL) +
   theme_classic()
