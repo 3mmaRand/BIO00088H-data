@@ -6,9 +6,9 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.40">
+<meta name="generator" content="quarto-1.7.32">
 <meta name="author" content="Emma Rand">
 <title>Data Analysis for Group Project – Independent Study to prepare for workshop</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -29,8 +29,9 @@
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -41,7 +42,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -114,7 +115,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-<link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-bbe7401fe57d4b791b917637bb662036.css">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TVF95J593T"></script><script type="text/javascript">
 
   window.dataLayer = window.dataLayer || [];
@@ -230,10 +231,9 @@ Emma Rand
 </div>
 </div>
 
-  <p class="date">11 February, 2025</p>
+  <p class="date">9 July, 2025</p>
 </section><section id="overview" class="slide level2"><h2>Overview</h2>
 <p>In these slides we will:</p>
-<div>
 <ul>
 <li class="fragment"><p>Check where you are following week 3</p></li>
 <li class="fragment">
@@ -246,12 +246,9 @@ Emma Rand
 </ul>
 </li>
 <li class="fragment"><p>Find out what packages we will use</p></li>
-</ul>
-</div>
-</section><section><section id="where-should-you-be" class="title-slide slide level1 center"><h1>Where should you be?</h1>
+</ul></section><section><section id="where-should-you-be" class="title-slide slide level1 center"><h1>Where should you be?</h1>
 
 </section><section id="what-we-did-in-transcriptomics-1-hello-data" class="slide level2"><h2>What we did in Transcriptomics 1: 👋 Hello data!</h2>
-<div>
 <div style="font-size: 90%;">
 <ul>
 <li class="fragment">Discovered how many rows and columns we had in our datasets and what these were.</li>
@@ -264,7 +261,6 @@ Emma Rand
 </li>
 <li class="fragment">Filtered data for quality control and wrote to file (except 🐭)</li>
 </ul>
-</div>
 </div>
 </section><section id="where-should-you-be-1" class="slide level2"><h2>Where should you be?</h2>
 <p>After the <a href="../week-3/workshop.html">Transcriptomics 1: 👋 Hello data! Workshop</a> including:</p>
@@ -335,86 +331,58 @@ Emma Rand
 </ul></section></section><section><section id="differential-expression" class="title-slide slide level1 center"><h1>Differential expression</h1>
 
 </section><section id="differential-expression-1" class="slide level2"><h2>Differential expression</h2>
-<div>
 <ul>
 <li class="fragment"><p>The goal of differential expression is to test whether there is a significant difference in gene expression between groups.</p></li>
 <li class="fragment"><p>A large number of computational methods have been developed for differential expression analysis</p></li>
 <li class="fragment"><p>R is the leading language for differential expression analysis</p></li>
-</ul>
-</div>
-</section><section id="differential-expression-2" class="slide level2"><h2>Differential expression</h2>
-<div>
+</ul></section><section id="differential-expression-2" class="slide level2"><h2>Differential expression</h2>
 <ul>
 <li class="fragment"><p>the statistical concepts are very similar to those you have already encountered in stages 1 and 2</p></li>
 <li class="fragment"><p>you are essentially doing paired- or independent-samples tests</p></li>
 <li class="fragment"><p>but you are doing a lot of them! One for every gene</p></li>
 <li class="fragment"><p>data need normalisation before comparison</p></li>
-</ul>
-</div>
-</section><section id="statistical-concepts" class="slide level2"><h2>Statistical concepts</h2>
+</ul></section><section id="statistical-concepts" class="slide level2"><h2>Statistical concepts</h2>
 <p>Like familiar tests:</p>
-<div>
 <ul>
 <li class="fragment"><p>the type of test (the function) you use depends on the type of data you have and the type of assumptions you want to make</p></li>
 <li class="fragment"><p>the tests work by comparing the variation between groups to the variation within groups.</p></li>
 <li class="fragment"><p>you will get: the difference between groups, a test statistic, and a <em>p</em>-value</p></li>
 <li class="fragment"><p>you also get an <strong>adjusted <em>p</em>-value</strong> which is the ‘correction’ for multiple testing</p></li>
-</ul>
-</div>
-</section><section id="the-difference-between-groups" class="slide level2"><h2>The difference between groups</h2>
-<div>
+</ul></section><section id="the-difference-between-groups" class="slide level2"><h2>The difference between groups</h2>
 <ul>
 <li class="fragment"><p>The difference between groups is given as the log<sub>2</sub> fold change in expression between groups</p></li>
 <li class="fragment"><p>A fold change is the expression in one group divided by the expression in the other group: <span class="math inline">\(\frac{A}{B}\)</span></p></li>
 <li class="fragment"><p>we use fold changes because the absolute expression values may not be accurate and relative changes are what matters</p></li>
 <li class="fragment"><p>we use log<sub>2</sub> fold changes because they are symmetrical around 0</p></li>
-</ul>
-</div>
-</section><section id="why-log2-fold-change" class="slide level2"><h2>Why log<sub>2</sub> fold change?</h2>
-<div>
+</ul></section><section id="why-log2-fold-change" class="slide level2"><h2>Why log<sub>2</sub> fold change?</h2>
 <ul>
 <li class="fragment"><p>log<sub>2</sub> means log to the base 2</p></li>
 <li class="fragment"><p>Suppose the expression in group A is 5 and the expression in group B is 8</p></li>
 <li class="fragment"><p><span class="math inline">\(\frac{A}{B} = \frac{5}{8}\)</span> = 0.625 and <span class="math inline">\(\frac{B}{A} = \frac{8}{5}\)</span> = 1.6</p></li>
 <li class="fragment"><p>If B &gt; A the range of <span class="math inline">\(\frac{A}{B}\)</span> is 0 - 1 but the range of <span class="math inline">\(\frac{B}{A}\)</span> is 1 - <span class="math inline">\(\infty\)</span></p></li>
 <li class="fragment"><p>However, if we take the log<sub>2</sub> of <span class="math inline">\(\frac{A}{B}\)</span> we get -0.678 and the log<sub>2</sub> of <span class="math inline">\(\frac{B}{A}\)</span> is 0.678.</p></li>
-</ul>
-</div>
-</section><section id="adjusted-p-value" class="slide level2"><h2>Adjusted <em>p</em>-value</h2>
-<div>
+</ul></section><section id="adjusted-p-value" class="slide level2"><h2>Adjusted <em>p</em>-value</h2>
 <ul>
 <li class="fragment"><p>The <em>p</em>-value has to be adjusted because of the number of tested being done</p></li>
 <li class="fragment"><p>In stage 1, we used Tukey’s HSD to adjust for multiple testing following an ANOVA</p></li>
 <li class="fragment"><p>Here the Benjamini-Hochberg procedure <span class="citation" data-cites="benjamini1995">(<a href="#/references" role="doc-biblioref" onclick="">Benjamini and Hochberg 1995</a>)</span> is used to adjust for multiple testing</p></li>
 <li class="fragment"><p>BH controls the <a href="https://en.wikipedia.org/wiki/False_discovery_rate">False Discovery Rate</a> (FDR)</p></li>
 <li class="fragment"><p>The FDR is the proportion of false positives among the genes called significant</p></li>
-</ul>
-</div>
-</section><section id="normalisation" class="slide level2"><h2>Normalisation</h2>
-<div>
+</ul></section><section id="normalisation" class="slide level2"><h2>Normalisation</h2>
 <ul>
 <li class="fragment"><p>Normalisation adjusts raw counts to account for factors that prevent direct comparisons</p></li>
 <li class="fragment"><p>Normalisation usually influences the experimental design as well as the analysis</p></li>
-</ul>
-</div>
-</section><section id="normalisation-1" class="slide level2"><h2>Normalisation</h2>
-<div>
+</ul></section><section id="normalisation-1" class="slide level2"><h2>Normalisation</h2>
 <ul>
 <li class="fragment"><p>🐭 mice data are normalised</p></li>
 <li class="fragment"><p>🐸 frog, 🎄 Arabidopisis and 💉 Leishmania data are raw counts (not normalised) because the differential expression method will do this.</p></li>
 <li class="fragment"><p>Normalisation is a big topic. See <span class="citation" data-cites="düren2022">Düren, Lederer, and Qin (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>; <span class="citation" data-cites="bullard2010">Bullard et al. (<a href="#/references" role="doc-biblioref" onclick="">2010</a>)</span>; <span class="citation" data-cites="lytal2020">Lytal, Ran, and An (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span>; <span class="citation" data-cites="abrams2019">Abrams et al. (<a href="#/references" role="doc-biblioref" onclick="">2019</a>)</span>; <span class="citation" data-cites="vallejos2017">Vallejos et al. (<a href="#/references" role="doc-biblioref" onclick="">2017</a>)</span>; <span class="citation" data-cites="evans2017">Evans, Hardin, and Stoebel (<a href="#/references" role="doc-biblioref" onclick="">2017</a>)</span></p></li>
-</ul>
-</div>
-</section><section id="type-of-de-tests" class="slide level2"><h2>Type of DE tests</h2>
-<div>
+</ul></section><section id="type-of-de-tests" class="slide level2"><h2>Type of DE tests</h2>
 <ul>
 <li class="fragment"><p>A large number of computational methods have been developed for differential expression analysis</p></li>
 <li class="fragment"><p>Methods vary in the types of normalisation they do, the statistical model they use, and the assumptions they make</p></li>
 <li class="fragment"><p>Some of the most well-known methods are provided by: <strong><code>DESeq2</code></strong> <span class="citation" data-cites="DESeq2">(<a href="#/references" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span>, <strong><code>edgeR</code></strong> <span class="citation" data-cites="robinson2010 mccarthy2012 chen2016">(<a href="#/references" role="doc-biblioref" onclick="">Robinson, McCarthy, and Smyth 2010</a>; <a href="#/references" role="doc-biblioref" onclick="">McCarthy, Chen, and Smyth 2012</a>; <a href="#/references" role="doc-biblioref" onclick="">Chen, Lun, and Smyth 2016</a>)</span>, <strong><code>limma</code></strong> <span class="citation" data-cites="ritchie2015">(<a href="#/references" role="doc-biblioref" onclick="">Ritchie et al. 2015</a>)</span> and <strong><code>scran</code></strong> <span class="citation" data-cites="scran">(<a href="#/references" role="doc-biblioref" onclick="">Lun, McCarthy, and Marioni 2016</a>)</span></p></li>
-</ul>
-</div>
-</section><section id="type-of-test-the-function" class="slide level2"><h2>Type of test (the function)</h2>
-<div>
+</ul></section><section id="type-of-test-the-function" class="slide level2"><h2>Type of test (the function)</h2>
 <ul>
 <li class="fragment">
 <strong><code>DESeq2</code></strong> and <strong><code>edgeR</code></strong>
@@ -425,9 +393,7 @@ Emma Rand
 <li class="fragment">use slightly different normalisation methods: <strong><code>DESeq2</code></strong> uses the median of ratios method; <strong><code>edgeR</code></strong> uses the trimmed mean of M values (TMM) method</li>
 </ul>
 </li>
-</ul>
-</div>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>A discrete distribution for counts, similar to the Poisson distribution</p></li></ol></aside></section><section id="type-of-test-the-function-1" class="slide level2"><h2>Type of test (the function)</h2>
+</ul><aside><ol class="aside-footnotes"><li id="fn1"><p>A discrete distribution for counts, similar to the Poisson distribution</p></li></ol></aside></section><section id="type-of-test-the-function-1" class="slide level2"><h2>Type of test (the function)</h2>
 <ul>
 <li>
 <strong><code>scran</code></strong>
@@ -437,15 +403,12 @@ Emma Rand
 </ul>
 </li>
 </ul></section><section id="meta-data" class="slide level2"><h2>Meta data</h2>
-<div>
 <ul>
 <li class="fragment"><p>DE methods require two types of data: the expression data and the meta data</p></li>
 <li class="fragment"><p>The meta data gives the information about the samples</p></li>
 <li class="fragment"><p>It says which samples (which columns of data) are in which treatment group (s)</p></li>
 <li class="fragment"><p>Meta data is usually stored in a separate file</p></li>
-</ul>
-</div>
-</section><section id="frog-development-1" class="slide level2"><h2>🐸 Frog development</h2>
+</ul></section><section id="frog-development-1" class="slide level2"><h2>🐸 Frog development</h2>
 <ul>
 <li><p>Expression for the whole transcriptome <a href="https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp"><em>X. laevis</em> v10.1 genome assembly</a></p></li>
 <li><p>Values are raw counts</p></li>
@@ -470,7 +433,6 @@ Emma Rand
 </ul></section></section><section><section id="adding-gene-information" class="title-slide slide level1 center"><h1>Adding gene information</h1>
 
 </section><section id="adding-gene-information-1" class="slide level2"><h2>Adding gene information</h2>
-<div>
 <ul>
 <li class="fragment"><p>The gene id is difficult to interpret</p></li>
 <li class="fragment"><p>Therefore we need to add information such as the gene name and a description to the results</p></li>
@@ -483,7 +445,6 @@ Emma Rand
 <li class="fragment"><p>🐭 Stem cell information comes from Ensembl <span class="citation" data-cites="birney2004">(<a href="#/references" role="doc-biblioref" onclick="">Birney et al. 2004</a>)</span></p></li>
 </ul>
 </div>
-</div>
 </section><section id="xenbase" class="slide level2"><h2>🐸 Xenbase</h2>
 
 <img data-src="images/Xenbase-Logo-Medium.png" width="800" class="r-stretch quarto-figure-center"><p class="caption">xenbase logo</p><p><a href="http://www.xenbase.org/">Xenbase</a> is a model organism database that provides genomic, molecular, and developmental biology information about <em>Xenopus laevis</em> and <em>Xenopus tropicalis</em>.</p>
@@ -491,26 +452,19 @@ Emma Rand
 <p>It took me some time to find the information you need.</p>
 </div>
 </section><section id="xenbase-1" class="slide level2"><h2>🐸 Xenbase</h2>
-<div>
 <ul>
 <li class="fragment"><p>I got the information from the <a href="https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp">Xenbase information pages</a> under Data Reports | Gene Information</p></li>
 <li class="fragment"><p>This is listed: Xenbase Gene Product Information [readme] <a href="https://download.xenbase.org/xenbase/GenePageReports/xenbase.gpi.gz">gzipped gpi (tab separated)</a></p></li>
 <li class="fragment"><p>Click on the readme link to see the file format and columns</p></li>
 <li class="fragment"><p>I downloaded <a href="https://download.xenbase.org/xenbase/GenePageReports/xenbase.gpi.gz">xenbase.gpi.gz</a>, unzipped it, removed header lines and the <em>Xenopus tropicalis</em> (taxon:8364) entries and saved it as <a href="meta/xenbase_info.xlsx">xenbase_info.xlsx</a></p></li>
 <li class="fragment"><p>In the workshop you will import this file and merge the information with the results file</p></li>
-</ul>
-</div>
-</section><section id="tair10-through-ensembl" class="slide level2"><h2>🎄 TAIR10 through Ensembl</h2>
-<div>
+</ul></section><section id="tair10-through-ensembl" class="slide level2"><h2>🎄 TAIR10 through Ensembl</h2>
 <ul>
 <li class="fragment"><p><a href="https://www.ensembl.org/index.html">Ensembl</a> creates, integrates and distributes reference datasets and analysis tools that enable genomics</p></li>
 <li class="fragment"><p><a href="https://grch37.ensembl.org/info/data/biomart/index.html">BioMart</a> <span class="citation" data-cites="smedley2009">(<a href="#/references" role="doc-biblioref" onclick="">Smedley et al. 2009</a>)</span> provides uniform access to these large datasets</p></li>
 <li class="fragment"><p><strong><code>biomaRt</code></strong> <span class="citation" data-cites="biomaRt1 biomaRt2">(<a href="#/references" role="doc-biblioref" onclick="">Durinck et al. 2009</a>, <a href="#/references" role="doc-biblioref" onclick="">2005</a>)</span> is a Bioconductor package gives you programmatic access to BioMart.</p></li>
 <li class="fragment"><p>In the workshop you use this package to get information you can merge with the results file</p></li>
-</ul>
-</div>
-</section><section id="tritrypdb" class="slide level2"><h2>💉 TriTrypDB</h2>
-<div>
+</ul></section><section id="tritrypdb" class="slide level2"><h2>💉 TriTrypDB</h2>
 <div style="font-size: 80%;">
 <ul>
 <li class="fragment"><p>I got the information from <a href="https://tritrypdb.org/tritrypdb/app/">TriTrypDB</a><br>
@@ -520,17 +474,13 @@ which is a functional genomic resource for the Trypanosomatidae and Plasmodidae<
 <li class="fragment"><p>In the workshop you will import this file and merge the information with the results file</p></li>
 </ul>
 </div>
-</div>
 </section><section id="ensembl" class="slide level2"><h2>🐭 Ensembl</h2>
-<div>
 <ul>
 <li class="fragment"><p><a href="https://www.ensembl.org/index.html">Ensembl</a> creates, integrates and distributes reference datasets and analysis tools that enable genomics</p></li>
 <li class="fragment"><p><a href="https://grch37.ensembl.org/info/data/biomart/index.html">BioMart</a> <span class="citation" data-cites="smedley2009">(<a href="#/references" role="doc-biblioref" onclick="">Smedley et al. 2009</a>)</span> provides uniform access to these large datasets</p></li>
 <li class="fragment"><p><strong><code>biomaRt</code></strong> <span class="citation" data-cites="biomaRt1 biomaRt2">(<a href="#/references" role="doc-biblioref" onclick="">Durinck et al. 2009</a>, <a href="#/references" role="doc-biblioref" onclick="">2005</a>)</span> is a Bioconductor package gives you programmatic access to BioMart.</p></li>
 <li class="fragment"><p>In the workshop you use this package to get information you can merge with the results file</p></li>
-</ul>
-</div>
-</section><section id="packages" class="slide level2"><h2>Packages</h2>
+</ul></section><section id="packages" class="slide level2"><h2>Packages</h2>
 <p>These packages are all on the University computers which you can access on campus or <a href="https://www.york.ac.uk/it-services/tools/vds/">remotely using the VDS</a></p>
 <p>If you want to use your own machine you will need to install the packages.</p>
 <div style="font-size: 60%;">
@@ -879,190 +829,172 @@ Zhu, Hao. 2021. <span>“kableExtra: Construct Complex Table with ’Kable’ an
 
       })();
     </script><script id="quarto-html-after-body" type="application/javascript">
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-      const toggleBodyColorMode = (bsSheetEl) => {
-        const mode = bsSheetEl.getAttribute("data-mode");
-        const bodyEl = window.document.querySelector("body");
-        if (mode === "dark") {
-          bodyEl.classList.add("quarto-dark");
-          bodyEl.classList.remove("quarto-light");
-        } else {
-          bodyEl.classList.add("quarto-light");
-          bodyEl.classList.remove("quarto-dark");
-        }
-      }
-      const toggleBodyColorPrimary = () => {
-        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-        if (bsSheetEl) {
-          toggleBodyColorMode(bsSheetEl);
-        }
-      }
-      toggleBodyColorPrimary();  
-      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-      tabsets.forEach(function(tabset) {
-        const tabby = new Tabby('#' + tabset.id);
-      });
-      const isCodeAnnotation = (el) => {
-        for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
-            return true;
-          }
-        }
-        return false;
-      }
-      const onCopySuccess = function(e) {
-        // button target
-        const button = e.trigger;
-        // don't keep focus
-        button.blur();
-        // flash "checked"
-        button.classList.add('code-copy-button-checked');
-        var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
-        let tooltip;
-        if (window.bootstrap) {
-          button.setAttribute("data-bs-toggle", "tooltip");
-          button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
-              customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
-        }
-        setTimeout(function() {
-          if (tooltip) {
-            tooltip.hide();
-            button.removeAttribute("data-bs-title");
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-placement");
-          }
-          button.setAttribute("title", currentTitle);
-          button.classList.remove('code-copy-button-checked');
-        }, 1000);
-        // clear code selection
-        e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
             }
           }
-          return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
-      });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          return false;
         }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
             }
-          }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
         }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-        const config = {
-          allowHTML: true,
-          maxWidth: 500,
-          delay: 100,
-          arrow: false,
-          appendTo: function(el) {
-              return el.closest('section.slide') || el.parentElement;
-          },
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start',
-        };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
-          config['offset'] = [0,0];
-          config['maxWidth'] = 700;
-        window.tippy(el, config); 
-      }
-      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-      for (var i=0; i<noterefs.length; i++) {
-        const ref = noterefs[i];
-        tippyHover(ref, function() {
-          // use id or data attribute instead here
-          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-          try { href = new URL(href).hash; } catch {}
-          const id = href.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
-          }
-        });
-      }
-      const findCites = (el) => {
-        const parentEl = el.parentElement;
-        if (parentEl) {
-          const cites = parentEl.dataset.cites;
-          if (cites) {
-            return {
-              el,
-              cites: cites.split(' ')
-            };
-          } else {
-            return findCites(el.parentElement)
-          }
-        } else {
-          return undefined;
-        }
-      };
-      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-      for (var i=0; i<bibliorefs.length; i++) {
-        const ref = bibliorefs[i];
-        const citeInfo = findCites(ref);
-        if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
-            var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
-              var citeDiv = window.document.createElement('div');
-              citeDiv.classList.add('hanging-indent');
-              citeDiv.classList.add('csl-entry');
-              var biblioDiv = window.document.getElementById('ref-' + cite);
-              if (biblioDiv) {
-                citeDiv.innerHTML = biblioDiv.innerHTML;
+        const getTextToCopy = function(trigger) {
+            const codeEl = trigger.previousElementSibling.cloneNode(true);
+            for (const childEl of codeEl.children) {
+              if (isCodeAnnotation(childEl)) {
+                childEl.remove();
               }
-              popup.appendChild(citeDiv);
-            });
-            return popup.innerHTML;
+            }
+            return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
           });
         }
-      }
-    });
-    </script>
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
 
 
 </body></html>
