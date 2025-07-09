@@ -4,23 +4,23 @@
     "Repositories": [
       {
         "Name": "BioCsoft",
-        "URL": "https://bioconductor.org/packages/3.19/bioc"
+        "URL": "https://bioconductor.org/packages/3.21/bioc"
       },
       {
         "Name": "BioCann",
-        "URL": "https://bioconductor.org/packages/3.19/data/annotation"
+        "URL": "https://bioconductor.org/packages/3.21/data/annotation"
       },
       {
         "Name": "BioCexp",
-        "URL": "https://bioconductor.org/packages/3.19/data/experiment"
+        "URL": "https://bioconductor.org/packages/3.21/data/experiment"
       },
       {
         "Name": "BioCworkflows",
-        "URL": "https://bioconductor.org/packages/3.19/workflows"
+        "URL": "https://bioconductor.org/packages/3.21/workflows"
       },
       {
         "Name": "BioCbooks",
-        "URL": "https://bioconductor.org/packages/3.19/books"
+        "URL": "https://bioconductor.org/packages/3.21/books"
       },
       {
         "Name": "CRAN",
@@ -213,9 +213,9 @@
     },
     "DESeq2": {
       "Package": "DESeq2",
-      "Version": "1.44.0",
+      "Version": "1.48.1",
       "Source": "Bioconductor",
-      "Repository": "Bioconductor 3.19",
+      "Repository": "Bioconductor 3.21",
       "Requirements": [
         "Biobase",
         "BiocGenerics",
@@ -233,7 +233,7 @@
         "methods",
         "stats4"
       ],
-      "Hash": "a90e0e67215ba95ccb29e93b169caaa4"
+      "Hash": "96d7146482c3ca6c0298920ceadab733"
     },
     "DelayedArray": {
       "Package": "DelayedArray",
@@ -254,23 +254,6 @@
         "stats4"
       ],
       "Hash": "49be89f845c1c7c85873462f94bb24cc"
-    },
-    "DelayedMatrixStats": {
-      "Package": "DelayedMatrixStats",
-      "Version": "1.30.0",
-      "Source": "Bioconductor",
-      "Repository": "Bioconductor 3.21",
-      "Requirements": [
-        "DelayedArray",
-        "IRanges",
-        "Matrix",
-        "MatrixGenerics",
-        "S4Vectors",
-        "SparseArray",
-        "methods",
-        "sparseMatrixStats"
-      ],
-      "Hash": "2e9907b2b77121ce7ad75d6a5884d379"
     },
     "GenomeInfoDb": {
       "Package": "GenomeInfoDb",
@@ -302,9 +285,9 @@
     },
     "GenomicRanges": {
       "Package": "GenomicRanges",
-      "Version": "1.56.2",
+      "Version": "1.60.0",
       "Source": "Bioconductor",
-      "Repository": "Bioconductor 3.19",
+      "Repository": "Bioconductor 3.21",
       "Requirements": [
         "BiocGenerics",
         "GenomeInfoDb",
@@ -317,7 +300,7 @@
         "stats4",
         "utils"
       ],
-      "Hash": "fecd026026c4d45e3b57eee97bbbba92"
+      "Hash": "224f8d71f90e5b29b6744d84908e2fc3"
     },
     "IRanges": {
       "Package": "IRanges",
@@ -686,12 +669,14 @@
     },
     "biomaRt": {
       "Package": "biomaRt",
-      "Version": "2.60.1",
+      "Version": "2.64.0",
       "Source": "Bioconductor",
-      "Repository": "Bioconductor 3.19",
+      "Repository": "Bioconductor 3.21",
       "Requirements": [
         "AnnotationDbi",
         "BiocFileCache",
+        "R",
+        "curl",
         "digest",
         "httr2",
         "methods",
@@ -701,7 +686,7 @@
         "utils",
         "xml2"
       ],
-      "Hash": "e53d495b9e6ecd5394acad1d53c3fa22"
+      "Hash": "7c5d45ed371b7bce45a436b54b381fb9"
     },
     "bit": {
       "Package": "bit",
@@ -2215,13 +2200,13 @@
     },
     "renv": {
       "Package": "renv",
-      "Version": "1.0.3",
+      "Version": "1.1.4",
       "Source": "Repository",
       "Repository": "RSPM",
       "Requirements": [
         "utils"
       ],
-      "Hash": "41b847654f567341725473431dd0d5ab"
+      "Hash": "dbe7cc815b478931d08fb48359811dec"
     },
     "reprex": {
       "Package": "reprex",
@@ -2364,18 +2349,19 @@
     },
     "scran": {
       "Package": "scran",
-      "Version": "1.32.0",
+      "Version": "1.36.0",
       "Source": "Bioconductor",
-      "Repository": "Bioconductor 3.19",
+      "Repository": "Bioconductor 3.21",
       "Requirements": [
         "BH",
         "BiocGenerics",
         "BiocParallel",
         "BiocSingular",
         "DelayedArray",
-        "DelayedMatrixStats",
         "Matrix",
+        "MatrixGenerics",
         "Rcpp",
+        "S4Arrays",
         "S4Vectors",
         "SingleCellExperiment",
         "SummarizedExperiment",
@@ -2392,7 +2378,7 @@
         "stats",
         "utils"
       ],
-      "Hash": "5b11173a6b49f06dda0db31e80caa561"
+      "Hash": "b1aff18df10bbd125b3b78e49db5cdac"
     },
     "scuttle": {
       "Package": "scuttle",
@@ -2488,20 +2474,6 @@
         "utils"
       ],
       "Hash": "40b74690debd20c57d93d8c246b305d4"
-    },
-    "sparseMatrixStats": {
-      "Package": "sparseMatrixStats",
-      "Version": "1.20.0",
-      "Source": "Bioconductor",
-      "Repository": "Bioconductor 3.21",
-      "Requirements": [
-        "Matrix",
-        "MatrixGenerics",
-        "Rcpp",
-        "matrixStats",
-        "methods"
-      ],
-      "Hash": "26db843ec5e80b9666f22e5efac8477e"
     },
     "statmod": {
       "Package": "statmod",
