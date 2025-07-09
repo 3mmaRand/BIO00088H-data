@@ -111,6 +111,10 @@ website:
                text: Additional 🐭 stem cell labels  
              - href: transcriptomics/semester-2/venn_diagrams.qmd
                text: Venn diagrams 
+          - section: "Kelly's Project"
+            contents: 
+             - href: omics/kelly/workshop.qmd
+               text: Workshop
     - title: "Images"
       style: "floating"
       contents: 

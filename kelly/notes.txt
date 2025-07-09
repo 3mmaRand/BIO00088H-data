@@ -1,0 +1,31 @@
+Notes:																	
+Each sample has three replicates																	
+Concentrations are listed here in mM (millimolar, or "moles / L *  1000 millimoles / 1 moles")																	
+CN samples have straw biomass added to AD vials																	
+NC samples have had water added to AD vials																	
+														
+To calculate from this data		Change in VFA with time	
+		Recalculate the data into grams per liter, and change in VFA g/l with time
+		Calculate the percent representation of each VFA, by mM and by weight				
+
+Data for mM to g/l calculations		
+
+MW (g/mol)	
+Acetate	Propanoate	Isobutyrate	Butyrate	Isopentanoate	Pentanoate	Isohexanoate	Hexanoate
+60.05	  74.08	      88.11	      88.11	    102.13	      102.13	    116.1583	    116.1583
+
+													
+Useful graphs would include 1) mM or mg/l versus time for VFAs, 2) Delta mg/l versus time for each VFA		
+
+
+They should also be able to do a simple flux measurement:
+change in VFA concentration over a period of time, divided by weight or volume of material. 
+In this case it might be equal to == 
+Delta(Acetate at 3 days - Acetate at 1 day)/ Delta (3days - 1day)/ 50 mls sludge. This would provide a final flux with the units of mg acetate per ml sludge per day.  Let me know if this isn't clear.
+-----So I need to add the lag in days. Check the 50mls bit. Is that going to be a constant in the replicate vial? or is it going to be different? .
+
+ 
+Perhaps more importantly they should be able to graph and extract the reaction rate, assuming a first order chemical/biological reaction and an exponential falloff rate. I found this as a starting point (https://martinlab.chem.umass.edu/r-fitting-data/) , but I assume Emma has something much more effective already in the pipeline.
+
+
+
