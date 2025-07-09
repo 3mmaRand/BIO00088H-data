@@ -113,7 +113,7 @@ website:
                text: Venn diagrams 
           - section: "Kelly's Project"
             contents: 
-             - href: omics/kelly/workshop.qmd
+             - href: transcriptomics/kelly/workshop.qmd
                text: Workshop
     - title: "Images"
       style: "floating"

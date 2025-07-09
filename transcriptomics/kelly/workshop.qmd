@@ -1267,7 +1267,7 @@ ggplot(data = vfa_delta_vfa, aes(x = time_day, colour = treatment)) +
 ## ph data
 
 
-Pages made with R [@R-core], Quarto [@allaire2022], `knitr` [@knitr],
-`kableExtra` [@kableExtra]
+Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr`
+[@knitr1; @knitr2; @knitr3], `kableExtra` [@kableExtra]
 
 # References
