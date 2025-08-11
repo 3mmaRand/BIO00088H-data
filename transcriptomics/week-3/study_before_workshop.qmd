@@ -29,9 +29,7 @@ editor:
 
 ## The Data
 
-There are 4 transcriptomic datasets
-
--   🐸 bulk RNA-seq from *Xenopus laevis* embryos.
+There are 3 transcriptomic datasets
 
 -   🎄 bulk RNA-seq from *Arabidopsis thaliana*
 
@@ -41,81 +39,16 @@ There are 4 transcriptomic datasets
 
 # Experimental design
 
-## 🐸 Experimental design {auto-animate="true"}
-
-![Schematic of frog development
-experiment](images/88H-exp-design-betsy.png){fig-align="center"
-width="700"}
-
-## 🐸 Experimental design {auto-animate="true"}
-
-![Schematic of frog development
-experiment](images/88H-exp-design-betsy.png){fig-align="left"
-width="200"}
-
-::: incremental
--   3 fertilisations
-
--   2 siblings from each fertilisation one control, one FGF treated
-
--   sequenced at 3 time points
-
--   3 x 2 x 3 = 18 samples
-:::
-
-## 🐸 Experimental design {auto-animate="true"}
-
-![Schematic of frog development
-experiment](images/88H-exp-design-betsy.png){fig-align="left"
-width="200"}
-
-::: incremental
--   3 fertilisations. [These are the replicates, `1`, `2`,
-    `3`]{style="color:#009900"}
-
--   2 siblings from each fertilisation one control, one FGF treated.
-    [The treatments are paired]{style="color:#009900"}
-
--   sequenced at 3 time points. [S14, S20,
-    S30]{style="color:#009900"}
-
--   3 x 2 x 3 = 18 samples
-:::
-
-## 🐸 Aim
-
-::: incremental
--   Find genes that are "differentially expressed" between
-     control-treated and FGF-treated siblings
-
--   Differentially expressed means the expression in one group is
-    significantly higher than in the other
-:::
-
-## 🐸 Guided analysis
-
-::: incremental
--   The workshops will take you through comparing the control and FGF
-    treated sibling at S30
-    
--   You will make other comparisons independently
-
--   You will be guided to carefully document your work so you can apply
-    the same methods to other comparisons
-    
--   Do the independent study before and after the workshop!
-:::
-
-
 ## 🎄 Experimental design {auto-animate="true"}
 
-![Schematic of arabidopsis experiment](images/88H-exp-design-liz.png){fig-align="center"
+![Schematic of arabidopsis
+experiment](images/88H-exp-design-liz.png){fig-align="center"
 width="700"}
 
 ## 🎄 Experimental design {auto-animate="true"}
 
-![Schematic of arabidopsis experiment](images/88H-exp-design-liz.png){fig-align="left"
-width="200"}
+![Schematic of arabidopsis
+experiment](images/88H-exp-design-liz.png){fig-align="left" width="200"}
 
 ::: incremental
 -   2 plant genotypes
@@ -129,13 +62,15 @@ width="200"}
 
 ## 🎄 Experimental design {auto-animate="true"}
 
-![Schematic of arabidopsis experiment](images/88H-exp-design-liz.png){fig-align="left"
-width="200"}
+![Schematic of arabidopsis
+experiment](images/88H-exp-design-liz.png){fig-align="left" width="200"}
 
 ::: incremental
--   2 plant genotypes: wildtype and spl7 mutant. [This is the genotype treatment]{style="color:#009900"}
+-   2 plant genotypes: wildtype and spl7 mutant. [This is the genotype
+    treatment]{style="color:#009900"}
 
--   2 copper conditions: sufficient and deficient. [This is the Cu treatment]{style="color:#009900"}
+-   2 copper conditions: sufficient and deficient. [This is the Cu
+    treatment]{style="color:#009900"}
 
 -   2 plants. [These are the replicates]{style="color:#009900"}
 
@@ -145,9 +80,9 @@ width="200"}
 ## 🎄 Aim
 
 ::: incremental
--   Find genes that are "differentially expressed" between
-    plant types and copper conditions e.g. wildtype plants grown under
-    copper sufficient and copper deficient conditions
+-   Find genes that are "differentially expressed" between plant types
+    and copper conditions e.g. wildtype plants grown under copper
+    sufficient and copper deficient conditions
 
 -   Differentially expressed means the expression in one group is
     significantly higher than in the other
@@ -156,30 +91,30 @@ width="200"}
 ## 🎄 Guided analysis
 
 ::: incremental
--   The workshops will take you through comparing the wildtype plants 
+-   The workshops will take you through comparing the wildtype plants
     grown under copper sufficient and copper deficient conditions
-    
+
 -   You will make other comparisons independently
 
 -   You will be guided to carefully document your work so you can apply
     the same methods to other comparisons
-    
+
 -   Do the independent study before and after the workshop!
 :::
 
+## 💉 Experimental design {auto-animate="true"}
 
-## 💉  Experimental design {auto-animate="true"}
-
-![Schematic of leishmania experiment](images/88H-exp-design-pegine.png){fig-align="center"
+![Schematic of leishmania
+experiment](images/88H-exp-design-pegine.png){fig-align="center"
 width="700"}
 
 ## 💉 Experimental design {auto-animate="true"}
 
-![Schematic of leishmania experiment](images/88H-exp-design-pegine.png){fig-align="left"
+![Schematic of leishmania
+experiment](images/88H-exp-design-pegine.png){fig-align="left"
 width="200"}
 
 ::: incremental
-
 -   3 stages
 
 -   3 samples
@@ -189,13 +124,13 @@ width="200"}
 
 ## 💉 Experimental design {auto-animate="true"}
 
-![Schematic of leishmania experiment](images/88H-exp-design-pegine.png){fig-align="left"
+![Schematic of leishmania
+experiment](images/88H-exp-design-pegine.png){fig-align="left"
 width="200"}
 
 ::: incremental
-
--   three stages: procyclic promastigotes, metacyclic promastigotes 
-    and amastigotes. [This is the stage treatment]{style="color:#009900"}
+-   three stages: procyclic promastigotes, metacyclic promastigotes and
+    amastigotes. [This is the stage treatment]{style="color:#009900"}
 
 -   three samples. [These are the replicates]{style="color:#009900"}
 
@@ -205,9 +140,8 @@ width="200"}
 ## 💉 Aim
 
 ::: incremental
--   Find genes that are "differentially expressed" between
-    stages e.g., procyclic promastigotes and the metacyclic 
-    promastigotes
+-   Find genes that are "differentially expressed" between stages e.g.,
+    procyclic promastigotes and the metacyclic promastigotes
 
 -   Differentially expressed means the expression in one group is
     significantly higher than in the other
@@ -216,18 +150,16 @@ width="200"}
 ## 💉 Guided analysis
 
 ::: incremental
--   The workshops will take you through comparing the procyclic 
+-   The workshops will take you through comparing the procyclic
     promastigotes and the metacyclic promastigotes
-    
+
 -   You will make other comparisons independently
 
 -   You will be guided to carefully document your work so you can apply
     the same methods to other comparisons
-    
+
 -   Do the independent study before and after the workshop!
 :::
-
-
 
 ## 🐭 Experimental design {auto-animate="true"}
 
@@ -260,7 +192,8 @@ width="200"}
 -   There are three cell types: LT-HSCs, HSPCs, Progs [This is the cell
     "treatment"]{style="color:#009900"}
 
--   Many cells of each type were sequenced: [These are the replicates]{style="color:#009900"}
+-   Many cells of each type were sequenced: [These are the
+    replicates]{style="color:#009900"}
 
 -   [155 LT-HSCs, 701 HSPCs, 798 Progs]{style="color:#009900"}
 :::
@@ -268,8 +201,8 @@ width="200"}
 ## 🐭 Aim
 
 ::: incremental
--   find genes that are "differentially expressed" between at
-    least two cell types
+-   find genes that are "differentially expressed" between at least two
+    cell types
 
 -   Differentially expressed means the expression in one group is
     significantly higher than in the other
@@ -285,7 +218,7 @@ width="200"}
 
 -   You will be guided to carefully document your work so you can apply
     the same methods to other comparisons
-    
+
 -   Do the independent study before and after the workshop!
 :::
 
@@ -296,13 +229,13 @@ width="200"}
 ::: incremental
 -   The raw data are "reads" from a sequencing machine in FASTQ files
 
--   A read is sequence of RNA which is shorter than the whole 
+-   A read is sequence of RNA which is shorter than the whole
     transcriptome
 
 -   The length of the reads depends on the type of sequencing machine
 
-    -   Short-read technologies (e.g. Illumina) have higher base accuracy
-        but are harder to align
+    -   Short-read technologies (e.g. Illumina) have higher base
+        accuracy but are harder to align
     -   Long-read technologies (e.g. Nanopore) have lower base accuracy
         but are easier to align
 :::
@@ -311,8 +244,9 @@ width="200"}
 
 ### Optional
 
-You can read more about Sequencing technologies in [Statistically useful experimental design](https://cloud-span.github.io/experimental_design00-overview/)[@rand_statistically_2022]        
-
+You can read more about Sequencing technologies in [Statistically useful
+experimental
+design](https://cloud-span.github.io/experimental_design00-overview/)[@rand_statistically_2022]
 
 # What has been done to the data so far
 
@@ -324,48 +258,37 @@ You can read more about Sequencing technologies in [Statistically useful experim
 -   They are then aligned/pseudo-aligned to a reference
     genome/transcriptome (or assembled *de novo*)
 
--   And then counted to quantify the expression 
+-   And then counted to quantify the expression
 
--   Counts need to be normalised to account for differences 
-    in sequencing depth and transcript length before, or as part 
-    of, statistical analysis. 
+-   Counts need to be normalised to account for differences in
+    sequencing depth and transcript length before, or as part of,
+    statistical analysis.
 :::
 
-## 🐸 Data
+## 🎄 Data
 
--   Unpublished (so far!)
+-   Based on
+    [PRJNA132271](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA132271)[@bernal_transcriptome_2012]
 
--   Expression for the whole transcriptome [*X. laevis* v10.1 genome
-    assembly](https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp)[@fisher2023]
+-   Expression for the whole transcriptome [ENSEMBL *Arabidopsis*
+    TAIR10](https://plants.ensembl.org/Arabidopsis_thaliana/Info/Index)[@yates_ensembl_2022]
 
 -   Values are raw counts
 
 -   The statistical analysis method we will use is `DESeq2` [@DESeq2].
     It requires raw counts and performs the normalisation itself.
-    
-    
-## 🎄 Data
 
--   Based on [PRJNA132271](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA132271)[@bernal_transcriptome_2012]
-
--   Expression for the whole transcriptome [ENSEMBL *Arabidopsis* TAIR10](https://plants.ensembl.org/Arabidopsis_thaliana/Info/Index)[@yates_ensembl_2022]
-
--   Values are raw counts
-
--   The statistical analysis method we will use is `DESeq2` [@DESeq2].
-    It requires raw counts and performs the normalisation itself.  
-    
-## 💉  Data
+## 💉 Data
 
 -   Brand spanking new!
 
--   Expression for the whole transcriptome [*L. mexicana* MHOM/GT/2001/U1103](https://tritrypdb.org/tritrypdb/app/record/dataset/DS_e318592c8e)[@rogers_chromosome_2011]
+-   Expression for the whole transcriptome [*L. mexicana*
+    MHOM/GT/2001/U1103](https://tritrypdb.org/tritrypdb/app/record/dataset/DS_e318592c8e)[@rogers_chromosome_2011]
 
 -   Values are raw counts
 
 -   The statistical analysis method we will use is `DESeq2` [@DESeq2].
-    It requires raw counts and performs the normalisation itself. 
-
+    It requires raw counts and performs the normalisation itself.
 
 ## 🐭 Data
 
@@ -375,27 +298,27 @@ You can read more about Sequencing technologies in [Statistically useful experim
 
 -   Values are log~2~ normalised values
 
--   The statistical analysis method we will use is `scran` [@scran]
-    and it requires normalised values
+-   The statistical analysis method we will use is `scran` [@scran] and
+    it requires normalised values
 
 # Workshops
 
 ## Workshops
 
 -   Transcriptomics 1: Hello data Getting to know the data. Checking the
-    distributions of values overall, across rows and columns to
-    check things are as we expect and detect rows/columns that need to
-    be removed
+    distributions of values overall, across rows and columns to check
+    things are as we expect and detect rows/columns that need to be
+    removed
 
 -   Transcriptomics 2: Statistical Analysis. Identifying which genes are
     differentially expressed between treatments. This is the main
     analysis step. We will use different methods for bulk and single
     cell data.
 
--   Transcriptomics 3: Visualising. Principal Component 
-    Analysis (PCA) and volcano plots to visualise the results of the
-    analysis.
-
+-   Transcriptomics 3: Visualising. Principal Component Analysis (PCA)
+    and volcano plots to visualise the results of the analysis.
 
 ## References
-Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr` [@knitr1; @knitr2; @knitr3], `kableExtra` [@kableExtra]
+
+Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr`
+[@knitr1; @knitr2; @knitr3], `kableExtra` [@kableExtra]

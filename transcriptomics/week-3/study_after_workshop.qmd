@@ -9,37 +9,22 @@ format:
     code-summary: "Answer - don't look until you have tried!"
 ---
 
-
 You need only do the section for your own project data
-
-## 🐸 Frog development
-
-🎬 Open your `frogs-88H` Project. Make a new script, `cont-fgf-s20.R`, and,
-using `cont-fgf-s30.R` as a template, repeat the analysis stage 20. 
 
 ## 🎄 *Arabidopisis*
 
-🎬 Open your `arab-88H` Project. Make a new script, `suff-def-spl7.R`, and, 
-using `suff-def-wild.R` as a template, repeat the analysis on the *spl7* 
-mutants. 
-
-
+🎬 Open your `arab-88H` Project. Make a new script, `suff-def-spl7.R`,
+and, using `suff-def-wild.R` as a template, repeat the analysis on the
+*spl7* mutants.
 
 ## 💉 *Leishmania*
 
-🎬 Open your `leish-88H` Project. Make a new script, `pro_ama.R`, and, 
-using `pro_meta.R` as a template, repeat the analysis on the 
-procyclic promastigotes (pro) and amastigotes (ama). 
-
+🎬 Open your `leish-88H` Project. Make a new script, `pro_ama.R`, and,
+using `pro_meta.R` as a template, repeat the analysis on the procyclic
+promastigotes (pro) and amastigotes (ama).
 
 ## 🐭 Stem cells
 
-🎬 Open your `mice-88H` Project. Make a new script, `hspc-lthsc.R` and, using 
-`hspc-prog.R` as a template, repeat the analysis on the HSPC and LT-HSC cells. 
-
-
-
-
-
-
-
+🎬 Open your `mice-88H` Project. Make a new script, `hspc-lthsc.R` and,
+using `hspc-prog.R` as a template, repeat the analysis on the HSPC and
+LT-HSC cells.
