@@ -36,24 +36,24 @@ In these slides we will:
 
 ## What we did in Transcriptomics 1: 👋 Hello data!
 
-::: incremental
+:::: incremental
 ::: {style="font-size: 90%;"}
 -   Discovered how many rows and columns we had in our datasets and what
     these were.
 -   Examined the distribution of values
     -   across the whole dataset
-    -   across the samples/cells (i.e., averaged over genes)
-        to see variation between samples/cells
-    -   across the genes (i.e., averaged over samples/cells)
-        to see variation between genes
+    -   across the samples/cells (i.e., averaged over genes) to see
+        variation between samples/cells
+    -   across the genes (i.e., averaged over samples/cells) to see
+        variation between genes
 -   Filtered data for quality control and wrote to file (except 🐭)
 :::
-:::
+::::
 
 ## Where should you be?
 
-After the [Transcriptomics 1: 👋 Hello data! Workshop](../week-3/workshop.html)
-including:
+After the [Transcriptomics 1: 👋 Hello data!
+Workshop](../week-3/workshop.html) including:
 
 -   [🤗 Look after future
     you!](../week-3/workshop.html#look-after-future-you) and
@@ -61,58 +61,43 @@ including:
 -   the [Independent Study to
     consolidate](../week-3/study_after_workshop.html), you should have:
 
-## 🐸 Frog development
-
-
--   An RStudio Project called `frogs-88H` which contains:
-
-    -   data-raw: `xlaevis_counts_S14.csv`, `xlaevis_counts_S20.csv`,
-        `xlaevis_counts_S30.csv` 
-    -   data-processed: `s30_filtered.csv`, `s20_filtered.csv`
-    -   Two scripts: `cont-fgf-s30.R`, `cont-fgf-s20.R`
-
-
 ## 🎄 *Arabidopsis*
 
 -   An RStudio Project called `arab-88H` which contains:
 
-    -   data-raw: `arabidopsis-wild.csv`, `arabidopsis-spl7.csv` 
-    -   data-processed: `wild_filtered.csv`,  `spl7_filtered.csv`
+    -   data-raw: `arabidopsis-wild.csv`, `arabidopsis-spl7.csv`
+    -   data-processed: `wild_filtered.csv`, `spl7_filtered.csv`
     -   Two scripts: `suff-def-wild.R`, `suff-def-spl7.R`
 
-
-
-## 💉 *Leishmania* 
+## 💉 *Leishmania*
 
 -   An RStudio Project called `leish-88H` which contains:
 
-    -   data-raw: `leishmania-mex-ama.csv`, `leishmania-mex-pro.csv`, 
+    -   data-raw: `leishmania-mex-ama.csv`, `leishmania-mex-pro.csv`,
         `leishmania-mex-meta.csv`
     -   data-processed: `pro_meta_filtered.csv`, `pro_ama_filtered.csv`
     -   Two scripts: `pro_meta.R`, `pro_ama.R`
-
 
 ## 🐭 Stem cells
 
 -   An RStudio Project called `mice-88H` which contains
 
-    -   data-raw: `surfaceome_hspc.csv`, `surfaceome_prog.csv`, `surfaceome_lthsc.csv`
+    -   data-raw: `surfaceome_hspc.csv`, `surfaceome_prog.csv`,
+        `surfaceome_lthsc.csv`
     -   data-processed: `hspc_prog.csv`, `hspc_lthsc.csv`
     -   Two scripts: `hspc-prog.R`, `hspc-lthsc.R`
 
-
 ## Additionally...
 
-Files should be organised into folders. Code should well 
-commented and easy to read. You should have curated your code to remove
-unnecessary commands that were useful to troubleshoot or understand
-objects in your environment but which are not needed for the final
-analysis.
+Files should be organised into folders. Code should well commented and
+easy to read. You should have curated your code to remove unnecessary
+commands that were useful to troubleshoot or understand objects in your
+environment but which are not needed for the final analysis.
 
 If you are missing files, go through:
 
--   [Transcriptomics 1: 👋 Hello data! Workshop](../week-3/workshop.html)
-    including:
+-   [Transcriptomics 1: 👋 Hello data!
+    Workshop](../week-3/workshop.html) including:
 
 -   [🤗 Look after future
     you!](../week-3/workshop.html#look-after-future-you) and
@@ -188,13 +173,14 @@ Like familiar tests:
 -   Suppose the expression in group A is 5 and the expression in group B
     is 8
 
--   $\frac{A}{B} = \frac{5}{8}$ = 0.625 and $\frac{B}{A} = \frac{8}{5}$ = 1.6
+-   $\frac{A}{B} = \frac{5}{8}$ = 0.625 and $\frac{B}{A} = \frac{8}{5}$
+    = 1.6
 
--   If B > A the range of $\frac{A}{B}$ is 0 - 1 but the range of
+-   If B \> A the range of $\frac{A}{B}$ is 0 - 1 but the range of
     $\frac{B}{A}$ is 1 - $\infty$
 
--   However, if we take the log~2~ of $\frac{A}{B}$ we get -0.678 and the log~2~
-    of $\frac{B}{A}$ is 0.678.
+-   However, if we take the log~2~ of $\frac{A}{B}$ we get -0.678 and
+    the log~2~ of $\frac{B}{A}$ is 0.678.
 :::
 
 ## Adjusted *p*-value
@@ -226,14 +212,13 @@ Like familiar tests:
     the analysis
 :::
 
-
 ## Normalisation
 
 ::: incremental
--   🐭 mice data are normalised 
+-   🐭 mice data are normalised
 
--   🐸 frog, 🎄 Arabidopisis and 💉 Leishmania data are raw counts 
-    (not normalised) because the differential expression method will do this.
+-   🎄 Arabidopisis and 💉 Leishmania data are raw counts (not
+    normalised) because the differential expression method will do this.
 
 -   Normalisation is a big topic. See @düren2022; @bullard2010;
     @lytal2020; @abrams2019; @vallejos2017; @evans2017
@@ -256,7 +241,6 @@ Like familiar tests:
 ## Type of test (the function)
 
 ::: incremental
-
 -   **`DESeq2`** and **`edgeR`**
     -   both require raw counts as input
     -   both assume that most genes are not DE
@@ -264,19 +248,16 @@ Like familiar tests:
     -   use slightly different normalisation methods: **`DESeq2`** uses
         the median of ratios method; **`edgeR`** uses the trimmed mean
         of M values (TMM) method
-
+:::
 
 [^1]: A discrete distribution for counts, similar to the Poisson
     distribution
-:::
 
 ## Type of test (the function)
 
--   **`scran`** 
-    -   works on normalized log-expression values 
+-   **`scran`**
+    -   works on normalized log-expression values
     -   performs Welch t-tests
-
-
 
 ## Meta data
 
@@ -286,25 +267,16 @@ Like familiar tests:
 
 -   The meta data gives the information about the samples
 
--   It says which samples (which columns of data) are in which 
-    treatment group (s)
+-   It says which samples (which columns of data) are in which treatment
+    group (s)
 
 -   Meta data is usually stored in a separate file
 :::
 
-## 🐸 Frog development
-
--   Expression for the whole transcriptome [*X. laevis* v10.1 genome
-    assembly](https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp)
-
--   Values are raw counts
-
--   The statistical analysis method we will use **`DESeq2`** [@DESeq2]
-    requires raw counts and performs the normalisation itself
-
 ## 🎄 *Arabidopisis*
 
--   Expression for the whole transcriptome [ENSEMBL *Arabidopsis* TAIR10](https://plants.ensembl.org/Arabidopsis_thaliana/Info/Index)[@yates_ensembl_2022]
+-   Expression for the whole transcriptome [ENSEMBL *Arabidopsis*
+    TAIR10](https://plants.ensembl.org/Arabidopsis_thaliana/Info/Index)[@yates_ensembl_2022]
 
 -   Values are raw counts
 
@@ -313,13 +285,14 @@ Like familiar tests:
 
 ## 💉 *Leishmania*
 
--   Expression for the whole transcriptome [*L. mexicana* MHOM/GT/2001/U1103](https://tritrypdb.org/tritrypdb/app/record/dataset/DS_e318592c8e)[@rogers_chromosome_2011]
+-   Expression for the whole transcriptome [*L. mexicana*
+    MHOM/GT/2001/U1103](https://tritrypdb.org/tritrypdb/app/record/dataset/DS_e318592c8e)[@rogers_chromosome_2011]
 
 -   Values are raw counts
 
 -   The statistical analysis method we will use **`DESeq2`** [@DESeq2]
     requires raw counts and performs the normalisation itself
-    
+
 ## 🐭 Stem cells
 
 -   Expression for a *subset* of the transcriptome, the surfaceome
@@ -329,80 +302,39 @@ Like familiar tests:
 -   The statistical analysis method we will use **`scran`** [@scran]
     requires normalised values
 
-
 # Adding gene information
 
 ## Adding gene information
 
-::: incremental
+:::: incremental
 -   The gene id is difficult to interpret
 
 -   Therefore we need to add information such as the gene name and a
     description to the results
 
 ::: {style="font-size: 70%;"}
+-   🎄 *Arabidopisis* information comes from TAIR10
+    [@yates_ensembl_2022]
 
--   🐸 Frog data information comes from Xenbase [@fisher2023]
-
--   🎄 *Arabidopisis* information comes from TAIR10 [@yates_ensembl_2022]
-
--   💉 *Leishmania* information comes TriTrypDB [@rogers_chromosome_2011]
+-   💉 *Leishmania* information comes TriTrypDB
+    [@rogers_chromosome_2011]
 
 -   🐭 Stem cell information comes from Ensembl [@birney2004]
-
 :::
-:::
+::::
 
-## 🐸 Xenbase
-
-![xenbase logo](images/Xenbase-Logo-Medium.png){width="800"}
-
-[Xenbase](http://www.xenbase.org/) is a model organism database that
-provides genomic, molecular, and developmental biology information about
-*Xenopus laevis* and *Xenopus tropicalis*.
-
-. . .
-
-It took me some time to find the information you need.
-
-## 🐸 Xenbase
-
-::: incremental
-
-
--   I got the information from the [Xenbase information
-    pages](https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp)
-    under Data Reports \| Gene Information
-
--   This is listed: Xenbase Gene Product Information \[readme\] [gzipped
-    gpi (tab
-    separated)](https://download.xenbase.org/xenbase/GenePageReports/xenbase.gpi.gz)
-
--   Click on the readme link to see the file format and columns
-
--   I downloaded
-    [xenbase.gpi.gz](https://download.xenbase.org/xenbase/GenePageReports/xenbase.gpi.gz),
-    unzipped it, removed header lines and the *Xenopus tropicalis*
-    (taxon:8364) entries and saved it as
-    [xenbase_info.xlsx](meta/xenbase_info.xlsx)
-
--   In the workshop you will import this file and merge the information
-    with the results file
-
-:::
-
-##  🎄 TAIR10 through Ensembl
+## 🎄 TAIR10 through Ensembl
 
 ::: incremental
 -   [Ensembl](https://www.ensembl.org/index.html) creates, integrates
     and distributes reference datasets and analysis tools that enable
     genomics
 
--   [BioMart](https://grch37.ensembl.org/info/data/biomart/index.html) 
+-   [BioMart](https://grch37.ensembl.org/info/data/biomart/index.html)
     [@smedley2009] provides uniform access to these large datasets
 
--   **`biomaRt`** [@biomaRt1; @biomaRt2] is a Bioconductor package gives you
-    programmatic access to BioMart.
+-   **`biomaRt`** [@biomaRt1; @biomaRt2] is a Bioconductor package gives
+    you programmatic access to BioMart.
 
 -   In the workshop you use this package to get information you can
     merge with the results file
@@ -410,25 +342,24 @@ It took me some time to find the information you need.
 
 ## 💉 TriTrypDB
 
-::: incremental
-
+:::: incremental
 ::: {style="font-size: 80%;"}
+-   I got the information from
+    [TriTrypDB](https://tritrypdb.org/tritrypdb/app/)\
+    which is a functional genomic resource for the Trypanosomatidae and
+    Plasmodidae
 
--   I got the information from [TriTrypDB](https://tritrypdb.org/tritrypdb/app/)  
-    which is a functional genomic resource for the 
-    Trypanosomatidae and Plasmodidae
+-   <https://tritrypdb.org/tritrypdb/app/downloads> section
 
--   [https://tritrypdb.org/tritrypdb/app/downloads](https://tritrypdb.org/tritrypdb/app/downloads) section
-
--   I downloaded the [*L. mexicana* MHOM/GT/2001/U1103 Full GFF](https://tritrypdb.org/common/downloads/release-68/LmexicanaMHOMGT2001U1103/gff/data/TriTrypDB-68_LmexicanaMHOMGT2001U1103.gff)
+-   I downloaded the [*L. mexicana* MHOM/GT/2001/U1103 Full
+    GFF](https://tritrypdb.org/common/downloads/release-68/LmexicanaMHOMGT2001U1103/gff/data/TriTrypDB-68_LmexicanaMHOMGT2001U1103.gff)
     and extracted the gene information and saved it as
     [leishmania_mex.xlsx](meta/leishmania_mex.xlsx)
-    
+
 -   In the workshop you will import this file and merge the information
     with the results file
-
 :::
-:::
+::::
 
 ## 🐭 Ensembl
 
@@ -437,62 +368,63 @@ It took me some time to find the information you need.
     and distributes reference datasets and analysis tools that enable
     genomics
 
--   [BioMart](https://grch37.ensembl.org/info/data/biomart/index.html) 
+-   [BioMart](https://grch37.ensembl.org/info/data/biomart/index.html)
     [@smedley2009] provides uniform access to these large datasets
 
--   **`biomaRt`** [@biomaRt1; @biomaRt2] is a Bioconductor package gives you
-    programmatic access to BioMart.
+-   **`biomaRt`** [@biomaRt1; @biomaRt2] is a Bioconductor package gives
+    you programmatic access to BioMart.
 
 -   In the workshop you use this package to get information you can
     merge with the results file
 :::
 
-
-
 ## Packages
 
-These packages are all on the University computers which you can access on 
-campus or [remotely using the VDS](https://www.york.ac.uk/it-services/tools/vds/)
+These packages are all on the University computers which you can access
+on campus or [remotely using the
+VDS](https://www.york.ac.uk/it-services/tools/vds/)
 
-If you want to use your own machine you will need to install the packages.
+If you want to use your own machine you will need to install the
+packages.
 
 ::: {style="font-size: 60%;"}
-
-Install **`BiocManager`** from CRAN in the the normal way and set the version of Bioconductor packages to install:
+Install **`BiocManager`** from CRAN in the the normal way and set the
+version of Bioconductor packages to install:
 
 ```{r}
 #| eval: false
 install.packages("BiocManager")
-BiocManager::install(version = "3.19")
+
 ```
 
 Install **`DESeq2`** from Bioconductor using BiocManager:
+
 ```{r}
 #| eval: false
 BiocManager::install("DESeq2")
 ```
 
 Install **`scran`** from Bioconductor using BiocManager:
+
 ```{r}
 #| eval: false
 BiocManager::install("scran")
 ```
 
 Install **`biomaRt`** from Bioconductor using BiocManager:
+
 ```{r}
 #| eval: false
 BiocManager::install("biomaRt")
 ```
-
 :::
-
 
 # Workshops
 
 ## Workshops
 
--   Transcriptomics 1: Hello data. Getting to know the data. Checking the
-    distributions of values overall, across rows and columns to
+-   Transcriptomics 1: Hello data. Getting to know the data. Checking
+    the distributions of values overall, across rows and columns to
     check things are as we expect and detect rows/columns that need to
     be removed
 
@@ -501,9 +433,10 @@ BiocManager::install("biomaRt")
     analysis step. We will use different methods for bulk and single
     cell data.
 
--   Transcriptomics 3: Visualising. Principal Component 
-    Analysis (PCA) volcano plots to visualise the results of the 
+-   Transcriptomics 3: Visualising. Principal Component Analysis (PCA)
+    volcano plots to visualise the results of the
 
 ## References
 
-Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr` [@knitr1; @knitr2; @knitr3], `kableExtra` [@kableExtra]
+Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr`
+[@knitr1; @knitr2; @knitr3], `kableExtra` [@kableExtra]

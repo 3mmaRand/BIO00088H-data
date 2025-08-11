@@ -5,7 +5,16 @@ toc: true
 toc-location: right
 ---
 
-This week we cover differential expression analysis on raw counts or log normalised values. The independent study will allow you to check you have what you should have following the [Transcriptomics 1: Hello Data workshop](../week-3/workshop.html) and [Consolidation study](../week-3/study_after_workshop.html). It will also summarise the concepts and methods we will use in the workshop. In the workshop, you will learn how to perform differential expression analysis on raw counts using **`DESeq2`** [@DESeq2] or on logged normalised expression values using **`scran`** [@scran] or both. You will also add information about genes programmatically.
+This week we cover differential expression analysis on raw counts or log
+normalised values. The independent study will allow you to check you
+have what you should have following the [Transcriptomics 1: Hello Data
+workshop](../week-3/workshop.html) and [Consolidation
+study](../week-3/study_after_workshop.html). It will also summarise the
+concepts and methods we will use in the workshop. In the workshop, you
+will learn how to perform differential expression analysis on raw counts
+using **`DESeq2`** [@DESeq2] or on logged normalised expression values
+using **`scran`** [@scran] or both. You will also add information about
+genes programmatically.
 
 We suggest you sit together with your group in the workshop.
 
@@ -13,15 +22,24 @@ We suggest you sit together with your group in the workshop.
 
 The successful student will be able to:
 
--   verify they have the required RStudio Project set up and the data and code files from the previous Workshop and Consolidation study
--   explain the goal of differential expression analysis and the importance of normalisation
--   explain why and how the nature of the input values determines the analysis package used
--   describe the metadata needed to carry out differential expression analysis and the statistical models used by **`DESeq2`** and **`scran`**
+-   verify they have the required RStudio Project set up and the data
+    and code files from the previous Workshop and Consolidation study
+-   explain the goal of differential expression analysis and the
+    importance of normalisation
+-   explain why and how the nature of the input values determines the
+    analysis package used
+-   describe the metadata needed to carry out differential expression
+    analysis and the statistical models used by **`DESeq2`** and
+    **`scran`**
 -   find genes that are unexpressed or expressed in a just one group
--   perform differential expression analysis on raw counts using **`DESeq2`** or on logged normalised expression values using **`scran`** or both.
--   explain the output of differential expression: log fold change, p-value, adjusted p-value
+-   perform differential expression analysis on raw counts using
+    **`DESeq2`** or on logged normalised expression values using
+    **`scran`** or both.
+-   explain the output of differential expression: log fold change,
+    p-value, adjusted p-value
 -   add information about genes programmatically to their results
--   prepare for a discussion with their project supervisor about genes of interest
+-   prepare for a discussion with their project supervisor about genes
+    of interest
 
 ### Instructions
 
@@ -29,20 +47,24 @@ The successful student will be able to:
 
     i.  📖 Check what you should have after week 3
     ii. 📖 Read about concepts in differential expression analysis.
-    ii. 📖 Find out what packages we will use.
+    iii. 📖 Find out what packages we will use.
 
 2.  [Workshop](workshop.qmd)
 
-    i.  💻 Find unexpressed genes and those expressed in a single cell type or treatment group.
+    i.  💻 Find unexpressed genes and those expressed in a single cell
+        type or treatment group.
 
     ii. 💻 Set up the metadata for differential expression analysis.
 
-    iii. 💻 Perform differential expression analysis on raw counts using **`DESeq2`** or on logged normalised expression values using **`scran`**.
+    iii. 💻 Perform differential expression analysis on raw counts using
+         **`DESeq2`** or on logged normalised expression values using
+         **`scran`**.
 
     iv. Look after future you!
 
 3.  [Consolidate](study_after_workshop.qmd)
 
-    i.  💻 Use the work you completed in the workshop as a template to apply to a new case.
+    i.  💻 Use the work you completed in the workshop as a template to
+        apply to a new case.
 
 ### References
