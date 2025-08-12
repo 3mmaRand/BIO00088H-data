@@ -109,8 +109,6 @@ website:
             contents: 
              - href: transcriptomics/semester-2/stem_cell_variant.qmd
                text: Additional 🐭 stem cell labels  
-             - href: transcriptomics/semester-2/venn_diagrams.qmd
-               text: Venn diagrams 
           - section: "Kelly's Project"
             contents: 
              - href: transcriptomics/kelly/workshop.qmd
@@ -140,7 +138,7 @@ format:
     link-external-newwindow: true
     link-external-filter: '^(?:http:|https:)\/\/3mmarand\.github\.io\/BIO00088H-data'
     theme:
-      light: [cosmo, custom.scss]
+      light: [cosmo, styles.scss]
     code-copy: true
     code-link: true
     code-overflow: wrap

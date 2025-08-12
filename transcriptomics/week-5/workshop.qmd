@@ -29,12 +29,12 @@ term enrichment analysis.~~
 
 ## 🎄 *Arabidopsis*
 
-🎬 Open the `arabi-88H` RStudio Project and the `wildsuf-wilddef-s30.R`
+🎬 Open the `arabi-88H` RStudio Project and the `wildsuf-wilddef.R`
 script.
 
 ## 💉 *Leishmania*
 
-🎬 Open the `leish-88H` RStudio Project and the `pro-meta-s30.R` script.
+🎬 Open the `leish-88H` RStudio Project and the `pro-meta.R` script.
 
 ## 🐭 Stem cells
 
@@ -88,15 +88,6 @@ made.
 ```{r}
 #| echo: false
 #---CODING ANSWER---
-# 🐸 frog development 
-# import results data
-s30_results <- read_csv("results/S30_results.csv")
-
-```
-
-```{r}
-#| echo: false
-#---CODING ANSWER---
 # 🎄  Arabidopisis
 # import results data
 wild_results <- read_csv("results/wild_results.csv")
@@ -123,29 +114,6 @@ hspc_prog_results <- read_csv("results/hspc_prog_results.csv")
 
 🎬 Remind yourself what is in the rows and columns and the structure of
 the dataframes (perhaps using `glimpse()`)
-
-```{r}
-#| include: false
-#---CODING ANSWER---
-# 🐸 frog development
-glimpse(s30_results)
-```
-
-<!-- #---THINKING ANSWER--- -->
-
-<!-- You have data with 17 columns and 10136 rows. The rows are the genes. -->
-
-<!-- The columns are the normalised counts for for each of the 6  -->
-
-<!-- samples, the mean of the normalised counts, the xenbase gene id, -->
-
-<!-- the gene name and some data base references.  -->
-
-<!-- You also have the results of a statistical comparison between -->
-
-<!-- the treatments for stage 30: the log fold change, the  -->
-
-<!-- test statistic, the p-value and the adjusted p-value -->
 
 ```{r}
 #| include: false
@@ -231,20 +199,6 @@ need.
 
 🎬 Import the metadata that maps the sample names to treatments.
 Remember to select only the samples for comparison that was made.
-
-```{r}
-#| echo: false
-#---CODING ANSWER---
-# 🐸 frog development 
-
-# Import metadata that maps the sample names to treatments
-meta <- read_table("meta/frog_meta_data.txt")
-
-# We only need the s30
-meta_s30 <- meta |>
-  filter(stage == "stage_30")
-
-```
 
 ```{r}
 #| echo: false
