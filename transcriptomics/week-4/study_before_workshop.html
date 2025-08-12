@@ -6,9 +6,9 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.7.33">
 <meta name="author" content="Emma Rand">
 <title>Data Analysis for Group Project – Independent Study to prepare for workshop</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -231,7 +231,7 @@ Emma Rand
 </div>
 </div>
 
-  <p class="date">9 July, 2025</p>
+  <p class="date">12 August, 2025</p>
 </section><section id="overview" class="slide level2"><h2>Overview</h2>
 <p>In these slides we will:</p>
 <ul>
@@ -267,19 +267,6 @@ Emma Rand
 <ul>
 <li><p><a href="../week-3/workshop.html#look-after-future-you">🤗 Look after future you!</a> and</p></li>
 <li><p>the <a href="../week-3/study_after_workshop.html">Independent Study to consolidate</a>, you should have:</p></li>
-</ul></section><section id="frog-development" class="slide level2"><h2>🐸 Frog development</h2>
-<ul>
-<li>
-<p>An RStudio Project called <code>frogs-88H</code> which contains:</p>
-<ul>
-<li>data-raw: <code>xlaevis_counts_S14.csv</code>, <code>xlaevis_counts_S20.csv</code>, <code>xlaevis_counts_S30.csv</code>
-</li>
-<li>data-processed: <code>s30_filtered.csv</code>, <code>s20_filtered.csv</code>
-</li>
-<li>Two scripts: <code>cont-fgf-s30.R</code>, <code>cont-fgf-s20.R</code>
-</li>
-</ul>
-</li>
 </ul></section><section id="arabidopsis" class="slide level2"><h2>🎄 <em>Arabidopsis</em>
 </h2>
 <ul>
@@ -375,7 +362,7 @@ Emma Rand
 </ul></section><section id="normalisation-1" class="slide level2"><h2>Normalisation</h2>
 <ul>
 <li class="fragment"><p>🐭 mice data are normalised</p></li>
-<li class="fragment"><p>🐸 frog, 🎄 Arabidopisis and 💉 Leishmania data are raw counts (not normalised) because the differential expression method will do this.</p></li>
+<li class="fragment"><p>🎄 Arabidopisis and 💉 Leishmania data are raw counts (not normalised) because the differential expression method will do this.</p></li>
 <li class="fragment"><p>Normalisation is a big topic. See <span class="citation" data-cites="düren2022">Düren, Lederer, and Qin (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>; <span class="citation" data-cites="bullard2010">Bullard et al. (<a href="#/references" role="doc-biblioref" onclick="">2010</a>)</span>; <span class="citation" data-cites="lytal2020">Lytal, Ran, and An (<a href="#/references" role="doc-biblioref" onclick="">2020</a>)</span>; <span class="citation" data-cites="abrams2019">Abrams et al. (<a href="#/references" role="doc-biblioref" onclick="">2019</a>)</span>; <span class="citation" data-cites="vallejos2017">Vallejos et al. (<a href="#/references" role="doc-biblioref" onclick="">2017</a>)</span>; <span class="citation" data-cites="evans2017">Evans, Hardin, and Stoebel (<a href="#/references" role="doc-biblioref" onclick="">2017</a>)</span></p></li>
 </ul></section><section id="type-of-de-tests" class="slide level2"><h2>Type of DE tests</h2>
 <ul>
@@ -408,11 +395,6 @@ Emma Rand
 <li class="fragment"><p>The meta data gives the information about the samples</p></li>
 <li class="fragment"><p>It says which samples (which columns of data) are in which treatment group (s)</p></li>
 <li class="fragment"><p>Meta data is usually stored in a separate file</p></li>
-</ul></section><section id="frog-development-1" class="slide level2"><h2>🐸 Frog development</h2>
-<ul>
-<li><p>Expression for the whole transcriptome <a href="https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp"><em>X. laevis</em> v10.1 genome assembly</a></p></li>
-<li><p>Values are raw counts</p></li>
-<li><p>The statistical analysis method we will use <strong><code>DESeq2</code></strong> <span class="citation" data-cites="DESeq2">(<a href="#/references" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span> requires raw counts and performs the normalisation itself</p></li>
 </ul></section><section id="arabidopisis" class="slide level2"><h2>🎄 <em>Arabidopisis</em>
 </h2>
 <ul>
@@ -439,26 +421,12 @@ Emma Rand
 </ul>
 <div style="font-size: 70%;">
 <ul>
-<li class="fragment"><p>🐸 Frog data information comes from Xenbase <span class="citation" data-cites="fisher2023">(<a href="#/references" role="doc-biblioref" onclick="">Fisher et al. 2023</a>)</span></p></li>
 <li class="fragment"><p>🎄 <em>Arabidopisis</em> information comes from TAIR10 <span class="citation" data-cites="yates_ensembl_2022">(<a href="#/references" role="doc-biblioref" onclick="">Yates et al. 2022</a>)</span></p></li>
 <li class="fragment"><p>💉 <em>Leishmania</em> information comes TriTrypDB <span class="citation" data-cites="rogers_chromosome_2011">(<a href="#/references" role="doc-biblioref" onclick="">Rogers et al. 2011</a>)</span></p></li>
 <li class="fragment"><p>🐭 Stem cell information comes from Ensembl <span class="citation" data-cites="birney2004">(<a href="#/references" role="doc-biblioref" onclick="">Birney et al. 2004</a>)</span></p></li>
 </ul>
 </div>
-</section><section id="xenbase" class="slide level2"><h2>🐸 Xenbase</h2>
-
-<img data-src="images/Xenbase-Logo-Medium.png" width="800" class="r-stretch quarto-figure-center"><p class="caption">xenbase logo</p><p><a href="http://www.xenbase.org/">Xenbase</a> is a model organism database that provides genomic, molecular, and developmental biology information about <em>Xenopus laevis</em> and <em>Xenopus tropicalis</em>.</p>
-<div class="fragment">
-<p>It took me some time to find the information you need.</p>
-</div>
-</section><section id="xenbase-1" class="slide level2"><h2>🐸 Xenbase</h2>
-<ul>
-<li class="fragment"><p>I got the information from the <a href="https://www.xenbase.org/xenbase/static-xenbase/ftpDatafiles.jsp">Xenbase information pages</a> under Data Reports | Gene Information</p></li>
-<li class="fragment"><p>This is listed: Xenbase Gene Product Information [readme] <a href="https://download.xenbase.org/xenbase/GenePageReports/xenbase.gpi.gz">gzipped gpi (tab separated)</a></p></li>
-<li class="fragment"><p>Click on the readme link to see the file format and columns</p></li>
-<li class="fragment"><p>I downloaded <a href="https://download.xenbase.org/xenbase/GenePageReports/xenbase.gpi.gz">xenbase.gpi.gz</a>, unzipped it, removed header lines and the <em>Xenopus tropicalis</em> (taxon:8364) entries and saved it as <a href="meta/xenbase_info.xlsx">xenbase_info.xlsx</a></p></li>
-<li class="fragment"><p>In the workshop you will import this file and merge the information with the results file</p></li>
-</ul></section><section id="tair10-through-ensembl" class="slide level2"><h2>🎄 TAIR10 through Ensembl</h2>
+</section><section id="tair10-through-ensembl" class="slide level2"><h2>🎄 TAIR10 through Ensembl</h2>
 <ul>
 <li class="fragment"><p><a href="https://www.ensembl.org/index.html">Ensembl</a> creates, integrates and distributes reference datasets and analysis tools that enable genomics</p></li>
 <li class="fragment"><p><a href="https://grch37.ensembl.org/info/data/biomart/index.html">BioMart</a> <span class="citation" data-cites="smedley2009">(<a href="#/references" role="doc-biblioref" onclick="">Smedley et al. 2009</a>)</span> provides uniform access to these large datasets</p></li>
@@ -469,7 +437,7 @@ Emma Rand
 <ul>
 <li class="fragment"><p>I got the information from <a href="https://tritrypdb.org/tritrypdb/app/">TriTrypDB</a><br>
 which is a functional genomic resource for the Trypanosomatidae and Plasmodidae</p></li>
-<li class="fragment"><p><a href="https://tritrypdb.org/tritrypdb/app/downloads">https://tritrypdb.org/tritrypdb/app/downloads</a> section</p></li>
+<li class="fragment"><p><a href="https://tritrypdb.org/tritrypdb/app/downloads" class="uri">https://tritrypdb.org/tritrypdb/app/downloads</a> section</p></li>
 <li class="fragment"><p>I downloaded the <a href="https://tritrypdb.org/common/downloads/release-68/LmexicanaMHOMGT2001U1103/gff/data/TriTrypDB-68_LmexicanaMHOMGT2001U1103.gff"><em>L. mexicana</em> MHOM/GT/2001/U1103 Full GFF</a> and extracted the gene information and saved it as <a href="meta/leishmania_mex.xlsx">leishmania_mex.xlsx</a></p></li>
 <li class="fragment"><p>In the workshop you will import this file and merge the information with the results file</p></li>
 </ul>
@@ -486,8 +454,7 @@ which is a functional genomic resource for the Trypanosomatidae and Plasmodidae<
 <div style="font-size: 60%;">
 <p>Install <strong><code>BiocManager</code></strong> from CRAN in the the normal way and set the version of Bioconductor packages to install:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
-<span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html">install</a></span><span class="op">(</span>version <span class="op">=</span> <span class="st">"3.19"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Install <strong><code>DESeq2</code></strong> from Bioconductor using BiocManager:</p>
 <div class="cell">
@@ -543,9 +510,6 @@ Durinck, Steffen, Paul T. Spellman, Ewan Birney, and Wolfgang Huber. 2009. <span
 </div>
 <div id="ref-evans2017" class="csl-entry" role="listitem">
 Evans, Ciaran, Johanna Hardin, and Daniel M Stoebel. 2017. <span>“Selecting Between-Sample RNA-Seq Normalization Methods from the Perspective of Their Assumptions.”</span> <em>Briefings in Bioinformatics</em> 19 (5): 776–92. <a href="https://doi.org/10.1093/bib/bbx008">https://doi.org/10.1093/bib/bbx008</a>.
-</div>
-<div id="ref-fisher2023" class="csl-entry" role="listitem">
-Fisher, Malcolm, Christina James-Zorn, Virgilio Ponferrada, Andrew J Bell, Nivitha Sundararaj, Erik Segerdell, Praneet Chaturvedi, et al. 2023. <span>“Xenbase: Key Features and Resources of the Xenopus Model Organism Knowledgebase.”</span> <em>Genetics</em> 224 (1): iyad018. <a href="https://doi.org/10.1093/genetics/iyad018">https://doi.org/10.1093/genetics/iyad018</a>.
 </div>
 <div id="ref-DESeq2" class="csl-entry" role="listitem">
 Love, Michael I., Wolfgang Huber, and Simon Anders. 2014. <span>“Moderated Estimation of Fold Change and Dispersion for RNA-Seq Data with DESeq2.”</span> <em>Genome Biology</em> 15: 550. <a href="https://doi.org/10.1186/s13059-014-0550-8">https://doi.org/10.1186/s13059-014-0550-8</a>.

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.7.33">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Emma Rand">
 <title>Workshop – Data Analysis for Group Project</title>
@@ -88,10 +88,10 @@ div.csl-indent {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-73c2b114ecf4b9b936608c4f29ce1a4b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-66a9628b09ec274f8d4720c8f60ae317.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -305,12 +305,6 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
  <span class="menu-text">Additional 🐭 stem cell labels</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../transcriptomics/semester-2/venn_diagrams.qmd" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Venn diagrams</span></a>
-  </div>
-</li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -347,8 +341,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
   <li>
 <a href="#set-up" id="toc-set-up" class="nav-link" data-scroll-target="#set-up">Set up</a>
   <ul>
-<li><a href="#frog-development" id="toc-frog-development" class="nav-link" data-scroll-target="#frog-development">🐸 Frog development</a></li>
-  <li><a href="#arabidopsis" id="toc-arabidopsis" class="nav-link" data-scroll-target="#arabidopsis">🎄 <em>Arabidopsis</em></a></li>
+<li><a href="#arabidopsis" id="toc-arabidopsis" class="nav-link" data-scroll-target="#arabidopsis">🎄 <em>Arabidopsis</em></a></li>
   <li><a href="#leishmania" id="toc-leishmania" class="nav-link" data-scroll-target="#leishmania">💉 <em>Leishmania</em></a></li>
   <li><a href="#stem-cells" id="toc-stem-cells" class="nav-link" data-scroll-target="#stem-cells">🐭 Stem cells</a></li>
   <li><a href="#everyone" id="toc-everyone" class="nav-link" data-scroll-target="#everyone">Everyone</a></li>
@@ -363,7 +356,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
   <li>
 <a href="#log2-transform-the-normalised-counts" id="toc-log2-transform-the-normalised-counts" class="nav-link" data-scroll-target="#log2-transform-the-normalised-counts">log<sub>2</sub> transform the normalised counts</a>
   <ul>
-<li><a href="#frog-development-arabidopsis-and-leishmania" id="toc-frog-development-arabidopsis-and-leishmania" class="nav-link" data-scroll-target="#frog-development-arabidopsis-and-leishmania">🐸 Frog development, 🎄 <em>Arabidopsis</em> and 💉 <em>Leishmania</em></a></li>
+<li><a href="#arabidopsis-and-leishmania" id="toc-arabidopsis-and-leishmania" class="nav-link" data-scroll-target="#arabidopsis-and-leishmania">🎄 <em>Arabidopsis</em> and 💉 <em>Leishmania</em></a></li>
   <li><a href="#stem-cells-1" id="toc-stem-cells-1" class="nav-link" data-scroll-target="#stem-cells-1">🐭 Stem cells</a></li>
   <li><a href="#everyone-2" id="toc-everyone-2" class="nav-link" data-scroll-target="#everyone-2">Everyone</a></li>
   </ul>
@@ -377,8 +370,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
   <li>
 <a href="#principal-component-analysis-pca" id="toc-principal-component-analysis-pca" class="nav-link" data-scroll-target="#principal-component-analysis-pca">Principal Component Analysis (PCA)</a>
   <ul>
-<li><a href="#frog-development-1" id="toc-frog-development-1" class="nav-link" data-scroll-target="#frog-development-1">🐸 Frog development</a></li>
-  <li><a href="#arabidopsis-1" id="toc-arabidopsis-1" class="nav-link" data-scroll-target="#arabidopsis-1">🎄 <em>Arabidopsis</em></a></li>
+<li><a href="#arabidopsis-1" id="toc-arabidopsis-1" class="nav-link" data-scroll-target="#arabidopsis-1">🎄 <em>Arabidopsis</em></a></li>
   <li><a href="#leishmania-1" id="toc-leishmania-1" class="nav-link" data-scroll-target="#leishmania-1">💉 <em>Leishmania</em></a></li>
   <li><a href="#stem-cells-2" id="toc-stem-cells-2" class="nav-link" data-scroll-target="#stem-cells-2">🐭 Stem cells</a></li>
   </ul>
@@ -386,8 +378,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
   <li>
 <a href="#visualise-all-the-results-with-a-volcano-plot" id="toc-visualise-all-the-results-with-a-volcano-plot" class="nav-link" data-scroll-target="#visualise-all-the-results-with-a-volcano-plot">Visualise all the results with a volcano plot</a>
   <ul>
-<li><a href="#frog-development-2" id="toc-frog-development-2" class="nav-link" data-scroll-target="#frog-development-2">🐸 Frog development</a></li>
-  <li><a href="#arabidopsis-2" id="toc-arabidopsis-2" class="nav-link" data-scroll-target="#arabidopsis-2">🎄 <em>Arabidopsis</em></a></li>
+<li><a href="#arabidopsis-2" id="toc-arabidopsis-2" class="nav-link" data-scroll-target="#arabidopsis-2">🎄 <em>Arabidopsis</em></a></li>
   <li><a href="#leishmania-2" id="toc-leishmania-2" class="nav-link" data-scroll-target="#leishmania-2">💉 <em>Leishmania</em></a></li>
   <li><a href="#stem-cells-3" id="toc-stem-cells-3" class="nav-link" data-scroll-target="#stem-cells-3">🐭 Stem cells</a></li>
   </ul>
@@ -420,7 +411,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">9 July, 2025</p>
+      <p class="date">12 August, 2025</p>
     </div>
   </div>
   
@@ -433,14 +424,12 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <section id="session-overview" class="level2"><h2 class="anchored" data-anchor-id="session-overview">Session overview</h2>
 <p>In the workshop, you will learn how to conduct and plot a Principle Component Analysis (PCA) as well as how to create a nicely formatted Volcano plot. You will also save significant genes to file to make it easier to identify genes of interest. <del>and perform Gene Ontology (GO) term enrichment analysis.</del></p>
 </section></section><section id="set-up" class="level1"><h1>Set up</h1>
-<section id="frog-development" class="level2"><h2 class="anchored" data-anchor-id="frog-development">🐸 Frog development</h2>
-<p>🎬 Open the <code>frogs-88H</code> RStudio Project and the <code>cont-fgf-s30.R</code> script.</p>
-</section><section id="arabidopsis" class="level2"><h2 class="anchored" data-anchor-id="arabidopsis">🎄 <em>Arabidopsis</em>
+<section id="arabidopsis" class="level2"><h2 class="anchored" data-anchor-id="arabidopsis">🎄 <em>Arabidopsis</em>
 </h2>
-<p>🎬 Open the <code>arabi-88H</code> RStudio Project and the <code>wildsuf-wilddef-s30.R</code> script.</p>
+<p>🎬 Open the <code>arabi-88H</code> RStudio Project and the <code>wildsuf-wilddef.R</code> script.</p>
 </section><section id="leishmania" class="level2"><h2 class="anchored" data-anchor-id="leishmania">💉 <em>Leishmania</em>
 </h2>
-<p>🎬 Open the <code>leish-88H</code> RStudio Project and the <code>pro-meta-s30.R</code> script.</p>
+<p>🎬 Open the <code>leish-88H</code> RStudio Project and the <code>pro-meta.R</code> script.</p>
 </section><section id="stem-cells" class="level2"><h2 class="anchored" data-anchor-id="stem-cells">🐭 Stem cells</h2>
 <p>🎬 Open the <code>mice-88H</code> RStudio Project and the <code>hspc-prog.R</code> script.</p>
 </section><section id="everyone" class="level2"><h2 class="anchored" data-anchor-id="everyone">Everyone</h2>
@@ -471,14 +460,6 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <section id="everyone-1" class="level2"><h2 class="anchored" data-anchor-id="everyone-1">Everyone</h2>
 <p>🎬 Import your results data. This should be a file in the <code>results</code> folder called <code>xxxx_results.csv</code> where xxxx indicates the comparison you made.</p>
 <p>🎬 Remind yourself what is in the rows and columns and the structure of the dataframes (perhaps using <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code>)</p>
-<!-- #---THINKING ANSWER--- -->
-<!-- You have data with 17 columns and 10136 rows. The rows are the genes. -->
-<!-- The columns are the normalised counts for for each of the 6  -->
-<!-- samples, the mean of the normalised counts, the xenbase gene id, -->
-<!-- the gene name and some data base references.  -->
-<!-- You also have the results of a statistical comparison between -->
-<!-- the treatments for stage 30: the log fold change, the  -->
-<!-- test statistic, the p-value and the adjusted p-value -->
 <!-- #---THINKING ANSWER--- -->
 <!-- You have data with 13 columns and 26355 rows. The rows are the genes. -->
 <!-- The columns are the normalised counts for for each of the 4 -->
@@ -549,7 +530,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <code>"log2_{.col}"</code> means the columns will have the same name (in the <code>.col</code>) but with the prefix <code>log2_</code> added.</li>
 </ul>
 <p>You can read more about <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> and anonymous functions from my <a href="https://posit-conf-2024.github.io/programming-r/">posit::conf(2024) workshop</a></p>
-<section id="frog-development-arabidopsis-and-leishmania" class="level2"><h2 class="anchored" data-anchor-id="frog-development-arabidopsis-and-leishmania">🐸 Frog development, 🎄 <em>Arabidopsis</em> and 💉 <em>Leishmania</em>
+<section id="arabidopsis-and-leishmania" class="level2"><h2 class="anchored" data-anchor-id="arabidopsis-and-leishmania">🎄 <em>Arabidopsis</em> and 💉 <em>Leishmania</em>
 </h2>
 <p>🎬 Design the code to log<sub>2</sub> transform the normalised counts using the template given</p>
 <p>I recommend viewing the dataframe to see the new columns. Check you have the expected number of columns.</p>
@@ -571,8 +552,6 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <p>🎬 Create a dataframe of the genes significant at the 0.05 level using <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>. You will need to know the name of column with the adjusted <em>p</em>-values.</p>
 <p>❓How many genes are significant at the 0.05 levels?</p>
 <!-- #---THINKING ANSWER--- -->
-<!-- 🐸 frog development  -->
-<!-- 117 genes are significant at the 0.05 level. -->
 <!-- 🎄 Arabidopsis  -->
 <!-- 12 genes are significant at the 0.05 level. -->
 <!-- 💉 leishmania  -->
@@ -596,195 +575,15 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <p>In each case we will use only the samples for the comparison that was made in the PCA. However, it would be informative to do PCA on all the samples you have and that is something you may want to consider in your independent study.</p>
 <p>Now go to PCA for:</p>
 <ul>
-<li><a href="#frog-development-1">🐸 Frog development</a></li>
 <li><a href="#arabidopsis-1">🎄 Arabidopsis</a></li>
 <li><a href="#leishmania-1">💉 Leishmania</a></li>
 <li><a href="#stem-cells-2">🐭 Stem cells</a></li>
 </ul>
-<section id="frog-development-1" class="level2"><h2 class="anchored" data-anchor-id="frog-development-1">🐸 Frog development</h2>
-<p>🎬 Transpose the log<sub>2</sub> transformed normalised counts:</p>
-<div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_log2_trans</span> <span class="op">&lt;-</span> <span class="va">s30_results</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"log2_"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>We have used the <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> function to select all the columns that start with <code>log2_</code>. We then use the <code><a href="https://rdrr.io/r/base/t.html">t()</a></code> function to transpose the dataframe. We then convert the resulting matrix to a dataframe using <code><a href="https://rdrr.io/r/base/data.frame.html">data.frame()</a></code>. If you view that dataframe you’ll see it has default column name which we can fix using <code><a href="https://rdrr.io/r/base/colnames.html">colnames()</a></code> to set the column names to the Xenbase gene ids.</p>
-<p>🎬 Set the column names to the Xenbase gene ids:</p>
-<div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">s30_log2_trans</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">s30_results</span><span class="op">$</span><span class="va">xenbase_gene_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>🎬 Perform PCA on the log<sub>2</sub> transformed normalised counts:</p>
-<div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca</span> <span class="op">&lt;-</span> <span class="va">s30_log2_trans</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/stats/prcomp.html">prcomp</a></span><span class="op">(</span>rank. <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The <code>rank.</code> argument tells <code><a href="https://rdrr.io/r/stats/prcomp.html">prcomp()</a></code> to only calculate the first 4 principal components. This is useful for visualisation as we can only plot in 2 or 3 dimensions. We can see the results of the PCA by viewing the <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> of the <code>pca</code> object.</p>
-<div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">pca</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Importance of first k=4 (out of 6) components:
-                           PC1     PC2     PC3     PC4
-Standard deviation     64.0124 47.3351 38.4706 31.4111
-Proportion of Variance  0.4243  0.2320  0.1532  0.1022
-Cumulative Proportion   0.4243  0.6562  0.8095  0.9116</code></pre>
-</div>
-</div>
-<p>The Proportion of Variance tells us how much of the variance is explained by each component. We can see that the first component explains 0.4243 of the variance, the second 0.2320, and the third 0.1532. Together the first three components explain nearly 81% of the total variance in the data. Plotting PC1 against PC2 will capture about 66% of the variance which is likely very much better than we would get plotting any two genes against each other. To plot the PC1 against PC2 we will need to extract the PC1 and PC2 “scores” from the PCA object and add labels for the samples. Those labels will come from the row names of the transformed data which has the sample ids and from the metadata.</p>
-<p>🎬 Create a vector of the sample ids from the row names. These include the <code>log2</code> prefix which we can removed for labelling:</p>
-<div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">s30_log2_trans</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove</a></span><span class="op">(</span><span class="st">"log2_"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>You might want to check the result.</p>
-<p>Now we will extract the PC1 and PC2 scores from the PCA object and add. Our PCA object is called <code>pca</code> and the scores are in pca$x. We will create a dataframe of the scores and add the sample ids.</p>
-<p>🎬 Create a dataframe of PC1 and PC2 scores and add the sample ids:</p>
-<div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">pca</span><span class="op">$</span><span class="va">x</span>,</span>
-<span>                           <span class="va">sample_id</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>🎬 Merge with the metadata so we can label points by treatment and sibling pair:</p>
-<div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">&lt;-</span> <span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">meta_s30</span>, </span>
-<span>            by <span class="op">=</span> <span class="st">"sample_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Since the metadata contained the sample ids, it was especially important to remove the <code>log2_</code> from the row names so that the join would work.</p>
-<p>The dataframe should look like this:</p>
-<div class="cell">
-<div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 11%">
-<col style="width: 13%">
-<col style="width: 13%">
-<col style="width: 13%">
-<col style="width: 11%">
-<col style="width: 10%">
-<col style="width: 11%">
-<col style="width: 14%">
-</colgroup>
-<thead><tr class="header">
-<th style="text-align: right;">PC1</th>
-<th style="text-align: right;">PC2</th>
-<th style="text-align: right;">PC3</th>
-<th style="text-align: right;">PC4</th>
-<th style="text-align: left;">sample_id</th>
-<th style="text-align: left;">stage</th>
-<th style="text-align: left;">treatment</th>
-<th style="text-align: left;">sibling_rep</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">-76.38391</td>
-<td style="text-align: right;">0.814699</td>
-<td style="text-align: right;">-60.728327</td>
-<td style="text-align: right;">-5.820669</td>
-<td style="text-align: left;">S30_C_1</td>
-<td style="text-align: left;">stage_30</td>
-<td style="text-align: left;">control</td>
-<td style="text-align: left;">one</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">-67.02571</td>
-<td style="text-align: right;">25.668563</td>
-<td style="text-align: right;">51.476835</td>
-<td style="text-align: right;">28.480254</td>
-<td style="text-align: left;">S30_C_2</td>
-<td style="text-align: left;">stage_30</td>
-<td style="text-align: left;">control</td>
-<td style="text-align: left;">two</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">-14.02772</td>
-<td style="text-align: right;">-78.474054</td>
-<td style="text-align: right;">15.282058</td>
-<td style="text-align: right;">-9.213076</td>
-<td style="text-align: left;">S30_C_3</td>
-<td style="text-align: left;">stage_30</td>
-<td style="text-align: left;">control</td>
-<td style="text-align: left;">three</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">47.60726</td>
-<td style="text-align: right;">49.035510</td>
-<td style="text-align: right;">-19.288753</td>
-<td style="text-align: right;">20.928290</td>
-<td style="text-align: left;">S30_F_1</td>
-<td style="text-align: left;">stage_30</td>
-<td style="text-align: left;">FGF</td>
-<td style="text-align: left;">one</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">26.04954</td>
-<td style="text-align: right;">32.914201</td>
-<td style="text-align: right;">20.206072</td>
-<td style="text-align: right;">-55.752818</td>
-<td style="text-align: left;">S30_F_2</td>
-<td style="text-align: left;">stage_30</td>
-<td style="text-align: left;">FGF</td>
-<td style="text-align: left;">two</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">83.78054</td>
-<td style="text-align: right;">-29.958919</td>
-<td style="text-align: right;">-6.947884</td>
-<td style="text-align: right;">21.378020</td>
-<td style="text-align: left;">S30_F_3</td>
-<td style="text-align: left;">stage_30</td>
-<td style="text-align: left;">FGF</td>
-<td style="text-align: left;">three</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>The next task is to plot PC2 against PC1 and colour by sibling pair. This is just a scatterplot so we can use <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code>. We will use colour to indicate the sibling pair and shape to indicate the treatment.</p>
-<p>🎬 Customise the PC2 against PC1 plot:</p>
-<div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">PC1</span>, y <span class="op">=</span> <span class="va">PC2</span>, </span>
-<span>             colour <span class="op">=</span> <span class="va">sibling_rep</span>,</span>
-<span>             shape <span class="op">=</span> <span class="va">treatment</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>There is a good separation between treatments on PCA1. The sibling pairs do not seem to cluster together. You can also try plotting PC3 or PC4.</p>
-<p>I prefer to customise the colours and shapes. I especially like the<br>
-viridis colour scales which provide colour scales that are perceptually uniform in both colour and black-and-white. They are also designed to be perceived by viewers with common forms of colour blindness. See <a href="https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html#introduction">Introduction to viridis</a> for more information.</p>
-<p><code>ggplot</code> provides functions to access the viridis scales. Here I use <code><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_fill_viridis_d()</a></code>. The d stands for discrete. The function <code><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_fill_viridis_c()</a></code> would be used for continuous data. I’ve used the default “viridis” (or “D”) option (do ?scale_fill_viridis_d for all the options) and used the <code>begin</code> and <code>end</code> arguments to control the range of colour - I have set the range to be from 0.15 to 0.95 the avoid the strongest contrast. I have also set the <code>name</code> argument to provide a label for the legend.</p>
-<p>I have used <code><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_shape_manual()</a></code> to set the shapes for the treatments. I have used the values 21 and 19 which are the codes for filled and open circles and filled triangles. I have set the <code>name</code> argument to <code>NULL</code> to remove the label (it’s obvious what that categories are treatments) and the <code>labels</code> argument to improve the legend.</p>
-<p>🎬 Plot PC2 against PC1 and colour by sibling pair and shape by treatment:</p>
-<div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">PC1</span>, y <span class="op">=</span> <span class="va">PC2</span>, </span>
-<span>             colour <span class="op">=</span> <span class="va">sibling_rep</span>,</span>
-<span>             shape <span class="op">=</span> <span class="va">treatment</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_colour_viridis_d</a></span><span class="op">(</span>end <span class="op">=</span> <span class="fl">0.95</span>, begin <span class="op">=</span> <span class="fl">0.15</span>,</span>
-<span>                         name <span class="op">=</span> <span class="st">"Sibling pair"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_shape_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">21</span>, <span class="fl">19</span><span class="op">)</span>,</span>
-<span>                     name <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>                     labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Control"</span>, <span class="st">"FGF-Treated"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Now go to Volcano plots for <a href="#frog-development-2">🐸 Frog development</a></p>
-</section><section id="arabidopsis-1" class="level2"><h2 class="anchored" data-anchor-id="arabidopsis-1">🎄 <em>Arabidopsis</em>
+<section id="arabidopsis-1" class="level2"><h2 class="anchored" data-anchor-id="arabidopsis-1">🎄 <em>Arabidopsis</em>
 </h2>
 <p>🎬 Transpose the log<sub>2</sub> transformed normalised counts:</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wild_log2_trans</span> <span class="op">&lt;-</span> <span class="va">wild_results</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wild_log2_trans</span> <span class="op">&lt;-</span> <span class="va">wild_results</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"log2_"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -792,16 +591,16 @@ viridis colour scales which provide colour scales that are perceptually uniform 
 <p>We have used the <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> function to select all the columns that start with <code>log2_</code>. We then use the <code><a href="https://rdrr.io/r/base/t.html">t()</a></code> function to transpose the dataframe. We then convert the resulting matrix to a dataframe using <code><a href="https://rdrr.io/r/base/data.frame.html">data.frame()</a></code>. If you view that dataframe you’ll see it has default column name which we can fix using <code><a href="https://rdrr.io/r/base/colnames.html">colnames()</a></code> to set the column names to the gene ids.</p>
 <p>🎬 Set the column names to the gene ids:</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">wild_log2_trans</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">wild_results</span><span class="op">$</span><span class="va">gene_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">wild_log2_trans</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">wild_results</span><span class="op">$</span><span class="va">gene_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Perform PCA on the log<sub>2</sub> transformed normalised counts:</p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca</span> <span class="op">&lt;-</span> <span class="va">wild_log2_trans</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca</span> <span class="op">&lt;-</span> <span class="va">wild_log2_trans</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/prcomp.html">prcomp</a></span><span class="op">(</span>rank. <span class="op">=</span> <span class="fl">4</span>, scale <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The <code>scale</code> argument tells <code><a href="https://rdrr.io/r/stats/prcomp.html">prcomp()</a></code> to scale the data before doing the PCA. This is important when the variables are on different scales to stop variables with large values dominating the PCA. The <code>rank.</code> argument tells <code><a href="https://rdrr.io/r/stats/prcomp.html">prcomp()</a></code> to only calculate the first 4 principal components. This is useful for visualisation as we can only plot in 2 or 3 dimensions. We can see the results of the PCA by viewing the <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> of the <code>pca</code> object.</p>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">pca</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">pca</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Importance of components:
                             PC1     PC2     PC3       PC4
@@ -813,18 +612,18 @@ Cumulative Proportion    0.5742  0.8528  1.0000 1.000e+00</code></pre>
 <p>The Proportion of Variance tells us how much of the variance is explained by each component. We can see that the first component explains 0.5742 of the variance, the second 0.2786, and the third 0.1472. Together the first three components explain nearly 100% of the total variance in the data. Plotting PC1 against PC2 will capture about 92% of the variance which is very likely very much better than we would get plotting any two genes against each other. To plot the PC1 against PC2 we will need to extract the PC1 and PC2 “scores” from the PCA object and add labels for the samples. Those labels will come from the row names of the transformed data which has the sample ids and from the metadata.</p>
 <p>🎬 Create a vector of the sample ids from the row names. These include the <code>log2</code> prefix which we can removed for labelling:</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">wild_log2_trans</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove</a></span><span class="op">(</span><span class="st">"log2_"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">wild_log2_trans</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove</a></span><span class="op">(</span><span class="st">"log2_"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You might want to check the result.</p>
 <p>Now we will extract the PC1 and PC2 scores from the PCA object and add. Our PCA object is called <code>pca</code> and the scores are in pca$x. We will create a dataframe of the scores and add the sample ids.</p>
 <p>🎬 Create a dataframe of PC1 and PC2 scores and add the sample ids:</p>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">pca</span><span class="op">$</span><span class="va">x</span>,</span>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">pca</span><span class="op">$</span><span class="va">x</span>,</span>
 <span>                           <span class="va">sample_id</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Merge with the metadata so we can label points by treatment and sibling pair:</p>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">&lt;-</span> <span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">&lt;-</span> <span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">meta_wild</span>, </span>
 <span>            by <span class="op">=</span> <span class="st">"sample_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -895,14 +694,14 @@ Cumulative Proportion    0.5742  0.8528  1.0000 1.000e+00</code></pre>
 <p>The next task is to plot PC2 against PC1 and colour by copper conditions. This is just a scatterplot so we can use <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code>. We will use colour to indicate the copper conditions.</p>
 <p>🎬 Plot PC2 against PC1 and colour by copper conditions:</p>
 <div class="cell">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">PC3</span>, y <span class="op">=</span> <span class="va">PC2</span>, </span>
 <span>             colour <span class="op">=</span> <span class="va">copper</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-47-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -913,7 +712,7 @@ viridis colour scales which provide colour scales that are perceptually uniform 
 <p><code>ggplot</code> provides functions to access the viridis scales. Here I use <code><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_fill_viridis_d()</a></code>. The d stands for discrete. The function <code><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_fill_viridis_c()</a></code> would be used for continuous data. I’ve used the default “viridis” (or “D”) option (do ?scale_fill_viridis_d for all the options) and used the <code>begin</code> and <code>end</code> arguments to control the range of colour - I have set the range to be from 0.15 to 0.95 the avoid the strongest contrast. I have also set the <code>name</code> argument to provide a label for the legend.</p>
 <p>🎬 Customise the PC2 against PC1 plot:</p>
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">PC1</span>, y <span class="op">=</span> <span class="va">PC2</span>, </span>
 <span>             colour <span class="op">=</span> <span class="va">copper</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
@@ -922,7 +721,7 @@ viridis colour scales which provide colour scales that are perceptually uniform 
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-48-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -932,7 +731,7 @@ viridis colour scales which provide colour scales that are perceptually uniform 
 </h2>
 <p>🎬 Transpose the log<sub>2</sub> transformed normalised counts:</p>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta_log2_trans</span> <span class="op">&lt;-</span> <span class="va">pro_meta_results</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta_log2_trans</span> <span class="op">&lt;-</span> <span class="va">pro_meta_results</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"log2_"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -940,16 +739,16 @@ viridis colour scales which provide colour scales that are perceptually uniform 
 <p>We have used the <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> function to select all the columns that start with <code>log2_</code>. We then use the <code><a href="https://rdrr.io/r/base/t.html">t()</a></code> function to transpose the dataframe. We then convert the resulting matrix to a dataframe using <code><a href="https://rdrr.io/r/base/data.frame.html">data.frame()</a></code>. If you view that dataframe you’ll see it has default column name which we can fix using <code><a href="https://rdrr.io/r/base/colnames.html">colnames()</a></code> to set the column names to the gene ids.</p>
 <p>🎬 Set the column names to the gene ids:</p>
 <div class="cell">
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">pro_meta_log2_trans</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">pro_meta_results</span><span class="op">$</span><span class="va">gene_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">pro_meta_log2_trans</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">pro_meta_results</span><span class="op">$</span><span class="va">gene_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Perform PCA on the log<sub>2</sub> transformed normalised counts:</p>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca</span> <span class="op">&lt;-</span> <span class="va">pro_meta_log2_trans</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca</span> <span class="op">&lt;-</span> <span class="va">pro_meta_log2_trans</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/prcomp.html">prcomp</a></span><span class="op">(</span>rank. <span class="op">=</span> <span class="fl">4</span>, scale <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The <code>scale</code> argument tells <code><a href="https://rdrr.io/r/stats/prcomp.html">prcomp()</a></code> to scale the data before doing the PCA. This is important when the variables are on different scales to stop variables with large values dominating the PCA. The <code>rank.</code> argument tells <code><a href="https://rdrr.io/r/stats/prcomp.html">prcomp()</a></code> to only calculate the first 4 principal components. This is useful for visualisation as we can only plot in 2 or 3 dimensions. We can see the results of the PCA by viewing the <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> of the <code>pca</code> object.</p>
 <div class="cell">
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">pca</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">pca</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Importance of first k=4 (out of 6) components:
                            PC1     PC2     PC3      PC4
@@ -961,18 +760,18 @@ Cumulative Proportion   0.5175  0.7263  0.8288  0.91916</code></pre>
 <p>The Proportion of Variance tells us how much of the variance is explained by each component. We can see that the first component explains 0.5175 of the variance, the second 0.2088, and the third 0.1025. Together the first three components explain nearly 92% of the total variance in the data. Plotting PC1 against PC2 will capture about 66% of the variance which is likely very much better than we would get plotting any two genes against each other. To plot the PC1 against PC2 we will need to extract the PC1 and PC2 “scores” from the PCA object and add labels for the samples. Those labels will come from the row names of the transformed data which has the sample ids and from the metadata.</p>
 <p>🎬 Create a vector of the sample ids from the row names. These include the <code>log2</code> prefix which we can removed for labelling:</p>
 <div class="cell">
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">pro_meta_log2_trans</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove</a></span><span class="op">(</span><span class="st">"log2_"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sample_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">pro_meta_log2_trans</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove</a></span><span class="op">(</span><span class="st">"log2_"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You might want to check the result.</p>
 <p>Now we will extract the PC1 and PC2 scores from the PCA object and add. Our PCA object is called <code>pca</code> and the scores are in pca$x. We will create a dataframe of the scores and add the sample ids.</p>
 <p>🎬 Create a dataframe of PC1 and PC2 scores and add the sample ids:</p>
 <div class="cell">
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">pca</span><span class="op">$</span><span class="va">x</span>,</span>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">pca</span><span class="op">$</span><span class="va">x</span>,</span>
 <span>                           <span class="va">sample_id</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Merge with the metadata so we can label points by life cycle stage:</p>
 <div class="cell">
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">&lt;-</span> <span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">&lt;-</span> <span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">meta_pro_meta</span>, </span>
 <span>            by <span class="op">=</span> <span class="st">"sample_id"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1061,14 +860,14 @@ Cumulative Proportion   0.5175  0.7263  0.8288  0.91916</code></pre>
 <p>The next task is to plot PC2 against PC1 and colour by sibling pair. This is just a scatterplot so we can use <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code>. We will use colour to indicate the life cycle stage.</p>
 <p>🎬 Plot PC2 against PC1 and colour by copper conditions:</p>
 <div class="cell">
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">PC1</span>, y <span class="op">=</span> <span class="va">PC2</span>, </span>
 <span>             colour <span class="op">=</span> <span class="va">stage</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-57-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-41-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1079,7 +878,7 @@ viridis colour scales which provide colour scales that are perceptually uniform 
 <p><code>ggplot</code> provides functions to access the viridis scales. Here I use <code><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_fill_viridis_d()</a></code>. The d stands for discrete. The function <code><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_fill_viridis_c()</a></code> would be used for continuous data. I’ve used the default “viridis” (or “D”) option (do ?scale_fill_viridis_d for all the options) and used the <code>begin</code> and <code>end</code> arguments to control the range of colour - I have set the range to be from 0.15 to 0.95 the avoid the strongest contrast. I have also set the <code>name</code> argument to provide a label for the legend.</p>
 <p>🎬 Plot PC2 against PC1 and colour by life stage:</p>
 <div class="cell">
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">PC1</span>, y <span class="op">=</span> <span class="va">PC2</span>, </span>
 <span>             colour <span class="op">=</span> <span class="va">stage</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1088,7 +887,7 @@ viridis colour scales which provide colour scales that are perceptually uniform 
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-58-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-42-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1097,7 +896,7 @@ viridis colour scales which provide colour scales that are perceptually uniform 
 </section><section id="stem-cells-2" class="level2"><h2 class="anchored" data-anchor-id="stem-cells-2">🐭 Stem cells</h2>
 <p>🎬 Transpose the log<sub>2</sub> transformed normalised counts:</p>
 <div class="cell">
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_prog_trans</span> <span class="op">&lt;-</span> <span class="va">hspc_prog_results</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_prog_trans</span> <span class="op">&lt;-</span> <span class="va">hspc_prog_results</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"HSPC_"</span>, <span class="st">"Prog_"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/t.html">t</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1105,16 +904,16 @@ viridis colour scales which provide colour scales that are perceptually uniform 
 <p>We have used the <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> function to select all the columns that start with <code>Prog_</code> or <code>HSPC_</code>. We then use the <code><a href="https://rdrr.io/r/base/t.html">t()</a></code> function to transpose the dataframe. We then convert the resulting matrix to a dataframe using <code><a href="https://rdrr.io/r/base/data.frame.html">data.frame()</a></code>. If you view that dataframe you’ll see it has default column name which we can fix using <code><a href="https://rdrr.io/r/base/colnames.html">colnames()</a></code> to set the column names to the gene ids.</p>
 <p>🎬 Set the column names to the gene ids:</p>
 <div class="cell">
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">hspc_prog_trans</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">hspc_prog_results</span><span class="op">$</span><span class="va">ensembl_gene_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">hspc_prog_trans</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">hspc_prog_results</span><span class="op">$</span><span class="va">ensembl_gene_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Perform PCA on the log<sub>2</sub> transformed normalised counts:</p>
 <div class="cell">
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca</span> <span class="op">&lt;-</span> <span class="va">hspc_prog_trans</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca</span> <span class="op">&lt;-</span> <span class="va">hspc_prog_trans</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/prcomp.html">prcomp</a></span><span class="op">(</span>rank. <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The <code>rank.</code> argument tells <code><a href="https://rdrr.io/r/stats/prcomp.html">prcomp()</a></code> to only calculate the first 8 principal components. This is useful for visualisation as we can only plot in 2 or 3 dimensions. We can see the results of the PCA by viewing the <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> of the <code>pca</code> object.</p>
 <div class="cell">
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">pca</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">pca</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Importance of first k=8 (out of 280) components:
                            PC1     PC2     PC3     PC4     PC5     PC6     PC7
@@ -1131,13 +930,13 @@ Cumulative Proportion  0.24982</code></pre>
 <p>To plot the PC1 against PC2 we will need to extract the PC1 and PC2 “scores” from the PCA object and add labels for the cells. Our PCA object is called <code>pca</code> and the scores are in pca$x. The cells labels will come from the row names of the transformed data.</p>
 <p>🎬 Create a dataframe of the PC1 and PC2 scores (in <code>pca$x</code>) and add the cell ids:</p>
 <div class="cell">
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">pca</span><span class="op">$</span><span class="va">x</span>,</span>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">pca</span><span class="op">$</span><span class="va">x</span>,</span>
 <span>                           cell_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html">row.names</a></span><span class="op">(</span><span class="va">hspc_prog_trans</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>It will be helpful to add a column for the cell type so we can label points. One way to do this is to extract the information in the cell_id column into two columns: one with the complete cell id and one with just the cell type. This extraction is done with <a href="https://en.wikipedia.org/wiki/Regular_expression">Regular Expression</a> magic.</p>
 <p>🎬 Extract the cell type and cell number from the <code>cell_id</code> column (keeping the <code>cell_id</code> column):</p>
 <div class="cell">
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">&lt;-</span> <span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">&lt;-</span> <span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/extract.html">extract</a></span><span class="op">(</span><span class="va">cell_id</span>, </span>
 <span>          remove <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>          <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cell_type"</span>, <span class="st">"cell_number"</span><span class="op">)</span>,</span>
@@ -1289,14 +1088,14 @@ Cumulative Proportion  0.24982</code></pre>
 <p>The next task is to plot PC2 against PC1 and colour by cell type. This is just a scatterplot so we can use <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code>. We will use colour to indicate the cell type.</p>
 <p>🎬 Plot PC2 against PC1 and colour by cell type:</p>
 <div class="cell">
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">PC1</span>, y <span class="op">=</span> <span class="va">PC2</span>, </span>
 <span>             colour <span class="op">=</span> <span class="va">cell_type</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-66-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-50-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1306,7 +1105,7 @@ Cumulative Proportion  0.24982</code></pre>
 <p><code>ggplot</code> provides functions to access the viridis scales. Here I use <code><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_fill_viridis_d()</a></code>. The d stands for discrete used because cell type is a discrete variable. The function <code><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_fill_viridis_c()</a></code> would be used for continuous data. I’ve used the default “viridis” (or “D”) option (do ?scale_fill_viridis_d for all the options) and used the <code>begin</code> and <code>end</code> arguments to control the range of colour - I have set the range to be from 0.15 to 0.95 the avoid the strongest contrast. I have also set the <code>name</code> argument to NULL because that the legend refers to cell types is obvious.</p>
 <p>🎬 Plot PC2 against PC1 and colour by cell type:</p>
 <div class="cell">
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pca_labelled</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">PC1</span>, y <span class="op">=</span> <span class="va">PC2</span>, </span>
 <span>             colour <span class="op">=</span> <span class="va">cell_type</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1315,7 +1114,7 @@ Cumulative Proportion  0.24982</code></pre>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-67-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-51-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1323,174 +1122,17 @@ Cumulative Proportion  0.24982</code></pre>
 <p>Now go to Volcano plots for <a href="#stem-cells-3">🐭 Stem cells</a></p>
 </section></section><section id="visualise-all-the-results-with-a-volcano-plot" class="level1"><h1>Visualise all the results with a volcano plot</h1>
 <p>A volcano plot is a scatterplot that shows statistical significance (p-value) versus magnitude of change (fold change). As the <a href="study_before_workshop.html">independent study</a> explained, we plot -log<sub>10</sub>(adjusted <em>p</em>-value) on the <em>y</em>-axis so that the most significant genes are uppermost.</p>
-<section id="frog-development-2" class="level2"><h2 class="anchored" data-anchor-id="frog-development-2">🐸 Frog development</h2>
-<p>We will add a column to the results dataframe that contains the -log<sub>10</sub>(padj). You could perform this transformation within the plot command without adding a column to the data if you prefer.</p>
-<p>🎬 Add a column to the results dataframe that contains the -log<sub>10</sub>(padj):</p>
-<div class="cell">
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_results</span> <span class="op">&lt;-</span> <span class="va">s30_results</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>log10_padj <span class="op">=</span> <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">padj</span><span class="op">)</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>🎬 Create a volcano plot of the results:</p>
-<div class="cell">
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_results</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">log2FoldChange</span>, </span>
-<span>             y <span class="op">=</span> <span class="va">log10_padj</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="fl">0.05</span><span class="op">)</span>, </span>
-<span>             linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">2</span>, </span>
-<span>             linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="op">-</span><span class="fl">2</span>, </span>
-<span>             linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-69-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Our dashed lines are at -log<sub>10</sub>(0.05) and log<sub>2</sub>(2) and log<sub>2</sub>(-2) to make more clear which genes (points) are significantly different between the control and the FGF-treated samples and have a fold change of at least 2.</p>
-<p>In most cases, people colour the points to show that the quadrants. I like to add columns to the dataframe to indicate if the gene is significant and if the fold change is large and use those variables in the plot.</p>
-<p>🎬 Add columns to the results dataframe to indicate if the gene is significant and if the fold change is large:</p>
-<div class="cell">
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_results</span> <span class="op">&lt;-</span> <span class="va">s30_results</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>sig <span class="op">=</span> <span class="va">padj</span> <span class="op">&lt;=</span> <span class="fl">0.05</span>,</span>
-<span>         bigfc <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">log2FoldChange</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fl">2</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The use of <code><a href="https://rdrr.io/r/base/MathFun.html">abs()</a></code> (absolute) means genes with a fold change of at least 2 in either direction will be considered to have a large fold change.</p>
-<p>Now we can colour the points by these new columns. I use <code><a href="https://rdrr.io/r/base/interaction.html">interaction()</a></code> to create four categories:</p>
-<ul>
-<li>not significant and not large fold change (FF)</li>
-<li>significant and not large fold change (TF)</li>
-<li>not significant and large fold (FT)</li>
-<li>significant and large fold change (TT)</li>
-</ul>
-<p>And I use <code><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_colour_manual()</a></code> to set the colours for these categories.</p>
-<p>🎬 Create a volcano plot of the results with the points coloured by significance and fold change:</p>
-<div class="cell">
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_results</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">log2FoldChange</span>, </span>
-<span>             y <span class="op">=</span> <span class="va">log10_padj</span>, </span>
-<span>             colour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/interaction.html">interaction</a></span><span class="op">(</span><span class="va">sig</span>, <span class="va">bigfc</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="fl">0.05</span><span class="op">)</span>, </span>
-<span>             linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">2</span>, </span>
-<span>             linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="op">-</span><span class="fl">2</span>, </span>
-<span>             linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_colour_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"gray"</span>, </span>
-<span>                                 <span class="st">"pink"</span>,</span>
-<span>                                 <span class="st">"gray30"</span>,</span>
-<span>                                 <span class="st">"deeppink"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-71-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>For exploring the data, I like add labels to all the significant genes with a large fold change so I can very quickly identity them. The <code>ggrepel</code> package has a function <code><a href="https://ggrepel.slowkow.com/reference/geom_text_repel.html">geom_text_repel()</a></code> that is useful for adding labels so that they don’t overlap.</p>
-<p>🎬 Load the package:</p>
-<div class="cell">
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggrepel.slowkow.com/">ggrepel</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>🎬 Add labels to the significant genes with a large fold change:</p>
-<div class="cell">
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_results</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">log2FoldChange</span>, </span>
-<span>             y <span class="op">=</span> <span class="va">log10_padj</span>, </span>
-<span>             colour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/interaction.html">interaction</a></span><span class="op">(</span><span class="va">sig</span>, <span class="va">bigfc</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="fl">0.05</span><span class="op">)</span>, </span>
-<span>             linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">2</span>, </span>
-<span>             linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="op">-</span><span class="fl">2</span>, </span>
-<span>             linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_colour_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"gray"</span>, </span>
-<span>                                 <span class="st">"pink"</span>,</span>
-<span>                                 <span class="st">"gray30"</span>,</span>
-<span>                                 <span class="st">"deeppink"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggrepel.slowkow.com/reference/geom_text_repel.html">geom_text_repel</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">s30_results</span> <span class="op">|&gt;</span> </span>
-<span>                    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">bigfc</span> <span class="op">==</span> <span class="cn">TRUE</span>, <span class="va">sig</span> <span class="op">==</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>                  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">xenbase_gene_symbol</span><span class="op">)</span>,</span>
-<span>                  size <span class="op">=</span> <span class="fl">3</span>,</span>
-<span>                  max.overlaps <span class="op">=</span> <span class="fl">50</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-73-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Notice that I have used <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> label only the genes that are both significant and have a large fold change. In systems you are familiar with, this labelling is very informative and can help you quickly identify common themes. Key to interpreting the volcano plot is to remember that positive fold changes means the gene is up-regulated in the FGF-treated samples and negative fold changes means the gene is down-regulated (i.e., higher in the control). This was determined by the order of the treatments in the <a href="../week-4/workshop.html#differential-expression-analysis-1">contrast used in the DESeq2 analysis</a></p>
-<p>If you do forget which way round you did the comparison, you can always examine the results dataframe to see which of the treatments seem to be higher for the positive fold changes.</p>
-<p>Please note that Betsy doesn’t like graphs like this in the report!</p>
-<p>When you have a gene of interest, you may wish to label it, and only it, on the plot.<br>
-This is done in the same way except that you filter the data to only include the gene of interest. I have used and then use <code><a href="https://ggrepel.slowkow.com/reference/geom_text_repel.html">geom_label_repel()</a></code> rather than <code><a href="https://ggrepel.slowkow.com/reference/geom_text_repel.html">geom_text_repel()</a></code> to put the label in a box and nudged it’s position to get a line connecting the point and the label. I have also increased the size of the point.</p>
-<p>🎬 Add a label to one gene of interest (hoxb9.S) and :</p>
-<div class="cell">
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">s30_results</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">log2FoldChange</span>, </span>
-<span>             y <span class="op">=</span> <span class="va">log10_padj</span>, </span>
-<span>             colour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/interaction.html">interaction</a></span><span class="op">(</span><span class="va">sig</span>, <span class="va">bigfc</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="fl">0.05</span><span class="op">)</span>, </span>
-<span>             linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">2</span>, </span>
-<span>             linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="op">-</span><span class="fl">2</span>, </span>
-<span>             linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_colour_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"gray"</span>, </span>
-<span>                                 <span class="st">"pink"</span>,</span>
-<span>                                 <span class="st">"gray30"</span>,</span>
-<span>                                 <span class="st">"deeppink"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggrepel.slowkow.com/reference/geom_text_repel.html">geom_label_repel</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">s30_results</span> <span class="op">|&gt;</span> </span>
-<span>                    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">xenbase_gene_symbol</span> <span class="op">==</span> <span class="st">"hoxb9.S"</span><span class="op">)</span>,</span>
-<span>                  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">xenbase_gene_symbol</span><span class="op">)</span>,</span>
-<span>                  size <span class="op">=</span> <span class="fl">4</span>,</span>
-<span>                  nudge_x <span class="op">=</span> <span class="fl">.5</span>,</span>
-<span>                  nudge_y <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">s30_results</span> <span class="op">|&gt;</span> </span>
-<span>                    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">xenbase_gene_symbol</span> <span class="op">==</span> <span class="st">"hoxb9.S"</span><span class="op">)</span>,</span>
-<span>                size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-74-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Should you want to label more than one gene, you will need to use (for example): <code>filter(xenbase_gene_symbol %in% c("hoxb9.S", "fzd7.S"))</code></p>
-<p>Now go to <a href="#save-your-plots">Save your plots</a></p>
-</section><section id="arabidopsis-2" class="level2"><h2 class="anchored" data-anchor-id="arabidopsis-2">🎄 <em>Arabidopsis</em>
+<section id="arabidopsis-2" class="level2"><h2 class="anchored" data-anchor-id="arabidopsis-2">🎄 <em>Arabidopsis</em>
 </h2>
 <p>We will add a column to the results dataframe that contains the -log<sub>10</sub>(padj). You could perform this transformation within the plot command without adding a column to the data if you prefer.</p>
 <p>🎬 Add a column to the results dataframe that contains the -log<sub>10</sub>(padj):</p>
 <div class="cell">
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wild_results</span> <span class="op">&lt;-</span> <span class="va">wild_results</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wild_results</span> <span class="op">&lt;-</span> <span class="va">wild_results</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>log10_padj <span class="op">=</span> <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">padj</span><span class="op">)</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Create a volcano plot of the results:</p>
 <div class="cell">
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wild_results</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wild_results</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">log2FoldChange</span>, </span>
 <span>             y <span class="op">=</span> <span class="va">log10_padj</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1506,7 +1148,7 @@ This is done in the same way except that you filter the data to only include the
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-76-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-53-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1515,7 +1157,7 @@ This is done in the same way except that you filter the data to only include the
 <p>In most cases, people colour the points to show that the quadrants. I like to add columns to the dataframe to indicate if the gene is significant and if the fold change is large and use those variables in the plot.</p>
 <p>🎬 Add columns to the results dataframe to indicate if the gene is significant and if the fold change is large:</p>
 <div class="cell">
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wild_results</span> <span class="op">&lt;-</span> <span class="va">wild_results</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wild_results</span> <span class="op">&lt;-</span> <span class="va">wild_results</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>sig <span class="op">=</span> <span class="va">padj</span> <span class="op">&lt;=</span> <span class="fl">0.05</span>,</span>
 <span>         bigfc <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">log2FoldChange</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fl">2</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1531,7 +1173,7 @@ This is done in the same way except that you filter the data to only include the
 <p>NOTE: there are no “significant and not large fold change (TF)” in this case.This means we do not need four colours. I have put the “pink” colour in the code but commented it out.</p>
 <p>🎬 Create a volcano plot of the results with the points coloured by significance and fold change:</p>
 <div class="cell">
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wild_results</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wild_results</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">log2FoldChange</span>, </span>
 <span>             y <span class="op">=</span> <span class="va">log10_padj</span>, </span>
 <span>             colour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/interaction.html">interaction</a></span><span class="op">(</span><span class="va">sig</span>, <span class="va">bigfc</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1552,7 +1194,7 @@ This is done in the same way except that you filter the data to only include the
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-78-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-55-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1560,11 +1202,11 @@ This is done in the same way except that you filter the data to only include the
 <p>For exploring the data, I like add labels to all the significant genes with a large fold change so I can very quickly identity them. The <code>ggrepel</code> package has a function <code><a href="https://ggrepel.slowkow.com/reference/geom_text_repel.html">geom_text_repel()</a></code> that is useful for adding labels so that they don’t overlap.</p>
 <p>🎬 Load the package:</p>
 <div class="cell">
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggrepel.slowkow.com/">ggrepel</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggrepel.slowkow.com/">ggrepel</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Add labels to the significant genes with a large fold change:</p>
 <div class="cell">
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wild_results</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wild_results</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">log2FoldChange</span>, </span>
 <span>             y <span class="op">=</span> <span class="va">log10_padj</span>, </span>
 <span>             colour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/interaction.html">interaction</a></span><span class="op">(</span><span class="va">sig</span>, <span class="va">bigfc</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1588,11 +1230,8 @@ This is done in the same way except that you filter the data to only include the
 <span>                  max.overlaps <span class="op">=</span> <span class="fl">50</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-80-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in geom_text_repel(data = filter(wild_results, bigfc == TRUE, sig == : could not find function "geom_text_repel"</code></pre>
 </div>
 </div>
 <p>Notice that I have used <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> label only the genes that are both significant and have a large fold change. In systems you are familiar with, this labelling is very informative and can help you quickly identify common themes. Key to interpreting the volcano plot is to remember that positive fold changes means the gene is up-regulated in the sufficient conditions and negative fold changes means the gene is down-regulated (i.e., higher in the deficient). This was determined by the order of the treatments in the <a href="../week-4/workshop.html#differential-expression-analysis-2">contrast used in the DESeq2 analysis</a></p>
@@ -1600,7 +1239,7 @@ This is done in the same way except that you filter the data to only include the
 <p>When you have a gene of interest, you may wish to label it, and only it, on the plot. This is done in the same way except that you filter the data to only include the gene of interest. I have used and then use <code><a href="https://ggrepel.slowkow.com/reference/geom_text_repel.html">geom_label_repel()</a></code> rather than <code><a href="https://ggrepel.slowkow.com/reference/geom_text_repel.html">geom_text_repel()</a></code> to put the label in a box and nudged it’s position to get a line connecting the point and the label. I have also increased the size of the point.</p>
 <p>🎬 Add a label to one gene of interest (hoxb9.S) and :</p>
 <div class="cell">
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wild_results</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wild_results</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">log2FoldChange</span>, </span>
 <span>             y <span class="op">=</span> <span class="va">log10_padj</span>, </span>
 <span>             colour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/interaction.html">interaction</a></span><span class="op">(</span><span class="va">sig</span>, <span class="va">bigfc</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1628,11 +1267,8 @@ This is done in the same way except that you filter the data to only include the
 <span>                size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-81-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in geom_label_repel(data = filter(wild_results, external_gene_name == : could not find function "geom_label_repel"</code></pre>
 </div>
 </div>
 <p>Should you want to label more than one gene, you will need to use (for example): <code>filter(external_gene_name %in% c("FRO4", "FRO5"))</code></p>
@@ -1642,12 +1278,12 @@ This is done in the same way except that you filter the data to only include the
 <p>We will add a column to the results dataframe that contains the -log<sub>10</sub>(padj). You could perform this transformation within the plot command without adding a column to the data if you prefer.</p>
 <p>🎬 Add a column to the results dataframe that contains the -log<sub>10</sub>(padj):</p>
 <div class="cell">
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta_results</span> <span class="op">&lt;-</span> <span class="va">pro_meta_results</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta_results</span> <span class="op">&lt;-</span> <span class="va">pro_meta_results</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>log10_padj <span class="op">=</span> <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">padj</span><span class="op">)</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Create a volcano plot of the results:</p>
 <div class="cell">
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta_results</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta_results</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">log2FoldChange</span>, </span>
 <span>             y <span class="op">=</span> <span class="va">log10_padj</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1663,7 +1299,7 @@ This is done in the same way except that you filter the data to only include the
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-83-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-60-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1672,7 +1308,7 @@ This is done in the same way except that you filter the data to only include the
 <p>In most cases, people colour the points to show that the quadrants. I like to add columns to the dataframe to indicate if the gene is significant and if the fold change is large and use those variables in the plot.</p>
 <p>🎬 Add columns to the results dataframe to indicate if the gene is significant and if the fold change is large:</p>
 <div class="cell">
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta_results</span> <span class="op">&lt;-</span> <span class="va">pro_meta_results</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta_results</span> <span class="op">&lt;-</span> <span class="va">pro_meta_results</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>sig <span class="op">=</span> <span class="va">padj</span> <span class="op">&lt;=</span> <span class="fl">0.05</span>,</span>
 <span>         bigfc <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">log2FoldChange</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fl">2</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1687,7 +1323,7 @@ This is done in the same way except that you filter the data to only include the
 <p>And I use <code><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_colour_manual()</a></code> to set the colours for these categories.</p>
 <p>🎬 Create a volcano plot of the results with the points coloured by significance and fold change:</p>
 <div class="cell">
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta_results</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta_results</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">log2FoldChange</span>, </span>
 <span>             y <span class="op">=</span> <span class="va">log10_padj</span>, </span>
 <span>             colour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/interaction.html">interaction</a></span><span class="op">(</span><span class="va">sig</span>, <span class="va">bigfc</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1708,7 +1344,7 @@ This is done in the same way except that you filter the data to only include the
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-85-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-62-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1716,11 +1352,11 @@ This is done in the same way except that you filter the data to only include the
 <p>For exploring the data, I like add labels to all the significant genes with a large fold change so I can very quickly identity them. The <code>ggrepel</code> package has a function <code><a href="https://ggrepel.slowkow.com/reference/geom_text_repel.html">geom_text_repel()</a></code> that is useful for adding labels so that they don’t overlap.</p>
 <p>🎬 Load the package:</p>
 <div class="cell">
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggrepel.slowkow.com/">ggrepel</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggrepel.slowkow.com/">ggrepel</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Add labels to the significant genes with a large fold change:</p>
 <div class="cell">
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta_results</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta_results</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">log2FoldChange</span>, </span>
 <span>             y <span class="op">=</span> <span class="va">log10_padj</span>, </span>
 <span>             colour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/interaction.html">interaction</a></span><span class="op">(</span><span class="va">sig</span>, <span class="va">bigfc</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1744,17 +1380,14 @@ This is done in the same way except that you filter the data to only include the
 <span>                  max.overlaps <span class="op">=</span> <span class="fl">50</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-87-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in geom_text_repel(data = filter(pro_meta_results, bigfc == TRUE, : could not find function "geom_text_repel"</code></pre>
 </div>
 </div>
 <p>Notice that I have used <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> label only the genes that are both significant and have a large fold change. In systems you are familiar with, this labelling is very informative and can help you quickly identify common themes. However, in this case, we do not have good annotation for the genes. We can label only with the gene id or the description. Many of the descriptions are</p>
 <p>🎬 Add labels to the significant genes with a large fold change only where description doesn’t contain “hypothetical” or “unspecified :</p>
 <div class="cell">
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta_results</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta_results</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">log2FoldChange</span>, </span>
 <span>             y <span class="op">=</span> <span class="va">log10_padj</span>, </span>
 <span>             colour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/interaction.html">interaction</a></span><span class="op">(</span><span class="va">sig</span>, <span class="va">bigfc</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1779,11 +1412,8 @@ This is done in the same way except that you filter the data to only include the
 <span>                  max.overlaps <span class="op">=</span> <span class="fl">50</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-88-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in geom_text_repel(data = filter(pro_meta_results, bigfc == TRUE, : could not find function "geom_text_repel"</code></pre>
 </div>
 </div>
 <p>Key to interpreting the volcano plot is to remember that positive fold changes means the gene is up-regulated in the procyclic stage and negative fold changes means the gene is down-regulated (i.e., higher in the metacyclic). This was determined by the order of the treatments in the <a href="../week-4/workshop.html#differential-expression-analysis-3">contrast used in the DESeq2 analysis</a></p>
@@ -1791,7 +1421,7 @@ This is done in the same way except that you filter the data to only include the
 <p>When you have a gene of interest, you may wish to label it, and only it, on the plot. This is done in the same way except that you filter the data to only include the gene of interest. I have used and then use <code><a href="https://ggrepel.slowkow.com/reference/geom_text_repel.html">geom_label_repel()</a></code> rather than <code><a href="https://ggrepel.slowkow.com/reference/geom_text_repel.html">geom_text_repel()</a></code> to put the label in a box and nudged it’s position to get a line connecting the point and the label. I have also increased the size of the point.</p>
 <p>🎬 Add a label to one gene of interest (elongation factor 1-alpha) and :</p>
 <div class="cell">
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta_results</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pro_meta_results</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">log2FoldChange</span>, </span>
 <span>             y <span class="op">=</span> <span class="va">log10_padj</span>, </span>
 <span>             colour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/interaction.html">interaction</a></span><span class="op">(</span><span class="va">sig</span>, <span class="va">bigfc</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1819,11 +1449,8 @@ This is done in the same way except that you filter the data to only include the
 <span>                size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-89-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in geom_label_repel(data = filter(pro_meta_results, description == : could not find function "geom_label_repel"</code></pre>
 </div>
 </div>
 <p>Should you want to label more than one gene, you will need to use (for example): <code>filter(description %in% c("elongation factor 1-alpha", "ADP/ATP translocase 1 putative"))</code></p>
@@ -1832,12 +1459,12 @@ This is done in the same way except that you filter the data to only include the
 <p>We will add a column to the results dataframe that contains the -log<sub>10</sub>(FDR). You could perform this transformation within the plot command without adding a column to the data if you prefer.</p>
 <p>🎬 Add a column to the results dataframe that contains the -log<sub>10</sub>(FDR):</p>
 <div class="cell">
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_prog_results</span> <span class="op">&lt;-</span> <span class="va">hspc_prog_results</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_prog_results</span> <span class="op">&lt;-</span> <span class="va">hspc_prog_results</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>log10_FDR <span class="op">=</span> <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log10</a></span><span class="op">(</span><span class="va">FDR</span><span class="op">)</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Create a volcano plot of the results:</p>
 <div class="cell">
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_prog_results</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_prog_results</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">summary.logFC</span>, </span>
 <span>             y <span class="op">=</span> <span class="va">log10_FDR</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1853,7 +1480,7 @@ This is done in the same way except that you filter the data to only include the
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-91-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-68-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1862,7 +1489,7 @@ This is done in the same way except that you filter the data to only include the
 <p>In most cases, people colour the points to show that the quadrants. I like to add columns to the dataframe to indicate if the gene is significant and if the fold change is large and use those variables in the plot.</p>
 <p>🎬 Add columns to the results dataframe to indicate if the gene is significant and if the fold change is large:</p>
 <div class="cell">
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_prog_results</span> <span class="op">&lt;-</span> <span class="va">hspc_prog_results</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_prog_results</span> <span class="op">&lt;-</span> <span class="va">hspc_prog_results</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>sig <span class="op">=</span> <span class="va">FDR</span> <span class="op">&lt;=</span> <span class="fl">0.05</span>,</span>
 <span>         bigfc <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">summary.logFC</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fl">2</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1878,7 +1505,7 @@ This is done in the same way except that you filter the data to only include the
 <p>NOTE: there are no “not significant and large fold change (FT)” in this case. This means we do not need four colours. I have put the “gray30” colour in the code but commented it out.</p>
 <p>🎬 Create a volcano plot of the results with the points coloured by significance and fold change:</p>
 <div class="cell">
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_prog_results</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_prog_results</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">summary.logFC</span>, </span>
 <span>             y <span class="op">=</span> <span class="va">log10_FDR</span>, </span>
 <span>             colour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/interaction.html">interaction</a></span><span class="op">(</span><span class="va">sig</span>, <span class="va">bigfc</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1899,7 +1526,7 @@ This is done in the same way except that you filter the data to only include the
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-93-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-70-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1907,11 +1534,11 @@ This is done in the same way except that you filter the data to only include the
 <p>For exploring the data, I like add labels to all the significant genes with a large fold change so I can very quickly identity them. The <code>ggrepel</code> package has a function <code><a href="https://ggrepel.slowkow.com/reference/geom_text_repel.html">geom_text_repel()</a></code> that is useful for adding labels so that they don’t overlap.</p>
 <p>🎬 Load the package:</p>
 <div class="cell">
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggrepel.slowkow.com/">ggrepel</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggrepel.slowkow.com/">ggrepel</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>🎬 Add labels to the significant genes with a large fold change:</p>
 <div class="cell">
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_prog_results</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_prog_results</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">summary.logFC</span>, </span>
 <span>             y <span class="op">=</span> <span class="va">log10_FDR</span>, </span>
 <span>             colour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/interaction.html">interaction</a></span><span class="op">(</span><span class="va">sig</span>, <span class="va">bigfc</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1937,7 +1564,7 @@ This is done in the same way except that you filter the data to only include the
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-95-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-72-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1947,7 +1574,7 @@ This is done in the same way except that you filter the data to only include the
 <p>When you have a gene of interest, you may wish to label it on the plot. This is done in the same way except that you filter the data to only include the gene of interest. I have used and then use <code><a href="https://ggrepel.slowkow.com/reference/geom_text_repel.html">geom_label_repel()</a></code> rather than <code><a href="https://ggrepel.slowkow.com/reference/geom_text_repel.html">geom_text_repel()</a></code> to put the label in a box and nudged it’s position to get a line connecting the point and the label. I have also increased the size of the point.</p>
 <p>🎬 Add a label to one gene of interest (Procr) and :</p>
 <div class="cell">
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_prog_results</span> <span class="op">|&gt;</span> </span>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">hspc_prog_results</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">summary.logFC</span>, </span>
 <span>             y <span class="op">=</span> <span class="va">log10_FDR</span>, </span>
 <span>             colour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/interaction.html">interaction</a></span><span class="op">(</span><span class="va">sig</span>, <span class="va">bigfc</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -1977,7 +1604,7 @@ This is done in the same way except that you filter the data to only include the
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-96-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="workshop_files/figure-html/unnamed-chunk-73-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1987,7 +1614,7 @@ This is done in the same way except that you filter the data to only include the
 </section></section><section id="save-your-plots" class="level1"><h1>Save your plots</h1>
 <p>Once you have finished designing your plots, you should save them using <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code>. You will want to assign the plot to a variable and use code similar to this:</p>
 <div class="cell">
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="st">"figures/my-informative-file-name.png"</span>,</span>
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="st">"figures/my-informative-file-name.png"</span>,</span>
 <span>       plot <span class="op">=</span> <span class="va">vol</span>,</span>
 <span>       height <span class="op">=</span> <span class="fl">4.5</span>, </span>
 <span>       width <span class="op">=</span> <span class="fl">4.5</span>,</span>
