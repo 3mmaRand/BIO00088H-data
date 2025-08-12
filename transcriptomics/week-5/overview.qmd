@@ -5,10 +5,19 @@ toc: true
 toc-location: right
 ---
 
-This week we cover how to visualise the results of your differential expression analysis. The independent study will allow you to check you have what you should have following the [Transcriptomics 2: Statistical Analysis workshop](../week-4/workshop.html) and [Consolidation study](../week-4/study_after_workshop.html). It will also summarise the the methods and plots we will go through in the workshop. It will also explain
-how to write the methods for the analyses with have conducted. In the workshop, we will learn how to carry out and plot a Principle Component Analysis (PCA) as well as how to create a nicely formatted Volcano plot. 
+This week we cover how to visualise the results of your differential
+expression analysis. The independent study will allow you to check you
+have what you should have following the [Transcriptomics 2: Statistical
+Analysis workshop](../week-4/workshop.html) and [Consolidation
+study](../week-4/study_after_workshop.html). It will also summarise the
+the methods and plots we will go through in the workshop. It will also
+explain how to write the methods for the analyses with have conducted.
+In the workshop, we will learn how to carry out and plot a Principle
+Component Analysis (PCA) as well as how to create a nicely formatted
+Volcano plot.
 
-The plots you have by the end of this week will be suitable for including in your report.
+The plots you have by the end of this week will be suitable for
+including in your report.
 
 We suggest you sit together with your group in the workshop.
 
@@ -16,23 +25,24 @@ We suggest you sit together with your group in the workshop.
 
 The successful student will be able to:
 
--   verify they have the required RStudio Project set up and the data and code files from the previous Workshop and Consolidation study
+-   verify they have the required RStudio Project set up and the data
+    and code files from the previous Workshop and Consolidation study
 -   perform a PCA and understand how to interpret them
 -   create a volcano plot and understand how to interpret them
 -   write the methods for the analyses they have conducted
-  
 
 ### Instructions
 
 1.  [Prepare](study_before_workshop.qmd)
 
     i.  📖 Read what you should have so far
-    ii.  📖 Read about concepts in PCA and volcano plots
-    iii. 📖 Read about how to write the methods for the analyses you have conducted
+    ii. 📖 Read about concepts in PCA and volcano plots
+    iii. 📖 Read about how to write the methods for the analyses you
+         have conducted
 
 2.  [Workshop](workshop.qmd)
 
-    i. 💻 Perform and plot a PCA
+    i.  💻 Perform and plot a PCA
 
     ii. 💻 Visualise all the results with a volcano plot
 
@@ -40,6 +50,7 @@ The successful student will be able to:
 
 3.  [Consolidate](study_after_workshop.qmd)
 
-    i.  💻 Use the work you completed in the workshop as a template to apply to a new case.
+    i.  💻 Use the work you completed in the workshop as a template to
+        apply to a new case.
 
 ### References

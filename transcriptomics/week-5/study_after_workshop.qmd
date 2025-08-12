@@ -9,40 +9,31 @@ format:
     code-summary: "Answer - don't look until you have tried!"
 ---
 
-
 You need only do the section for one of the examples.
-
 
 You need only do the section for your own project data
 
-🐸 Frog development
-
-🎬 Open your `frogs-88H` Project and the `cont-fgf-s20.R` script you began 
-in the Consolidation study of Transcriptomics 1 and continued to work on in 
-Transcriptomics 2. Use the code you used in the workshop 
-(in `cont-fgf-s30.R`) as a template to visualise the s20 results. 
-
-
 🎄 *Arabidopisis*
 
-🎬 Open your `arab-88H` RStudio Project and the `suff-def-spl7.R` script you began 
-in the Consolidation study of Transcriptomics 1 and continued to work on in 
-Transcriptomics 2. Use the code you used in the workshop (in `suff-def-wild.R`) 
-as a template to visualise the results for the comparison between the 
-copper sufficient and deficient conditions in *spl7*.  
+🎬 Open your `arab-88H` RStudio Project and the `suff-def-spl7.R` script
+you began in the Consolidation study of Transcriptomics 1 and continued
+to work on in Transcriptomics 2. Use the code you used in the workshop
+(in `suff-def-wild.R`) as a template to visualise the results for the
+comparison between the copper sufficient and deficient conditions in
+*spl7*.
 
 💉 *Leishmania*
 
-🎬 Open your `leish-88H` RStudio Project and the `pro_ama.R` script you began 
-in the Consolidation study of Transcriptomics 1 and continued to work on in 
-Transcriptomics 2. Use the code you used in the workshop (in `pro_meta.R`) 
-as a template to visualise the results for the comparison between the 
-procyclic promastigote and amastigote stages. 
+🎬 Open your `leish-88H` RStudio Project and the `pro_ama.R` script you
+began in the Consolidation study of Transcriptomics 1 and continued to
+work on in Transcriptomics 2. Use the code you used in the workshop (in
+`pro_meta.R`) as a template to visualise the results for the comparison
+between the procyclic promastigote and amastigote stages.
 
 🐭 Stem cells
 
-🎬 Open your `mice-88H` RStudio Project and the `hspc-lthsc.R` script you began 
-in the Consolidation study of Transcriptomics 1 and continued to work on in 
-Transcriptomics 2. Use the code you used in the workshop (in `hspc-prog.R`) 
-as a template to visualise the results for the comparison between HSPC and 
-LT-HSPC cells
+🎬 Open your `mice-88H` RStudio Project and the `hspc-lthsc.R` script
+you began in the Consolidation study of Transcriptomics 1 and continued
+to work on in Transcriptomics 2. Use the code you used in the workshop
+(in `hspc-prog.R`) as a template to visualise the results for the
+comparison between HSPC and LT-HSPC cells

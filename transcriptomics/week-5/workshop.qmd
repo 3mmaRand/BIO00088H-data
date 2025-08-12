@@ -27,10 +27,6 @@ term enrichment analysis.~~
 
 # Set up
 
-## 🐸 Frog development
-
-🎬 Open the `frogs-88H` RStudio Project and the `cont-fgf-s30.R` script.
-
 ## 🎄 *Arabidopsis*
 
 🎬 Open the `arabi-88H` RStudio Project and the `wildsuf-wilddef-s30.R`
@@ -338,21 +334,10 @@ You can read more about `across()` and anonymous functions from my
 [posit::conf(2024)
 workshop](https://posit-conf-2024.github.io/programming-r/)
 
-## 🐸 Frog development, 🎄 *Arabidopsis* and 💉 *Leishmania*
+## 🎄 *Arabidopsis* and 💉 *Leishmania*
 
 🎬 Design the code to log~2~ transform the normalised counts using the
 template given
-
-```{r}
-#| include: false
-#---CODING ANSWER---
-# 🐸 frog development
-# log2 transform the counts plus a tiny amount to avoid log(0)
-s30_results <- s30_results |>
-  mutate(across(starts_with("s30"), 
-                \(x) log2(x + 0.001),
-                .names = "log2_{.col}"))
-```
 
 ```{r}
 #| include: false
@@ -420,16 +405,6 @@ Note that you determine the significance level using the adjusted
 ```{r}
 #| include: false
 #---CODING ANSWER---
-# 🐸 frog development
-# create a dataframe of genes significant at 0.05 level
-s30_results_sig0.05 <- s30_results |> 
-  filter(padj <= 0.05)
-
-```
-
-```{r}
-#| include: false
-#---CODING ANSWER---
 # 🎄 Arabidopsis
 # create a dataframe of genes significant at 0.05 level
 wild_results_sig0.05 <- wild_results |> 
@@ -460,10 +435,6 @@ pro_meta_results_sig0.05 <- pro_meta_results |>
 ❓How many genes are significant at the 0.05 levels?
 
 <!-- #---THINKING ANSWER--- -->
-
-<!-- 🐸 frog development  -->
-
-<!-- 117 genes are significant at the 0.05 level. -->
 
 <!-- 🎄 Arabidopsis  -->
 
@@ -497,15 +468,6 @@ pro_meta_results_sig0.01 <- pro_meta_results |>
 
 🎬 Write the dataframe to a csv file. I recommend using the same file
 name as you used for the dataframe.
-
-```{r}
-#| include: false
-#---CODING ANSWER---
-# 🐸 frog development
-# write to csv file
-write_csv(s30_results_sig0.05, 
-          file = "results/s30_results_sig0.05.csv")
-```
 
 ```{r}
 #| include: false
@@ -573,162 +535,9 @@ independent study.
 
 Now go to PCA for:
 
--   [🐸 Frog development](#frog-development-1)
 -   [🎄 Arabidopsis](#arabidopsis-1)
 -   [💉 Leishmania](#leishmania-1)
 -   [🐭 Stem cells](#stem-cells-2)
-
-## 🐸 Frog development {#frog-development-1}
-
-🎬 Transpose the log~2~ transformed normalised counts:
-
-```{r}
-s30_log2_trans <- s30_results |> 
-  select(starts_with("log2_")) |>
-  t() |> 
-  data.frame()
-```
-
-We have used the `select()` function to select all the columns that
-start with `log2_`. We then use the `t()` function to transpose the
-dataframe. We then convert the resulting matrix to a dataframe using
-`data.frame()`. If you view that dataframe you'll see it has default
-column name which we can fix using `colnames()` to set the column names
-to the Xenbase gene ids.
-
-🎬 Set the column names to the Xenbase gene ids:
-
-```{r}
-colnames(s30_log2_trans) <- s30_results$xenbase_gene_id
-```
-
-🎬 Perform PCA on the log~2~ transformed normalised counts:
-
-```{r}
-pca <- s30_log2_trans |>
-  prcomp(rank. = 4) 
-```
-
-The `rank.` argument tells `prcomp()` to only calculate the first 4
-principal components. This is useful for visualisation as we can only
-plot in 2 or 3 dimensions. We can see the results of the PCA by viewing
-the `summary()` of the `pca` object.
-
-```{r}
-summary(pca)
-```
-
-The Proportion of Variance tells us how much of the variance is
-explained by each component. We can see that the first component
-explains 0.4243 of the variance, the second 0.2320, and the third
-0.1532. Together the first three components explain nearly 81% of the
-total variance in the data. Plotting PC1 against PC2 will capture about
-66% of the variance which is likely very much better than we would get
-plotting any two genes against each other. To plot the PC1 against PC2
-we will need to extract the PC1 and PC2 "scores" from the PCA object and
-add labels for the samples. Those labels will come from the row names of
-the transformed data which has the sample ids and from the metadata.
-
-🎬 Create a vector of the sample ids from the row names. These include
-the `log2` prefix which we can removed for labelling:
-
-```{r}
-sample_id <- row.names(s30_log2_trans) |> str_remove("log2_")
-```
-
-You might want to check the result.
-
-Now we will extract the PC1 and PC2 scores from the PCA object and add.
-Our PCA object is called `pca` and the scores are in pca\$x. We will
-create a dataframe of the scores and add the sample ids.
-
-🎬 Create a dataframe of PC1 and PC2 scores and add the sample ids:
-
-```{r}
-pca_labelled <- data.frame(pca$x,
-                           sample_id)
-```
-
-🎬 Merge with the metadata so we can label points by treatment and
-sibling pair:
-
-```{r}
-pca_labelled <- pca_labelled |> 
-  left_join(meta_s30, 
-            by = "sample_id")
-```
-
-Since the metadata contained the sample ids, it was especially important
-to remove the `log2_` from the row names so that the join would work.
-
-The dataframe should look like this:
-
-```{r}
-#| echo: false
-knitr::kable(pca_labelled)
-```
-
-The next task is to plot PC2 against PC1 and colour by sibling pair.
-This is just a scatterplot so we can use `geom_point()`. We will use
-colour to indicate the sibling pair and shape to indicate the treatment.
-
-🎬 Customise the PC2 against PC1 plot:
-
-```{r}
-pca_labelled |> 
-  ggplot(aes(x = PC1, y = PC2, 
-             colour = sibling_rep,
-             shape = treatment)) +
-  geom_point(size = 3) +
-  theme_classic()
-
-```
-
-There is a good separation between treatments on PCA1. The sibling pairs
-do not seem to cluster together. You can also try plotting PC3 or PC4.
-
-I prefer to customise the colours and shapes. I especially like the\
-viridis colour scales which provide colour scales that are perceptually
-uniform in both colour and black-and-white. They are also designed to be
-perceived by viewers with common forms of colour blindness. See
-[Introduction to
-viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html#introduction)
-for more information.
-
-`ggplot` provides functions to access the viridis scales. Here I use
-`scale_fill_viridis_d()`. The d stands for discrete. The function
-`scale_fill_viridis_c()` would be used for continuous data. I’ve used
-the default “viridis” (or “D”) option (do ?scale_fill_viridis_d for all
-the options) and used the `begin` and `end` arguments to control the
-range of colour - I have set the range to be from 0.15 to 0.95 the avoid
-the strongest contrast. I have also set the `name` argument to provide a
-label for the legend.
-
-I have used `scale_shape_manual()` to set the shapes for the treatments.
-I have used the values 21 and 19 which are the codes for filled and open
-circles and filled triangles. I have set the `name` argument to `NULL`
-to remove the label (it's obvious what that categories are treatments)
-and the `labels` argument to improve the legend.
-
-🎬 Plot PC2 against PC1 and colour by sibling pair and shape by
-treatment:
-
-```{r}
-pca_labelled |> 
-  ggplot(aes(x = PC1, y = PC2, 
-             colour = sibling_rep,
-             shape = treatment)) +
-  geom_point(size = 3) +
-  scale_colour_viridis_d(end = 0.95, begin = 0.15,
-                         name = "Sibling pair") +
-  scale_shape_manual(values = c(21, 19),
-                     name = NULL,
-                     labels = c("Control", "FGF-Treated")) +
-  theme_classic()
-
-```
-
-Now go to Volcano plots for [🐸 Frog development](#frog-development-2)
 
 ## 🎄 *Arabidopsis* {#arabidopsis-1}
 
@@ -1204,204 +1013,6 @@ A volcano plot is a scatterplot that shows statistical significance
 study](study_before_workshop.html) explained, we plot -log~10~(adjusted
 *p*-value) on the *y*-axis so that the most significant genes are
 uppermost.
-
-## 🐸 Frog development {#frog-development-2}
-
-We will add a column to the results dataframe that contains the
--log~10~(padj). You could perform this transformation within the plot
-command without adding a column to the data if you prefer.
-
-🎬 Add a column to the results dataframe that contains the
--log~10~(padj):
-
-```{r}
-s30_results <- s30_results |> 
-  mutate(log10_padj = -log10(padj)) 
-```
-
-🎬 Create a volcano plot of the results:
-
-```{r}
-s30_results |> 
-  ggplot(aes(x = log2FoldChange, 
-             y = log10_padj)) +
-  geom_point() +
-  geom_hline(yintercept = -log10(0.05), 
-             linetype = "dashed") +
-  geom_vline(xintercept = 2, 
-             linetype = "dashed") +
-  geom_vline(xintercept = -2, 
-             linetype = "dashed") +
-  scale_x_continuous(expand = c(0, 0)) +
-  scale_y_continuous(expand = c(0, 0)) +
-  theme_classic() +
-  theme(legend.position = "none")
-
-```
-
-Our dashed lines are at -log~10~(0.05) and log~2~(2) and log~2~(-2) to
-make more clear which genes (points) are significantly different between
-the control and the FGF-treated samples and have a fold change of at
-least 2.
-
-In most cases, people colour the points to show that the quadrants. I
-like to add columns to the dataframe to indicate if the gene is
-significant and if the fold change is large and use those variables in
-the plot.
-
-🎬 Add columns to the results dataframe to indicate if the gene is
-significant and if the fold change is large:
-
-```{r}
-s30_results <- s30_results |> 
-  mutate(sig = padj <= 0.05,
-         bigfc = abs(log2FoldChange) >= 2) 
-```
-
-The use of `abs()` (absolute) means genes with a fold change of at least
-2 in either direction will be considered to have a large fold change.
-
-Now we can colour the points by these new columns. I use `interaction()`
-to create four categories:
-
--   not significant and not large fold change (FF)
--   significant and not large fold change (TF)
--   not significant and large fold (FT)
--   significant and large fold change (TT)
-
-And I use `scale_colour_manual()` to set the colours for these
-categories.
-
-🎬 Create a volcano plot of the results with the points coloured by
-significance and fold change:
-
-```{r}
-s30_results |> 
-  ggplot(aes(x = log2FoldChange, 
-             y = log10_padj, 
-             colour = interaction(sig, bigfc))) +
-  geom_point() +
-  geom_hline(yintercept = -log10(0.05), 
-             linetype = "dashed") +
-  geom_vline(xintercept = 2, 
-             linetype = "dashed") +
-  geom_vline(xintercept = -2, 
-             linetype = "dashed") +
-  scale_x_continuous(expand = c(0, 0)) +
-  scale_y_continuous(expand = c(0, 0)) +
-  scale_colour_manual(values = c("gray", 
-                                 "pink",
-                                 "gray30",
-                                 "deeppink")) +
-  theme_classic() +
-  theme(legend.position = "none")
-
-```
-
-For exploring the data, I like add labels to all the significant genes
-with a large fold change so I can very quickly identity them. The
-`ggrepel` package has a function `geom_text_repel()` that is useful for
-adding labels so that they don't overlap.
-
-🎬 Load the package:
-
-```{r}
-library(ggrepel)
-```
-
-🎬 Add labels to the significant genes with a large fold change:
-
-```{r}
-
-s30_results |> 
-  ggplot(aes(x = log2FoldChange, 
-             y = log10_padj, 
-             colour = interaction(sig, bigfc))) +
-  geom_point() +
-  geom_hline(yintercept = -log10(0.05), 
-             linetype = "dashed") +
-  geom_vline(xintercept = 2, 
-             linetype = "dashed") +
-  geom_vline(xintercept = -2, 
-             linetype = "dashed") +
-  scale_x_continuous(expand = c(0, 0)) +
-  scale_y_continuous(expand = c(0, 0)) +
-  scale_colour_manual(values = c("gray", 
-                                 "pink",
-                                 "gray30",
-                                 "deeppink")) +
-  geom_text_repel(data = s30_results |> 
-                    filter(bigfc == TRUE, sig == TRUE),
-                  aes(label = xenbase_gene_symbol),
-                  size = 3,
-                  max.overlaps = 50) +
-  theme_classic() +
-  theme(legend.position = "none")
-
-```
-
-Notice that I have used `filter()` label only the genes that are both
-significant and have a large fold change. In systems you are familiar
-with, this labelling is very informative and can help you quickly
-identify common themes. Key to interpreting the volcano plot is to
-remember that positive fold changes means the gene is up-regulated in
-the FGF-treated samples and negative fold changes means the gene is
-down-regulated (i.e., higher in the control). This was determined by the
-order of the treatments in the [contrast used in the DESeq2
-analysis](../week-4/workshop.html#differential-expression-analysis-1)
-
-If you do forget which way round you did the comparison, you can always
-examine the results dataframe to see which of the treatments seem to be
-higher for the positive fold changes.
-
-Please note that Betsy doesn't like graphs like this in the report!
-
-When you have a gene of interest, you may wish to label it, and only it,
-on the plot.\
-This is done in the same way except that you filter the data to only
-include the gene of interest. I have used and then use
-`geom_label_repel()` rather than `geom_text_repel()` to put the label in
-a box and nudged it's position to get a line connecting the point and
-the label. I have also increased the size of the point.
-
-🎬 Add a label to one gene of interest (hoxb9.S) and :
-
-```{r}
-s30_results |> 
-  ggplot(aes(x = log2FoldChange, 
-             y = log10_padj, 
-             colour = interaction(sig, bigfc))) +
-  geom_point() +
-  geom_hline(yintercept = -log10(0.05), 
-             linetype = "dashed") +
-  geom_vline(xintercept = 2, 
-             linetype = "dashed") +
-  geom_vline(xintercept = -2, 
-             linetype = "dashed") +
-  scale_x_continuous(expand = c(0, 0)) +
-  scale_y_continuous(expand = c(0, 0)) +
-  scale_colour_manual(values = c("gray", 
-                                 "pink",
-                                 "gray30",
-                                 "deeppink")) +
-  geom_label_repel(data = s30_results |> 
-                    filter(xenbase_gene_symbol == "hoxb9.S"),
-                  aes(label = xenbase_gene_symbol),
-                  size = 4,
-                  nudge_x = .5,
-                  nudge_y = 1.5) +
-  geom_point(data = s30_results |> 
-                    filter(xenbase_gene_symbol == "hoxb9.S"),
-                size = 3) +
-  theme_classic() +
-  theme(legend.position = "none")
-
-```
-
-Should you want to label more than one gene, you will need to use (for
-example): `filter(xenbase_gene_symbol %in% c("hoxb9.S", "fzd7.S"))`
-
-Now go to [Save your plots](#save-your-plots)
 
 ## 🎄 *Arabidopsis* {#arabidopsis-2}
 
