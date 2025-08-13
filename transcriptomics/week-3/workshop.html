@@ -88,10 +88,14 @@ div.csl-indent {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-66a9628b09ec274f8d4720c8f60ae317.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-72ac799c4abbddf31cb463dd8fc99f5d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-25ac7be22ffa75a8e8541e30a6dcc9a3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-72ac799c4abbddf31cb463dd8fc99f5d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -123,9 +127,171 @@ window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
-</script><link rel="stylesheet" href="../../styles.css">
+</script><link rel="stylesheet" href="styles.css">
 </head>
-<body class="nav-sidebar floating nav-fixed quarto-light">
+<body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
@@ -162,9 +328,10 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
   </li>  
 </ul>
 </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools tools-wide">
     <a href="https://twitter.com/er_13" title="Emma's Twitter" class="quarto-navigation-tool px-1" aria-label="Emma's Twitter"><i class="bi bi-twitter"></i></a>
     <a href="https://github.com/3mmaRand/BIO00088H-data" title="BIO00088H-data GitHub" class="quarto-navigation-tool px-1" aria-label="BIO00088H-data GitHub"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
@@ -396,7 +563,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../transcriptomics/week-3/overview.html">Week 3: Hello data!</a></li><li class="breadcrumb-item"><a href="../../transcriptomics/week-3/workshop.html">Workshop</a></li></ol></nav><div class="quarto-title">
-<h1 class="title">Workshop</h1>
+<div class="quarto-title-block"><div><h1 class="title">Workshop</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 <p class="subtitle lead">Transcriptomics 1: Hello data!</p>
 </div>
 
@@ -414,7 +581,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">12 August, 2025</p>
+      <p class="date">13 August, 2025</p>
     </div>
   </div>
   
@@ -1105,6 +1272,8 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 </section><section id="references" class="level1">
 
 
+<!-- -->
+
 
 </section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Allaire_Quarto_2024" class="csl-entry" role="listitem">
@@ -1138,6 +1307,19 @@ Zhu, Hao. 2021. <span>“kableExtra: Construct Complex Table with ’Kable’ an
 <li id="fn3"><p>This a result of the <a href="https://en.wikipedia.org/wiki/Central_limit_theorem">Central limit theorem</a>,one consequence of which is that adding together lots of distributions - whatever distributions they are - will tend to a normal distribution.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {
@@ -1205,6 +1387,57 @@ Zhu, Hao. 2021. <span>“kableExtra: Construct Complex Table with ’Kable’ an
         container: window.document.getElementById('quarto-embedded-source-code-modal')
       });
       clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
@@ -1539,7 +1772,1166 @@ Zhu, Hao. 2021. <span>“kableExtra: Construct Complex Table with ’Kable’ an
       }
     }
   });
-  </script>
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb45" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Workshop"</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Transcriptomics 1: Hello data!"</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Emma Rand"</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="an">toc:</span><span class="co"> true</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="an">toc-depth:</span><span class="co"> 4</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="an">toc-location:</span><span class="co"> right</span></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: true</span></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="co">  include: true</span></span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="co">  error: true</span></span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> ../../references.bib</span></span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> </span></span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a><span class="co">  markdown: </span></span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a><span class="co">    wrap: 72</span></span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span>
+<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session overview</span></span>
+<span id="cb45-21"><a href="#cb45-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-22"><a href="#cb45-22" aria-hidden="true" tabindex="-1"></a>In this workshop you will learn what steps to take to get a good</span>
+<span id="cb45-23"><a href="#cb45-23" aria-hidden="true" tabindex="-1"></a>understanding of your transcriptomics data before you consider any</span>
+<span id="cb45-24"><a href="#cb45-24" aria-hidden="true" tabindex="-1"></a>statistical analysis. This is an often overlooked, but very valuable and</span>
+<span id="cb45-25"><a href="#cb45-25" aria-hidden="true" tabindex="-1"></a>informative, part of any data pipeline. It gives you the deep</span>
+<span id="cb45-26"><a href="#cb45-26" aria-hidden="true" tabindex="-1"></a>understanding of the data structures and values that you will need to</span>
+<span id="cb45-27"><a href="#cb45-27" aria-hidden="true" tabindex="-1"></a>code and trouble-shoot code, allows you to spot failed or problematic</span>
+<span id="cb45-28"><a href="#cb45-28" aria-hidden="true" tabindex="-1"></a>samples and informs your decisions on quality control.</span>
+<span id="cb45-29"><a href="#cb45-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-30"><a href="#cb45-30" aria-hidden="true" tabindex="-1"></a>In this session, you should examine **all four data sets** because the</span>
+<span id="cb45-31"><a href="#cb45-31" aria-hidden="true" tabindex="-1"></a>comparisons will give you a much stronger understanding of your own</span>
+<span id="cb45-32"><a href="#cb45-32" aria-hidden="true" tabindex="-1"></a>project data. Compare and contrast is a very useful way to build</span>
+<span id="cb45-33"><a href="#cb45-33" aria-hidden="true" tabindex="-1"></a>understanding.</span>
+<span id="cb45-34"><a href="#cb45-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-35"><a href="#cb45-35" aria-hidden="true" tabindex="-1"></a><span class="fu"># Set up a Project</span></span>
+<span id="cb45-36"><a href="#cb45-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-37"><a href="#cb45-37" aria-hidden="true" tabindex="-1"></a>🎬 Start RStudio from the Start menu</span>
+<span id="cb45-38"><a href="#cb45-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-39"><a href="#cb45-39" aria-hidden="true" tabindex="-1"></a>🎬 Make an RStudio project. Be deliberate about where you create it so</span>
+<span id="cb45-40"><a href="#cb45-40" aria-hidden="true" tabindex="-1"></a>that it is a good place for you</span>
+<span id="cb45-41"><a href="#cb45-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-42"><a href="#cb45-42" aria-hidden="true" tabindex="-1"></a>🎬 Use the Files pane to make new folders for the data. I suggest</span>
+<span id="cb45-43"><a href="#cb45-43" aria-hidden="true" tabindex="-1"></a><span class="in">`data-raw`</span> and <span class="in">`data-processed`</span></span>
+<span id="cb45-44"><a href="#cb45-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-45"><a href="#cb45-45" aria-hidden="true" tabindex="-1"></a>🎬 Make a new script called <span class="in">`workshop-1.R`</span> to carry out the rest of the</span>
+<span id="cb45-46"><a href="#cb45-46" aria-hidden="true" tabindex="-1"></a>work.</span>
+<span id="cb45-47"><a href="#cb45-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-48"><a href="#cb45-48" aria-hidden="true" tabindex="-1"></a>🎬 Record what you do and what you find out. All of it!</span>
+<span id="cb45-49"><a href="#cb45-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-50"><a href="#cb45-50" aria-hidden="true" tabindex="-1"></a>🎬 Load <span class="in">`tidyverse`</span> <span class="co">[</span><span class="ot">@tidyverse</span><span class="co">]</span> for importing, summarising, plotting</span>
+<span id="cb45-51"><a href="#cb45-51" aria-hidden="true" tabindex="-1"></a>and filtering.</span>
+<span id="cb45-52"><a href="#cb45-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-55"><a href="#cb45-55" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-56"><a href="#cb45-56" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb45-57"><a href="#cb45-57" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-58"><a href="#cb45-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-59"><a href="#cb45-59" aria-hidden="true" tabindex="-1"></a><span class="fu"># Examine data using a spreadsheet</span></span>
+<span id="cb45-60"><a href="#cb45-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-61"><a href="#cb45-61" aria-hidden="true" tabindex="-1"></a>These are the three datasets. Each set compromises several files.</span>
+<span id="cb45-62"><a href="#cb45-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-63"><a href="#cb45-63" aria-hidden="true" tabindex="-1"></a>🎄 *Arabidopsis*:</span>
+<span id="cb45-64"><a href="#cb45-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-65"><a href="#cb45-65" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">arabidopsis-wild.csv</span><span class="co">](data-raw/arabidopsis-wild.csv)</span></span>
+<span id="cb45-66"><a href="#cb45-66" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">arabidopsis-spl7.csv</span><span class="co">](data-raw/arabidopsis-spl7.csv)</span></span>
+<span id="cb45-67"><a href="#cb45-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-68"><a href="#cb45-68" aria-hidden="true" tabindex="-1"></a>💉 *Leishmania*:</span>
+<span id="cb45-69"><a href="#cb45-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-70"><a href="#cb45-70" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">leishmania-mex-ama.csv</span><span class="co">](data-raw/leishmania-mex-ama.csv)</span></span>
+<span id="cb45-71"><a href="#cb45-71" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">leishmania-mex-pro.csv</span><span class="co">](data-raw/leishmania-mex-pro.csv)</span></span>
+<span id="cb45-72"><a href="#cb45-72" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">leishmania-mex-meta.csv</span><span class="co">](data-raw/leishmania-mex-meta.csv)</span></span>
+<span id="cb45-73"><a href="#cb45-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-74"><a href="#cb45-74" aria-hidden="true" tabindex="-1"></a>🐭 Stem cells:</span>
+<span id="cb45-75"><a href="#cb45-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-76"><a href="#cb45-76" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">surfaceome_hspc.csv</span><span class="co">](data-raw/surfaceome_hspc.csv)</span></span>
+<span id="cb45-77"><a href="#cb45-77" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">surfaceome_prog.csv</span><span class="co">](data-raw/surfaceome_prog.csv)</span></span>
+<span id="cb45-78"><a href="#cb45-78" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">surfaceome_lthsc.csv</span><span class="co">](data-raw/surfaceome_lthsc.csv)</span></span>
+<span id="cb45-79"><a href="#cb45-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-80"><a href="#cb45-80" aria-hidden="true" tabindex="-1"></a>🎬 Save the files to <span class="in">`data-raw`</span> and open them in Excel</span>
+<span id="cb45-81"><a href="#cb45-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-82"><a href="#cb45-82" aria-hidden="true" tabindex="-1"></a>🎬 Answer the following questions:</span>
+<span id="cb45-83"><a href="#cb45-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-84"><a href="#cb45-84" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Describe how the sets of data are similar and how they are</span>
+<span id="cb45-85"><a href="#cb45-85" aria-hidden="true" tabindex="-1"></a>    different.</span>
+<span id="cb45-86"><a href="#cb45-86" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>What is in the rows and columns of each file?</span>
+<span id="cb45-87"><a href="#cb45-87" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>How many rows and columns are there in each file? Are these the</span>
+<span id="cb45-88"><a href="#cb45-88" aria-hidden="true" tabindex="-1"></a>    same? In all cases or some cases? Why?</span>
+<span id="cb45-89"><a href="#cb45-89" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Google gene id. Where does your search take you? How much</span>
+<span id="cb45-90"><a href="#cb45-90" aria-hidden="true" tabindex="-1"></a>    information is available?</span>
+<span id="cb45-91"><a href="#cb45-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-92"><a href="#cb45-92" aria-hidden="true" tabindex="-1"></a>🎬 Did you record all that??</span>
+<span id="cb45-93"><a href="#cb45-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-94"><a href="#cb45-94" aria-hidden="true" tabindex="-1"></a><span class="fu"># Explore data in R</span></span>
+<span id="cb45-95"><a href="#cb45-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-96"><a href="#cb45-96" aria-hidden="true" tabindex="-1"></a>The first task is to get an overview. We want to know</span>
+<span id="cb45-97"><a href="#cb45-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-98"><a href="#cb45-98" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>how may zeros are there and how are they distributed?</span>
+<span id="cb45-99"><a href="#cb45-99" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>what is the distribution of non-zero values?</span>
+<span id="cb45-100"><a href="#cb45-100" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>does it look as though all the samples/cells were equally</span>
+<span id="cb45-101"><a href="#cb45-101" aria-hidden="true" tabindex="-1"></a>    "successful"? Can we spot any problems?</span>
+<span id="cb45-102"><a href="#cb45-102" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>can we determine a quality threshold for filtering out genes with</span>
+<span id="cb45-103"><a href="#cb45-103" aria-hidden="true" tabindex="-1"></a>    very low counts?</span>
+<span id="cb45-104"><a href="#cb45-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-105"><a href="#cb45-105" aria-hidden="true" tabindex="-1"></a>Genes which are zero in *every* cell/sample, i.e., genes that are not</span>
+<span id="cb45-106"><a href="#cb45-106" aria-hidden="true" tabindex="-1"></a>expressed at all give us no information. We will want to to filter those</span>
+<span id="cb45-107"><a href="#cb45-107" aria-hidden="true" tabindex="-1"></a>out. We will also want to filter out genes with very low counts for</span>
+<span id="cb45-108"><a href="#cb45-108" aria-hidden="true" tabindex="-1"></a>quality control. These are mostly likely false positives. If our data</span>
+<span id="cb45-109"><a href="#cb45-109" aria-hidden="true" tabindex="-1"></a>collection has gone well we would hope to see approximately the same</span>
+<span id="cb45-110"><a href="#cb45-110" aria-hidden="true" tabindex="-1"></a>average expression in each sample/cell of the same type. That is,</span>
+<span id="cb45-111"><a href="#cb45-111" aria-hidden="true" tabindex="-1"></a>replicates should be similar. In contrast, we would expect to see that</span>
+<span id="cb45-112"><a href="#cb45-112" aria-hidden="true" tabindex="-1"></a>the average expression of genes varies.</span>
+<span id="cb45-113"><a href="#cb45-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-114"><a href="#cb45-114" aria-hidden="true" tabindex="-1"></a>We get this overview by looking at:</span>
+<span id="cb45-115"><a href="#cb45-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-116"><a href="#cb45-116" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The **distribution of values across all the data in the file**</span>
+<span id="cb45-117"><a href="#cb45-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-118"><a href="#cb45-118" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The **distribution of values across the samples/cells** (i.e.,</span>
+<span id="cb45-119"><a href="#cb45-119" aria-hidden="true" tabindex="-1"></a>    averaged across genes). This allows us to see variation between</span>
+<span id="cb45-120"><a href="#cb45-120" aria-hidden="true" tabindex="-1"></a>    samples/cells:</span>
+<span id="cb45-121"><a href="#cb45-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-122"><a href="#cb45-122" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The **distribution of values across the genes** (i.e., averaged</span>
+<span id="cb45-123"><a href="#cb45-123" aria-hidden="true" tabindex="-1"></a>    across samples/cells). This allows us to see variation between</span>
+<span id="cb45-124"><a href="#cb45-124" aria-hidden="true" tabindex="-1"></a>    genes.</span>
+<span id="cb45-125"><a href="#cb45-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-126"><a href="#cb45-126" aria-hidden="true" tabindex="-1"></a>The next sections will guide you through each of these for each of the</span>
+<span id="cb45-127"><a href="#cb45-127" aria-hidden="true" tabindex="-1"></a>data sets. Start with your own data set then move on to at least one of</span>
+<span id="cb45-128"><a href="#cb45-128" aria-hidden="true" tabindex="-1"></a>the others.</span>
+<span id="cb45-129"><a href="#cb45-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-130"><a href="#cb45-130" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🎄 *Arabidopsis*</span></span>
+<span id="cb45-131"><a href="#cb45-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-132"><a href="#cb45-132" aria-hidden="true" tabindex="-1"></a><span class="fu">### Import</span></span>
+<span id="cb45-133"><a href="#cb45-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-134"><a href="#cb45-134" aria-hidden="true" tabindex="-1"></a>Import the data for wildtype plants.</span>
+<span id="cb45-135"><a href="#cb45-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-136"><a href="#cb45-136" aria-hidden="true" tabindex="-1"></a>🎬 Import <span class="co">[</span><span class="ot">arabidopsis-wild.csv</span><span class="co">](data-raw/arabidopsis-wild.csv)</span></span>
+<span id="cb45-137"><a href="#cb45-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-140"><a href="#cb45-140" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-141"><a href="#cb45-141" aria-hidden="true" tabindex="-1"></a><span class="co"># 🎄 import the wild data</span></span>
+<span id="cb45-142"><a href="#cb45-142" aria-hidden="true" tabindex="-1"></a>wild <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data-raw/arabidopsis-wild.csv"</span>)</span>
+<span id="cb45-143"><a href="#cb45-143" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-144"><a href="#cb45-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-145"><a href="#cb45-145" aria-hidden="true" tabindex="-1"></a>🎬 Check the dataframe has the number of rows and columns you were</span>
+<span id="cb45-146"><a href="#cb45-146" aria-hidden="true" tabindex="-1"></a>expecting and that column types and names are as expected.</span>
+<span id="cb45-147"><a href="#cb45-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-148"><a href="#cb45-148" aria-hidden="true" tabindex="-1"></a><span class="fu">### Distribution of values across all the data in the file</span></span>
+<span id="cb45-149"><a href="#cb45-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-150"><a href="#cb45-150" aria-hidden="true" tabindex="-1"></a>The values are spread over multiple columns so in order to plot the</span>
+<span id="cb45-151"><a href="#cb45-151" aria-hidden="true" tabindex="-1"></a>distribution as a whole, we will need to first use <span class="in">`pivot_longer()`</span> to</span>
+<span id="cb45-152"><a href="#cb45-152" aria-hidden="true" tabindex="-1"></a>put the data in ['tidy'</span>
+<span id="cb45-153"><a href="#cb45-153" aria-hidden="true" tabindex="-1"></a>format](https://3mmarand.github.io/R4BABS/r4babs1/week-9/workshop.html#tidying-data)</span>
+<span id="cb45-154"><a href="#cb45-154" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">@wickham2014</span><span class="co">]</span> by stacking the columns. We *could* save a copy of the</span>
+<span id="cb45-155"><a href="#cb45-155" aria-hidden="true" tabindex="-1"></a>stacked data and then plot it, but here, I have just piped the stacked</span>
+<span id="cb45-156"><a href="#cb45-156" aria-hidden="true" tabindex="-1"></a>data straight into <span class="in">`ggplot()`</span>. This helps me avoid cluttering my R</span>
+<span id="cb45-157"><a href="#cb45-157" aria-hidden="true" tabindex="-1"></a>environment with temporary objects.</span>
+<span id="cb45-158"><a href="#cb45-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-159"><a href="#cb45-159" aria-hidden="true" tabindex="-1"></a>🎬 Pivot the counts (stack the columns) so all the counts are in a</span>
+<span id="cb45-160"><a href="#cb45-160" aria-hidden="true" tabindex="-1"></a>single column (<span class="in">`count`</span>) labelled in <span class="in">`sample`</span> by the column it came from</span>
+<span id="cb45-161"><a href="#cb45-161" aria-hidden="true" tabindex="-1"></a>and pipe into <span class="in">`ggplot()`</span> to create a histogram:</span>
+<span id="cb45-162"><a href="#cb45-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-165"><a href="#cb45-165" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-166"><a href="#cb45-166" aria-hidden="true" tabindex="-1"></a>wild <span class="sc">|&gt;</span></span>
+<span id="cb45-167"><a href="#cb45-167" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>gene_id,</span>
+<span id="cb45-168"><a href="#cb45-168" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"sample"</span>,</span>
+<span id="cb45-169"><a href="#cb45-169" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb45-170"><a href="#cb45-170" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> count)) <span class="sc">+</span></span>
+<span id="cb45-171"><a href="#cb45-171" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
+<span id="cb45-172"><a href="#cb45-172" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-173"><a href="#cb45-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-174"><a href="#cb45-174" aria-hidden="true" tabindex="-1"></a>This data is very skewed - there are very many low counts and a very few</span>
+<span id="cb45-175"><a href="#cb45-175" aria-hidden="true" tabindex="-1"></a>higher numbers. It is hard to see the very low bars for the higher</span>
+<span id="cb45-176"><a href="#cb45-176" aria-hidden="true" tabindex="-1"></a>values. Logging the counts is a way to make the distribution more</span>
+<span id="cb45-177"><a href="#cb45-177" aria-hidden="true" tabindex="-1"></a>visible. You cannot take the log of 0 so we add 1 to the count before</span>
+<span id="cb45-178"><a href="#cb45-178" aria-hidden="true" tabindex="-1"></a>logging. The log of 1 is zero so we will be able to see how many zeros</span>
+<span id="cb45-179"><a href="#cb45-179" aria-hidden="true" tabindex="-1"></a>we had.</span>
+<span id="cb45-180"><a href="#cb45-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-181"><a href="#cb45-181" aria-hidden="true" tabindex="-1"></a>🎬 Repeat the plot of log of the counts.</span>
+<span id="cb45-182"><a href="#cb45-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-185"><a href="#cb45-185" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-186"><a href="#cb45-186" aria-hidden="true" tabindex="-1"></a>wild <span class="sc">|&gt;</span></span>
+<span id="cb45-187"><a href="#cb45-187" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>gene_id,</span>
+<span id="cb45-188"><a href="#cb45-188" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"sample"</span>,</span>
+<span id="cb45-189"><a href="#cb45-189" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb45-190"><a href="#cb45-190" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log10</span>(count <span class="sc">+</span> <span class="dv">1</span>))) <span class="sc">+</span></span>
+<span id="cb45-191"><a href="#cb45-191" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
+<span id="cb45-192"><a href="#cb45-192" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-193"><a href="#cb45-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-194"><a href="#cb45-194" aria-hidden="true" tabindex="-1"></a>I've used base 10 only because it easy to convert to the original scale</span>
+<span id="cb45-195"><a href="#cb45-195" aria-hidden="true" tabindex="-1"></a>(1 is 10, 2 is 100, 3 is 1000 etc). Notice we have a peak at zero</span>
+<span id="cb45-196"><a href="#cb45-196" aria-hidden="true" tabindex="-1"></a>indicating there are many zeros. We would expect the distribution of</span>
+<span id="cb45-197"><a href="#cb45-197" aria-hidden="true" tabindex="-1"></a>counts to be roughly log normal because this is expression of *all* the</span>
+<span id="cb45-198"><a href="#cb45-198" aria-hidden="true" tabindex="-1"></a>genes in the genome<span class="ot">[^1]</span>. The number of low counts is inflated (small</span>
+<span id="cb45-199"><a href="#cb45-199" aria-hidden="true" tabindex="-1"></a>peak near the low end). This suggests that these lower counts might be</span>
+<span id="cb45-200"><a href="#cb45-200" aria-hidden="true" tabindex="-1"></a>false positives. The removal of low counts is a common processing step</span>
+<span id="cb45-201"><a href="#cb45-201" aria-hidden="true" tabindex="-1"></a>in 'omic data. We will revisit this after we have considered the</span>
+<span id="cb45-202"><a href="#cb45-202" aria-hidden="true" tabindex="-1"></a>distribution of counts across samples and genes.</span>
+<span id="cb45-203"><a href="#cb45-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-204"><a href="#cb45-204" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span>This a result of the [Central limit</span>
+<span id="cb45-205"><a href="#cb45-205" aria-hidden="true" tabindex="-1"></a>    theorem](https://en.wikipedia.org/wiki/Central_limit_theorem),one</span>
+<span id="cb45-206"><a href="#cb45-206" aria-hidden="true" tabindex="-1"></a>    consequence of which is that adding together lots of distributions -</span>
+<span id="cb45-207"><a href="#cb45-207" aria-hidden="true" tabindex="-1"></a>    whatever distributions they are - will tend to a normal</span>
+<span id="cb45-208"><a href="#cb45-208" aria-hidden="true" tabindex="-1"></a>    distribution.</span>
+<span id="cb45-209"><a href="#cb45-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-210"><a href="#cb45-210" aria-hidden="true" tabindex="-1"></a><span class="fu">### Distribution of values across the samples</span></span>
+<span id="cb45-211"><a href="#cb45-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-212"><a href="#cb45-212" aria-hidden="true" tabindex="-1"></a>Summary statistics including the the number of NAs can be seen using the</span>
+<span id="cb45-213"><a href="#cb45-213" aria-hidden="true" tabindex="-1"></a><span class="in">`summary()`</span>. It is most helpful which you have up to about 25 columns.</span>
+<span id="cb45-214"><a href="#cb45-214" aria-hidden="true" tabindex="-1"></a>There is nothing special about the number 25, it is just that summaries</span>
+<span id="cb45-215"><a href="#cb45-215" aria-hidden="true" tabindex="-1"></a>of a larger number of columns are difficult to grasp.</span>
+<span id="cb45-216"><a href="#cb45-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-217"><a href="#cb45-217" aria-hidden="true" tabindex="-1"></a>🎬 Get a quick overview of the 5 columns:</span>
+<span id="cb45-218"><a href="#cb45-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-221"><a href="#cb45-221" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-222"><a href="#cb45-222" aria-hidden="true" tabindex="-1"></a><span class="co"># examine all the columns quickly</span></span>
+<span id="cb45-223"><a href="#cb45-223" aria-hidden="true" tabindex="-1"></a><span class="co"># works well with smaller numbers of column</span></span>
+<span id="cb45-224"><a href="#cb45-224" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(wild)</span>
+<span id="cb45-225"><a href="#cb45-225" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-226"><a href="#cb45-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-227"><a href="#cb45-227" aria-hidden="true" tabindex="-1"></a>Notice that:</span>
+<span id="cb45-228"><a href="#cb45-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-229"><a href="#cb45-229" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>the minimum count is 0 and the maximums are very high in all the</span>
+<span id="cb45-230"><a href="#cb45-230" aria-hidden="true" tabindex="-1"></a>    columns</span>
+<span id="cb45-231"><a href="#cb45-231" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>the medians are quite a lot lower than the means so the data are</span>
+<span id="cb45-232"><a href="#cb45-232" aria-hidden="true" tabindex="-1"></a>    skewed (hump to the left, tail to the right) and there must be quite</span>
+<span id="cb45-233"><a href="#cb45-233" aria-hidden="true" tabindex="-1"></a>    a lot of zeros</span>
+<span id="cb45-234"><a href="#cb45-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-235"><a href="#cb45-235" aria-hidden="true" tabindex="-1"></a>We want to know how many zeros there are in each a column. To achieve</span>
+<span id="cb45-236"><a href="#cb45-236" aria-hidden="true" tabindex="-1"></a>this, we can make use of the fact that <span class="in">`TRUE`</span> evaluates to 1 and <span class="in">`FALSE`</span></span>
+<span id="cb45-237"><a href="#cb45-237" aria-hidden="true" tabindex="-1"></a>evaluates to 0. Consequently, summing a column of TRUE/FALSE values will</span>
+<span id="cb45-238"><a href="#cb45-238" aria-hidden="true" tabindex="-1"></a>give you the number of TRUE values. For example,</span>
+<span id="cb45-239"><a href="#cb45-239" aria-hidden="true" tabindex="-1"></a><span class="in">`sum(SRX028961_wild_def &gt; 0)`</span> gives the number of values above zero in</span>
+<span id="cb45-240"><a href="#cb45-240" aria-hidden="true" tabindex="-1"></a>the <span class="in">`SRX028961_wild_def`</span> column. If you wanted the number of zeros, you</span>
+<span id="cb45-241"><a href="#cb45-241" aria-hidden="true" tabindex="-1"></a>could use <span class="in">`sum(SRX028961_wild_def == 0)`</span>.</span>
+<span id="cb45-242"><a href="#cb45-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-243"><a href="#cb45-243" aria-hidden="true" tabindex="-1"></a>🎬 Find the number values above zero in all six columns:</span>
+<span id="cb45-244"><a href="#cb45-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-247"><a href="#cb45-247" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-248"><a href="#cb45-248" aria-hidden="true" tabindex="-1"></a>wild <span class="sc">|&gt;</span></span>
+<span id="cb45-249"><a href="#cb45-249" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">sum</span>(SRX028961_wild_def <span class="sc">&gt;</span> <span class="dv">0</span>),</span>
+<span id="cb45-250"><a href="#cb45-250" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sum</span>(SRX028957_wild_def <span class="sc">&gt;</span> <span class="dv">0</span>),</span>
+<span id="cb45-251"><a href="#cb45-251" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sum</span>(SRX028960_wild_suf <span class="sc">&gt;</span> <span class="dv">0</span>),</span>
+<span id="cb45-252"><a href="#cb45-252" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sum</span>(SRX028956_wild_suf <span class="sc">&gt;</span> <span class="dv">0</span>))</span>
+<span id="cb45-253"><a href="#cb45-253" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-254"><a href="#cb45-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-255"><a href="#cb45-255" aria-hidden="true" tabindex="-1"></a>There is a better way of doing this that saves you having to repeat so</span>
+<span id="cb45-256"><a href="#cb45-256" aria-hidden="true" tabindex="-1"></a>much code - very useful if you have a lot more than 6 columns! We can</span>
+<span id="cb45-257"><a href="#cb45-257" aria-hidden="true" tabindex="-1"></a>use <span class="in">`pivot_longer()`</span> to put the data in tidy format and then use the</span>
+<span id="cb45-258"><a href="#cb45-258" aria-hidden="true" tabindex="-1"></a><span class="in">`group_by()`</span> and <span class="in">`summarise()`</span> approach we have used extensively before.</span>
+<span id="cb45-259"><a href="#cb45-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-260"><a href="#cb45-260" aria-hidden="true" tabindex="-1"></a>🎬 Find the number of zeros in all columns:</span>
+<span id="cb45-261"><a href="#cb45-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-264"><a href="#cb45-264" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-265"><a href="#cb45-265" aria-hidden="true" tabindex="-1"></a>wild <span class="sc">|&gt;</span></span>
+<span id="cb45-266"><a href="#cb45-266" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>gene_id,</span>
+<span id="cb45-267"><a href="#cb45-267" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"sample"</span>,</span>
+<span id="cb45-268"><a href="#cb45-268" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb45-269"><a href="#cb45-269" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sample) <span class="sc">|&gt;</span></span>
+<span id="cb45-270"><a href="#cb45-270" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n_above_zero =</span> <span class="fu">sum</span>(count <span class="sc">&gt;</span> <span class="dv">0</span>))</span>
+<span id="cb45-271"><a href="#cb45-271" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-272"><a href="#cb45-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-273"><a href="#cb45-273" aria-hidden="true" tabindex="-1"></a>You could expand this code to get get other useful summary information</span>
+<span id="cb45-274"><a href="#cb45-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-275"><a href="#cb45-275" aria-hidden="true" tabindex="-1"></a>🎬 Summarise all the samples:</span>
+<span id="cb45-276"><a href="#cb45-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-279"><a href="#cb45-279" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-280"><a href="#cb45-280" aria-hidden="true" tabindex="-1"></a>wild <span class="sc">|&gt;</span></span>
+<span id="cb45-281"><a href="#cb45-281" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>gene_id,</span>
+<span id="cb45-282"><a href="#cb45-282" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"sample"</span>,</span>
+<span id="cb45-283"><a href="#cb45-283" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb45-284"><a href="#cb45-284" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sample) <span class="sc">|&gt;</span></span>
+<span id="cb45-285"><a href="#cb45-285" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">min =</span> <span class="fu">min</span>(count),</span>
+<span id="cb45-286"><a href="#cb45-286" aria-hidden="true" tabindex="-1"></a>            <span class="at">lowerq =</span> <span class="fu">quantile</span>(count, <span class="fl">0.25</span>),</span>
+<span id="cb45-287"><a href="#cb45-287" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(count),</span>
+<span id="cb45-288"><a href="#cb45-288" aria-hidden="true" tabindex="-1"></a>            <span class="at">median =</span> <span class="fu">median</span>(count),</span>
+<span id="cb45-289"><a href="#cb45-289" aria-hidden="true" tabindex="-1"></a>            <span class="at">upperq =</span> <span class="fu">quantile</span>(count, <span class="fl">0.75</span>),</span>
+<span id="cb45-290"><a href="#cb45-290" aria-hidden="true" tabindex="-1"></a>            <span class="at">max =</span> <span class="fu">max</span>(count),</span>
+<span id="cb45-291"><a href="#cb45-291" aria-hidden="true" tabindex="-1"></a>            <span class="at">n_above_zero =</span> <span class="fu">sum</span>(count <span class="sc">&gt;</span> <span class="dv">0</span>))</span>
+<span id="cb45-292"><a href="#cb45-292" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-293"><a href="#cb45-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-294"><a href="#cb45-294" aria-hidden="true" tabindex="-1"></a>The mean count ranges from 70 to 296. It is difficult to determine</span>
+<span id="cb45-295"><a href="#cb45-295" aria-hidden="true" tabindex="-1"></a>whether any replicates are "unusual" when there are only two replicates.</span>
+<span id="cb45-296"><a href="#cb45-296" aria-hidden="true" tabindex="-1"></a>The potential effect of only two replicates, or of an an odd replicate</span>
+<span id="cb45-297"><a href="#cb45-297" aria-hidden="true" tabindex="-1"></a>when you have more replicates, is reduced statistical power. Major</span>
+<span id="cb45-298"><a href="#cb45-298" aria-hidden="true" tabindex="-1"></a>differences in gene expression will still be uncovered. Differences</span>
+<span id="cb45-299"><a href="#cb45-299" aria-hidden="true" tabindex="-1"></a>between genes with lower average expression and or more variable</span>
+<span id="cb45-300"><a href="#cb45-300" aria-hidden="true" tabindex="-1"></a>expression might be missed. Whether this matters depends on the</span>
+<span id="cb45-301"><a href="#cb45-301" aria-hidden="true" tabindex="-1"></a>biological question you are asking. In this case, it does not matter</span>
+<span id="cb45-302"><a href="#cb45-302" aria-hidden="true" tabindex="-1"></a>because the major differences in gene expression will be enough.</span>
+<span id="cb45-303"><a href="#cb45-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-304"><a href="#cb45-304" aria-hidden="true" tabindex="-1"></a>🎬 Save the summary as a dataframe, <span class="in">`wild_summary_samp`</span> (using</span>
+<span id="cb45-305"><a href="#cb45-305" aria-hidden="true" tabindex="-1"></a>assignment).</span>
+<span id="cb45-306"><a href="#cb45-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-309"><a href="#cb45-309" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-310"><a href="#cb45-310" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb45-311"><a href="#cb45-311" aria-hidden="true" tabindex="-1"></a><span class="co">#---CODING ANSWER---</span></span>
+<span id="cb45-312"><a href="#cb45-312" aria-hidden="true" tabindex="-1"></a>wild_summary_samp <span class="ot">&lt;-</span> wild <span class="sc">|&gt;</span></span>
+<span id="cb45-313"><a href="#cb45-313" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>gene_id,</span>
+<span id="cb45-314"><a href="#cb45-314" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"sample"</span>,</span>
+<span id="cb45-315"><a href="#cb45-315" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb45-316"><a href="#cb45-316" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sample) <span class="sc">|&gt;</span></span>
+<span id="cb45-317"><a href="#cb45-317" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">min =</span> <span class="fu">min</span>(count),</span>
+<span id="cb45-318"><a href="#cb45-318" aria-hidden="true" tabindex="-1"></a>            <span class="at">lowerq =</span> <span class="fu">quantile</span>(count, <span class="fl">0.25</span>),</span>
+<span id="cb45-319"><a href="#cb45-319" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(count),</span>
+<span id="cb45-320"><a href="#cb45-320" aria-hidden="true" tabindex="-1"></a>            <span class="at">median =</span> <span class="fu">median</span>(count),</span>
+<span id="cb45-321"><a href="#cb45-321" aria-hidden="true" tabindex="-1"></a>            <span class="at">upperq =</span> <span class="fu">quantile</span>(count, <span class="fl">0.75</span>),</span>
+<span id="cb45-322"><a href="#cb45-322" aria-hidden="true" tabindex="-1"></a>            <span class="at">max =</span> <span class="fu">max</span>(count),</span>
+<span id="cb45-323"><a href="#cb45-323" aria-hidden="true" tabindex="-1"></a>            <span class="at">n_above_zero =</span> <span class="fu">sum</span>(count <span class="sc">&gt;</span> <span class="dv">0</span>))</span>
+<span id="cb45-324"><a href="#cb45-324" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-325"><a href="#cb45-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-326"><a href="#cb45-326" aria-hidden="true" tabindex="-1"></a>We can also plot the distribution of counts across samples. We have many</span>
+<span id="cb45-327"><a href="#cb45-327" aria-hidden="true" tabindex="-1"></a>values (<span class="in">`r length(wild$gene_id)`</span>) so we are not limited to using</span>
+<span id="cb45-328"><a href="#cb45-328" aria-hidden="true" tabindex="-1"></a><span class="in">`geom_histogram()`</span>. <span class="in">`geom_density()`</span> gives us a smooth distribution.</span>
+<span id="cb45-329"><a href="#cb45-329" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-330"><a href="#cb45-330" aria-hidden="true" tabindex="-1"></a>🎬 Plot the log10 of the counts + 1 again but this time facet by the</span>
+<span id="cb45-331"><a href="#cb45-331" aria-hidden="true" tabindex="-1"></a>sample:</span>
+<span id="cb45-332"><a href="#cb45-332" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-335"><a href="#cb45-335" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-336"><a href="#cb45-336" aria-hidden="true" tabindex="-1"></a>wild <span class="sc">|&gt;</span></span>
+<span id="cb45-337"><a href="#cb45-337" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>gene_id,</span>
+<span id="cb45-338"><a href="#cb45-338" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"sample"</span>,</span>
+<span id="cb45-339"><a href="#cb45-339" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb45-340"><a href="#cb45-340" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">log10</span>(count <span class="sc">+</span> <span class="dv">1</span>))) <span class="sc">+</span></span>
+<span id="cb45-341"><a href="#cb45-341" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
+<span id="cb45-342"><a href="#cb45-342" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(. <span class="sc">~</span> sample, <span class="at">nrow =</span> <span class="dv">3</span>)</span>
+<span id="cb45-343"><a href="#cb45-343" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-344"><a href="#cb45-344" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-345"><a href="#cb45-345" aria-hidden="true" tabindex="-1"></a>The key information to take from these plots is:</span>
+<span id="cb45-346"><a href="#cb45-346" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-347"><a href="#cb45-347" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>difficult to say was is usual/unusual with 2 replicates</span>
+<span id="cb45-348"><a href="#cb45-348" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>the peak at zero suggests quite a few counts of 1.</span>
+<span id="cb45-349"><a href="#cb45-349" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>we would expect the distribution of counts in each sample to be</span>
+<span id="cb45-350"><a href="#cb45-350" aria-hidden="true" tabindex="-1"></a>    roughly log normal so that the rise near the low end, even before</span>
+<span id="cb45-351"><a href="#cb45-351" aria-hidden="true" tabindex="-1"></a>    the peak at zero, suggests that these lower counts might be</span>
+<span id="cb45-352"><a href="#cb45-352" aria-hidden="true" tabindex="-1"></a>    anomalies.</span>
+<span id="cb45-353"><a href="#cb45-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-354"><a href="#cb45-354" aria-hidden="true" tabindex="-1"></a>We have found the distribution across samples to be similar to that over</span>
+<span id="cb45-355"><a href="#cb45-355" aria-hidden="true" tabindex="-1"></a>all. This is good because it means that the samples are fairly</span>
+<span id="cb45-356"><a href="#cb45-356" aria-hidden="true" tabindex="-1"></a>consistent with each other. We can now move on to the next step.</span>
+<span id="cb45-357"><a href="#cb45-357" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-358"><a href="#cb45-358" aria-hidden="true" tabindex="-1"></a><span class="fu">### Distribution of values across the genes</span></span>
+<span id="cb45-359"><a href="#cb45-359" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-360"><a href="#cb45-360" aria-hidden="true" tabindex="-1"></a>There are lots of genes in this dataset therefore we will take a</span>
+<span id="cb45-361"><a href="#cb45-361" aria-hidden="true" tabindex="-1"></a>slightly different approach. We would not want to use plot a</span>
+<span id="cb45-362"><a href="#cb45-362" aria-hidden="true" tabindex="-1"></a>distribution for each gene in the same way. Will pivot the data to tidy</span>
+<span id="cb45-363"><a href="#cb45-363" aria-hidden="true" tabindex="-1"></a>and then summarise the counts for each gene.</span>
+<span id="cb45-364"><a href="#cb45-364" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-365"><a href="#cb45-365" aria-hidden="true" tabindex="-1"></a>🎬 Summarise the counts for each gene and save the result as</span>
+<span id="cb45-366"><a href="#cb45-366" aria-hidden="true" tabindex="-1"></a><span class="in">`wild_summary_gene`</span>. Include the same columns as we had in the by sample</span>
+<span id="cb45-367"><a href="#cb45-367" aria-hidden="true" tabindex="-1"></a>summary (<span class="in">`wild_summary_samp`</span>) *and* an additional column, <span class="in">`total`</span> for</span>
+<span id="cb45-368"><a href="#cb45-368" aria-hidden="true" tabindex="-1"></a>the total number of counts for each gene.</span>
+<span id="cb45-369"><a href="#cb45-369" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-372"><a href="#cb45-372" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-373"><a href="#cb45-373" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb45-374"><a href="#cb45-374" aria-hidden="true" tabindex="-1"></a><span class="co">#---CODING ANSWER---</span></span>
+<span id="cb45-375"><a href="#cb45-375" aria-hidden="true" tabindex="-1"></a><span class="co"># you need to group by `gene_id` rather than `sample_id`</span></span>
+<span id="cb45-376"><a href="#cb45-376" aria-hidden="true" tabindex="-1"></a><span class="co"># sum(count) will find the sum of counts</span></span>
+<span id="cb45-377"><a href="#cb45-377" aria-hidden="true" tabindex="-1"></a>wild_summary_gene <span class="ot">&lt;-</span> wild <span class="sc">|&gt;</span></span>
+<span id="cb45-378"><a href="#cb45-378" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>gene_id,</span>
+<span id="cb45-379"><a href="#cb45-379" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"sample"</span>,</span>
+<span id="cb45-380"><a href="#cb45-380" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb45-381"><a href="#cb45-381" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gene_id) <span class="sc">|&gt;</span></span>
+<span id="cb45-382"><a href="#cb45-382" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">min =</span> <span class="fu">min</span>(count),</span>
+<span id="cb45-383"><a href="#cb45-383" aria-hidden="true" tabindex="-1"></a>            <span class="at">lowerq =</span> <span class="fu">quantile</span>(count, <span class="fl">0.25</span>),</span>
+<span id="cb45-384"><a href="#cb45-384" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(count),</span>
+<span id="cb45-385"><a href="#cb45-385" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(count),</span>
+<span id="cb45-386"><a href="#cb45-386" aria-hidden="true" tabindex="-1"></a>            <span class="at">median =</span> <span class="fu">median</span>(count),</span>
+<span id="cb45-387"><a href="#cb45-387" aria-hidden="true" tabindex="-1"></a>            <span class="at">upperq =</span> <span class="fu">quantile</span>(count, <span class="fl">0.75</span>),</span>
+<span id="cb45-388"><a href="#cb45-388" aria-hidden="true" tabindex="-1"></a>            <span class="at">max =</span> <span class="fu">max</span>(count),</span>
+<span id="cb45-389"><a href="#cb45-389" aria-hidden="true" tabindex="-1"></a>            <span class="at">total =</span> <span class="fu">sum</span>(count),</span>
+<span id="cb45-390"><a href="#cb45-390" aria-hidden="true" tabindex="-1"></a>            <span class="at">n_above_zero =</span> <span class="fu">sum</span>(count <span class="sc">&gt;</span> <span class="dv">0</span>))</span>
+<span id="cb45-391"><a href="#cb45-391" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-392"><a href="#cb45-392" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-393"><a href="#cb45-393" aria-hidden="true" tabindex="-1"></a>🎬 View the <span class="in">`wild_summary_gene`</span> dataframe.</span>
+<span id="cb45-394"><a href="#cb45-394" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-395"><a href="#cb45-395" aria-hidden="true" tabindex="-1"></a>Notice that we have:</span>
+<span id="cb45-396"><a href="#cb45-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-397"><a href="#cb45-397" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>a lot of genes with counts of zero in every sample</span>
+<span id="cb45-398"><a href="#cb45-398" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>a lot of genes with zero counts in several of the samples</span>
+<span id="cb45-399"><a href="#cb45-399" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>some very very low counts.</span>
+<span id="cb45-400"><a href="#cb45-400" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-401"><a href="#cb45-401" aria-hidden="true" tabindex="-1"></a>Genes with very low counts should be filtered out because they are</span>
+<span id="cb45-402"><a href="#cb45-402" aria-hidden="true" tabindex="-1"></a>unreliable - or, at the least, uninformative. The goal of our downstream</span>
+<span id="cb45-403"><a href="#cb45-403" aria-hidden="true" tabindex="-1"></a>analysis will be to see if there is a significant difference in gene</span>
+<span id="cb45-404"><a href="#cb45-404" aria-hidden="true" tabindex="-1"></a>expression between the control and FGF-treated sibling. Since we have</span>
+<span id="cb45-405"><a href="#cb45-405" aria-hidden="true" tabindex="-1"></a>only three replicates in each group, having one or two unreliable,</span>
+<span id="cb45-406"><a href="#cb45-406" aria-hidden="true" tabindex="-1"></a>missing or zero values, makes such a determination impossible for a</span>
+<span id="cb45-407"><a href="#cb45-407" aria-hidden="true" tabindex="-1"></a>particular gene. We will use the total counts (<span class="in">`total`</span>) and the number</span>
+<span id="cb45-408"><a href="#cb45-408" aria-hidden="true" tabindex="-1"></a>of samples with non-zero values (<span class="in">`n_above_zero`</span>) in this dataframe to</span>
+<span id="cb45-409"><a href="#cb45-409" aria-hidden="true" tabindex="-1"></a>filter our genes later.</span>
+<span id="cb45-410"><a href="#cb45-410" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-411"><a href="#cb45-411" aria-hidden="true" tabindex="-1"></a>As we have a lot of genes, it is helpful to plot the mean counts with</span>
+<span id="cb45-412"><a href="#cb45-412" aria-hidden="true" tabindex="-1"></a><span class="in">`geom_pointrange()`</span> to get an overview of the distributions. We will</span>
+<span id="cb45-413"><a href="#cb45-413" aria-hidden="true" tabindex="-1"></a>again plot the log of the mean counts. We will also order the genes from</span>
+<span id="cb45-414"><a href="#cb45-414" aria-hidden="true" tabindex="-1"></a>lowest to highest mean count.</span>
+<span id="cb45-415"><a href="#cb45-415" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-416"><a href="#cb45-416" aria-hidden="true" tabindex="-1"></a>🎬 Plot the logged mean counts for each gene in order of size using</span>
+<span id="cb45-417"><a href="#cb45-417" aria-hidden="true" tabindex="-1"></a><span class="in">`geom_pointrange()`</span>:</span>
+<span id="cb45-418"><a href="#cb45-418" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-421"><a href="#cb45-421" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-422"><a href="#cb45-422" aria-hidden="true" tabindex="-1"></a>wild_summary_gene <span class="sc">|&gt;</span> </span>
+<span id="cb45-423"><a href="#cb45-423" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(gene_id, mean), <span class="at">y =</span> <span class="fu">log10</span>(mean))) <span class="sc">+</span></span>
+<span id="cb45-424"><a href="#cb45-424" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> <span class="fu">log10</span>(mean <span class="sc">-</span> sd), </span>
+<span id="cb45-425"><a href="#cb45-425" aria-hidden="true" tabindex="-1"></a>                      <span class="at">ymax =</span> <span class="fu">log10</span>(mean <span class="sc">+</span> sd )),</span>
+<span id="cb45-426"><a href="#cb45-426" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size =</span> <span class="fl">0.1</span>)</span>
+<span id="cb45-427"><a href="#cb45-427" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-428"><a href="#cb45-428" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-429"><a href="#cb45-429" aria-hidden="true" tabindex="-1"></a>(Note the warning is expected since we have zero means).</span>
+<span id="cb45-430"><a href="#cb45-430" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-431"><a href="#cb45-431" aria-hidden="true" tabindex="-1"></a>You can see we also have quite a few genes with means less than 1 (log</span>
+<span id="cb45-432"><a href="#cb45-432" aria-hidden="true" tabindex="-1"></a>below zero). Note that the variability between genes (average counts</span>
+<span id="cb45-433"><a href="#cb45-433" aria-hidden="true" tabindex="-1"></a>between 0 and 43348) is far greater than between samples (average counts</span>
+<span id="cb45-434"><a href="#cb45-434" aria-hidden="true" tabindex="-1"></a>from 70 to 296) which is exactly what we would expect to see.</span>
+<span id="cb45-435"><a href="#cb45-435" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-436"><a href="#cb45-436" aria-hidden="true" tabindex="-1"></a>Now go to <span class="co">[</span><span class="ot">Filtering for QC</span><span class="co">](#arabidopisis-1)</span>.</span>
+<span id="cb45-437"><a href="#cb45-437" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-438"><a href="#cb45-438" aria-hidden="true" tabindex="-1"></a><span class="fu">## 💉 *Leishmania*</span></span>
+<span id="cb45-439"><a href="#cb45-439" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-440"><a href="#cb45-440" aria-hidden="true" tabindex="-1"></a><span class="fu">### Import</span></span>
+<span id="cb45-441"><a href="#cb45-441" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-442"><a href="#cb45-442" aria-hidden="true" tabindex="-1"></a>Import the data for *L.mexicana* procyclic promastigote (pro) and the</span>
+<span id="cb45-443"><a href="#cb45-443" aria-hidden="true" tabindex="-1"></a>metacyclic promastigotes (meta)</span>
+<span id="cb45-444"><a href="#cb45-444" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-445"><a href="#cb45-445" aria-hidden="true" tabindex="-1"></a>🎬 Import <span class="co">[</span><span class="ot">leishmania-mex-pro.csv</span><span class="co">](data-raw/leishmania-mex-pro.csv)</span> and</span>
+<span id="cb45-446"><a href="#cb45-446" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">leishmania-mex-meta.csv</span><span class="co">](data-raw/leishmania-mex-meta.csv)</span></span>
+<span id="cb45-447"><a href="#cb45-447" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-450"><a href="#cb45-450" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-451"><a href="#cb45-451" aria-hidden="true" tabindex="-1"></a><span class="co"># 💉 import the pro and meta leish data</span></span>
+<span id="cb45-452"><a href="#cb45-452" aria-hidden="true" tabindex="-1"></a>pro <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data-raw/leishmania-mex-pro.csv"</span>)</span>
+<span id="cb45-453"><a href="#cb45-453" aria-hidden="true" tabindex="-1"></a>meta <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data-raw/leishmania-mex-meta.csv"</span>)</span>
+<span id="cb45-454"><a href="#cb45-454" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-455"><a href="#cb45-455" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-456"><a href="#cb45-456" aria-hidden="true" tabindex="-1"></a>We will need to combine the two sets of columns (datasets) so we can</span>
+<span id="cb45-457"><a href="#cb45-457" aria-hidden="true" tabindex="-1"></a>compare the two stages. We will join them using <span class="in">`gene_id`</span> to match the</span>
+<span id="cb45-458"><a href="#cb45-458" aria-hidden="true" tabindex="-1"></a>rows. The column names differ so we don't need to worry about renaming</span>
+<span id="cb45-459"><a href="#cb45-459" aria-hidden="true" tabindex="-1"></a>any of them.</span>
+<span id="cb45-460"><a href="#cb45-460" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-461"><a href="#cb45-461" aria-hidden="true" tabindex="-1"></a>🎬 Combine the two datasets by <span class="in">`gene_id`</span> and save the result as</span>
+<span id="cb45-462"><a href="#cb45-462" aria-hidden="true" tabindex="-1"></a><span class="in">`pro_meta`</span>.</span>
+<span id="cb45-463"><a href="#cb45-463" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-466"><a href="#cb45-466" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-467"><a href="#cb45-467" aria-hidden="true" tabindex="-1"></a><span class="co">#  combine the two datasets</span></span>
+<span id="cb45-468"><a href="#cb45-468" aria-hidden="true" tabindex="-1"></a>pro_meta <span class="ot">&lt;-</span> pro <span class="sc">|&gt;</span></span>
+<span id="cb45-469"><a href="#cb45-469" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(meta, </span>
+<span id="cb45-470"><a href="#cb45-470" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="st">"gene_id"</span>)</span>
+<span id="cb45-471"><a href="#cb45-471" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-472"><a href="#cb45-472" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-473"><a href="#cb45-473" aria-hidden="true" tabindex="-1"></a>🎬 Check the dataframe has the number of rows and columns you were</span>
+<span id="cb45-474"><a href="#cb45-474" aria-hidden="true" tabindex="-1"></a>expecting and that column types and names are as expected.</span>
+<span id="cb45-475"><a href="#cb45-475" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-476"><a href="#cb45-476" aria-hidden="true" tabindex="-1"></a><span class="fu">### Distribution of values across all the data in the file</span></span>
+<span id="cb45-477"><a href="#cb45-477" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-478"><a href="#cb45-478" aria-hidden="true" tabindex="-1"></a>The values are spread over multiple columns so in order to plot the</span>
+<span id="cb45-479"><a href="#cb45-479" aria-hidden="true" tabindex="-1"></a>distribution as a whole, we will need to first use <span class="in">`pivot_longer()`</span> to</span>
+<span id="cb45-480"><a href="#cb45-480" aria-hidden="true" tabindex="-1"></a>put the data in ['tidy'</span>
+<span id="cb45-481"><a href="#cb45-481" aria-hidden="true" tabindex="-1"></a>format](https://3mmarand.github.io/R4BABS/r4babs1/week-9/workshop.html#tidying-data)</span>
+<span id="cb45-482"><a href="#cb45-482" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">@wickham2014</span><span class="co">]</span> by stacking the columns. We *could* save a copy of the</span>
+<span id="cb45-483"><a href="#cb45-483" aria-hidden="true" tabindex="-1"></a>stacked data and then plot it, but here, I have just piped the stacked</span>
+<span id="cb45-484"><a href="#cb45-484" aria-hidden="true" tabindex="-1"></a>data straight into <span class="in">`ggplot()`</span>. This helps me avoid cluttering my R</span>
+<span id="cb45-485"><a href="#cb45-485" aria-hidden="true" tabindex="-1"></a>environment with temporary objects.</span>
+<span id="cb45-486"><a href="#cb45-486" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-487"><a href="#cb45-487" aria-hidden="true" tabindex="-1"></a>🎬 Pivot the counts (stack the columns) so all the counts are in a</span>
+<span id="cb45-488"><a href="#cb45-488" aria-hidden="true" tabindex="-1"></a>single column (<span class="in">`count`</span>) labelled in <span class="in">`sample`</span> by the column it came from</span>
+<span id="cb45-489"><a href="#cb45-489" aria-hidden="true" tabindex="-1"></a>and pipe into <span class="in">`ggplot()`</span> to create a histogram:</span>
+<span id="cb45-490"><a href="#cb45-490" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-493"><a href="#cb45-493" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-494"><a href="#cb45-494" aria-hidden="true" tabindex="-1"></a>pro_meta <span class="sc">|&gt;</span></span>
+<span id="cb45-495"><a href="#cb45-495" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>gene_id,</span>
+<span id="cb45-496"><a href="#cb45-496" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"sample"</span>,</span>
+<span id="cb45-497"><a href="#cb45-497" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb45-498"><a href="#cb45-498" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> count)) <span class="sc">+</span></span>
+<span id="cb45-499"><a href="#cb45-499" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
+<span id="cb45-500"><a href="#cb45-500" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-501"><a href="#cb45-501" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-502"><a href="#cb45-502" aria-hidden="true" tabindex="-1"></a>This data is very skewed - there are very many low counts and a very few</span>
+<span id="cb45-503"><a href="#cb45-503" aria-hidden="true" tabindex="-1"></a>higher numbers. It is hard to see the very low bars for the higher</span>
+<span id="cb45-504"><a href="#cb45-504" aria-hidden="true" tabindex="-1"></a>values. Logging the counts is a way to make the distribution more</span>
+<span id="cb45-505"><a href="#cb45-505" aria-hidden="true" tabindex="-1"></a>visible. You cannot take the log of 0 so we add 1 to the count before</span>
+<span id="cb45-506"><a href="#cb45-506" aria-hidden="true" tabindex="-1"></a>logging. The log of 1 is zero so we will be able to see how many zeros</span>
+<span id="cb45-507"><a href="#cb45-507" aria-hidden="true" tabindex="-1"></a>we had.</span>
+<span id="cb45-508"><a href="#cb45-508" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-509"><a href="#cb45-509" aria-hidden="true" tabindex="-1"></a>🎬 Repeat the plot of log of the counts.</span>
+<span id="cb45-510"><a href="#cb45-510" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-513"><a href="#cb45-513" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-514"><a href="#cb45-514" aria-hidden="true" tabindex="-1"></a>pro_meta <span class="sc">|&gt;</span></span>
+<span id="cb45-515"><a href="#cb45-515" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>gene_id,</span>
+<span id="cb45-516"><a href="#cb45-516" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"sample"</span>,</span>
+<span id="cb45-517"><a href="#cb45-517" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb45-518"><a href="#cb45-518" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log10</span>(count <span class="sc">+</span> <span class="dv">1</span>))) <span class="sc">+</span></span>
+<span id="cb45-519"><a href="#cb45-519" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
+<span id="cb45-520"><a href="#cb45-520" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-521"><a href="#cb45-521" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-522"><a href="#cb45-522" aria-hidden="true" tabindex="-1"></a>I've used base 10 only because it easy to convert to the original scale</span>
+<span id="cb45-523"><a href="#cb45-523" aria-hidden="true" tabindex="-1"></a>(1 is 10, 2 is 100, 3 is 1000 etc). Notice we have a peak at zero</span>
+<span id="cb45-524"><a href="#cb45-524" aria-hidden="true" tabindex="-1"></a>indicating there are many zeros. We would expect the distribution of</span>
+<span id="cb45-525"><a href="#cb45-525" aria-hidden="true" tabindex="-1"></a>counts to be roughly log normal because this is expression of *all* the</span>
+<span id="cb45-526"><a href="#cb45-526" aria-hidden="true" tabindex="-1"></a>genes in the genome<span class="ot">[^2]</span>. The number of low counts is inflated (small</span>
+<span id="cb45-527"><a href="#cb45-527" aria-hidden="true" tabindex="-1"></a>peak near the low end). This suggests that these lower counts might be</span>
+<span id="cb45-528"><a href="#cb45-528" aria-hidden="true" tabindex="-1"></a>false positives. The removal of low counts is a common processing step</span>
+<span id="cb45-529"><a href="#cb45-529" aria-hidden="true" tabindex="-1"></a>in 'omic data. We will revisit this after we have considered the</span>
+<span id="cb45-530"><a href="#cb45-530" aria-hidden="true" tabindex="-1"></a>distribution of counts across samples and genes.</span>
+<span id="cb45-531"><a href="#cb45-531" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-532"><a href="#cb45-532" aria-hidden="true" tabindex="-1"></a><span class="ot">[^2]: </span>This a result of the [Central limit</span>
+<span id="cb45-533"><a href="#cb45-533" aria-hidden="true" tabindex="-1"></a>    theorem](https://en.wikipedia.org/wiki/Central_limit_theorem),one</span>
+<span id="cb45-534"><a href="#cb45-534" aria-hidden="true" tabindex="-1"></a>    consequence of which is that adding together lots of distributions -</span>
+<span id="cb45-535"><a href="#cb45-535" aria-hidden="true" tabindex="-1"></a>    whatever distributions they are - will tend to a normal</span>
+<span id="cb45-536"><a href="#cb45-536" aria-hidden="true" tabindex="-1"></a>    distribution.</span>
+<span id="cb45-537"><a href="#cb45-537" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-538"><a href="#cb45-538" aria-hidden="true" tabindex="-1"></a><span class="fu">### Distribution of values across the samples</span></span>
+<span id="cb45-539"><a href="#cb45-539" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-540"><a href="#cb45-540" aria-hidden="true" tabindex="-1"></a>Summary statistics including the the number of NAs can be seen using the</span>
+<span id="cb45-541"><a href="#cb45-541" aria-hidden="true" tabindex="-1"></a><span class="in">`summary()`</span>. It is most helpful which you have up to about 25 columns.</span>
+<span id="cb45-542"><a href="#cb45-542" aria-hidden="true" tabindex="-1"></a>There is nothing special about the number 25, it is just that summaries</span>
+<span id="cb45-543"><a href="#cb45-543" aria-hidden="true" tabindex="-1"></a>of a larger number of columns are difficult to grasp.</span>
+<span id="cb45-544"><a href="#cb45-544" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-545"><a href="#cb45-545" aria-hidden="true" tabindex="-1"></a>🎬 Get a quick overview of the 7 columns:</span>
+<span id="cb45-546"><a href="#cb45-546" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-549"><a href="#cb45-549" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-550"><a href="#cb45-550" aria-hidden="true" tabindex="-1"></a><span class="co"># examine all the columns quickly</span></span>
+<span id="cb45-551"><a href="#cb45-551" aria-hidden="true" tabindex="-1"></a><span class="co"># works well with smaller numbers of column</span></span>
+<span id="cb45-552"><a href="#cb45-552" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pro_meta)</span>
+<span id="cb45-553"><a href="#cb45-553" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-554"><a href="#cb45-554" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-555"><a href="#cb45-555" aria-hidden="true" tabindex="-1"></a>Notice that:</span>
+<span id="cb45-556"><a href="#cb45-556" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-557"><a href="#cb45-557" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>the minimum count is 0 and the maximums are very high in all the</span>
+<span id="cb45-558"><a href="#cb45-558" aria-hidden="true" tabindex="-1"></a>    columns</span>
+<span id="cb45-559"><a href="#cb45-559" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>the medians are quite a lot lower than the means so the data are</span>
+<span id="cb45-560"><a href="#cb45-560" aria-hidden="true" tabindex="-1"></a>    skewed (hump to the left, tail to the right) and there must be quite</span>
+<span id="cb45-561"><a href="#cb45-561" aria-hidden="true" tabindex="-1"></a>    a lot of zeros</span>
+<span id="cb45-562"><a href="#cb45-562" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-563"><a href="#cb45-563" aria-hidden="true" tabindex="-1"></a>We want to know how many zeros there are in each a column. To achieve</span>
+<span id="cb45-564"><a href="#cb45-564" aria-hidden="true" tabindex="-1"></a>this, we can make use of the fact that <span class="in">`TRUE`</span> evaluates to 1 and <span class="in">`FALSE`</span></span>
+<span id="cb45-565"><a href="#cb45-565" aria-hidden="true" tabindex="-1"></a>evaluates to 0. Consequently, summing a column of TRUE/FALSE values will</span>
+<span id="cb45-566"><a href="#cb45-566" aria-hidden="true" tabindex="-1"></a>give you the number of TRUE values. For example, <span class="in">`sum(lm_pro_1 &gt; 0)`</span></span>
+<span id="cb45-567"><a href="#cb45-567" aria-hidden="true" tabindex="-1"></a>gives the number of values above zero in the <span class="in">`lm_pro_1`</span> column. If you</span>
+<span id="cb45-568"><a href="#cb45-568" aria-hidden="true" tabindex="-1"></a>wanted the number of zeros, you could use <span class="in">`sum(lm_pro_1 == 0)`</span>.</span>
+<span id="cb45-569"><a href="#cb45-569" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-570"><a href="#cb45-570" aria-hidden="true" tabindex="-1"></a>🎬 Find the number values above zero in all six columns:</span>
+<span id="cb45-571"><a href="#cb45-571" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-574"><a href="#cb45-574" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-575"><a href="#cb45-575" aria-hidden="true" tabindex="-1"></a>pro_meta <span class="sc">|&gt;</span></span>
+<span id="cb45-576"><a href="#cb45-576" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">sum</span>(lm_pro_1 <span class="sc">&gt;</span> <span class="dv">0</span>),</span>
+<span id="cb45-577"><a href="#cb45-577" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sum</span>(lm_pro_2 <span class="sc">&gt;</span> <span class="dv">0</span>),</span>
+<span id="cb45-578"><a href="#cb45-578" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sum</span>(lm_pro_3 <span class="sc">&gt;</span> <span class="dv">0</span>),</span>
+<span id="cb45-579"><a href="#cb45-579" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sum</span>(lm_meta_1 <span class="sc">&gt;</span> <span class="dv">0</span>),</span>
+<span id="cb45-580"><a href="#cb45-580" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sum</span>(lm_meta_2 <span class="sc">&gt;</span> <span class="dv">0</span>),</span>
+<span id="cb45-581"><a href="#cb45-581" aria-hidden="true" tabindex="-1"></a>            <span class="fu">sum</span>(lm_meta_3 <span class="sc">&gt;</span> <span class="dv">0</span>))</span>
+<span id="cb45-582"><a href="#cb45-582" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-583"><a href="#cb45-583" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-584"><a href="#cb45-584" aria-hidden="true" tabindex="-1"></a>There is a better way of doing this that saves you having to repeat so</span>
+<span id="cb45-585"><a href="#cb45-585" aria-hidden="true" tabindex="-1"></a>much code - very useful if you have a lot more than 6 columns! We can</span>
+<span id="cb45-586"><a href="#cb45-586" aria-hidden="true" tabindex="-1"></a>use <span class="in">`pivot_longer()`</span> to put the data in tidy format and then use the</span>
+<span id="cb45-587"><a href="#cb45-587" aria-hidden="true" tabindex="-1"></a><span class="in">`group_by()`</span> and <span class="in">`summarise()`</span> approach we have used extensively before.</span>
+<span id="cb45-588"><a href="#cb45-588" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-589"><a href="#cb45-589" aria-hidden="true" tabindex="-1"></a>🎬 Find the number of zeros in all columns:</span>
+<span id="cb45-590"><a href="#cb45-590" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-593"><a href="#cb45-593" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-594"><a href="#cb45-594" aria-hidden="true" tabindex="-1"></a>pro_meta <span class="sc">|&gt;</span></span>
+<span id="cb45-595"><a href="#cb45-595" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>gene_id,</span>
+<span id="cb45-596"><a href="#cb45-596" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"sample"</span>,</span>
+<span id="cb45-597"><a href="#cb45-597" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb45-598"><a href="#cb45-598" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sample) <span class="sc">|&gt;</span></span>
+<span id="cb45-599"><a href="#cb45-599" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n_above_zero =</span> <span class="fu">sum</span>(count <span class="sc">&gt;</span> <span class="dv">0</span>))</span>
+<span id="cb45-600"><a href="#cb45-600" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-601"><a href="#cb45-601" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-602"><a href="#cb45-602" aria-hidden="true" tabindex="-1"></a>You could expand this code to get get other useful summary information</span>
+<span id="cb45-603"><a href="#cb45-603" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-604"><a href="#cb45-604" aria-hidden="true" tabindex="-1"></a>🎬 Summarise all the samples:</span>
+<span id="cb45-605"><a href="#cb45-605" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-608"><a href="#cb45-608" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-609"><a href="#cb45-609" aria-hidden="true" tabindex="-1"></a>pro_meta <span class="sc">|&gt;</span></span>
+<span id="cb45-610"><a href="#cb45-610" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>gene_id,</span>
+<span id="cb45-611"><a href="#cb45-611" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"sample"</span>,</span>
+<span id="cb45-612"><a href="#cb45-612" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb45-613"><a href="#cb45-613" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sample) <span class="sc">|&gt;</span></span>
+<span id="cb45-614"><a href="#cb45-614" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">min =</span> <span class="fu">min</span>(count),</span>
+<span id="cb45-615"><a href="#cb45-615" aria-hidden="true" tabindex="-1"></a>            <span class="at">lowerq =</span> <span class="fu">quantile</span>(count, <span class="fl">0.25</span>),</span>
+<span id="cb45-616"><a href="#cb45-616" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(count),</span>
+<span id="cb45-617"><a href="#cb45-617" aria-hidden="true" tabindex="-1"></a>            <span class="at">median =</span> <span class="fu">median</span>(count),</span>
+<span id="cb45-618"><a href="#cb45-618" aria-hidden="true" tabindex="-1"></a>            <span class="at">upperq =</span> <span class="fu">quantile</span>(count, <span class="fl">0.75</span>),</span>
+<span id="cb45-619"><a href="#cb45-619" aria-hidden="true" tabindex="-1"></a>            <span class="at">max =</span> <span class="fu">max</span>(count),</span>
+<span id="cb45-620"><a href="#cb45-620" aria-hidden="true" tabindex="-1"></a>            <span class="at">n_above_zero =</span> <span class="fu">sum</span>(count <span class="sc">&gt;</span> <span class="dv">0</span>))</span>
+<span id="cb45-621"><a href="#cb45-621" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-622"><a href="#cb45-622" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-623"><a href="#cb45-623" aria-hidden="true" tabindex="-1"></a>The mean count ranges from 220 to 364. We do not appear to have any</span>
+<span id="cb45-624"><a href="#cb45-624" aria-hidden="true" tabindex="-1"></a>outlying (odd) replicates. The potential effect of an odd replicate is</span>
+<span id="cb45-625"><a href="#cb45-625" aria-hidden="true" tabindex="-1"></a>reduced statistical power. Major differences in gene expression will</span>
+<span id="cb45-626"><a href="#cb45-626" aria-hidden="true" tabindex="-1"></a>still be uncovered. Differences between genes with lower average</span>
+<span id="cb45-627"><a href="#cb45-627" aria-hidden="true" tabindex="-1"></a>expression and or more variable expression might be missed. Whether this</span>
+<span id="cb45-628"><a href="#cb45-628" aria-hidden="true" tabindex="-1"></a>matters depends on the biological question you are asking.</span>
+<span id="cb45-629"><a href="#cb45-629" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-630"><a href="#cb45-630" aria-hidden="true" tabindex="-1"></a>🎬 Save the summary as a dataframe, <span class="in">`pro_meta_summary_samp`</span> (using</span>
+<span id="cb45-631"><a href="#cb45-631" aria-hidden="true" tabindex="-1"></a>assignment).</span>
+<span id="cb45-632"><a href="#cb45-632" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-635"><a href="#cb45-635" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-636"><a href="#cb45-636" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb45-637"><a href="#cb45-637" aria-hidden="true" tabindex="-1"></a><span class="co">#---CODING ANSWER---</span></span>
+<span id="cb45-638"><a href="#cb45-638" aria-hidden="true" tabindex="-1"></a>pro_meta_summary_samp <span class="ot">&lt;-</span> pro_meta <span class="sc">|&gt;</span></span>
+<span id="cb45-639"><a href="#cb45-639" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>gene_id,</span>
+<span id="cb45-640"><a href="#cb45-640" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"sample"</span>,</span>
+<span id="cb45-641"><a href="#cb45-641" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb45-642"><a href="#cb45-642" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sample) <span class="sc">|&gt;</span></span>
+<span id="cb45-643"><a href="#cb45-643" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">min =</span> <span class="fu">min</span>(count),</span>
+<span id="cb45-644"><a href="#cb45-644" aria-hidden="true" tabindex="-1"></a>            <span class="at">lowerq =</span> <span class="fu">quantile</span>(count, <span class="fl">0.25</span>),</span>
+<span id="cb45-645"><a href="#cb45-645" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(count),</span>
+<span id="cb45-646"><a href="#cb45-646" aria-hidden="true" tabindex="-1"></a>            <span class="at">median =</span> <span class="fu">median</span>(count),</span>
+<span id="cb45-647"><a href="#cb45-647" aria-hidden="true" tabindex="-1"></a>            <span class="at">upperq =</span> <span class="fu">quantile</span>(count, <span class="fl">0.75</span>),</span>
+<span id="cb45-648"><a href="#cb45-648" aria-hidden="true" tabindex="-1"></a>            <span class="at">max =</span> <span class="fu">max</span>(count),</span>
+<span id="cb45-649"><a href="#cb45-649" aria-hidden="true" tabindex="-1"></a>            <span class="at">n_above_zero =</span> <span class="fu">sum</span>(count <span class="sc">&gt;</span> <span class="dv">0</span>))</span>
+<span id="cb45-650"><a href="#cb45-650" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-651"><a href="#cb45-651" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-652"><a href="#cb45-652" aria-hidden="true" tabindex="-1"></a>We can also plot the distribution of counts across samples. We have many</span>
+<span id="cb45-653"><a href="#cb45-653" aria-hidden="true" tabindex="-1"></a>values (<span class="in">`r length(pro_meta$gene_id)`</span>) so we are not limited to using</span>
+<span id="cb45-654"><a href="#cb45-654" aria-hidden="true" tabindex="-1"></a><span class="in">`geom_histogram()`</span>. <span class="in">`geom_density()`</span> gives us a smooth distribution.</span>
+<span id="cb45-655"><a href="#cb45-655" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-656"><a href="#cb45-656" aria-hidden="true" tabindex="-1"></a>🎬 Plot the log10 of the counts + 1 again but this time facet by the</span>
+<span id="cb45-657"><a href="#cb45-657" aria-hidden="true" tabindex="-1"></a>sample:</span>
+<span id="cb45-658"><a href="#cb45-658" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-661"><a href="#cb45-661" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-662"><a href="#cb45-662" aria-hidden="true" tabindex="-1"></a>pro_meta <span class="sc">|&gt;</span></span>
+<span id="cb45-663"><a href="#cb45-663" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>gene_id,</span>
+<span id="cb45-664"><a href="#cb45-664" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"sample"</span>,</span>
+<span id="cb45-665"><a href="#cb45-665" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb45-666"><a href="#cb45-666" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">log10</span>(count <span class="sc">+</span> <span class="dv">1</span>))) <span class="sc">+</span></span>
+<span id="cb45-667"><a href="#cb45-667" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
+<span id="cb45-668"><a href="#cb45-668" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(. <span class="sc">~</span> sample, <span class="at">nrow =</span> <span class="dv">3</span>)</span>
+<span id="cb45-669"><a href="#cb45-669" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-670"><a href="#cb45-670" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-671"><a href="#cb45-671" aria-hidden="true" tabindex="-1"></a>The key information to take from these plots is:</span>
+<span id="cb45-672"><a href="#cb45-672" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-673"><a href="#cb45-673" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>the distributions are roughly similar</span>
+<span id="cb45-674"><a href="#cb45-674" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>the peak at zero suggests quite a few counts of 1.</span>
+<span id="cb45-675"><a href="#cb45-675" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>we would expect the distribution of counts in each sample to be</span>
+<span id="cb45-676"><a href="#cb45-676" aria-hidden="true" tabindex="-1"></a>    roughly log normal so that the small rise near the low end, even</span>
+<span id="cb45-677"><a href="#cb45-677" aria-hidden="true" tabindex="-1"></a>    before the peak at zero, suggests that these lower counts might be</span>
+<span id="cb45-678"><a href="#cb45-678" aria-hidden="true" tabindex="-1"></a>    anomalies.</span>
+<span id="cb45-679"><a href="#cb45-679" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-680"><a href="#cb45-680" aria-hidden="true" tabindex="-1"></a>We have found the distribution across samples to be similar to that over</span>
+<span id="cb45-681"><a href="#cb45-681" aria-hidden="true" tabindex="-1"></a>all. This is good because it means that the samples are fairly</span>
+<span id="cb45-682"><a href="#cb45-682" aria-hidden="true" tabindex="-1"></a>consistent with each other. We can now move on to the next step.</span>
+<span id="cb45-683"><a href="#cb45-683" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-684"><a href="#cb45-684" aria-hidden="true" tabindex="-1"></a><span class="fu">### Distribution of values across the genes</span></span>
+<span id="cb45-685"><a href="#cb45-685" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-686"><a href="#cb45-686" aria-hidden="true" tabindex="-1"></a>There are lots of genes in this dataset therefore we will take a</span>
+<span id="cb45-687"><a href="#cb45-687" aria-hidden="true" tabindex="-1"></a>slightly different approach. We would not want to use plot a</span>
+<span id="cb45-688"><a href="#cb45-688" aria-hidden="true" tabindex="-1"></a>distribution for each gene in the same way. Will pivot the data to tidy</span>
+<span id="cb45-689"><a href="#cb45-689" aria-hidden="true" tabindex="-1"></a>and then summarise the counts for each gene.</span>
+<span id="cb45-690"><a href="#cb45-690" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-691"><a href="#cb45-691" aria-hidden="true" tabindex="-1"></a>🎬 Summarise the counts for each gene and save the result as</span>
+<span id="cb45-692"><a href="#cb45-692" aria-hidden="true" tabindex="-1"></a><span class="in">`pro_meta_summary_gene`</span>. Include the same columns as we had in the by</span>
+<span id="cb45-693"><a href="#cb45-693" aria-hidden="true" tabindex="-1"></a>sample summary (<span class="in">`pro_meta_summary_samp`</span>) *and* an additional column,</span>
+<span id="cb45-694"><a href="#cb45-694" aria-hidden="true" tabindex="-1"></a><span class="in">`total`</span> for the total number of counts for each gene.</span>
+<span id="cb45-695"><a href="#cb45-695" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-698"><a href="#cb45-698" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-699"><a href="#cb45-699" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb45-700"><a href="#cb45-700" aria-hidden="true" tabindex="-1"></a><span class="co">#---CODING ANSWER---</span></span>
+<span id="cb45-701"><a href="#cb45-701" aria-hidden="true" tabindex="-1"></a><span class="co"># you need to group by `gene_id` rather than `sample_id`</span></span>
+<span id="cb45-702"><a href="#cb45-702" aria-hidden="true" tabindex="-1"></a><span class="co"># sum(count) will find the sum of counts</span></span>
+<span id="cb45-703"><a href="#cb45-703" aria-hidden="true" tabindex="-1"></a>pro_meta_summary_gene <span class="ot">&lt;-</span> pro_meta <span class="sc">|&gt;</span></span>
+<span id="cb45-704"><a href="#cb45-704" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>gene_id,</span>
+<span id="cb45-705"><a href="#cb45-705" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"sample"</span>,</span>
+<span id="cb45-706"><a href="#cb45-706" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"count"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb45-707"><a href="#cb45-707" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gene_id) <span class="sc">|&gt;</span></span>
+<span id="cb45-708"><a href="#cb45-708" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">min =</span> <span class="fu">min</span>(count),</span>
+<span id="cb45-709"><a href="#cb45-709" aria-hidden="true" tabindex="-1"></a>            <span class="at">lowerq =</span> <span class="fu">quantile</span>(count, <span class="fl">0.25</span>),</span>
+<span id="cb45-710"><a href="#cb45-710" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(count),</span>
+<span id="cb45-711"><a href="#cb45-711" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(count),</span>
+<span id="cb45-712"><a href="#cb45-712" aria-hidden="true" tabindex="-1"></a>            <span class="at">median =</span> <span class="fu">median</span>(count),</span>
+<span id="cb45-713"><a href="#cb45-713" aria-hidden="true" tabindex="-1"></a>            <span class="at">upperq =</span> <span class="fu">quantile</span>(count, <span class="fl">0.75</span>),</span>
+<span id="cb45-714"><a href="#cb45-714" aria-hidden="true" tabindex="-1"></a>            <span class="at">max =</span> <span class="fu">max</span>(count),</span>
+<span id="cb45-715"><a href="#cb45-715" aria-hidden="true" tabindex="-1"></a>            <span class="at">total =</span> <span class="fu">sum</span>(count),</span>
+<span id="cb45-716"><a href="#cb45-716" aria-hidden="true" tabindex="-1"></a>            <span class="at">n_above_zero =</span> <span class="fu">sum</span>(count <span class="sc">&gt;</span> <span class="dv">0</span>))</span>
+<span id="cb45-717"><a href="#cb45-717" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-718"><a href="#cb45-718" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-719"><a href="#cb45-719" aria-hidden="true" tabindex="-1"></a>🎬 View the <span class="in">`pro_meta_summary_gene`</span> dataframe.</span>
+<span id="cb45-720"><a href="#cb45-720" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-721"><a href="#cb45-721" aria-hidden="true" tabindex="-1"></a>Notice that we have:</span>
+<span id="cb45-722"><a href="#cb45-722" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-723"><a href="#cb45-723" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>a lot of genes with counts of zero in every sample</span>
+<span id="cb45-724"><a href="#cb45-724" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>a lot of genes with zero counts in several of the samples</span>
+<span id="cb45-725"><a href="#cb45-725" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>some very very low counts.</span>
+<span id="cb45-726"><a href="#cb45-726" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-727"><a href="#cb45-727" aria-hidden="true" tabindex="-1"></a>Genes with very low counts should be filtered out because they are</span>
+<span id="cb45-728"><a href="#cb45-728" aria-hidden="true" tabindex="-1"></a>unreliable - or, at the least, uninformative. The goal of our downstream</span>
+<span id="cb45-729"><a href="#cb45-729" aria-hidden="true" tabindex="-1"></a>analysis will be to see if there is a significant difference in gene</span>
+<span id="cb45-730"><a href="#cb45-730" aria-hidden="true" tabindex="-1"></a>expression between the stages. Since we have only three replicates in</span>
+<span id="cb45-731"><a href="#cb45-731" aria-hidden="true" tabindex="-1"></a>each group, having one or two unreliable, missing or zero values, makes</span>
+<span id="cb45-732"><a href="#cb45-732" aria-hidden="true" tabindex="-1"></a>such a determination impossible for a particular gene. We will use the</span>
+<span id="cb45-733"><a href="#cb45-733" aria-hidden="true" tabindex="-1"></a>total counts (<span class="in">`total`</span>) and the number of samples with non-zero values</span>
+<span id="cb45-734"><a href="#cb45-734" aria-hidden="true" tabindex="-1"></a>(<span class="in">`n_above_zero`</span>) in this dataframe to filter our genes later.</span>
+<span id="cb45-735"><a href="#cb45-735" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-736"><a href="#cb45-736" aria-hidden="true" tabindex="-1"></a>As we have a lot of genes, it is helpful to plot the mean counts with</span>
+<span id="cb45-737"><a href="#cb45-737" aria-hidden="true" tabindex="-1"></a><span class="in">`geom_pointrange()`</span> to get an overview of the distributions. We will</span>
+<span id="cb45-738"><a href="#cb45-738" aria-hidden="true" tabindex="-1"></a>again plot the log of the mean counts. We will also order the genes from</span>
+<span id="cb45-739"><a href="#cb45-739" aria-hidden="true" tabindex="-1"></a>lowest to highest mean count.</span>
+<span id="cb45-740"><a href="#cb45-740" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-741"><a href="#cb45-741" aria-hidden="true" tabindex="-1"></a>🎬 Plot the logged mean counts for each gene in order of size using</span>
+<span id="cb45-742"><a href="#cb45-742" aria-hidden="true" tabindex="-1"></a><span class="in">`geom_pointrange()`</span>:</span>
+<span id="cb45-743"><a href="#cb45-743" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-746"><a href="#cb45-746" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-747"><a href="#cb45-747" aria-hidden="true" tabindex="-1"></a>pro_meta_summary_gene <span class="sc">|&gt;</span> </span>
+<span id="cb45-748"><a href="#cb45-748" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(gene_id, mean), <span class="at">y =</span> <span class="fu">log10</span>(mean))) <span class="sc">+</span></span>
+<span id="cb45-749"><a href="#cb45-749" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> <span class="fu">log10</span>(mean <span class="sc">-</span> sd), </span>
+<span id="cb45-750"><a href="#cb45-750" aria-hidden="true" tabindex="-1"></a>                      <span class="at">ymax =</span> <span class="fu">log10</span>(mean <span class="sc">+</span> sd )),</span>
+<span id="cb45-751"><a href="#cb45-751" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size =</span> <span class="fl">0.1</span>)</span>
+<span id="cb45-752"><a href="#cb45-752" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-753"><a href="#cb45-753" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-754"><a href="#cb45-754" aria-hidden="true" tabindex="-1"></a>(Note the warning is expected since we have zero means).</span>
+<span id="cb45-755"><a href="#cb45-755" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-756"><a href="#cb45-756" aria-hidden="true" tabindex="-1"></a>You can see we also have quite a few genes with means less than 1 (log</span>
+<span id="cb45-757"><a href="#cb45-757" aria-hidden="true" tabindex="-1"></a>below zero). Note that the variability between genes (average counts</span>
+<span id="cb45-758"><a href="#cb45-758" aria-hidden="true" tabindex="-1"></a>between 0 and 349606) is far greater than between samples (average</span>
+<span id="cb45-759"><a href="#cb45-759" aria-hidden="true" tabindex="-1"></a>counts from 220 to 364) which is exactly what we would expect to see.</span>
+<span id="cb45-760"><a href="#cb45-760" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-761"><a href="#cb45-761" aria-hidden="true" tabindex="-1"></a>Now go to <span class="co">[</span><span class="ot">Filtering for QC</span><span class="co">](#leishmania-mexicana-1)</span>.</span>
+<span id="cb45-762"><a href="#cb45-762" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-763"><a href="#cb45-763" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🐭 Stem cells</span></span>
+<span id="cb45-764"><a href="#cb45-764" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-765"><a href="#cb45-765" aria-hidden="true" tabindex="-1"></a><span class="fu">### Import</span></span>
+<span id="cb45-766"><a href="#cb45-766" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-767"><a href="#cb45-767" aria-hidden="true" tabindex="-1"></a>Import the data for the HSPC and the Progenitor cells.</span>
+<span id="cb45-768"><a href="#cb45-768" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-769"><a href="#cb45-769" aria-hidden="true" tabindex="-1"></a>🎬 Import <span class="co">[</span><span class="ot">surfaceome_hspc.csv</span><span class="co">](data-raw/surfaceome_hspc.csv)</span> and</span>
+<span id="cb45-770"><a href="#cb45-770" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">surfaceome_hspc.csv</span><span class="co">](data-raw/surfaceome_prog.csv)</span></span>
+<span id="cb45-771"><a href="#cb45-771" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-774"><a href="#cb45-774" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-775"><a href="#cb45-775" aria-hidden="true" tabindex="-1"></a><span class="co"># 🐭 import the hspc and prog data</span></span>
+<span id="cb45-776"><a href="#cb45-776" aria-hidden="true" tabindex="-1"></a>hspc <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data-raw/surfaceome_hspc.csv"</span>)</span>
+<span id="cb45-777"><a href="#cb45-777" aria-hidden="true" tabindex="-1"></a>prog <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data-raw/surfaceome_prog.csv"</span>)</span>
+<span id="cb45-778"><a href="#cb45-778" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-779"><a href="#cb45-779" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-780"><a href="#cb45-780" aria-hidden="true" tabindex="-1"></a>We will need to combine the two sets of columns (datasets) so we can</span>
+<span id="cb45-781"><a href="#cb45-781" aria-hidden="true" tabindex="-1"></a>compare the two stages. We will join them using <span class="in">`ensembl_gene_id`</span> to</span>
+<span id="cb45-782"><a href="#cb45-782" aria-hidden="true" tabindex="-1"></a>match the rows. The column names differ so we don't need to worry about</span>
+<span id="cb45-783"><a href="#cb45-783" aria-hidden="true" tabindex="-1"></a>renaming any of them.</span>
+<span id="cb45-784"><a href="#cb45-784" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-785"><a href="#cb45-785" aria-hidden="true" tabindex="-1"></a>🎬 Combine the two datasets by <span class="in">`ensembl_gene_id`</span> and save the result as</span>
+<span id="cb45-786"><a href="#cb45-786" aria-hidden="true" tabindex="-1"></a><span class="in">`hspc_prog`</span>.</span>
+<span id="cb45-787"><a href="#cb45-787" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-790"><a href="#cb45-790" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-791"><a href="#cb45-791" aria-hidden="true" tabindex="-1"></a><span class="co">#  combine the two datasets</span></span>
+<span id="cb45-792"><a href="#cb45-792" aria-hidden="true" tabindex="-1"></a>hspc_prog <span class="ot">&lt;-</span> hspc <span class="sc">|&gt;</span></span>
+<span id="cb45-793"><a href="#cb45-793" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(prog, </span>
+<span id="cb45-794"><a href="#cb45-794" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="st">"ensembl_gene_id"</span>)</span>
+<span id="cb45-795"><a href="#cb45-795" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-796"><a href="#cb45-796" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-797"><a href="#cb45-797" aria-hidden="true" tabindex="-1"></a>🎬 Check the dataframe has the number of rows and columns you were</span>
+<span id="cb45-798"><a href="#cb45-798" aria-hidden="true" tabindex="-1"></a>expecting and that column types and names are as expected.</span>
+<span id="cb45-799"><a href="#cb45-799" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-800"><a href="#cb45-800" aria-hidden="true" tabindex="-1"></a><span class="fu">### Distribution of values across all the data in the file</span></span>
+<span id="cb45-801"><a href="#cb45-801" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-802"><a href="#cb45-802" aria-hidden="true" tabindex="-1"></a>The values are spread over multiple columns so in order to plot the</span>
+<span id="cb45-803"><a href="#cb45-803" aria-hidden="true" tabindex="-1"></a>distribution as a whole, we will need to first use <span class="in">`pivot_longer()`</span> to</span>
+<span id="cb45-804"><a href="#cb45-804" aria-hidden="true" tabindex="-1"></a>put the data in ['tidy'</span>
+<span id="cb45-805"><a href="#cb45-805" aria-hidden="true" tabindex="-1"></a>format](https://3mmarand.github.io/R4BABS/r4babs1/week-9/workshop.html#tidying-data)</span>
+<span id="cb45-806"><a href="#cb45-806" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">@wickham2014</span><span class="co">]</span> by stacking the columns. We *could* save a copy of the</span>
+<span id="cb45-807"><a href="#cb45-807" aria-hidden="true" tabindex="-1"></a>stacked data and then plot it, but here, I have just piped the stacked</span>
+<span id="cb45-808"><a href="#cb45-808" aria-hidden="true" tabindex="-1"></a>data straight into <span class="in">`ggplot()`</span>. This helps me avoid cluttering my R</span>
+<span id="cb45-809"><a href="#cb45-809" aria-hidden="true" tabindex="-1"></a>environment with temporary objects.</span>
+<span id="cb45-810"><a href="#cb45-810" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-811"><a href="#cb45-811" aria-hidden="true" tabindex="-1"></a>🎬 Pivot the counts (stack the columns) so all the counts are in a</span>
+<span id="cb45-812"><a href="#cb45-812" aria-hidden="true" tabindex="-1"></a>single column (<span class="in">`expr`</span>) labelled in <span class="in">`cell`</span> by the column it came from and</span>
+<span id="cb45-813"><a href="#cb45-813" aria-hidden="true" tabindex="-1"></a>pipe into <span class="in">`ggplot()`</span> to create a histogram:</span>
+<span id="cb45-814"><a href="#cb45-814" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-817"><a href="#cb45-817" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-818"><a href="#cb45-818" aria-hidden="true" tabindex="-1"></a>hspc_prog <span class="sc">|&gt;</span></span>
+<span id="cb45-819"><a href="#cb45-819" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>ensembl_gene_id,</span>
+<span id="cb45-820"><a href="#cb45-820" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"cell"</span>,</span>
+<span id="cb45-821"><a href="#cb45-821" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"expr"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb45-822"><a href="#cb45-822" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> expr)) <span class="sc">+</span></span>
+<span id="cb45-823"><a href="#cb45-823" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
+<span id="cb45-824"><a href="#cb45-824" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-825"><a href="#cb45-825" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-826"><a href="#cb45-826" aria-hidden="true" tabindex="-1"></a>This is a very striking distribution. Is it what we are expecting?</span>
+<span id="cb45-827"><a href="#cb45-827" aria-hidden="true" tabindex="-1"></a>Notice we have a peak at zero indicating there are low values zeros.</span>
+<span id="cb45-828"><a href="#cb45-828" aria-hidden="true" tabindex="-1"></a>This inflation of low values suggests some are anomalous - they will</span>
+<span id="cb45-829"><a href="#cb45-829" aria-hidden="true" tabindex="-1"></a>have been derived from low counts which are likely false positives. As</span>
+<span id="cb45-830"><a href="#cb45-830" aria-hidden="true" tabindex="-1"></a>inaccurate measures, we will want to exclude expression values below</span>
+<span id="cb45-831"><a href="#cb45-831" aria-hidden="true" tabindex="-1"></a>(about) 1. We will revisit this after we have considered the</span>
+<span id="cb45-832"><a href="#cb45-832" aria-hidden="true" tabindex="-1"></a>distribution of expression across cells and genes.</span>
+<span id="cb45-833"><a href="#cb45-833" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-834"><a href="#cb45-834" aria-hidden="true" tabindex="-1"></a>What about the bimodal appearance of the the 'real' values? If we had</span>
+<span id="cb45-835"><a href="#cb45-835" aria-hidden="true" tabindex="-1"></a>the whole transcriptome we would *not* expect to see such a pattern -</span>
+<span id="cb45-836"><a href="#cb45-836" aria-hidden="true" tabindex="-1"></a>we'd expect to see a roughly normal distribution<span class="ot">[^3]</span>. However, this is a</span>
+<span id="cb45-837"><a href="#cb45-837" aria-hidden="true" tabindex="-1"></a>*subset* of the genome and the nature of the subsetting has had an</span>
+<span id="cb45-838"><a href="#cb45-838" aria-hidden="true" tabindex="-1"></a>influence here. These are a subset of cell surface proteins that show a</span>
+<span id="cb45-839"><a href="#cb45-839" aria-hidden="true" tabindex="-1"></a>significant difference between at least two of twelve cell subtypes.</span>
+<span id="cb45-840"><a href="#cb45-840" aria-hidden="true" tabindex="-1"></a>That is, all of these genes are either "high" or "low" leading to a</span>
+<span id="cb45-841"><a href="#cb45-841" aria-hidden="true" tabindex="-1"></a>bimodal distribution.</span>
+<span id="cb45-842"><a href="#cb45-842" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-843"><a href="#cb45-843" aria-hidden="true" tabindex="-1"></a><span class="ot">[^3]: </span>This a result of the [Central limit</span>
+<span id="cb45-844"><a href="#cb45-844" aria-hidden="true" tabindex="-1"></a>    theorem](https://en.wikipedia.org/wiki/Central_limit_theorem),one</span>
+<span id="cb45-845"><a href="#cb45-845" aria-hidden="true" tabindex="-1"></a>    consequence of which is that adding together lots of distributions -</span>
+<span id="cb45-846"><a href="#cb45-846" aria-hidden="true" tabindex="-1"></a>    whatever distributions they are - will tend to a normal</span>
+<span id="cb45-847"><a href="#cb45-847" aria-hidden="true" tabindex="-1"></a>    distribution.</span>
+<span id="cb45-848"><a href="#cb45-848" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-849"><a href="#cb45-849" aria-hidden="true" tabindex="-1"></a>Unlike the other three datasets, which count raw counts, these data are</span>
+<span id="cb45-850"><a href="#cb45-850" aria-hidden="true" tabindex="-1"></a>normalised and log~2~ transformed. We do not need to plot the log of the</span>
+<span id="cb45-851"><a href="#cb45-851" aria-hidden="true" tabindex="-1"></a>values to see the distribution - they are already logged.</span>
+<span id="cb45-852"><a href="#cb45-852" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-853"><a href="#cb45-853" aria-hidden="true" tabindex="-1"></a><span class="fu">### Distribution of values across the samples</span></span>
+<span id="cb45-854"><a href="#cb45-854" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-855"><a href="#cb45-855" aria-hidden="true" tabindex="-1"></a>For the other three datasets, we used the <span class="in">`summary()`</span> function to get an</span>
+<span id="cb45-856"><a href="#cb45-856" aria-hidden="true" tabindex="-1"></a>overview of the columns. This works well when you have upto about 25</span>
+<span id="cb45-857"><a href="#cb45-857" aria-hidden="true" tabindex="-1"></a>columns but it is not helpful here because we have a lot of cells! Feel</span>
+<span id="cb45-858"><a href="#cb45-858" aria-hidden="true" tabindex="-1"></a>free to try it!</span>
+<span id="cb45-859"><a href="#cb45-859" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-860"><a href="#cb45-860" aria-hidden="true" tabindex="-1"></a>In this data set, there is even more of an advantage of using the</span>
+<span id="cb45-861"><a href="#cb45-861" aria-hidden="true" tabindex="-1"></a><span class="in">`pivot_longer()`</span>, <span class="in">`group_by()`</span> and <span class="in">`summarise()`</span> approach. We will be</span>
+<span id="cb45-862"><a href="#cb45-862" aria-hidden="true" tabindex="-1"></a>able to open the dataframe in the Viewer and make plots to examine</span>
+<span id="cb45-863"><a href="#cb45-863" aria-hidden="true" tabindex="-1"></a>whether the distributions are similar across cells. The mean and the</span>
+<span id="cb45-864"><a href="#cb45-864" aria-hidden="true" tabindex="-1"></a>standard deviation are useful to see the distributions across cells in a</span>
+<span id="cb45-865"><a href="#cb45-865" aria-hidden="true" tabindex="-1"></a>plot but we will also examine the interquartile values, maximums and the</span>
+<span id="cb45-866"><a href="#cb45-866" aria-hidden="true" tabindex="-1"></a>number of non-zero values.</span>
+<span id="cb45-867"><a href="#cb45-867" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-868"><a href="#cb45-868" aria-hidden="true" tabindex="-1"></a>🎬 Summarise all the cells:</span>
+<span id="cb45-869"><a href="#cb45-869" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-872"><a href="#cb45-872" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-873"><a href="#cb45-873" aria-hidden="true" tabindex="-1"></a>hspc_prog_summary_cell <span class="ot">&lt;-</span> hspc_prog <span class="sc">|&gt;</span></span>
+<span id="cb45-874"><a href="#cb45-874" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>ensembl_gene_id,</span>
+<span id="cb45-875"><a href="#cb45-875" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"cell"</span>,</span>
+<span id="cb45-876"><a href="#cb45-876" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"expr"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb45-877"><a href="#cb45-877" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cell) <span class="sc">|&gt;</span></span>
+<span id="cb45-878"><a href="#cb45-878" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">min =</span> <span class="fu">min</span>(expr),</span>
+<span id="cb45-879"><a href="#cb45-879" aria-hidden="true" tabindex="-1"></a>            <span class="at">lowerq =</span> <span class="fu">quantile</span>(expr, <span class="fl">0.25</span>),</span>
+<span id="cb45-880"><a href="#cb45-880" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(expr),</span>
+<span id="cb45-881"><a href="#cb45-881" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(expr),</span>
+<span id="cb45-882"><a href="#cb45-882" aria-hidden="true" tabindex="-1"></a>            <span class="at">median =</span> <span class="fu">median</span>(expr),</span>
+<span id="cb45-883"><a href="#cb45-883" aria-hidden="true" tabindex="-1"></a>            <span class="at">upperq =</span> <span class="fu">quantile</span>(expr, <span class="fl">0.75</span>),</span>
+<span id="cb45-884"><a href="#cb45-884" aria-hidden="true" tabindex="-1"></a>            <span class="at">max =</span> <span class="fu">max</span>(expr),</span>
+<span id="cb45-885"><a href="#cb45-885" aria-hidden="true" tabindex="-1"></a>            <span class="at">total =</span> <span class="fu">sum</span>(expr),</span>
+<span id="cb45-886"><a href="#cb45-886" aria-hidden="true" tabindex="-1"></a>            <span class="at">n_above_zero =</span> <span class="fu">sum</span>(expr <span class="sc">&gt;</span> <span class="dv">0</span>))</span>
+<span id="cb45-887"><a href="#cb45-887" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-888"><a href="#cb45-888" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-889"><a href="#cb45-889" aria-hidden="true" tabindex="-1"></a>🎬 View the <span class="in">`hspc_prog_summary_cell`</span> dataframe (click on it in the</span>
+<span id="cb45-890"><a href="#cb45-890" aria-hidden="true" tabindex="-1"></a>environment).</span>
+<span id="cb45-891"><a href="#cb45-891" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-892"><a href="#cb45-892" aria-hidden="true" tabindex="-1"></a>Notice that: - a minimum value of 0 appears in all 1499 cells - the</span>
+<span id="cb45-893"><a href="#cb45-893" aria-hidden="true" tabindex="-1"></a>lower quartiles are all zero and so are many of the medians - there are</span>
+<span id="cb45-894"><a href="#cb45-894" aria-hidden="true" tabindex="-1"></a>no cells with above 0 expression in all 280 of the gene subset - the</span>
+<span id="cb45-895"><a href="#cb45-895" aria-hidden="true" tabindex="-1"></a>highest number of genes expressed is 208, the lowest is 94</span>
+<span id="cb45-896"><a href="#cb45-896" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-897"><a href="#cb45-897" aria-hidden="true" tabindex="-1"></a>In short, there are quite a lot of zeros.</span>
+<span id="cb45-898"><a href="#cb45-898" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-899"><a href="#cb45-899" aria-hidden="true" tabindex="-1"></a>To get a better understanding of the distribution of expressions in</span>
+<span id="cb45-900"><a href="#cb45-900" aria-hidden="true" tabindex="-1"></a>cells we can create a ggplot using the pointrange geom. Pointrange puts</span>
+<span id="cb45-901"><a href="#cb45-901" aria-hidden="true" tabindex="-1"></a>a dot at the mean and a line between a minimum and a maximum such as +/-</span>
+<span id="cb45-902"><a href="#cb45-902" aria-hidden="true" tabindex="-1"></a>one standard deviation. Not unlike a boxplot, but when you need the</span>
+<span id="cb45-903"><a href="#cb45-903" aria-hidden="true" tabindex="-1"></a>boxes too be very narrow!</span>
+<span id="cb45-904"><a href="#cb45-904" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-905"><a href="#cb45-905" aria-hidden="true" tabindex="-1"></a>🎬 Create a pointrange plot.</span>
+<span id="cb45-906"><a href="#cb45-906" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-909"><a href="#cb45-909" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-910"><a href="#cb45-910" aria-hidden="true" tabindex="-1"></a>hspc_prog_summary_cell <span class="sc">|&gt;</span> </span>
+<span id="cb45-911"><a href="#cb45-911" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cell, <span class="at">y =</span> mean)) <span class="sc">+</span></span>
+<span id="cb45-912"><a href="#cb45-912" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean <span class="sc">-</span> sd, </span>
+<span id="cb45-913"><a href="#cb45-913" aria-hidden="true" tabindex="-1"></a>                      <span class="at">ymax =</span> mean <span class="sc">+</span> sd ),</span>
+<span id="cb45-914"><a href="#cb45-914" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size =</span> <span class="fl">0.1</span>)</span>
+<span id="cb45-915"><a href="#cb45-915" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-916"><a href="#cb45-916" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-917"><a href="#cb45-917" aria-hidden="true" tabindex="-1"></a>You will need to use the Zoom button to pop the plot window out so you</span>
+<span id="cb45-918"><a href="#cb45-918" aria-hidden="true" tabindex="-1"></a>can make it as wide as possible</span>
+<span id="cb45-919"><a href="#cb45-919" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-920"><a href="#cb45-920" aria-hidden="true" tabindex="-1"></a>The things to notice are:</span>
+<span id="cb45-921"><a href="#cb45-921" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-922"><a href="#cb45-922" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>the average expression in cells is similar for all cells. This is</span>
+<span id="cb45-923"><a href="#cb45-923" aria-hidden="true" tabindex="-1"></a>    good to know - if some cells had much lower expression perhaps there</span>
+<span id="cb45-924"><a href="#cb45-924" aria-hidden="true" tabindex="-1"></a>    is something wrong with them, or their sequencing, and they should</span>
+<span id="cb45-925"><a href="#cb45-925" aria-hidden="true" tabindex="-1"></a>    be excluded.</span>
+<span id="cb45-926"><a href="#cb45-926" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>the distributions are roughly similar in width too</span>
+<span id="cb45-927"><a href="#cb45-927" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-928"><a href="#cb45-928" aria-hidden="true" tabindex="-1"></a>The default order of <span class="in">`cell`</span> is alphabetical. It can be easier to judge</span>
+<span id="cb45-929"><a href="#cb45-929" aria-hidden="true" tabindex="-1"></a>if there are unusual cells if we order the lines by the size of the</span>
+<span id="cb45-930"><a href="#cb45-930" aria-hidden="true" tabindex="-1"></a>mean.</span>
+<span id="cb45-931"><a href="#cb45-931" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-932"><a href="#cb45-932" aria-hidden="true" tabindex="-1"></a>🎬 Order a pointrange plot with <span class="in">`reorder(variable_to_order, order_by)`</span>.</span>
+<span id="cb45-933"><a href="#cb45-933" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-936"><a href="#cb45-936" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-937"><a href="#cb45-937" aria-hidden="true" tabindex="-1"></a>hspc_prog_summary_cell <span class="sc">|&gt;</span> </span>
+<span id="cb45-938"><a href="#cb45-938" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(cell, mean), <span class="at">y =</span> mean)) <span class="sc">+</span></span>
+<span id="cb45-939"><a href="#cb45-939" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean <span class="sc">-</span> sd, </span>
+<span id="cb45-940"><a href="#cb45-940" aria-hidden="true" tabindex="-1"></a>                      <span class="at">ymax =</span> mean <span class="sc">+</span> sd ),</span>
+<span id="cb45-941"><a href="#cb45-941" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size =</span> <span class="fl">0.1</span>)</span>
+<span id="cb45-942"><a href="#cb45-942" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-943"><a href="#cb45-943" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-944"><a href="#cb45-944" aria-hidden="true" tabindex="-1"></a><span class="in">`reorder()`</span> arranges <span class="in">`cell`</span> in increasing size of <span class="in">`mean`</span></span>
+<span id="cb45-945"><a href="#cb45-945" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-946"><a href="#cb45-946" aria-hidden="true" tabindex="-1"></a>As we thought, the distributions are similar across cells - there are</span>
+<span id="cb45-947"><a href="#cb45-947" aria-hidden="true" tabindex="-1"></a>not any cells that are obviously different from the others (only</span>
+<span id="cb45-948"><a href="#cb45-948" aria-hidden="true" tabindex="-1"></a>incrementally).</span>
+<span id="cb45-949"><a href="#cb45-949" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-950"><a href="#cb45-950" aria-hidden="true" tabindex="-1"></a><span class="fu">### Distribution of values across the genes</span></span>
+<span id="cb45-951"><a href="#cb45-951" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-952"><a href="#cb45-952" aria-hidden="true" tabindex="-1"></a>We will use the same approach to summarise the genes.</span>
+<span id="cb45-953"><a href="#cb45-953" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-954"><a href="#cb45-954" aria-hidden="true" tabindex="-1"></a>🎬 Summarise the expression for each gene and save the result as</span>
+<span id="cb45-955"><a href="#cb45-955" aria-hidden="true" tabindex="-1"></a><span class="in">`hspc_prog_summary_gene`</span>. Include the same columns as we had in the by</span>
+<span id="cb45-956"><a href="#cb45-956" aria-hidden="true" tabindex="-1"></a>cell summary (<span class="in">`hspc_prog_summary_cell`</span>) and an additional column,</span>
+<span id="cb45-957"><a href="#cb45-957" aria-hidden="true" tabindex="-1"></a><span class="in">`total`</span> for the total expression for each gene.</span>
+<span id="cb45-958"><a href="#cb45-958" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-961"><a href="#cb45-961" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-962"><a href="#cb45-962" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb45-963"><a href="#cb45-963" aria-hidden="true" tabindex="-1"></a><span class="co">#---CODING ANSWER---</span></span>
+<span id="cb45-964"><a href="#cb45-964" aria-hidden="true" tabindex="-1"></a><span class="co"># you need to group by `ensembl_gene_id` rather than `cell`</span></span>
+<span id="cb45-965"><a href="#cb45-965" aria-hidden="true" tabindex="-1"></a><span class="co"># sum(expr) will find the total expression in a gene</span></span>
+<span id="cb45-966"><a href="#cb45-966" aria-hidden="true" tabindex="-1"></a>hspc_prog_summary_gene <span class="ot">&lt;-</span> hspc_prog <span class="sc">|&gt;</span></span>
+<span id="cb45-967"><a href="#cb45-967" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>ensembl_gene_id,</span>
+<span id="cb45-968"><a href="#cb45-968" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"cell"</span>,</span>
+<span id="cb45-969"><a href="#cb45-969" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"expr"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb45-970"><a href="#cb45-970" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ensembl_gene_id) <span class="sc">|&gt;</span></span>
+<span id="cb45-971"><a href="#cb45-971" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">min =</span> <span class="fu">min</span>(expr),</span>
+<span id="cb45-972"><a href="#cb45-972" aria-hidden="true" tabindex="-1"></a>            <span class="at">lowerq =</span> <span class="fu">quantile</span>(expr, <span class="fl">0.25</span>),</span>
+<span id="cb45-973"><a href="#cb45-973" aria-hidden="true" tabindex="-1"></a>            <span class="at">sd =</span> <span class="fu">sd</span>(expr),</span>
+<span id="cb45-974"><a href="#cb45-974" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(expr),</span>
+<span id="cb45-975"><a href="#cb45-975" aria-hidden="true" tabindex="-1"></a>            <span class="at">median =</span> <span class="fu">median</span>(expr),</span>
+<span id="cb45-976"><a href="#cb45-976" aria-hidden="true" tabindex="-1"></a>            <span class="at">upperq =</span> <span class="fu">quantile</span>(expr, <span class="fl">0.75</span>),</span>
+<span id="cb45-977"><a href="#cb45-977" aria-hidden="true" tabindex="-1"></a>            <span class="at">max =</span> <span class="fu">max</span>(expr),</span>
+<span id="cb45-978"><a href="#cb45-978" aria-hidden="true" tabindex="-1"></a>            <span class="at">total =</span> <span class="fu">sum</span>(expr),</span>
+<span id="cb45-979"><a href="#cb45-979" aria-hidden="true" tabindex="-1"></a>            <span class="at">n_above_zero =</span> <span class="fu">sum</span>(expr <span class="sc">&gt;</span> <span class="dv">0</span>))</span>
+<span id="cb45-980"><a href="#cb45-980" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-981"><a href="#cb45-981" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-982"><a href="#cb45-982" aria-hidden="true" tabindex="-1"></a>🎬 View the <span class="in">`hspc_prog_summary_gene`</span> dataframe. Remember these are</span>
+<span id="cb45-983"><a href="#cb45-983" aria-hidden="true" tabindex="-1"></a>normalised and logged (base 2) so we should not see very large values.</span>
+<span id="cb45-984"><a href="#cb45-984" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-985"><a href="#cb45-985" aria-hidden="true" tabindex="-1"></a>Notice that we have:</span>
+<span id="cb45-986"><a href="#cb45-986" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-987"><a href="#cb45-987" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>some genes (7) expressed in every cell, and many expressed in most</span>
+<span id="cb45-988"><a href="#cb45-988" aria-hidden="true" tabindex="-1"></a>    cells</span>
+<span id="cb45-989"><a href="#cb45-989" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>quite a few genes with zero in many cells but this matters less when</span>
+<span id="cb45-990"><a href="#cb45-990" aria-hidden="true" tabindex="-1"></a>    we have many cells (samples) than when we have few samples.</span>
+<span id="cb45-991"><a href="#cb45-991" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>no genes with zeros in every cell - the lowest number of cells is</span>
+<span id="cb45-992"><a href="#cb45-992" aria-hidden="true" tabindex="-1"></a><span class="ss">    15. </span></span>
+<span id="cb45-993"><a href="#cb45-993" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-994"><a href="#cb45-994" aria-hidden="true" tabindex="-1"></a>It is again helpful to plot the ordered mean expression with pointrange</span>
+<span id="cb45-995"><a href="#cb45-995" aria-hidden="true" tabindex="-1"></a>to get an overview.</span>
+<span id="cb45-996"><a href="#cb45-996" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-997"><a href="#cb45-997" aria-hidden="true" tabindex="-1"></a>🎬 Plot the logged mean counts for each gene in order of size using</span>
+<span id="cb45-998"><a href="#cb45-998" aria-hidden="true" tabindex="-1"></a><span class="in">`geom_pointrange()`</span>:</span>
+<span id="cb45-999"><a href="#cb45-999" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1002"><a href="#cb45-1002" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-1003"><a href="#cb45-1003" aria-hidden="true" tabindex="-1"></a>hspc_prog_summary_gene <span class="sc">|&gt;</span> </span>
+<span id="cb45-1004"><a href="#cb45-1004" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(ensembl_gene_id, mean), <span class="at">y =</span> mean)) <span class="sc">+</span></span>
+<span id="cb45-1005"><a href="#cb45-1005" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_pointrange</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean <span class="sc">-</span> sd, </span>
+<span id="cb45-1006"><a href="#cb45-1006" aria-hidden="true" tabindex="-1"></a>                      <span class="at">ymax =</span> mean <span class="sc">+</span> sd),</span>
+<span id="cb45-1007"><a href="#cb45-1007" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size =</span> <span class="fl">0.1</span>)</span>
+<span id="cb45-1008"><a href="#cb45-1008" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1009"><a href="#cb45-1009" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1010"><a href="#cb45-1010" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-1011"><a href="#cb45-1011" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1012"><a href="#cb45-1012" aria-hidden="true" tabindex="-1"></a>Note that the variability between genes (average expression between</span>
+<span id="cb45-1013"><a href="#cb45-1013" aria-hidden="true" tabindex="-1"></a>0.020 and and 9.567) is far greater than between cells (average</span>
+<span id="cb45-1014"><a href="#cb45-1014" aria-hidden="true" tabindex="-1"></a>expression from 1.319 to 9.567) which is just what we would expect.</span>
+<span id="cb45-1015"><a href="#cb45-1015" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1016"><a href="#cb45-1016" aria-hidden="true" tabindex="-1"></a>Now go to <span class="co">[</span><span class="ot">Filtering for QC</span><span class="co">](#stem-cells-1)</span>.</span>
+<span id="cb45-1017"><a href="#cb45-1017" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1018"><a href="#cb45-1018" aria-hidden="true" tabindex="-1"></a><span class="fu"># Filtering for QC</span></span>
+<span id="cb45-1019"><a href="#cb45-1019" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1020"><a href="#cb45-1020" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🎄 *Arabidopsis*</span></span>
+<span id="cb45-1021"><a href="#cb45-1021" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1022"><a href="#cb45-1022" aria-hidden="true" tabindex="-1"></a>Our samples look to be similarly well sequenced although this is</span>
+<span id="cb45-1023"><a href="#cb45-1023" aria-hidden="true" tabindex="-1"></a>difficult to determine with only two replicates. However, some genes are</span>
+<span id="cb45-1024"><a href="#cb45-1024" aria-hidden="true" tabindex="-1"></a>not expressed or the expression values are so low in for a gene that</span>
+<span id="cb45-1025"><a href="#cb45-1025" aria-hidden="true" tabindex="-1"></a>they are uninformative. We will filter the <span class="in">`wild_summary_gene`</span> dataframe</span>
+<span id="cb45-1026"><a href="#cb45-1026" aria-hidden="true" tabindex="-1"></a>to obtain a list of <span class="in">`gene_id`</span> we can use to filter <span class="in">`wild`</span>.</span>
+<span id="cb45-1027"><a href="#cb45-1027" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1028"><a href="#cb45-1028" aria-hidden="true" tabindex="-1"></a>My suggestion is to include only the genes with counts in at least 2</span>
+<span id="cb45-1029"><a href="#cb45-1029" aria-hidden="true" tabindex="-1"></a>samples, and those with total counts above 20. I chose 2 because that</span>
+<span id="cb45-1030"><a href="#cb45-1030" aria-hidden="true" tabindex="-1"></a>would keep genes expressed only in one treatment: <span class="sc">\[</span>0, 0<span class="sc">\]</span> <span class="sc">\[</span>#,#<span class="sc">\]</span>. This</span>
+<span id="cb45-1031"><a href="#cb45-1031" aria-hidden="true" tabindex="-1"></a>is a difference we cannot test statistically, but which matters</span>
+<span id="cb45-1032"><a href="#cb45-1032" aria-hidden="true" tabindex="-1"></a>biologically.</span>
+<span id="cb45-1033"><a href="#cb45-1033" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1034"><a href="#cb45-1034" aria-hidden="true" tabindex="-1"></a>🎬 Filter the summary by gene dataframe:</span>
+<span id="cb45-1035"><a href="#cb45-1035" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1038"><a href="#cb45-1038" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-1039"><a href="#cb45-1039" aria-hidden="true" tabindex="-1"></a>wild_summary_gene_filtered <span class="ot">&lt;-</span> wild_summary_gene <span class="sc">|&gt;</span> </span>
+<span id="cb45-1040"><a href="#cb45-1040" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(total <span class="sc">&gt;</span> <span class="dv">20</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb45-1041"><a href="#cb45-1041" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_above_zero <span class="sc">&gt;=</span> <span class="dv">2</span>)</span>
+<span id="cb45-1042"><a href="#cb45-1042" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-1043"><a href="#cb45-1043" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1044"><a href="#cb45-1044" aria-hidden="true" tabindex="-1"></a>❓ How many genes do you have left</span>
+<span id="cb45-1045"><a href="#cb45-1045" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1046"><a href="#cb45-1046" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #---THINKING ANSWER--- --&gt;</span></span>
+<span id="cb45-1047"><a href="#cb45-1047" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1048"><a href="#cb45-1048" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- there are 26355 genes left. 6478 have total counts less than 20 and or --&gt;</span></span>
+<span id="cb45-1049"><a href="#cb45-1049" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1050"><a href="#cb45-1050" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- have counts in fewer the 2 samples. --&gt;</span></span>
+<span id="cb45-1051"><a href="#cb45-1051" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1052"><a href="#cb45-1052" aria-hidden="true" tabindex="-1"></a>🎬 Use the list of <span class="in">`gene_id`</span> in the filtered summary to filter the</span>
+<span id="cb45-1053"><a href="#cb45-1053" aria-hidden="true" tabindex="-1"></a>original dataset:</span>
+<span id="cb45-1054"><a href="#cb45-1054" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1057"><a href="#cb45-1057" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-1058"><a href="#cb45-1058" aria-hidden="true" tabindex="-1"></a>wild_filtered <span class="ot">&lt;-</span> wild <span class="sc">|&gt;</span> </span>
+<span id="cb45-1059"><a href="#cb45-1059" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gene_id <span class="sc">%in%</span>  wild_summary_gene_filtered<span class="sc">$</span>gene_id)</span>
+<span id="cb45-1060"><a href="#cb45-1060" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-1061"><a href="#cb45-1061" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1062"><a href="#cb45-1062" aria-hidden="true" tabindex="-1"></a>🎬 Write the filtered data to file:</span>
+<span id="cb45-1063"><a href="#cb45-1063" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1066"><a href="#cb45-1066" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-1067"><a href="#cb45-1067" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(wild_filtered, </span>
+<span id="cb45-1068"><a href="#cb45-1068" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">"data-processed/wild_filtered.csv"</span>)</span>
+<span id="cb45-1069"><a href="#cb45-1069" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-1070"><a href="#cb45-1070" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1071"><a href="#cb45-1071" aria-hidden="true" tabindex="-1"></a>Now go to <span class="co">[</span><span class="ot">Look after future you</span><span class="co">](#arabidopsis-and-future-you)</span></span>
+<span id="cb45-1072"><a href="#cb45-1072" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1073"><a href="#cb45-1073" aria-hidden="true" tabindex="-1"></a><span class="fu">## 💉 *Leishmania*</span></span>
+<span id="cb45-1074"><a href="#cb45-1074" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1075"><a href="#cb45-1075" aria-hidden="true" tabindex="-1"></a>Our samples look to be similarly well sequenced. There are no samples we</span>
+<span id="cb45-1076"><a href="#cb45-1076" aria-hidden="true" tabindex="-1"></a>should remove. However, some genes are not expressed or the expression</span>
+<span id="cb45-1077"><a href="#cb45-1077" aria-hidden="true" tabindex="-1"></a>values are so low in for a gene that they are uninformative. We will</span>
+<span id="cb45-1078"><a href="#cb45-1078" aria-hidden="true" tabindex="-1"></a>filter the <span class="in">`pro_meta_summary_gene`</span> dataframe to obtain a list of</span>
+<span id="cb45-1079"><a href="#cb45-1079" aria-hidden="true" tabindex="-1"></a><span class="in">`gene_id`</span> we can use to filter <span class="in">`pro_meta`</span>.</span>
+<span id="cb45-1080"><a href="#cb45-1080" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1081"><a href="#cb45-1081" aria-hidden="true" tabindex="-1"></a>My suggestion is to include only the genes with counts in at least 3</span>
+<span id="cb45-1082"><a href="#cb45-1082" aria-hidden="true" tabindex="-1"></a>samples and those with total counts above 20. I chose 3 because that</span>
+<span id="cb45-1083"><a href="#cb45-1083" aria-hidden="true" tabindex="-1"></a>would keep genes expressed only in one treatment: <span class="sc">\[</span>0, 0, 0<span class="sc">\]</span> <span class="sc">\[</span>#,#,#<span class="sc">\]</span>.</span>
+<span id="cb45-1084"><a href="#cb45-1084" aria-hidden="true" tabindex="-1"></a>This is a difference we cannot test statistically, but which matters</span>
+<span id="cb45-1085"><a href="#cb45-1085" aria-hidden="true" tabindex="-1"></a>biologically.</span>
+<span id="cb45-1086"><a href="#cb45-1086" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1087"><a href="#cb45-1087" aria-hidden="true" tabindex="-1"></a>🎬 Filter the summary by gene dataframe:</span>
+<span id="cb45-1088"><a href="#cb45-1088" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1091"><a href="#cb45-1091" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-1092"><a href="#cb45-1092" aria-hidden="true" tabindex="-1"></a>pro_meta_summary_gene_filtered <span class="ot">&lt;-</span> pro_meta_summary_gene <span class="sc">|&gt;</span> </span>
+<span id="cb45-1093"><a href="#cb45-1093" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(total <span class="sc">&gt;</span> <span class="dv">20</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb45-1094"><a href="#cb45-1094" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_above_zero <span class="sc">&gt;=</span> <span class="dv">3</span>)</span>
+<span id="cb45-1095"><a href="#cb45-1095" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-1096"><a href="#cb45-1096" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1097"><a href="#cb45-1097" aria-hidden="true" tabindex="-1"></a>❓ How many genes do you have left</span>
+<span id="cb45-1098"><a href="#cb45-1098" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1099"><a href="#cb45-1099" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #---THINKING ANSWER--- --&gt;</span></span>
+<span id="cb45-1100"><a href="#cb45-1100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1101"><a href="#cb45-1101" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- there are 8437 genes left. 240 have total counts less than 20 and or --&gt;</span></span>
+<span id="cb45-1102"><a href="#cb45-1102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1103"><a href="#cb45-1103" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- have counts in fewer than 3 samples. --&gt;</span></span>
+<span id="cb45-1104"><a href="#cb45-1104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1105"><a href="#cb45-1105" aria-hidden="true" tabindex="-1"></a>🎬 Use the list of <span class="in">`gene_id`</span> in the filtered summary to filter the</span>
+<span id="cb45-1106"><a href="#cb45-1106" aria-hidden="true" tabindex="-1"></a>original dataset:</span>
+<span id="cb45-1107"><a href="#cb45-1107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1110"><a href="#cb45-1110" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-1111"><a href="#cb45-1111" aria-hidden="true" tabindex="-1"></a>pro_meta_filtered <span class="ot">&lt;-</span> pro_meta <span class="sc">|&gt;</span> </span>
+<span id="cb45-1112"><a href="#cb45-1112" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gene_id <span class="sc">%in%</span>  pro_meta_summary_gene_filtered<span class="sc">$</span>gene_id)</span>
+<span id="cb45-1113"><a href="#cb45-1113" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-1114"><a href="#cb45-1114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1115"><a href="#cb45-1115" aria-hidden="true" tabindex="-1"></a>🎬 Write the filtered data to file:</span>
+<span id="cb45-1116"><a href="#cb45-1116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1119"><a href="#cb45-1119" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-1120"><a href="#cb45-1120" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(pro_meta_filtered, </span>
+<span id="cb45-1121"><a href="#cb45-1121" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">"data-processed/pro_meta_filtered.csv"</span>)</span>
+<span id="cb45-1122"><a href="#cb45-1122" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-1123"><a href="#cb45-1123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1124"><a href="#cb45-1124" aria-hidden="true" tabindex="-1"></a>Now go to <span class="co">[</span><span class="ot">Look after future you</span><span class="co">](#leishmania-and-future-you)</span></span>
+<span id="cb45-1125"><a href="#cb45-1125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1126"><a href="#cb45-1126" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🐭 Stem cells {#stem-cells-1}</span></span>
+<span id="cb45-1127"><a href="#cb45-1127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1128"><a href="#cb45-1128" aria-hidden="true" tabindex="-1"></a>In this dataset, we will not see and genes that are not expressed in any</span>
+<span id="cb45-1129"><a href="#cb45-1129" aria-hidden="true" tabindex="-1"></a>of the cells because we are using a specific subset of the transcriptome</span>
+<span id="cb45-1130"><a href="#cb45-1130" aria-hidden="true" tabindex="-1"></a>that was deliberately selected. In other words unexpressed genes have</span>
+<span id="cb45-1131"><a href="#cb45-1131" aria-hidden="true" tabindex="-1"></a>already been filtered out. However, it is good practices to verify there</span>
+<span id="cb45-1132"><a href="#cb45-1132" aria-hidden="true" tabindex="-1"></a>are no unexpressed genes before we embark on our analysis.</span>
+<span id="cb45-1133"><a href="#cb45-1133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1134"><a href="#cb45-1134" aria-hidden="true" tabindex="-1"></a>Where the sum of all the values in the rows is zero, all the entries</span>
+<span id="cb45-1135"><a href="#cb45-1135" aria-hidden="true" tabindex="-1"></a>must be zero. We can use this to find any the genes that are not</span>
+<span id="cb45-1136"><a href="#cb45-1136" aria-hidden="true" tabindex="-1"></a>expressed in any of the cells. To do row wise aggregates such as the sum</span>
+<span id="cb45-1137"><a href="#cb45-1137" aria-hidden="true" tabindex="-1"></a>across rows we can use the <span class="in">`rowwise()`</span> function. <span class="in">`c_across()`</span> allows us</span>
+<span id="cb45-1138"><a href="#cb45-1138" aria-hidden="true" tabindex="-1"></a>to use the colon notation to select columns. This is very useful when</span>
+<span id="cb45-1139"><a href="#cb45-1139" aria-hidden="true" tabindex="-1"></a>you have a lot of columns because it would be annoying to have to list</span>
+<span id="cb45-1140"><a href="#cb45-1140" aria-hidden="true" tabindex="-1"></a>all of them <span class="in">`HSPC_001:Prog_852`</span> means all the columns from <span class="in">`HSPC_001`</span> to</span>
+<span id="cb45-1141"><a href="#cb45-1141" aria-hidden="true" tabindex="-1"></a><span class="in">`Prog_852`</span>.</span>
+<span id="cb45-1142"><a href="#cb45-1142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1143"><a href="#cb45-1143" aria-hidden="true" tabindex="-1"></a>🎬 Find the genes that are 0 in every column of the hspc_prog dataframe:</span>
+<span id="cb45-1144"><a href="#cb45-1144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1147"><a href="#cb45-1147" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-1148"><a href="#cb45-1148" aria-hidden="true" tabindex="-1"></a>hspc_prog <span class="sc">|&gt;</span> </span>
+<span id="cb45-1149"><a href="#cb45-1149" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb45-1150"><a href="#cb45-1150" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">sum</span>(<span class="fu">c_across</span>(HSPC_001<span class="sc">:</span>Prog_852)) <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb45-1151"><a href="#cb45-1151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1152"><a href="#cb45-1152" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-1153"><a href="#cb45-1153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1154"><a href="#cb45-1154" aria-hidden="true" tabindex="-1"></a>Notice that we have summed across all the columns.</span>
+<span id="cb45-1155"><a href="#cb45-1155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1156"><a href="#cb45-1156" aria-hidden="true" tabindex="-1"></a>❓ What do you conclude?</span>
+<span id="cb45-1157"><a href="#cb45-1157" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1158"><a href="#cb45-1158" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #---THINKING ANSWER--- --&gt;</span></span>
+<span id="cb45-1159"><a href="#cb45-1159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1160"><a href="#cb45-1160" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- The are no genes that are completely unexpressed in this set of 280 genes --&gt;</span></span>
+<span id="cb45-1161"><a href="#cb45-1161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1162"><a href="#cb45-1162" aria-hidden="true" tabindex="-1"></a>🎬 Write combined data to file:</span>
+<span id="cb45-1163"><a href="#cb45-1163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1166"><a href="#cb45-1166" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-1167"><a href="#cb45-1167" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(hspc_prog, </span>
+<span id="cb45-1168"><a href="#cb45-1168" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">"data-processed/hspc_prog.csv"</span>)</span>
+<span id="cb45-1169"><a href="#cb45-1169" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-1170"><a href="#cb45-1170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1171"><a href="#cb45-1171" aria-hidden="true" tabindex="-1"></a>Now go to <span class="co">[</span><span class="ot">Look after future you</span><span class="co">](#stem-cells-and-future-you)</span></span>
+<span id="cb45-1172"><a href="#cb45-1172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1173"><a href="#cb45-1173" aria-hidden="true" tabindex="-1"></a><span class="fu"># 🤗 Look after future you!</span></span>
+<span id="cb45-1174"><a href="#cb45-1174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1175"><a href="#cb45-1175" aria-hidden="true" tabindex="-1"></a>You need only do the section for your own project data but **completing</span>
+<span id="cb45-1176"><a href="#cb45-1176" aria-hidden="true" tabindex="-1"></a>this step is important**.</span>
+<span id="cb45-1177"><a href="#cb45-1177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1178"><a href="#cb45-1178" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🎄 *Arabidopsis* and future you {#arabidopsis-and-future-you}</span></span>
+<span id="cb45-1179"><a href="#cb45-1179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1180"><a href="#cb45-1180" aria-hidden="true" tabindex="-1"></a>🎬 Create a new Project, <span class="in">`arab-88H`</span>, populated with folders and your</span>
+<span id="cb45-1181"><a href="#cb45-1181" aria-hidden="true" tabindex="-1"></a>data. Make a script file called <span class="in">`suff-def-wild.R`</span>. This will a be</span>
+<span id="cb45-1182"><a href="#cb45-1182" aria-hidden="true" tabindex="-1"></a>commented analysis of comparison between copper sufficient and copper</span>
+<span id="cb45-1183"><a href="#cb45-1183" aria-hidden="true" tabindex="-1"></a>deficient wildtype plants. You will build on this each workshop and be</span>
+<span id="cb45-1184"><a href="#cb45-1184" aria-hidden="true" tabindex="-1"></a>able to use it as a template to examine other comparisons. Copy in the</span>
+<span id="cb45-1185"><a href="#cb45-1185" aria-hidden="true" tabindex="-1"></a>*appropriate code and comments* from <span class="in">`workshop-1.R`</span>. Edit to improve</span>
+<span id="cb45-1186"><a href="#cb45-1186" aria-hidden="true" tabindex="-1"></a>your comments where your understanding has developed since you made</span>
+<span id="cb45-1187"><a href="#cb45-1187" aria-hidden="true" tabindex="-1"></a>them. Make sure you can close down RStudio, reopen it and run your whole</span>
+<span id="cb45-1188"><a href="#cb45-1188" aria-hidden="true" tabindex="-1"></a>script again.</span>
+<span id="cb45-1189"><a href="#cb45-1189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1190"><a href="#cb45-1190" aria-hidden="true" tabindex="-1"></a><span class="fu">## 💉 *Leishmania* and future you {#leishmania-and-future-you}</span></span>
+<span id="cb45-1191"><a href="#cb45-1191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1192"><a href="#cb45-1192" aria-hidden="true" tabindex="-1"></a>🎬 Create a new Project, <span class="in">`leish-88H`</span>, populated with folders and your</span>
+<span id="cb45-1193"><a href="#cb45-1193" aria-hidden="true" tabindex="-1"></a>data. Make a script file called <span class="in">`pro_meta.R`</span>. This will a be commented</span>
+<span id="cb45-1194"><a href="#cb45-1194" aria-hidden="true" tabindex="-1"></a>analysis of comparison procyclic promastigote and metacyclic</span>
+<span id="cb45-1195"><a href="#cb45-1195" aria-hidden="true" tabindex="-1"></a>promastigotes. You will build on this each workshop and be able to use</span>
+<span id="cb45-1196"><a href="#cb45-1196" aria-hidden="true" tabindex="-1"></a>it as a template to examine other comparisons. Copy in the *appropriate</span>
+<span id="cb45-1197"><a href="#cb45-1197" aria-hidden="true" tabindex="-1"></a>code and comments* from <span class="in">`workshop-1.R`</span>. Edit to improve your comments</span>
+<span id="cb45-1198"><a href="#cb45-1198" aria-hidden="true" tabindex="-1"></a>where your understanding has developed since you made them. Make sure</span>
+<span id="cb45-1199"><a href="#cb45-1199" aria-hidden="true" tabindex="-1"></a>you can close down RStudio, reopen it and run your whole script again.</span>
+<span id="cb45-1200"><a href="#cb45-1200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1201"><a href="#cb45-1201" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🐭 Stem cells and future you {#stem-cells-and-future-you}</span></span>
+<span id="cb45-1202"><a href="#cb45-1202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1203"><a href="#cb45-1203" aria-hidden="true" tabindex="-1"></a>🎬 Create a new Project, <span class="in">`mice-88H`</span>, populated with folders and your</span>
+<span id="cb45-1204"><a href="#cb45-1204" aria-hidden="true" tabindex="-1"></a>data. Make a script file called <span class="in">`hspc-prog.R`</span>. This will a be commented</span>
+<span id="cb45-1205"><a href="#cb45-1205" aria-hidden="true" tabindex="-1"></a>analysis of the hspc cells vs the prog cells. You will build on this</span>
+<span id="cb45-1206"><a href="#cb45-1206" aria-hidden="true" tabindex="-1"></a>each workshop and be able to use it as a template to examine other</span>
+<span id="cb45-1207"><a href="#cb45-1207" aria-hidden="true" tabindex="-1"></a>comparisons. Copy in the *appropriate code and comments* from</span>
+<span id="cb45-1208"><a href="#cb45-1208" aria-hidden="true" tabindex="-1"></a><span class="in">`workshop-1.R`</span>. Edit to improve your comments where your understanding</span>
+<span id="cb45-1209"><a href="#cb45-1209" aria-hidden="true" tabindex="-1"></a>has developed since you made them. Make sure you can close down RStudio,</span>
+<span id="cb45-1210"><a href="#cb45-1210" aria-hidden="true" tabindex="-1"></a>reopen it and run your whole script again.</span>
+<span id="cb45-1211"><a href="#cb45-1211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1212"><a href="#cb45-1212" aria-hidden="true" tabindex="-1"></a><span class="fu"># 🥳 Finished</span></span>
+<span id="cb45-1213"><a href="#cb45-1213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1214"><a href="#cb45-1214" aria-hidden="true" tabindex="-1"></a>Well Done!</span>
+<span id="cb45-1215"><a href="#cb45-1215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1216"><a href="#cb45-1216" aria-hidden="true" tabindex="-1"></a><span class="fu"># Independent study following the workshop</span></span>
+<span id="cb45-1217"><a href="#cb45-1217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1218"><a href="#cb45-1218" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Consolidate</span><span class="co">](study_after_workshop.qmd)</span></span>
+<span id="cb45-1219"><a href="#cb45-1219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1220"><a href="#cb45-1220" aria-hidden="true" tabindex="-1"></a><span class="fu"># The Code file</span></span>
+<span id="cb45-1221"><a href="#cb45-1221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1222"><a href="#cb45-1222" aria-hidden="true" tabindex="-1"></a>These contain all the code needed in the workshop even where it is not</span>
+<span id="cb45-1223"><a href="#cb45-1223" aria-hidden="true" tabindex="-1"></a>visible on the webpage.</span>
+<span id="cb45-1224"><a href="#cb45-1224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1225"><a href="#cb45-1225" aria-hidden="true" tabindex="-1"></a>The <span class="co">[</span><span class="ot">workshop.qmd</span><span class="co">](workshop.qmd)</span> file is the file I use to compile the</span>
+<span id="cb45-1226"><a href="#cb45-1226" aria-hidden="true" tabindex="-1"></a>practical. Qmd stands for Quarto markdown. It allows code and ordinary</span>
+<span id="cb45-1227"><a href="#cb45-1227" aria-hidden="true" tabindex="-1"></a>text to be interleaved to produce well-formatted reports including</span>
+<span id="cb45-1228"><a href="#cb45-1228" aria-hidden="true" tabindex="-1"></a>webpages. Right-click on the link and choose Save-As to download. You</span>
+<span id="cb45-1229"><a href="#cb45-1229" aria-hidden="true" tabindex="-1"></a>will be able to open the Qmd file in RStudio. Alternatively, [View in</span>
+<span id="cb45-1230"><a href="#cb45-1230" aria-hidden="true" tabindex="-1"></a>Browser](https://github.com/3mmaRand/BIO00088H-data/blob/main/transcriptomics/week-3/workshop.qmd).</span>
+<span id="cb45-1231"><a href="#cb45-1231" aria-hidden="true" tabindex="-1"></a>Coding and thinking answers are marked with <span class="in">`#---CODING ANSWER---`</span> and</span>
+<span id="cb45-1232"><a href="#cb45-1232" aria-hidden="true" tabindex="-1"></a><span class="in">`#---THINKING ANSWER---`</span></span>
+<span id="cb45-1233"><a href="#cb45-1233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1234"><a href="#cb45-1234" aria-hidden="true" tabindex="-1"></a>Pages made with R <span class="co">[</span><span class="ot">@R-core</span><span class="co">]</span>, Quarto <span class="co">[</span><span class="ot">@Allaire_Quarto_2024</span><span class="co">]</span>, <span class="in">`knitr`</span></span>
+<span id="cb45-1235"><a href="#cb45-1235" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">@knitr1; @knitr2; @knitr3</span><span class="co">]</span>, <span class="in">`kableExtra`</span> <span class="co">[</span><span class="ot">@kableExtra</span><span class="co">]</span></span>
+<span id="cb45-1236"><a href="#cb45-1236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1237"><a href="#cb45-1237" aria-hidden="true" tabindex="-1"></a><span class="fu"># References</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
@@ -1565,7 +2957,23 @@ Zhu, Hao. 2021. <span>“kableExtra: Construct Complex Table with ’Kable’ an
 </ul>
 </div>
   </div>
-</footer>
+</footer><script>
+document.addEventListener("DOMContentLoaded", function() {
+  // grab all links under “Other Links” in the right-hand TOC
+  const links = document.querySelectorAll('.quarto-other-links ul li a');
+  links.forEach(function(a) {
+    // find the one whose text is exactly “Make a suggestion”
+    if (a.textContent.trim() === 'Make a suggestion') {
+      const pageUrl   = encodeURIComponent(window.location.href);
+      const pageTitle = encodeURIComponent(document.title);
+      a.href = 'https://github.com/3mmaRand/BIO00088H-data/issues/new'
+             + '?title=' + pageTitle
+             + '&body='  + pageUrl;
+      a.target = '_blank';
+    }
+  });
+});
+</script>
 
 
 </body></html>

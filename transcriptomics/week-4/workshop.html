@@ -88,10 +88,14 @@ div.csl-indent {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-66a9628b09ec274f8d4720c8f60ae317.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-72ac799c4abbddf31cb463dd8fc99f5d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-25ac7be22ffa75a8e8541e30a6dcc9a3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-72ac799c4abbddf31cb463dd8fc99f5d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -123,9 +127,171 @@ window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
-</script><link rel="stylesheet" href="../../styles.css">
+</script><link rel="stylesheet" href="styles.css">
 </head>
-<body class="nav-sidebar floating nav-fixed quarto-light">
+<body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
@@ -162,9 +328,10 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
   </li>  
 </ul>
 </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools tools-wide">
     <a href="https://twitter.com/er_13" title="Emma's Twitter" class="quarto-navigation-tool px-1" aria-label="Emma's Twitter"><i class="bi bi-twitter"></i></a>
     <a href="https://github.com/3mmaRand/BIO00088H-data" title="BIO00088H-data GitHub" class="quarto-navigation-tool px-1" aria-label="BIO00088H-data GitHub"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
@@ -403,7 +570,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../transcriptomics/week-4/overview.html">Week 4: Statistical Analysis</a></li><li class="breadcrumb-item"><a href="../../transcriptomics/week-4/workshop.html">Workshop</a></li></ol></nav><div class="quarto-title">
-<h1 class="title">Workshop</h1>
+<div class="quarto-title-block"><div><h1 class="title">Workshop</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 <p class="subtitle lead">Transcripttranscriptomics 2: Statistical Analysis</p>
 </div>
 
@@ -421,7 +588,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">12 August, 2025</p>
+      <p class="date">13 August, 2025</p>
     </div>
   </div>
   
@@ -1375,6 +1542,8 @@ which is a functional genomic resource for the Trypanosomatidae and Plasmodidae<
 </section><section id="references" class="level1">
 
 
+<!-- -->
+
 
 </section><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Allaire_Quarto_2024" class="csl-entry" role="listitem">
@@ -1431,6 +1600,19 @@ Zhu, Hao. 2021. <span>“kableExtra: Construct Complex Table with ’Kable’ an
 <li id="fn2"><p><a href="https://www.bioconductor.org/">Bioconductor</a> is a project that develops and supports R packages for bioinformatics.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {
@@ -1498,6 +1680,57 @@ Zhu, Hao. 2021. <span>“kableExtra: Construct Complex Table with ’Kable’ an
         container: window.document.getElementById('quarto-embedded-source-code-modal')
       });
       clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
@@ -1832,7 +2065,1336 @@ Zhu, Hao. 2021. <span>“kableExtra: Construct Complex Table with ’Kable’ an
       }
     }
   });
-  </script>
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb96" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Workshop"</span></span>
+<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "Transcripttranscriptomics 2: Statistical Analysis"</span></span>
+<span id="cb96-4"><a href="#cb96-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Emma Rand"</span></span>
+<span id="cb96-5"><a href="#cb96-5" aria-hidden="true" tabindex="-1"></a><span class="an">toc:</span><span class="co"> true</span></span>
+<span id="cb96-6"><a href="#cb96-6" aria-hidden="true" tabindex="-1"></a><span class="an">toc-depth:</span><span class="co"> 4</span></span>
+<span id="cb96-7"><a href="#cb96-7" aria-hidden="true" tabindex="-1"></a><span class="an">toc-location:</span><span class="co"> right</span></span>
+<span id="cb96-8"><a href="#cb96-8" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb96-9"><a href="#cb96-9" aria-hidden="true" tabindex="-1"></a><span class="co">  echo: true</span></span>
+<span id="cb96-10"><a href="#cb96-10" aria-hidden="true" tabindex="-1"></a><span class="co">  include: true</span></span>
+<span id="cb96-11"><a href="#cb96-11" aria-hidden="true" tabindex="-1"></a><span class="co">  error: true</span></span>
+<span id="cb96-12"><a href="#cb96-12" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> ../../references.bib</span></span>
+<span id="cb96-13"><a href="#cb96-13" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> </span></span>
+<span id="cb96-14"><a href="#cb96-14" aria-hidden="true" tabindex="-1"></a><span class="co">  markdown: </span></span>
+<span id="cb96-15"><a href="#cb96-15" aria-hidden="true" tabindex="-1"></a><span class="co">    wrap: 72</span></span>
+<span id="cb96-16"><a href="#cb96-16" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb96-17"><a href="#cb96-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-18"><a href="#cb96-18" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span>
+<span id="cb96-19"><a href="#cb96-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-20"><a href="#cb96-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Session overview</span></span>
+<span id="cb96-21"><a href="#cb96-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-22"><a href="#cb96-22" aria-hidden="true" tabindex="-1"></a>In the workshop, you will learn how to perform differential expression</span>
+<span id="cb96-23"><a href="#cb96-23" aria-hidden="true" tabindex="-1"></a>analysis on raw counts using **`DESeq2`** <span class="co">[</span><span class="ot">@DESeq2</span><span class="co">]</span> or on logged</span>
+<span id="cb96-24"><a href="#cb96-24" aria-hidden="true" tabindex="-1"></a>normalised expression values using **`scran`** <span class="co">[</span><span class="ot">@scran</span><span class="co">]</span> or both.</span>
+<span id="cb96-25"><a href="#cb96-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-26"><a href="#cb96-26" aria-hidden="true" tabindex="-1"></a><span class="fu"># Set up</span></span>
+<span id="cb96-27"><a href="#cb96-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-28"><a href="#cb96-28" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🎄 *Arabidopisis*</span></span>
+<span id="cb96-29"><a href="#cb96-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-30"><a href="#cb96-30" aria-hidden="true" tabindex="-1"></a>🎬 Open the <span class="in">`arab-88H`</span> RStudio Project and the <span class="in">`suff-def-wild.R`</span> script.</span>
+<span id="cb96-31"><a href="#cb96-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-32"><a href="#cb96-32" aria-hidden="true" tabindex="-1"></a><span class="fu">## 💉 *Leishmania*</span></span>
+<span id="cb96-33"><a href="#cb96-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-34"><a href="#cb96-34" aria-hidden="true" tabindex="-1"></a>🎬 Open the <span class="in">`leish-88H`</span> RStudio Project and the <span class="in">`pro-meta.R`</span> script.</span>
+<span id="cb96-35"><a href="#cb96-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-36"><a href="#cb96-36" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🐭 Stem cells</span></span>
+<span id="cb96-37"><a href="#cb96-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-38"><a href="#cb96-38" aria-hidden="true" tabindex="-1"></a>🎬 Open the <span class="in">`mice-88H`</span> RStudio Project and the <span class="in">`hspc-prog.R`</span> script.</span>
+<span id="cb96-39"><a href="#cb96-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-40"><a href="#cb96-40" aria-hidden="true" tabindex="-1"></a><span class="fu">## Everyone</span></span>
+<span id="cb96-41"><a href="#cb96-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-42"><a href="#cb96-42" aria-hidden="true" tabindex="-1"></a>🎬 Make a new folder <span class="in">`results`</span> in the project directory.</span>
+<span id="cb96-43"><a href="#cb96-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-44"><a href="#cb96-44" aria-hidden="true" tabindex="-1"></a>This is where we will save our results.</span>
+<span id="cb96-45"><a href="#cb96-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-46"><a href="#cb96-46" aria-hidden="true" tabindex="-1"></a>🎬 Load **`tidyverse`** <span class="co">[</span><span class="ot">@tidyverse</span><span class="co">]</span> You most likely have this code at</span>
+<span id="cb96-47"><a href="#cb96-47" aria-hidden="true" tabindex="-1"></a>the top of <span class="sc">\`</span>your script already.</span>
+<span id="cb96-48"><a href="#cb96-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-51"><a href="#cb96-51" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-52"><a href="#cb96-52" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb96-53"><a href="#cb96-53" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-54"><a href="#cb96-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-55"><a href="#cb96-55" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb96-56"><a href="#cb96-56" aria-hidden="true" tabindex="-1"></a><span class="in">── Attaching core tidyverse packages ─────────────────────────────────────────────── tidyverse 2.0.0 ──</span></span>
+<span id="cb96-57"><a href="#cb96-57" aria-hidden="true" tabindex="-1"></a><span class="in">✔ dplyr     1.1.3     ✔ readr     2.1.4</span></span>
+<span id="cb96-58"><a href="#cb96-58" aria-hidden="true" tabindex="-1"></a><span class="in">✔ forcats   1.0.0     ✔ stringr   1.5.0</span></span>
+<span id="cb96-59"><a href="#cb96-59" aria-hidden="true" tabindex="-1"></a><span class="in">✔ ggplot2   3.4.3     ✔ tibble    3.2.1</span></span>
+<span id="cb96-60"><a href="#cb96-60" aria-hidden="true" tabindex="-1"></a><span class="in">✔ lubridate 1.9.3     ✔ tidyr     1.3.0</span></span>
+<span id="cb96-61"><a href="#cb96-61" aria-hidden="true" tabindex="-1"></a><span class="in">✔ purrr     1.0.2     </span></span>
+<span id="cb96-62"><a href="#cb96-62" aria-hidden="true" tabindex="-1"></a><span class="in">── Conflicts ───────────────────────────────────────────────────────────────── tidyverse_conflicts() ──</span></span>
+<span id="cb96-63"><a href="#cb96-63" aria-hidden="true" tabindex="-1"></a><span class="in">✖ dplyr::filter() masks stats::filter()</span></span>
+<span id="cb96-64"><a href="#cb96-64" aria-hidden="true" tabindex="-1"></a><span class="in">✖ dplyr::lag()    masks stats::lag()</span></span>
+<span id="cb96-65"><a href="#cb96-65" aria-hidden="true" tabindex="-1"></a><span class="in">ℹ Use the conflicted package to force all conflicts to become errors</span></span>
+<span id="cb96-66"><a href="#cb96-66" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-67"><a href="#cb96-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-68"><a href="#cb96-68" aria-hidden="true" tabindex="-1"></a>Have you ever stopped to think about this message? It is telling us that</span>
+<span id="cb96-69"><a href="#cb96-69" aria-hidden="true" tabindex="-1"></a>there are functions in the <span class="in">`dplyr`</span> package that have the same name as</span>
+<span id="cb96-70"><a href="#cb96-70" aria-hidden="true" tabindex="-1"></a>functions in the <span class="in">`stats`</span> package and that R will use the <span class="in">`dplyr`</span></span>
+<span id="cb96-71"><a href="#cb96-71" aria-hidden="true" tabindex="-1"></a>version. As this is what you want, this has always been fine. It still</span>
+<span id="cb96-72"><a href="#cb96-72" aria-hidden="true" tabindex="-1"></a>is fine in this case. However, as you start to load more packages, you</span>
+<span id="cb96-73"><a href="#cb96-73" aria-hidden="true" tabindex="-1"></a>will want to know if you are using a function from a package that has</span>
+<span id="cb96-74"><a href="#cb96-74" aria-hidden="true" tabindex="-1"></a>the same name as a function in another loaded package. This is where the</span>
+<span id="cb96-75"><a href="#cb96-75" aria-hidden="true" tabindex="-1"></a>**`conflicted`** [@conflicted] package comes in. **`Conflicted`** will</span>
+<span id="cb96-76"><a href="#cb96-76" aria-hidden="true" tabindex="-1"></a>warn you when you are using a function that has the same name as a</span>
+<span id="cb96-77"><a href="#cb96-77" aria-hidden="true" tabindex="-1"></a>function in another package. You can then choose which function to use.</span>
+<span id="cb96-78"><a href="#cb96-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-79"><a href="#cb96-79" aria-hidden="true" tabindex="-1"></a>🎬 Load the **`conflicted`** package:</span>
+<span id="cb96-80"><a href="#cb96-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-83"><a href="#cb96-83" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-84"><a href="#cb96-84" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(conflicted)</span>
+<span id="cb96-85"><a href="#cb96-85" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-86"><a href="#cb96-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-87"><a href="#cb96-87" aria-hidden="true" tabindex="-1"></a>Instead of getting a warning every time you are using a function that</span>
+<span id="cb96-88"><a href="#cb96-88" aria-hidden="true" tabindex="-1"></a>has a function with the same name in another package, we can declare a</span>
+<span id="cb96-89"><a href="#cb96-89" aria-hidden="true" tabindex="-1"></a>preference for one function over another. This is useful for the</span>
+<span id="cb96-90"><a href="#cb96-90" aria-hidden="true" tabindex="-1"></a>functions you use a lot or ones where you are certain you always want to</span>
+<span id="cb96-91"><a href="#cb96-91" aria-hidden="true" tabindex="-1"></a>use a particular function.</span>
+<span id="cb96-92"><a href="#cb96-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-93"><a href="#cb96-93" aria-hidden="true" tabindex="-1"></a>For example, to always use the **`dplyr`** version of <span class="in">`filter()`</span> by</span>
+<span id="cb96-94"><a href="#cb96-94" aria-hidden="true" tabindex="-1"></a>default you can add this to the top of your script:</span>
+<span id="cb96-95"><a href="#cb96-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-98"><a href="#cb96-98" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-99"><a href="#cb96-99" aria-hidden="true" tabindex="-1"></a><span class="fu">conflicts_prefer</span>(dplyr<span class="sc">::</span>filter)</span>
+<span id="cb96-100"><a href="#cb96-100" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-101"><a href="#cb96-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-102"><a href="#cb96-102" aria-hidden="true" tabindex="-1"></a>We will also want to ensure that we are using the <span class="in">`setdiff()`</span> function</span>
+<span id="cb96-103"><a href="#cb96-103" aria-hidden="true" tabindex="-1"></a>from the **`GenomicRanges`** package which is used by **`DESeq2`**.</span>
+<span id="cb96-104"><a href="#cb96-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-107"><a href="#cb96-107" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-108"><a href="#cb96-108" aria-hidden="true" tabindex="-1"></a><span class="fu">conflicts_prefer</span>(GenomicRanges<span class="sc">::</span>setdiff)</span>
+<span id="cb96-109"><a href="#cb96-109" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-110"><a href="#cb96-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-111"><a href="#cb96-111" aria-hidden="true" tabindex="-1"></a><span class="fu"># Import</span></span>
+<span id="cb96-112"><a href="#cb96-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-113"><a href="#cb96-113" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🎄 *Arabidopisis*</span></span>
+<span id="cb96-114"><a href="#cb96-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-115"><a href="#cb96-115" aria-hidden="true" tabindex="-1"></a>We need to import the wildtype data that were filtered to remove genes</span>
+<span id="cb96-116"><a href="#cb96-116" aria-hidden="true" tabindex="-1"></a>with 3 or 4 zeros and those where the total counts was less than 20.</span>
+<span id="cb96-117"><a href="#cb96-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-118"><a href="#cb96-118" aria-hidden="true" tabindex="-1"></a>🎬 Import the data from the <span class="in">`data-processed`</span> folder.</span>
+<span id="cb96-119"><a href="#cb96-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-122"><a href="#cb96-122" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-123"><a href="#cb96-123" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb96-124"><a href="#cb96-124" aria-hidden="true" tabindex="-1"></a><span class="co">#---CODING ANSWER---</span></span>
+<span id="cb96-125"><a href="#cb96-125" aria-hidden="true" tabindex="-1"></a>wild_filtered <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data-processed/wild_filtered.csv"</span>)</span>
+<span id="cb96-126"><a href="#cb96-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-127"><a href="#cb96-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-128"><a href="#cb96-128" aria-hidden="true" tabindex="-1"></a>Now go to <span class="co">[</span><span class="ot">Differential Expression Analysis</span><span class="co">](#arabidopisis-2)</span>.</span>
+<span id="cb96-129"><a href="#cb96-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-130"><a href="#cb96-130" aria-hidden="true" tabindex="-1"></a><span class="fu">## 💉 *Leishmania*</span></span>
+<span id="cb96-131"><a href="#cb96-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-132"><a href="#cb96-132" aria-hidden="true" tabindex="-1"></a>We need to import the procyclic- and metacyclic-promastigote data that</span>
+<span id="cb96-133"><a href="#cb96-133" aria-hidden="true" tabindex="-1"></a>were filtered to remove genes with 4, 5 or 6 zeros and those where the</span>
+<span id="cb96-134"><a href="#cb96-134" aria-hidden="true" tabindex="-1"></a>total counts was less than 20.</span>
+<span id="cb96-135"><a href="#cb96-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-136"><a href="#cb96-136" aria-hidden="true" tabindex="-1"></a>🎬 Import the data from the <span class="in">`data-processed`</span> folder.</span>
+<span id="cb96-137"><a href="#cb96-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-140"><a href="#cb96-140" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-141"><a href="#cb96-141" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb96-142"><a href="#cb96-142" aria-hidden="true" tabindex="-1"></a><span class="co">#---CODING ANSWER---</span></span>
+<span id="cb96-143"><a href="#cb96-143" aria-hidden="true" tabindex="-1"></a>pro_meta_filtered <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data-processed/pro_meta_filtered.csv"</span>)</span>
+<span id="cb96-144"><a href="#cb96-144" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-145"><a href="#cb96-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-146"><a href="#cb96-146" aria-hidden="true" tabindex="-1"></a>Now go to <span class="co">[</span><span class="ot">Differential Expression Analysis</span><span class="co">](#leishmania-2)</span>.</span>
+<span id="cb96-147"><a href="#cb96-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-148"><a href="#cb96-148" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🐭 Stem cells</span></span>
+<span id="cb96-149"><a href="#cb96-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-150"><a href="#cb96-150" aria-hidden="true" tabindex="-1"></a>We need to import the progenitor and HSPC cell data that were combined.</span>
+<span id="cb96-151"><a href="#cb96-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-152"><a href="#cb96-152" aria-hidden="true" tabindex="-1"></a>🎬 Import the data from the <span class="in">`data-processed`</span> folder..</span>
+<span id="cb96-153"><a href="#cb96-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-156"><a href="#cb96-156" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-157"><a href="#cb96-157" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb96-158"><a href="#cb96-158" aria-hidden="true" tabindex="-1"></a><span class="co">#---CODING ANSWER---</span></span>
+<span id="cb96-159"><a href="#cb96-159" aria-hidden="true" tabindex="-1"></a>hspc_prog <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data-processed/hspc_prog.csv"</span>)</span>
+<span id="cb96-160"><a href="#cb96-160" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-161"><a href="#cb96-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-162"><a href="#cb96-162" aria-hidden="true" tabindex="-1"></a>Now go to <span class="co">[</span><span class="ot">Differential Expression Analysis</span><span class="co">](#stem-cells-2)</span>.</span>
+<span id="cb96-163"><a href="#cb96-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-164"><a href="#cb96-164" aria-hidden="true" tabindex="-1"></a><span class="fu"># Differential Expression Analysis</span></span>
+<span id="cb96-165"><a href="#cb96-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-166"><a href="#cb96-166" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🎄 *Arabidopisis* {#arabidopisis-2}</span></span>
+<span id="cb96-167"><a href="#cb96-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-168"><a href="#cb96-168" aria-hidden="true" tabindex="-1"></a>These are the steps we will take</span>
+<span id="cb96-169"><a href="#cb96-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-170"><a href="#cb96-170" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Find the genes that are expressed in only one treatment group.</span>
+<span id="cb96-171"><a href="#cb96-171" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Create a DESeqDataSet object. This is a special object that is used</span>
+<span id="cb96-172"><a href="#cb96-172" aria-hidden="true" tabindex="-1"></a>    by the **`DESeq2`** package</span>
+<span id="cb96-173"><a href="#cb96-173" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Prepare the normalised counts from the DESeqDataSet object.</span>
+<span id="cb96-174"><a href="#cb96-174" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>Do differential expression analysis on the genes. This needs to be</span>
+<span id="cb96-175"><a href="#cb96-175" aria-hidden="true" tabindex="-1"></a>    done on the raw counts.</span>
+<span id="cb96-176"><a href="#cb96-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-177"><a href="#cb96-177" aria-hidden="true" tabindex="-1"></a>All but the first step are done with the **`DESeq2`** package</span>
+<span id="cb96-178"><a href="#cb96-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-179"><a href="#cb96-179" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1. Genes expressed in one treatment</span></span>
+<span id="cb96-180"><a href="#cb96-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-181"><a href="#cb96-181" aria-hidden="true" tabindex="-1"></a>The genes expressed in only one treatment group are those with zeros in</span>
+<span id="cb96-182"><a href="#cb96-182" aria-hidden="true" tabindex="-1"></a>both replicates in one group and non-zero values in both replicates in</span>
+<span id="cb96-183"><a href="#cb96-183" aria-hidden="true" tabindex="-1"></a>the other group. For example, those shown here:</span>
+<span id="cb96-184"><a href="#cb96-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-187"><a href="#cb96-187" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-188"><a href="#cb96-188" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb96-189"><a href="#cb96-189" aria-hidden="true" tabindex="-1"></a><span class="co"># sort the data by the values in the control column</span></span>
+<span id="cb96-190"><a href="#cb96-190" aria-hidden="true" tabindex="-1"></a>wild_filtered <span class="sc">|&gt;</span>  </span>
+<span id="cb96-191"><a href="#cb96-191" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(SRX028957_wild_def <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb96-192"><a href="#cb96-192" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(SRX028961_wild_def <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
+<span id="cb96-193"><a href="#cb96-193" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">5</span>) <span class="sc">|&gt;</span></span>
+<span id="cb96-194"><a href="#cb96-194" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>()</span>
+<span id="cb96-195"><a href="#cb96-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-196"><a href="#cb96-196" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-197"><a href="#cb96-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-198"><a href="#cb96-198" aria-hidden="true" tabindex="-1"></a>We will use <span class="in">`filter()`</span> to find these genes.</span>
+<span id="cb96-199"><a href="#cb96-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-200"><a href="#cb96-200" aria-hidden="true" tabindex="-1"></a>🎬 Find the genes that are expressed only in the sufficient copper</span>
+<span id="cb96-201"><a href="#cb96-201" aria-hidden="true" tabindex="-1"></a>group:</span>
+<span id="cb96-202"><a href="#cb96-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-205"><a href="#cb96-205" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-206"><a href="#cb96-206" aria-hidden="true" tabindex="-1"></a>wild_suf_only <span class="ot">&lt;-</span> wild_filtered <span class="sc">|&gt;</span></span>
+<span id="cb96-207"><a href="#cb96-207" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(SRX028961_wild_def <span class="sc">==</span> <span class="dv">0</span>,</span>
+<span id="cb96-208"><a href="#cb96-208" aria-hidden="true" tabindex="-1"></a>         SRX028957_wild_def <span class="sc">==</span> <span class="dv">0</span>,</span>
+<span id="cb96-209"><a href="#cb96-209" aria-hidden="true" tabindex="-1"></a>         SRX028960_wild_suf <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
+<span id="cb96-210"><a href="#cb96-210" aria-hidden="true" tabindex="-1"></a>         SRX028956_wild_suf <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb96-211"><a href="#cb96-211" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-212"><a href="#cb96-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-213"><a href="#cb96-213" aria-hidden="true" tabindex="-1"></a>❓ How many genes are expressed only in the sufficient copper group?</span>
+<span id="cb96-214"><a href="#cb96-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-215"><a href="#cb96-215" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #---THINKING ANSWER--- --&gt;</span></span>
+<span id="cb96-216"><a href="#cb96-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-217"><a href="#cb96-217" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- There are 19 genes expressed only in the sufficient copper group. --&gt;</span></span>
+<span id="cb96-218"><a href="#cb96-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-219"><a href="#cb96-219" aria-hidden="true" tabindex="-1"></a>🎬 Now you find any genes that are expressed only in the deficient</span>
+<span id="cb96-220"><a href="#cb96-220" aria-hidden="true" tabindex="-1"></a>copper group.</span>
+<span id="cb96-221"><a href="#cb96-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-224"><a href="#cb96-224" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-225"><a href="#cb96-225" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb96-226"><a href="#cb96-226" aria-hidden="true" tabindex="-1"></a><span class="co">#---CODING ANSWER---</span></span>
+<span id="cb96-227"><a href="#cb96-227" aria-hidden="true" tabindex="-1"></a>wild_def_only <span class="ot">&lt;-</span> wild_filtered <span class="sc">|&gt;</span></span>
+<span id="cb96-228"><a href="#cb96-228" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(SRX028961_wild_def <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
+<span id="cb96-229"><a href="#cb96-229" aria-hidden="true" tabindex="-1"></a>         SRX028957_wild_def <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
+<span id="cb96-230"><a href="#cb96-230" aria-hidden="true" tabindex="-1"></a>         SRX028960_wild_suf <span class="sc">==</span> <span class="dv">0</span>,</span>
+<span id="cb96-231"><a href="#cb96-231" aria-hidden="true" tabindex="-1"></a>         SRX028956_wild_suf <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb96-232"><a href="#cb96-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-233"><a href="#cb96-233" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-234"><a href="#cb96-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-235"><a href="#cb96-235" aria-hidden="true" tabindex="-1"></a>❓ How many genes are expressed only in the deficient copper group?</span>
+<span id="cb96-236"><a href="#cb96-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-237"><a href="#cb96-237" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #---THINKING ANSWER--- --&gt;</span></span>
+<span id="cb96-238"><a href="#cb96-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-239"><a href="#cb96-239" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- There are 3 genes expressed only in the deficient copper group. --&gt;</span></span>
+<span id="cb96-240"><a href="#cb96-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-241"><a href="#cb96-241" aria-hidden="true" tabindex="-1"></a>❓ Do the results make sense to you in light of what you know about the</span>
+<span id="cb96-242"><a href="#cb96-242" aria-hidden="true" tabindex="-1"></a>biology?</span>
+<span id="cb96-243"><a href="#cb96-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-244"><a href="#cb96-244" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #---THINKING ANSWER--- --&gt;</span></span>
+<span id="cb96-245"><a href="#cb96-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-246"><a href="#cb96-246" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- This is wildtype plant so perhaps normal processes do not happen  --&gt;</span></span>
+<span id="cb96-247"><a href="#cb96-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-248"><a href="#cb96-248" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
+<span id="cb96-249"><a href="#cb96-249" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;!-- when copper is deficient and because the plant does not have </span></span>
+<span id="cb96-250"><a href="#cb96-250" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;!-- adaptations for deficient copper, no compensatory processes kick in. &lt;!-- &lt;!-- However, I'm not an expert in Arabidopsis, or plants! --&gt;</span></span>
+<span id="cb96-251"><a href="#cb96-251" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-252"><a href="#cb96-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-253"><a href="#cb96-253" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Domain expertise is important when analysing data so  --&gt;</span></span>
+<span id="cb96-254"><a href="#cb96-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-255"><a href="#cb96-255" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- discuss your results with Liz and your group. --&gt;</span></span>
+<span id="cb96-256"><a href="#cb96-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-257"><a href="#cb96-257" aria-hidden="true" tabindex="-1"></a>🎬 Write all the genes that are expressed one group only to file (saved</span>
+<span id="cb96-258"><a href="#cb96-258" aria-hidden="true" tabindex="-1"></a>in <span class="in">`results`</span>)</span>
+<span id="cb96-259"><a href="#cb96-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-262"><a href="#cb96-262" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-263"><a href="#cb96-263" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb96-264"><a href="#cb96-264" aria-hidden="true" tabindex="-1"></a><span class="co">#---CODING ANSWER---</span></span>
+<span id="cb96-265"><a href="#cb96-265" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(wild_suf_only, <span class="st">"results/wild_suf_only.csv"</span>)</span>
+<span id="cb96-266"><a href="#cb96-266" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(wild_def_only, <span class="st">"results/wild_def_only.csv"</span>)</span>
+<span id="cb96-267"><a href="#cb96-267" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-268"><a href="#cb96-268" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-269"><a href="#cb96-269" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2. Create DESeqDataSet object</span></span>
+<span id="cb96-270"><a href="#cb96-270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-271"><a href="#cb96-271" aria-hidden="true" tabindex="-1"></a>🎬 Load the DESeq2 package:</span>
+<span id="cb96-272"><a href="#cb96-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-275"><a href="#cb96-275" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-276"><a href="#cb96-276" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb96-277"><a href="#cb96-277" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb96-278"><a href="#cb96-278" aria-hidden="true" tabindex="-1"></a><span class="co">#---CODING ANSWER---</span></span>
+<span id="cb96-279"><a href="#cb96-279" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DESeq2)</span>
+<span id="cb96-280"><a href="#cb96-280" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-281"><a href="#cb96-281" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-282"><a href="#cb96-282" aria-hidden="true" tabindex="-1"></a>A DEseqDataSet object is a custom data type that is used by</span>
+<span id="cb96-283"><a href="#cb96-283" aria-hidden="true" tabindex="-1"></a>**`DESeq2`**. Custom data types are common in the Bioconductor<span class="ot">[^1]</span></span>
+<span id="cb96-284"><a href="#cb96-284" aria-hidden="true" tabindex="-1"></a>packages. They are used to store data in a way that is useful for the</span>
+<span id="cb96-285"><a href="#cb96-285" aria-hidden="true" tabindex="-1"></a>analysis. These data types typically have data, transformed data,</span>
+<span id="cb96-286"><a href="#cb96-286" aria-hidden="true" tabindex="-1"></a>metadata and experimental designs within them.</span>
+<span id="cb96-287"><a href="#cb96-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-288"><a href="#cb96-288" aria-hidden="true" tabindex="-1"></a><span class="ot">[^1]: </span><span class="co">[</span><span class="ot">Bioconductor</span><span class="co">](https://www.bioconductor.org/)</span> is a project that</span>
+<span id="cb96-289"><a href="#cb96-289" aria-hidden="true" tabindex="-1"></a>    develops and supports R packages for bioinformatics.</span>
+<span id="cb96-290"><a href="#cb96-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-291"><a href="#cb96-291" aria-hidden="true" tabindex="-1"></a>To create a DESeqDataSet object, we need to provide three things:</span>
+<span id="cb96-292"><a href="#cb96-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-293"><a href="#cb96-293" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The raw counts - these are in <span class="in">`wild_filtered`</span></span>
+<span id="cb96-294"><a href="#cb96-294" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The meta data which gives information about the samples and which</span>
+<span id="cb96-295"><a href="#cb96-295" aria-hidden="true" tabindex="-1"></a>    treatment groups they belong to</span>
+<span id="cb96-296"><a href="#cb96-296" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>A design matrix which captures the design of the statistical model.</span>
+<span id="cb96-297"><a href="#cb96-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-298"><a href="#cb96-298" aria-hidden="true" tabindex="-1"></a>The counts must in a *matrix* rather than a dataframe. Unlike a</span>
+<span id="cb96-299"><a href="#cb96-299" aria-hidden="true" tabindex="-1"></a>dataframe, a matrix has columns of all the same type. That is, it will</span>
+<span id="cb96-300"><a href="#cb96-300" aria-hidden="true" tabindex="-1"></a>contain only the counts. The gene ids are given as row names rather than</span>
+<span id="cb96-301"><a href="#cb96-301" aria-hidden="true" tabindex="-1"></a>a column. The <span class="in">`matrix()`</span> function will create a matrix from a dataframe</span>
+<span id="cb96-302"><a href="#cb96-302" aria-hidden="true" tabindex="-1"></a>of columns of the same type and the <span class="in">`select()`</span> function can be used to</span>
+<span id="cb96-303"><a href="#cb96-303" aria-hidden="true" tabindex="-1"></a>remove the gene ids column.</span>
+<span id="cb96-304"><a href="#cb96-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-305"><a href="#cb96-305" aria-hidden="true" tabindex="-1"></a>🎬 Create a matrix of the counts:</span>
+<span id="cb96-306"><a href="#cb96-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-309"><a href="#cb96-309" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-310"><a href="#cb96-310" aria-hidden="true" tabindex="-1"></a>wild_count_mat <span class="ot">&lt;-</span> wild_filtered <span class="sc">|&gt;</span></span>
+<span id="cb96-311"><a href="#cb96-311" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>gene_id) <span class="sc">|&gt;</span></span>
+<span id="cb96-312"><a href="#cb96-312" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>()</span>
+<span id="cb96-313"><a href="#cb96-313" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-314"><a href="#cb96-314" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-315"><a href="#cb96-315" aria-hidden="true" tabindex="-1"></a>🎬 Add the gene ids as row names to the matrix:</span>
+<span id="cb96-316"><a href="#cb96-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-319"><a href="#cb96-319" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-320"><a href="#cb96-320" aria-hidden="true" tabindex="-1"></a><span class="co"># add the row names to the matrix</span></span>
+<span id="cb96-321"><a href="#cb96-321" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(wild_count_mat) <span class="ot">&lt;-</span> wild_filtered<span class="sc">$</span>gene_id</span>
+<span id="cb96-322"><a href="#cb96-322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-323"><a href="#cb96-323" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-324"><a href="#cb96-324" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-325"><a href="#cb96-325" aria-hidden="true" tabindex="-1"></a>You might want to view the matrix (click on it in your environment</span>
+<span id="cb96-326"><a href="#cb96-326" aria-hidden="true" tabindex="-1"></a>pane).</span>
+<span id="cb96-327"><a href="#cb96-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-328"><a href="#cb96-328" aria-hidden="true" tabindex="-1"></a>The metadata are in a file,</span>
+<span id="cb96-329"><a href="#cb96-329" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">arab_meta_data.txt</span><span class="co">](meta/arab_meta_data.txt)</span>. This is a tab-delimited</span>
+<span id="cb96-330"><a href="#cb96-330" aria-hidden="true" tabindex="-1"></a>file. The first column is the sample name and the other columns give the</span>
+<span id="cb96-331"><a href="#cb96-331" aria-hidden="true" tabindex="-1"></a>"treatments". In this case, the treatments genotype (with two levels)</span>
+<span id="cb96-332"><a href="#cb96-332" aria-hidden="true" tabindex="-1"></a>and copper (with two levels).</span>
+<span id="cb96-333"><a href="#cb96-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-334"><a href="#cb96-334" aria-hidden="true" tabindex="-1"></a>🎬 Make a folder called <span class="in">`meta`</span> and save the file to it.</span>
+<span id="cb96-335"><a href="#cb96-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-336"><a href="#cb96-336" aria-hidden="true" tabindex="-1"></a>🎬 Read the metadata into a dataframe:</span>
+<span id="cb96-337"><a href="#cb96-337" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-340"><a href="#cb96-340" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-341"><a href="#cb96-341" aria-hidden="true" tabindex="-1"></a>meta <span class="ot">&lt;-</span> <span class="fu">read_table</span>(<span class="st">"meta/arab_meta_data.txt"</span>)</span>
+<span id="cb96-342"><a href="#cb96-342" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-343"><a href="#cb96-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-344"><a href="#cb96-344" aria-hidden="true" tabindex="-1"></a>🎬 Examine the resulting dataframe.</span>
+<span id="cb96-345"><a href="#cb96-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-346"><a href="#cb96-346" aria-hidden="true" tabindex="-1"></a>We need to add the sample names as row names to the metadata dataframe.</span>
+<span id="cb96-347"><a href="#cb96-347" aria-hidden="true" tabindex="-1"></a>This is because the DESeqDataSet object will use the row names to match</span>
+<span id="cb96-348"><a href="#cb96-348" aria-hidden="true" tabindex="-1"></a>the samples in the metadata to the samples in the counts matrix.</span>
+<span id="cb96-349"><a href="#cb96-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-350"><a href="#cb96-350" aria-hidden="true" tabindex="-1"></a>🎬 Add the sample names as row names to the metadata dataframe:</span>
+<span id="cb96-351"><a href="#cb96-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-354"><a href="#cb96-354" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-355"><a href="#cb96-355" aria-hidden="true" tabindex="-1"></a>meta <span class="ot">&lt;-</span> meta <span class="sc">|&gt;</span></span>
+<span id="cb96-356"><a href="#cb96-356" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(<span class="st">"sample_id"</span>)</span>
+<span id="cb96-357"><a href="#cb96-357" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-358"><a href="#cb96-358" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-359"><a href="#cb96-359" aria-hidden="true" tabindex="-1"></a>We are dealing only with the wild data so we need to remove the samples</span>
+<span id="cb96-360"><a href="#cb96-360" aria-hidden="true" tabindex="-1"></a>that are not in the wild data.</span>
+<span id="cb96-361"><a href="#cb96-361" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-362"><a href="#cb96-362" aria-hidden="true" tabindex="-1"></a>🎬 Filter the metadata to keep only the wild information:</span>
+<span id="cb96-363"><a href="#cb96-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-366"><a href="#cb96-366" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-367"><a href="#cb96-367" aria-hidden="true" tabindex="-1"></a>meta_wild <span class="ot">&lt;-</span> meta <span class="sc">|&gt;</span></span>
+<span id="cb96-368"><a href="#cb96-368" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(genotype <span class="sc">==</span> <span class="st">"wt"</span>)</span>
+<span id="cb96-369"><a href="#cb96-369" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-370"><a href="#cb96-370" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-371"><a href="#cb96-371" aria-hidden="true" tabindex="-1"></a>We can now create the DESeqDataSet object. The design formula describes</span>
+<span id="cb96-372"><a href="#cb96-372" aria-hidden="true" tabindex="-1"></a>the statistical model. You should recognise the form from previous work.</span>
+<span id="cb96-373"><a href="#cb96-373" aria-hidden="true" tabindex="-1"></a>The <span class="in">`~`</span> can be read as "explain by" and on its right hand side are the</span>
+<span id="cb96-374"><a href="#cb96-374" aria-hidden="true" tabindex="-1"></a>explanatory variables. That is, the model is counts explained by copper</span>
+<span id="cb96-375"><a href="#cb96-375" aria-hidden="true" tabindex="-1"></a>status.</span>
+<span id="cb96-376"><a href="#cb96-376" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-377"><a href="#cb96-377" aria-hidden="true" tabindex="-1"></a>Note that:</span>
+<span id="cb96-378"><a href="#cb96-378" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-379"><a href="#cb96-379" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The names of the columns in the count matrix have to exactly match</span>
+<span id="cb96-380"><a href="#cb96-380" aria-hidden="true" tabindex="-1"></a>    the names of the rows in the metadata dataframe. They also need to</span>
+<span id="cb96-381"><a href="#cb96-381" aria-hidden="true" tabindex="-1"></a>    be in the same order.</span>
+<span id="cb96-382"><a href="#cb96-382" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The names of the explanatory variables in the design formula have to</span>
+<span id="cb96-383"><a href="#cb96-383" aria-hidden="true" tabindex="-1"></a>    match the names of columns in the metadata.</span>
+<span id="cb96-384"><a href="#cb96-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-385"><a href="#cb96-385" aria-hidden="true" tabindex="-1"></a>🎬 Create the DESeqDataSet object:</span>
+<span id="cb96-386"><a href="#cb96-386" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-389"><a href="#cb96-389" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-390"><a href="#cb96-390" aria-hidden="true" tabindex="-1"></a>dds <span class="ot">&lt;-</span> <span class="fu">DESeqDataSetFromMatrix</span>(wild_count_mat,</span>
+<span id="cb96-391"><a href="#cb96-391" aria-hidden="true" tabindex="-1"></a>                              <span class="at">colData =</span> meta_wild,</span>
+<span id="cb96-392"><a href="#cb96-392" aria-hidden="true" tabindex="-1"></a>                              <span class="at">design =</span> <span class="sc">~</span> copper)</span>
+<span id="cb96-393"><a href="#cb96-393" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-394"><a href="#cb96-394" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-395"><a href="#cb96-395" aria-hidden="true" tabindex="-1"></a>The warning "Warning: some variables in design formula are characters,</span>
+<span id="cb96-396"><a href="#cb96-396" aria-hidden="true" tabindex="-1"></a>converting to factors" just means that the variable type of copper in</span>
+<span id="cb96-397"><a href="#cb96-397" aria-hidden="true" tabindex="-1"></a>the metadata dataframe is "char" and it has been converted into a factor</span>
+<span id="cb96-398"><a href="#cb96-398" aria-hidden="true" tabindex="-1"></a>type.</span>
+<span id="cb96-399"><a href="#cb96-399" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-400"><a href="#cb96-400" aria-hidden="true" tabindex="-1"></a>To help you understand what the <span class="in">`DESeqDataSet`</span> object we have called</span>
+<span id="cb96-401"><a href="#cb96-401" aria-hidden="true" tabindex="-1"></a><span class="in">`dds`</span> contains, we can look its contents</span>
+<span id="cb96-402"><a href="#cb96-402" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-403"><a href="#cb96-403" aria-hidden="true" tabindex="-1"></a>The counts are in <span class="in">`dds@assays@data@listData[["counts"]]`</span> and the</span>
+<span id="cb96-404"><a href="#cb96-404" aria-hidden="true" tabindex="-1"></a>metadata are in <span class="in">`dds@colData`</span> but the easiest way to see them is to use</span>
+<span id="cb96-405"><a href="#cb96-405" aria-hidden="true" tabindex="-1"></a>the <span class="in">`counts()`</span> and <span class="in">`colData()`</span> functions from the **`DESeq2`** package.</span>
+<span id="cb96-406"><a href="#cb96-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-407"><a href="#cb96-407" aria-hidden="true" tabindex="-1"></a>🎬 View the counts:</span>
+<span id="cb96-408"><a href="#cb96-408" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-411"><a href="#cb96-411" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-412"><a href="#cb96-412" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb96-413"><a href="#cb96-413" aria-hidden="true" tabindex="-1"></a><span class="fu">counts</span>(dds) <span class="sc">|&gt;</span> <span class="fu">View</span>()</span>
+<span id="cb96-414"><a href="#cb96-414" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-415"><a href="#cb96-415" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-416"><a href="#cb96-416" aria-hidden="true" tabindex="-1"></a>You should be able to see that this is the same as in <span class="in">`wild_count_mat`</span>.</span>
+<span id="cb96-417"><a href="#cb96-417" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-418"><a href="#cb96-418" aria-hidden="true" tabindex="-1"></a>🎬 View the column information:</span>
+<span id="cb96-419"><a href="#cb96-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-422"><a href="#cb96-422" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-423"><a href="#cb96-423" aria-hidden="true" tabindex="-1"></a><span class="fu">colData</span>(dds)</span>
+<span id="cb96-424"><a href="#cb96-424" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-425"><a href="#cb96-425" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-426"><a href="#cb96-426" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-427"><a href="#cb96-427" aria-hidden="true" tabindex="-1"></a>You should be able to see this is the same as in <span class="in">`meta_wild`</span>.</span>
+<span id="cb96-428"><a href="#cb96-428" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-429"><a href="#cb96-429" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3. Prepare the normalised counts</span></span>
+<span id="cb96-430"><a href="#cb96-430" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-431"><a href="#cb96-431" aria-hidden="true" tabindex="-1"></a>The normalised counts are the counts that have been transformed to</span>
+<span id="cb96-432"><a href="#cb96-432" aria-hidden="true" tabindex="-1"></a>account for the library size (i.e., the total number of reads in a</span>
+<span id="cb96-433"><a href="#cb96-433" aria-hidden="true" tabindex="-1"></a>sample) and the gene length. We have to first estimate the normalisation</span>
+<span id="cb96-434"><a href="#cb96-434" aria-hidden="true" tabindex="-1"></a>factors and store them in the DESeqDataSet object and then we can get</span>
+<span id="cb96-435"><a href="#cb96-435" aria-hidden="true" tabindex="-1"></a>the normalised counts.</span>
+<span id="cb96-436"><a href="#cb96-436" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-437"><a href="#cb96-437" aria-hidden="true" tabindex="-1"></a>🎬 Estimate the factors for normalisation and store them in the</span>
+<span id="cb96-438"><a href="#cb96-438" aria-hidden="true" tabindex="-1"></a>DESeqDataSet object:</span>
+<span id="cb96-439"><a href="#cb96-439" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-442"><a href="#cb96-442" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-443"><a href="#cb96-443" aria-hidden="true" tabindex="-1"></a>dds <span class="ot">&lt;-</span> <span class="fu">estimateSizeFactors</span>(dds)</span>
+<span id="cb96-444"><a href="#cb96-444" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-445"><a href="#cb96-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-446"><a href="#cb96-446" aria-hidden="true" tabindex="-1"></a>🎬 Look at the factors (just for information):</span>
+<span id="cb96-447"><a href="#cb96-447" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-450"><a href="#cb96-450" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-451"><a href="#cb96-451" aria-hidden="true" tabindex="-1"></a><span class="fu">sizeFactors</span>(dds)</span>
+<span id="cb96-452"><a href="#cb96-452" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-453"><a href="#cb96-453" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-454"><a href="#cb96-454" aria-hidden="true" tabindex="-1"></a>The normalised counts will be useful to use later. To get the normalised</span>
+<span id="cb96-455"><a href="#cb96-455" aria-hidden="true" tabindex="-1"></a>counts we again used the <span class="in">`counts()`</span> function but this time we use the</span>
+<span id="cb96-456"><a href="#cb96-456" aria-hidden="true" tabindex="-1"></a><span class="in">`normalized=TRUE`</span> argument.</span>
+<span id="cb96-457"><a href="#cb96-457" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-458"><a href="#cb96-458" aria-hidden="true" tabindex="-1"></a>🎬 Save the normalised to a matrix:</span>
+<span id="cb96-459"><a href="#cb96-459" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-462"><a href="#cb96-462" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-463"><a href="#cb96-463" aria-hidden="true" tabindex="-1"></a>normalised_counts <span class="ot">&lt;-</span> <span class="fu">counts</span>(dds, <span class="at">normalized =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb96-464"><a href="#cb96-464" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-465"><a href="#cb96-465" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-466"><a href="#cb96-466" aria-hidden="true" tabindex="-1"></a>🎬 Make a dataframe of the normalised counts, adding a column for the</span>
+<span id="cb96-467"><a href="#cb96-467" aria-hidden="true" tabindex="-1"></a>gene ids at the same time:</span>
+<span id="cb96-468"><a href="#cb96-468" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-471"><a href="#cb96-471" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-472"><a href="#cb96-472" aria-hidden="true" tabindex="-1"></a>wild_normalised_counts <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(normalised_counts,</span>
+<span id="cb96-473"><a href="#cb96-473" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">gene_id =</span> <span class="fu">row.names</span>(normalised_counts))</span>
+<span id="cb96-474"><a href="#cb96-474" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-475"><a href="#cb96-475" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-476"><a href="#cb96-476" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-477"><a href="#cb96-477" aria-hidden="true" tabindex="-1"></a><span class="fu">### 4. Differential expression analysis</span></span>
+<span id="cb96-478"><a href="#cb96-478" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-479"><a href="#cb96-479" aria-hidden="true" tabindex="-1"></a>We use the <span class="in">`DESeq()`</span> function to do the differential expression</span>
+<span id="cb96-480"><a href="#cb96-480" aria-hidden="true" tabindex="-1"></a>analysis. This function fits the statistical model to the data and then</span>
+<span id="cb96-481"><a href="#cb96-481" aria-hidden="true" tabindex="-1"></a>uses the model to calculate the significance of the difference between</span>
+<span id="cb96-482"><a href="#cb96-482" aria-hidden="true" tabindex="-1"></a>the treatments. It again stores the results in the DESseqDataSet object.</span>
+<span id="cb96-483"><a href="#cb96-483" aria-hidden="true" tabindex="-1"></a>Note that the differential expression needs the raw (unnormalised</span>
+<span id="cb96-484"><a href="#cb96-484" aria-hidden="true" tabindex="-1"></a>counts) as it does its own normalisation as part of the process.</span>
+<span id="cb96-485"><a href="#cb96-485" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-486"><a href="#cb96-486" aria-hidden="true" tabindex="-1"></a>🎬 Run the differential expression analysis and store the results in the</span>
+<span id="cb96-487"><a href="#cb96-487" aria-hidden="true" tabindex="-1"></a>same object:</span>
+<span id="cb96-488"><a href="#cb96-488" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-491"><a href="#cb96-491" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-492"><a href="#cb96-492" aria-hidden="true" tabindex="-1"></a>dds <span class="ot">&lt;-</span> <span class="fu">DESeq</span>(dds)</span>
+<span id="cb96-493"><a href="#cb96-493" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-494"><a href="#cb96-494" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-495"><a href="#cb96-495" aria-hidden="true" tabindex="-1"></a>The function will take only a few moments to run on this data but can</span>
+<span id="cb96-496"><a href="#cb96-496" aria-hidden="true" tabindex="-1"></a>take longer for bigger datasets.</span>
+<span id="cb96-497"><a href="#cb96-497" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-498"><a href="#cb96-498" aria-hidden="true" tabindex="-1"></a>We need to define the contrasts we want to test. We want to test the</span>
+<span id="cb96-499"><a href="#cb96-499" aria-hidden="true" tabindex="-1"></a>difference between the treatments so we will define the contrast as</span>
+<span id="cb96-500"><a href="#cb96-500" aria-hidden="true" tabindex="-1"></a><span class="in">`sufficient`</span> and <span class="in">`deficient`</span>.</span>
+<span id="cb96-501"><a href="#cb96-501" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-502"><a href="#cb96-502" aria-hidden="true" tabindex="-1"></a>🎬 Define the contrast:</span>
+<span id="cb96-503"><a href="#cb96-503" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-506"><a href="#cb96-506" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-507"><a href="#cb96-507" aria-hidden="true" tabindex="-1"></a>contrast_suf <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"copper"</span>, <span class="st">"sufficient"</span>, <span class="st">"deficient"</span>)</span>
+<span id="cb96-508"><a href="#cb96-508" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-509"><a href="#cb96-509" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-510"><a href="#cb96-510" aria-hidden="true" tabindex="-1"></a>Note that <span class="in">`copper`</span> is the name of the column in the metadata dataframe</span>
+<span id="cb96-511"><a href="#cb96-511" aria-hidden="true" tabindex="-1"></a>and <span class="in">`sufficient`</span> and <span class="in">`deficient`</span> are the names of the levels in the</span>
+<span id="cb96-512"><a href="#cb96-512" aria-hidden="true" tabindex="-1"></a><span class="in">`copper`</span> column. By putting them in the order <span class="in">`sufficient`</span> , <span class="in">`deficient`</span></span>
+<span id="cb96-513"><a href="#cb96-513" aria-hidden="true" tabindex="-1"></a>we are saying the fold change will be sufficient / deficient. This</span>
+<span id="cb96-514"><a href="#cb96-514" aria-hidden="true" tabindex="-1"></a>means:</span>
+<span id="cb96-515"><a href="#cb96-515" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-516"><a href="#cb96-516" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>positive log fold changes indicate sufficient <span class="sc">\&gt;</span> deficient and</span>
+<span id="cb96-517"><a href="#cb96-517" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>negative log fold changes indicates deficient <span class="sc">\&gt;</span> sufficient.</span>
+<span id="cb96-518"><a href="#cb96-518" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-519"><a href="#cb96-519" aria-hidden="true" tabindex="-1"></a>If we had put them in the order <span class="in">`deficient`</span>, <span class="in">`sufficient`</span> we would have</span>
+<span id="cb96-520"><a href="#cb96-520" aria-hidden="true" tabindex="-1"></a>the reverse.</span>
+<span id="cb96-521"><a href="#cb96-521" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-522"><a href="#cb96-522" aria-hidden="true" tabindex="-1"></a>🎬 Extract the results from the DESseqDataSet object:</span>
+<span id="cb96-523"><a href="#cb96-523" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-526"><a href="#cb96-526" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-527"><a href="#cb96-527" aria-hidden="true" tabindex="-1"></a>results_suf <span class="ot">&lt;-</span> <span class="fu">results</span>(dds,</span>
+<span id="cb96-528"><a href="#cb96-528" aria-hidden="true" tabindex="-1"></a>                       <span class="at">contrast =</span> contrast_suf)</span>
+<span id="cb96-529"><a href="#cb96-529" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-530"><a href="#cb96-530" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-531"><a href="#cb96-531" aria-hidden="true" tabindex="-1"></a>This will give us the log~2~ fold change, the *p*-value and the adjusted</span>
+<span id="cb96-532"><a href="#cb96-532" aria-hidden="true" tabindex="-1"></a>*p*-value for the comparison between the sufficient- and\</span>
+<span id="cb96-533"><a href="#cb96-533" aria-hidden="true" tabindex="-1"></a>deficient-copper for each gene.</span>
+<span id="cb96-534"><a href="#cb96-534" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-535"><a href="#cb96-535" aria-hidden="true" tabindex="-1"></a>🎬 Put the results in a dataframe and add the gene ids as a column:</span>
+<span id="cb96-536"><a href="#cb96-536" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-539"><a href="#cb96-539" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-540"><a href="#cb96-540" aria-hidden="true" tabindex="-1"></a>wild_results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(results_suf,</span>
+<span id="cb96-541"><a href="#cb96-541" aria-hidden="true" tabindex="-1"></a>                          <span class="at">gene_id =</span> <span class="fu">row.names</span>(results_suf))</span>
+<span id="cb96-542"><a href="#cb96-542" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-543"><a href="#cb96-543" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-544"><a href="#cb96-544" aria-hidden="true" tabindex="-1"></a>It is useful to have the normalised counts and the statistical results</span>
+<span id="cb96-545"><a href="#cb96-545" aria-hidden="true" tabindex="-1"></a>in one dataframe.</span>
+<span id="cb96-546"><a href="#cb96-546" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-547"><a href="#cb96-547" aria-hidden="true" tabindex="-1"></a>🎬 Merge the two dataframes:</span>
+<span id="cb96-548"><a href="#cb96-548" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-551"><a href="#cb96-551" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-552"><a href="#cb96-552" aria-hidden="true" tabindex="-1"></a><span class="co"># merge the results with the normalised counts</span></span>
+<span id="cb96-553"><a href="#cb96-553" aria-hidden="true" tabindex="-1"></a>wild_results <span class="ot">&lt;-</span> wild_normalised_counts <span class="sc">|&gt;</span></span>
+<span id="cb96-554"><a href="#cb96-554" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(wild_results, <span class="at">by =</span> <span class="st">"gene_id"</span>)</span>
+<span id="cb96-555"><a href="#cb96-555" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-556"><a href="#cb96-556" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-557"><a href="#cb96-557" aria-hidden="true" tabindex="-1"></a>Now go to <span class="co">[</span><span class="ot">Add gene information</span><span class="co">](#arabidopisis-3)</span>.</span>
+<span id="cb96-558"><a href="#cb96-558" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-559"><a href="#cb96-559" aria-hidden="true" tabindex="-1"></a><span class="fu">## 💉 *Leishmania* {#leishmania-2}</span></span>
+<span id="cb96-560"><a href="#cb96-560" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-561"><a href="#cb96-561" aria-hidden="true" tabindex="-1"></a>These are the steps we will take</span>
+<span id="cb96-562"><a href="#cb96-562" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-563"><a href="#cb96-563" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Find the genes that are expressed in only one treatment group.</span>
+<span id="cb96-564"><a href="#cb96-564" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Create a DESeqDataSet object. This is a special object that is used</span>
+<span id="cb96-565"><a href="#cb96-565" aria-hidden="true" tabindex="-1"></a>    by the **`DESeq2`** package</span>
+<span id="cb96-566"><a href="#cb96-566" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Prepare the normalised counts from the DESeqDataSet object.</span>
+<span id="cb96-567"><a href="#cb96-567" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>Do differential expression analysis on the genes. This needs to be</span>
+<span id="cb96-568"><a href="#cb96-568" aria-hidden="true" tabindex="-1"></a>    done on the raw counts.</span>
+<span id="cb96-569"><a href="#cb96-569" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-570"><a href="#cb96-570" aria-hidden="true" tabindex="-1"></a>All but the first step are done with the **`DESeq2`** package</span>
+<span id="cb96-571"><a href="#cb96-571" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-572"><a href="#cb96-572" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1. Genes expressed in one treatment</span></span>
+<span id="cb96-573"><a href="#cb96-573" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-574"><a href="#cb96-574" aria-hidden="true" tabindex="-1"></a>The genes expressed in only one treatment group are those with zeros in</span>
+<span id="cb96-575"><a href="#cb96-575" aria-hidden="true" tabindex="-1"></a>all replicates in one group and non-zero values in all replicates in the</span>
+<span id="cb96-576"><a href="#cb96-576" aria-hidden="true" tabindex="-1"></a>other group.</span>
+<span id="cb96-577"><a href="#cb96-577" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-578"><a href="#cb96-578" aria-hidden="true" tabindex="-1"></a>We will use <span class="in">`filter()`</span> to find these genes.</span>
+<span id="cb96-579"><a href="#cb96-579" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-580"><a href="#cb96-580" aria-hidden="true" tabindex="-1"></a>🎬 Find the genes that are expressed only at the procyclic-promastigote</span>
+<span id="cb96-581"><a href="#cb96-581" aria-hidden="true" tabindex="-1"></a>stage:</span>
+<span id="cb96-582"><a href="#cb96-582" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-585"><a href="#cb96-585" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-586"><a href="#cb96-586" aria-hidden="true" tabindex="-1"></a>pro_meta_pro_only <span class="ot">&lt;-</span> pro_meta_filtered  <span class="sc">|&gt;</span></span>
+<span id="cb96-587"><a href="#cb96-587" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(lm_pro_1 <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
+<span id="cb96-588"><a href="#cb96-588" aria-hidden="true" tabindex="-1"></a>         lm_pro_2 <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
+<span id="cb96-589"><a href="#cb96-589" aria-hidden="true" tabindex="-1"></a>         lm_pro_3 <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
+<span id="cb96-590"><a href="#cb96-590" aria-hidden="true" tabindex="-1"></a>         lm_meta_1 <span class="sc">==</span> <span class="dv">0</span>,</span>
+<span id="cb96-591"><a href="#cb96-591" aria-hidden="true" tabindex="-1"></a>         lm_meta_2 <span class="sc">==</span> <span class="dv">0</span>,</span>
+<span id="cb96-592"><a href="#cb96-592" aria-hidden="true" tabindex="-1"></a>         lm_meta_2 <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb96-593"><a href="#cb96-593" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-594"><a href="#cb96-594" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-595"><a href="#cb96-595" aria-hidden="true" tabindex="-1"></a>❓ How many genes are expressed only in the procyclic-promastigote stage</span>
+<span id="cb96-596"><a href="#cb96-596" aria-hidden="true" tabindex="-1"></a>group?</span>
+<span id="cb96-597"><a href="#cb96-597" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-598"><a href="#cb96-598" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #---THINKING ANSWER--- --&gt;</span></span>
+<span id="cb96-599"><a href="#cb96-599" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-600"><a href="#cb96-600" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- There are 0 genes expressed only in the procyclic-promastigote stage --&gt;</span></span>
+<span id="cb96-601"><a href="#cb96-601" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-602"><a href="#cb96-602" aria-hidden="true" tabindex="-1"></a>🎬 Now you find any genes that are expressed only at the metacyclic</span>
+<span id="cb96-603"><a href="#cb96-603" aria-hidden="true" tabindex="-1"></a>stage</span>
+<span id="cb96-604"><a href="#cb96-604" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-607"><a href="#cb96-607" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-608"><a href="#cb96-608" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb96-609"><a href="#cb96-609" aria-hidden="true" tabindex="-1"></a><span class="co">#---CODING ANSWER---</span></span>
+<span id="cb96-610"><a href="#cb96-610" aria-hidden="true" tabindex="-1"></a>pro_meta_meta_only <span class="ot">&lt;-</span> pro_meta_filtered  <span class="sc">|&gt;</span></span>
+<span id="cb96-611"><a href="#cb96-611" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(lm_pro_1 <span class="sc">==</span> <span class="dv">0</span>,</span>
+<span id="cb96-612"><a href="#cb96-612" aria-hidden="true" tabindex="-1"></a>         lm_pro_2 <span class="sc">==</span> <span class="dv">0</span>,</span>
+<span id="cb96-613"><a href="#cb96-613" aria-hidden="true" tabindex="-1"></a>         lm_pro_3 <span class="sc">==</span> <span class="dv">0</span>,</span>
+<span id="cb96-614"><a href="#cb96-614" aria-hidden="true" tabindex="-1"></a>         lm_meta_1 <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
+<span id="cb96-615"><a href="#cb96-615" aria-hidden="true" tabindex="-1"></a>         lm_meta_2 <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
+<span id="cb96-616"><a href="#cb96-616" aria-hidden="true" tabindex="-1"></a>         lm_meta_2 <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb96-617"><a href="#cb96-617" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-618"><a href="#cb96-618" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-619"><a href="#cb96-619" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-620"><a href="#cb96-620" aria-hidden="true" tabindex="-1"></a>❓ How many genes are expressed only at the metacyclic stage?</span>
+<span id="cb96-621"><a href="#cb96-621" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-622"><a href="#cb96-622" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #---THINKING ANSWER--- --&gt;</span></span>
+<span id="cb96-623"><a href="#cb96-623" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-624"><a href="#cb96-624" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- There are 0 genes expressed only in the meta stage group. --&gt;</span></span>
+<span id="cb96-625"><a href="#cb96-625" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-626"><a href="#cb96-626" aria-hidden="true" tabindex="-1"></a>❓ Do the results make sense to you in light of what you know about the</span>
+<span id="cb96-627"><a href="#cb96-627" aria-hidden="true" tabindex="-1"></a>biology?</span>
+<span id="cb96-628"><a href="#cb96-628" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-629"><a href="#cb96-629" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #---THINKING ANSWER--- --&gt;</span></span>
+<span id="cb96-630"><a href="#cb96-630" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-631"><a href="#cb96-631" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- I have no clue here! --&gt;</span></span>
+<span id="cb96-632"><a href="#cb96-632" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-633"><a href="#cb96-633" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Domain expertise is important when analysing data so  --&gt;</span></span>
+<span id="cb96-634"><a href="#cb96-634" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-635"><a href="#cb96-635" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- discuss your results with Pegine and your group. --&gt;</span></span>
+<span id="cb96-636"><a href="#cb96-636" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-637"><a href="#cb96-637" aria-hidden="true" tabindex="-1"></a>🎬 Write all the genes that are expressed one group only to file (saved</span>
+<span id="cb96-638"><a href="#cb96-638" aria-hidden="true" tabindex="-1"></a>in <span class="in">`results`</span>)</span>
+<span id="cb96-639"><a href="#cb96-639" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-642"><a href="#cb96-642" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-643"><a href="#cb96-643" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb96-644"><a href="#cb96-644" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb96-645"><a href="#cb96-645" aria-hidden="true" tabindex="-1"></a><span class="co">#---CODING ANSWER---</span></span>
+<span id="cb96-646"><a href="#cb96-646" aria-hidden="true" tabindex="-1"></a><span class="co"># If we had any genes expressed in only one group we would write </span></span>
+<span id="cb96-647"><a href="#cb96-647" aria-hidden="true" tabindex="-1"></a><span class="co"># them to a file like this. </span></span>
+<span id="cb96-648"><a href="#cb96-648" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(pro_meta_pro_only, <span class="st">"results/pro_meta_pro_only.csv"</span>)</span>
+<span id="cb96-649"><a href="#cb96-649" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(pro_meta_meta_only, <span class="st">"results/pro_meta_meta_only.csv"</span>)</span>
+<span id="cb96-650"><a href="#cb96-650" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-651"><a href="#cb96-651" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-652"><a href="#cb96-652" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2. Create DESeqDataSet object</span></span>
+<span id="cb96-653"><a href="#cb96-653" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-654"><a href="#cb96-654" aria-hidden="true" tabindex="-1"></a>🎬 Load the DESeq2 package:</span>
+<span id="cb96-655"><a href="#cb96-655" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-658"><a href="#cb96-658" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-659"><a href="#cb96-659" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb96-660"><a href="#cb96-660" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb96-661"><a href="#cb96-661" aria-hidden="true" tabindex="-1"></a><span class="co">#---CODING ANSWER---</span></span>
+<span id="cb96-662"><a href="#cb96-662" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DESeq2)</span>
+<span id="cb96-663"><a href="#cb96-663" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-664"><a href="#cb96-664" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-665"><a href="#cb96-665" aria-hidden="true" tabindex="-1"></a>A DEseqDataSet object is a custom data type that is used by</span>
+<span id="cb96-666"><a href="#cb96-666" aria-hidden="true" tabindex="-1"></a>**`DESeq2`**. Custom data types are common in the Bioconductor<span class="ot">[^2]</span></span>
+<span id="cb96-667"><a href="#cb96-667" aria-hidden="true" tabindex="-1"></a>packages. They are used to store data in a way that is useful for the</span>
+<span id="cb96-668"><a href="#cb96-668" aria-hidden="true" tabindex="-1"></a>analysis. These data types typically have data, transformed data,</span>
+<span id="cb96-669"><a href="#cb96-669" aria-hidden="true" tabindex="-1"></a>metadata and experimental designs within them.</span>
+<span id="cb96-670"><a href="#cb96-670" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-671"><a href="#cb96-671" aria-hidden="true" tabindex="-1"></a><span class="ot">[^2]: </span><span class="co">[</span><span class="ot">Bioconductor</span><span class="co">](https://www.bioconductor.org/)</span> is a project that</span>
+<span id="cb96-672"><a href="#cb96-672" aria-hidden="true" tabindex="-1"></a>    develops and supports R packages for bioinformatics.</span>
+<span id="cb96-673"><a href="#cb96-673" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-674"><a href="#cb96-674" aria-hidden="true" tabindex="-1"></a>To create a DESeqDataSet object, we need to provide three things:</span>
+<span id="cb96-675"><a href="#cb96-675" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-676"><a href="#cb96-676" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The raw counts - these are in <span class="in">`pro_meta_filtered`</span></span>
+<span id="cb96-677"><a href="#cb96-677" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The meta data which gives information about the samples and which</span>
+<span id="cb96-678"><a href="#cb96-678" aria-hidden="true" tabindex="-1"></a>    treatment groups they belong to</span>
+<span id="cb96-679"><a href="#cb96-679" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>A design matrix which captures the design of the statistical model.</span>
+<span id="cb96-680"><a href="#cb96-680" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-681"><a href="#cb96-681" aria-hidden="true" tabindex="-1"></a>The counts must in a *matrix* rather than a dataframe. Unlike a</span>
+<span id="cb96-682"><a href="#cb96-682" aria-hidden="true" tabindex="-1"></a>dataframe, a matrix has columns of all the same type. That is, it will</span>
+<span id="cb96-683"><a href="#cb96-683" aria-hidden="true" tabindex="-1"></a>contain only the counts. The gene ids are given as row names rather than</span>
+<span id="cb96-684"><a href="#cb96-684" aria-hidden="true" tabindex="-1"></a>a column. The <span class="in">`matrix()`</span> function will create a matrix from a dataframe</span>
+<span id="cb96-685"><a href="#cb96-685" aria-hidden="true" tabindex="-1"></a>of columns of the same type and the <span class="in">`select()`</span> function can be used to</span>
+<span id="cb96-686"><a href="#cb96-686" aria-hidden="true" tabindex="-1"></a>remove the gene ids column.</span>
+<span id="cb96-687"><a href="#cb96-687" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-688"><a href="#cb96-688" aria-hidden="true" tabindex="-1"></a>🎬 Create a matrix of the counts:</span>
+<span id="cb96-689"><a href="#cb96-689" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-692"><a href="#cb96-692" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-693"><a href="#cb96-693" aria-hidden="true" tabindex="-1"></a>pro_meta_count_mat <span class="ot">&lt;-</span> pro_meta_filtered  <span class="sc">|&gt;</span></span>
+<span id="cb96-694"><a href="#cb96-694" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>gene_id) <span class="sc">|&gt;</span></span>
+<span id="cb96-695"><a href="#cb96-695" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>()</span>
+<span id="cb96-696"><a href="#cb96-696" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-697"><a href="#cb96-697" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-698"><a href="#cb96-698" aria-hidden="true" tabindex="-1"></a>🎬 Add the gene ids as row names to the matrix:</span>
+<span id="cb96-699"><a href="#cb96-699" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-702"><a href="#cb96-702" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-703"><a href="#cb96-703" aria-hidden="true" tabindex="-1"></a><span class="co"># add the row names to the matrix</span></span>
+<span id="cb96-704"><a href="#cb96-704" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(pro_meta_count_mat) <span class="ot">&lt;-</span> pro_meta_filtered<span class="sc">$</span>gene_id</span>
+<span id="cb96-705"><a href="#cb96-705" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-706"><a href="#cb96-706" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-707"><a href="#cb96-707" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-708"><a href="#cb96-708" aria-hidden="true" tabindex="-1"></a>You might want to view the matrix (click on it in your environment</span>
+<span id="cb96-709"><a href="#cb96-709" aria-hidden="true" tabindex="-1"></a>pane).</span>
+<span id="cb96-710"><a href="#cb96-710" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-711"><a href="#cb96-711" aria-hidden="true" tabindex="-1"></a>The metadata are in a file,</span>
+<span id="cb96-712"><a href="#cb96-712" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">leish_meta_data.txt</span><span class="co">](meta/leish_meta_data.txt)</span>. This is a tab-delimited</span>
+<span id="cb96-713"><a href="#cb96-713" aria-hidden="true" tabindex="-1"></a>file. The first column is the sample name and the other columns give the</span>
+<span id="cb96-714"><a href="#cb96-714" aria-hidden="true" tabindex="-1"></a>"treatments". In this case, the treatment is stage (with three levels).</span>
+<span id="cb96-715"><a href="#cb96-715" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-716"><a href="#cb96-716" aria-hidden="true" tabindex="-1"></a>🎬 Make a folder called <span class="in">`meta`</span> and save the file to it.</span>
+<span id="cb96-717"><a href="#cb96-717" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-718"><a href="#cb96-718" aria-hidden="true" tabindex="-1"></a>🎬 Read the metadata into a dataframe:</span>
+<span id="cb96-719"><a href="#cb96-719" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-722"><a href="#cb96-722" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-723"><a href="#cb96-723" aria-hidden="true" tabindex="-1"></a>meta <span class="ot">&lt;-</span> <span class="fu">read_table</span>(<span class="st">"meta/leish_meta_data.txt"</span>)</span>
+<span id="cb96-724"><a href="#cb96-724" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-725"><a href="#cb96-725" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-726"><a href="#cb96-726" aria-hidden="true" tabindex="-1"></a>🎬 Examine the resulting dataframe.</span>
+<span id="cb96-727"><a href="#cb96-727" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-728"><a href="#cb96-728" aria-hidden="true" tabindex="-1"></a>We need to add the sample names as row names to the metadata dataframe.</span>
+<span id="cb96-729"><a href="#cb96-729" aria-hidden="true" tabindex="-1"></a>This is because the DESeqDataSet object will use the row names to match</span>
+<span id="cb96-730"><a href="#cb96-730" aria-hidden="true" tabindex="-1"></a>the samples in the metadata to the samples in the counts matrix.</span>
+<span id="cb96-731"><a href="#cb96-731" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-732"><a href="#cb96-732" aria-hidden="true" tabindex="-1"></a>🎬 Add the sample names as row names to the metadata dataframe:</span>
+<span id="cb96-733"><a href="#cb96-733" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-736"><a href="#cb96-736" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-737"><a href="#cb96-737" aria-hidden="true" tabindex="-1"></a>meta <span class="ot">&lt;-</span> meta <span class="sc">|&gt;</span></span>
+<span id="cb96-738"><a href="#cb96-738" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(<span class="st">"sample_id"</span>)</span>
+<span id="cb96-739"><a href="#cb96-739" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-740"><a href="#cb96-740" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-741"><a href="#cb96-741" aria-hidden="true" tabindex="-1"></a>We are dealing only with the wild data so we need to remove the samples</span>
+<span id="cb96-742"><a href="#cb96-742" aria-hidden="true" tabindex="-1"></a>that are not in the wild data.</span>
+<span id="cb96-743"><a href="#cb96-743" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-744"><a href="#cb96-744" aria-hidden="true" tabindex="-1"></a>🎬 Filter the metadata to keep only the procyclic and metacyclic</span>
+<span id="cb96-745"><a href="#cb96-745" aria-hidden="true" tabindex="-1"></a>information:</span>
+<span id="cb96-746"><a href="#cb96-746" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-749"><a href="#cb96-749" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-750"><a href="#cb96-750" aria-hidden="true" tabindex="-1"></a>meta_pro_meta <span class="ot">&lt;-</span> meta <span class="sc">|&gt;</span></span>
+<span id="cb96-751"><a href="#cb96-751" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(stage <span class="sc">!=</span> <span class="st">"amastigotes"</span>)</span>
+<span id="cb96-752"><a href="#cb96-752" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-753"><a href="#cb96-753" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-754"><a href="#cb96-754" aria-hidden="true" tabindex="-1"></a>We can now create the DESeqDataSet object. The design formula describes</span>
+<span id="cb96-755"><a href="#cb96-755" aria-hidden="true" tabindex="-1"></a>the statistical model. You should recognise the form from previous work.</span>
+<span id="cb96-756"><a href="#cb96-756" aria-hidden="true" tabindex="-1"></a>The <span class="in">`~`</span> can be read as "explain by" and on its right hand side are the</span>
+<span id="cb96-757"><a href="#cb96-757" aria-hidden="true" tabindex="-1"></a>explanatory variables. That is, the model is counts explained by stage</span>
+<span id="cb96-758"><a href="#cb96-758" aria-hidden="true" tabindex="-1"></a>status.</span>
+<span id="cb96-759"><a href="#cb96-759" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-760"><a href="#cb96-760" aria-hidden="true" tabindex="-1"></a>Note that:</span>
+<span id="cb96-761"><a href="#cb96-761" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-762"><a href="#cb96-762" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The names of the columns in the count matrix have to exactly match</span>
+<span id="cb96-763"><a href="#cb96-763" aria-hidden="true" tabindex="-1"></a>    the names of the rows in the metadata dataframe. They also need to</span>
+<span id="cb96-764"><a href="#cb96-764" aria-hidden="true" tabindex="-1"></a>    be in the same order.</span>
+<span id="cb96-765"><a href="#cb96-765" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The names of the explanatory variables in the design formula have to</span>
+<span id="cb96-766"><a href="#cb96-766" aria-hidden="true" tabindex="-1"></a>    match the names of columns in the metadata.</span>
+<span id="cb96-767"><a href="#cb96-767" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-768"><a href="#cb96-768" aria-hidden="true" tabindex="-1"></a>🎬 Create the DESeqDataSet object:</span>
+<span id="cb96-769"><a href="#cb96-769" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-772"><a href="#cb96-772" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-773"><a href="#cb96-773" aria-hidden="true" tabindex="-1"></a>dds <span class="ot">&lt;-</span> <span class="fu">DESeqDataSetFromMatrix</span>(pro_meta_count_mat,</span>
+<span id="cb96-774"><a href="#cb96-774" aria-hidden="true" tabindex="-1"></a>                              <span class="at">colData =</span> meta_pro_meta,</span>
+<span id="cb96-775"><a href="#cb96-775" aria-hidden="true" tabindex="-1"></a>                              <span class="at">design =</span> <span class="sc">~</span> stage)</span>
+<span id="cb96-776"><a href="#cb96-776" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-777"><a href="#cb96-777" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-778"><a href="#cb96-778" aria-hidden="true" tabindex="-1"></a>The warning "Warning: some variables in design formula are characters,</span>
+<span id="cb96-779"><a href="#cb96-779" aria-hidden="true" tabindex="-1"></a>converting to factors" just means that the variable type of stage in the</span>
+<span id="cb96-780"><a href="#cb96-780" aria-hidden="true" tabindex="-1"></a>metadata dataframe is "char" and it has been converted into a factor</span>
+<span id="cb96-781"><a href="#cb96-781" aria-hidden="true" tabindex="-1"></a>type.</span>
+<span id="cb96-782"><a href="#cb96-782" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-783"><a href="#cb96-783" aria-hidden="true" tabindex="-1"></a>To help you understand what the <span class="in">`DESeqDataSet`</span> object we have called</span>
+<span id="cb96-784"><a href="#cb96-784" aria-hidden="true" tabindex="-1"></a><span class="in">`dds`</span> contains, we can look its contents</span>
+<span id="cb96-785"><a href="#cb96-785" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-786"><a href="#cb96-786" aria-hidden="true" tabindex="-1"></a>The counts are in <span class="in">`dds@assays@data@listData[["counts"]]`</span> and the</span>
+<span id="cb96-787"><a href="#cb96-787" aria-hidden="true" tabindex="-1"></a>metadata are in <span class="in">`dds@colData`</span> but the easiest way to see them is to use</span>
+<span id="cb96-788"><a href="#cb96-788" aria-hidden="true" tabindex="-1"></a>the <span class="in">`counts()`</span> and <span class="in">`colData()`</span> functions from the **`DESeq2`** package.</span>
+<span id="cb96-789"><a href="#cb96-789" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-790"><a href="#cb96-790" aria-hidden="true" tabindex="-1"></a>🎬 View the counts:</span>
+<span id="cb96-791"><a href="#cb96-791" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-794"><a href="#cb96-794" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-795"><a href="#cb96-795" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb96-796"><a href="#cb96-796" aria-hidden="true" tabindex="-1"></a><span class="fu">counts</span>(dds) <span class="sc">|&gt;</span> <span class="fu">View</span>()</span>
+<span id="cb96-797"><a href="#cb96-797" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-798"><a href="#cb96-798" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-799"><a href="#cb96-799" aria-hidden="true" tabindex="-1"></a>You should be able to see that this is the same as in</span>
+<span id="cb96-800"><a href="#cb96-800" aria-hidden="true" tabindex="-1"></a><span class="in">`pro_meta_count_mat`</span>.</span>
+<span id="cb96-801"><a href="#cb96-801" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-802"><a href="#cb96-802" aria-hidden="true" tabindex="-1"></a>🎬 View the column information:</span>
+<span id="cb96-803"><a href="#cb96-803" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-806"><a href="#cb96-806" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-807"><a href="#cb96-807" aria-hidden="true" tabindex="-1"></a><span class="fu">colData</span>(dds)</span>
+<span id="cb96-808"><a href="#cb96-808" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-809"><a href="#cb96-809" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-810"><a href="#cb96-810" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-811"><a href="#cb96-811" aria-hidden="true" tabindex="-1"></a>You should be able to see this is the same as in <span class="in">`meta_pro_meta`</span>.</span>
+<span id="cb96-812"><a href="#cb96-812" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-813"><a href="#cb96-813" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3. Prepare the normalised counts</span></span>
+<span id="cb96-814"><a href="#cb96-814" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-815"><a href="#cb96-815" aria-hidden="true" tabindex="-1"></a>The normalised counts are the counts that have been transformed to</span>
+<span id="cb96-816"><a href="#cb96-816" aria-hidden="true" tabindex="-1"></a>account for the library size (i.e., the total number of reads in a</span>
+<span id="cb96-817"><a href="#cb96-817" aria-hidden="true" tabindex="-1"></a>sample) and the gene length. We have to first estimate the normalisation</span>
+<span id="cb96-818"><a href="#cb96-818" aria-hidden="true" tabindex="-1"></a>factors and store them in the DESeqDataSet object and then we can get</span>
+<span id="cb96-819"><a href="#cb96-819" aria-hidden="true" tabindex="-1"></a>the normalised counts.</span>
+<span id="cb96-820"><a href="#cb96-820" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-821"><a href="#cb96-821" aria-hidden="true" tabindex="-1"></a>🎬 Estimate the factors for normalisation and store them in the</span>
+<span id="cb96-822"><a href="#cb96-822" aria-hidden="true" tabindex="-1"></a>DESeqDataSet object:</span>
+<span id="cb96-823"><a href="#cb96-823" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-826"><a href="#cb96-826" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-827"><a href="#cb96-827" aria-hidden="true" tabindex="-1"></a>dds <span class="ot">&lt;-</span> <span class="fu">estimateSizeFactors</span>(dds)</span>
+<span id="cb96-828"><a href="#cb96-828" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-829"><a href="#cb96-829" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-830"><a href="#cb96-830" aria-hidden="true" tabindex="-1"></a>🎬 Look at the factors (just for information):</span>
+<span id="cb96-831"><a href="#cb96-831" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-834"><a href="#cb96-834" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-835"><a href="#cb96-835" aria-hidden="true" tabindex="-1"></a><span class="fu">sizeFactors</span>(dds)</span>
+<span id="cb96-836"><a href="#cb96-836" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-837"><a href="#cb96-837" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-838"><a href="#cb96-838" aria-hidden="true" tabindex="-1"></a>The normalised counts will be useful to use later. To get the normalised</span>
+<span id="cb96-839"><a href="#cb96-839" aria-hidden="true" tabindex="-1"></a>counts we again used the <span class="in">`counts()`</span> function but this time we use the</span>
+<span id="cb96-840"><a href="#cb96-840" aria-hidden="true" tabindex="-1"></a><span class="in">`normalized=TRUE`</span> argument.</span>
+<span id="cb96-841"><a href="#cb96-841" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-842"><a href="#cb96-842" aria-hidden="true" tabindex="-1"></a>🎬 Save the normalised to a matrix:</span>
+<span id="cb96-843"><a href="#cb96-843" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-846"><a href="#cb96-846" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-847"><a href="#cb96-847" aria-hidden="true" tabindex="-1"></a>normalised_counts <span class="ot">&lt;-</span> <span class="fu">counts</span>(dds, <span class="at">normalized =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb96-848"><a href="#cb96-848" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-849"><a href="#cb96-849" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-850"><a href="#cb96-850" aria-hidden="true" tabindex="-1"></a>🎬 Make a dataframe of the normalised counts, adding a column for the</span>
+<span id="cb96-851"><a href="#cb96-851" aria-hidden="true" tabindex="-1"></a>gene ids at the same time:</span>
+<span id="cb96-852"><a href="#cb96-852" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-855"><a href="#cb96-855" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-856"><a href="#cb96-856" aria-hidden="true" tabindex="-1"></a>pro_meta_normalised_counts <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(normalised_counts,</span>
+<span id="cb96-857"><a href="#cb96-857" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">gene_id =</span> <span class="fu">row.names</span>(normalised_counts))</span>
+<span id="cb96-858"><a href="#cb96-858" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-859"><a href="#cb96-859" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-860"><a href="#cb96-860" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-861"><a href="#cb96-861" aria-hidden="true" tabindex="-1"></a><span class="fu">### 4. Differential expression analysis</span></span>
+<span id="cb96-862"><a href="#cb96-862" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-863"><a href="#cb96-863" aria-hidden="true" tabindex="-1"></a>We use the <span class="in">`DESeq()`</span> function to do the differential expression</span>
+<span id="cb96-864"><a href="#cb96-864" aria-hidden="true" tabindex="-1"></a>analysis. This function fits the statistical model to the data and then</span>
+<span id="cb96-865"><a href="#cb96-865" aria-hidden="true" tabindex="-1"></a>uses the model to calculate the significance of the difference between</span>
+<span id="cb96-866"><a href="#cb96-866" aria-hidden="true" tabindex="-1"></a>the treatments. It again stores the results in the DESseqDataSet object.</span>
+<span id="cb96-867"><a href="#cb96-867" aria-hidden="true" tabindex="-1"></a>Note that the differential expression needs the raw (unnormalised</span>
+<span id="cb96-868"><a href="#cb96-868" aria-hidden="true" tabindex="-1"></a>counts) as it does its own normalisation as part of the process.</span>
+<span id="cb96-869"><a href="#cb96-869" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-870"><a href="#cb96-870" aria-hidden="true" tabindex="-1"></a>🎬 Run the differential expression analysis and store the results in the</span>
+<span id="cb96-871"><a href="#cb96-871" aria-hidden="true" tabindex="-1"></a>same object:</span>
+<span id="cb96-872"><a href="#cb96-872" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-875"><a href="#cb96-875" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-876"><a href="#cb96-876" aria-hidden="true" tabindex="-1"></a>dds <span class="ot">&lt;-</span> <span class="fu">DESeq</span>(dds)</span>
+<span id="cb96-877"><a href="#cb96-877" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-878"><a href="#cb96-878" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-879"><a href="#cb96-879" aria-hidden="true" tabindex="-1"></a>The function will take only a few moments to run on this data but can</span>
+<span id="cb96-880"><a href="#cb96-880" aria-hidden="true" tabindex="-1"></a>take longer for bigger datasets.</span>
+<span id="cb96-881"><a href="#cb96-881" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-882"><a href="#cb96-882" aria-hidden="true" tabindex="-1"></a>We need to define the contrasts we want to test. We want to test the</span>
+<span id="cb96-883"><a href="#cb96-883" aria-hidden="true" tabindex="-1"></a>difference between the treatments so we will define the contrast as</span>
+<span id="cb96-884"><a href="#cb96-884" aria-hidden="true" tabindex="-1"></a><span class="in">`procyclic`</span> and <span class="in">`metacyclic`</span>.</span>
+<span id="cb96-885"><a href="#cb96-885" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-886"><a href="#cb96-886" aria-hidden="true" tabindex="-1"></a>🎬 Define the contrast:</span>
+<span id="cb96-887"><a href="#cb96-887" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-890"><a href="#cb96-890" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-891"><a href="#cb96-891" aria-hidden="true" tabindex="-1"></a>contrast_pro_meta <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"stage"</span>, <span class="st">"procyclic"</span>, <span class="st">"metacyclic"</span>)</span>
+<span id="cb96-892"><a href="#cb96-892" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-893"><a href="#cb96-893" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-894"><a href="#cb96-894" aria-hidden="true" tabindex="-1"></a>Note that <span class="in">`stage`</span> is the name of the column in the metadata dataframe</span>
+<span id="cb96-895"><a href="#cb96-895" aria-hidden="true" tabindex="-1"></a>and <span class="in">`procyclic`</span> and <span class="in">`metacyclic`</span> are the names of the levels in the</span>
+<span id="cb96-896"><a href="#cb96-896" aria-hidden="true" tabindex="-1"></a><span class="in">`stage`</span> column. By putting them in the order <span class="in">`procyclic`</span> , <span class="in">`metacyclic`</span></span>
+<span id="cb96-897"><a href="#cb96-897" aria-hidden="true" tabindex="-1"></a>we are saying the fold change will be procyclic / metacyclic. This</span>
+<span id="cb96-898"><a href="#cb96-898" aria-hidden="true" tabindex="-1"></a>means:</span>
+<span id="cb96-899"><a href="#cb96-899" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-900"><a href="#cb96-900" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>positive log fold changes indicate procyclic <span class="sc">\&gt;</span> metacyclic and</span>
+<span id="cb96-901"><a href="#cb96-901" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>negative log fold changes indicates metacyclic <span class="sc">\&gt;</span> procyclic.</span>
+<span id="cb96-902"><a href="#cb96-902" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-903"><a href="#cb96-903" aria-hidden="true" tabindex="-1"></a>If we had put them in the order <span class="in">`metacyclic`</span>, <span class="in">`procyclic`</span> we would have</span>
+<span id="cb96-904"><a href="#cb96-904" aria-hidden="true" tabindex="-1"></a>the reverse.</span>
+<span id="cb96-905"><a href="#cb96-905" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-906"><a href="#cb96-906" aria-hidden="true" tabindex="-1"></a>🎬 Extract the results from the DESseqDataSet object:</span>
+<span id="cb96-907"><a href="#cb96-907" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-910"><a href="#cb96-910" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-911"><a href="#cb96-911" aria-hidden="true" tabindex="-1"></a>results_pro_meta <span class="ot">&lt;-</span> <span class="fu">results</span>(dds,</span>
+<span id="cb96-912"><a href="#cb96-912" aria-hidden="true" tabindex="-1"></a>                       <span class="at">contrast =</span> contrast_pro_meta)</span>
+<span id="cb96-913"><a href="#cb96-913" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-914"><a href="#cb96-914" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-915"><a href="#cb96-915" aria-hidden="true" tabindex="-1"></a>This will give us the log~2~ fold change, the *p*-value and the adjusted</span>
+<span id="cb96-916"><a href="#cb96-916" aria-hidden="true" tabindex="-1"></a>*p*-value for the comparison between procyclic and metacyclic stage for</span>
+<span id="cb96-917"><a href="#cb96-917" aria-hidden="true" tabindex="-1"></a>each gene</span>
+<span id="cb96-918"><a href="#cb96-918" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-919"><a href="#cb96-919" aria-hidden="true" tabindex="-1"></a>🎬 Put the results in a dataframe and add the gene ids as a column:</span>
+<span id="cb96-920"><a href="#cb96-920" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-923"><a href="#cb96-923" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-924"><a href="#cb96-924" aria-hidden="true" tabindex="-1"></a>pro_meta_results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(results_pro_meta,</span>
+<span id="cb96-925"><a href="#cb96-925" aria-hidden="true" tabindex="-1"></a>                          <span class="at">gene_id =</span> <span class="fu">row.names</span>(results_pro_meta))</span>
+<span id="cb96-926"><a href="#cb96-926" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-927"><a href="#cb96-927" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-928"><a href="#cb96-928" aria-hidden="true" tabindex="-1"></a>It is useful to have the normalised counts and the statistical results</span>
+<span id="cb96-929"><a href="#cb96-929" aria-hidden="true" tabindex="-1"></a>in one dataframe.</span>
+<span id="cb96-930"><a href="#cb96-930" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-931"><a href="#cb96-931" aria-hidden="true" tabindex="-1"></a>🎬 Merge the two dataframes:</span>
+<span id="cb96-932"><a href="#cb96-932" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-935"><a href="#cb96-935" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-936"><a href="#cb96-936" aria-hidden="true" tabindex="-1"></a><span class="co"># merge the results with the normalised counts</span></span>
+<span id="cb96-937"><a href="#cb96-937" aria-hidden="true" tabindex="-1"></a>pro_meta_results <span class="ot">&lt;-</span> pro_meta_normalised_counts <span class="sc">|&gt;</span></span>
+<span id="cb96-938"><a href="#cb96-938" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(pro_meta_results, <span class="at">by =</span> <span class="st">"gene_id"</span>)</span>
+<span id="cb96-939"><a href="#cb96-939" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-940"><a href="#cb96-940" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-941"><a href="#cb96-941" aria-hidden="true" tabindex="-1"></a>Now go to <span class="co">[</span><span class="ot">Add gene information</span><span class="co">](#leishmania-3)</span>.</span>
+<span id="cb96-942"><a href="#cb96-942" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-943"><a href="#cb96-943" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🐭 Stem cells {#stem-cells-2}</span></span>
+<span id="cb96-944"><a href="#cb96-944" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-945"><a href="#cb96-945" aria-hidden="true" tabindex="-1"></a>These are the steps we will take</span>
+<span id="cb96-946"><a href="#cb96-946" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-947"><a href="#cb96-947" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Find the genes that are expressed in only one cell type (the prog or</span>
+<span id="cb96-948"><a href="#cb96-948" aria-hidden="true" tabindex="-1"></a>    the hspc).</span>
+<span id="cb96-949"><a href="#cb96-949" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Prepare the data for differential expression analysis with the</span>
+<span id="cb96-950"><a href="#cb96-950" aria-hidden="true" tabindex="-1"></a>    **`scran`** package.</span>
+<span id="cb96-951"><a href="#cb96-951" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Do differential expression analysis on the genes using the</span>
+<span id="cb96-952"><a href="#cb96-952" aria-hidden="true" tabindex="-1"></a>    **`scran`** package. This needs to be done on the logged normalised</span>
+<span id="cb96-953"><a href="#cb96-953" aria-hidden="true" tabindex="-1"></a>    counts.</span>
+<span id="cb96-954"><a href="#cb96-954" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-955"><a href="#cb96-955" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1. Genes expressed in one cell type</span></span>
+<span id="cb96-956"><a href="#cb96-956" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-957"><a href="#cb96-957" aria-hidden="true" tabindex="-1"></a>The genes expressed in only cell type are those with zeros in all the</span>
+<span id="cb96-958"><a href="#cb96-958" aria-hidden="true" tabindex="-1"></a>cells of the other type. We can find these by summing the expression</span>
+<span id="cb96-959"><a href="#cb96-959" aria-hidden="true" tabindex="-1"></a>values for each gene across the cells of one type and filtering for</span>
+<span id="cb96-960"><a href="#cb96-960" aria-hidden="true" tabindex="-1"></a>those that are zero.</span>
+<span id="cb96-961"><a href="#cb96-961" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-962"><a href="#cb96-962" aria-hidden="true" tabindex="-1"></a>To do row wise aggregates such as the sum across rows we can use the</span>
+<span id="cb96-963"><a href="#cb96-963" aria-hidden="true" tabindex="-1"></a><span class="in">`rowwise()`</span> function. <span class="in">`c_across()`</span> allows us to use the colon notation</span>
+<span id="cb96-964"><a href="#cb96-964" aria-hidden="true" tabindex="-1"></a>to select columns. This is very useful when you have a lot of columns</span>
+<span id="cb96-965"><a href="#cb96-965" aria-hidden="true" tabindex="-1"></a>because it would be annoying to have to list all of them.</span>
+<span id="cb96-966"><a href="#cb96-966" aria-hidden="true" tabindex="-1"></a><span class="in">`HSPC_001:HSPC_852`</span> means all the columns from <span class="in">`HSPC_001`</span> to <span class="in">`HSPC_852`</span>.</span>
+<span id="cb96-967"><a href="#cb96-967" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-968"><a href="#cb96-968" aria-hidden="true" tabindex="-1"></a>🎬 Find the genes expressed only in progenitor cells (*i.e.*, those that</span>
+<span id="cb96-969"><a href="#cb96-969" aria-hidden="true" tabindex="-1"></a>are 0 in every HSPC cell):</span>
+<span id="cb96-970"><a href="#cb96-970" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-973"><a href="#cb96-973" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-974"><a href="#cb96-974" aria-hidden="true" tabindex="-1"></a>hspc_prog <span class="sc">|&gt;</span> </span>
+<span id="cb96-975"><a href="#cb96-975" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb96-976"><a href="#cb96-976" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">sum</span>(<span class="fu">c_across</span>(HSPC_001<span class="sc">:</span>HSPC_852)) <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb96-977"><a href="#cb96-977" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-978"><a href="#cb96-978" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-979"><a href="#cb96-979" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-980"><a href="#cb96-980" aria-hidden="true" tabindex="-1"></a>We already know from last week's work that there are no genes that are</span>
+<span id="cb96-981"><a href="#cb96-981" aria-hidden="true" tabindex="-1"></a>zero across all the cells (both types). If we did not know that, we</span>
+<span id="cb96-982"><a href="#cb96-982" aria-hidden="true" tabindex="-1"></a>would need to add <span class="in">`|&gt; filter(sum(c_across(Prog_001:Prog_852)) != 0)`</span></span>
+<span id="cb96-983"><a href="#cb96-983" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-984"><a href="#cb96-984" aria-hidden="true" tabindex="-1"></a>meaning zero in all the HSPC but not zero in all the Prog</span>
+<span id="cb96-985"><a href="#cb96-985" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-986"><a href="#cb96-986" aria-hidden="true" tabindex="-1"></a>❓ How many genes are expressed only in the progenitor cells only</span>
+<span id="cb96-987"><a href="#cb96-987" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-988"><a href="#cb96-988" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #---THINKING ANSWER--- --&gt;</span></span>
+<span id="cb96-989"><a href="#cb96-989" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-990"><a href="#cb96-990" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- No genes are expressed only in the progenitor cells. --&gt;</span></span>
+<span id="cb96-991"><a href="#cb96-991" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-992"><a href="#cb96-992" aria-hidden="true" tabindex="-1"></a>🎬 Now you find any genes that are expressed only in the HSPC cells.</span>
+<span id="cb96-993"><a href="#cb96-993" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-996"><a href="#cb96-996" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-997"><a href="#cb96-997" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb96-998"><a href="#cb96-998" aria-hidden="true" tabindex="-1"></a><span class="co">#---CODING ANSWER---</span></span>
+<span id="cb96-999"><a href="#cb96-999" aria-hidden="true" tabindex="-1"></a>hspc_prog <span class="sc">|&gt;</span> </span>
+<span id="cb96-1000"><a href="#cb96-1000" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb96-1001"><a href="#cb96-1001" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">sum</span>(<span class="fu">c_across</span>(Prog_001<span class="sc">:</span>Prog_852)) <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb96-1002"><a href="#cb96-1002" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1003"><a href="#cb96-1003" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1004"><a href="#cb96-1004" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1005"><a href="#cb96-1005" aria-hidden="true" tabindex="-1"></a>❓ How many genes are expressed only in the HSPC cells?</span>
+<span id="cb96-1006"><a href="#cb96-1006" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1007"><a href="#cb96-1007" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #---THINKING ANSWER--- --&gt;</span></span>
+<span id="cb96-1008"><a href="#cb96-1008" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1009"><a href="#cb96-1009" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- No genes genes are expressed only in the HSPC cells? --&gt;</span></span>
+<span id="cb96-1010"><a href="#cb96-1010" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1011"><a href="#cb96-1011" aria-hidden="true" tabindex="-1"></a>❓ Do the results make sense to you in light of what you know about the</span>
+<span id="cb96-1012"><a href="#cb96-1012" aria-hidden="true" tabindex="-1"></a>biology?</span>
+<span id="cb96-1013"><a href="#cb96-1013" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1014"><a href="#cb96-1014" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #---THINKING ANSWER--- --&gt;</span></span>
+<span id="cb96-1015"><a href="#cb96-1015" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1016"><a href="#cb96-1016" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- I'm not sure what to expect here. However, when there are many  --&gt;</span></span>
+<span id="cb96-1017"><a href="#cb96-1017" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1018"><a href="#cb96-1018" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- "replicates" it is less likely that a gene will be expressed  --&gt;</span></span>
+<span id="cb96-1019"><a href="#cb96-1019" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1020"><a href="#cb96-1020" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- in only one group. It's more likely that a gene will be --&gt;</span></span>
+<span id="cb96-1021"><a href="#cb96-1021" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1022"><a href="#cb96-1022" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- expressed in both groups but at different levels. --&gt;</span></span>
+<span id="cb96-1023"><a href="#cb96-1023" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1024"><a href="#cb96-1024" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Domain expertise is important when analysing data so  --&gt;</span></span>
+<span id="cb96-1025"><a href="#cb96-1025" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1026"><a href="#cb96-1026" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- discuss your results with Jillian and your group. --&gt;</span></span>
+<span id="cb96-1027"><a href="#cb96-1027" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1028"><a href="#cb96-1028" aria-hidden="true" tabindex="-1"></a>🎬 Write all the genes that are expressed one cell type only to file</span>
+<span id="cb96-1029"><a href="#cb96-1029" aria-hidden="true" tabindex="-1"></a>(saved in <span class="in">`results`</span>)</span>
+<span id="cb96-1030"><a href="#cb96-1030" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1033"><a href="#cb96-1033" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-1034"><a href="#cb96-1034" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb96-1035"><a href="#cb96-1035" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb96-1036"><a href="#cb96-1036" aria-hidden="true" tabindex="-1"></a><span class="co">#---CODING ANSWER---</span></span>
+<span id="cb96-1037"><a href="#cb96-1037" aria-hidden="true" tabindex="-1"></a><span class="co"># If we had any genes expressed in only one cell type we would write </span></span>
+<span id="cb96-1038"><a href="#cb96-1038" aria-hidden="true" tabindex="-1"></a><span class="co"># them to a file like this. </span></span>
+<span id="cb96-1039"><a href="#cb96-1039" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(hspc_prog_hspc_only, <span class="st">"results/hspc_prog_hspc_only.csv"</span>)</span>
+<span id="cb96-1040"><a href="#cb96-1040" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(hspc_prog_prog_only, <span class="st">"results/hspc_prog_prog_only.csv"</span>)</span>
+<span id="cb96-1041"><a href="#cb96-1041" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1042"><a href="#cb96-1042" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1043"><a href="#cb96-1043" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2. Prepare the data for analysis with **`scran`**</span></span>
+<span id="cb96-1044"><a href="#cb96-1044" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1045"><a href="#cb96-1045" aria-hidden="true" tabindex="-1"></a>**`scran`** can use a matrix or a dataframe of counts but these must be</span>
+<span id="cb96-1046"><a href="#cb96-1046" aria-hidden="true" tabindex="-1"></a>log normalised counts. If using a dataframe, the columns must only</span>
+<span id="cb96-1047"><a href="#cb96-1047" aria-hidden="true" tabindex="-1"></a>contain the expression values (not the gene ids). The rows can be named</span>
+<span id="cb96-1048"><a href="#cb96-1048" aria-hidden="true" tabindex="-1"></a>to retain the gene ids.</span>
+<span id="cb96-1049"><a href="#cb96-1049" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1050"><a href="#cb96-1050" aria-hidden="true" tabindex="-1"></a><span class="in">`hspc_prog`</span> is a dataframe so we will use the ensembl gene ids to name</span>
+<span id="cb96-1051"><a href="#cb96-1051" aria-hidden="true" tabindex="-1"></a>the rows and remove the gene ids from the dataframe.</span>
+<span id="cb96-1052"><a href="#cb96-1052" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1053"><a href="#cb96-1053" aria-hidden="true" tabindex="-1"></a>🎬 Add the gene ids as the row names:</span>
+<span id="cb96-1054"><a href="#cb96-1054" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1057"><a href="#cb96-1057" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-1058"><a href="#cb96-1058" aria-hidden="true" tabindex="-1"></a>hspc_prog <span class="ot">&lt;-</span> hspc_prog <span class="sc">|&gt;</span></span>
+<span id="cb96-1059"><a href="#cb96-1059" aria-hidden="true" tabindex="-1"></a>  <span class="fu">column_to_rownames</span>(<span class="st">"ensembl_gene_id"</span>)</span>
+<span id="cb96-1060"><a href="#cb96-1060" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1061"><a href="#cb96-1061" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1062"><a href="#cb96-1062" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1063"><a href="#cb96-1063" aria-hidden="true" tabindex="-1"></a>Like **`DESeq2`**, **`scran`** needs metadata to define which columns</span>
+<span id="cb96-1064"><a href="#cb96-1064" aria-hidden="true" tabindex="-1"></a>were in which group. Instead of having this is a file, we will create a</span>
+<span id="cb96-1065"><a href="#cb96-1065" aria-hidden="true" tabindex="-1"></a>vector that indicates which column belongs to which cell type.</span>
+<span id="cb96-1066"><a href="#cb96-1066" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1067"><a href="#cb96-1067" aria-hidden="true" tabindex="-1"></a>🎬 Create a vector that indicates which column belongs to which cell</span>
+<span id="cb96-1068"><a href="#cb96-1068" aria-hidden="true" tabindex="-1"></a>type:</span>
+<span id="cb96-1069"><a href="#cb96-1069" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1072"><a href="#cb96-1072" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-1073"><a href="#cb96-1073" aria-hidden="true" tabindex="-1"></a>n_hspc <span class="ot">&lt;-</span> <span class="dv">701</span></span>
+<span id="cb96-1074"><a href="#cb96-1074" aria-hidden="true" tabindex="-1"></a>n_prog <span class="ot">&lt;-</span> <span class="dv">798</span></span>
+<span id="cb96-1075"><a href="#cb96-1075" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1076"><a href="#cb96-1076" aria-hidden="true" tabindex="-1"></a>cell_type <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"hspc"</span>,<span class="st">"prog"</span>), </span>
+<span id="cb96-1077"><a href="#cb96-1077" aria-hidden="true" tabindex="-1"></a>                 <span class="at">times =</span> <span class="fu">c</span>(n_hspc, n_prog))</span>
+<span id="cb96-1078"><a href="#cb96-1078" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1079"><a href="#cb96-1079" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1080"><a href="#cb96-1080" aria-hidden="true" tabindex="-1"></a>The number of times each cell type is repeated is the number of cells of</span>
+<span id="cb96-1081"><a href="#cb96-1081" aria-hidden="true" tabindex="-1"></a>that type. Do check that the length of the <span class="in">`cell_type`</span> vector is the</span>
+<span id="cb96-1082"><a href="#cb96-1082" aria-hidden="true" tabindex="-1"></a>same as the number of columns in the <span class="in">`hspc_prog`</span> dataframe.</span>
+<span id="cb96-1083"><a href="#cb96-1083" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1084"><a href="#cb96-1084" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3. Differential expression analysis</span></span>
+<span id="cb96-1085"><a href="#cb96-1085" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1086"><a href="#cb96-1086" aria-hidden="true" tabindex="-1"></a>🎬 Load the **`scran`** package:</span>
+<span id="cb96-1087"><a href="#cb96-1087" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1090"><a href="#cb96-1090" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-1091"><a href="#cb96-1091" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb96-1092"><a href="#cb96-1092" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scran)</span>
+<span id="cb96-1093"><a href="#cb96-1093" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1094"><a href="#cb96-1094" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1095"><a href="#cb96-1095" aria-hidden="true" tabindex="-1"></a>Differential expression is carried out with the <span class="in">`findMarkers()`</span></span>
+<span id="cb96-1096"><a href="#cb96-1096" aria-hidden="true" tabindex="-1"></a>function. It takes two arguments. The first argument is the dataframe</span>
+<span id="cb96-1097"><a href="#cb96-1097" aria-hidden="true" tabindex="-1"></a>containing the data and the second argument is the vector indicating</span>
+<span id="cb96-1098"><a href="#cb96-1098" aria-hidden="true" tabindex="-1"></a>which columns are in which cell type. Make sure that the order of the</span>
+<span id="cb96-1099"><a href="#cb96-1099" aria-hidden="true" tabindex="-1"></a>cell types in the vector is appropriate for the order of the columns in</span>
+<span id="cb96-1100"><a href="#cb96-1100" aria-hidden="true" tabindex="-1"></a>the dataframe.</span>
+<span id="cb96-1101"><a href="#cb96-1101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1102"><a href="#cb96-1102" aria-hidden="true" tabindex="-1"></a>🎬 Run the differential expression analysis:</span>
+<span id="cb96-1103"><a href="#cb96-1103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1106"><a href="#cb96-1106" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-1107"><a href="#cb96-1107" aria-hidden="true" tabindex="-1"></a>results_hspc_prog <span class="ot">&lt;-</span> <span class="fu">findMarkers</span>(hspc_prog, </span>
+<span id="cb96-1108"><a href="#cb96-1108" aria-hidden="true" tabindex="-1"></a>                             cell_type)</span>
+<span id="cb96-1109"><a href="#cb96-1109" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1110"><a href="#cb96-1110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1111"><a href="#cb96-1111" aria-hidden="true" tabindex="-1"></a>The output is a list object which, rather unnecessarily, includes two</span>
+<span id="cb96-1112"><a href="#cb96-1112" aria-hidden="true" tabindex="-1"></a>dataframes. This is not really necessary as the results are the same</span>
+<span id="cb96-1113"><a href="#cb96-1113" aria-hidden="true" tabindex="-1"></a>except for the fold change having a different sign.</span>
+<span id="cb96-1114"><a href="#cb96-1114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1115"><a href="#cb96-1115" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The dataframe <span class="in">`results_hspc_prog$prog`</span> is log prog - log hspc</span>
+<span id="cb96-1116"><a href="#cb96-1116" aria-hidden="true" tabindex="-1"></a>    (*i.e.*,Prog/HSPC). This means:</span>
+<span id="cb96-1117"><a href="#cb96-1117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1118"><a href="#cb96-1118" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Positive fold change: prog is higher than hspc</span>
+<span id="cb96-1119"><a href="#cb96-1119" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Negative fold change: hspc is higher than prog</span>
+<span id="cb96-1120"><a href="#cb96-1120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1123"><a href="#cb96-1123" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-1124"><a href="#cb96-1124" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb96-1125"><a href="#cb96-1125" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(results_hspc_prog<span class="sc">$</span>prog, </span>
+<span id="cb96-1126"><a href="#cb96-1126" aria-hidden="true" tabindex="-1"></a>           <span class="at">ensembl_gene_id =</span> <span class="fu">row.names</span>(results_hspc_prog<span class="sc">$</span>prog)) <span class="sc">|&gt;</span></span>
+<span id="cb96-1127"><a href="#cb96-1127" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb96-1128"><a href="#cb96-1128" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">cap =</span> <span class="st">"The results_hspc_prog$prog dataframe"</span>)</span>
+<span id="cb96-1129"><a href="#cb96-1129" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1130"><a href="#cb96-1130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1131"><a href="#cb96-1131" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The dataframe <span class="in">`results_hspc_prog$hspc`</span> is log hspc - log prog</span>
+<span id="cb96-1132"><a href="#cb96-1132" aria-hidden="true" tabindex="-1"></a>    (*i.e.*, HSPC/Prog). This means:</span>
+<span id="cb96-1133"><a href="#cb96-1133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1134"><a href="#cb96-1134" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Positive fold change: hspc is higher than prog</span>
+<span id="cb96-1135"><a href="#cb96-1135" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Negative fold change: prog is higher than hspc</span>
+<span id="cb96-1136"><a href="#cb96-1136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1139"><a href="#cb96-1139" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-1140"><a href="#cb96-1140" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb96-1141"><a href="#cb96-1141" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(results_hspc_prog<span class="sc">$</span>hspc, </span>
+<span id="cb96-1142"><a href="#cb96-1142" aria-hidden="true" tabindex="-1"></a>           <span class="at">ensembl_gene_id =</span> <span class="fu">row.names</span>(results_hspc_prog<span class="sc">$</span>hspc)) <span class="sc">|&gt;</span></span>
+<span id="cb96-1143"><a href="#cb96-1143" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb96-1144"><a href="#cb96-1144" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">cap =</span> <span class="st">"The results_hspc_prog$hspc dataframe. Notice the sign of the fold change is the other way"</span>)</span>
+<span id="cb96-1145"><a href="#cb96-1145" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1146"><a href="#cb96-1146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1147"><a href="#cb96-1147" aria-hidden="true" tabindex="-1"></a>We only need one of these results dataframes and we will use the <span class="in">`prog`</span></span>
+<span id="cb96-1148"><a href="#cb96-1148" aria-hidden="true" tabindex="-1"></a>one. It does not matter which one you use but you do need keep the</span>
+<span id="cb96-1149"><a href="#cb96-1149" aria-hidden="true" tabindex="-1"></a>direction of the foldchange in mind when interpreting the results.</span>
+<span id="cb96-1150"><a href="#cb96-1150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1151"><a href="#cb96-1151" aria-hidden="true" tabindex="-1"></a>Notice that the dataframes are ordered by significance rather than the</span>
+<span id="cb96-1152"><a href="#cb96-1152" aria-hidden="true" tabindex="-1"></a>original gene order.</span>
+<span id="cb96-1153"><a href="#cb96-1153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1154"><a href="#cb96-1154" aria-hidden="true" tabindex="-1"></a>It is useful to have the normalised counts and the statistical results</span>
+<span id="cb96-1155"><a href="#cb96-1155" aria-hidden="true" tabindex="-1"></a>in one dataframe to which we will add the gene information from Ensembl.</span>
+<span id="cb96-1156"><a href="#cb96-1156" aria-hidden="true" tabindex="-1"></a>Having all the information together will make it easier to interpret the</span>
+<span id="cb96-1157"><a href="#cb96-1157" aria-hidden="true" tabindex="-1"></a>results and select genes of interest. We will need to extract the</span>
+<span id="cb96-1158"><a href="#cb96-1158" aria-hidden="true" tabindex="-1"></a>results from the list object, add the gene ids and then join with the</span>
+<span id="cb96-1159"><a href="#cb96-1159" aria-hidden="true" tabindex="-1"></a>normalised counts.</span>
+<span id="cb96-1160"><a href="#cb96-1160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1161"><a href="#cb96-1161" aria-hidden="true" tabindex="-1"></a>🎬 Extract the results dataframe from the list object and add the gene</span>
+<span id="cb96-1162"><a href="#cb96-1162" aria-hidden="true" tabindex="-1"></a>ids as a column:</span>
+<span id="cb96-1163"><a href="#cb96-1163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1166"><a href="#cb96-1166" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-1167"><a href="#cb96-1167" aria-hidden="true" tabindex="-1"></a>hspc_prog_results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(results_hspc_prog<span class="sc">$</span>prog, </span>
+<span id="cb96-1168"><a href="#cb96-1168" aria-hidden="true" tabindex="-1"></a>                                <span class="at">ensembl_gene_id =</span> <span class="fu">row.names</span>(results_hspc_prog<span class="sc">$</span>prog)) </span>
+<span id="cb96-1169"><a href="#cb96-1169" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1170"><a href="#cb96-1170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1171"><a href="#cb96-1171" aria-hidden="true" tabindex="-1"></a>🎬 Return the ensembl gene ids as a column to the normalised counts:</span>
+<span id="cb96-1172"><a href="#cb96-1172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1175"><a href="#cb96-1175" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-1176"><a href="#cb96-1176" aria-hidden="true" tabindex="-1"></a>hspc_prog <span class="ot">&lt;-</span> hspc_prog <span class="sc">|&gt;</span></span>
+<span id="cb96-1177"><a href="#cb96-1177" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="at">var =</span> <span class="st">"ensembl_gene_id"</span>)</span>
+<span id="cb96-1178"><a href="#cb96-1178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1179"><a href="#cb96-1179" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1180"><a href="#cb96-1180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1181"><a href="#cb96-1181" aria-hidden="true" tabindex="-1"></a>🎬 Merge the results dataframe with the normalised counts:</span>
+<span id="cb96-1182"><a href="#cb96-1182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1185"><a href="#cb96-1185" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-1186"><a href="#cb96-1186" aria-hidden="true" tabindex="-1"></a><span class="co"># merge the results with the normalised counts</span></span>
+<span id="cb96-1187"><a href="#cb96-1187" aria-hidden="true" tabindex="-1"></a>hspc_prog_results <span class="ot">&lt;-</span> hspc_prog_results <span class="sc">|&gt;</span></span>
+<span id="cb96-1188"><a href="#cb96-1188" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(hspc_prog, <span class="at">by =</span> <span class="st">"ensembl_gene_id"</span>)</span>
+<span id="cb96-1189"><a href="#cb96-1189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1190"><a href="#cb96-1190" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1191"><a href="#cb96-1191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1192"><a href="#cb96-1192" aria-hidden="true" tabindex="-1"></a>Now go to <span class="co">[</span><span class="ot">Add gene information</span><span class="co">](#stem-cells-3)</span>.</span>
+<span id="cb96-1193"><a href="#cb96-1193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1194"><a href="#cb96-1194" aria-hidden="true" tabindex="-1"></a><span class="fu"># Add gene information</span></span>
+<span id="cb96-1195"><a href="#cb96-1195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1196"><a href="#cb96-1196" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🎄 *Arabidopisis* {#arabidopisis-3}</span></span>
+<span id="cb96-1197"><a href="#cb96-1197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1198"><a href="#cb96-1198" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Ensembl</span><span class="co">](https://www.ensembl.org/index.html)</span> [@martin2023;</span>
+<span id="cb96-1199"><a href="#cb96-1199" aria-hidden="true" tabindex="-1"></a>@birney2004]is a bioinformatics project to organise all the biological</span>
+<span id="cb96-1200"><a href="#cb96-1200" aria-hidden="true" tabindex="-1"></a>information around the sequences of large genomes. The are a large</span>
+<span id="cb96-1201"><a href="#cb96-1201" aria-hidden="true" tabindex="-1"></a>number of databases and</span>
+<span id="cb96-1202"><a href="#cb96-1202" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">BioMart</span><span class="co">](https://www.ensembl.org/info/data/biomart/index.html)</span></span>
+<span id="cb96-1203"><a href="#cb96-1203" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">@smedley2009</span><span class="co">]</span> provides a consistent interface to the material. There</span>
+<span id="cb96-1204"><a href="#cb96-1204" aria-hidden="true" tabindex="-1"></a>are web-based tools to use these but the R package **`biomaRt`**</span>
+<span id="cb96-1205"><a href="#cb96-1205" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">@biomaRt1; @biomaRt2</span><span class="co">]</span> gives you programmatic access making it easier to</span>
+<span id="cb96-1206"><a href="#cb96-1206" aria-hidden="true" tabindex="-1"></a>integrate information into R dataframes.</span>
+<span id="cb96-1207"><a href="#cb96-1207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1208"><a href="#cb96-1208" aria-hidden="true" tabindex="-1"></a>🎬 Load the **`biomaRt`** <span class="co">[</span><span class="ot">@biomaRt1; @biomaRt2</span><span class="co">]</span> package:</span>
+<span id="cb96-1209"><a href="#cb96-1209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1212"><a href="#cb96-1212" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-1213"><a href="#cb96-1213" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(biomaRt)</span>
+<span id="cb96-1214"><a href="#cb96-1214" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1215"><a href="#cb96-1215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1216"><a href="#cb96-1216" aria-hidden="true" tabindex="-1"></a>The **`biomaRt`** package includes a function to list all the available</span>
+<span id="cb96-1217"><a href="#cb96-1217" aria-hidden="true" tabindex="-1"></a>datasets</span>
+<span id="cb96-1218"><a href="#cb96-1218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1219"><a href="#cb96-1219" aria-hidden="true" tabindex="-1"></a>🎬 List the Ensembl "marts" available:</span>
+<span id="cb96-1220"><a href="#cb96-1220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1223"><a href="#cb96-1223" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-1224"><a href="#cb96-1224" aria-hidden="true" tabindex="-1"></a><span class="fu">listEnsemblGenomes</span>()</span>
+<span id="cb96-1225"><a href="#cb96-1225" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1226"><a href="#cb96-1226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1227"><a href="#cb96-1227" aria-hidden="true" tabindex="-1"></a><span class="in">`plants_mart`</span> looks like the one we want. We can see what genomes are</span>
+<span id="cb96-1228"><a href="#cb96-1228" aria-hidden="true" tabindex="-1"></a>available with names like "Arabidopsis" in this mart using the</span>
+<span id="cb96-1229"><a href="#cb96-1229" aria-hidden="true" tabindex="-1"></a><span class="in">`searchDatasets()`</span> function.</span>
+<span id="cb96-1230"><a href="#cb96-1230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1231"><a href="#cb96-1231" aria-hidden="true" tabindex="-1"></a>🎬</span>
+<span id="cb96-1232"><a href="#cb96-1232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1235"><a href="#cb96-1235" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-1236"><a href="#cb96-1236" aria-hidden="true" tabindex="-1"></a><span class="fu">searchDatasets</span>(<span class="fu">useEnsemblGenomes</span>(<span class="at">biomart =</span> <span class="st">"plants_mart"</span>), </span>
+<span id="cb96-1237"><a href="#cb96-1237" aria-hidden="true" tabindex="-1"></a>               <span class="at">pattern =</span> <span class="st">"Arabidopsis"</span>)</span>
+<span id="cb96-1238"><a href="#cb96-1238" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1239"><a href="#cb96-1239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1240"><a href="#cb96-1240" aria-hidden="true" tabindex="-1"></a><span class="in">`athaliana_eg_gene`</span> is the Arabidopsis thaliana genes (TAIR10) dataset</span>
+<span id="cb96-1241"><a href="#cb96-1241" aria-hidden="true" tabindex="-1"></a>we want.</span>
+<span id="cb96-1242"><a href="#cb96-1242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1243"><a href="#cb96-1243" aria-hidden="true" tabindex="-1"></a>🎬 Connect to the <span class="in">`athaliana_eg_gene`</span> database in <span class="in">`plants_mart`</span>:</span>
+<span id="cb96-1244"><a href="#cb96-1244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1247"><a href="#cb96-1247" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-1248"><a href="#cb96-1248" aria-hidden="true" tabindex="-1"></a>ensembl <span class="ot">&lt;-</span> <span class="fu">useEnsemblGenomes</span>(<span class="at">biomart =</span> <span class="st">"plants_mart"</span>,</span>
+<span id="cb96-1249"><a href="#cb96-1249" aria-hidden="true" tabindex="-1"></a>                             <span class="at">dataset =</span> <span class="st">"athaliana_eg_gene"</span>)</span>
+<span id="cb96-1250"><a href="#cb96-1250" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1251"><a href="#cb96-1251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1252"><a href="#cb96-1252" aria-hidden="true" tabindex="-1"></a>🎬 See the the types of information we can retrieve:</span>
+<span id="cb96-1253"><a href="#cb96-1253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1256"><a href="#cb96-1256" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-1257"><a href="#cb96-1257" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb96-1258"><a href="#cb96-1258" aria-hidden="true" tabindex="-1"></a><span class="fu">listAttributes</span>(<span class="at">mart =</span> ensembl) <span class="sc">|&gt;</span> <span class="fu">View</span>()</span>
+<span id="cb96-1259"><a href="#cb96-1259" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1260"><a href="#cb96-1260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1261"><a href="#cb96-1261" aria-hidden="true" tabindex="-1"></a>There are many (1,714!) possible bits of information (attributes) that</span>
+<span id="cb96-1262"><a href="#cb96-1262" aria-hidden="true" tabindex="-1"></a>can be obtained.</span>
+<span id="cb96-1263"><a href="#cb96-1263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1264"><a href="#cb96-1264" aria-hidden="true" tabindex="-1"></a>We use the <span class="in">`getBM()`</span> function to retrieve information from the database.</span>
+<span id="cb96-1265"><a href="#cb96-1265" aria-hidden="true" tabindex="-1"></a>The <span class="in">`filters`</span> argument is used to specified what kind of identifier we</span>
+<span id="cb96-1266"><a href="#cb96-1266" aria-hidden="true" tabindex="-1"></a>are supplying in <span class="in">`values`</span> to retrieve information. The <span class="in">`attributes`</span></span>
+<span id="cb96-1267"><a href="#cb96-1267" aria-hidden="true" tabindex="-1"></a>argument is used to select the information we want to retrieve. The</span>
+<span id="cb96-1268"><a href="#cb96-1268" aria-hidden="true" tabindex="-1"></a><span class="in">`values`</span> argument is used to specify the identifiers. The mart argument</span>
+<span id="cb96-1269"><a href="#cb96-1269" aria-hidden="true" tabindex="-1"></a>is used to specify the connection we created.</span>
+<span id="cb96-1270"><a href="#cb96-1270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1271"><a href="#cb96-1271" aria-hidden="true" tabindex="-1"></a>🎬 Get the the gene name and a description. We also retreive the gene id</span>
+<span id="cb96-1272"><a href="#cb96-1272" aria-hidden="true" tabindex="-1"></a>so we can later join the information with the results:</span>
+<span id="cb96-1273"><a href="#cb96-1273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1276"><a href="#cb96-1276" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-1277"><a href="#cb96-1277" aria-hidden="true" tabindex="-1"></a>gene_info <span class="ot">&lt;-</span> <span class="fu">getBM</span>(<span class="at">filters =</span> <span class="st">"ensembl_gene_id"</span>,</span>
+<span id="cb96-1278"><a href="#cb96-1278" aria-hidden="true" tabindex="-1"></a>                   <span class="at">attributes =</span> <span class="fu">c</span>(<span class="st">"ensembl_gene_id"</span>,</span>
+<span id="cb96-1279"><a href="#cb96-1279" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"external_gene_name"</span>,</span>
+<span id="cb96-1280"><a href="#cb96-1280" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"description"</span>),</span>
+<span id="cb96-1281"><a href="#cb96-1281" aria-hidden="true" tabindex="-1"></a>                   <span class="at">values =</span> wild_results<span class="sc">$</span>gene_id,</span>
+<span id="cb96-1282"><a href="#cb96-1282" aria-hidden="true" tabindex="-1"></a>                   <span class="at">mart =</span> ensembl)</span>
+<span id="cb96-1283"><a href="#cb96-1283" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1284"><a href="#cb96-1284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1285"><a href="#cb96-1285" aria-hidden="true" tabindex="-1"></a>You should view the resulting dataframe to see what information is</span>
+<span id="cb96-1286"><a href="#cb96-1286" aria-hidden="true" tabindex="-1"></a>available. You can use <span class="in">`glimpse()`</span> or <span class="in">`View()`</span>.</span>
+<span id="cb96-1287"><a href="#cb96-1287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1288"><a href="#cb96-1288" aria-hidden="true" tabindex="-1"></a>🎬 Merge the gene information with the results:</span>
+<span id="cb96-1289"><a href="#cb96-1289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1292"><a href="#cb96-1292" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-1293"><a href="#cb96-1293" aria-hidden="true" tabindex="-1"></a><span class="co"># join the gene info with the results</span></span>
+<span id="cb96-1294"><a href="#cb96-1294" aria-hidden="true" tabindex="-1"></a>wild_results <span class="ot">&lt;-</span> wild_results <span class="sc">|&gt;</span></span>
+<span id="cb96-1295"><a href="#cb96-1295" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(gene_info,</span>
+<span id="cb96-1296"><a href="#cb96-1296" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="fu">join_by</span>(gene_id <span class="sc">==</span> ensembl_gene_id))</span>
+<span id="cb96-1297"><a href="#cb96-1297" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1298"><a href="#cb96-1298" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1299"><a href="#cb96-1299" aria-hidden="true" tabindex="-1"></a>🎬 Save the results to a file:</span>
+<span id="cb96-1300"><a href="#cb96-1300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1303"><a href="#cb96-1303" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-1304"><a href="#cb96-1304" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(wild_results, <span class="at">file =</span> <span class="st">"results/wild_results.csv"</span>)</span>
+<span id="cb96-1305"><a href="#cb96-1305" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1306"><a href="#cb96-1306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1307"><a href="#cb96-1307" aria-hidden="true" tabindex="-1"></a><span class="fu">## 💉 *Leishmania* {#leishmania-3}</span></span>
+<span id="cb96-1308"><a href="#cb96-1308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1309"><a href="#cb96-1309" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>I got the information from</span>
+<span id="cb96-1310"><a href="#cb96-1310" aria-hidden="true" tabindex="-1"></a>    <span class="co">[</span><span class="ot">TriTrypDB</span><span class="co">](https://tritrypdb.org/tritrypdb/app/)</span>\</span>
+<span id="cb96-1311"><a href="#cb96-1311" aria-hidden="true" tabindex="-1"></a>    which is a functional genomic resource for the Trypanosomatidae and</span>
+<span id="cb96-1312"><a href="#cb96-1312" aria-hidden="true" tabindex="-1"></a>    Plasmodidae</span>
+<span id="cb96-1313"><a href="#cb96-1313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1314"><a href="#cb96-1314" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="ot">&lt;https://tritrypdb.org/tritrypdb/app/downloads&gt;</span> section</span>
+<span id="cb96-1315"><a href="#cb96-1315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1316"><a href="#cb96-1316" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>I downloaded the [*L. mexicana* MHOM/GT/2001/U1103 Full</span>
+<span id="cb96-1317"><a href="#cb96-1317" aria-hidden="true" tabindex="-1"></a>    GFF](https://tritrypdb.org/common/downloads/release-68/LmexicanaMHOMGT2001U1103/gff/data/TriTrypDB-68_LmexicanaMHOMGT2001U1103.gff)</span>
+<span id="cb96-1318"><a href="#cb96-1318" aria-hidden="true" tabindex="-1"></a>    and extracted the gene information and saved it as</span>
+<span id="cb96-1319"><a href="#cb96-1319" aria-hidden="true" tabindex="-1"></a>    <span class="co">[</span><span class="ot">leishmania_mex.xlsx</span><span class="co">](meta/leishmania_mex.xlsx)</span></span>
+<span id="cb96-1320"><a href="#cb96-1320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1321"><a href="#cb96-1321" aria-hidden="true" tabindex="-1"></a>We will import this file and join it to the results dataframe.</span>
+<span id="cb96-1322"><a href="#cb96-1322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1323"><a href="#cb96-1323" aria-hidden="true" tabindex="-1"></a>🎬 Load the **`readxl`** <span class="co">[</span><span class="ot">@readxl</span><span class="co">]</span> package:</span>
+<span id="cb96-1324"><a href="#cb96-1324" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1327"><a href="#cb96-1327" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-1328"><a href="#cb96-1328" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb96-1329"><a href="#cb96-1329" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb96-1330"><a href="#cb96-1330" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1331"><a href="#cb96-1331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1332"><a href="#cb96-1332" aria-hidden="true" tabindex="-1"></a>🎬 Import the Xenbase gene information file:</span>
+<span id="cb96-1333"><a href="#cb96-1333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1336"><a href="#cb96-1336" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-1337"><a href="#cb96-1337" aria-hidden="true" tabindex="-1"></a>gene_info <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"meta/leishmania_mex.xlsx"</span>) </span>
+<span id="cb96-1338"><a href="#cb96-1338" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1339"><a href="#cb96-1339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1340"><a href="#cb96-1340" aria-hidden="true" tabindex="-1"></a>You should view the resulting dataframe to see what information is</span>
+<span id="cb96-1341"><a href="#cb96-1341" aria-hidden="true" tabindex="-1"></a>available. You can use <span class="in">`glimpse()`</span> or <span class="in">`View()`</span>.</span>
+<span id="cb96-1342"><a href="#cb96-1342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1343"><a href="#cb96-1343" aria-hidden="true" tabindex="-1"></a>🎬 Merge the gene information with the results:</span>
+<span id="cb96-1344"><a href="#cb96-1344" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1347"><a href="#cb96-1347" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-1348"><a href="#cb96-1348" aria-hidden="true" tabindex="-1"></a><span class="co"># join the gene info with the results</span></span>
+<span id="cb96-1349"><a href="#cb96-1349" aria-hidden="true" tabindex="-1"></a>pro_meta_results <span class="ot">&lt;-</span> pro_meta_results <span class="sc">|&gt;</span></span>
+<span id="cb96-1350"><a href="#cb96-1350" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(gene_info, <span class="at">by =</span> <span class="st">"gene_id"</span>)</span>
+<span id="cb96-1351"><a href="#cb96-1351" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1352"><a href="#cb96-1352" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1353"><a href="#cb96-1353" aria-hidden="true" tabindex="-1"></a>🎬 Save the results to a file:</span>
+<span id="cb96-1354"><a href="#cb96-1354" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1357"><a href="#cb96-1357" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-1358"><a href="#cb96-1358" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(pro_meta_results, <span class="at">file =</span> <span class="st">"results/pro_meta_results.csv"</span>)</span>
+<span id="cb96-1359"><a href="#cb96-1359" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1360"><a href="#cb96-1360" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1361"><a href="#cb96-1361" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🐭 Stem cells {#stem-cells-3}</span></span>
+<span id="cb96-1362"><a href="#cb96-1362" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1363"><a href="#cb96-1363" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Ensembl</span><span class="co">](https://www.ensembl.org/index.html)</span> [@martin2023;</span>
+<span id="cb96-1364"><a href="#cb96-1364" aria-hidden="true" tabindex="-1"></a>@birney2004]is a bioinformatics project to organise all the biological</span>
+<span id="cb96-1365"><a href="#cb96-1365" aria-hidden="true" tabindex="-1"></a>information around the sequences of large genomes. The are a large</span>
+<span id="cb96-1366"><a href="#cb96-1366" aria-hidden="true" tabindex="-1"></a>number of databases but</span>
+<span id="cb96-1367"><a href="#cb96-1367" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">BioMart</span><span class="co">](https://www.ensembl.org/info/data/biomart/index.html)</span></span>
+<span id="cb96-1368"><a href="#cb96-1368" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">@smedley2009</span><span class="co">]</span> provides a consistent interface to the material. There</span>
+<span id="cb96-1369"><a href="#cb96-1369" aria-hidden="true" tabindex="-1"></a>are web-based tools to use these but the R package **`biomaRt`**</span>
+<span id="cb96-1370"><a href="#cb96-1370" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">@biomaRt1; @biomaRt2</span><span class="co">]</span> gives you programmatic access making it easier to</span>
+<span id="cb96-1371"><a href="#cb96-1371" aria-hidden="true" tabindex="-1"></a>integrate information into R dataframes</span>
+<span id="cb96-1372"><a href="#cb96-1372" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1373"><a href="#cb96-1373" aria-hidden="true" tabindex="-1"></a>🎬 Load the **`biomaRt`** <span class="co">[</span><span class="ot">@biomaRt1; @biomaRt2</span><span class="co">]</span> package:</span>
+<span id="cb96-1374"><a href="#cb96-1374" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1377"><a href="#cb96-1377" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-1378"><a href="#cb96-1378" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb96-1379"><a href="#cb96-1379" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(biomaRt)</span>
+<span id="cb96-1380"><a href="#cb96-1380" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1381"><a href="#cb96-1381" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1382"><a href="#cb96-1382" aria-hidden="true" tabindex="-1"></a>🎬 Connect to the mouse database</span>
+<span id="cb96-1383"><a href="#cb96-1383" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1386"><a href="#cb96-1386" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-1387"><a href="#cb96-1387" aria-hidden="true" tabindex="-1"></a><span class="co"># Connect to the mouse database</span></span>
+<span id="cb96-1388"><a href="#cb96-1388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1389"><a href="#cb96-1389" aria-hidden="true" tabindex="-1"></a>ensembl <span class="ot">&lt;-</span> <span class="fu">useMart</span>(<span class="at">biomart =</span> <span class="st">"ensembl"</span>, </span>
+<span id="cb96-1390"><a href="#cb96-1390" aria-hidden="true" tabindex="-1"></a>                   <span class="at">dataset =</span> <span class="st">"mmusculus_gene_ensembl"</span>)</span>
+<span id="cb96-1391"><a href="#cb96-1391" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1392"><a href="#cb96-1392" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1393"><a href="#cb96-1393" aria-hidden="true" tabindex="-1"></a>🎬 See information we can retrieve:</span>
+<span id="cb96-1394"><a href="#cb96-1394" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1397"><a href="#cb96-1397" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-1398"><a href="#cb96-1398" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb96-1399"><a href="#cb96-1399" aria-hidden="true" tabindex="-1"></a><span class="co"># See what information we can retrieve</span></span>
+<span id="cb96-1400"><a href="#cb96-1400" aria-hidden="true" tabindex="-1"></a><span class="fu">listAttributes</span>(<span class="at">mart =</span> ensembl) <span class="sc">|&gt;</span> <span class="fu">View</span>()</span>
+<span id="cb96-1401"><a href="#cb96-1401" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1402"><a href="#cb96-1402" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1403"><a href="#cb96-1403" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1404"><a href="#cb96-1404" aria-hidden="true" tabindex="-1"></a>There are many (2,988!) possible bits of information (attributes) that</span>
+<span id="cb96-1405"><a href="#cb96-1405" aria-hidden="true" tabindex="-1"></a>can be obtained.</span>
+<span id="cb96-1406"><a href="#cb96-1406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1407"><a href="#cb96-1407" aria-hidden="true" tabindex="-1"></a>We use the <span class="in">`getBM()`</span> function to retrieve information from the database.</span>
+<span id="cb96-1408"><a href="#cb96-1408" aria-hidden="true" tabindex="-1"></a>The <span class="in">`filters`</span> argument is used to specified what kind of identifier we</span>
+<span id="cb96-1409"><a href="#cb96-1409" aria-hidden="true" tabindex="-1"></a>are supplying in <span class="in">`values`</span> to retrieve information. The <span class="in">`attributes`</span></span>
+<span id="cb96-1410"><a href="#cb96-1410" aria-hidden="true" tabindex="-1"></a>argument is used to select the information we want to retrieve. The</span>
+<span id="cb96-1411"><a href="#cb96-1411" aria-hidden="true" tabindex="-1"></a><span class="in">`values`</span> argument is used to specify the identifiers. The mart argument</span>
+<span id="cb96-1412"><a href="#cb96-1412" aria-hidden="true" tabindex="-1"></a>is used to specify the connection we created.</span>
+<span id="cb96-1413"><a href="#cb96-1413" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1414"><a href="#cb96-1414" aria-hidden="true" tabindex="-1"></a>🎬 Get the the gene name and a description. We also retrieve the gene id</span>
+<span id="cb96-1415"><a href="#cb96-1415" aria-hidden="true" tabindex="-1"></a>so we can later join the information with the results:</span>
+<span id="cb96-1416"><a href="#cb96-1416" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1419"><a href="#cb96-1419" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-1420"><a href="#cb96-1420" aria-hidden="true" tabindex="-1"></a>gene_info <span class="ot">&lt;-</span> <span class="fu">getBM</span>(<span class="at">filters =</span> <span class="st">"ensembl_gene_id"</span>,</span>
+<span id="cb96-1421"><a href="#cb96-1421" aria-hidden="true" tabindex="-1"></a>                   <span class="at">attributes =</span> <span class="fu">c</span>(<span class="st">"ensembl_gene_id"</span>,</span>
+<span id="cb96-1422"><a href="#cb96-1422" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"external_gene_name"</span>,</span>
+<span id="cb96-1423"><a href="#cb96-1423" aria-hidden="true" tabindex="-1"></a>                                  <span class="st">"description"</span>),</span>
+<span id="cb96-1424"><a href="#cb96-1424" aria-hidden="true" tabindex="-1"></a>                   <span class="at">values =</span> hspc_prog_results<span class="sc">$</span>ensembl_gene_id,</span>
+<span id="cb96-1425"><a href="#cb96-1425" aria-hidden="true" tabindex="-1"></a>                   <span class="at">mart =</span> ensembl)</span>
+<span id="cb96-1426"><a href="#cb96-1426" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1427"><a href="#cb96-1427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1428"><a href="#cb96-1428" aria-hidden="true" tabindex="-1"></a>You should view the resulting dataframe to see what information is</span>
+<span id="cb96-1429"><a href="#cb96-1429" aria-hidden="true" tabindex="-1"></a>available. You can use <span class="in">`glimpse()`</span> or <span class="in">`View()`</span>. Notice the dataframe</span>
+<span id="cb96-1430"><a href="#cb96-1430" aria-hidden="true" tabindex="-1"></a>returned only has 279 rows - one of the ids does not have information.</span>
+<span id="cb96-1431"><a href="#cb96-1431" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1432"><a href="#cb96-1432" aria-hidden="true" tabindex="-1"></a>🎬 Merge the gene information with the results:</span>
+<span id="cb96-1433"><a href="#cb96-1433" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1436"><a href="#cb96-1436" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-1437"><a href="#cb96-1437" aria-hidden="true" tabindex="-1"></a><span class="co"># join the gene info with the results</span></span>
+<span id="cb96-1438"><a href="#cb96-1438" aria-hidden="true" tabindex="-1"></a>hspc_prog_results <span class="ot">&lt;-</span> hspc_prog_results <span class="sc">|&gt;</span> </span>
+<span id="cb96-1439"><a href="#cb96-1439" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(gene_info, <span class="at">by =</span> <span class="st">"ensembl_gene_id"</span>)</span>
+<span id="cb96-1440"><a href="#cb96-1440" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1441"><a href="#cb96-1441" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1442"><a href="#cb96-1442" aria-hidden="true" tabindex="-1"></a>🎬 Save the results to a file:</span>
+<span id="cb96-1443"><a href="#cb96-1443" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1446"><a href="#cb96-1446" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb96-1447"><a href="#cb96-1447" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(hspc_prog_results, <span class="at">file =</span> <span class="st">"results/hspc_prog_results.csv"</span>)</span>
+<span id="cb96-1448"><a href="#cb96-1448" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb96-1449"><a href="#cb96-1449" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1450"><a href="#cb96-1450" aria-hidden="true" tabindex="-1"></a><span class="fu"># 🤗 Look after future you!</span></span>
+<span id="cb96-1451"><a href="#cb96-1451" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1452"><a href="#cb96-1452" aria-hidden="true" tabindex="-1"></a>🎬 Go through you script and tidy up. You might need to :</span>
+<span id="cb96-1453"><a href="#cb96-1453" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1454"><a href="#cb96-1454" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>collect together library statements at the top of the script</span>
+<span id="cb96-1455"><a href="#cb96-1455" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>remove code that you needed to start today but which wouldn't be</span>
+<span id="cb96-1456"><a href="#cb96-1456" aria-hidden="true" tabindex="-1"></a>    needed if you were running the script from the top (e.g., importing)</span>
+<span id="cb96-1457"><a href="#cb96-1457" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>edit your comments for clarity</span>
+<span id="cb96-1458"><a href="#cb96-1458" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>rename variables for consistency or clarity</span>
+<span id="cb96-1459"><a href="#cb96-1459" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>remove house keeping or exploratory code</span>
+<span id="cb96-1460"><a href="#cb96-1460" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>restyle code, add code section headers etc</span>
+<span id="cb96-1461"><a href="#cb96-1461" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1462"><a href="#cb96-1462" aria-hidden="true" tabindex="-1"></a><span class="fu"># 🥳 Finished</span></span>
+<span id="cb96-1463"><a href="#cb96-1463" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1464"><a href="#cb96-1464" aria-hidden="true" tabindex="-1"></a>Well Done!</span>
+<span id="cb96-1465"><a href="#cb96-1465" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1466"><a href="#cb96-1466" aria-hidden="true" tabindex="-1"></a><span class="fu"># Independent study following the workshop</span></span>
+<span id="cb96-1467"><a href="#cb96-1467" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1468"><a href="#cb96-1468" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Consolidate</span><span class="co">](study_after_workshop.qmd)</span></span>
+<span id="cb96-1469"><a href="#cb96-1469" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1470"><a href="#cb96-1470" aria-hidden="true" tabindex="-1"></a><span class="fu"># The Code file</span></span>
+<span id="cb96-1471"><a href="#cb96-1471" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1472"><a href="#cb96-1472" aria-hidden="true" tabindex="-1"></a>These contain all the code needed in the workshop even where it is not</span>
+<span id="cb96-1473"><a href="#cb96-1473" aria-hidden="true" tabindex="-1"></a>visible on the webpage.</span>
+<span id="cb96-1474"><a href="#cb96-1474" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1475"><a href="#cb96-1475" aria-hidden="true" tabindex="-1"></a>The <span class="co">[</span><span class="ot">workshop.qmd</span><span class="co">](workshop.qmd)</span> file is the file I use to compile the</span>
+<span id="cb96-1476"><a href="#cb96-1476" aria-hidden="true" tabindex="-1"></a>practical. Qmd stands for Quarto markdown. It allows code and ordinary</span>
+<span id="cb96-1477"><a href="#cb96-1477" aria-hidden="true" tabindex="-1"></a>text to be interleaved to produce well-formatted reports including</span>
+<span id="cb96-1478"><a href="#cb96-1478" aria-hidden="true" tabindex="-1"></a>webpages. Right-click on the link and choose Save-As to download. You</span>
+<span id="cb96-1479"><a href="#cb96-1479" aria-hidden="true" tabindex="-1"></a>will be able to open the Qmd file in RStudio. Alternatively, [View in</span>
+<span id="cb96-1480"><a href="#cb96-1480" aria-hidden="true" tabindex="-1"></a>Browser](https://github.com/3mmaRand/BIO00088H-data/blob/main/transcriptomics/week-4/workshop.qmd).</span>
+<span id="cb96-1481"><a href="#cb96-1481" aria-hidden="true" tabindex="-1"></a>Coding and thinking answers are marked with <span class="in">`#---CODING ANSWER---`</span> and</span>
+<span id="cb96-1482"><a href="#cb96-1482" aria-hidden="true" tabindex="-1"></a><span class="in">`#---THINKING ANSWER---`</span></span>
+<span id="cb96-1483"><a href="#cb96-1483" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1484"><a href="#cb96-1484" aria-hidden="true" tabindex="-1"></a>Pages made with R <span class="co">[</span><span class="ot">@R-core</span><span class="co">]</span>, Quarto <span class="co">[</span><span class="ot">@Allaire_Quarto_2024</span><span class="co">]</span>, <span class="in">`knitr`</span></span>
+<span id="cb96-1485"><a href="#cb96-1485" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">@knitr1; @knitr2; @knitr3</span><span class="co">]</span>, <span class="in">`kableExtra`</span> <span class="co">[</span><span class="ot">@kableExtra</span><span class="co">]</span></span>
+<span id="cb96-1486"><a href="#cb96-1486" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-1487"><a href="#cb96-1487" aria-hidden="true" tabindex="-1"></a><span class="fu"># References</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
@@ -1858,7 +3420,23 @@ Zhu, Hao. 2021. <span>“kableExtra: Construct Complex Table with ’Kable’ an
 </ul>
 </div>
   </div>
-</footer>
+</footer><script>
+document.addEventListener("DOMContentLoaded", function() {
+  // grab all links under “Other Links” in the right-hand TOC
+  const links = document.querySelectorAll('.quarto-other-links ul li a');
+  links.forEach(function(a) {
+    // find the one whose text is exactly “Make a suggestion”
+    if (a.textContent.trim() === 'Make a suggestion') {
+      const pageUrl   = encodeURIComponent(window.location.href);
+      const pageTitle = encodeURIComponent(document.title);
+      a.href = 'https://github.com/3mmaRand/BIO00088H-data/issues/new'
+             + '?title=' + pageTitle
+             + '&body='  + pageUrl;
+      a.target = '_blank';
+    }
+  });
+});
+</script>
 
 
 </body></html>
