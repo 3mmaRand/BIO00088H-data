@@ -40,6 +40,8 @@ jobs:
         run: |
           R -e "install.packages('xml2')"
           R -e "install.packages('downlit')"
+          R -e "install.packages('knitr')"
+          R -e "install.packages('rmarkdown')"
      
       - name: Render book to all format
         # Add any command line argument needed
