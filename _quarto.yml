@@ -138,16 +138,36 @@ format:
     link-external-newwindow: true
     link-external-filter: '^(?:http:|https:)\/\/3mmarand\.github\.io\/BIO00088H-data'
     theme:
-      light: [cosmo, styles.css]
+      light: [cosmo, custom.scss]
+      dark:  [solar, custom.scss]
     code-copy: true
     code-link: true
+    code-tools: true
     code-overflow: wrap
     code-line-numbers: false
     grid:
       sidebar-width: 250px
       body-width: 900px
       margin-width: 300px
-    
+    include-after-body:
+      text: |
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          // grab all links under “Other Links” in the right-hand TOC
+          const links = document.querySelectorAll('.quarto-other-links ul li a');
+          links.forEach(function(a) {
+            // find the one whose text is exactly “Make a suggestion”
+            if (a.textContent.trim() === 'Make a suggestion') {
+              const pageUrl   = encodeURIComponent(window.location.href);
+              const pageTitle = encodeURIComponent(document.title);
+              a.href = 'https://github.com/3mmaRand/BIO00088H-data/issues/new'
+                     + '?title=' + pageTitle
+                     + '&body='  + pageUrl;
+              a.target = '_blank';
+            }
+          });
+        });
+        </script>
     author-meta: Emma Rand
 
 bibliography: references.bib
