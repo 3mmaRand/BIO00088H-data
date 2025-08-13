@@ -138,7 +138,7 @@ format:
     link-external-newwindow: true
     link-external-filter: '^(?:http:|https:)\/\/3mmarand\.github\.io\/BIO00088H-data'
     theme:
-      light: [cosmo, styles.scss]
+      light: [cosmo, styles.css]
     code-copy: true
     code-link: true
     code-overflow: wrap
