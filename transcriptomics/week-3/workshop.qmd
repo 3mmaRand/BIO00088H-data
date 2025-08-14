@@ -27,7 +27,7 @@ understanding of the data structures and values that you will need to
 code and trouble-shoot code, allows you to spot failed or problematic
 samples and informs your decisions on quality control.
 
-In this session, you should examine **all four data sets** because the
+In this session, you should examine **all three data sets** because the
 comparisons will give you a much stronger understanding of your own
 project data. Compare and contrast is a very useful way to build
 understanding.
@@ -60,8 +60,8 @@ These are the three datasets. Each set compromises several files.
 
 🎄 *Arabidopsis*:
 
--   [arabidopsis-wild.csv](data-raw/arabidopsis-wild.csv)
--   [arabidopsis-spl7.csv](data-raw/arabidopsis-spl7.csv)
+-   [arabidopsis-root.csv](data-raw/arabidopsis-root.csv)
+-   [arabidopsis-aerial.csv](data-raw/arabidopsis-aerial.csv)
 
 💉 *Leishmania*:
 
@@ -129,13 +129,13 @@ the others.
 
 ### Import
 
-Import the data for wildtype plants.
+Import the data for root tissue.
 
-🎬 Import [arabidopsis-wild.csv](data-raw/arabidopsis-wild.csv)
+🎬 Import [arabidopsis-root.csv](data-raw/arabidopsis-root.csv)
 
 ```{r}
-# 🎄 import the wild data
-wild <- read_csv("data-raw/arabidopsis-wild.csv")
+# 🎄 import the root data
+root <- read_csv("data-raw/arabidopsis-root.csv")
 ```
 
 🎬 Check the dataframe has the number of rows and columns you were
@@ -157,8 +157,8 @@ single column (`count`) labelled in `sample` by the column it came from
 and pipe into `ggplot()` to create a histogram:
 
 ```{r}
-wild |>
-  pivot_longer(cols = -gene_id,
+root |>
+  pivot_longer(cols = c(-gene_id, -gene_name),
                names_to = "sample",
                values_to = "count") |>
   ggplot(aes(x = count)) +
@@ -175,8 +175,8 @@ we had.
 🎬 Repeat the plot of log of the counts.
 
 ```{r}
-wild |>
-  pivot_longer(cols = -gene_id,
+root |>
+  pivot_longer(cols = c(-gene_id, -gene_name),
                names_to = "sample",
                values_to = "count") |>
   ggplot(aes(x = log10(count + 1))) +
@@ -206,12 +206,12 @@ Summary statistics including the the number of NAs can be seen using the
 There is nothing special about the number 25, it is just that summaries
 of a larger number of columns are difficult to grasp.
 
-🎬 Get a quick overview of the 5 columns:
+🎬 Get a quick overview of the 14 columns:
 
 ```{r}
 # examine all the columns quickly
 # works well with smaller numbers of column
-summary(wild)
+summary(root)
 ```
 
 Notice that:
@@ -225,20 +225,28 @@ Notice that:
 We want to know how many zeros there are in each a column. To achieve
 this, we can make use of the fact that `TRUE` evaluates to 1 and `FALSE`
 evaluates to 0. Consequently, summing a column of TRUE/FALSE values will
-give you the number of TRUE values. For example,
-`sum(SRX028961_wild_def > 0)` gives the number of values above zero in
-the `SRX028961_wild_def` column. If you wanted the number of zeros, you
-could use `sum(SRX028961_wild_def == 0)`.
+give you the number of TRUE values. For example, `sum(CTR1 > 0)` gives
+the number of values above zero in the `CTR1` column. If you wanted the
+number of zeros, you could use `sum(CTR1 == 0)`.
 
 🎬 Find the number values above zero in all six columns:
 
 ```{r}
 
-wild |>
-  summarise(sum(SRX028961_wild_def > 0),
-            sum(SRX028957_wild_def > 0),
-            sum(SRX028960_wild_suf > 0),
-            sum(SRX028956_wild_suf > 0))
+root |>
+  summarise(sum(CTR1 > 0),
+            sum(CTR2 > 0),
+            sum(CTR3 > 0),
+            sum(CTR4 > 0),
+            sum(CTR5 > 0),
+            sum(CTR6 > 0),
+            sum(LWR1 > 0),
+            sum(LWR2 > 0),
+            sum(LWR3 > 0),
+            sum(LWR4 > 0),
+            sum(LWR5 > 0),
+            sum(LWR6 > 0))
+
 ```
 
 There is a better way of doing this that saves you having to repeat so
@@ -249,8 +257,8 @@ use `pivot_longer()` to put the data in tidy format and then use the
 🎬 Find the number of zeros in all columns:
 
 ```{r}
-wild |>
-  pivot_longer(cols = -gene_id,
+root |>
+  pivot_longer(cols = c(-gene_id, -gene_name),
                names_to = "sample",
                values_to = "count") |>
   group_by(sample) |>
@@ -262,8 +270,8 @@ You could expand this code to get get other useful summary information
 🎬 Summarise all the samples:
 
 ```{r}
-wild |>
-  pivot_longer(cols = -gene_id,
+root |>
+  pivot_longer(cols = c(-gene_id, -gene_name),
                names_to = "sample",
                values_to = "count") |>
   group_by(sample) |>
@@ -276,24 +284,25 @@ wild |>
             n_above_zero = sum(count > 0))
 ```
 
-The mean count ranges from 70 to 296. It is difficult to determine
-whether any replicates are "unusual" when there are only two replicates.
-The potential effect of only two replicates, or of an an odd replicate
-when you have more replicates, is reduced statistical power. Major
-differences in gene expression will still be uncovered. Differences
-between genes with lower average expression and or more variable
-expression might be missed. Whether this matters depends on the
-biological question you are asking. In this case, it does not matter
-because the major differences in gene expression will be enough.
+The mean count ranges from 704 to 931. `CTR2` stands out a little -
+having a higher mean and maximum than the others. When we have a good
+number of replicates -- 6 is good in these experiments -- this is
+unlikely to be a problem. The potential effect of having an odd
+replicate when you have only two or three replicates, is reduced
+statistical power. Differences between genes with lower average
+expression and or more variable expression might be missed. Whether this
+matters depends on the biological question you are asking. In this case,
+it does not matter because a) we have 6 replicates and b) because the
+major differences in gene expression will be enough.
 
-🎬 Save the summary as a dataframe, `wild_summary_samp` (using
+🎬 Save the summary as a dataframe, `root_summary_samp` (using
 assignment).
 
 ```{r}
 #| echo: false
 #---CODING ANSWER---
-wild_summary_samp <- wild |>
-  pivot_longer(cols = -gene_id,
+root_summary_samp <- root |>
+  pivot_longer(cols = c(-gene_id, -gene_name),
                names_to = "sample",
                values_to = "count") |>
   group_by(sample) |>
@@ -307,15 +316,15 @@ wild_summary_samp <- wild |>
 ```
 
 We can also plot the distribution of counts across samples. We have many
-values (`r length(wild$gene_id)`) so we are not limited to using
+values (`r length(root$gene_id)`) so we are not limited to using
 `geom_histogram()`. `geom_density()` gives us a smooth distribution.
 
 🎬 Plot the log10 of the counts + 1 again but this time facet by the
 sample:
 
 ```{r}
-wild |>
-  pivot_longer(cols = -gene_id,
+root |>
+  pivot_longer(cols = c(-gene_id, -gene_name),
                names_to = "sample",
                values_to = "count") |>
   ggplot(aes(log10(count + 1))) +
@@ -325,7 +334,6 @@ wild |>
 
 The key information to take from these plots is:
 
--   difficult to say was is usual/unusual with 2 replicates
 -   the peak at zero suggests quite a few counts of 1.
 -   we would expect the distribution of counts in each sample to be
     roughly log normal so that the rise near the low end, even before
@@ -344,8 +352,8 @@ distribution for each gene in the same way. Will pivot the data to tidy
 and then summarise the counts for each gene.
 
 🎬 Summarise the counts for each gene and save the result as
-`wild_summary_gene`. Include the same columns as we had in the by sample
-summary (`wild_summary_samp`) *and* an additional column, `total` for
+`root_summary_gene`. Include the same columns as we had in the by sample
+summary (`root_summary_samp`) *and* an additional column, `total` for
 the total number of counts for each gene.
 
 ```{r}
@@ -353,8 +361,8 @@ the total number of counts for each gene.
 #---CODING ANSWER---
 # you need to group by `gene_id` rather than `sample_id`
 # sum(count) will find the sum of counts
-wild_summary_gene <- wild |>
-  pivot_longer(cols = -gene_id,
+root_summary_gene <- root |>
+  pivot_longer(cols = c(-gene_id, -gene_name),
                names_to = "sample",
                values_to = "count") |>
   group_by(gene_id) |>
@@ -369,7 +377,7 @@ wild_summary_gene <- wild |>
             n_above_zero = sum(count > 0))
 ```
 
-🎬 View the `wild_summary_gene` dataframe.
+🎬 View the `root_summary_gene` dataframe.
 
 Notice that we have:
 
@@ -396,7 +404,7 @@ lowest to highest mean count.
 `geom_pointrange()`:
 
 ```{r}
-wild_summary_gene |> 
+root_summary_gene |> 
   ggplot(aes(x = reorder(gene_id, mean), y = log10(mean))) +
   geom_pointrange(aes(ymin = log10(mean - sd), 
                       ymax = log10(mean + sd )),
@@ -410,7 +418,7 @@ below zero). Note that the variability between genes (average counts
 between 0 and 43348) is far greater than between samples (average counts
 from 70 to 296) which is exactly what we would expect to see.
 
-Now go to [Filtering for QC](#arabidopisis-1).
+Now go to [Filtering for QC](#arabidopsis-filterqc).
 
 ## 💉 *Leishmania*
 
@@ -712,7 +720,7 @@ below zero). Note that the variability between genes (average counts
 between 0 and 349606) is far greater than between samples (average
 counts from 220 to 364) which is exactly what we would expect to see.
 
-Now go to [Filtering for QC](#leishmania-mexicana-1).
+Now go to [Filtering for QC](#leishmania-filterqc).
 
 ## 🐭 Stem cells
 
@@ -951,58 +959,56 @@ Note that the variability between genes (average expression between
 0.020 and and 9.567) is far greater than between cells (average
 expression from 1.319 to 9.567) which is just what we would expect.
 
-Now go to [Filtering for QC](#stem-cells-1).
+Now go to [Filtering for QC](#stem-cells-filterqc).
 
 # Filtering for QC
 
-## 🎄 *Arabidopsis*
+## 🎄 *Arabidopsis* {#arabidopsis-filterqc}
 
 Our samples look to be similarly well sequenced although this is
 difficult to determine with only two replicates. However, some genes are
 not expressed or the expression values are so low in for a gene that
-they are uninformative. We will filter the `wild_summary_gene` dataframe
-to obtain a list of `gene_id` we can use to filter `wild`.
+they are uninformative. We will filter the `root_summary_gene` dataframe
+to obtain a list of `gene_id` we can use to filter `root`.
 
-My suggestion is to include only the genes with counts in at least 2
-samples, and those with total counts above 20. I chose 2 because that
-would keep genes expressed only in one treatment: \[0, 0\] \[#,#\]. This
-is a difference we cannot test statistically, but which matters
-biologically.
+My suggestion is to include only the genes with counts in at least 6
+samples, and those with total counts above 20. I chose 6 because that
+would keep genes expressed only in one treatment. I chose 20 based on
 
 🎬 Filter the summary by gene dataframe:
 
 ```{r}
-wild_summary_gene_filtered <- wild_summary_gene |> 
+root_summary_gene_filtered <- root_summary_gene |> 
   filter(total > 20) |> 
-  filter(n_above_zero >= 2)
+  filter(n_above_zero >= 6)
 ```
 
 ❓ How many genes do you have left
 
 <!-- #---THINKING ANSWER--- -->
 
-<!-- there are 26355 genes left. 6478 have total counts less than 20 and or -->
+<!-- there are 22361 genes left. 9472 have total counts less than 20 and or -->
 
-<!-- have counts in fewer the 2 samples. -->
+<!-- have counts in fewer the 6 samples. -->
 
 🎬 Use the list of `gene_id` in the filtered summary to filter the
 original dataset:
 
 ```{r}
-wild_filtered <- wild |> 
-  filter(gene_id %in%  wild_summary_gene_filtered$gene_id)
+root_filtered <- root |> 
+  filter(gene_id %in%  root_summary_gene_filtered$gene_id)
 ```
 
 🎬 Write the filtered data to file:
 
 ```{r}
-write_csv(wild_filtered, 
-          file = "data-processed/wild_filtered.csv")
+write_csv(root_filtered, 
+          file = "data-processed/root_filtered.csv")
 ```
 
 Now go to [Look after future you](#arabidopsis-and-future-you)
 
-## 💉 *Leishmania*
+## 💉 *Leishmania* {#leishmania-filterqc}
 
 Our samples look to be similarly well sequenced. There are no samples we
 should remove. However, some genes are not expressed or the expression
@@ -1049,7 +1055,7 @@ write_csv(pro_meta_filtered,
 
 Now go to [Look after future you](#leishmania-and-future-you)
 
-## 🐭 Stem cells {#stem-cells-1}
+## 🐭 Stem cells {#stem-cells-filterqc}
 
 In this dataset, we will not see and genes that are not expressed in any
 of the cells because we are using a specific subset of the transcriptome
@@ -1100,14 +1106,13 @@ this step is important**.
 ## 🎄 *Arabidopsis* and future you {#arabidopsis-and-future-you}
 
 🎬 Create a new Project, `arab-88H`, populated with folders and your
-data. Make a script file called `suff-def-wild.R`. This will a be
-commented analysis of comparison between copper sufficient and copper
-deficient wildtype plants. You will build on this each workshop and be
-able to use it as a template to examine other comparisons. Copy in the
-*appropriate code and comments* from `workshop-1.R`. Edit to improve
-your comments where your understanding has developed since you made
-them. Make sure you can close down RStudio, reopen it and run your whole
-script again.
+data. Make a script file called `cont-low-root.R`. This will a be
+commented analysis of comparison between control and low Ni root tissue.
+You will build on this each workshop and be able to use it as a template
+to examine other comparisons. Copy in the *appropriate code and
+comments* from `workshop-1.R`. Edit to improve your comments where your
+understanding has developed since you made them. Make sure you can close
+down RStudio, reopen it and run your whole script again.
 
 ## 💉 *Leishmania* and future you {#leishmania-and-future-you}
 
@@ -1147,10 +1152,9 @@ visible on the webpage.
 The [workshop.qmd](workshop.qmd) file is the file I use to compile the
 practical. Qmd stands for Quarto markdown. It allows code and ordinary
 text to be interleaved to produce well-formatted reports including
-webpages. Right-click on the link and choose Save-As to download. You
-will be able to open the Qmd file in RStudio. Alternatively, [View in
-Browser](https://github.com/3mmaRand/BIO00088H-data/blob/main/transcriptomics/week-3/workshop.qmd).
-Coding and thinking answers are marked with `#---CODING ANSWER---` and
+webpages. Right-click on the link and choose View the source code for
+this workshop using the `</> Code` button at the top of the page. Coding
+and thinking answers are marked with `#---CODING ANSWER---` and
 `#---THINKING ANSWER---`
 
 Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr`
