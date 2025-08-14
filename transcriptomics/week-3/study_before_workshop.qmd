@@ -51,13 +51,13 @@ width="700"}
 experiment](images/88H-exp-design-liz.png){fig-align="left" width="200"}
 
 ::: incremental
--   2 plant genotypes
+-   2 plant tissues
 
--   2 copper conditions
+-   2 nickel conditions
 
--   2 plants
+-   6 replicates
 
--   2 x 2 x 3 = 8 samples
+-   2 x 2 x 6 = 24 samples
 :::
 
 ## 🎄 Experimental design {auto-animate="true"}
@@ -66,23 +66,23 @@ experiment](images/88H-exp-design-liz.png){fig-align="left" width="200"}
 experiment](images/88H-exp-design-liz.png){fig-align="left" width="200"}
 
 ::: incremental
--   2 plant genotypes: wildtype and spl7 mutant. [This is the genotype
+-   2 plant tissues: root and aerial. [This is the tissue
     treatment]{style="color:#009900"}
 
--   2 copper conditions: sufficient and deficient. [This is the Cu
+-   2 nickel conditions: control and low Ni. [This is the Ni
     treatment]{style="color:#009900"}
 
--   2 plants. [These are the replicates]{style="color:#009900"}
+-   6 replicates. [These are the replicates]{style="color:#009900"}
 
--   2 x 2 x 3 = 8 samples
+-   2 x 2 x 6 = 24 samples
 :::
 
 ## 🎄 Aim
 
 ::: incremental
--   Find genes that are "differentially expressed" between plant types
-    and copper conditions e.g. wildtype plants grown under copper
-    sufficient and copper deficient conditions
+-   Find genes that are "differentially expressed" between tissue types
+    and nickel conditions e.g. root tissue grown under control and low
+    Ni conditions
 
 -   Differentially expressed means the expression in one group is
     significantly higher than in the other
@@ -91,8 +91,8 @@ experiment](images/88H-exp-design-liz.png){fig-align="left" width="200"}
 ## 🎄 Guided analysis
 
 ::: incremental
--   The workshops will take you through comparing the wildtype plants
-    grown under copper sufficient and copper deficient conditions
+-   The workshops will take you through comparing the root tissue grown
+    under control and low Ni conditions
 
 -   You will make other comparisons independently
 
@@ -267,8 +267,7 @@ design](https://cloud-span.github.io/experimental_design00-overview/)[@rand_stat
 
 ## 🎄 Data
 
--   Based on
-    [PRJNA132271](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA132271)[@bernal_transcriptome_2012]
+-   Brand spanking new! Provided by Alex Marks [@marks_nickel_nodate]
 
 -   Expression for the whole transcriptome [ENSEMBL *Arabidopsis*
     TAIR10](https://plants.ensembl.org/Arabidopsis_thaliana/Info/Index)[@yates_ensembl_2022]
