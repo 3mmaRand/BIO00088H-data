@@ -65,9 +65,9 @@ Workshop](../week-3/workshop.html) including:
 
 -   An RStudio Project called `arab-88H` which contains:
 
-    -   data-raw: `arabidopsis-wild.csv`, `arabidopsis-spl7.csv`
-    -   data-processed: `wild_filtered.csv`, `spl7_filtered.csv`
-    -   Two scripts: `suff-def-wild.R`, `suff-def-spl7.R`
+    -   data-raw: `arabidopsis-root.csv`, `arabidopsis-aerial.csv`
+    -   data-processed: `root_filtered.csv`, `aerial_filtered.csv`
+    -   Two scripts: `cont-low-root.R`, `cont-low-aerial.R.R`
 
 ## 💉 *Leishmania*
 
@@ -125,7 +125,7 @@ If you are missing files, go through:
 -   the statistical concepts are very similar to those you have already
     encountered in stages 1 and 2
 
--   you are essentially doing paired- or independent-samples tests
+-   you are essentially doing two-sample tests (independent samples)
 
 -   but you are doing a lot of them! One for every gene
 
@@ -189,8 +189,10 @@ Like familiar tests:
 -   The *p*-value has to be adjusted because of the number of tested
     being done
 
--   In stage 1, we used Tukey's HSD to adjust for multiple testing
-    following an ANOVA
+-   Previously we have used Tukey's HSD to adjust for multiple testing
+    following a significant ANOVA (using the **`emmeans`** package) and
+    Dunn's test of multiple comparisons following a significant
+    Kruskal-Wallis test
 
 -   Here the Benjamini-Hochberg procedure [@benjamini1995] is used to
     adjust for multiple testing
@@ -280,8 +282,9 @@ Like familiar tests:
 
 -   Values are raw counts
 
--   The statistical analysis method we will use **`DESeq2`** [@DESeq2]
-    requires raw counts and performs the normalisation itself
+-   The statistical analysis method we will use is **`DESeq2`** which
+    requires raw counts and performs the normalisation as part of the
+    analysis.
 
 ## 💉 *Leishmania*
 
@@ -290,8 +293,9 @@ Like familiar tests:
 
 -   Values are raw counts
 
--   The statistical analysis method we will use **`DESeq2`** [@DESeq2]
-    requires raw counts and performs the normalisation itself
+-   The statistical analysis method we will use is **`DESeq2`** which
+    requires raw counts and performs the normalisation as part of the
+    analysis.
 
 ## 🐭 Stem cells
 
@@ -388,8 +392,7 @@ If you want to use your own machine you will need to install the
 packages.
 
 ::: {style="font-size: 60%;"}
-Install **`BiocManager`** from CRAN in the the normal way and set the
-version of Bioconductor packages to install:
+Install **`BiocManager`** from CRAN in the the normal way:
 
 ```{r}
 #| eval: false
