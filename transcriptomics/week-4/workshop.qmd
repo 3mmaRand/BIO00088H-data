@@ -27,7 +27,7 @@ normalised expression values using **`scran`** [@scran] or both.
 
 ## 🎄 *Arabidopisis*
 
-🎬 Open the `arab-88H` RStudio Project and the `suff-def-wild.R` script.
+🎬 Open the `arab-88H` RStudio Project and the `cont-low-root.R` script.
 
 ## 💉 *Leishmania*
 
@@ -44,7 +44,7 @@ normalised expression values using **`scran`** [@scran] or both.
 This is where we will save our results.
 
 🎬 Load **`tidyverse`** [@tidyverse] You most likely have this code at
-the top of \`your script already.
+the top of your script already.
 
 ```{r}
 library(tidyverse)
@@ -104,18 +104,20 @@ conflicts_prefer(GenomicRanges::setdiff)
 
 ## 🎄 *Arabidopisis*
 
-We need to import the wildtype data that were filtered to remove genes
-with 3 or 4 zeros and those where the total counts was less than 20.
+We need to import the root tissue data that were filtered to remove
+genes with 3 or 4 zeros and those where the total counts was less than
+20.
 
 🎬 Import the data from the `data-processed` folder.
 
 ```{r}
 #| echo: false
 #---CODING ANSWER---
-wild_filtered <- read_csv("data-processed/wild_filtered.csv")
+root_filtered <- read_csv("data-processed/root_filtered.csv")
 ```
 
-Now go to [Differential Expression Analysis](#arabidopisis-2).
+Now go to [Differential Expression
+Analysis](#arabidopisis-differential).
 
 ## 💉 *Leishmania*
 
@@ -131,7 +133,7 @@ total counts was less than 20.
 pro_meta_filtered <- read_csv("data-processed/pro_meta_filtered.csv")
 ```
 
-Now go to [Differential Expression Analysis](#leishmania-2).
+Now go to [Differential Expression Analysis](#leishmania-differential).
 
 ## 🐭 Stem cells
 
@@ -145,11 +147,11 @@ We need to import the progenitor and HSPC cell data that were combined.
 hspc_prog <- read_csv("data-processed/hspc_prog.csv")
 ```
 
-Now go to [Differential Expression Analysis](#stem-cells-2).
+Now go to [Differential Expression Analysis](#stem-cells-differential).
 
 # Differential Expression Analysis
 
-## 🎄 *Arabidopisis* {#arabidopisis-2}
+## 🎄 *Arabidopisis* {#arabidopisis-differential}
 
 These are the steps we will take
 
@@ -165,15 +167,19 @@ All but the first step are done with the **`DESeq2`** package
 ### 1. Genes expressed in one treatment
 
 The genes expressed in only one treatment group are those with zeros in
-both replicates in one group and non-zero values in both replicates in
-the other group. For example, those shown here:
+all replicates in one group and non-zero values in all replicates in the
+other group. For example, those shown here:
 
 ```{r}
 #| echo: false
 # sort the data by the values in the control column
-wild_filtered |>  
-  filter(SRX028957_wild_def == 0) |> 
-  filter(SRX028961_wild_def == 0) |>
+root_filtered |>  
+  filter(CTR1 == 0) |> 
+  filter(CTR2 == 0) |>
+  filter(CTR3 == 0) |>
+  filter(CTR4 == 0) |>
+  filter(CTR5 == 0) |>
+  filter(CTR6 == 0) |>
   head(5) |>
   knitr::kable()
 
@@ -181,54 +187,76 @@ wild_filtered |>
 
 We will use `filter()` to find these genes.
 
-🎬 Find the genes that are expressed only in the sufficient copper
-group:
+🎬 Find the genes that are expressed only in the control group:
 
 ```{r}
-wild_suf_only <- wild_filtered |>
-  filter(SRX028961_wild_def == 0,
-         SRX028957_wild_def == 0,
-         SRX028960_wild_suf > 0,
-         SRX028956_wild_suf > 0)
+root_lowni_only <- root_filtered |>
+  filter(if_all(starts_with("CTR"), \(x) x == 0),
+         if_all(starts_with("LWR"), \(x) x > 0) )
 ```
 
-❓ How many genes are expressed only in the sufficient copper group?
+This code creates a new data frame called `root_lowni_only` that
+contains only the rows from root_filtered where:
+
+-   All CTR columns have a value of 0
+-   All LWR columns have a value greater than 0
+
+`filter()` keeps rows that match the conditions you give it. Here we
+give two conditions:
+
+-   All columns whose names start with "CTR" must have a value of 0.
+-   All columns whose names start with "LWR" must have a value greater
+    than 0.
+
+The `if_all()` function applies a test to each selected column (those
+starting with "CTR" or "LWR") for each row. It returns `TRUE` only if
+all the selected columns pass the test.
+
+The bit `\(x) x == 0` is an anonymous function — a function without a
+name. In base R syntax, it’s equivalent to: `function(x) x == 0` Here,
+`x` will be the values from one column at a time, and the function
+checks whether they are equal to 0. We use an anonymous function because
+the condition needs to be applied separately to each column, but it’s
+simple enough that there’s no need to define a full named function
+elsewhere in the script.
+
+❓ How many genes are expressed only in the low nickel group?
 
 <!-- #---THINKING ANSWER--- -->
 
-<!-- There are 19 genes expressed only in the sufficient copper group. -->
+<!-- There are 16 genes expressed only in low nickel group?. -->
 
-🎬 Now you find any genes that are expressed only in the deficient
-copper group.
+Note: There may have been more genes with counts in the low nickel group
+that were removed when we filtered on the total number of counts being
+less that 50.
+
+🎬 Now you find any genes that are expressed only in the control group.
 
 ```{r}
 #| echo: false
 #---CODING ANSWER---
-wild_def_only <- wild_filtered |>
-  filter(SRX028961_wild_def > 0,
-         SRX028957_wild_def > 0,
-         SRX028960_wild_suf == 0,
-         SRX028956_wild_suf == 0)
+root_cont_only <- root_filtered |>
+  filter(if_all(starts_with("CTR"), \(x) x > 0),
+         if_all(starts_with("LWR"), \(x) x == 0) )
 
 ```
 
-❓ How many genes are expressed only in the deficient copper group?
+❓ How many genes are expressed only in the control group?
 
 <!-- #---THINKING ANSWER--- -->
 
-<!-- There are 3 genes expressed only in the deficient copper group. -->
+<!-- There are 7 genes expressed only in the control group. -->
 
 ❓ Do the results make sense to you in light of what you know about the
 biology?
 
 <!-- #---THINKING ANSWER--- -->
 
-<!-- This is wildtype plant so perhaps normal processes do not happen  -->
+<!-- We might expect more genes to be switched on cope with nickel -->
 
-```{=html}
-<!-- when copper is deficient and because the plant does not have 
-<!-- adaptations for deficient copper, no compensatory processes kick in. <!-- <!-- However, I'm not an expert in Arabidopsis, or plants! -->
-```
+<!-- than in control conditions -->
+
+<!-- However, I'm not an expert in Arabidopsis, or plants! -->
 
 <!-- Domain expertise is important when analysing data so  -->
 
@@ -240,8 +268,8 @@ in `results`)
 ```{r}
 #| echo: false
 #---CODING ANSWER---
-write_csv(wild_suf_only, "results/wild_suf_only.csv")
-write_csv(wild_def_only, "results/wild_def_only.csv")
+write_csv(root_lowni_only, "results/root_lowni_only.csv")
+write_csv(root_cont_only, "results/root_cont_only.csv")
 ```
 
 ### 2. Create DESeqDataSet object
@@ -250,7 +278,6 @@ write_csv(wild_def_only, "results/wild_def_only.csv")
 
 ```{r}
 #| echo: false
-#| eval: false
 #---CODING ANSWER---
 library(DESeq2)
 ```
@@ -266,7 +293,7 @@ metadata and experimental designs within them.
 
 To create a DESeqDataSet object, we need to provide three things:
 
--   The raw counts - these are in `wild_filtered`
+-   The raw counts - these are in `root_filtered`
 -   The meta data which gives information about the samples and which
     treatment groups they belong to
 -   A design matrix which captures the design of the statistical model.
@@ -281,8 +308,8 @@ remove the gene ids column.
 🎬 Create a matrix of the counts:
 
 ```{r}
-wild_count_mat <- wild_filtered |>
-  select(-gene_id) |>
+root_count_mat <- root_filtered |>
+  select(-gene_id, -gene_name) |>
   as.matrix()
 ```
 
@@ -290,7 +317,7 @@ wild_count_mat <- wild_filtered |>
 
 ```{r}
 # add the row names to the matrix
-rownames(wild_count_mat) <- wild_filtered$gene_id
+rownames(root_count_mat) <- root_filtered$gene_id
 
 ```
 
@@ -324,20 +351,20 @@ meta <- meta |>
   column_to_rownames("sample_id")
 ```
 
-We are dealing only with the wild data so we need to remove the samples
-that are not in the wild data.
+We are dealing only with the root data so we need to remove the samples
+that are not in the root data.
 
-🎬 Filter the metadata to keep only the wild information:
+🎬 Filter the metadata to keep only the root information:
 
 ```{r}
-meta_wild <- meta |>
-  filter(genotype == "wt")
+meta_root <- meta |>
+  filter(tissue == "root")
 ```
 
 We can now create the DESeqDataSet object. The design formula describes
 the statistical model. You should recognise the form from previous work.
 The `~` can be read as "explain by" and on its right hand side are the
-explanatory variables. That is, the model is counts explained by copper
+explanatory variables. That is, the model is counts explained by nickel
 status.
 
 Note that:
@@ -351,13 +378,13 @@ Note that:
 🎬 Create the DESeqDataSet object:
 
 ```{r}
-dds <- DESeqDataSetFromMatrix(wild_count_mat,
-                              colData = meta_wild,
-                              design = ~ copper)
+dds <- DESeqDataSetFromMatrix(root_count_mat,
+                              colData = meta_root,
+                              design = ~ nickel)
 ```
 
 The warning "Warning: some variables in design formula are characters,
-converting to factors" just means that the variable type of copper in
+converting to factors" just means that the variable type of nickel in
 the metadata dataframe is "char" and it has been converted into a factor
 type.
 
@@ -375,7 +402,7 @@ the `counts()` and `colData()` functions from the **`DESeq2`** package.
 counts(dds) |> View()
 ```
 
-You should be able to see that this is the same as in `wild_count_mat`.
+You should be able to see that this is the same as in `root_count_mat`.
 
 🎬 View the column information:
 
@@ -384,7 +411,7 @@ colData(dds)
 
 ```
 
-You should be able to see this is the same as in `meta_wild`.
+You should be able to see this is the same as in `meta_root`.
 
 ### 3. Prepare the normalised counts
 
@@ -421,7 +448,7 @@ normalised_counts <- counts(dds, normalized = TRUE)
 gene ids at the same time:
 
 ```{r}
-wild_normalised_counts <- data.frame(normalised_counts,
+root_normalised_counts <- data.frame(normalised_counts,
                                     gene_id = row.names(normalised_counts))
 
 ```
@@ -447,25 +474,24 @@ take longer for bigger datasets.
 
 We need to define the contrasts we want to test. We want to test the
 difference between the treatments so we will define the contrast as
-`sufficient` and `deficient`.
+`control` and `low_ni`.
 
 🎬 Define the contrast:
 
 ```{r}
-contrast_suf <- c("copper", "sufficient", "deficient")
+contrast_suf <- c("nickel", "control", "low_ni")
 ```
 
-Note that `copper` is the name of the column in the metadata dataframe
-and `sufficient` and `deficient` are the names of the levels in the
-`copper` column. By putting them in the order `sufficient` , `deficient`
-we are saying the fold change will be sufficient / deficient. This
-means:
+Note that `nickel` is the name of the column in the metadata dataframe
+and `control` and `low_ni` are the names of the levels in the `nickel`
+column. By putting them in the order `control` , `low_ni` we are saying
+the fold change will be control / low_ni. This means:
 
--   positive log fold changes indicate sufficient \> deficient and
--   negative log fold changes indicates deficient \> sufficient.
+-   positive log fold changes indicate control \> low_ni and
+-   negative log fold changes indicates low_ni \> control.
 
-If we had put them in the order `deficient`, `sufficient` we would have
-the reverse.
+If we had put them in the order `low_ni`, `control` we would have the
+reverse.
 
 🎬 Extract the results from the DESseqDataSet object:
 
@@ -475,13 +501,13 @@ results_suf <- results(dds,
 ```
 
 This will give us the log~2~ fold change, the *p*-value and the adjusted
-*p*-value for the comparison between the sufficient- and\
-deficient-copper for each gene.
+*p*-value for the comparison between the control and low_ni for each
+gene.
 
 🎬 Put the results in a dataframe and add the gene ids as a column:
 
 ```{r}
-wild_results <- data.frame(results_suf,
+root_results <- data.frame(results_suf,
                           gene_id = row.names(results_suf))
 ```
 
@@ -492,13 +518,13 @@ in one dataframe.
 
 ```{r}
 # merge the results with the normalised counts
-wild_results <- wild_normalised_counts |>
-  left_join(wild_results, by = "gene_id")
+root_results <- root_normalised_counts |>
+  left_join(root_results, by = "gene_id")
 ```
 
-Now go to [Add gene information](#arabidopisis-3).
+Now go to [Add gene information](#arabidopisis-add-info).
 
-## 💉 *Leishmania* {#leishmania-2}
+## 💉 *Leishmania* {#leishmania-differential}
 
 These are the steps we will take
 
@@ -838,9 +864,9 @@ pro_meta_results <- pro_meta_normalised_counts |>
   left_join(pro_meta_results, by = "gene_id")
 ```
 
-Now go to [Add gene information](#leishmania-3).
+Now go to [Add gene information](#leishmania-add-info).
 
-## 🐭 Stem cells {#stem-cells-2}
+## 🐭 Stem cells {#stem-cells-differential}
 
 These are the steps we will take
 
@@ -1065,11 +1091,11 @@ hspc_prog_results <- hspc_prog_results |>
 
 ```
 
-Now go to [Add gene information](#stem-cells-3).
+Now go to [Add gene information](#stem-add-info).
 
 # Add gene information
 
-## 🎄 *Arabidopisis* {#arabidopisis-3}
+## 🎄 *Arabidopisis* {#arabidopisis-add-info}
 
 [Ensembl](https://www.ensembl.org/index.html) [@martin2023;
 @birney2004]is a bioinformatics project to organise all the biological
@@ -1124,7 +1150,7 @@ ensembl <- useEnsemblGenomes(biomart = "plants_mart",
 listAttributes(mart = ensembl) |> View()
 ```
 
-There are many (1,714!) possible bits of information (attributes) that
+There are many (1,796!) possible bits of information (attributes) that
 can be obtained.
 
 We use the `getBM()` function to retrieve information from the database.
@@ -1142,7 +1168,7 @@ gene_info <- getBM(filters = "ensembl_gene_id",
                    attributes = c("ensembl_gene_id",
                                   "external_gene_name",
                                   "description"),
-                   values = wild_results$gene_id,
+                   values = root_results$gene_id,
                    mart = ensembl)
 ```
 
@@ -1153,7 +1179,7 @@ available. You can use `glimpse()` or `View()`.
 
 ```{r}
 # join the gene info with the results
-wild_results <- wild_results |>
+root_results <- root_results |>
   left_join(gene_info,
             by = join_by(gene_id == ensembl_gene_id))
 ```
@@ -1161,10 +1187,12 @@ wild_results <- wild_results |>
 🎬 Save the results to a file:
 
 ```{r}
-write_csv(wild_results, file = "results/wild_results.csv")
+write_csv(root_results, file = "results/root_results.csv")
 ```
 
-## 💉 *Leishmania* {#leishmania-3}
+Now go to [Look after future you](#look-after-future-you).
+
+## 💉 *Leishmania* {#leishmania-add-info}
 
 -   I got the information from
     [TriTrypDB](https://tritrypdb.org/tritrypdb/app/)\
@@ -1210,7 +1238,9 @@ pro_meta_results <- pro_meta_results |>
 write_csv(pro_meta_results, file = "results/pro_meta_results.csv")
 ```
 
-## 🐭 Stem cells {#stem-cells-3}
+Now go to [Look after future you](#look-after-future-you).
+
+## 🐭 Stem cells {#stem-cells-add-info}
 
 [Ensembl](https://www.ensembl.org/index.html) [@martin2023;
 @birney2004]is a bioinformatics project to organise all the biological
@@ -1287,7 +1317,9 @@ hspc_prog_results <- hspc_prog_results |>
 write_csv(hspc_prog_results, file = "results/hspc_prog_results.csv")
 ```
 
-# 🤗 Look after future you!
+Now go to [Look after future you](#look-after-future-you).
+
+# 🤗 Look after future you! {#look-after-future-you}
 
 🎬 Go through you script and tidy up. You might need to :
 
@@ -1315,11 +1347,9 @@ visible on the webpage.
 The [workshop.qmd](workshop.qmd) file is the file I use to compile the
 practical. Qmd stands for Quarto markdown. It allows code and ordinary
 text to be interleaved to produce well-formatted reports including
-webpages. Right-click on the link and choose Save-As to download. You
-will be able to open the Qmd file in RStudio. Alternatively, [View in
-Browser](https://github.com/3mmaRand/BIO00088H-data/blob/main/transcriptomics/week-4/workshop.qmd).
-Coding and thinking answers are marked with `#---CODING ANSWER---` and
-`#---THINKING ANSWER---`
+webpages. View the source code for this workshop using the `</> Code`
+button at the top of the page. Coding and thinking answers are marked
+with `#---CODING ANSWER---` and `#---THINKING ANSWER---`
 
 Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr`
 [@knitr1; @knitr2; @knitr3], `kableExtra` [@kableExtra]
