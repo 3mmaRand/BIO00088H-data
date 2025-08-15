@@ -231,7 +231,7 @@ Emma Rand
 </div>
 </div>
 
-  <p class="date">13 August, 2025</p>
+  <p class="date">15 August, 2025</p>
 </section><section id="overview" class="slide level2"><h2>Overview</h2>
 <p>In these slides we will:</p>
 <ul>
@@ -273,11 +273,11 @@ Emma Rand
 <li>
 <p>An RStudio Project called <code>arab-88H</code> which contains:</p>
 <ul>
-<li>data-raw: <code>arabidopsis-wild.csv</code>, <code>arabidopsis-spl7.csv</code>
+<li>data-raw: <code>arabidopsis-root.csv</code>, <code>arabidopsis-aerial.csv</code>
 </li>
-<li>data-processed: <code>wild_filtered.csv</code>, <code>spl7_filtered.csv</code>
+<li>data-processed: <code>root_filtered.csv</code>, <code>aerial_filtered.csv</code>
 </li>
-<li>Two scripts: <code>suff-def-wild.R</code>, <code>suff-def-spl7.R</code>
+<li>Two scripts: <code>cont-low-root.R</code>, <code>cont-low-aerial.R</code>
 </li>
 </ul>
 </li>
@@ -325,7 +325,7 @@ Emma Rand
 </ul></section><section id="differential-expression-2" class="slide level2"><h2>Differential expression</h2>
 <ul>
 <li class="fragment"><p>the statistical concepts are very similar to those you have already encountered in stages 1 and 2</p></li>
-<li class="fragment"><p>you are essentially doing paired- or independent-samples tests</p></li>
+<li class="fragment"><p>you are essentially doing two-sample tests (independent samples)</p></li>
 <li class="fragment"><p>but you are doing a lot of them! One for every gene</p></li>
 <li class="fragment"><p>data need normalisation before comparison</p></li>
 </ul></section><section id="statistical-concepts" class="slide level2"><h2>Statistical concepts</h2>
@@ -351,7 +351,7 @@ Emma Rand
 </ul></section><section id="adjusted-p-value" class="slide level2"><h2>Adjusted <em>p</em>-value</h2>
 <ul>
 <li class="fragment"><p>The <em>p</em>-value has to be adjusted because of the number of tested being done</p></li>
-<li class="fragment"><p>In stage 1, we used Tukey’s HSD to adjust for multiple testing following an ANOVA</p></li>
+<li class="fragment"><p>Previously we have used Tukey’s HSD to adjust for multiple testing following a significant ANOVA (using the <strong><code>emmeans</code></strong> package) and Dunn’s test of multiple comparisons following a significant Kruskal-Wallis test</p></li>
 <li class="fragment"><p>Here the Benjamini-Hochberg procedure <span class="citation" data-cites="benjamini1995">(<a href="#/references" role="doc-biblioref" onclick="">Benjamini and Hochberg 1995</a>)</span> is used to adjust for multiple testing</p></li>
 <li class="fragment"><p>BH controls the <a href="https://en.wikipedia.org/wiki/False_discovery_rate">False Discovery Rate</a> (FDR)</p></li>
 <li class="fragment"><p>The FDR is the proportion of false positives among the genes called significant</p></li>
@@ -400,13 +400,13 @@ Emma Rand
 <ul>
 <li><p>Expression for the whole transcriptome <a href="https://plants.ensembl.org/Arabidopsis_thaliana/Info/Index">ENSEMBL <em>Arabidopsis</em> TAIR10</a><span class="citation" data-cites="yates_ensembl_2022">(<a href="#/references" role="doc-biblioref" onclick="">Yates et al. 2022</a>)</span></p></li>
 <li><p>Values are raw counts</p></li>
-<li><p>The statistical analysis method we will use <strong><code>DESeq2</code></strong> <span class="citation" data-cites="DESeq2">(<a href="#/references" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span> requires raw counts and performs the normalisation itself</p></li>
+<li><p>The statistical analysis method we will use is <strong><code>DESeq2</code></strong> which requires raw counts and performs the normalisation as part of the analysis.</p></li>
 </ul></section><section id="leishmania-1" class="slide level2"><h2>💉 <em>Leishmania</em>
 </h2>
 <ul>
 <li><p>Expression for the whole transcriptome <a href="https://tritrypdb.org/tritrypdb/app/record/dataset/DS_e318592c8e"><em>L. mexicana</em> MHOM/GT/2001/U1103</a><span class="citation" data-cites="rogers_chromosome_2011">(<a href="#/references" role="doc-biblioref" onclick="">Rogers et al. 2011</a>)</span></p></li>
 <li><p>Values are raw counts</p></li>
-<li><p>The statistical analysis method we will use <strong><code>DESeq2</code></strong> <span class="citation" data-cites="DESeq2">(<a href="#/references" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span> requires raw counts and performs the normalisation itself</p></li>
+<li><p>The statistical analysis method we will use is <strong><code>DESeq2</code></strong> which requires raw counts and performs the normalisation as part of the analysis.</p></li>
 </ul></section><section id="stem-cells-1" class="slide level2"><h2>🐭 Stem cells</h2>
 <ul>
 <li><p>Expression for a <em>subset</em> of the transcriptome, the surfaceome</p></li>
@@ -452,7 +452,7 @@ which is a functional genomic resource for the Trypanosomatidae and Plasmodidae<
 <p>These packages are all on the University computers which you can access on campus or <a href="https://www.york.ac.uk/it-services/tools/vds/">remotely using the VDS</a></p>
 <p>If you want to use your own machine you will need to install the packages.</p>
 <div style="font-size: 60%;">
-<p>Install <strong><code>BiocManager</code></strong> from CRAN in the the normal way and set the version of Bioconductor packages to install:</p>
+<p>Install <strong><code>BiocManager</code></strong> from CRAN in the the normal way:</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>

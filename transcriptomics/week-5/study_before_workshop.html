@@ -231,7 +231,7 @@ Emma Rand
 </div>
 </div>
 
-  <p class="date">13 August, 2025</p>
+  <p class="date">15 August, 2025</p>
 </section><section id="overview" class="slide level2"><h2>Overview</h2>
 <p>In these slides we will:</p>
 <ul>
@@ -262,12 +262,12 @@ Emma Rand
 <li>
 <p>An RStudio Project called <code>arab-88H</code> which contains:</p>
 <ul>
-<li>data-raw: <code>arabidopsis-wild.csv</code>, <code>arabidopsis-spl7.csv</code>
+<li>data-raw: <code>arabidopsis-root.csv</code>, <code>arabidopsis-aerial.csv</code>
 </li>
-<li>data-processed: <code>wild_filtered.csv</code>, <code>spl7_filtered.csv</code>
+<li>data-processed: <code>root_filtered.csv</code>, <code>aerial_filtered.csv</code>
 </li>
-<li>results: <code>wild_suf_only.csv</code>, wild-_def_only.csv, <code>wild_results.csv</code>, and equivalents for spl7</li>
-<li>Two scripts: <code>suff-def-wild.R</code>, <code>suff-def-spl7.R</code>
+<li>results: <code>root_cont_only.csv</code>, root_lowni_only.csv, <code>root_results.csv</code>, and equivalents for aerial</li>
+<li>Two scripts: <code>cont-low-root.R</code>, <code>cont-low-aerial.R</code>
 </li>
 </ul>
 </li>
@@ -404,11 +404,13 @@ Emma Rand
 <ul>
 <li class="fragment"><p>Volcano plots often used to visualise the results of differential expression analysis</p></li>
 <li class="fragment"><p>They are just a scatter of the adjusted <em>p</em> value against the fold change….</p></li>
-<li class="fragment"><p>almost - in fact we plot the negative log of the adjusted <em>p</em> value against the log fold change</p></li>
-</ul></section><section id="volcano-plots-2" class="slide level2"><h2>Volcano plots</h2>
+<li class="fragment"><p><em>almost</em> - in fact, we plot the <strong>negative log of the adjusted <em>p</em>-value</strong> against the log fold change</p></li>
+</ul>
+<p>Why?</p>
+</section><section id="volcano-plots-2" class="slide level2"><h2>Volcano plots</h2>
 <div style="font-size: 70%;">
 <ul>
-<li><p>This is because small probabilities are important, large ones are not so the axis is counter intuitive because small <em>p</em>-values (<em>i.e.</em>, significant values) are at the bottom of the axis)</p></li>
+<li><p>It is because small probabilities are important, large ones are not which means the axis is counter intuitive because small <em>p</em>-values (<em>i.e.</em>, significant values) are at the bottom of the axis)</p></li>
 <li><p>And since <em>p</em>-values range from 1 to very tiny the important points are all squashed at the bottom of the axis</p></li>
 </ul>
 </div>

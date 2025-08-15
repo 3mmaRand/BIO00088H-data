@@ -169,7 +169,7 @@ Emma Rand
 </div>
 </div>
 
-  <p class="date">13 August, 2025</p>
+  <p class="date">15 August, 2025</p>
 </section>
 <section id="overview" class="slide level2">
 <h2>Overview</h2>
@@ -202,33 +202,33 @@ Emma Rand
 <h2 data-id="quarto-animate-title">🎄 Experimental design</h2>
 
 <img data-src="images/88H-exp-design-liz.png" width="200" class="r-stretch quarto-figure-left"><p class="caption">Schematic of arabidopsis experiment</p><ul>
-<li class="fragment"><p>2 plant genotypes</p></li>
-<li class="fragment"><p>2 copper conditions</p></li>
-<li class="fragment"><p>2 plants</p></li>
-<li class="fragment"><p>2 x 2 x 3 = 8 samples</p></li>
+<li class="fragment"><p>2 plant tissues</p></li>
+<li class="fragment"><p>2 nickel conditions</p></li>
+<li class="fragment"><p>6 replicates</p></li>
+<li class="fragment"><p>2 x 2 x 6 = 24 samples</p></li>
 </ul>
 </section>
 <section id="experimental-design-3" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">🎄 Experimental design</h2>
 
 <img data-src="images/88H-exp-design-liz.png" width="200" class="r-stretch quarto-figure-left"><p class="caption">Schematic of arabidopsis experiment</p><ul>
-<li class="fragment"><p>2 plant genotypes: wildtype and spl7 mutant. <span style="color:#009900">This is the genotype treatment</span></p></li>
-<li class="fragment"><p>2 copper conditions: sufficient and deficient. <span style="color:#009900">This is the Cu treatment</span></p></li>
-<li class="fragment"><p>2 plants. <span style="color:#009900">These are the replicates</span></p></li>
-<li class="fragment"><p>2 x 2 x 3 = 8 samples</p></li>
+<li class="fragment"><p>2 plant tissues: root and aerial. <span style="color:#009900">This is the tissue treatment</span></p></li>
+<li class="fragment"><p>2 nickel conditions: control and low Ni. <span style="color:#009900">This is the Ni treatment</span></p></li>
+<li class="fragment"><p>6 replicates. <span style="color:#009900">These are the replicates</span></p></li>
+<li class="fragment"><p>2 x 2 x 6 = 24 samples</p></li>
 </ul>
 </section>
 <section id="aim" class="slide level2">
 <h2>🎄 Aim</h2>
 <ul>
-<li class="fragment"><p>Find genes that are “differentially expressed” between plant types and copper conditions e.g.&nbsp;wildtype plants grown under copper sufficient and copper deficient conditions</p></li>
+<li class="fragment"><p>Find genes that are “differentially expressed” between tissue types and nickel conditions e.g.&nbsp;root tissue grown under control and low Ni conditions</p></li>
 <li class="fragment"><p>Differentially expressed means the expression in one group is significantly higher than in the other</p></li>
 </ul>
 </section>
 <section id="guided-analysis" class="slide level2">
 <h2>🎄 Guided analysis</h2>
 <ul>
-<li class="fragment"><p>The workshops will take you through comparing the wildtype plants grown under copper sufficient and copper deficient conditions</p></li>
+<li class="fragment"><p>The workshops will take you through comparing the root tissue grown under control and low Ni conditions</p></li>
 <li class="fragment"><p>You will make other comparisons independently</p></li>
 <li class="fragment"><p>You will be guided to carefully document your work so you can apply the same methods to other comparisons</p></li>
 <li class="fragment"><p>Do the independent study before and after the workshop!</p></li>
@@ -349,7 +349,7 @@ Emma Rand
 <section id="data" class="slide level2">
 <h2>🎄 Data</h2>
 <ul>
-<li><p>Based on <a href="https://www.ncbi.nlm.nih.gov/bioproject/PRJNA132271">PRJNA132271</a><span class="citation" data-cites="bernal_transcriptome_2012">(<a href="#/references" role="doc-biblioref" onclick="">Bernal et al. 2012</a>)</span></p></li>
+<li><p>Brand spanking new! Provided by Alex Marks <span class="citation" data-cites="marks_nickel_nodate">(<a href="#/references" role="doc-biblioref" onclick="">Marks and Rylott, n.d.</a>)</span></p></li>
 <li><p>Expression for the whole transcriptome <a href="https://plants.ensembl.org/Arabidopsis_thaliana/Info/Index">ENSEMBL <em>Arabidopsis</em> TAIR10</a><span class="citation" data-cites="yates_ensembl_2022">(<a href="#/references" role="doc-biblioref" onclick="">Yates et al. 2022</a>)</span></p></li>
 <li><p>Values are raw counts</p></li>
 <li><p>The statistical analysis method we will use is <code>DESeq2</code> <span class="citation" data-cites="DESeq2">(<a href="#/references" role="doc-biblioref" onclick="">Love, Huber, and Anders 2014</a>)</span>. It requires raw counts and performs the normalisation itself.</p></li>
@@ -395,14 +395,14 @@ Emma Rand
 <div id="ref-Allaire_Quarto_2024" class="csl-entry" role="listitem">
 Allaire, J. J., Charles Teague, Carlos Scheidegger, Yihui Xie, and Christophe Dervieux. 2024. <span>“<span>Quarto</span>.”</span> <a href="https://doi.org/10.5281/zenodo.5960048">https://doi.org/10.5281/zenodo.5960048</a>.
 </div>
-<div id="ref-bernal_transcriptome_2012" class="csl-entry" role="listitem">
-Bernal, María, David Casero, Vasantika Singh, Grandon T. Wilson, Arne Grande, Huijun Yang, Sheel C. Dodani, et al. 2012. <span>“Transcriptome Sequencing Identifies <span>SPL7</span>-Regulated Copper Acquisition Genes <span>FRO4</span>/<span>FRO5</span> and the Copper Dependence of Iron Homeostasis in <span>Arabidopsis</span>.”</span> <em>The Plant Cell</em> 24 (2): 738–61. <a href="https://doi.org/10.1105/tpc.111.090431">https://doi.org/10.1105/tpc.111.090431</a>.
-</div>
 <div id="ref-DESeq2" class="csl-entry" role="listitem">
 Love, Michael I., Wolfgang Huber, and Simon Anders. 2014. <span>“Moderated Estimation of Fold Change and Dispersion for RNA-Seq Data with DESeq2.”</span> <em>Genome Biology</em> 15: 550. <a href="https://doi.org/10.1186/s13059-014-0550-8">https://doi.org/10.1186/s13059-014-0550-8</a>.
 </div>
 <div id="ref-scran" class="csl-entry" role="listitem">
 Lun, Aaron T. L., Davis J. McCarthy, and John C. Marioni. 2016. <span>“A Step-by-Step Workflow for Low-Level Analysis of Single-Cell RNA-Seq Data with Bioconductor.”</span> <em>F1000Res.</em> 5: 2122. <a href="https://doi.org/10.12688/f1000research.9501.2">https://doi.org/10.12688/f1000research.9501.2</a>.
+</div>
+<div id="ref-marks_nickel_nodate" class="csl-entry" role="listitem">
+Marks, Alex, and Elizabeth Rylott. n.d. <span>“Nickel <span>Dosing</span> <span>Arabidopsis</span> Thaliana <span>RNA</span>-Seq.”</span>
 </div>
 <div id="ref-nestorowa2016" class="csl-entry" role="listitem">
 Nestorowa, Sonia, Fiona K. Hamey, Blanca Pijuan Sala, Evangelia Diamanti, Mairi Shepherd, Elisa Laurenti, Nicola K. Wilson, David G. Kent, and Berthold Göttgens. 2016. <span>“A Single-Cell Resolution Map of Mouse Hematopoietic Stem and Progenitor Cell Differentiation.”</span> <em>Blood</em> 128 (8): e20–31. <a href="https://doi.org/10.1182/blood-2016-05-716480">https://doi.org/10.1182/blood-2016-05-716480</a>.
