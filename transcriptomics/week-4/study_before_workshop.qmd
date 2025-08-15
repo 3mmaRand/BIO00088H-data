@@ -67,7 +67,7 @@ Workshop](../week-3/workshop.html) including:
 
     -   data-raw: `arabidopsis-root.csv`, `arabidopsis-aerial.csv`
     -   data-processed: `root_filtered.csv`, `aerial_filtered.csv`
-    -   Two scripts: `cont-low-root.R`, `cont-low-aerial.R.R`
+    -   Two scripts: `cont-low-root.R`, `cont-low-aerial.R`
 
 ## 💉 *Leishmania*
 
