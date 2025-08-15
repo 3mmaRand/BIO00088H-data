@@ -63,11 +63,11 @@ Workshop](../week-4/workshop.html) including:
 
 -   An RStudio Project called `arab-88H` which contains:
 
-    -   data-raw: `arabidopsis-wild.csv`, `arabidopsis-spl7.csv`
-    -   data-processed: `wild_filtered.csv`, `spl7_filtered.csv`
-    -   results: `wild_suf_only.csv`, wild-\_def_only.csv,
-        `wild_results.csv`, and equivalents for spl7
-    -   Two scripts: `suff-def-wild.R`, `suff-def-spl7.R`
+    -   data-raw: `arabidopsis-root.csv`, `arabidopsis-aerial.csv`
+    -   data-processed: `root_filtered.csv`, `aerial_filtered.csv`
+    -   results: `root_cont_only.csv`, root_lowni_only.csv,
+        `root_results.csv`, and equivalents for aerial
+    -   Two scripts: `cont-low-root.R`, `cont-low-aerial.R`
 
 ## 💉 *Leishmania*
 
@@ -234,15 +234,17 @@ you expect general patterns in gene expression that distinguish groups.
 -   They are just a scatter of the adjusted *p* value against the fold
     change....
 
--   almost - in fact we plot the negative log of the adjusted *p* value
-    against the log fold change
+-   *almost* - in fact, we plot the **negative log of the adjusted
+    *p*-value** against the log fold change
+
+Why?
 :::
 
 ## Volcano plots
 
 ::: {style="font-size: 70%;"}
--   This is because small probabilities are important, large ones are
-    not so the axis is counter intuitive because small *p*-values
+-   It is because small probabilities are important, large ones are not
+    which means the axis is counter intuitive because small *p*-values
     (*i.e.*, significant values) are at the bottom of the axis)
 
 -   And since *p*-values range from 1 to very tiny the important points

@@ -13,9 +13,9 @@ You need only do the section for your own project data
 
 ## 🎄 *Arabidopisis*
 
-🎬 Open your `arab-88H` Project. Make a new script, `suff-def-spl7.R`,
-and, using `suff-def-wild.R` as a template, repeat the analysis on the
-*spl7* mutants.
+🎬 Open your `arab-88H` Project. Make a new script, `cont-low-aerial.R`,
+and, using `cont-low-root.R` as a template, repeat the analysis on the
+aerial tissue.
 
 ## 💉 *Leishmania*
 

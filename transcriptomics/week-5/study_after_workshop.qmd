@@ -15,12 +15,11 @@ You need only do the section for your own project data
 
 🎄 *Arabidopisis*
 
-🎬 Open your `arab-88H` RStudio Project and the `suff-def-spl7.R` script
-you began in the Consolidation study of Transcriptomics 1 and continued
-to work on in Transcriptomics 2. Use the code you used in the workshop
-(in `suff-def-wild.R`) as a template to visualise the results for the
-comparison between the copper sufficient and deficient conditions in
-*spl7*.
+🎬 Open your `arab-88H` RStudio Project and the `cont-low-aerial.R`
+script you began in the Consolidation study of Transcriptomics 1 and
+continued to work on in Transcriptomics 2. Use the code you used in the
+workshop (in `cont-low-root.R`) as a template to visualise the results
+for the comparison between the control and low nickel in roots.
 
 💉 *Leishmania*
 

@@ -13,10 +13,10 @@ You need only do the section for your own project data
 
 🎄 *Arabidopsis*
 
-🎬 Open your `arab-88H` RStudio Project and the `suff-def-spl7.R` script
-you began in the Consolidation study last week. Use the differential
-expression analysis you did in the workshop (in `suff-def-wild.R`) as a
-template to continue your script.
+🎬 Open your `arab-88H` RStudio Project and the `cont-low-aerial.R`
+script you began in the Consolidation study last week. Use the
+differential expression analysis you did in the workshop (in
+`cont-low-root.R`) as a template to continue your script.
 
 💉 *Leishmania*
 
