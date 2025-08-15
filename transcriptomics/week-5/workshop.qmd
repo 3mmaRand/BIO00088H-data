@@ -29,7 +29,7 @@ term enrichment analysis.~~
 
 ## 🎄 *Arabidopsis*
 
-🎬 Open the `arabi-88H` RStudio Project and the `wildsuf-wilddef.R`
+🎬 Open the `arabi-88H` RStudio Project and the `cont-low-root.R`
 script.
 
 ## 💉 *Leishmania*
@@ -90,7 +90,7 @@ made.
 #---CODING ANSWER---
 # 🎄  Arabidopisis
 # import results data
-wild_results <- read_csv("results/wild_results.csv")
+root_results <- read_csv("results/root_results.csv")
 
 ```
 
@@ -119,22 +119,22 @@ the dataframes (perhaps using `glimpse()`)
 #| include: false
 #---CODING ANSWER---
 # 🎄  Arabidopisis
-glimpse(wild_results)
+glimpse(root_results)
 ```
 
 <!-- #---THINKING ANSWER--- -->
 
-<!-- You have data with 13 columns and 26355 rows. The rows are the genes. -->
+<!-- You have data with 21 columns and 21485 rows. The rows are the genes. -->
 
-<!-- The columns are the normalised counts for for each of the 4 -->
+<!-- The columns are the normalised counts for for each of the 12 -->
 
-<!-- samples, the mean of the normalised counts, the gene id, -->
+<!-- root samples, the mean of the normalised counts, the gene id, -->
 
 <!-- the gene name and a description. -->
 
 <!-- You also have the results of a statistical comparison between -->
 
-<!-- the Cu sufficient and Cu deficient conditions, the log fold change,  -->
+<!-- the control and low nickel conditions, the log fold change,  -->
 
 <!-- the test statistic, the p-value and the adjusted p-value -->
 
@@ -209,7 +209,7 @@ meta <- read_table("meta/arab_meta_data.txt")
 
 # We only need the wild
 meta_wild <- meta |>
-  filter(genotype == "wt")
+  filter(tissue == "root")
 ```
 
 ```{r}
@@ -276,7 +276,9 @@ where:
 -   `xxxx_results` is the name of the dataframe of results
 -   `pattern` matches the starting letters for all of the normalised
     counts so that `starts_with("pattern")` gives the selection of
-    columns to transform
+    columns to transform. If you need to select columns that start with
+    different patterns, you can use:
+    `c(starts_with("pattern1"), starts_with("pattern2"))`
 -   the bit after the `\(x)` is the function we want to apply to the
     selected columns
 -   the `\(x)` means it is an "anonymous" function which means we don't
@@ -291,15 +293,15 @@ workshop](https://posit-conf-2024.github.io/programming-r/)
 ## 🎄 *Arabidopsis* and 💉 *Leishmania*
 
 🎬 Design the code to log~2~ transform the normalised counts using the
-template given
+template given:
 
 ```{r}
 #| include: false
 #---CODING ANSWER---
 # 🎄 Arabidopsis
 # log2 transform the counts plus a tiny amount to avoid log(0)
-wild_results <- wild_results |>
-  mutate(across(starts_with("SRX"),
+root_results <- root_results |>
+  mutate(across(c(starts_with("CTR"), starts_with("LWR")),
                 \(x) log2(x + 0.001),
                 .names = "log2_{.col}"))
 ```
@@ -361,7 +363,7 @@ Note that you determine the significance level using the adjusted
 #---CODING ANSWER---
 # 🎄 Arabidopsis
 # create a dataframe of genes significant at 0.05 level
-wild_results_sig0.05 <- wild_results |> 
+root_results_sig0.05 <- root_results |> 
   filter(padj <= 0.05)
 
 ```
@@ -392,7 +394,7 @@ pro_meta_results_sig0.05 <- pro_meta_results |>
 
 <!-- 🎄 Arabidopsis  -->
 
-<!-- 12 genes are significant at the 0.05 level. -->
+<!-- 13489 genes are significant at the 0.05 level. -->
 
 <!-- 💉 leishmania  -->
 
@@ -409,7 +411,16 @@ you may want to consider a more stringent cut-off such as 0.01.
 
 ```{r}
 #| include: false
+
 #---CODING ANSWER---
+# 💉🎄 Arabidopsis
+# create a dataframe of genes significant at 0.01 level
+root_results_sig0.01 <- root_results |> 
+   filter(padj <= 0.01)
+
+# there are still 11520 genes significant at the 0.01 level!
+
+
 # 💉 Leishmania
 # create a dataframe of genes significant at 0.01 level
 pro_meta_results_sig0.01 <- pro_meta_results |> 
@@ -428,8 +439,10 @@ name as you used for the dataframe.
 #---CODING ANSWER---
 # 🎄 Arabidopsis
 # write to csv file
-write_csv(wild_results_sig0.05, 
-          file = "results/wild_results_sig0.05.csv")
+write_csv(root_results_sig0.05, 
+          file = "results/root_results_sig0.05.csv")
+write_csv(root_results_sig0.01, 
+          file = "results/root_results_sig0.01.csv")
 ```
 
 ```{r}
@@ -489,16 +502,16 @@ independent study.
 
 Now go to PCA for:
 
--   [🎄 Arabidopsis](#arabidopsis-1)
--   [💉 Leishmania](#leishmania-1)
--   [🐭 Stem cells](#stem-cells-2)
+-   [🎄 Arabidopsis](#arabidopsis-pca)
+-   [💉 Leishmania](#leishmania-pca)
+-   [🐭 Stem cells](#stem-cells-pca)
 
-## 🎄 *Arabidopsis* {#arabidopsis-1}
+## 🎄 *Arabidopsis* {#arabidopsis-pca}
 
 🎬 Transpose the log~2~ transformed normalised counts:
 
 ```{r}
-wild_log2_trans <- wild_results |> 
+root_log2_trans <- root_results |> 
   select(starts_with("log2_")) |>
   t() |> 
   data.frame()
@@ -514,13 +527,13 @@ to the gene ids.
 🎬 Set the column names to the gene ids:
 
 ```{r}
-colnames(wild_log2_trans) <- wild_results$gene_id
+colnames(root_log2_trans) <- root_results$gene_id
 ```
 
 🎬 Perform PCA on the log~2~ transformed normalised counts:
 
 ```{r}
-pca <- wild_log2_trans |>
+pca <- root_log2_trans |>
   prcomp(rank. = 4, scale = TRUE)
 ```
 
@@ -538,10 +551,10 @@ summary(pca)
 
 The Proportion of Variance tells us how much of the variance is
 explained by each component. We can see that the first component
-explains 0.5742 of the variance, the second 0.2786, and the third
-0.1472. Together the first three components explain nearly 100% of the
+explains 0.5081 of the variance, the second 0.1053, and the third
+0.07615. Together the first three components explain nearly 70% of the
 total variance in the data. Plotting PC1 against PC2 will capture about
-92% of the variance which is very likely very much better than we would
+61% of the variance which is very likely very much better than we would
 get plotting any two genes against each other. To plot the PC1 against
 PC2 we will need to extract the PC1 and PC2 "scores" from the PCA object
 and add labels for the samples. Those labels will come from the row
@@ -552,7 +565,7 @@ metadata.
 the `log2` prefix which we can removed for labelling:
 
 ```{r}
-sample_id <- row.names(wild_log2_trans) |> str_remove("log2_")
+sample_id <- row.names(root_log2_trans) |> str_remove("log2_")
 ```
 
 You might want to check the result.
@@ -587,28 +600,26 @@ The dataframe should look like this:
 knitr::kable(pca_labelled)
 ```
 
-The next task is to plot PC2 against PC1 and colour by copper
+The next task is to plot PC2 against PC1 and colour by nickel
 conditions. This is just a scatterplot so we can use `geom_point()`. We
 will use colour to indicate the copper conditions.
 
-🎬 Plot PC2 against PC1 and colour by copper conditions:
+🎬 Plot PC2 against PC1 and colour by nickel conditions:
 
 ```{r}
 pca_labelled |> 
-  ggplot(aes(x = PC3, y = PC2, 
-             colour = copper)) +
+  ggplot(aes(x = PC1, y = PC2, 
+             colour = nickel)) +
   geom_point(size = 3) +
   theme_classic()
 
 ```
 
-We do not see particularly good separation between treatments, though
-perhaps there is some separation between the copper sufficient and
-copper deficient on PC2. It is also difficult to see if the replicates
-cluster together (the treatments separate) when there are only two reps.
-You can also try plotting PC3 or PC4.
+We see particularly good separation between treatments, on PC1 --
+samples with the same treatment cluster together. You can also try
+plotting PC3 or PC4.
 
-I prefer to customise the colours and shapes. I especially like the\
+I prefer to customise the colours and shapes. I especially like the
 viridis colour scales which provide colour scales that are perceptually
 uniform in both colour and black-and-white. They are also designed to be
 perceived by viewers with common forms of colour blindness. See
@@ -630,17 +641,17 @@ label for the legend.
 ```{r}
 pca_labelled |> 
   ggplot(aes(x = PC1, y = PC2, 
-             colour = copper)) +
+             colour = nickel)) +
   geom_point(size = 3) +
   scale_colour_viridis_d(end = 0.95, begin = 0.15,
-                         name = "Copper") +
+                         name = "Nickel") +
   theme_classic()
 
 ```
 
-Now go to Volcano plots for [🎄 Arabidopsis](#arabidopsis-2)
+Now go to Volcano plots for [🎄 Arabidopsis](#arabidopsis-volcano)
 
-## 💉 *Leishmania* {#leishmania-1}
+## 💉 *Leishmania* {#leishmania-pca}
 
 🎬 Transpose the log~2~ transformed normalised counts:
 
@@ -780,9 +791,9 @@ pca_labelled |>
 
 ```
 
-Now go to Volcano plots for [💉 Leishmania](#leishmania-2)
+Now go to Volcano plots for [💉 Leishmania](#leishmania-volcano)
 
-## 🐭 Stem cells {#stem-cells-2}
+## 🐭 Stem cells {#stem-cells-pca}
 
 🎬 Transpose the log~2~ transformed normalised counts:
 
@@ -958,7 +969,7 @@ pca_labelled |>
 
 ```
 
-Now go to Volcano plots for [🐭 Stem cells](#stem-cells-3)
+Now go to Volcano plots for [🐭 Stem cells](#stem-cells-volcano)
 
 # Visualise all the results with a volcano plot
 
@@ -968,7 +979,7 @@ study](study_before_workshop.html) explained, we plot -log~10~(adjusted
 *p*-value) on the *y*-axis so that the most significant genes are
 uppermost.
 
-## 🎄 *Arabidopsis* {#arabidopsis-2}
+## 🎄 *Arabidopsis* {#arabidopsis-volcano}
 
 We will add a column to the results dataframe that contains the
 -log~10~(padj). You could perform this transformation within the plot
@@ -978,18 +989,18 @@ command without adding a column to the data if you prefer.
 -log~10~(padj):
 
 ```{r}
-wild_results <- wild_results |> 
+root_results <- root_results |> 
   mutate(log10_padj = -log10(padj)) 
 ```
 
 🎬 Create a volcano plot of the results:
 
 ```{r}
-wild_results |> 
+root_results |> 
   ggplot(aes(x = log2FoldChange, 
              y = log10_padj)) +
   geom_point() +
-  geom_hline(yintercept = -log10(0.05), 
+  geom_hline(yintercept = -log10(0.01), 
              linetype = "dashed") +
   geom_vline(xintercept = 2, 
              linetype = "dashed") +
@@ -1002,22 +1013,21 @@ wild_results |>
 
 ```
 
-Our dashed lines are at -log~10~(0.05) and log~2~(2) and log~2~(-2) to
+Our dashed lines are at -log~10~(0.01) and log~2~(2) and log~2~(-2) to
 make more clear which genes (points) are significantly different between
-the copper sufficient and deficient conditions samples and have a fold
-change of at least 2.
+the control and low nickel conditions samples and have a fold change of
+at least 2.
 
-In most cases, people colour the points to show that the quadrants. I
-like to add columns to the dataframe to indicate if the gene is
-significant and if the fold change is large and use those variables in
-the plot.
+In most cases, people colour the points to show each quadrant. I like to
+add columns to the dataframe to indicate if the gene is significant and
+if the fold change is large and use those variables in the plot.
 
 🎬 Add columns to the results dataframe to indicate if the gene is
 significant and if the fold change is large:
 
 ```{r}
-wild_results <- wild_results |> 
-  mutate(sig = padj <= 0.05,
+root_results <- root_results |> 
+  mutate(sig = padj <= 0.01,
          bigfc = abs(log2FoldChange) >= 2) 
 ```
 
@@ -1035,20 +1045,16 @@ to create four categories:
 And I use `scale_colour_manual()` to set the colours for these
 categories.
 
-NOTE: there are no "significant and not large fold change (TF)" in this
-case.This means we do not need four colours. I have put the "pink"
-colour in the code but commented it out.
-
 🎬 Create a volcano plot of the results with the points coloured by
 significance and fold change:
 
 ```{r}
-wild_results |> 
+root_results |> 
   ggplot(aes(x = log2FoldChange, 
              y = log10_padj, 
              colour = interaction(sig, bigfc))) +
   geom_point() +
-  geom_hline(yintercept = -log10(0.05), 
+  geom_hline(yintercept = -log10(0.01), 
              linetype = "dashed") +
   geom_vline(xintercept = 2, 
              linetype = "dashed") +
@@ -1057,7 +1063,7 @@ wild_results |>
   scale_x_continuous(expand = c(0, 0)) +
   scale_y_continuous(expand = c(0, 0)) +
   scale_colour_manual(values = c("gray", 
-                                # "pink",
+                                 "pink",
                                  "gray30",
                                  "deeppink")) +
   theme_classic() +
@@ -1073,7 +1079,6 @@ adding labels so that they don't overlap.
 🎬 Load the package:
 
 ```{r}
-#| eval: false
 library(ggrepel)
 ```
 
@@ -1081,12 +1086,12 @@ library(ggrepel)
 
 ```{r}
 
-wild_results |> 
+root_results |> 
   ggplot(aes(x = log2FoldChange, 
              y = log10_padj, 
              colour = interaction(sig, bigfc))) +
   geom_point() +
-  geom_hline(yintercept = -log10(0.05), 
+  geom_hline(yintercept = -log10(0.01), 
              linetype = "dashed") +
   geom_vline(xintercept = 2, 
              linetype = "dashed") +
@@ -1095,10 +1100,10 @@ wild_results |>
   scale_x_continuous(expand = c(0, 0)) +
   scale_y_continuous(expand = c(0, 0)) +
   scale_colour_manual(values = c("gray", 
-                               #  "pink",
+                                 "pink",
                                  "gray30",
                                  "deeppink")) +
-  geom_text_repel(data = wild_results |> 
+  geom_text_repel(data = root_results |> 
                     filter(bigfc == TRUE, sig == TRUE),
                   aes(label = external_gene_name),
                   size = 3,
@@ -1113,8 +1118,8 @@ significant and have a large fold change. In systems you are familiar
 with, this labelling is very informative and can help you quickly
 identify common themes. Key to interpreting the volcano plot is to
 remember that positive fold changes means the gene is up-regulated in
-the sufficient conditions and negative fold changes means the gene is
-down-regulated (i.e., higher in the deficient). This was determined by
+the control conditions and negative fold changes means the gene is
+down-regulated (i.e., higher in the low nickel). This was determined by
 the order of the treatments in the [contrast used in the DESeq2
 analysis](../week-4/workshop.html#differential-expression-analysis-2)
 
@@ -1129,15 +1134,15 @@ data to only include the gene of interest. I have used and then use
 a box and nudged it's position to get a line connecting the point and
 the label. I have also increased the size of the point.
 
-🎬 Add a label to one gene of interest (hoxb9.S) and :
+🎬 Add a label to one gene of interest (TBP1) and :
 
 ```{r}
-wild_results |> 
+root_results |> 
   ggplot(aes(x = log2FoldChange, 
              y = log10_padj, 
              colour = interaction(sig, bigfc))) +
   geom_point() +
-  geom_hline(yintercept = -log10(0.05), 
+  geom_hline(yintercept = -log10(0.01), 
              linetype = "dashed") +
   geom_vline(xintercept = 2, 
              linetype = "dashed") +
@@ -1146,17 +1151,17 @@ wild_results |>
   scale_x_continuous(expand = c(0, 0)) +
   scale_y_continuous(expand = c(0, 0)) +
   scale_colour_manual(values = c("gray", 
-                               #  "pink",
+                                 "pink",
                                  "gray30",
                                  "deeppink")) +
-  geom_label_repel(data = wild_results |> 
-                    filter(external_gene_name == "FRO4"),
+  geom_label_repel(data = root_results |> 
+                    filter(external_gene_name == "TBP1"),
                   aes(label = external_gene_name),
                   size = 4,
                   nudge_x = .5,
                   nudge_y = 1.5) +
-  geom_point(data = wild_results |> 
-                    filter(external_gene_name == "FRO4"),
+  geom_point(data = root_results |> 
+                    filter(external_gene_name == "TBP1"),
                 size = 3) +
   theme_classic() +
   theme(legend.position = "none")
@@ -1164,11 +1169,11 @@ wild_results |>
 ```
 
 Should you want to label more than one gene, you will need to use (for
-example): `filter(external_gene_name %in% c("FRO4", "FRO5"))`
+example): `filter(external_gene_name %in% c("TBP1", "TRPN1"))`
 
 Now go to [Save your plots](#save-your-plots)
 
-## 💉 *Leishmania* {#leishmania-2}
+## 💉 *Leishmania* {#leishmania-volcano}
 
 We will add a column to the results dataframe that contains the
 -log~10~(padj). You could perform this transformation within the plot
@@ -1403,7 +1408,7 @@ example):
 
 Now go to [Save your plots](#save-your-plots)
 
-## 🐭 Stem cells {#stem-cells-3}
+## 🐭 Stem cells {#stem-cells-volcano}
 
 We will add a column to the results dataframe that contains the
 -log~10~(FDR). You could perform this transformation within the plot
@@ -1620,7 +1625,7 @@ ggsave("figures/my-informative-file-name.png",
 I recommend saving your figure in the approximate size it will appear in
 your report, that is, don't resize it in word/google docs. This because
 the font will then be an appropriate size for the report. For journals,
-we often have to creat figure files of very high resolution. You can do
+we often have to create figure files of very high resolution. You can do
 this by increasing the `height` and `width` and then resizing the figure
 in the document. however, this requires resizing the all font and lines
 in the figure. I also recommend saving it as a png file as this is a
@@ -1655,11 +1660,9 @@ visible on the webpage.
 The [workshop.qmd](workshop.qmd) file is the file I use to compile the
 practical. Qmd stands for Quarto markdown. It allows code and ordinary
 text to be interleaved to produce well-formatted reports including
-webpages. Right-click on the link and choose Save-As to download. You
-will be able to open the Qmd file in RStudio. Alternatively, [View in
-Browser](https://github.com/3mmaRand/BIO00088H-data/blob/main/transcriptomics/week-5/workshop.qmd).
-Coding and thinking answers are marked with `#---CODING ANSWER---` and
-`#---THINKING ANSWER---`
+webpages. View the source code for this workshop using the `</> Code`
+button at the top of the page. Coding and thinking answers are marked
+with `#---CODING ANSWER---` and `#---THINKING ANSWER---`
 
 Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr`
 [@knitr1; @knitr2; @knitr3], `kableExtra` [@kableExtra]
