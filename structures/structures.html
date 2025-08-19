@@ -75,7 +75,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-72ac799c4abbddf31cb463dd8fc99f5d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark-25ac7be22ffa75a8e8541e30a6dcc9a3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-72ac799c4abbddf31cb463dd8fc99f5d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-72ac799c4abbddf31cb463dd8fc99f5d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -308,8 +311,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
   </li>  
 </ul>
 </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools tools-wide">
-    <a href="https://twitter.com/er_13" title="Emma's Twitter" class="quarto-navigation-tool px-1" aria-label="Emma's Twitter"><i class="bi bi-twitter"></i></a>
+            <div class="quarto-navbar-tools">
     <a href="https://github.com/3mmaRand/BIO00088H-data" title="BIO00088H-data GitHub" class="quarto-navigation-tool px-1" aria-label="BIO00088H-data GitHub"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -354,7 +356,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 </li>
   </ul>
 </li>
-  </ul></nav>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/3mmaRand/BIO00088H-data/edit/main/structures/structures.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div><div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="#"><i class="bi bi-chat-left-dots"></i>Make a suggestion</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
@@ -369,7 +371,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">15 August, 2025</p>
+      <p class="date">19 August, 2025</p>
     </div>
   </div>
   
@@ -405,7 +407,7 @@ Successfully installed pip-23.3.1 setuptools-69.0.2 wheel-0.41.3</code></pre>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pip install wget</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> pip install gemmi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Note: On my windows laptop at home, I also had to install C++ Build Tools to be able to install the <code>gemmi</code> python package. If this is true for you, you will get a fail message telling you to install C++ build tools if you need them. These are from https://visualstudio.microsoft.com/visual-cpp-build-tools/ You need to check the Workloads tab and select C++ build tools.</p>
-<p><img src="images/ms-build-tools-options.png" class="img-fluid" alt="Workloads tab showing the C++ build tools selected"></p>
+<p><a href="images/ms-build-tools-options.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="images/ms-build-tools-options.png" class="img-fluid" alt="Workloads tab showing the C++ build tools selected"></a></p>
 <p>You can then install the gemmi package again.</p>
 <p>I think that’s it! You can now download the RStudio project and run each chunk in the quarto document.</p>
 <p>There is an example RStudio project here: <a href="https://github.com/3mmaRand/structure-analysis">structure-analysis</a>. You can also download the project as a zip file from there but there is some code that will do that automatically for you. Since this is an RStudio Project, do not run the code from inside a project. You may want to navigate to a particular directory or edit the <code>destdir</code>:</p>
@@ -972,20 +974,13 @@ Successfully installed pip-23.3.1 setuptools-69.0.2 wheel-0.41.3</code></pre>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    </div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/3mmaRand/BIO00088H-data/edit/main/structures/structures.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
-<li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/er_13">
-      <i class="bi bi-twitter" role="img" aria-label="Twitter">
-</i> 
-    </a>
-  </li>  
-    <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/3mmaRand/BIO00088H-data">
-      <i class="bi bi-github" role="img" aria-label="BIO00088H-data GitHub">
-</i> 
-    </a>
+<li class="nav-item">
+    <a class="nav-link" href="https://github.com/3mmaRand">
+<p>Emma on GitHub</p>
+</a>
   </li>  
 </ul>
 </div>
@@ -1006,7 +1001,38 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 });
-</script>
+</script><script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 </body></html>

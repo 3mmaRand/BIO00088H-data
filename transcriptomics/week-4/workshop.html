@@ -328,8 +328,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
   </li>  
 </ul>
 </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools tools-wide">
-    <a href="https://twitter.com/er_13" title="Emma's Twitter" class="quarto-navigation-tool px-1" aria-label="Emma's Twitter"><i class="bi bi-twitter"></i></a>
+            <div class="quarto-navbar-tools">
     <a href="https://github.com/3mmaRand/BIO00088H-data" title="BIO00088H-data GitHub" class="quarto-navigation-tool px-1" aria-label="BIO00088H-data GitHub"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -566,7 +565,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
   <li><a href="#independent-study-following-the-workshop" id="toc-independent-study-following-the-workshop" class="nav-link" data-scroll-target="#independent-study-following-the-workshop">Independent study following the workshop</a></li>
   <li><a href="#the-code-file" id="toc-the-code-file" class="nav-link" data-scroll-target="#the-code-file">The Code file</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  </ul></nav>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/3mmaRand/BIO00088H-data/edit/main/transcriptomics/week-4/workshop.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div><div class="quarto-other-links"><h2>Other Links</h2><ul><li><a href="#"><i class="bi bi-chat-left-dots"></i>Make a suggestion</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../transcriptomics/week-4/overview.html">Week 4: Statistical Analysis</a></li><li class="breadcrumb-item"><a href="../../transcriptomics/week-4/workshop.html">Workshop</a></li></ol></nav><div class="quarto-title">
@@ -588,7 +587,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">15 August, 2025</p>
+      <p class="date">19 August, 2025</p>
     </div>
   </div>
   
@@ -846,7 +845,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">root_count_mat</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">root_filtered</span><span class="op">$</span><span class="va">gene_id</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>You might want to view the matrix (click on it in your environment pane).</p>
-<p>The metadata are in a file, <a href="meta/arab_meta_data.txt">arab_meta_data.txt</a>. This is a tab-delimited file. The first column is the sample name and the other columns give the “treatments”. In this case, the treatments genotype (with two levels) and copper (with two levels).</p>
+<p>The metadata are in a file, <a href="meta/arab_meta_data.txt">arab_meta_data.txt</a>. This is a tab-delimited file. The first column is the sample name and the other columns give the “treatments”. In this case, the treatments are <code>tissue</code> (with two levels) and <code>nickel</code> (with two levels).</p>
 <p>🎬 Make a folder called <code>meta</code> and save the file to it.</p>
 <p>🎬 Read the metadata into a dataframe:</p>
 <div class="cell">
@@ -2438,8 +2437,8 @@ Zhu, Hao. 2021. <span>“kableExtra: Construct Complex Table with ’Kable’ an
 <span id="cb76-355"><a href="#cb76-355" aria-hidden="true" tabindex="-1"></a>The metadata are in a file,</span>
 <span id="cb76-356"><a href="#cb76-356" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">arab_meta_data.txt</span><span class="co">](meta/arab_meta_data.txt)</span>. This is a tab-delimited</span>
 <span id="cb76-357"><a href="#cb76-357" aria-hidden="true" tabindex="-1"></a>file. The first column is the sample name and the other columns give the</span>
-<span id="cb76-358"><a href="#cb76-358" aria-hidden="true" tabindex="-1"></a>"treatments". In this case, the treatments genotype (with two levels)</span>
-<span id="cb76-359"><a href="#cb76-359" aria-hidden="true" tabindex="-1"></a>and copper (with two levels).</span>
+<span id="cb76-358"><a href="#cb76-358" aria-hidden="true" tabindex="-1"></a>"treatments". In this case, the treatments are <span class="in">`tissue`</span> (with two</span>
+<span id="cb76-359"><a href="#cb76-359" aria-hidden="true" tabindex="-1"></a>levels) and <span class="in">`nickel`</span> (with two levels).</span>
 <span id="cb76-360"><a href="#cb76-360" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb76-361"><a href="#cb76-361" aria-hidden="true" tabindex="-1"></a>🎬 Make a folder called <span class="in">`meta`</span> and save the file to it.</span>
 <span id="cb76-362"><a href="#cb76-362" aria-hidden="true" tabindex="-1"></a></span>
@@ -3475,20 +3474,13 @@ Zhu, Hao. 2021. <span>“kableExtra: Construct Complex Table with ’Kable’ an
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    </div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/3mmaRand/BIO00088H-data/edit/main/transcriptomics/week-4/workshop.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
-<li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/er_13">
-      <i class="bi bi-twitter" role="img" aria-label="Twitter">
-</i> 
-    </a>
-  </li>  
-    <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/3mmaRand/BIO00088H-data">
-      <i class="bi bi-github" role="img" aria-label="BIO00088H-data GitHub">
-</i> 
-    </a>
+<li class="nav-item">
+    <a class="nav-link" href="https://github.com/3mmaRand">
+<p>Emma on GitHub</p>
+</a>
   </li>  
 </ul>
 </div>
