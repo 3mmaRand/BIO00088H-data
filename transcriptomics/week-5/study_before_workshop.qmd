@@ -65,7 +65,7 @@ Workshop](../week-4/workshop.html) including:
 
     -   data-raw: `arabidopsis-root.csv`, `arabidopsis-aerial.csv`
     -   data-processed: `root_filtered.csv`, `aerial_filtered.csv`
-    -   results: `root_cont_only.csv`, root_lowni_only.csv,
+    -   results: `root_cont_only.csv`, `root_lowni_only.csv`,
         `root_results.csv`, and equivalents for aerial
     -   Two scripts: `cont-low-root.R`, `cont-low-aerial.R`
 

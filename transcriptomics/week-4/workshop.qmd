@@ -327,8 +327,8 @@ pane).
 The metadata are in a file,
 [arab_meta_data.txt](meta/arab_meta_data.txt). This is a tab-delimited
 file. The first column is the sample name and the other columns give the
-"treatments". In this case, the treatments genotype (with two levels)
-and copper (with two levels).
+"treatments". In this case, the treatments are `tissue` (with two
+levels) and `nickel` (with two levels).
 
 🎬 Make a folder called `meta` and save the file to it.
 
