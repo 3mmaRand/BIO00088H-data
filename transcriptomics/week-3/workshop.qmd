@@ -1043,6 +1043,13 @@ write_csv(root_filtered,
           file = "data-processed/root_filtered.csv")
 ```
 
+```{r}
+#| echo: false
+#---UNDER THE HOOD CODE---
+write_csv(root_filtered, 
+          file = "../week-4/data-processed/root_filtered.csv")
+```
+
 Now go to [Look after future you](#arabidopsis-and-future-you)
 
 ## 💉 *Leishmania* {#leishmania-filterqc}
@@ -1090,6 +1097,13 @@ write_csv(pro_meta_filtered,
           file = "data-processed/pro_meta_filtered.csv")
 ```
 
+```{r}
+#| echo: false
+#---UNDER THE HOOD CODE---
+write_csv(pro_meta_filtered,  
+          file = "../week-4/data-processed/pro_meta_filtered.csv")
+```
+
 Now go to [Look after future you](#leishmania-and-future-you)
 
 ## 🐭 Stem cells {#stem-cells-filterqc}
@@ -1133,6 +1147,13 @@ Notice that we have summed across all the columns.
 ```{r}
 write_csv(hspc_prog, 
           file = "data-processed/hspc_prog.csv")
+```
+
+```{r}
+#| echo: false
+#---UNDER THE HOOD CODE---
+write_csv(hspc_prog, 
+          file = "../week-4/data-processed/hspc_prog.csv")
 ```
 
 Now go to [Look after future you](#stem-cells-and-future-you)
