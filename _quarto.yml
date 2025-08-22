@@ -176,6 +176,14 @@ format:
         </script>
     author-meta: Emma Rand
 
+params:
+  mouse: secretome    # or: surfaceome
+
+profile:
+  default: secretome # or: surfaceome
+
+
+
 bibliography: references.bib
 
 
