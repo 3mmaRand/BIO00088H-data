@@ -231,7 +231,7 @@ Emma Rand
 </div>
 </div>
 
-  <p class="date">19 August, 2025</p>
+  <p class="date">23 August, 2025</p>
 </section><section id="overview" class="slide level2"><h2>Overview</h2>
 <p>In these slides we will:</p>
 <ul>
@@ -269,44 +269,28 @@ Emma Rand
 <li><p>the <a href="../week-3/study_after_workshop.html">Independent Study to consolidate</a>, you should have:</p></li>
 </ul></section><section id="arabidopsis" class="slide level2"><h2>🎄 <em>Arabidopsis</em>
 </h2>
-<ul>
-<li>
 <p>An RStudio Project called <code>arab-88H</code> which contains:</p>
 <ul>
-<li>data-raw: <code>arabidopsis-root.csv</code>, <code>arabidopsis-aerial.csv</code>
-</li>
-<li>data-processed: <code>root_filtered.csv</code>, <code>aerial_filtered.csv</code>
-</li>
-<li>Two scripts: <code>cont-low-root.R</code>, <code>cont-low-aerial.R</code>
-</li>
-</ul>
-</li>
+<li><p>data-raw: <code>arabidopsis-root.csv</code>, <code>arabidopsis-aerial.csv</code></p></li>
+<li><p>data-processed: <code>root_filtered.csv</code>, <code>aerial_filtered.csv</code></p></li>
+<li><p>Two scripts: <code>cont-low-root.R</code>, <code>cont-low-aerial.R</code></p></li>
 </ul></section><section id="leishmania" class="slide level2"><h2>💉 <em>Leishmania</em>
 </h2>
-<ul>
-<li>
 <p>An RStudio Project called <code>leish-88H</code> which contains:</p>
-<ul>
-<li>data-raw: <code>leishmania-mex-ama.csv</code>, <code>leishmania-mex-pro.csv</code>, <code>leishmania-mex-meta.csv</code>
-</li>
-<li>data-processed: <code>pro_meta_filtered.csv</code>, <code>pro_ama_filtered.csv</code>
-</li>
-<li>Two scripts: <code>pro_meta.R</code>, <code>pro_ama.R</code>
-</li>
-</ul>
-</li>
-</ul></section><section id="stem-cells" class="slide level2"><h2>🐭 Stem cells</h2>
-<ul>
-<li>
+<pre><code>-   data-raw: `leishmania-mex-ama.csv`, `leishmania-mex-pro.csv`,
+    `leishmania-mex-meta.csv`
+-   data-processed: `pro_meta_filtered.csv`, `pro_ama_filtered.csv`
+-   Two scripts: `pro_meta.R`, `pro_ama.R`</code></pre>
+</section><section id="stem-cells" class="slide level2"><h2>🐭 Stem cells</h2>
 <p>An RStudio Project called <code>mice-88H</code> which contains</p>
 <ul>
-<li>data-raw: <code>surfaceome_hspc.csv</code>, <code>surfaceome_prog.csv</code>, <code>surfaceome_lthsc.csv</code>
+<li>data-raw: <code>secretome_hspc.csv</code>, <code>secretome_prog.csv</code>, <code>secretome_lthsc.csv</code>
 </li>
+</ul>
+<ul>
 <li>data-processed: <code>hspc_prog.csv</code>, <code>hspc_lthsc.csv</code>
 </li>
 <li>Two scripts: <code>hspc-prog.R</code>, <code>hspc-lthsc.R</code>
-</li>
-</ul>
 </li>
 </ul></section><section id="additionally" class="slide level2"><h2>Additionally…</h2>
 <p>Files should be organised into folders. Code should well commented and easy to read. You should have curated your code to remove unnecessary commands that were useful to troubleshoot or understand objects in your environment but which are not needed for the final analysis.</p>
@@ -454,19 +438,19 @@ which is a functional genomic resource for the Trypanosomatidae and Plasmodidae<
 <div style="font-size: 60%;">
 <p>Install <strong><code>BiocManager</code></strong> from CRAN in the the normal way:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Install <strong><code>DESeq2</code></strong> from Bioconductor using BiocManager:</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html">install</a></span><span class="op">(</span><span class="st">"DESeq2"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html">install</a></span><span class="op">(</span><span class="st">"DESeq2"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Install <strong><code>scran</code></strong> from Bioconductor using BiocManager:</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html">install</a></span><span class="op">(</span><span class="st">"scran"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html">install</a></span><span class="op">(</span><span class="st">"scran"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Install <strong><code>biomaRt</code></strong> from Bioconductor using BiocManager:</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html">install</a></span><span class="op">(</span><span class="st">"biomaRt"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html">install</a></span><span class="op">(</span><span class="st">"biomaRt"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section></section><section><section id="workshops" class="title-slide slide level1 center"><h1>Workshops</h1>
