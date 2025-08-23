@@ -293,7 +293,13 @@ design](https://cloud-span.github.io/experimental_design00-overview/)[@rand_stat
 
 -   Published in @nestorowa2016
 
--   Expression for a **subset of genes**, the surfaceome/secretome
+::: {.content-visible when-profile="surfaceome"}
+-   Expression for a **subset of genes**, the surfaceome
+:::
+
+::: {.content-visible when-profile="secretome"}
+-   Expression for a **subset of genes**, the secretome
+:::
 
 -   Values are log~2~ normalised values
 
