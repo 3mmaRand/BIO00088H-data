@@ -311,7 +311,13 @@ Like familiar tests:
 
 ## 🐭 Stem cells
 
+::: {.content-visible when-profile="surfaceome"}
 -   Expression for a *subset* of the transcriptome, the surfaceome
+:::
+
+::: {.content-visible when-profile="secretome"}
+-   Expression for a *subset* of the transcriptome, the secretome
+:::
 
 -   Values are log2 normalised values
 

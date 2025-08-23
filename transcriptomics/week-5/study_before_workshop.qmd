@@ -61,33 +61,41 @@ Workshop](../week-4/workshop.html) including:
 
 ## 🎄 *Arabidopisis*
 
--   An RStudio Project called `arab-88H` which contains:
+An RStudio Project called `arab-88H` which contains:
 
-    -   data-raw: `arabidopsis-root.csv`, `arabidopsis-aerial.csv`
-    -   data-processed: `root_filtered.csv`, `aerial_filtered.csv`
-    -   results: `root_cont_only.csv`, `root_lowni_only.csv`,
-        `root_results.csv`, and equivalents for aerial
-    -   Two scripts: `cont-low-root.R`, `cont-low-aerial.R`
+-   data-raw: `arabidopsis-root.csv`, `arabidopsis-aerial.csv`
+-   data-processed: `root_filtered.csv`, `aerial_filtered.csv`
+-   results: `root_cont_only.csv`, `root_lowni_only.csv`,
+    `root_results.csv`, and equivalents for aerial
+-   Two scripts: `cont-low-root.R`, `cont-low-aerial.R`
 
 ## 💉 *Leishmania*
 
--   An RStudio Project called `leish-88H` which contains:
+An RStudio Project called `leish-88H` which contains:
 
-    -   data-raw: `leishmania-mex-ama.csv`, `leishmania-mex-pro.csv`,
-        `leishmania-mex-meta.csv`
-    -   data-processed: `pro_meta_filtered.csv`, `pro_ama_filtered.csv`
-    -   results: `pro_meta_results.csv`, `pro_ama_results.csv`
-    -   Two scripts: `pro_meta.R`, `pro_ama.R`
+-   data-raw: `leishmania-mex-ama.csv`, `leishmania-mex-pro.csv`,
+    `leishmania-mex-meta.csv`
+-   data-processed: `pro_meta_filtered.csv`, `pro_ama_filtered.csv`
+-   results: `pro_meta_results.csv`, `pro_ama_results.csv`
+-   Two scripts: `pro_meta.R`, `pro_ama.R`
 
 ## 🐭 Stem cells
 
--   An RStudio Project called `mice-88H` which contains:
+An RStudio Project called `mice-88H` which contains:
 
-    -   data-raw: `surfaceome_hspc.csv`, `surfaceome_prog.csv`,
-        `surfaceome_lthsc.csv`
-    -   data-processed: `hspc_prog.csv`, `hspc_lthsc.csv`
-    -   results: `hspc_prog_results.csv`, `hspc-lthsc_results.csv`,
-    -   Two scripts: `hspc-prog.R`, `hspc-lthsc.R`
+::: {.content-visible when-profile="surfaceome"}
+-   data-raw: `surfaceome_hspc.csv`, `surfaceome_prog.csv`,
+    `surfaceome_lthsc.csv`
+:::
+
+::: {.content-visible when-profile="secretome"}
+-   data-raw: `secretome_hspc.csv`, `secretome_prog.csv`,
+    `secretome_lthsc.csv`
+:::
+
+-   data-processed: `hspc_prog.csv`, `hspc_lthsc.csv`
+-   results: `hspc_prog_results.csv`, `hspc-lthsc_results.csv`,
+-   Two scripts: `hspc-prog.R`, `hspc-lthsc.R`
 
 ## Additionally...
 
