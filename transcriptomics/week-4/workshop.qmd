@@ -13,6 +13,8 @@ bibliography: ../../references.bib
 editor: 
   markdown: 
     wrap: 72
+params:
+  mouse: secretome  # or: surfaceome
 ---
 
 # Introduction
@@ -1190,6 +1192,13 @@ root_results <- root_results |>
 write_csv(root_results, file = "results/root_results.csv")
 ```
 
+```{r}
+#| echo: false
+#---UNDER THE HOOD CODE---
+write_csv(root_results, 
+          file = "../week-5/results/root_results.csv")
+```
+
 Now go to [Look after future you](#look-after-future-you).
 
 ## 💉 *Leishmania* {#leishmania-add-info}
@@ -1238,6 +1247,13 @@ pro_meta_results <- pro_meta_results |>
 write_csv(pro_meta_results, file = "results/pro_meta_results.csv")
 ```
 
+```{r}
+#| echo: false
+#---UNDER THE HOOD CODE---
+write_csv(pro_meta_results, 
+          file = "../week-5/results/pro_meta_results.csv")
+```
+
 Now go to [Look after future you](#look-after-future-you).
 
 ## 🐭 Stem cells {#stem-cells-add-info}
@@ -1277,7 +1293,7 @@ listAttributes(mart = ensembl) |> View()
 
 ```
 
-There are many (2,988!) possible bits of information (attributes) that
+There are many (\~3000!) possible bits of information (attributes) that
 can be obtained.
 
 We use the `getBM()` function to retrieve information from the database.
@@ -1301,7 +1317,8 @@ gene_info <- getBM(filters = "ensembl_gene_id",
 
 You should view the resulting dataframe to see what information is
 available. You can use `glimpse()` or `View()`. Notice the dataframe
-returned only has 279 rows - one of the ids does not have information.
+returned only has `r nrow(gene_info)` rows - one of the ids does not
+have information.
 
 🎬 Merge the gene information with the results:
 
@@ -1315,6 +1332,13 @@ hspc_prog_results <- hspc_prog_results |>
 
 ```{r}
 write_csv(hspc_prog_results, file = "results/hspc_prog_results.csv")
+```
+
+```{r}
+#| echo: false
+#---UNDER THE HOOD CODE---
+write_csv(hspc_prog_results, 
+          file = "../week-5/results/hspc_prog_results.csv")
 ```
 
 Now go to [Look after future you](#look-after-future-you).

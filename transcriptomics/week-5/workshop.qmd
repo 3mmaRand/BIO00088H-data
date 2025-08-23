@@ -13,6 +13,8 @@ bibliography: ../../references.bib
 editor: 
   markdown: 
     wrap: 72
+params:
+  mouse: secretome  # or: surfaceome
 ---
 
 # Introduction
@@ -404,7 +406,9 @@ pro_meta_results_sig0.05 <- pro_meta_results |>
 
 <!-- 🐭 stemcells -->
 
-<!-- 182 genes are significant at the 0.05 level. -->
+<!-- 182 surfaceome / 282 secretome genes are significant -->
+
+<!-- at the 0.05 level. -->
 
 If you have a very large number of genes significant at the 0.05 level,
 you may want to consider a more stringent cut-off such as 0.01.
@@ -835,11 +839,15 @@ summary(pca)
 
 The Proportion of Variance tells us how much of the variance is
 explained by each component. We can see that the first component
-explains 0.1099 of the variance, the second 0.04874, and the third
-0.02498. Together the first three components explain 18% of the total
-variance in the data. This is not *that* high but it is also quite a lot
-better than than we would get plotting any two genes randomly chosen
-against each other.
+explains `r summary(pca)$importance["Proportion of Variance","PC1"]` of
+the variance, the second
+`r summary(pca)$importance["Proportion of Variance","PC2"]`, and the
+third `r summary(pca)$importance["Proportion of Variance","PC3"]`.
+Together the first three components explain
+`r summary(pca)$importance["Cumulative Proportion","PC3"] * 100`% of the
+total variance in the data. This is not *that* high but it is also quite
+a lot better than than we would get plotting any two genes randomly
+chosen against each other.
 
 To plot the PC1 against PC2 we will need to extract the PC1 and PC2
 "scores" from the PCA object and add labels for the cells. Our PCA
@@ -905,13 +913,17 @@ The third pattern is `([0-9]{3})`
 So the second pattern inside the second (...) will match exactly 3
 numbers (like 001 or 851).
 
-**Important**: Prog and HPSC have 4 letters. The column names, LT.HSPC\_
-have 6 characters and includes a dot. You will need to adjust the regex
-when make comparison between LT-HSC and other cell types. The pattern to
-match the `LT.HSC` as well as the `Prog` and `HSPC` is
-`([a-zA-Z.]{4,6})`. Note the dot inside the square brackets and numbers
-meaning 4 or 6 of. The pattern to match the underscore and the cell
+::: callout-tip
+## Important for applying to other comparisons
+
+Prog and HPSC have 4 letters. The column names with `LT.HSC_` have *6*
+characters *and* includes a dot. You will need to adjust the regex when
+comparing LT-HSC to other cell types. The pattern to match the `LT.HSC`
+as well as the `Prog` and `HSPC` is `([a-zA-Z.]{4,6})`. Note the dot
+inside the square brackets and numbers meaning either 4 or 6 of the
+characters in the `[]`. The pattern to match the underscore and the cell
 number is the same.
+:::
 
 The top of the dataframe should look like this (but with more decimal
 places)
@@ -1567,7 +1579,8 @@ include the gene of interest. I have used and then use
 a box and nudged it's position to get a line connecting the point and
 the label. I have also increased the size of the point.
 
-🎬 Add a label to one gene of interest (Procr) and :
+🎬 Add a label to one gene of interest Emilin2 (I made an arbitrary
+choice):
 
 ```{r}
 hspc_prog_results |> 
@@ -1588,13 +1601,11 @@ hspc_prog_results |>
                                 # "gray30",
                                  "deeppink")) +
   geom_label_repel(data = hspc_prog_results |> 
-                    filter(external_gene_name == "Procr"),
+                    filter(external_gene_name == "Emilin2"),
                   aes(label = external_gene_name),
-                  size = 4,
-                  nudge_x = .5,
-                  nudge_y = 1.5) +
+                  size = 4) +
   geom_point(data = hspc_prog_results |> 
-                    filter(external_gene_name == "Procr"),
+                    filter(external_gene_name == "Emilin2"),
                 size = 3) +
   theme_classic() +
   theme(legend.position = "none")
@@ -1602,7 +1613,7 @@ hspc_prog_results |>
 ```
 
 Should you want to label more than one gene, you will need to use (for
-example): `filter(external_gene_name %in% c("Procr", "Emb"))`
+example): `filter(external_gene_name %in% c("Emilin2", "Col5a1"))`
 
 Now go to [Save your plots](#save-your-plots)
 
@@ -1622,14 +1633,20 @@ ggsave("figures/my-informative-file-name.png",
        device = "png")
 ```
 
+::: callout-tip
+## Size of figures
+
 I recommend saving your figure in the approximate size it will appear in
 your report, that is, don't resize it in word/google docs. This because
-the font will then be an appropriate size for the report. For journals,
-we often have to create figure files of very high resolution. You can do
-this by increasing the `height` and `width` and then resizing the figure
-in the document. however, this requires resizing the all font and lines
-in the figure. I also recommend saving it as a png file as this is a
-lossless format.
+the font will then be an appropriate size for the report.
+
+If you need a particularly high resolution figure (eg for a Journal) you
+can do write a large image to file then resizing in the document.
+However, this requires resizing the all font and lines before write to
+file so the fonts are not too small.
+
+I also recommend saving it as a png file as this is a lossless format.
+:::
 
 # 🤗 Look after future you!
 

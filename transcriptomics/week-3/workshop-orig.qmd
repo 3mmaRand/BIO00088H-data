@@ -13,8 +13,6 @@ bibliography: ../../references.bib
 editor: 
   markdown: 
     wrap: 72
-params:
-  mouse: secretome  # or: surfaceome
 ---
 
 # Introduction
@@ -73,17 +71,9 @@ These are the three datasets. Each set compromises several files.
 
 🐭 Stem cells:
 
-::: {.content-visible when-profile="secretome"}
--   [secretome_hspc.csv](data-raw/secretome_hspc.csv)
--   [secretome_prog.csv](data-raw/secretome_prog.csv)
--   [secretome_lthsc.csv](data-raw/secretome_lthsc.csv)
-:::
-
-::: {.content-visible when-profile="surfaceome"}
 -   [surfaceome_hspc.csv](data-raw/surfaceome_hspc.csv)
 -   [surfaceome_prog.csv](data-raw/surfaceome_prog.csv)
 -   [surfaceome_lthsc.csv](data-raw/surfaceome_lthsc.csv)
-:::
 
 🎬 Save the files to `data-raw` and open them in Excel
 
@@ -738,38 +728,13 @@ Now go to [Filtering for QC](#leishmania-filterqc).
 
 Import the data for the HSPC and the Progenitor cells.
 
-::: {.content-visible when-profile="surfaceome"}
 🎬 Import [surfaceome_hspc.csv](data-raw/surfaceome_hspc.csv) and
-[surfaceome_prog.csv](data-raw/surfaceome_prog.csv)
-:::
-
-::: {.content-visible when-profile="secretome"}
-🎬 Import [secretome_hspc.csv](data-raw/secretome_hspc.csv) and
-[secretome_prog.csv](data-raw/secretome_prog.csv)
-:::
+[surfaceome_hspc.csv](data-raw/surfaceome_prog.csv)
 
 ```{r}
-#| label: load-secretome
-#| echo: !expr params$mouse == "secretome"
-#| eval: !expr params$mouse == "secretome"
-#| cache: true
-#| cache.extra: secretome
 # 🐭 import the hspc and prog data
-hspc  <- readr::read_csv("data-raw/secretome_hspc.csv")
-prog  <- readr::read_csv("data-raw/secretome_prog.csv")
-
-```
-
-```{r}
-#| label: load-surfaceome
-#| echo: !expr params$mouse == "surfaceome"
-#| eval: !expr params$mouse == "surfaceome"
-#| cache: true
-#| cache.extra: surfaceome
-# 🐭 import the hspc and prog data
-hspc  <- readr::read_csv("data-raw/surfaceome_hspc.csv")
-prog  <- readr::read_csv("data-raw/surfaceome_prog.csv")
-
+hspc <- read_csv("data-raw/surfaceome_hspc.csv")
+prog <- read_csv("data-raw/surfaceome_prog.csv")
 ```
 
 We will need to combine the two sets of columns (datasets) so we can
@@ -880,10 +845,8 @@ environment).
 
 Notice that: - a minimum value of 0 appears in all 1499 cells - the
 lower quartiles are all zero and so are many of the medians - there are
-no cells with above 0 expression in all `r nrow(hspc)` of the gene
-subset - the highest number of genes expressed is
-`r max(hspc_prog_summary_cell$n_above_zero)`, the lowest is
-`r min(hspc_prog_summary_cell$n_above_zero)`
+no cells with above 0 expression in all 280 of the gene subset - the
+highest number of genes expressed is 208, the lowest is 94
 
 In short, there are quite a lot of zeros.
 
@@ -967,14 +930,14 @@ hspc_prog_summary_gene <- hspc_prog |>
 🎬 View the `hspc_prog_summary_gene` dataframe. Remember these are
 normalised and logged (base 2) so we should not see very large values.
 
-Notice that:
+Notice that we have:
 
--   some genes are expressed in every cell, and many are expressed in
-    most cells
--   quite a few genes are zero in many cells. This this matters less
-    when we have many cells (samples) than when we have few samples.
--   no genes have zeros in every cell - the lowest number of cells is is
-    `r min(hspc_prog_summary_gene$n_above_zero)`
+-   some genes (7) expressed in every cell, and many expressed in most
+    cells
+-   quite a few genes with zero in many cells but this matters less when
+    we have many cells (samples) than when we have few samples.
+-   no genes with zeros in every cell - the lowest number of cells is
+    15. 
 
 It is again helpful to plot the ordered mean expression with pointrange
 to get an overview.
@@ -1043,13 +1006,6 @@ write_csv(root_filtered,
           file = "data-processed/root_filtered.csv")
 ```
 
-```{r}
-#| echo: false
-#---UNDER THE HOOD CODE---
-write_csv(root_filtered, 
-          file = "../week-4/data-processed/root_filtered.csv")
-```
-
 Now go to [Look after future you](#arabidopsis-and-future-you)
 
 ## 💉 *Leishmania* {#leishmania-filterqc}
@@ -1097,13 +1053,6 @@ write_csv(pro_meta_filtered,
           file = "data-processed/pro_meta_filtered.csv")
 ```
 
-```{r}
-#| echo: false
-#---UNDER THE HOOD CODE---
-write_csv(pro_meta_filtered,  
-          file = "../week-4/data-processed/pro_meta_filtered.csv")
-```
-
 Now go to [Look after future you](#leishmania-and-future-you)
 
 ## 🐭 Stem cells {#stem-cells-filterqc}
@@ -1138,22 +1087,13 @@ Notice that we have summed across all the columns.
 
 <!-- #---THINKING ANSWER--- -->
 
-<!-- The are no genes that are completely unexpressed in  -->
-
-<!-- this set of genes -->
+<!-- The are no genes that are completely unexpressed in this set of 280 genes -->
 
 🎬 Write combined data to file:
 
 ```{r}
 write_csv(hspc_prog, 
           file = "data-processed/hspc_prog.csv")
-```
-
-```{r}
-#| echo: false
-#---UNDER THE HOOD CODE---
-write_csv(hspc_prog, 
-          file = "../week-4/data-processed/hspc_prog.csv")
 ```
 
 Now go to [Look after future you](#stem-cells-and-future-you)
