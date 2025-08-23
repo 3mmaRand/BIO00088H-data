@@ -80,7 +80,7 @@
     "href": "transcriptomics/week-5/study_before_workshop.html#arabidopisis",
     "title": "Independent Study to prepare for workshop",
     "section": "🎄 Arabidopisis\n",
-    "text": "🎄 Arabidopisis\n\n\n\nAn RStudio Project called arab-88H which contains:\n\ndata-raw: arabidopsis-root.csv, arabidopsis-aerial.csv\n\ndata-processed: root_filtered.csv, aerial_filtered.csv\n\nresults: root_cont_only.csv, root_lowni_only.csv, root_results.csv, and equivalents for aerial\nTwo scripts: cont-low-root.R, cont-low-aerial.R",
+    "text": "🎄 Arabidopisis\n\nAn RStudio Project called arab-88H which contains:\n\ndata-raw: arabidopsis-root.csv, arabidopsis-aerial.csv\n\ndata-processed: root_filtered.csv, aerial_filtered.csv\n\nresults: root_cont_only.csv, root_lowni_only.csv, root_results.csv, and equivalents for aerial\nTwo scripts: cont-low-root.R, cont-low-aerial.R",
     "crumbs": [
       "Transcriptomics",
       "Week 5: Visualising and Interpreting",
@@ -92,7 +92,7 @@
     "href": "transcriptomics/week-5/study_before_workshop.html#leishmania",
     "title": "Independent Study to prepare for workshop",
     "section": "💉 Leishmania\n",
-    "text": "💉 Leishmania\n\n\n\nAn RStudio Project called leish-88H which contains:\n\ndata-raw: leishmania-mex-ama.csv, leishmania-mex-pro.csv, leishmania-mex-meta.csv\n\ndata-processed: pro_meta_filtered.csv, pro_ama_filtered.csv\n\nresults: pro_meta_results.csv, pro_ama_results.csv\n\nTwo scripts: pro_meta.R, pro_ama.R",
+    "text": "💉 Leishmania\n\nAn RStudio Project called leish-88H which contains:\n\ndata-raw: leishmania-mex-ama.csv, leishmania-mex-pro.csv, leishmania-mex-meta.csv\n\ndata-processed: pro_meta_filtered.csv, pro_ama_filtered.csv\n\nresults: pro_meta_results.csv, pro_ama_results.csv\n\nTwo scripts: pro_meta.R, pro_ama.R",
     "crumbs": [
       "Transcriptomics",
       "Week 5: Visualising and Interpreting",
@@ -104,7 +104,7 @@
     "href": "transcriptomics/week-5/study_before_workshop.html#stem-cells",
     "title": "Independent Study to prepare for workshop",
     "section": "🐭 Stem cells",
-    "text": "🐭 Stem cells\n\n\nAn RStudio Project called mice-88H which contains:\n\ndata-raw: surfaceome_hspc.csv, surfaceome_prog.csv, surfaceome_lthsc.csv\n\ndata-processed: hspc_prog.csv, hspc_lthsc.csv\n\nresults: hspc_prog_results.csv, hspc-lthsc_results.csv,\nTwo scripts: hspc-prog.R, hspc-lthsc.R",
+    "text": "🐭 Stem cells\nAn RStudio Project called mice-88H which contains:\n\ndata-raw: secretome_hspc.csv, secretome_prog.csv, secretome_lthsc.csv\n\n\n\ndata-processed: hspc_prog.csv, hspc_lthsc.csv\n\nresults: hspc_prog_results.csv, hspc-lthsc_results.csv,\nTwo scripts: hspc-prog.R, hspc-lthsc.R",
     "crumbs": [
       "Transcriptomics",
       "Week 5: Visualising and Interpreting",
@@ -2305,7 +2305,7 @@
     "href": "transcriptomics/week-4/study_before_workshop.html#stem-cells-1",
     "title": "Independent Study to prepare for workshop",
     "section": "🐭 Stem cells",
-    "text": "🐭 Stem cells\n\nExpression for a subset of the transcriptome, the surfaceome\nValues are log2 normalised values\nThe statistical analysis method we will use scran (Lun, McCarthy, and Marioni 2016) requires normalised values",
+    "text": "🐭 Stem cells\n\nExpression for a subset of the transcriptome, the secretome\n\n\nValues are log2 normalised values\nThe statistical analysis method we will use scran (Lun, McCarthy, and Marioni 2016) requires normalised values",
     "crumbs": [
       "Transcriptomics",
       "Week 4: Statistical Analysis",
