@@ -8,48 +8,60 @@ toc-location: right
 
 You are *either*
 
--   an integrated masters student doing BIO00088H Group Research Project *or*
--   an MSc Bioinformatics student doing BIO00070M Research, Professional and Team Skills
+-   an integrated masters student doing BIO00088H Group Research Project
+    *or*
+-   an MSc Bioinformatics student doing BIO00070M Research, Professional
+    and Team Skills
 
-Integrated masters students doing 88H will be doing one of these projects:
+Integrated masters students doing 88H will be doing one of these
+projects:
 
 The project types are:
 
-| Title                                                                         | Director        | Data analysis strand            |
-|-----------------------------------|-----------------|--------------------|
-| Identifying transcriptional targets of FGF signalling in Xenopus embryos.     | Betsy Pownall   | Transcriptomics, Emma Rand      |
-| Investigating the differentiation of stem cells in healthy bone marrow        | Jillian Barlow  | Transcriptomics, Emma Rand      |
-| Investigating  pathways involved in the Nickel detoxification in Willow       | Liz Rylott      | Transcriptomics, Emma Rand      |
-| Investigating differential RNA expression through the Leishmania lifecycle    | Pegine Walrad   | Transcriptomics, Emma Rand      |
-| Identifying novel proteins regulating synaptophagy                            | Richard Maguire | Image analysis, Richard Bingham |
-| Defining pathological cascades in dopaminergic neurons in a Parkinson's model | Sean Sweeney    | Image analysis, Richard Bingham |
-| Discovery proteins for biotech applications: new classes of antibody mimetics | Michael Plevin  | Structure Analysis, Jon Agirre  |
+| Title | Director | Data analysis strand |
+|----|----|----|
+| Investigating the differentiation of stem cells in healthy bone marrow | Jillian Barlow | Transcriptomics, Emma Rand |
+| Investigating  pathways involved in the Nickel detoxification in Willow | Liz Rylott | Transcriptomics, Emma Rand |
+| Investigating differential RNA expression through the Leishmania lifecycle | Pegine Walrad | Transcriptomics, Emma Rand |
+| Identifying novel proteins regulating synaptophagy | Richard Maguire | Image analysis, Richard Bingham |
+| Defining pathological cascades in dopaminergic neurons in a Parkinson's model | Sean Sweeney | Image analysis, Richard Bingham |
+| Discovery proteins for biotech applications: new classes of antibody mimetics | Michael Plevin | Structure Analysis, Jon Agirre |
+| Designing isoform-selective Src kinase inhibitors | Gareth Evans | Structure Analysis, Jon Agirre |
 
-Data Analysis compromises five workshops covering computational skills needed in your project. MSc Bioinformatics students do the Core workshops and the transcriptomics workshops as part of BIO00070M. The data analysis workshops are:
+Data Analysis compromises five workshops covering computational skills
+needed in your project. MSc Bioinformatics students do the Core
+workshops and the transcriptomics workshops as part of BIO00070M. The
+data analysis workshops are:
 
-| Week | Data Strand                                                                                                           |
-|-----------------|-------------------------------------------------------|
-| 2    | Core 1 Supporting Information - reproducibility, project-oriented workflow, naming things, cool code, handy shortcuts |
-| 3    | Strand specific 1                                                                                                     |
-| 4    | Strand specific 2                                                                                                     |
-| 5    | Strand specific 3                                                                                                     |
-| 6    | Core 2 Supporting Information - documenting with a README, curating code, non-coded processes                         |
-|      |                                                                                                                       |
+| Week | Data Strand |
+|----|----|
+| 2 | Core 1 Supporting Information - reproducibility, project-oriented workflow, naming things, cool code, handy shortcuts |
+| 3 | Strand specific 1 |
+| 4 | Strand specific 2 |
+| 5 | Strand specific 3 |
+| 6 | Core 2 Supporting Information - documenting with a README, curating code, non-coded processes |
+|  |  |
 
 ## Module Learning Outcome linked to this content
 
 Students who successfully complete this module will be able to
 
--   use appropriate computational techniques to reproducibly process, analyse and visualise data and generate scientific reports based on project work.
+-   use appropriate computational techniques to reproducibly process,
+    analyse and visualise data and generate scientific reports based on
+    project work.
 
 ## What is this site for?
 
-All material is on the VLE so why is this site useful? This site collects everything together in a searchable way. The search icon is on the top right.
+All material is on the VLE so why is this site useful? This site
+collects everything together in a searchable way. The search icon is on
+the top right.
 
 ## Please cite as
 
-Rand E (2024). Data Analysis for Group Project. https://3mmarand.github.io/BIO00088H-data/.
+Rand E (2024). Data Analysis for Group Project.
+https://3mmarand.github.io/BIO00088H-data/.
 
-Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr` [@knitr1; knitr2; knitr3], `kableExtra` [@kableExtra]
+Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr`
+[@knitr1; @knitr2; @knitr3], `kableExtra` [@kableExtra]
 
 References
