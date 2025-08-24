@@ -755,8 +755,8 @@ Import the data for the HSPC and the Progenitor cells.
 #| cache: true
 #| cache.extra: secretome
 # 🐭 import the hspc and prog data
-hspc  <- readr::read_csv("data-raw/secretome_hspc.csv")
-prog  <- readr::read_csv("data-raw/secretome_prog.csv")
+hspc  <- read_csv("data-raw/secretome_hspc.csv")
+prog  <- read_csv("data-raw/secretome_prog.csv")
 
 ```
 
@@ -767,8 +767,8 @@ prog  <- readr::read_csv("data-raw/secretome_prog.csv")
 #| cache: true
 #| cache.extra: surfaceome
 # 🐭 import the hspc and prog data
-hspc  <- readr::read_csv("data-raw/surfaceome_hspc.csv")
-prog  <- readr::read_csv("data-raw/surfaceome_prog.csv")
+hspc  <- read_csv("data-raw/surfaceome_hspc.csv")
+prog  <- read_csv("data-raw/surfaceome_prog.csv")
 
 ```
 
