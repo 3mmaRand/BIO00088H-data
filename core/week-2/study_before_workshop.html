@@ -447,7 +447,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">23 August, 2025</p>
+      <p class="date">24 August, 2025</p>
     </div>
   </div>
   
@@ -460,16 +460,15 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 
 
 <ol type="1">
-<li><p>📖 Read <a href="https://3mmarand.github.io/comp4biosci/file_systems.html">Understanding file systems</a>. This is an approximately 15 - 20 minute read revising file types and file systems. It covers concepts of working directories and paths. We learned these ideas in stage 1 and you may feel completely confident with them but many students will benefit from a refresher. For BIO00070M students, this is part of the work you will also be asked to complete for BIO00052M Data Analysis in R.</p></li>
-<li><p>📖 Read <a href="https://3mmarand.github.io/comp4biosci/workflow_rstudio.html">Workflow in RStudio</a>. You may find it helpful to remind yourself about RStudio Projects. In previous years, you have submitted an “RStudio Project” as part of your BABS work. In this module, you will submit “Supporting Information” for your Project Report. The Supporting Information is a documented and organised collection of all the digital parts of your research project. This includes data (or instructions for accessing data), code and/or non-coded processing, instructions for use, computational requirements and outputs. The Supporting Information could be a single RStudio Project (like you have done previously but with better documentation) or a folder that includes an RStudio Project and other material/scripts.</p></li>
-<li><p>Set up the Virtual Desktop. I very strongly recommend working on the University computers for this work. You will be using more specialised R packages than you might be used to. This is especially important if you often have difficulty updating and or installing software on your own machine, wouldn’t know what what version of R you are using or don’t realise there is a difference between R and RStudio. The uni machines always have up-to-date R and R packages and all the packages that appear in teaching materials. It is my responsibility to ensure everything works on here.</p></li>
+<li><p>📖 Read <a href="https://3mmarand.github.io/comp4biosci/file-systems.html">Understanding file systems</a>. This is an approximately 15 - 20 minute read revising file types and file systems. It covers concepts of working directories and paths. We learned these ideas in stage 1 and but if you don’t feel completely confident with revisting might help. For BIO00070M students, this is part of the work you will also be asked to complete for BIO00052M Data Analysis in R.</p></li>
+<li><p>📖 Read <a href="https://3mmarand.github.io/comp4biosci/workflow-rstudio.html">Workflow in RStudio</a>. You may find it helpful to remind yourself about RStudio Projects. In previous years, BIO00088H students have submitted an “RStudio Project” as part of your BABS work. Here, you will submit “Supporting Information” for your Project Report. The Supporting Information is a documented and organised collection of all the digital parts of your research project. This includes data (or instructions for accessing data), code and/or non-coded processing, instructions for use, computational requirements and outputs. The Supporting Information could be a single RStudio Project (like you have done previously but with better documentation) or a folder that includes an RStudio Project and other material/scripts. BIO00070M students do not need to submit “Supporting Information”.</p></li>
+<li><p>Set up the <a href="https://www.york.ac.uk/it-services/tools/vds/">Virtual Desktop Service</a>. I very strongly recommend working on the University computers for this work. You will be using more specialised R packages than you might be used to. This is especially important if you often have difficulty updating and or installing software on your own machine, wouldn’t know what what version of R you are using or don’t realise there is a difference between R and RStudio. The uni machines always have up-to-date R and R packages and all the packages that appear in teaching materials. It is our responsibility to ensure everything works on here. The <a href="https://www.york.ac.uk/it-services/tools/vds/">Virtual Desktop Service</a> allows you to log on to a university computer from your home computer. It means you can access all software and filestores. When using the VDS for R and RStudio, it usually makes sense to use other software - such as a browser or file explorer - also through the VDS.</p></li>
 </ol>
-<p>You can still work from home by using the <a href="https://www.york.ac.uk/it-services/tools/vds/">Virtual Desktop Service</a>. The VDS allows you to log on to a university computer from your own computer. It means you can access all software and filestores. When using the VDS for R and RStudio, it usually makes sense to use other software - such as a browser or file explorer - also through the VDS.</p>
 <p>If you are confident in your ability to set up your own machine, you need:</p>
 <ul>
 <li>to know the difference between R and RStudio</li>
-<li>to use R 4.4 and RStudio 2024.09.0 Build 375 (“Cranberry Hibiscus”)</li>
-<li>be certain you are actually using R 4.4 - it is written in the top edge of the console window. By default RStudio uses the latest version on R on your machine. However, windows users are able to change this to a “specific version”. You might have done that previously. Change it back using Tools | Global Options R version “Use your machine’s default 64-bit version of R”</li>
+<li>to use R 4.5 and RStudio 2025.05.0+496 “Mariposa Orchid” Release which includes Quarto 1.7.30 (C:/Program Files/Quarto/bin/quarto.exe)</li>
+<li>be certain you are actually using R 4.5 - it is written in the top edge of the console window. By default RStudio uses the latest version on R on your machine. However, windows users are able to change this to a “specific version”. You might have done that previously. Change it back using Tools | Global Options R version “Use your machine’s default 64-bit version of R”</li>
 <li>to make sure you do the independent study where it tells you what steps you need to take to get packages (and versions that are unlikely to cause issues) used in the workshop</li>
 </ul>
 <p>It is possible to access all your files on your university account without using the VDS. For example, if you want to work on uni machines at uni and your machine at home. You can best do this by mapping a drive: https://support.york.ac.uk/s/topic/0TO4K000000lA5ZWAU/filestores. If you store everything on google drive you can also read/write to that like any other drive using google drive app.</p>
@@ -955,48 +954,74 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="an">toc-location:</span><span class="co"> right</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>📖 Read  <span class="co">[</span><span class="ot">Understanding file systems</span><span class="co">](https://3mmarand.github.io/comp4biosci/file_systems.html)</span>. This is an approximately 15 - 20 minute read revising file types and file systems. It covers concepts of working directories and paths. We learned these ideas in stage 1 and you may feel completely confident with them but many students will benefit from a refresher. For BIO00070M students, this is part of the work you will also be asked to complete for BIO00052M Data Analysis in R.</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>📖 Read <span class="co">[</span><span class="ot">Workflow in RStudio</span><span class="co">](https://3mmarand.github.io/comp4biosci/workflow_rstudio.html)</span>. You may find it helpful to remind yourself about RStudio Projects. In previous years, you have submitted an "RStudio Project" as part of your BABS work. In this module, you will submit "Supporting Information" for your Project Report. The Supporting Information is a documented and organised collection of all the digital parts of your research project. This includes data (or instructions for accessing data), code and/or non-coded processing, instructions for use, computational requirements and outputs. The Supporting Information could be a single RStudio Project (like you have done previously but with better documentation) or a folder that includes an RStudio Project and other material/scripts.</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Set up the Virtual Desktop. I very strongly recommend working on </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>the University computers for this work. You will be using more specialised R </span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>packages than you might be used to. This is especially important if you often </span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>have difficulty updating and or installing software on your own machine,</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>wouldn't know what what version of R you are using or don't realise </span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>there is a difference between R and RStudio. The uni machines always</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>have up-to-date R and R packages and all the packages that appear in </span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>teaching materials. It is my responsibility to ensure everything works on here.</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>You can still work from home by using the <span class="co">[</span><span class="ot">Virtual Desktop Service</span><span class="co">](https://www.york.ac.uk/it-services/tools/vds/)</span>. The VDS allows you </span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>to log on to a university computer from your own computer. It means you can </span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>access all software and filestores. When using the VDS for R and RStudio, </span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>it usually makes sense to use other software - such as a browser or file</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>explorer - also through the VDS.  </span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>If you are confident in your ability to set up your own machine, you need:</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>to know the difference between R and RStudio</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>to use R 4.4 and RStudio 2024.09.0 Build 375 ("Cranberry Hibiscus")</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>be certain you are actually using R 4.4 - it is written in the top edge</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    of the console window. By default RStudio uses the latest version on </span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    R on your machine. However, windows users are able to change this </span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    to a "specific version". You might have done that previously. Change it </span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    back using Tools | Global Options R version "Use your machine's default </span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    64-bit version of R"</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>to make sure you do the independent study where it tells you what steps </span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  you need to take to get packages (and versions that are unlikely to </span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>  cause issues) used in the workshop</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>It is possible to access all your files on your university account without </span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>using the VDS. For example, if you want to work on uni machines at uni </span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>and your machine at home. You can best do this by mapping a drive: https://support.york.ac.uk/s/topic/0TO4K000000lA5ZWAU/filestores.</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>If you store everything on google drive you can also read/write to that </span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>like any other drive using google drive app.</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>Even if you plan to use your own machine I really recommend you take </span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>the time to set the VDS up now while you're not time pressured so you always have that option ready.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>📖 Read [Understanding file</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    systems](https://3mmarand.github.io/comp4biosci/file-systems.html).</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    This is an approximately 15 - 20 minute read revising file types and</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    file systems. It covers concepts of working directories and paths.</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    We learned these ideas in stage 1 and but if you don't feel</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    completely confident with revisting might help. For BIO00070M</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    students, this is part of the work you will also be asked to</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    complete for BIO00052M Data Analysis in R.</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>📖 Read [Workflow in</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    RStudio](https://3mmarand.github.io/comp4biosci/workflow-rstudio.html).</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    You may find it helpful to remind yourself about RStudio Projects.</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    In previous years, BIO00088H students have submitted an "RStudio</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    Project" as part of your BABS work. Here, you will submit</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    "Supporting Information" for your Project Report. The Supporting</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    Information is a documented and organised collection of all the</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    digital parts of your research project. This includes data (or</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    instructions for accessing data), code and/or non-coded processing,</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    instructions for use, computational requirements and outputs. The</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    Supporting Information could be a single RStudio Project (like you</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    have done previously but with better documentation) or a folder that</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    includes an RStudio Project and other material/scripts. BIO00070M</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    students do not need to submit "Supporting Information".</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Set up the [Virtual Desktop</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    Service](https://www.york.ac.uk/it-services/tools/vds/). I very</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    strongly recommend working on the University computers for this</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    work. You will be using more specialised R packages than you might</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    be used to. This is especially important if you often have</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    difficulty updating and or installing software on your own machine,</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    wouldn't know what what version of R you are using or don't realise</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    there is a difference between R and RStudio. The uni machines always</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    have up-to-date R and R packages and all the packages that appear in</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    teaching materials. It is our responsibility to ensure everything</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    works on here. The [Virtual Desktop</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    Service](https://www.york.ac.uk/it-services/tools/vds/) allows you</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    to log on to a university computer from your home computer. It means</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    you can access all software and filestores. When using the VDS for R</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    and RStudio, it usually makes sense to use other software - such as</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    a browser or file explorer - also through the VDS.</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>If you are confident in your ability to set up your own machine, you</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>need:</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>to know the difference between R and RStudio</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>to use R 4.5 and RStudio 2025.05.0+496 "Mariposa Orchid" Release</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>    which includes Quarto 1.7.30 (C:/Program</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>    Files/Quarto/bin/quarto.exe)</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>be certain you are actually using R 4.5 - it is written in the top</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>    edge of the console window. By default RStudio uses the latest</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>    version on R on your machine. However, windows users are able to</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>    change this to a "specific version". You might have done that</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>    previously. Change it back using Tools <span class="sc">\|</span> Global Options R version</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>    "Use your machine's default 64-bit version of R"</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>to make sure you do the independent study where it tells you what</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>    steps you need to take to get packages (and versions that are</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>    unlikely to cause issues) used in the workshop</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>It is possible to access all your files on your university account</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>without using the VDS. For example, if you want to work on uni machines</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>at uni and your machine at home. You can best do this by mapping a</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>drive: https://support.york.ac.uk/s/topic/0TO4K000000lA5ZWAU/filestores.</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>If you store everything on google drive you can also read/write to that</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>like any other drive using google drive app.</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>Even if you plan to use your own machine I really recommend you take the</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>time to set the VDS up now while you're not time pressured so you always</span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>have that option ready.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
