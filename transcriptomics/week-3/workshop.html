@@ -1087,8 +1087,8 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 <p>🎬 Import <a href="data-raw/secretome_hspc.csv">secretome_hspc.csv</a> and <a href="data-raw/secretome_prog.csv">secretome_prog.csv</a></p>
 <div class="cell" data-cache.extra="secretome">
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 🐭 import the hspc and prog data</span></span>
-<span><span class="va">hspc</span>  <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data-raw/secretome_hspc.csv"</span><span class="op">)</span></span>
-<span><span class="va">prog</span>  <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data-raw/secretome_prog.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">hspc</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data-raw/secretome_hspc.csv"</span><span class="op">)</span></span>
+<span><span class="va">prog</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"data-raw/secretome_prog.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We will need to combine the two sets of columns (datasets) so we can compare the two stages. We will join them using <code>ensembl_gene_id</code> to match the rows. The column names differ so we don’t need to worry about renaming any of them.</p>
 <p>🎬 Combine the two datasets by <code>ensembl_gene_id</code> and save the result as <code>hspc_prog</code>.</p>
@@ -1205,7 +1205,7 @@ gtag('config', 'G-TVF95J593T', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<p>Note that the variability between genes (average expression between 0.020 and and 9.567) is far greater than between cells (average expression from 1.319 to 9.567) which is just what we would expect.</p>
+<p>Note that the variability between genes (average expression between 0.0074 and 11.1016) is greater than between cells (average expression between 1.4083 and 3.4678) which is just what we would expect.</p>
 <p>Now go to <a href="#stem-cells-filterqc">Filtering for QC</a>.</p>
 </section></section></section><section id="filtering-for-qc" class="level1"><h1>Filtering for QC</h1>
 <section id="arabidopsis-filterqc" class="level2"><h2 class="anchored" data-anchor-id="arabidopsis-filterqc">🎄 <em>Arabidopsis</em>
@@ -2564,8 +2564,8 @@ Zhu, Hao. 2021. <span>“kableExtra: Construct Complex Table with ’Kable’ an
 <span id="cb45-803"><a href="#cb45-803" aria-hidden="true" tabindex="-1"></a><span class="co">#| cache: true</span></span>
 <span id="cb45-804"><a href="#cb45-804" aria-hidden="true" tabindex="-1"></a><span class="co">#| cache.extra: secretome</span></span>
 <span id="cb45-805"><a href="#cb45-805" aria-hidden="true" tabindex="-1"></a><span class="co"># 🐭 import the hspc and prog data</span></span>
-<span id="cb45-806"><a href="#cb45-806" aria-hidden="true" tabindex="-1"></a>hspc  <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"data-raw/secretome_hspc.csv"</span>)</span>
-<span id="cb45-807"><a href="#cb45-807" aria-hidden="true" tabindex="-1"></a>prog  <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"data-raw/secretome_prog.csv"</span>)</span>
+<span id="cb45-806"><a href="#cb45-806" aria-hidden="true" tabindex="-1"></a>hspc  <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data-raw/secretome_hspc.csv"</span>)</span>
+<span id="cb45-807"><a href="#cb45-807" aria-hidden="true" tabindex="-1"></a>prog  <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data-raw/secretome_prog.csv"</span>)</span>
 <span id="cb45-808"><a href="#cb45-808" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-809"><a href="#cb45-809" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb45-810"><a href="#cb45-810" aria-hidden="true" tabindex="-1"></a></span>
@@ -2576,8 +2576,8 @@ Zhu, Hao. 2021. <span>“kableExtra: Construct Complex Table with ’Kable’ an
 <span id="cb45-817"><a href="#cb45-817" aria-hidden="true" tabindex="-1"></a><span class="co">#| cache: true</span></span>
 <span id="cb45-818"><a href="#cb45-818" aria-hidden="true" tabindex="-1"></a><span class="co">#| cache.extra: surfaceome</span></span>
 <span id="cb45-819"><a href="#cb45-819" aria-hidden="true" tabindex="-1"></a><span class="co"># 🐭 import the hspc and prog data</span></span>
-<span id="cb45-820"><a href="#cb45-820" aria-hidden="true" tabindex="-1"></a>hspc  <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"data-raw/surfaceome_hspc.csv"</span>)</span>
-<span id="cb45-821"><a href="#cb45-821" aria-hidden="true" tabindex="-1"></a>prog  <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"data-raw/surfaceome_prog.csv"</span>)</span>
+<span id="cb45-820"><a href="#cb45-820" aria-hidden="true" tabindex="-1"></a>hspc  <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data-raw/surfaceome_hspc.csv"</span>)</span>
+<span id="cb45-821"><a href="#cb45-821" aria-hidden="true" tabindex="-1"></a>prog  <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data-raw/surfaceome_prog.csv"</span>)</span>
 <span id="cb45-822"><a href="#cb45-822" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-823"><a href="#cb45-823" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb45-824"><a href="#cb45-824" aria-hidden="true" tabindex="-1"></a></span>
@@ -2802,234 +2802,238 @@ Zhu, Hao. 2021. <span>“kableExtra: Construct Complex Table with ’Kable’ an
 <span id="cb45-1057"><a href="#cb45-1057" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb45-1058"><a href="#cb45-1058" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-1059"><a href="#cb45-1059" aria-hidden="true" tabindex="-1"></a>Note that the variability between genes (average expression between</span>
-<span id="cb45-1060"><a href="#cb45-1060" aria-hidden="true" tabindex="-1"></a>0.020 and and 9.567) is far greater than between cells (average</span>
-<span id="cb45-1061"><a href="#cb45-1061" aria-hidden="true" tabindex="-1"></a>expression from 1.319 to 9.567) which is just what we would expect.</span>
-<span id="cb45-1062"><a href="#cb45-1062" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1063"><a href="#cb45-1063" aria-hidden="true" tabindex="-1"></a>Now go to <span class="co">[</span><span class="ot">Filtering for QC</span><span class="co">](#stem-cells-filterqc)</span>.</span>
-<span id="cb45-1064"><a href="#cb45-1064" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1065"><a href="#cb45-1065" aria-hidden="true" tabindex="-1"></a><span class="fu"># Filtering for QC</span></span>
+<span id="cb45-1060"><a href="#cb45-1060" aria-hidden="true" tabindex="-1"></a><span class="in">`r min(hspc_prog_summary_gene$mean) |&gt; round(4)`</span> and</span>
+<span id="cb45-1061"><a href="#cb45-1061" aria-hidden="true" tabindex="-1"></a><span class="in">`r max(hspc_prog_summary_gene$mean) |&gt; round(4)`</span>) is greater than</span>
+<span id="cb45-1062"><a href="#cb45-1062" aria-hidden="true" tabindex="-1"></a>between cells (average expression between</span>
+<span id="cb45-1063"><a href="#cb45-1063" aria-hidden="true" tabindex="-1"></a><span class="in">`r min(hspc_prog_summary_cell$mean) |&gt; round(4)`</span> and</span>
+<span id="cb45-1064"><a href="#cb45-1064" aria-hidden="true" tabindex="-1"></a><span class="in">`r max(hspc_prog_summary_cell$mean) |&gt; round(4)`</span>) which is just what we</span>
+<span id="cb45-1065"><a href="#cb45-1065" aria-hidden="true" tabindex="-1"></a>would expect.</span>
 <span id="cb45-1066"><a href="#cb45-1066" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1067"><a href="#cb45-1067" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🎄 *Arabidopsis* {#arabidopsis-filterqc}</span></span>
+<span id="cb45-1067"><a href="#cb45-1067" aria-hidden="true" tabindex="-1"></a>Now go to <span class="co">[</span><span class="ot">Filtering for QC</span><span class="co">](#stem-cells-filterqc)</span>.</span>
 <span id="cb45-1068"><a href="#cb45-1068" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1069"><a href="#cb45-1069" aria-hidden="true" tabindex="-1"></a>Our samples look to be similarly well sequenced although this is</span>
-<span id="cb45-1070"><a href="#cb45-1070" aria-hidden="true" tabindex="-1"></a>difficult to determine with only two replicates. However, some genes are</span>
-<span id="cb45-1071"><a href="#cb45-1071" aria-hidden="true" tabindex="-1"></a>not expressed or the expression values are so low in for a gene that</span>
-<span id="cb45-1072"><a href="#cb45-1072" aria-hidden="true" tabindex="-1"></a>they are uninformative. We will filter the <span class="in">`root_summary_gene`</span> dataframe</span>
-<span id="cb45-1073"><a href="#cb45-1073" aria-hidden="true" tabindex="-1"></a>to obtain a list of <span class="in">`gene_id`</span> we can use to filter <span class="in">`root`</span>.</span>
-<span id="cb45-1074"><a href="#cb45-1074" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1075"><a href="#cb45-1075" aria-hidden="true" tabindex="-1"></a>My suggestion is to include only the genes with counts in at least 6</span>
-<span id="cb45-1076"><a href="#cb45-1076" aria-hidden="true" tabindex="-1"></a>samples, and those with total counts above 20. I chose 6 because that</span>
-<span id="cb45-1077"><a href="#cb45-1077" aria-hidden="true" tabindex="-1"></a>would keep genes expressed only in one treatment. I chose 20 based on</span>
+<span id="cb45-1069"><a href="#cb45-1069" aria-hidden="true" tabindex="-1"></a><span class="fu"># Filtering for QC</span></span>
+<span id="cb45-1070"><a href="#cb45-1070" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1071"><a href="#cb45-1071" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🎄 *Arabidopsis* {#arabidopsis-filterqc}</span></span>
+<span id="cb45-1072"><a href="#cb45-1072" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1073"><a href="#cb45-1073" aria-hidden="true" tabindex="-1"></a>Our samples look to be similarly well sequenced although this is</span>
+<span id="cb45-1074"><a href="#cb45-1074" aria-hidden="true" tabindex="-1"></a>difficult to determine with only two replicates. However, some genes are</span>
+<span id="cb45-1075"><a href="#cb45-1075" aria-hidden="true" tabindex="-1"></a>not expressed or the expression values are so low in for a gene that</span>
+<span id="cb45-1076"><a href="#cb45-1076" aria-hidden="true" tabindex="-1"></a>they are uninformative. We will filter the <span class="in">`root_summary_gene`</span> dataframe</span>
+<span id="cb45-1077"><a href="#cb45-1077" aria-hidden="true" tabindex="-1"></a>to obtain a list of <span class="in">`gene_id`</span> we can use to filter <span class="in">`root`</span>.</span>
 <span id="cb45-1078"><a href="#cb45-1078" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1079"><a href="#cb45-1079" aria-hidden="true" tabindex="-1"></a>🎬 Filter the summary by gene dataframe:</span>
-<span id="cb45-1080"><a href="#cb45-1080" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1083"><a href="#cb45-1083" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-1084"><a href="#cb45-1084" aria-hidden="true" tabindex="-1"></a>root_summary_gene_filtered <span class="ot">&lt;-</span> root_summary_gene <span class="sc">|&gt;</span> </span>
-<span id="cb45-1085"><a href="#cb45-1085" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(total <span class="sc">&gt;</span> <span class="dv">20</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb45-1086"><a href="#cb45-1086" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_above_zero <span class="sc">&gt;=</span> <span class="dv">6</span>)</span>
-<span id="cb45-1087"><a href="#cb45-1087" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-1088"><a href="#cb45-1088" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1089"><a href="#cb45-1089" aria-hidden="true" tabindex="-1"></a>❓ How many genes do you have left</span>
-<span id="cb45-1090"><a href="#cb45-1090" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1091"><a href="#cb45-1091" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #---THINKING ANSWER--- --&gt;</span></span>
+<span id="cb45-1079"><a href="#cb45-1079" aria-hidden="true" tabindex="-1"></a>My suggestion is to include only the genes with counts in at least 6</span>
+<span id="cb45-1080"><a href="#cb45-1080" aria-hidden="true" tabindex="-1"></a>samples, and those with total counts above 20. I chose 6 because that</span>
+<span id="cb45-1081"><a href="#cb45-1081" aria-hidden="true" tabindex="-1"></a>would keep genes expressed only in one treatment. I chose 20 based on</span>
+<span id="cb45-1082"><a href="#cb45-1082" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1083"><a href="#cb45-1083" aria-hidden="true" tabindex="-1"></a>🎬 Filter the summary by gene dataframe:</span>
+<span id="cb45-1084"><a href="#cb45-1084" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1087"><a href="#cb45-1087" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-1088"><a href="#cb45-1088" aria-hidden="true" tabindex="-1"></a>root_summary_gene_filtered <span class="ot">&lt;-</span> root_summary_gene <span class="sc">|&gt;</span> </span>
+<span id="cb45-1089"><a href="#cb45-1089" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(total <span class="sc">&gt;</span> <span class="dv">20</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb45-1090"><a href="#cb45-1090" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_above_zero <span class="sc">&gt;=</span> <span class="dv">6</span>)</span>
+<span id="cb45-1091"><a href="#cb45-1091" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb45-1092"><a href="#cb45-1092" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1093"><a href="#cb45-1093" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- there are 22361 genes left. 9472 have total counts less than 20 and or --&gt;</span></span>
+<span id="cb45-1093"><a href="#cb45-1093" aria-hidden="true" tabindex="-1"></a>❓ How many genes do you have left</span>
 <span id="cb45-1094"><a href="#cb45-1094" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1095"><a href="#cb45-1095" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- have counts in fewer the 6 samples. --&gt;</span></span>
+<span id="cb45-1095"><a href="#cb45-1095" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #---THINKING ANSWER--- --&gt;</span></span>
 <span id="cb45-1096"><a href="#cb45-1096" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1097"><a href="#cb45-1097" aria-hidden="true" tabindex="-1"></a>🎬 Use the list of <span class="in">`gene_id`</span> in the filtered summary to filter the</span>
-<span id="cb45-1098"><a href="#cb45-1098" aria-hidden="true" tabindex="-1"></a>original dataset:</span>
-<span id="cb45-1099"><a href="#cb45-1099" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1102"><a href="#cb45-1102" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-1103"><a href="#cb45-1103" aria-hidden="true" tabindex="-1"></a>root_filtered <span class="ot">&lt;-</span> root <span class="sc">|&gt;</span> </span>
-<span id="cb45-1104"><a href="#cb45-1104" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gene_id <span class="sc">%in%</span>  root_summary_gene_filtered<span class="sc">$</span>gene_id)</span>
-<span id="cb45-1105"><a href="#cb45-1105" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-1106"><a href="#cb45-1106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1107"><a href="#cb45-1107" aria-hidden="true" tabindex="-1"></a>🎬 Write the filtered data to file:</span>
-<span id="cb45-1108"><a href="#cb45-1108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1111"><a href="#cb45-1111" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-1112"><a href="#cb45-1112" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(root_filtered, </span>
-<span id="cb45-1113"><a href="#cb45-1113" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">"data-processed/root_filtered.csv"</span>)</span>
-<span id="cb45-1114"><a href="#cb45-1114" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-1115"><a href="#cb45-1115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1118"><a href="#cb45-1118" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-1119"><a href="#cb45-1119" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb45-1120"><a href="#cb45-1120" aria-hidden="true" tabindex="-1"></a><span class="co">#---UNDER THE HOOD CODE---</span></span>
-<span id="cb45-1121"><a href="#cb45-1121" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(root_filtered, </span>
-<span id="cb45-1122"><a href="#cb45-1122" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">"../week-4/data-processed/root_filtered.csv"</span>)</span>
-<span id="cb45-1123"><a href="#cb45-1123" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-1124"><a href="#cb45-1124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1125"><a href="#cb45-1125" aria-hidden="true" tabindex="-1"></a>Now go to <span class="co">[</span><span class="ot">Look after future you</span><span class="co">](#arabidopsis-and-future-you)</span></span>
-<span id="cb45-1126"><a href="#cb45-1126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1127"><a href="#cb45-1127" aria-hidden="true" tabindex="-1"></a><span class="fu">## 💉 *Leishmania* {#leishmania-filterqc}</span></span>
+<span id="cb45-1097"><a href="#cb45-1097" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- there are 22361 genes left. 9472 have total counts less than 20 and or --&gt;</span></span>
+<span id="cb45-1098"><a href="#cb45-1098" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1099"><a href="#cb45-1099" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- have counts in fewer the 6 samples. --&gt;</span></span>
+<span id="cb45-1100"><a href="#cb45-1100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1101"><a href="#cb45-1101" aria-hidden="true" tabindex="-1"></a>🎬 Use the list of <span class="in">`gene_id`</span> in the filtered summary to filter the</span>
+<span id="cb45-1102"><a href="#cb45-1102" aria-hidden="true" tabindex="-1"></a>original dataset:</span>
+<span id="cb45-1103"><a href="#cb45-1103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1106"><a href="#cb45-1106" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-1107"><a href="#cb45-1107" aria-hidden="true" tabindex="-1"></a>root_filtered <span class="ot">&lt;-</span> root <span class="sc">|&gt;</span> </span>
+<span id="cb45-1108"><a href="#cb45-1108" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gene_id <span class="sc">%in%</span>  root_summary_gene_filtered<span class="sc">$</span>gene_id)</span>
+<span id="cb45-1109"><a href="#cb45-1109" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-1110"><a href="#cb45-1110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1111"><a href="#cb45-1111" aria-hidden="true" tabindex="-1"></a>🎬 Write the filtered data to file:</span>
+<span id="cb45-1112"><a href="#cb45-1112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1115"><a href="#cb45-1115" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-1116"><a href="#cb45-1116" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(root_filtered, </span>
+<span id="cb45-1117"><a href="#cb45-1117" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">"data-processed/root_filtered.csv"</span>)</span>
+<span id="cb45-1118"><a href="#cb45-1118" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-1119"><a href="#cb45-1119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1122"><a href="#cb45-1122" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-1123"><a href="#cb45-1123" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb45-1124"><a href="#cb45-1124" aria-hidden="true" tabindex="-1"></a><span class="co">#---UNDER THE HOOD CODE---</span></span>
+<span id="cb45-1125"><a href="#cb45-1125" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(root_filtered, </span>
+<span id="cb45-1126"><a href="#cb45-1126" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">"../week-4/data-processed/root_filtered.csv"</span>)</span>
+<span id="cb45-1127"><a href="#cb45-1127" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb45-1128"><a href="#cb45-1128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1129"><a href="#cb45-1129" aria-hidden="true" tabindex="-1"></a>Our samples look to be similarly well sequenced. There are no samples we</span>
-<span id="cb45-1130"><a href="#cb45-1130" aria-hidden="true" tabindex="-1"></a>should remove. However, some genes are not expressed or the expression</span>
-<span id="cb45-1131"><a href="#cb45-1131" aria-hidden="true" tabindex="-1"></a>values are so low in for a gene that they are uninformative. We will</span>
-<span id="cb45-1132"><a href="#cb45-1132" aria-hidden="true" tabindex="-1"></a>filter the <span class="in">`pro_meta_summary_gene`</span> dataframe to obtain a list of</span>
-<span id="cb45-1133"><a href="#cb45-1133" aria-hidden="true" tabindex="-1"></a><span class="in">`gene_id`</span> we can use to filter <span class="in">`pro_meta`</span>.</span>
-<span id="cb45-1134"><a href="#cb45-1134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1135"><a href="#cb45-1135" aria-hidden="true" tabindex="-1"></a>My suggestion is to include only the genes with counts in at least 3</span>
-<span id="cb45-1136"><a href="#cb45-1136" aria-hidden="true" tabindex="-1"></a>samples and those with total counts above 20. I chose 3 because that</span>
-<span id="cb45-1137"><a href="#cb45-1137" aria-hidden="true" tabindex="-1"></a>would keep genes expressed only in one treatment: <span class="sc">\[</span>0, 0, 0<span class="sc">\]</span> <span class="sc">\[</span>#,#,#<span class="sc">\]</span>.</span>
-<span id="cb45-1138"><a href="#cb45-1138" aria-hidden="true" tabindex="-1"></a>This is a difference we cannot test statistically, but which matters</span>
-<span id="cb45-1139"><a href="#cb45-1139" aria-hidden="true" tabindex="-1"></a>biologically.</span>
-<span id="cb45-1140"><a href="#cb45-1140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1141"><a href="#cb45-1141" aria-hidden="true" tabindex="-1"></a>🎬 Filter the summary by gene dataframe:</span>
-<span id="cb45-1142"><a href="#cb45-1142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1145"><a href="#cb45-1145" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-1146"><a href="#cb45-1146" aria-hidden="true" tabindex="-1"></a>pro_meta_summary_gene_filtered <span class="ot">&lt;-</span> pro_meta_summary_gene <span class="sc">|&gt;</span> </span>
-<span id="cb45-1147"><a href="#cb45-1147" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(total <span class="sc">&gt;</span> <span class="dv">20</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb45-1148"><a href="#cb45-1148" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_above_zero <span class="sc">&gt;=</span> <span class="dv">3</span>)</span>
-<span id="cb45-1149"><a href="#cb45-1149" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-1150"><a href="#cb45-1150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1151"><a href="#cb45-1151" aria-hidden="true" tabindex="-1"></a>❓ How many genes do you have left</span>
-<span id="cb45-1152"><a href="#cb45-1152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1153"><a href="#cb45-1153" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #---THINKING ANSWER--- --&gt;</span></span>
+<span id="cb45-1129"><a href="#cb45-1129" aria-hidden="true" tabindex="-1"></a>Now go to <span class="co">[</span><span class="ot">Look after future you</span><span class="co">](#arabidopsis-and-future-you)</span></span>
+<span id="cb45-1130"><a href="#cb45-1130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1131"><a href="#cb45-1131" aria-hidden="true" tabindex="-1"></a><span class="fu">## 💉 *Leishmania* {#leishmania-filterqc}</span></span>
+<span id="cb45-1132"><a href="#cb45-1132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1133"><a href="#cb45-1133" aria-hidden="true" tabindex="-1"></a>Our samples look to be similarly well sequenced. There are no samples we</span>
+<span id="cb45-1134"><a href="#cb45-1134" aria-hidden="true" tabindex="-1"></a>should remove. However, some genes are not expressed or the expression</span>
+<span id="cb45-1135"><a href="#cb45-1135" aria-hidden="true" tabindex="-1"></a>values are so low in for a gene that they are uninformative. We will</span>
+<span id="cb45-1136"><a href="#cb45-1136" aria-hidden="true" tabindex="-1"></a>filter the <span class="in">`pro_meta_summary_gene`</span> dataframe to obtain a list of</span>
+<span id="cb45-1137"><a href="#cb45-1137" aria-hidden="true" tabindex="-1"></a><span class="in">`gene_id`</span> we can use to filter <span class="in">`pro_meta`</span>.</span>
+<span id="cb45-1138"><a href="#cb45-1138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1139"><a href="#cb45-1139" aria-hidden="true" tabindex="-1"></a>My suggestion is to include only the genes with counts in at least 3</span>
+<span id="cb45-1140"><a href="#cb45-1140" aria-hidden="true" tabindex="-1"></a>samples and those with total counts above 20. I chose 3 because that</span>
+<span id="cb45-1141"><a href="#cb45-1141" aria-hidden="true" tabindex="-1"></a>would keep genes expressed only in one treatment: <span class="sc">\[</span>0, 0, 0<span class="sc">\]</span> <span class="sc">\[</span>#,#,#<span class="sc">\]</span>.</span>
+<span id="cb45-1142"><a href="#cb45-1142" aria-hidden="true" tabindex="-1"></a>This is a difference we cannot test statistically, but which matters</span>
+<span id="cb45-1143"><a href="#cb45-1143" aria-hidden="true" tabindex="-1"></a>biologically.</span>
+<span id="cb45-1144"><a href="#cb45-1144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1145"><a href="#cb45-1145" aria-hidden="true" tabindex="-1"></a>🎬 Filter the summary by gene dataframe:</span>
+<span id="cb45-1146"><a href="#cb45-1146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1149"><a href="#cb45-1149" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-1150"><a href="#cb45-1150" aria-hidden="true" tabindex="-1"></a>pro_meta_summary_gene_filtered <span class="ot">&lt;-</span> pro_meta_summary_gene <span class="sc">|&gt;</span> </span>
+<span id="cb45-1151"><a href="#cb45-1151" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(total <span class="sc">&gt;</span> <span class="dv">20</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb45-1152"><a href="#cb45-1152" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(n_above_zero <span class="sc">&gt;=</span> <span class="dv">3</span>)</span>
+<span id="cb45-1153"><a href="#cb45-1153" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb45-1154"><a href="#cb45-1154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1155"><a href="#cb45-1155" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- there are 8437 genes left. 240 have total counts less than 20 and or --&gt;</span></span>
+<span id="cb45-1155"><a href="#cb45-1155" aria-hidden="true" tabindex="-1"></a>❓ How many genes do you have left</span>
 <span id="cb45-1156"><a href="#cb45-1156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1157"><a href="#cb45-1157" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- have counts in fewer than 3 samples. --&gt;</span></span>
+<span id="cb45-1157"><a href="#cb45-1157" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #---THINKING ANSWER--- --&gt;</span></span>
 <span id="cb45-1158"><a href="#cb45-1158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1159"><a href="#cb45-1159" aria-hidden="true" tabindex="-1"></a>🎬 Use the list of <span class="in">`gene_id`</span> in the filtered summary to filter the</span>
-<span id="cb45-1160"><a href="#cb45-1160" aria-hidden="true" tabindex="-1"></a>original dataset:</span>
-<span id="cb45-1161"><a href="#cb45-1161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1164"><a href="#cb45-1164" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-1165"><a href="#cb45-1165" aria-hidden="true" tabindex="-1"></a>pro_meta_filtered <span class="ot">&lt;-</span> pro_meta <span class="sc">|&gt;</span> </span>
-<span id="cb45-1166"><a href="#cb45-1166" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gene_id <span class="sc">%in%</span>  pro_meta_summary_gene_filtered<span class="sc">$</span>gene_id)</span>
-<span id="cb45-1167"><a href="#cb45-1167" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-1168"><a href="#cb45-1168" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1169"><a href="#cb45-1169" aria-hidden="true" tabindex="-1"></a>🎬 Write the filtered data to file:</span>
-<span id="cb45-1170"><a href="#cb45-1170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1173"><a href="#cb45-1173" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-1174"><a href="#cb45-1174" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(pro_meta_filtered, </span>
-<span id="cb45-1175"><a href="#cb45-1175" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">"data-processed/pro_meta_filtered.csv"</span>)</span>
-<span id="cb45-1176"><a href="#cb45-1176" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-1177"><a href="#cb45-1177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1180"><a href="#cb45-1180" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-1181"><a href="#cb45-1181" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb45-1182"><a href="#cb45-1182" aria-hidden="true" tabindex="-1"></a><span class="co">#---UNDER THE HOOD CODE---</span></span>
-<span id="cb45-1183"><a href="#cb45-1183" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(pro_meta_filtered,  </span>
-<span id="cb45-1184"><a href="#cb45-1184" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">"../week-4/data-processed/pro_meta_filtered.csv"</span>)</span>
-<span id="cb45-1185"><a href="#cb45-1185" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-1186"><a href="#cb45-1186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1187"><a href="#cb45-1187" aria-hidden="true" tabindex="-1"></a>Now go to <span class="co">[</span><span class="ot">Look after future you</span><span class="co">](#leishmania-and-future-you)</span></span>
-<span id="cb45-1188"><a href="#cb45-1188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1189"><a href="#cb45-1189" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🐭 Stem cells {#stem-cells-filterqc}</span></span>
+<span id="cb45-1159"><a href="#cb45-1159" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- there are 8437 genes left. 240 have total counts less than 20 and or --&gt;</span></span>
+<span id="cb45-1160"><a href="#cb45-1160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1161"><a href="#cb45-1161" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- have counts in fewer than 3 samples. --&gt;</span></span>
+<span id="cb45-1162"><a href="#cb45-1162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1163"><a href="#cb45-1163" aria-hidden="true" tabindex="-1"></a>🎬 Use the list of <span class="in">`gene_id`</span> in the filtered summary to filter the</span>
+<span id="cb45-1164"><a href="#cb45-1164" aria-hidden="true" tabindex="-1"></a>original dataset:</span>
+<span id="cb45-1165"><a href="#cb45-1165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1168"><a href="#cb45-1168" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-1169"><a href="#cb45-1169" aria-hidden="true" tabindex="-1"></a>pro_meta_filtered <span class="ot">&lt;-</span> pro_meta <span class="sc">|&gt;</span> </span>
+<span id="cb45-1170"><a href="#cb45-1170" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(gene_id <span class="sc">%in%</span>  pro_meta_summary_gene_filtered<span class="sc">$</span>gene_id)</span>
+<span id="cb45-1171"><a href="#cb45-1171" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-1172"><a href="#cb45-1172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1173"><a href="#cb45-1173" aria-hidden="true" tabindex="-1"></a>🎬 Write the filtered data to file:</span>
+<span id="cb45-1174"><a href="#cb45-1174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1177"><a href="#cb45-1177" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-1178"><a href="#cb45-1178" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(pro_meta_filtered, </span>
+<span id="cb45-1179"><a href="#cb45-1179" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">"data-processed/pro_meta_filtered.csv"</span>)</span>
+<span id="cb45-1180"><a href="#cb45-1180" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-1181"><a href="#cb45-1181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1184"><a href="#cb45-1184" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-1185"><a href="#cb45-1185" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb45-1186"><a href="#cb45-1186" aria-hidden="true" tabindex="-1"></a><span class="co">#---UNDER THE HOOD CODE---</span></span>
+<span id="cb45-1187"><a href="#cb45-1187" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(pro_meta_filtered,  </span>
+<span id="cb45-1188"><a href="#cb45-1188" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">"../week-4/data-processed/pro_meta_filtered.csv"</span>)</span>
+<span id="cb45-1189"><a href="#cb45-1189" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb45-1190"><a href="#cb45-1190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1191"><a href="#cb45-1191" aria-hidden="true" tabindex="-1"></a>In this dataset, we will not see and genes that are not expressed in any</span>
-<span id="cb45-1192"><a href="#cb45-1192" aria-hidden="true" tabindex="-1"></a>of the cells because we are using a specific subset of the transcriptome</span>
-<span id="cb45-1193"><a href="#cb45-1193" aria-hidden="true" tabindex="-1"></a>that was deliberately selected. In other words unexpressed genes have</span>
-<span id="cb45-1194"><a href="#cb45-1194" aria-hidden="true" tabindex="-1"></a>already been filtered out. However, it is good practices to verify there</span>
-<span id="cb45-1195"><a href="#cb45-1195" aria-hidden="true" tabindex="-1"></a>are no unexpressed genes before we embark on our analysis.</span>
-<span id="cb45-1196"><a href="#cb45-1196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1197"><a href="#cb45-1197" aria-hidden="true" tabindex="-1"></a>Where the sum of all the values in the rows is zero, all the entries</span>
-<span id="cb45-1198"><a href="#cb45-1198" aria-hidden="true" tabindex="-1"></a>must be zero. We can use this to find any the genes that are not</span>
-<span id="cb45-1199"><a href="#cb45-1199" aria-hidden="true" tabindex="-1"></a>expressed in any of the cells. To do row wise aggregates such as the sum</span>
-<span id="cb45-1200"><a href="#cb45-1200" aria-hidden="true" tabindex="-1"></a>across rows we can use the <span class="in">`rowwise()`</span> function. <span class="in">`c_across()`</span> allows us</span>
-<span id="cb45-1201"><a href="#cb45-1201" aria-hidden="true" tabindex="-1"></a>to use the colon notation to select columns. This is very useful when</span>
-<span id="cb45-1202"><a href="#cb45-1202" aria-hidden="true" tabindex="-1"></a>you have a lot of columns because it would be annoying to have to list</span>
-<span id="cb45-1203"><a href="#cb45-1203" aria-hidden="true" tabindex="-1"></a>all of them <span class="in">`HSPC_001:Prog_852`</span> means all the columns from <span class="in">`HSPC_001`</span> to</span>
-<span id="cb45-1204"><a href="#cb45-1204" aria-hidden="true" tabindex="-1"></a><span class="in">`Prog_852`</span>.</span>
-<span id="cb45-1205"><a href="#cb45-1205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1206"><a href="#cb45-1206" aria-hidden="true" tabindex="-1"></a>🎬 Find the genes that are 0 in every column of the hspc_prog dataframe:</span>
-<span id="cb45-1207"><a href="#cb45-1207" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1210"><a href="#cb45-1210" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-1211"><a href="#cb45-1211" aria-hidden="true" tabindex="-1"></a>hspc_prog <span class="sc">|&gt;</span> </span>
-<span id="cb45-1212"><a href="#cb45-1212" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb45-1213"><a href="#cb45-1213" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">sum</span>(<span class="fu">c_across</span>(HSPC_001<span class="sc">:</span>Prog_852)) <span class="sc">==</span> <span class="dv">0</span>)</span>
-<span id="cb45-1214"><a href="#cb45-1214" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1215"><a href="#cb45-1215" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-1216"><a href="#cb45-1216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1217"><a href="#cb45-1217" aria-hidden="true" tabindex="-1"></a>Notice that we have summed across all the columns.</span>
+<span id="cb45-1191"><a href="#cb45-1191" aria-hidden="true" tabindex="-1"></a>Now go to <span class="co">[</span><span class="ot">Look after future you</span><span class="co">](#leishmania-and-future-you)</span></span>
+<span id="cb45-1192"><a href="#cb45-1192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1193"><a href="#cb45-1193" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🐭 Stem cells {#stem-cells-filterqc}</span></span>
+<span id="cb45-1194"><a href="#cb45-1194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1195"><a href="#cb45-1195" aria-hidden="true" tabindex="-1"></a>In this dataset, we will not see and genes that are not expressed in any</span>
+<span id="cb45-1196"><a href="#cb45-1196" aria-hidden="true" tabindex="-1"></a>of the cells because we are using a specific subset of the transcriptome</span>
+<span id="cb45-1197"><a href="#cb45-1197" aria-hidden="true" tabindex="-1"></a>that was deliberately selected. In other words unexpressed genes have</span>
+<span id="cb45-1198"><a href="#cb45-1198" aria-hidden="true" tabindex="-1"></a>already been filtered out. However, it is good practices to verify there</span>
+<span id="cb45-1199"><a href="#cb45-1199" aria-hidden="true" tabindex="-1"></a>are no unexpressed genes before we embark on our analysis.</span>
+<span id="cb45-1200"><a href="#cb45-1200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1201"><a href="#cb45-1201" aria-hidden="true" tabindex="-1"></a>Where the sum of all the values in the rows is zero, all the entries</span>
+<span id="cb45-1202"><a href="#cb45-1202" aria-hidden="true" tabindex="-1"></a>must be zero. We can use this to find any the genes that are not</span>
+<span id="cb45-1203"><a href="#cb45-1203" aria-hidden="true" tabindex="-1"></a>expressed in any of the cells. To do row wise aggregates such as the sum</span>
+<span id="cb45-1204"><a href="#cb45-1204" aria-hidden="true" tabindex="-1"></a>across rows we can use the <span class="in">`rowwise()`</span> function. <span class="in">`c_across()`</span> allows us</span>
+<span id="cb45-1205"><a href="#cb45-1205" aria-hidden="true" tabindex="-1"></a>to use the colon notation to select columns. This is very useful when</span>
+<span id="cb45-1206"><a href="#cb45-1206" aria-hidden="true" tabindex="-1"></a>you have a lot of columns because it would be annoying to have to list</span>
+<span id="cb45-1207"><a href="#cb45-1207" aria-hidden="true" tabindex="-1"></a>all of them <span class="in">`HSPC_001:Prog_852`</span> means all the columns from <span class="in">`HSPC_001`</span> to</span>
+<span id="cb45-1208"><a href="#cb45-1208" aria-hidden="true" tabindex="-1"></a><span class="in">`Prog_852`</span>.</span>
+<span id="cb45-1209"><a href="#cb45-1209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1210"><a href="#cb45-1210" aria-hidden="true" tabindex="-1"></a>🎬 Find the genes that are 0 in every column of the hspc_prog dataframe:</span>
+<span id="cb45-1211"><a href="#cb45-1211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1214"><a href="#cb45-1214" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-1215"><a href="#cb45-1215" aria-hidden="true" tabindex="-1"></a>hspc_prog <span class="sc">|&gt;</span> </span>
+<span id="cb45-1216"><a href="#cb45-1216" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb45-1217"><a href="#cb45-1217" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">sum</span>(<span class="fu">c_across</span>(HSPC_001<span class="sc">:</span>Prog_852)) <span class="sc">==</span> <span class="dv">0</span>)</span>
 <span id="cb45-1218"><a href="#cb45-1218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1219"><a href="#cb45-1219" aria-hidden="true" tabindex="-1"></a>❓ What do you conclude?</span>
+<span id="cb45-1219"><a href="#cb45-1219" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb45-1220"><a href="#cb45-1220" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1221"><a href="#cb45-1221" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #---THINKING ANSWER--- --&gt;</span></span>
+<span id="cb45-1221"><a href="#cb45-1221" aria-hidden="true" tabindex="-1"></a>Notice that we have summed across all the columns.</span>
 <span id="cb45-1222"><a href="#cb45-1222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1223"><a href="#cb45-1223" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- The are no genes that are completely unexpressed in  --&gt;</span></span>
+<span id="cb45-1223"><a href="#cb45-1223" aria-hidden="true" tabindex="-1"></a>❓ What do you conclude?</span>
 <span id="cb45-1224"><a href="#cb45-1224" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1225"><a href="#cb45-1225" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- this set of genes --&gt;</span></span>
+<span id="cb45-1225"><a href="#cb45-1225" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- #---THINKING ANSWER--- --&gt;</span></span>
 <span id="cb45-1226"><a href="#cb45-1226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1227"><a href="#cb45-1227" aria-hidden="true" tabindex="-1"></a>🎬 Write combined data to file:</span>
+<span id="cb45-1227"><a href="#cb45-1227" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- The are no genes that are completely unexpressed in  --&gt;</span></span>
 <span id="cb45-1228"><a href="#cb45-1228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1231"><a href="#cb45-1231" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-1232"><a href="#cb45-1232" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(hspc_prog, </span>
-<span id="cb45-1233"><a href="#cb45-1233" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">"data-processed/hspc_prog.csv"</span>)</span>
-<span id="cb45-1234"><a href="#cb45-1234" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-1235"><a href="#cb45-1235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1238"><a href="#cb45-1238" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb45-1239"><a href="#cb45-1239" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb45-1240"><a href="#cb45-1240" aria-hidden="true" tabindex="-1"></a><span class="co">#---UNDER THE HOOD CODE---</span></span>
-<span id="cb45-1241"><a href="#cb45-1241" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(hspc_prog, </span>
-<span id="cb45-1242"><a href="#cb45-1242" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">"../week-4/data-processed/hspc_prog.csv"</span>)</span>
-<span id="cb45-1243"><a href="#cb45-1243" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb45-1244"><a href="#cb45-1244" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1245"><a href="#cb45-1245" aria-hidden="true" tabindex="-1"></a>Now go to <span class="co">[</span><span class="ot">Look after future you</span><span class="co">](#stem-cells-and-future-you)</span></span>
-<span id="cb45-1246"><a href="#cb45-1246" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1247"><a href="#cb45-1247" aria-hidden="true" tabindex="-1"></a><span class="fu"># 🤗 Look after future you!</span></span>
+<span id="cb45-1229"><a href="#cb45-1229" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- this set of genes --&gt;</span></span>
+<span id="cb45-1230"><a href="#cb45-1230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1231"><a href="#cb45-1231" aria-hidden="true" tabindex="-1"></a>🎬 Write combined data to file:</span>
+<span id="cb45-1232"><a href="#cb45-1232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1235"><a href="#cb45-1235" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-1236"><a href="#cb45-1236" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(hspc_prog, </span>
+<span id="cb45-1237"><a href="#cb45-1237" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">"data-processed/hspc_prog.csv"</span>)</span>
+<span id="cb45-1238"><a href="#cb45-1238" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb45-1239"><a href="#cb45-1239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1242"><a href="#cb45-1242" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb45-1243"><a href="#cb45-1243" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb45-1244"><a href="#cb45-1244" aria-hidden="true" tabindex="-1"></a><span class="co">#---UNDER THE HOOD CODE---</span></span>
+<span id="cb45-1245"><a href="#cb45-1245" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(hspc_prog, </span>
+<span id="cb45-1246"><a href="#cb45-1246" aria-hidden="true" tabindex="-1"></a>          <span class="at">file =</span> <span class="st">"../week-4/data-processed/hspc_prog.csv"</span>)</span>
+<span id="cb45-1247"><a href="#cb45-1247" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb45-1248"><a href="#cb45-1248" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1249"><a href="#cb45-1249" aria-hidden="true" tabindex="-1"></a>You need only do the section for your own project data but **completing</span>
-<span id="cb45-1250"><a href="#cb45-1250" aria-hidden="true" tabindex="-1"></a>this step is important**.</span>
-<span id="cb45-1251"><a href="#cb45-1251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1252"><a href="#cb45-1252" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🎄 *Arabidopsis* and future you {#arabidopsis-and-future-you}</span></span>
-<span id="cb45-1253"><a href="#cb45-1253" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1254"><a href="#cb45-1254" aria-hidden="true" tabindex="-1"></a>🎬 Create a new Project, <span class="in">`arab-88H`</span>, populated with folders and your</span>
-<span id="cb45-1255"><a href="#cb45-1255" aria-hidden="true" tabindex="-1"></a>data. Make a script file called <span class="in">`cont-low-root.R`</span>. This will a be</span>
-<span id="cb45-1256"><a href="#cb45-1256" aria-hidden="true" tabindex="-1"></a>commented analysis of comparison between control and low Ni root tissue.</span>
-<span id="cb45-1257"><a href="#cb45-1257" aria-hidden="true" tabindex="-1"></a>You will build on this each workshop and be able to use it as a template</span>
-<span id="cb45-1258"><a href="#cb45-1258" aria-hidden="true" tabindex="-1"></a>to examine other comparisons. Copy in the *appropriate code and</span>
-<span id="cb45-1259"><a href="#cb45-1259" aria-hidden="true" tabindex="-1"></a>comments* from <span class="in">`workshop-1.R`</span>. Edit to improve your comments where your</span>
-<span id="cb45-1260"><a href="#cb45-1260" aria-hidden="true" tabindex="-1"></a>understanding has developed since you made them. Make sure you can close</span>
-<span id="cb45-1261"><a href="#cb45-1261" aria-hidden="true" tabindex="-1"></a>down RStudio, reopen it and run your whole script again.</span>
-<span id="cb45-1262"><a href="#cb45-1262" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1263"><a href="#cb45-1263" aria-hidden="true" tabindex="-1"></a><span class="fu">## 💉 *Leishmania* and future you {#leishmania-and-future-you}</span></span>
-<span id="cb45-1264"><a href="#cb45-1264" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1265"><a href="#cb45-1265" aria-hidden="true" tabindex="-1"></a>🎬 Create a new Project, <span class="in">`leish-88H`</span>, populated with folders and your</span>
-<span id="cb45-1266"><a href="#cb45-1266" aria-hidden="true" tabindex="-1"></a>data. Make a script file called <span class="in">`pro_meta.R`</span>. This will a be commented</span>
-<span id="cb45-1267"><a href="#cb45-1267" aria-hidden="true" tabindex="-1"></a>analysis of comparison procyclic promastigote and metacyclic</span>
-<span id="cb45-1268"><a href="#cb45-1268" aria-hidden="true" tabindex="-1"></a>promastigotes. You will build on this each workshop and be able to use</span>
-<span id="cb45-1269"><a href="#cb45-1269" aria-hidden="true" tabindex="-1"></a>it as a template to examine other comparisons. Copy in the *appropriate</span>
-<span id="cb45-1270"><a href="#cb45-1270" aria-hidden="true" tabindex="-1"></a>code and comments* from <span class="in">`workshop-1.R`</span>. Edit to improve your comments</span>
-<span id="cb45-1271"><a href="#cb45-1271" aria-hidden="true" tabindex="-1"></a>where your understanding has developed since you made them. Make sure</span>
-<span id="cb45-1272"><a href="#cb45-1272" aria-hidden="true" tabindex="-1"></a>you can close down RStudio, reopen it and run your whole script again.</span>
-<span id="cb45-1273"><a href="#cb45-1273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1274"><a href="#cb45-1274" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🐭 Stem cells and future you {#stem-cells-and-future-you}</span></span>
-<span id="cb45-1275"><a href="#cb45-1275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1276"><a href="#cb45-1276" aria-hidden="true" tabindex="-1"></a>🎬 Create a new Project, <span class="in">`mice-88H`</span>, populated with folders and your</span>
-<span id="cb45-1277"><a href="#cb45-1277" aria-hidden="true" tabindex="-1"></a>data. Make a script file called <span class="in">`hspc-prog.R`</span>. This will a be commented</span>
-<span id="cb45-1278"><a href="#cb45-1278" aria-hidden="true" tabindex="-1"></a>analysis of the hspc cells vs the prog cells. You will build on this</span>
-<span id="cb45-1279"><a href="#cb45-1279" aria-hidden="true" tabindex="-1"></a>each workshop and be able to use it as a template to examine other</span>
-<span id="cb45-1280"><a href="#cb45-1280" aria-hidden="true" tabindex="-1"></a>comparisons. Copy in the *appropriate code and comments* from</span>
-<span id="cb45-1281"><a href="#cb45-1281" aria-hidden="true" tabindex="-1"></a><span class="in">`workshop-1.R`</span>. Edit to improve your comments where your understanding</span>
-<span id="cb45-1282"><a href="#cb45-1282" aria-hidden="true" tabindex="-1"></a>has developed since you made them. Make sure you can close down RStudio,</span>
-<span id="cb45-1283"><a href="#cb45-1283" aria-hidden="true" tabindex="-1"></a>reopen it and run your whole script again.</span>
-<span id="cb45-1284"><a href="#cb45-1284" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1285"><a href="#cb45-1285" aria-hidden="true" tabindex="-1"></a><span class="fu"># 🥳 Finished</span></span>
-<span id="cb45-1286"><a href="#cb45-1286" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1287"><a href="#cb45-1287" aria-hidden="true" tabindex="-1"></a>Well Done!</span>
+<span id="cb45-1249"><a href="#cb45-1249" aria-hidden="true" tabindex="-1"></a>Now go to <span class="co">[</span><span class="ot">Look after future you</span><span class="co">](#stem-cells-and-future-you)</span></span>
+<span id="cb45-1250"><a href="#cb45-1250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1251"><a href="#cb45-1251" aria-hidden="true" tabindex="-1"></a><span class="fu"># 🤗 Look after future you!</span></span>
+<span id="cb45-1252"><a href="#cb45-1252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1253"><a href="#cb45-1253" aria-hidden="true" tabindex="-1"></a>You need only do the section for your own project data but **completing</span>
+<span id="cb45-1254"><a href="#cb45-1254" aria-hidden="true" tabindex="-1"></a>this step is important**.</span>
+<span id="cb45-1255"><a href="#cb45-1255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1256"><a href="#cb45-1256" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🎄 *Arabidopsis* and future you {#arabidopsis-and-future-you}</span></span>
+<span id="cb45-1257"><a href="#cb45-1257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1258"><a href="#cb45-1258" aria-hidden="true" tabindex="-1"></a>🎬 Create a new Project, <span class="in">`arab-88H`</span>, populated with folders and your</span>
+<span id="cb45-1259"><a href="#cb45-1259" aria-hidden="true" tabindex="-1"></a>data. Make a script file called <span class="in">`cont-low-root.R`</span>. This will a be</span>
+<span id="cb45-1260"><a href="#cb45-1260" aria-hidden="true" tabindex="-1"></a>commented analysis of comparison between control and low Ni root tissue.</span>
+<span id="cb45-1261"><a href="#cb45-1261" aria-hidden="true" tabindex="-1"></a>You will build on this each workshop and be able to use it as a template</span>
+<span id="cb45-1262"><a href="#cb45-1262" aria-hidden="true" tabindex="-1"></a>to examine other comparisons. Copy in the *appropriate code and</span>
+<span id="cb45-1263"><a href="#cb45-1263" aria-hidden="true" tabindex="-1"></a>comments* from <span class="in">`workshop-1.R`</span>. Edit to improve your comments where your</span>
+<span id="cb45-1264"><a href="#cb45-1264" aria-hidden="true" tabindex="-1"></a>understanding has developed since you made them. Make sure you can close</span>
+<span id="cb45-1265"><a href="#cb45-1265" aria-hidden="true" tabindex="-1"></a>down RStudio, reopen it and run your whole script again.</span>
+<span id="cb45-1266"><a href="#cb45-1266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1267"><a href="#cb45-1267" aria-hidden="true" tabindex="-1"></a><span class="fu">## 💉 *Leishmania* and future you {#leishmania-and-future-you}</span></span>
+<span id="cb45-1268"><a href="#cb45-1268" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1269"><a href="#cb45-1269" aria-hidden="true" tabindex="-1"></a>🎬 Create a new Project, <span class="in">`leish-88H`</span>, populated with folders and your</span>
+<span id="cb45-1270"><a href="#cb45-1270" aria-hidden="true" tabindex="-1"></a>data. Make a script file called <span class="in">`pro_meta.R`</span>. This will a be commented</span>
+<span id="cb45-1271"><a href="#cb45-1271" aria-hidden="true" tabindex="-1"></a>analysis of comparison procyclic promastigote and metacyclic</span>
+<span id="cb45-1272"><a href="#cb45-1272" aria-hidden="true" tabindex="-1"></a>promastigotes. You will build on this each workshop and be able to use</span>
+<span id="cb45-1273"><a href="#cb45-1273" aria-hidden="true" tabindex="-1"></a>it as a template to examine other comparisons. Copy in the *appropriate</span>
+<span id="cb45-1274"><a href="#cb45-1274" aria-hidden="true" tabindex="-1"></a>code and comments* from <span class="in">`workshop-1.R`</span>. Edit to improve your comments</span>
+<span id="cb45-1275"><a href="#cb45-1275" aria-hidden="true" tabindex="-1"></a>where your understanding has developed since you made them. Make sure</span>
+<span id="cb45-1276"><a href="#cb45-1276" aria-hidden="true" tabindex="-1"></a>you can close down RStudio, reopen it and run your whole script again.</span>
+<span id="cb45-1277"><a href="#cb45-1277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1278"><a href="#cb45-1278" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🐭 Stem cells and future you {#stem-cells-and-future-you}</span></span>
+<span id="cb45-1279"><a href="#cb45-1279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1280"><a href="#cb45-1280" aria-hidden="true" tabindex="-1"></a>🎬 Create a new Project, <span class="in">`mice-88H`</span>, populated with folders and your</span>
+<span id="cb45-1281"><a href="#cb45-1281" aria-hidden="true" tabindex="-1"></a>data. Make a script file called <span class="in">`hspc-prog.R`</span>. This will a be commented</span>
+<span id="cb45-1282"><a href="#cb45-1282" aria-hidden="true" tabindex="-1"></a>analysis of the hspc cells vs the prog cells. You will build on this</span>
+<span id="cb45-1283"><a href="#cb45-1283" aria-hidden="true" tabindex="-1"></a>each workshop and be able to use it as a template to examine other</span>
+<span id="cb45-1284"><a href="#cb45-1284" aria-hidden="true" tabindex="-1"></a>comparisons. Copy in the *appropriate code and comments* from</span>
+<span id="cb45-1285"><a href="#cb45-1285" aria-hidden="true" tabindex="-1"></a><span class="in">`workshop-1.R`</span>. Edit to improve your comments where your understanding</span>
+<span id="cb45-1286"><a href="#cb45-1286" aria-hidden="true" tabindex="-1"></a>has developed since you made them. Make sure you can close down RStudio,</span>
+<span id="cb45-1287"><a href="#cb45-1287" aria-hidden="true" tabindex="-1"></a>reopen it and run your whole script again.</span>
 <span id="cb45-1288"><a href="#cb45-1288" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1289"><a href="#cb45-1289" aria-hidden="true" tabindex="-1"></a><span class="fu"># Independent study following the workshop</span></span>
+<span id="cb45-1289"><a href="#cb45-1289" aria-hidden="true" tabindex="-1"></a><span class="fu"># 🥳 Finished</span></span>
 <span id="cb45-1290"><a href="#cb45-1290" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1291"><a href="#cb45-1291" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Consolidate</span><span class="co">](study_after_workshop.qmd)</span></span>
+<span id="cb45-1291"><a href="#cb45-1291" aria-hidden="true" tabindex="-1"></a>Well Done!</span>
 <span id="cb45-1292"><a href="#cb45-1292" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1293"><a href="#cb45-1293" aria-hidden="true" tabindex="-1"></a><span class="fu"># The Code file</span></span>
+<span id="cb45-1293"><a href="#cb45-1293" aria-hidden="true" tabindex="-1"></a><span class="fu"># Independent study following the workshop</span></span>
 <span id="cb45-1294"><a href="#cb45-1294" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1295"><a href="#cb45-1295" aria-hidden="true" tabindex="-1"></a>These contain all the code needed in the workshop even where it is not</span>
-<span id="cb45-1296"><a href="#cb45-1296" aria-hidden="true" tabindex="-1"></a>visible on the webpage.</span>
-<span id="cb45-1297"><a href="#cb45-1297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1298"><a href="#cb45-1298" aria-hidden="true" tabindex="-1"></a>The <span class="co">[</span><span class="ot">workshop.qmd</span><span class="co">](workshop.qmd)</span> file is the file I use to compile the</span>
-<span id="cb45-1299"><a href="#cb45-1299" aria-hidden="true" tabindex="-1"></a>practical. Qmd stands for Quarto markdown. It allows code and ordinary</span>
-<span id="cb45-1300"><a href="#cb45-1300" aria-hidden="true" tabindex="-1"></a>text to be interleaved to produce well-formatted reports including</span>
-<span id="cb45-1301"><a href="#cb45-1301" aria-hidden="true" tabindex="-1"></a>webpages. Right-click on the link and choose View the source code for</span>
-<span id="cb45-1302"><a href="#cb45-1302" aria-hidden="true" tabindex="-1"></a>this workshop using the <span class="in">`&lt;/&gt; Code`</span> button at the top of the page. Coding</span>
-<span id="cb45-1303"><a href="#cb45-1303" aria-hidden="true" tabindex="-1"></a>and thinking answers are marked with <span class="in">`#---CODING ANSWER---`</span> and</span>
-<span id="cb45-1304"><a href="#cb45-1304" aria-hidden="true" tabindex="-1"></a><span class="in">`#---THINKING ANSWER---`</span></span>
-<span id="cb45-1305"><a href="#cb45-1305" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1306"><a href="#cb45-1306" aria-hidden="true" tabindex="-1"></a>Pages made with R <span class="co">[</span><span class="ot">@R-core</span><span class="co">]</span>, Quarto <span class="co">[</span><span class="ot">@Allaire_Quarto_2024</span><span class="co">]</span>, <span class="in">`knitr`</span></span>
-<span id="cb45-1307"><a href="#cb45-1307" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">@knitr1; @knitr2; @knitr3</span><span class="co">]</span>, <span class="in">`kableExtra`</span> <span class="co">[</span><span class="ot">@kableExtra</span><span class="co">]</span></span>
-<span id="cb45-1308"><a href="#cb45-1308" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-1309"><a href="#cb45-1309" aria-hidden="true" tabindex="-1"></a><span class="fu"># References</span></span>
+<span id="cb45-1295"><a href="#cb45-1295" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Consolidate</span><span class="co">](study_after_workshop.qmd)</span></span>
+<span id="cb45-1296"><a href="#cb45-1296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1297"><a href="#cb45-1297" aria-hidden="true" tabindex="-1"></a><span class="fu"># The Code file</span></span>
+<span id="cb45-1298"><a href="#cb45-1298" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1299"><a href="#cb45-1299" aria-hidden="true" tabindex="-1"></a>These contain all the code needed in the workshop even where it is not</span>
+<span id="cb45-1300"><a href="#cb45-1300" aria-hidden="true" tabindex="-1"></a>visible on the webpage.</span>
+<span id="cb45-1301"><a href="#cb45-1301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1302"><a href="#cb45-1302" aria-hidden="true" tabindex="-1"></a>The <span class="co">[</span><span class="ot">workshop.qmd</span><span class="co">](workshop.qmd)</span> file is the file I use to compile the</span>
+<span id="cb45-1303"><a href="#cb45-1303" aria-hidden="true" tabindex="-1"></a>practical. Qmd stands for Quarto markdown. It allows code and ordinary</span>
+<span id="cb45-1304"><a href="#cb45-1304" aria-hidden="true" tabindex="-1"></a>text to be interleaved to produce well-formatted reports including</span>
+<span id="cb45-1305"><a href="#cb45-1305" aria-hidden="true" tabindex="-1"></a>webpages. Right-click on the link and choose View the source code for</span>
+<span id="cb45-1306"><a href="#cb45-1306" aria-hidden="true" tabindex="-1"></a>this workshop using the <span class="in">`&lt;/&gt; Code`</span> button at the top of the page. Coding</span>
+<span id="cb45-1307"><a href="#cb45-1307" aria-hidden="true" tabindex="-1"></a>and thinking answers are marked with <span class="in">`#---CODING ANSWER---`</span> and</span>
+<span id="cb45-1308"><a href="#cb45-1308" aria-hidden="true" tabindex="-1"></a><span class="in">`#---THINKING ANSWER---`</span></span>
+<span id="cb45-1309"><a href="#cb45-1309" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1310"><a href="#cb45-1310" aria-hidden="true" tabindex="-1"></a>Pages made with R <span class="co">[</span><span class="ot">@R-core</span><span class="co">]</span>, Quarto <span class="co">[</span><span class="ot">@Allaire_Quarto_2024</span><span class="co">]</span>, <span class="in">`knitr`</span></span>
+<span id="cb45-1311"><a href="#cb45-1311" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">@knitr1; @knitr2; @knitr3</span><span class="co">]</span>, <span class="in">`kableExtra`</span> <span class="co">[</span><span class="ot">@kableExtra</span><span class="co">]</span></span>
+<span id="cb45-1312"><a href="#cb45-1312" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-1313"><a href="#cb45-1313" aria-hidden="true" tabindex="-1"></a><span class="fu"># References</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
