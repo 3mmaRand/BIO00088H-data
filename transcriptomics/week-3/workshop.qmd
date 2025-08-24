@@ -993,8 +993,12 @@ hspc_prog_summary_gene |>
 ```
 
 Note that the variability between genes (average expression between
-0.020 and and 9.567) is far greater than between cells (average
-expression from 1.319 to 9.567) which is just what we would expect.
+`r min(hspc_prog_summary_gene$mean) |> round(4)` and
+`r max(hspc_prog_summary_gene$mean) |> round(4)`) is greater than
+between cells (average expression between
+`r min(hspc_prog_summary_cell$mean) |> round(4)` and
+`r max(hspc_prog_summary_cell$mean) |> round(4)`) which is just what we
+would expect.
 
 Now go to [Filtering for QC](#stem-cells-filterqc).
 
