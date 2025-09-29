@@ -13,10 +13,23 @@ You are *either*
 -   an MSc Bioinformatics student doing BIO00070M Research, Professional
     and Team Skills
 
-Integrated masters students doing 88H will be doing one of these
-projects:
+Data Analysis compromises five workshops covering computational skills.
 
-The project types are:
+All students do Core 1 (week 2) and Core 2 (week 6). In weeks 3, 4 and 5
+BIO00088H students will do image analysis, structural analysis or
+transcriptomics depending on their 88H project. MSc Bioinformatics
+students do the Core workshops and the transcriptomics workshops as part
+of BIO00070M.
+
+| Week | Data Strand |
+|----|----|
+| 2 | Core 1 Supporting Information - reproducibility, project-oriented workflow, naming things, cool code, handy shortcuts |
+| 3 | Strand specific 1 |
+| 4 | Strand specific 2 |
+| 5 | Strand specific 3 |
+| 6 | Core 2 Supporting Information - documenting with a README, curating code, non-coded processes |
+
+The 88H project types are:
 
 | Title | Director | Data analysis strand |
 |----|----|----|
@@ -28,19 +41,8 @@ The project types are:
 | Discovery proteins for biotech applications: new classes of antibody mimetics | Michael Plevin | Structure Analysis, Jon Agirre |
 | Designing isoform-selective Src kinase inhibitors | Gareth Evans | Structure Analysis, Jon Agirre |
 
-Data Analysis compromises five workshops covering computational skills
-needed in your project. MSc Bioinformatics students do the Core
-workshops and the transcriptomics workshops as part of BIO00070M. The
-data analysis workshops are:
-
-| Week | Data Strand |
-|----|----|
-| 2 | Core 1 Supporting Information - reproducibility, project-oriented workflow, naming things, cool code, handy shortcuts |
-| 3 | Strand specific 1 |
-| 4 | Strand specific 2 |
-| 5 | Strand specific 3 |
-| 6 | Core 2 Supporting Information - documenting with a README, curating code, non-coded processes |
-|  |  |
+70M students choose **one** on the transcriptomics data sets for their
+poster.
 
 ## Module Learning Outcome linked to this content
 
@@ -58,7 +60,7 @@ the top right.
 
 ## Please cite as
 
-Rand E (2024). Data Analysis for Group Project.
+Rand E (2025). Data Analysis for Group Project.
 https://3mmarand.github.io/BIO00088H-data/.
 
 Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr`

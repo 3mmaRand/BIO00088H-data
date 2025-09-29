@@ -18,7 +18,7 @@ website:
 
 
   page-footer:
-    left: "Rand E (2024). Data Analysis for Group Project. <https://3mmarand.github.io/BIO00088H-data/>."
+    left: "Rand E (2025). Data Analysis for Group Project. <https://3mmarand.github.io/BIO00088H-data/>."
     right:
       - icon: github
         href: "https://github.com/3mmaRand"
