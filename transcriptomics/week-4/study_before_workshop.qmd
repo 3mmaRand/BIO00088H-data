@@ -75,12 +75,12 @@ An RStudio Project called `arab-88H` which contains:
 
 An RStudio Project called `leish-88H` which contains:
 
-```         
 -   data-raw: `leishmania-mex-ama.csv`, `leishmania-mex-pro.csv`,
     `leishmania-mex-meta.csv`
+
 -   data-processed: `pro_meta_filtered.csv`, `pro_ama_filtered.csv`
+
 -   Two scripts: `pro_meta.R`, `pro_ama.R`
-```
 
 ## 🐭 Stem cells
 

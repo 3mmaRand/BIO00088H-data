@@ -65,5 +65,3 @@ https://3mmarand.github.io/BIO00088H-data/.
 
 Pages made with R [@R-core], Quarto [@Allaire_Quarto_2024], `knitr`
 [@knitr1; @knitr2; @knitr3], `kableExtra` [@kableExtra]
-
-References
