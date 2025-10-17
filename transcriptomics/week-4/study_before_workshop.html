@@ -6,9 +6,9 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dc55a5b9e770e841cd82e46aadbfb9b0.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.24">
+<meta name="generator" content="quarto-1.8.25">
 <meta name="author" content="Emma Rand">
 <title>Data Analysis for Group Project – Independent Study to prepare for workshop</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -231,7 +231,7 @@ Emma Rand
 </div>
 </div>
 
-  <p class="date">29 September, 2025</p>
+  <p class="date">17 October, 2025</p>
 </section><section id="overview" class="slide level2"><h2>Overview</h2>
 <p>In these slides we will:</p>
 <ul>
@@ -277,11 +277,11 @@ Emma Rand
 </ul></section><section id="leishmania" class="slide level2"><h2>💉 <em>Leishmania</em>
 </h2>
 <p>An RStudio Project called <code>leish-88H</code> which contains:</p>
-<pre><code>-   data-raw: `leishmania-mex-ama.csv`, `leishmania-mex-pro.csv`,
-    `leishmania-mex-meta.csv`
--   data-processed: `pro_meta_filtered.csv`, `pro_ama_filtered.csv`
--   Two scripts: `pro_meta.R`, `pro_ama.R`</code></pre>
-</section><section id="stem-cells" class="slide level2"><h2>🐭 Stem cells</h2>
+<ul>
+<li><p>data-raw: <code>leishmania-mex-ama.csv</code>, <code>leishmania-mex-pro.csv</code>, <code>leishmania-mex-meta.csv</code></p></li>
+<li><p>data-processed: <code>pro_meta_filtered.csv</code>, <code>pro_ama_filtered.csv</code></p></li>
+<li><p>Two scripts: <code>pro_meta.R</code>, <code>pro_ama.R</code></p></li>
+</ul></section><section id="stem-cells" class="slide level2"><h2>🐭 Stem cells</h2>
 <p>An RStudio Project called <code>mice-88H</code> which contains</p>
 <ul>
 <li>data-raw: <code>secretome_hspc.csv</code>, <code>secretome_prog.csv</code>, <code>secretome_lthsc.csv</code>
@@ -440,19 +440,19 @@ which is a functional genomic resource for the Trypanosomatidae and Plasmodidae<
 <div style="font-size: 60%;">
 <p>Install <strong><code>BiocManager</code></strong> from CRAN in the the normal way:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Install <strong><code>DESeq2</code></strong> from Bioconductor using BiocManager:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html">install</a></span><span class="op">(</span><span class="st">"DESeq2"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html">install</a></span><span class="op">(</span><span class="st">"DESeq2"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Install <strong><code>scran</code></strong> from Bioconductor using BiocManager:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html">install</a></span><span class="op">(</span><span class="st">"scran"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html">install</a></span><span class="op">(</span><span class="st">"scran"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Install <strong><code>biomaRt</code></strong> from Bioconductor using BiocManager:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html">install</a></span><span class="op">(</span><span class="st">"biomaRt"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html">install</a></span><span class="op">(</span><span class="st">"biomaRt"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 </section></section><section><section id="workshops" class="title-slide slide level1 center"><h1>Workshops</h1>
