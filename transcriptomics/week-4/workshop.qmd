@@ -1220,7 +1220,6 @@ We will import this file and join it to the results dataframe.
 🎬 Load the **`readxl`** [@readxl] package:
 
 ```{r}
-#| eval: false
 library(readxl)
 ```
 
