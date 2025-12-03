@@ -13,6 +13,8 @@ bibliography: ../../references.bib
 editor: 
   markdown: 
     wrap: 72
+params:
+  mouse: secretome  # or: surfaceome
 ---
 
 # Introduction
@@ -59,15 +61,42 @@ library(tidyverse)
 
 Import the data for the LT-HSC, HSPC and the Progenitor cells.
 
+::: {.content-visible when-profile="surfaceome"}
 🎬 Import [surfaceome_lthsc.csv](data-raw/surfaceome_lthsc.csv),
 [surfaceome_hspc.csv](data-raw/surfaceome_hspc.csv) and
-[surfaceome_hspc.csv](data-raw/surfaceome_prog.csv)
+[surfaceome_prog.csv](data-raw/surfaceome_prog.csv)
+:::
+
+::: {.content-visible when-profile="secretome"}
+🎬 Import [secretome_lthsc.csv](data-raw/secretome_lthsc.csv),
+[secretome_hspc.csv](data-raw/secretome_hspc.csv) and
+[secretome_prog.csv](data-raw/secretome_prog.csv)
+:::
 
 ```{r}
-# 🐭 import the three datasets
+#| label: load-secretome
+#| echo: !expr params$mouse == "secretome"
+#| eval: !expr params$mouse == "secretome"
+#| cache: true
+#| cache.extra: secretome
+# 🐭 import the lthsc, hspc and prog data
+hspc  <- read_csv("data-raw/secretome_hspc.csv")
+prog  <- read_csv("data-raw/secretome_prog.csv")
+lthsc <- read_csv("data-raw/secretome_lthsc.csv")
+
+```
+
+```{r}
+#| label: load-surfaceome
+#| echo: !expr params$mouse == "surfaceome"
+#| eval: !expr params$mouse == "surfaceome"
+#| cache: true
+#| cache.extra: surfaceome
+# 🐭 import the lthsc, hspc and prog data
+hspc  <- read_csv("data-raw/surfaceome_hspc.csv")
+prog  <- read_csv("data-raw/surfaceome_prog.csv")
 lthsc <- read_csv("data-raw/surfaceome_lthsc.csv")
-hspc <- read_csv("data-raw/surfaceome_hspc.csv")
-prog <- read_csv("data-raw/surfaceome_prog.csv")
+
 ```
 
 ```{r}
@@ -107,8 +136,8 @@ and [BioMart](https://www.ensembl.org/info/data/biomart/index.html)
 which means loading more packages, managing conflicts and using more
 compute, we can use the information we already have in the
 [results/hspc_prog_results.csv](results/hspc_prog_results.csv) file.
-This works because the same 280 genes are in the three raw data files
-and this results file.
+This works because the same genes are in the three raw data files and
+this results file.
 
 We need only the `ensembl_gene_id`, (to join the information), the
 `external_gene_name` and the `description`.
@@ -137,7 +166,7 @@ The information in the [er_cell_types.csv](data-raw/er_cell_types.csv)
 has 14 columns. The first column gives the cell_id (e.g., `HSPC_001`)
 the next 12 columns are named with the cell type or unknown and contain
 a 0 or 1. These columns are useful if you want to compare (plot or DE),
-for example, CMP cells vs others. The last column gives the cell type 
+for example, CMP cells vs others. The last column gives the cell type
 which is useful to include *all* the labels in a plot.
 
 🎬 Import [er_cell_types.csv](data-raw/er_cell_types.csv)
@@ -178,8 +207,8 @@ cell_expr_long <- cell_expr |>
                values_to = "expression")
 ```
 
-Note that this data frame will have:
-[280 genes * 1654 cells =  463120] rows.
+Note that this data frame will have: \[280 genes \* 1654 cells =
+463120\] rows.
 
 ## Add the two types of categorisation to the expression data
 
@@ -206,10 +235,8 @@ groups:
 ```{r}
 cell_expr_long |> 
   group_by(cell_type_3) |> 
-  summarise(n()/ 280)
+  summarise(n() / 423)
 ```
-
-
 
 To add the 12-type categorisation we need to join the `cell_expr_long`
 data to the `cell` data on the `cell_id`
@@ -224,17 +251,17 @@ cell_expr_long <- cell_expr_long |>
 
 ### Plot gene expression under 3-type categorisation
 
-I have chosen the gene `Emb` to plot the expression in each cell type. I
-prefer the use of violin plots and points because multimodal
-distributions are more obvious than in boxplots
+I have chosen the gene `Emilin2` to plot the expression in each cell
+type. I prefer the use of violin plots and points because multimodal
+distributions are more obvious than in boxplots.
 
-🎬 Plot the expression of `Emb` in each cell type for the 3-type
+🎬 Plot the expression of `Emilin2` in each cell type for the 3-type
 categorisation.
 
 ```{r}
-# 🐭 plot the expression of Emb in each cell type
+# 🐭 plot the expression of Emilin2 in each cell type
 cell_expr_long |> 
-  filter(external_gene_name == "Emb") |> 
+  filter(external_gene_name == "Emilin2") |> 
   ggplot(aes(x = cell_type_3, y = expression)) +
   geom_violin(linewidth = 1) +
   geom_jitter(width = 0.4, alpha = 0.2, pch = 16) +
@@ -244,9 +271,9 @@ cell_expr_long |>
 ### Plot expression under 12-type categorisation
 
 ```{r}
-# 🐭 plot the expression of Emb in each cell type
+# 🐭 plot the expression of Emilin2 in each cell type
 cell_expr_long |> 
-  filter(external_gene_name == "Emb") |> 
+  filter(external_gene_name == "Emilin2") |> 
   ggplot(aes(x = cell_type_12, y = expression)) +
   geom_violin(linewidth = 1) +
   geom_jitter(width = 0.2, alpha = 0.2, pch = 16) +
@@ -326,15 +353,15 @@ pca_labelled <- pca_labelled |>
             by = "cell_id")
 ```
 
-🎬 Add the expression of `Emb` to `pca_labelled` data. I've also renamed
-the expression column from the filtered `cell_expr_long` so it is
-`Emb_expr` in the `pca_labelled` data.
+🎬 Add the expression of `Emilin2` to `pca_labelled` data. I've also
+renamed the expression column from the filtered `cell_expr_long` so it
+is `Emilin2_expr` in the `pca_labelled` data.
 
 ```{r}
 pca_labelled <- pca_labelled |> 
   left_join(cell_expr_long |> 
-              filter(external_gene_name == "Emb") |> 
-              select(cell_id, "Emb_expr" = expression), 
+              filter(external_gene_name == "Emilin2") |> 
+              select(cell_id, "Emilin2_expr" = expression), 
             by = "cell_id")
 ```
 
@@ -363,13 +390,13 @@ pca_labelled |>
 
 ```
 
-🎬 Plot PC2 against PC1 and colour by expression of Emb and shape by
+🎬 Plot PC2 against PC1 and colour by expression of Emilin2 and shape by
 cell_type_3 type:
 
 ```{r}
 pca_labelled |> 
   ggplot(aes(x = PC1, y = PC2, 
-             colour = Emb_expr,
+             colour = Emilin2_expr,
              shape = cell_type_3)) +
   geom_point() +
   scale_colour_viridis_c(end = 0.95, begin = 0.15,
@@ -383,7 +410,7 @@ pca_labelled |>
 ```{r}
 pca_labelled |> 
   ggplot(aes(x = PC1, y = PC2, 
-             colour = Emb_expr)) +
+             colour = Emilin2_expr)) +
   geom_point() +
   scale_colour_viridis_c(end = 0.95, begin = 0.15,
                          name = NULL) +
